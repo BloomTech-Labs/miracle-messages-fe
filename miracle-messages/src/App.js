@@ -7,9 +7,8 @@ import axios from "axios";
 import "./CSS/App.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import CITIES from './cities.json'
 
-require('dotenv').config();
+// require('dotenv').config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -45,8 +44,8 @@ class App extends Component {
     return (
       <Marker
         key={`marker-${index}`}
-        longitude={city.latitude}
-        latitude={city.longitude}
+        latitude={city.latitude}
+        longitude={city.longitude}
       >
         <CityPin size={20} onClick={() => this.setState({ popupInfo: city})} />
       </Marker>
@@ -61,8 +60,8 @@ class App extends Component {
         <Popup
           tipSize={5}
           anchor="top"
-          longitude={popupInfo.latitude}
-          latitude={popupInfo.longitude}
+          latitude={popupInfo.latitude}
+          longitude={popupInfo.longitude}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
@@ -87,11 +86,11 @@ class App extends Component {
           height="100vh"
           mapStyle="mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1"
           onViewportChange={this._updateViewport}
-          mapboxApiAccessToken={TOKEN}
-        >
-          {this.state.chapter_data.map(this._renderCityMarker)}
+          mapboxApiAccessToken={TOKEN}>
 
+          {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
+
         </MapGL>
       </div>
     );
