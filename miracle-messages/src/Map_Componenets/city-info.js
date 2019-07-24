@@ -7,9 +7,9 @@ export default class CityInfo extends PureComponent {
     return (
       <div>
         <div>
-        <p>City: {info.city}</p>
+        <p>City: {info.location}</p>
         <p>Chapter Name: {info.chaptername} </p>
-        <p>Number of members: {info.members}</p>
+        <p>Number of members: {info.numvolunteers}</p>
         </div>
       </div>
     );

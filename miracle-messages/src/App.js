@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MapGL, {Marker, Popup} from "react-map-gl";
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
-//import axios from "axios";
+import axios from "axios";
 
 import "./CSS/App.css";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -12,7 +12,6 @@ import CITIES from './cities.json'
 require('dotenv').config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
-// process.env.REACT_APP_MAPBOX_TOKEN; //<-Put your public token here, besure to remove before uploading changes to git
 
 class App extends Component {
   constructor(props) {
@@ -24,30 +23,32 @@ class App extends Component {
         zoom: 3.5,
         bearing: 0,
         pitch: 0
-      }
+      },
+      chapter_data: [],
+      popupInfo: null
     };
   }
 
-  // componentDidMount() {
-  //   axios
-  //     .get("https://miracle-messages-staging.herokuapp.com/users")
-  //     .then(res => {
-  //       console.log(res.data);
-  //       this.setState({ data: res.data });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+  componentDidMount() {
+    axios
+      .get("https://miracle-messages-staging.herokuapp.com/api/chapter")
+      .then(res => {
+        console.log(res.data);
+        this.setState({ chapter_data: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   _renderCityMarker = (city, index) => {
     return (
       <Marker
         key={`marker-${index}`}
-        longitude={city.longitude}
-        latitude={city.latitude}
+        longitude={city.latitude}
+        latitude={city.longitude}
       >
-        <CityPin size={20} onClick={() => this.setState({ popupInfo: city })} />
+        <CityPin size={20} onClick={() => this.setState({ popupInfo: city})} />
       </Marker>
     );
   };
@@ -60,8 +61,8 @@ class App extends Component {
         <Popup
           tipSize={5}
           anchor="top"
-          longitude={popupInfo.longitude}
-          latitude={popupInfo.latitude}
+          longitude={popupInfo.latitude}
+          latitude={popupInfo.longitude}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
@@ -88,7 +89,7 @@ class App extends Component {
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={TOKEN}
         >
-          {CITIES.map(this._renderCityMarker)}
+          {this.state.chapter_data.map(this._renderCityMarker)}
 
           {this._renderPopup()}
         </MapGL>
