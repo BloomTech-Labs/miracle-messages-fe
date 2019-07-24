@@ -8,7 +8,6 @@ export default class CityInfo extends PureComponent {
       <div>
         <div>
         <p>City: {info.location}</p>
-        <p>Chapter Name: {info.chaptername} </p>
         <p>Number of members: {info.numvolunteers}</p>
         </div>
       </div>
