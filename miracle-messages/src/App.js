@@ -9,8 +9,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 import CITIES from './cities.json'
 
-const TOKEN =
-  ""; //<-Put your public token here, besure to remove before uploading changes to git
+require('dotenv').config();
+
+const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+// process.env.REACT_APP_MAPBOX_TOKEN; //<-Put your public token here, besure to remove before uploading changes to git
 
 class App extends Component {
   constructor(props) {
@@ -82,7 +84,7 @@ class App extends Component {
           {...viewport}
           width="100vw"
           height="100vh"
-          mapStyle="mapbox://styles/mapbox/satellite-streets-v10"
+          mapStyle="mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={TOKEN}
         >
