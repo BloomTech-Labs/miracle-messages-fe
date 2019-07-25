@@ -5,9 +5,9 @@ export default class CityInfo extends PureComponent {
     const {info} = this.props;
 
     return (
-      <div>
+      <div className="popup">
         <div>
-        <p>City: {info.location}</p>
+        <h3>{info.location}</h3>
         <p>Number of members: {info.numvolunteers}</p>
         </div>
       </div>
