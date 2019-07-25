@@ -58,11 +58,12 @@ class App extends Component {
     return (
       popupInfo && (
         <Popup
-          tipSize={5}
-          anchor="top"
+          className="cityPopup"
+          tipSize={10}
+          offsetTop={-20}
           latitude={popupInfo.latitude}
           longitude={popupInfo.longitude}
-          closeOnClick={false}
+          closeButton={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
           <CityInfo info={popupInfo} />
@@ -86,7 +87,10 @@ class App extends Component {
           height="100vh"
           mapStyle="mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1"
           onViewportChange={this._updateViewport}
-          mapboxApiAccessToken={TOKEN}>
+          mapboxApiAccessToken={TOKEN}
+          minZoom={2}
+          maxPitch={0}
+          dragRotate={false}>
 
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
