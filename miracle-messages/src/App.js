@@ -59,11 +59,11 @@ class App extends Component {
       popupInfo && (
         <Popup
           className="cityPopup"
-          tipSize={10}
+          tipSize={20}
           offsetTop={-20}
           latitude={popupInfo.latitude}
           longitude={popupInfo.longitude}
-          closeButton={false}
+          closeButton={true}
           onClose={() => this.setState({ popupInfo: null })}
         >
           <CityInfo info={popupInfo} />
@@ -82,6 +82,7 @@ class App extends Component {
     return (
       <div className="App">
         <MapGL
+          onClick={() => this.setState({ popupInfo: null })}
           {...viewport}
           width="100vw"
           height="100vh"
@@ -91,7 +92,6 @@ class App extends Component {
           minZoom={2}
           maxPitch={0}
           dragRotate={false}>
-
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
 

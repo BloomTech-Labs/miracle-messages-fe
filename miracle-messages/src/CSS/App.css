@@ -32,11 +32,24 @@
   }
 }
 
+.mapboxgl-popup {
+  height: 203px;
+}
+
 /* Popup Style */
 .mapboxgl-popup-content {
+  height: 183px;
+  width: 275px;
   background: #484747!important;
   color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5)!important;
+
+}
+
+
+.mapboxgl-popup-tip {
+  border-left: 10px solid transparent !important;
+  border-right: 10px solid transparent !important;
 }
 
 /* Tip Color */
@@ -45,6 +58,7 @@
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
     border-bottom-color: #484747!important;
+    /* height: 30px; To be used later */
     }
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
@@ -57,3 +71,71 @@
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
     border-left-color: #484747!important;
     }
+
+.mapboxgl-popup-close-button {
+  color: whitesmoke !important;
+  font-size: 20px;
+}
+
+.mapboxgl-popup-close-button:hover {
+font-size: 25px;
+transition: 0.1s;
+}
+
+
+.buttons button:first-child {
+  background: #5cbe80;
+  margin-right: 20px;
+  border: none;
+}
+
+.buttons button:first-child:hover {
+  color: black;
+  transition: 0.6s;
+ 
+}
+
+.buttons button:last-child {
+  background: #484747;
+  border: 1px #979797 solid;
+  border-radius: 1px;
+
+}
+.buttons button {
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  height: 23px;
+  width: 105px;
+
+}
+
+.info {
+  font-size: 18px;
+  line-height: 10px;
+  letter-spacing: -0.36px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.info h3 {
+  margin-top: -3px;
+  margin-bottom: 20px;
+  color: #FFFFFF;	
+  font-family:'Open Sans', sans-serif;
+  font-size: 18px;	
+  font-weight: 800;	
+  letter-spacing: 1.54px;	
+  line-height: 24px;	
+  text-align: center;
+}
+
+.number {
+  margin-right: 15px;
+  float: right;
+}
+
