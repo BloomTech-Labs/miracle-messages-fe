@@ -6,9 +6,16 @@ export default class CityInfo extends PureComponent {
 
     return (
       <div className="popup">
-        <div>
-        <h3>{info.location}</h3>
-        <p>Number of members: {info.numvolunteers}</p>
+        <div className='info'>
+          <h3>{info.location.toUpperCase()}</h3>
+          <p>Volunteers <span className='number'>{info.numvolunteers}</span></p>
+          <p>Delivered Messages</p>
+          <p>Reunions</p>
+        </div>
+
+        <div className='buttons'>
+          <button>Join Chapter</button>
+          <button>Learn More</button>
         </div>
       </div>
     );
