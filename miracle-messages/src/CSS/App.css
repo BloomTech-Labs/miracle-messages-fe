@@ -1,87 +1,78 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Popup Style */
 
 .mapboxgl-popup {
   height: 203px;
+  text-align: center;
+  cursor: auto;
 }
 
-/* Popup Style */
 .mapboxgl-popup-content {
   height: 183px;
   width: 275px;
-  background: #484747!important;
+  background: #484747 !important;
   color: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5)!important;
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5) !important;
 }
-
 
 .mapboxgl-popup-tip {
   border-left: 10px solid transparent !important;
   border-right: 10px solid transparent !important;
+  /* border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important; */
 }
 
 /* Tip Color */
 
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  margin-top: 18px !important;
+}
+
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
-    border-bottom-color: #484747!important;
-    /* height: 30px; To be used later */
-    }
+  border-bottom-color: #484747 !important;
+  /* height: 30px; To be used later */
+}
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
-    border-top-color: #484747!important;
-    }
+  border-top-color: #484747 !important;
+}
+
 .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-    border-right-color: #484747!important;
-    }
+  /* border-right-color: #484747 !important; */
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  border-right: 20px solid #484747 !important;
+  margin: 15px -2px 0 0;
+}
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-    border-left-color: #484747!important;
-    }
+  /* border-left-color: #484747 !important; */
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  border-left: 20px solid #484747 !important;
+  margin: 15px 0 0 -2px;
+}
 
 .mapboxgl-popup-close-button {
   color: whitesmoke !important;
   font-size: 20px;
+  /* margin: 2px 5px 5px 5px; */
+  /* border: 1px solid white; */
+  background: transparent !important;
+  width: 40px;
+  height: 40px;
+  outline: none;
 }
 
 .mapboxgl-popup-close-button:hover {
-font-size: 25px;
-transition: 0.1s;
+  font-size: 25px;
+  /* transition: 0.5s; */
+  transform: rotate(-90deg);
+  transition: transform 650ms ease;
+  color: red !important;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
-
 
 .buttons button:first-child {
   background: #5cbe80;
@@ -92,15 +83,19 @@ transition: 0.1s;
 .buttons button:first-child:hover {
   color: black;
   transition: 0.6s;
- 
 }
 
 .buttons button:last-child {
   background: #484747;
   border: 1px #979797 solid;
   border-radius: 1px;
-
 }
+
+.buttons button:last-child:hover {
+  border: 2px solid white;
+  transition: 0.4s;
+}
+
 .buttons button {
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.5px;
@@ -111,7 +106,8 @@ transition: 0.1s;
   text-align: center;
   height: 23px;
   width: 105px;
-
+  outline: none;
+  cursor: pointer;
 }
 
 .info {
@@ -125,12 +121,12 @@ transition: 0.1s;
 .info h3 {
   margin-top: -3px;
   margin-bottom: 20px;
-  color: #FFFFFF;	
-  font-family:'Open Sans', sans-serif;
-  font-size: 18px;	
-  font-weight: 800;	
-  letter-spacing: 1.54px;	
-  line-height: 24px;	
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1.54px;
+  line-height: 24px;
   text-align: center;
 }
 
@@ -138,4 +134,3 @@ transition: 0.1s;
   margin-right: 15px;
   float: right;
 }
-

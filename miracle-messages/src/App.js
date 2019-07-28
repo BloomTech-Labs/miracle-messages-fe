@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import MapGL, {Marker, Popup} from "react-map-gl";
+import React, { Component } from 'react';
+import MapGL, { Marker, Popup } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
-import axios from "axios";
+import axios from 'axios';
 
-import "./CSS/App.css";
-import "mapbox-gl/dist/mapbox-gl.css";
-
+import 'mapbox-gl/dist/mapbox-gl.css';
+import './CSS/MapGl.css';
+import './CSS/App.css';
 
 // require('dotenv').config();
 
@@ -30,7 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("https://miracle-messages-staging.herokuapp.com/api/chapter")
+      .get('https://miracle-messages-staging.herokuapp.com/api/chapter')
       .then(res => {
         console.log(res.data);
         this.setState({ chapter_data: res.data });
@@ -47,7 +47,7 @@ class App extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin size={20} onClick={() => this.setState({ popupInfo: city})} />
+        <CityPin size={20} onClick={() => this.setState({ popupInfo: city })} />
       </Marker>
     );
   };
@@ -64,6 +64,7 @@ class App extends Component {
           latitude={popupInfo.latitude}
           longitude={popupInfo.longitude}
           closeButton={true}
+          closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
           <CityInfo info={popupInfo} />
@@ -89,12 +90,12 @@ class App extends Component {
           mapStyle="mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={TOKEN}
-          minZoom={2}
+          minZoom={3}
           maxPitch={0}
-          dragRotate={false}>
+          dragRotate={false}
+        >
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
-
         </MapGL>
       </div>
     );
