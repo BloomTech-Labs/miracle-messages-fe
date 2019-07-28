@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapGL, { Marker, Popup } from 'react-map-gl';
+import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
 import axios from 'axios';
@@ -106,6 +106,11 @@ class App extends Component {
           maxPitch={0}
           dragRotate={false}
         >
+          <div
+            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
+          >
+            <NavigationControl />
+          </div>
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
         </MapGL>
