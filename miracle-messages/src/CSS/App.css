@@ -1,3 +1,6 @@
+.App {
+  box-sizing: border-box;
+}
 /* Popup Style */
 
 .mapboxgl-popup {
@@ -74,15 +77,21 @@
   text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
 
-.buttons button:first-child {
+.buttons a {
   background: #5cbe80;
   margin-right: 20px;
   border: none;
+  border: 1px #979797 solid;
+  padding: 2.5px 15px;
+  text-decoration: none;
+  border-radius: 1px;
 }
 
-.buttons button:first-child:hover {
+.buttons a:hover {
   color: black;
   transition: 0.6s;
+  border: 1px solid white;
+  /* transition: 0.4s; */
 }
 
 .buttons button:last-child {
@@ -96,7 +105,8 @@
   transition: 0.4s;
 }
 
-.buttons button {
+.buttons button,
+.buttons a {
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.5px;
   margin-top: 10px;
@@ -144,6 +154,22 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.info a:hover {
+  text-decoration: underline;
+}
+
 .info a span img {
   width: 20px;
+}
+
+.info .arrow {
+  position: absolute;
+  top: 8px;
+  font-size: 22px;
+}
+
+.info .arrow:hover {
+  color: #484747;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+  cursor: pointer;
 }

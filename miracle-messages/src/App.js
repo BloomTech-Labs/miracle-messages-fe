@@ -30,7 +30,10 @@ class App extends Component {
   }
 
   learnMoreToggle = e => {
-    e.preventDefault();
+    // if (e) {
+    //   e.preventDefault();
+    // }
+    console.log(`${e} and ${e.target}`);
     this.setState({ learnMore: !this.state.learnMore });
   };
 
@@ -38,7 +41,6 @@ class App extends Component {
     axios
       .get('https://miracle-messages-staging.herokuapp.com/api/chapter')
       .then(res => {
-        console.log(res.data);
         this.setState({ chapter_data: res.data });
       })
       .catch(err => {
