@@ -4,13 +4,14 @@
 /* Popup Style */
 
 .mapboxgl-popup {
-  height: 203px;
+  /* height: 203px; */
+  /* width: 275px; */
   text-align: center;
   cursor: auto;
 }
 
 .mapboxgl-popup-content {
-  height: 183px;
+  /* height: 183px; */
   width: 275px;
   background: #484747 !important;
   color: #fff;
