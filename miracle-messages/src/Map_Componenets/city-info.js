@@ -18,7 +18,7 @@ export default class CityInfo extends PureComponent {
               onClick={e => this.props.toggle(e)}
               className="fas fa-long-arrow-alt-left arrow"
             />
-            <span onClick={e => this.props.toggle(e)}>
+            <span>
               <h3>{info.location.toUpperCase()}</h3>
             </span>
           </span>
