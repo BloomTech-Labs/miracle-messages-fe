@@ -134,3 +134,16 @@
   margin-right: 15px;
   float: right;
 }
+
+.info a {
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  margin: 8px 8px 8px 0;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.info a span img {
+  width: 20px;
+}

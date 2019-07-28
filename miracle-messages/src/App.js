@@ -24,9 +24,15 @@ class App extends Component {
         pitch: 0
       },
       chapter_data: [],
-      popupInfo: null
+      popupInfo: null,
+      learnMore: false
     };
   }
+
+  learnMoreToggle = e => {
+    e.preventDefault();
+    this.setState({ learnMore: !this.state.learnMore });
+  };
 
   componentDidMount() {
     axios
@@ -67,7 +73,11 @@ class App extends Component {
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
-          <CityInfo info={popupInfo} />
+          <CityInfo
+            info={popupInfo}
+            toggle={this.learnMoreToggle}
+            learnMore={this.state.learnMore}
+          />
         </Popup>
       )
     );
