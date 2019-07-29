@@ -30,10 +30,8 @@ class App extends Component {
   }
 
   learnMoreToggle = e => {
-    // if (e) {
-    //   e.preventDefault();
-    // }
-    console.log(`${e} and ${e.target}`);
+    e.preventDefault();
+
     this.setState({ learnMore: !this.state.learnMore });
   };
 
