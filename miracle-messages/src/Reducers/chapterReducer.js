@@ -27,8 +27,9 @@ import {
           error: true  //learn more is a toggleinside the pop-ups
     };
 
+     export const chapterReducer = (state = initialState, action )=>{
 
-    export const rootReducer = (state = initialState, action )=>{
+        console.log('hi')
 
         switch (action.type){
             case FETCH_CHAPTER_INFO:
@@ -57,3 +58,7 @@ import {
         }
 
     }
+
+
+
+    // export default chapterReducer

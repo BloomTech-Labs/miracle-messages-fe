@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import MapGL, { Marker, Popup, NavigationControl, StaticMap } from 'react-map-gl';
 import DeckGL from 'deck.gl';
-import CityPin from './Map_Componenets/city_pin';
-import CityInfo from './Map_Componenets/city-info';
+import CityPin from './city_pin';
+import CityInfo from './city-info';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import './CSS/MapGl.css';
+//import './CSS/MapGl.css';
 
 require('dotenv').config();
 
@@ -35,14 +35,13 @@ class Map extends Component {
     // A helper function for moving around the map
     _updateViewport = viewport => {
         this.setState({ viewport });
-      };
+    };
 
     render() 
     {
         const { viewport } = this.state;
 
-        return
-        (
+        return(
             <div className="Map">
                 {/* <MapGL 
                 {...viewport}
@@ -55,12 +54,12 @@ class Map extends Component {
                 maxPitch={0}
                 dragRotate={false}
                 /> */}
-                <DeckGL >
+                <DeckGL initialViewState={viewport} controller={true}>
                     <StaticMap mapboxApiAccessToken={TOKEN} mapStyle={STYLE}/>
                 </DeckGL>
             </div>
         );
     }
-
-
 }
+
+export default Map;
