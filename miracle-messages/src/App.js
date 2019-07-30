@@ -3,7 +3,6 @@ import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
 import axios from 'axios';
-
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CSS/MapGl.css';
 import './CSS/App.css';
@@ -15,6 +14,9 @@ const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 class App extends Component {
   constructor(props) {
     super(props);
+
+    //setting the very intial viewport background with one dot, hard coding required by mapbox. Without this, mapbox doesn't know where to focus and focuses on europe/africa as default.
+
     this.state = {
       viewport: {
         latitude: 37.785164,
@@ -23,18 +25,20 @@ class App extends Component {
         bearing: 0,
         pitch: 0
       },
-      chapter_data: [],
-      popupInfo: null,
-      learnMore: false
+      chapter_data: [], //this gets populated with componentDidMount
+      popupInfo: null, //null means no pop-ups are being rendered for any of the cities
+      learnMore: false //learn more is a togleinside the pop-ups
     };
   }
 
+  //this toggle switches the display inside the pop-up
   learnMoreToggle = e => {
     e.preventDefault();
 
     this.setState({ learnMore: !this.state.learnMore });
   };
 
+  //this is to get chaptes data from the backend. Currently, we get numvolunteers, location, latitude, longitude.
   componentDidMount() {
     axios
       .get('https://miracle-messages-staging.herokuapp.com/api/chapter')
@@ -54,9 +58,12 @@ class App extends Component {
         longitude={city.longitude}
       >
         <CityPin size={20} onClick={() => this.setState({ popupInfo: city })} />
+        
       </Marker>
     );
   };
+
+
 
   _renderPopup() {
     const { popupInfo } = this.state;
