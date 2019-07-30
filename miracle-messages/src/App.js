@@ -8,7 +8,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import './CSS/MapGl.css';
 import './CSS/App.css';
 
-// require('dotenv').config();
+require('dotenv').config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
