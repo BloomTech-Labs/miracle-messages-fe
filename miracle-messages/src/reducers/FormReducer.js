@@ -11,7 +11,7 @@ const initialState = {
     volunteer: {}
 };
 
-export const formReducer = (state = initialState, action) => {
+const formReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADDING_VOLUNTEER_START:
             return {
@@ -22,7 +22,7 @@ export const formReducer = (state = initialState, action) => {
             };
         case ADDING_VOLUNTEER_SUCCESS:
             return {
-                isFetching: false,
+                isFetching: true,
                 isRegistered: true,
                 errors: null,                
             };
@@ -36,3 +36,4 @@ export const formReducer = (state = initialState, action) => {
             return state;
     }
 }
+export default formReducer

@@ -3,6 +3,7 @@ import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
 import axios from 'axios';
+import Form from './components/Form'
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CSS/MapGl.css';
@@ -92,7 +93,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <MapGL
+        {/* <MapGL
           onClick={() => this.setState({ popupInfo: null })}
           {...viewport}
           width="100vw"
@@ -111,7 +112,8 @@ class App extends Component {
           </div>
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
-        </MapGL>
+        </MapGL> */}
+        <Form/>
       </div>
     );
   }
