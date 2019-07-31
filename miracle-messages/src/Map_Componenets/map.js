@@ -12,26 +12,13 @@ const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 const WIDTH = "100vw";
 const HEIGHT = "100vh";
+const INITIAL_VIEW_STATE = {
+    latitude: 37.785164,
+    longitude: -100,
+    zoom: 3.5
+}
 
 class Map extends Component {
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            viewport:
-            {
-                // Research how to pull local Lat/Long data to center viewport accordingly
-                latitude: 37.785164,
-                longitude: -100,
-                zoom: 3.5
-            },
-            chapter_info: [],
-            //chapter_contact: [],
-            learn_more: false,
-            popup_info: null
-        };
-    }
-
     // A helper function for moving around the map
     _updateViewport = viewport => {
         this.setState({ viewport });
@@ -39,22 +26,9 @@ class Map extends Component {
 
     render() 
     {
-        const { viewport } = this.state;
-
         return(
             <div className="Map">
-                {/* <MapGL 
-                {...viewport}
-                width = {WIDTH}
-                height = {HEIGHT}
-                mapStyle = {STYLE}
-                onViewportChange={this._updateViewport}
-                mapboxApiAccessToken={TOKEN}
-                minZoom={3}
-                maxPitch={0}
-                dragRotate={false}
-                /> */}
-                <DeckGL initialViewState={viewport} controller={true}>
+                <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={{dragRotate: false}}> 
                     <StaticMap mapboxApiAccessToken={TOKEN} mapStyle={STYLE}/>
                 </DeckGL>
             </div>

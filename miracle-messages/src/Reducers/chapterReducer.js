@@ -9,7 +9,7 @@ import {
 //viewport reducer
 //popup reducer
 //learn more reducer
-//join chapter/sign up to volunteer.
+//once we have the form builtjoin chapter/sign up to volunteer.
 //create chapter
 
     const initialState = {

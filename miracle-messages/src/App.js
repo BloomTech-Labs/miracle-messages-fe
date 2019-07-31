@@ -72,7 +72,7 @@ class App extends Component {
   };
 
   render() {
-    const { viewport } = this.props;
+    //const { viewport } = this.props;
 
     return (
       <div className="App">
