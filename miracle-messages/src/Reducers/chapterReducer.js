@@ -24,13 +24,11 @@ import {
           chapter_data: [], //this gets populated with componentDidMount
           popupInfo: null, //null means no pop-ups are being rendered for any of the cities
           learnMore: false,
-          fetching: false,
+          fetching: false, 
           error: true  //learn more is a toggleinside the pop-ups
     };
 
      export const chapterReducer = (state = initialState, action )=>{
-
-        console.log('hi')
 
         switch (action.type){
             case FETCH_CHAPTER_INFO:
@@ -59,7 +57,3 @@ import {
         }
 
     }
-
-
-
-    // export default chapterReducer
