@@ -1,39 +1,65 @@
 import {
-    ADDING_VOLUNTEER_START,
-    ADDING_VOLUNTEER_SUCCESS,
-    ADDING_VOLUNTEER_FAIL
+    ADD_VOLUNTEER_START,
+    ADD_VOLUNTEER_SUCCESS,
+    ADD_VOLUNTEER_FAIL
 } from '../actions/FormActions';
 
 const initialState = {
-    isRegistered: false,
-    isFetching: false,
-    errors: null,
-    volunteer: {}
+    volunteers: [],
+    volunteer: {},
+    status: {
+    isAdding: false,
+    addSuccess: false,
+    addFail: false,
+    error: null,
+    }    
 };
 
-const formReducer = (state = initialState, action) => {
+const volunteerReducer = (state = initialState, action) => {
     switch(action.type) {
-        case ADDING_VOLUNTEER_START:
+        case ADD_VOLUNTEER_START:
             return {
                 ...state,
-                isFetching: true,
-                isRegistered: false,
-                errors: null                
-            };
-        case ADDING_VOLUNTEER_SUCCESS:
+                status: {
+                    isAdding: true,
+                    addSuccess: false,
+                    addFail: false
+                }
+                // addingVolunteer: true,
+                // volunteerAdded: false,
+                // errors: null,
+            };           
+        case ADD_VOLUNTEER_SUCCESS:
             return {
-                isFetching: true,
-                isRegistered: true,
-                errors: null,                
-            };
-        case ADDING_VOLUNTEER_FAIL: 
+                ...state,
+                volunteers: [...state.volunteers, action.payload],
+                volunteer: action.payload,
+                status: {
+                    ...state.status,
+                    isAdding: false,
+                    addSuccess: true,
+                    addFail: false
+                }
+                // addingVolunteer: false,
+                // volunteerAdded: true,
+                // errors: null,          
+            };                      
+            
+        case ADD_VOLUNTEER_FAIL: 
             return {
-                isFetching: false,
-                isRegistered: false,
-                errors: action.payload
-            }
+                ...state,
+                status: {
+                    ...state.status,
+                    addFail: true
+                },
+                error: action.payload
+                // addingVolunteer: false,
+                // volunteerAdded: false,
+                // errors: action.payload
+            }               
+           
         default:
             return state;
     }
 }
-export default formReducer
+export default volunteerReducer;

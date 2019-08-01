@@ -3,7 +3,7 @@ import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
 import axios from 'axios';
-import Form from './components/Form'
+import Form from './components/VolunteerForm'
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CSS/MapGl.css';
