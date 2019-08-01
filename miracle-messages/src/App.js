@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
-import CityInfo from './Map_Componenets/city-info';
-import axios from 'axios';
-import Map from './Map_Componenets/map'
+import CityInfo from './Map_Componenets/city_info';
+//import Map from './Map_Componenets/map'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CSS/MapGl.css';
 import './CSS/App.css';
@@ -21,6 +20,8 @@ class App extends Component {
     this.props.getData();
   }
 
+  
+
   //this toggle switches the display inside the pop-up
   learnMoreToggle = e => {
     e.preventDefault();
@@ -36,15 +37,16 @@ class App extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin size={20} onClick={() => this.setState({ popupInfo: city })} />
-        
+        <CityPin size={20} onClick={() => {this.setState({ popupInfo: city })}} />
       </Marker>
+    
     );
   };
 
   _renderPopup() {
-    const { popupInfo } = this.props;
-
+  
+    if (this.state!=null && this.state.popupInfo){
+      const { popupInfo } = this.state;
     return (
       popupInfo && (
         <Popup
@@ -66,18 +68,18 @@ class App extends Component {
       )
     );
   }
-
+}
   _updateViewport = viewport => {
     this.setState({ viewport });
   };
 
   render() {
-    //const { viewport } = this.props;
+    const { viewport } = this.props;
 
     return (
       <div className="App">
-        {/* <MapGL
-          onClick={() => this.setState({ popupInfo: null })}
+        <MapGL
+          //onClick={() => this.setState({ popupInfo: null })}
           {...viewport}
           width="100vw"
           height="100vh"
@@ -88,15 +90,14 @@ class App extends Component {
           maxPitch={0}
           dragRotate={false}
         >
-          <div
-            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
-          >
+          <div style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}>
             <NavigationControl />
           </div>
+
           {this.props.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
-        </MapGL> */}
-        <Map/>
+        </MapGL>
+        {/* <Map/> */}
       </div>
     );
   }
@@ -106,7 +107,10 @@ const mapStateToProps = state => {
   return {
     chapter_data: state.chapterReducer.chapter_data,
     fetching: state.chapterReducer.fetching,
-    viewport: state.chapterReducer.viewport
+    popupInfo: state.chapterReducer.popupInfo,
+    viewport: state.chapterReducer.viewport,
+    learnMore: state.chapterReducer.learnMore
+
   };
 };
 

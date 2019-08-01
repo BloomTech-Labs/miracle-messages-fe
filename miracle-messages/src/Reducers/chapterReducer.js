@@ -5,7 +5,8 @@ import {
     
     } from "../Actions/index";
 
-//chapter reducer x 
+// get chapter data chapter reducer x 
+
 //viewport reducer
 //popup reducer
 //learn more reducer

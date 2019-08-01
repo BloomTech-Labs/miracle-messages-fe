@@ -10,7 +10,7 @@ export default class CityInfo extends PureComponent {
     let display;
     let button;
 
-    if (!this.props.learnMore) {
+    if (this.props.learnMore) {
       display = (
         <div>
           <a
@@ -45,7 +45,7 @@ export default class CityInfo extends PureComponent {
           </a>
         </div>
       );
-      button = 'Learn More';
+      button = 'Back';
     } else {
       display = (
         <div>
@@ -56,7 +56,7 @@ export default class CityInfo extends PureComponent {
           <p>Reunions</p>
         </div>
       );
-      button = 'Back';
+      button = 'Learn More';
     }
 
     return (
