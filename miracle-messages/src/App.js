@@ -73,6 +73,7 @@ class App extends Component {
     this.setState({ viewport });
   };
 
+  //adding a viewport
   render() {
     const { viewport } = this.props;
 
