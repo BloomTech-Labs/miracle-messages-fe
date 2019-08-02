@@ -12,6 +12,7 @@ const initialState = {
     addSuccess: false,
     addFail: false,
     error: null,
+    message: ''
     }    
 };
 
@@ -23,7 +24,8 @@ const volunteerReducer = (state = initialState, action) => {
                 status: {
                     isAdding: true,
                     addSuccess: false,
-                    addFail: false
+                    addFail: false,
+                    message: ""
                 }
                 // addingVolunteer: true,
                 // volunteerAdded: false,
@@ -38,11 +40,9 @@ const volunteerReducer = (state = initialState, action) => {
                     ...state.status,
                     isAdding: false,
                     addSuccess: true,
-                    addFail: false
+                    addFail: false,
+                    message: 'Your Form Has Been Submmited'
                 }
-                // addingVolunteer: false,
-                // volunteerAdded: true,
-                // errors: null,          
             };                      
             
         case ADD_VOLUNTEER_FAIL: 
@@ -53,9 +53,7 @@ const volunteerReducer = (state = initialState, action) => {
                     addFail: true
                 },
                 error: action.payload
-                // addingVolunteer: false,
-                // volunteerAdded: false,
-                // errors: action.payload
+              
             }               
            
         default:

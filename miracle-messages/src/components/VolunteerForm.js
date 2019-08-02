@@ -26,6 +26,7 @@ class VolunteerForm extends React.Component {
 
   handleOnsubmit = e => {
     e.preventDefault();
+    console.log(this.props.message);
     this.props.addVolunteers(this.state);
 
     this.setState({
@@ -84,6 +85,7 @@ class VolunteerForm extends React.Component {
         loading={this.addVolunteers}
       >
         <h2>Get Involved</h2>
+        <p>{this.props.message}</p>
         <input
           className="input"
           type="text"
@@ -219,7 +221,7 @@ class VolunteerForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  //  volunteer: state.volunteerReducer.newVolunteer,
+ message: state.status.message,
   //  volunteers: state.volunteerReducer.addVolunteers
 });
 

@@ -93,7 +93,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <MapGL
+         {/* <MapGL
           onClick={() => this.setState({ popupInfo: null })}
           {...viewport}
           width="100vw"
@@ -112,7 +112,7 @@ class App extends Component {
           </div>
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
-        </MapGL> */}
+        </MapGL>  */}
         <Form/>
       </div>
     );
