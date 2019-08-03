@@ -16,7 +16,9 @@ require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
-// For use with DECK-GL, comment theses out:
+
+
+// For use with DECK-GL:
 // const WIDTH = "100vw";
 // const HEIGHT = "100vh";
 // const INITIAL_VIEW_STATE = {
@@ -26,19 +28,11 @@ const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 // };
 
 
-
 class Map extends Component {
   //this fetches the data from the backend
     componentDidMount() {
         this.props.getData();
       }
-
-//this is a toggle that switches the pop-up info upon clicking "learn more" button
-  // learnMoreToggle = e => {
-  //   e.preventDefault();
-  //   this.props.learnMoreAction(this.props.learnMore)
-      
-  // };
 
 
   _renderCityMarker = (city, index) => {
@@ -49,8 +43,6 @@ class Map extends Component {
         longitude={city.longitude}
       >
         <CityPin MarkerClickHandler={()=> {this.props.updatePopupAction(city)} } />
-      
-        
       </Marker>
     );
   };
@@ -70,10 +62,7 @@ class Map extends Component {
           onClose={() => this.props.updatePopupAction(null)}
         >
           <CityInfo
-            info={popupInfo}
-            // toggle={this.learnMoreToggle}
-            // learnMore={this.props.learnMore}
-          />
+            info={popupInfo} />
         </Popup>
       )
     );
@@ -95,7 +84,6 @@ class Map extends Component {
           </StaticMap>
         </DeckGL> */}
         <MapGL
-          //onClick={() => this.setState({ popupInfo: null })}
           {...viewport}
           width="100vw"
           height="100vh"
