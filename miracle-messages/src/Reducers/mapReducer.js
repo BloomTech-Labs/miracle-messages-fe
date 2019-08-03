@@ -5,13 +5,15 @@ import {
     
     } from "../Actions/index";
 
-// get chapter data chapter reducer x 
+import {
+    UPDATE_POPUP
 
-//viewport reducer
-//popup reducer
-//learn more reducer
-//once we have the form builtjoin chapter/sign up to volunteer.
-//create chapter
+} from "../Actions/updatePopupAction"
+
+import { 
+    TOGGLE_LEARN_MORE 
+} from "../Actions/learnMoreAction";
+
 
     const initialState = {
         viewport: {
@@ -25,10 +27,10 @@ import {
           popupInfo: null, //null means no pop-ups are being rendered for any of the cities
           learnMore: false,
           fetching: false, 
-          error: true  //learn more is a toggleinside the pop-ups
+          error: null  //learn more is a toggleinside the pop-ups
     };
 
-     export const chapterReducer = (state = initialState, action )=>{
+     export const mapReducer = (state = initialState, action )=>{
 
         switch (action.type){
             case FETCH_CHAPTER_INFO:
@@ -52,8 +54,30 @@ import {
                 fetching: false,
                 error: action.payload
             };
+
+            case UPDATE_POPUP:
+            return {
+                ...state,
+                popupInfo:action.payload,
+
+            }
+            case TOGGLE_LEARN_MORE:
+            return {
+                ...state,
+                learnMore: action.payload
+            }
+
             default:
             return state;
         }
 
     }
+
+
+// get chapter data chapter reducer x 
+
+//viewport reducer
+//popup reducer
+//learn more reducer
+//once we have the form builtjoin chapter/sign up to volunteer.
+//create chapter

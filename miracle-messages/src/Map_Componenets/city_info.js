@@ -2,39 +2,28 @@ import React, { PureComponent } from 'react';
 import facbook from '../icons/facebook.png';
 import google from '../icons/google.png';
 import gmail from '../icons/gmail.png';
-
-import { getData } from "../Actions/index";
+import { 
+  learnMoreAction 
+} from "../Actions/learnMoreAction";
 import { connect } from "react-redux";
 
 
+
+// export default 
 class CityInfo extends PureComponent {
 
-  constructor(props) {
-        super(props);
-        this.state = {
-          learnMore: false //learn more is a togleinside the pop-ups
-        };
-      }
-
-  componentDidMount() {
-    this.props.getData();
-  }
-
-//this is a toggle that switches the pop-up info upon clicking "learn more" button
-learnMoreToggle = e => {
-  e.preventDefault()
-  console.log(this.props)
-  this.setState({ learnMore: !this.state.learnMore })
-  
-};
-
+  learnMoreToggle = e => {
+    e.preventDefault();
+    this.props.learnMoreAction(this.props.learnMore)
+      
+  };
   render() {
     const { info } = this.props;
 
     let display;
     let button;
 
-    if (this.state.learnMore) {
+    if (this.props.learnMore) {
       display = (
         <div>
           <a
@@ -107,28 +96,44 @@ learnMoreToggle = e => {
 
 const mapStateToProps = state => {
   return {
-    chapter_data: state.chapterReducer.chapter_data,
-    fetching: state.chapterReducer.fetching,
-    popupInfo: state.chapterReducer.popupInfo,
-    
+    learnMore: state.mapReducer.learnMore,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getData }
+  {learnMoreAction}
 )(CityInfo);
 
-//*** OLD WORKING COPY OF CITY_INFO PRIOR TO REDUX ***/
 
-// export default class CityInfo extends PureComponent {
+// class CityInfo extends PureComponent {
+
+//   constructor(props) {
+//         super(props);
+//         this.state = {
+//           learnMore: false //learn more is a togleinside the pop-ups
+//         };
+//       }
+
+//   componentDidMount() {
+//     this.props.getData();
+//   }
+
+// //this is a toggle that switches the pop-up info upon clicking "learn more" button
+// learnMoreToggle = e => {
+//   e.preventDefault()
+//   console.log(this.props)
+//   this.setState({ learnMore: !this.state.learnMore })
+  
+// };
+
 //   render() {
 //     const { info } = this.props;
 
 //     let display;
 //     let button;
 
-//     if (this.props.learnMore) {
+//     if (this.state.learnMore) {
 //       display = (
 //         <div>
 //           <a
@@ -192,10 +197,26 @@ export default connect(
 //           >
 //             Join Chapter
 //           </a>
-//           <button onClick={e => this.props.toggle(e)}>{button}</button>
+//           <button onClick={e => this.learnMoreToggle(e)}>{button}</button>
 //         </div>
 //       </div>
 //     );
 //   }
 // }
+
+// const mapStateToProps = state => {
+//   return {
+//     chapter_data: state.chapterReducer.chapter_data,
+//     fetching: state.chapterReducer.fetching,
+//     popupInfo: state.chapterReducer.popupInfo,
+    
+//   };
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   { getData }
+// )(CityInfo);
+
+// //*** OLD WORKING COPY OF CITY_INFO PRIOR TO REDUX ***/
 

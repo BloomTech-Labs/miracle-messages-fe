@@ -6,19 +6,24 @@ import CityInfo from "./city_info";
 import "mapbox-gl/dist/mapbox-gl.css";
 //import './CSS/MapGl.css';
 import { getData } from "../Actions/index";
-import { connect } from "react-redux";
+import { updatePopupAction } from "../Actions/updatePopupAction"
+import { 
+  learnMoreAction 
+} from "../Actions/learnMoreAction";
+import { connect } from "react-redux"; 
 
 require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
-const WIDTH = "100vw";
-const HEIGHT = "100vh";
-const INITIAL_VIEW_STATE = {
-  latitude: 37.785164,
-  longitude: -100,
-  zoom: 3.5
-};
+// For use with DECK-GL, comment theses out:
+// const WIDTH = "100vw";
+// const HEIGHT = "100vh";
+// const INITIAL_VIEW_STATE = {
+//   latitude: 37.785164,
+//   longitude: -100,
+//   zoom: 3.5
+// };
 
 
 
@@ -29,10 +34,11 @@ class Map extends Component {
       }
 
 //this is a toggle that switches the pop-up info upon clicking "learn more" button
-  learnMoreToggle = e => {
-    e.preventDefault();
-    this.setState({ learnMore: !this.state.learnMore });
-  };
+  // learnMoreToggle = e => {
+  //   e.preventDefault();
+  //   this.props.learnMoreAction(this.props.learnMore)
+      
+  // };
 
 
   _renderCityMarker = (city, index) => {
@@ -42,15 +48,15 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin size={20} onClick={() => {this.setState({ popupInfo: city })}} />
-        {/* <CityPin size={20} /> */}
+        <CityPin MarkerClickHandler={()=> {this.props.updatePopupAction(city)} } />
+      
+        
       </Marker>
     );
   };
 
   _renderPopup() {
-    if (this.state!=null && this.state.popupInfo){
-      const { popupInfo } = this.state;
+      const popupInfo = this.props.popupInfo
     return (
       popupInfo && (
         <Popup
@@ -61,17 +67,17 @@ class Map extends Component {
           longitude={popupInfo.longitude}
           closeButton={true}
           closeOnClick={false}
-          onClose={() => this.setState({ popupInfo: null })}
+          onClose={() => this.props.updatePopupAction(null)}
         >
           <CityInfo
             info={popupInfo}
             // toggle={this.learnMoreToggle}
-            learnMore={this.state.learnMore}
+            // learnMore={this.props.learnMore}
           />
         </Popup>
       )
     );
-  }
+  
 }
 
   _updateViewport = viewport => {
@@ -110,15 +116,15 @@ class Map extends Component {
 
 const mapStateToProps = state => {
   return {
-    chapter_data: state.chapterReducer.chapter_data,
-    fetching: state.chapterReducer.fetching,
-    popupInfo: state.chapterReducer.popupInfo,
-    learnMore: state.chapterReducer.learnMore,
-    viewport: state.chapterReducer.viewport
+    chapter_data: state.mapReducer.chapter_data,
+    fetching: state.mapReducer.fetching,
+    popupInfo: state.mapReducer.popupInfo,
+    learnMore: state.mapReducer.learnMore,
+    viewport: state.mapReducer.viewport
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, updatePopupAction, learnMoreAction}
 )(Map);

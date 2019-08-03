@@ -1,7 +1,7 @@
-import { chapterReducer } from './chapterReducer';
+import { mapReducer } from './mapReducer';
 import { combineReducers } from 'redux';
 
 
 export default combineReducers({
-    chapterReducer
+    mapReducer
  });
