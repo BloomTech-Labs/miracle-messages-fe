@@ -7,9 +7,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 //import './CSS/MapGl.css';
 import { getData } from "../Actions/index";
 import { updatePopupAction } from "../Actions/updatePopupAction"
-import { 
-  learnMoreAction 
-} from "../Actions/learnMoreAction";
+import { learnMoreAction } from "../Actions/learnMoreAction";
 import { connect } from "react-redux"; 
 
 require("dotenv").config();
@@ -17,15 +15,6 @@ require("dotenv").config();
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 
-
-// For use with DECK-GL:
-// const WIDTH = "100vw";
-// const HEIGHT = "100vh";
-// const INITIAL_VIEW_STATE = {
-//   latitude: 37.785164,
-//   longitude: -100,
-//   zoom: 3.5
-// };
 
 
 class Map extends Component {
@@ -42,7 +31,7 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin MarkerClickHandler={()=> {this.props.updatePopupAction(city)} } />
+        <CityPin city={city}/>
       </Marker>
     );
   };
@@ -78,11 +67,7 @@ class Map extends Component {
       const { viewport } = this.props;
     return (
       <div className="Map">
-        {/* <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={{ dragRotate: false }}>
-          <StaticMap mapboxApiAccessToken={TOKEN} mapStyle={STYLE}>
-            {this.props.chapter_data.map(this._renderCityMarker)}
-          </StaticMap>
-        </DeckGL> */}
+    
         <MapGL
           {...viewport}
           width="100vw"
@@ -116,3 +101,23 @@ export default connect(
   mapStateToProps,
   { getData, updatePopupAction, learnMoreAction}
 )(Map);
+
+
+
+// For use with DECK-GL:
+
+//initial state settings:
+// const WIDTH = "100vw";
+// const HEIGHT = "100vh";
+// const INITIAL_VIEW_STATE = {
+//   latitude: 37.785164,
+//   longitude: -100,
+//   zoom: 3.5
+// };
+
+//for use in the <map> div:
+{/* <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={{ dragRotate: false }}>
+<StaticMap mapboxApiAccessToken={TOKEN} mapStyle={STYLE}>
+  {this.props.chapter_data.map(this._renderCityMarker)}
+</StaticMap>
+</DeckGL> */}
