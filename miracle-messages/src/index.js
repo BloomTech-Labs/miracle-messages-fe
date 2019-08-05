@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './CSS/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -8,14 +9,23 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from "redux-logger";
 import formReducer from './reducers/FormReducer';
+import VolunteerForm from './components/VolunteerForm';
+
 
 const store = createStore(formReducer, applyMiddleware(thunk,logger));
 
+
+const rootElement = document.getElementById("root");
+
 ReactDOM.render(
 <Provider store={store}>
-<App />
+    <Router>
+        <Route exact path = "/" component={App} />
+        <Route path = "/form" component={VolunteerForm} />
+    </Router>
 </Provider>,
- document.getElementById('root'));
+rootElement
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

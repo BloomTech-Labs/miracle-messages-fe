@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import CityPin from './Map_Componenets/city_pin';
 import CityInfo from './Map_Componenets/city-info';
@@ -80,6 +81,7 @@ class App extends Component {
             learnMore={this.state.learnMore}
           />
         </Popup>
+        
       )
     );
   }
@@ -92,8 +94,9 @@ class App extends Component {
     const { viewport } = this.state;
 
     return (
+      
       <div className="App">
-         {/* <MapGL
+         <MapGL
           onClick={() => this.setState({ popupInfo: null })}
           {...viewport}
           width="100vw"
@@ -112,9 +115,8 @@ class App extends Component {
           </div>
           {this.state.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
-        </MapGL>  */}
-        <Form/>
-      </div>
+        </MapGL>
+      </div>      
     );
   }
 }
