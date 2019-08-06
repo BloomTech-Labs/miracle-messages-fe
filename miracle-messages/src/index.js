@@ -8,7 +8,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from "redux-logger";
-import formReducer from './Reducers/FormReducer';
+import formReducer from './reducers/FormReducer';
 import VolunteerForm from './Components/VolunteerForm';
 
 
