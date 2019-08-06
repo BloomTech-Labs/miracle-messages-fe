@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './CSS/index.css';
 import App from './App';
+import VolunteerForm from './Map_Componenets/VolunteerForm';
 import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
@@ -33,7 +35,10 @@ console.log(store)
 
 ReactDOM.render(
     <Provider store={store}>
-       <App />
+        <Router>
+            <Route exact path = "/" component ={App} />
+            <Route path ="/form" component ={VolunteerForm} />
+        </Router>       
     </Provider>, 
     document.getElementById('root')
    );
