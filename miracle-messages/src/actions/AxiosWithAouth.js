@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./node_modules/axios";
 
 export default function () {
     const token = localStorage.getItem("token");

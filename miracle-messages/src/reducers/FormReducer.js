@@ -2,7 +2,7 @@ import {
     ADD_VOLUNTEER_START,
     ADD_VOLUNTEER_SUCCESS,
     ADD_VOLUNTEER_FAIL
-} from '../actions/FormActions';
+} from '../Actions/FormActions';
 
 const initialState = {
     volunteers: [],

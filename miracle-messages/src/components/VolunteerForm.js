@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from './node_modules/react';
+import { BrowserRouter as Router, Route, Link } from "./node_modules/react-router-dom";
 
 import '../CSS/form.css';
-import { connect } from 'react-redux';
+import { connect } from './node_modules/react-redux';
 import { addVolunteers } from '../actions/FormActions';
 
 class VolunteerForm extends React.Component {

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './node_modules/axios';
 
 export const ADD_VOLUNTEER_START='ADD_VOLUNTEER_START';
 export const ADD_VOLUNTEER_SUCCESS='ADD_VOLUNTEER_SUCCESS';
