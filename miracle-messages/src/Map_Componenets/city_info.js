@@ -81,7 +81,7 @@ class CityInfo extends PureComponent {
 
         <div className="buttons">
           <a
-            href="https://miraclemessages.org/getinvolved"
+            href="localhost:3001/form"
             target="_blank"
             rel="noopener noreferrer"
           >
