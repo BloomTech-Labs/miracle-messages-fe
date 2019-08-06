@@ -81,7 +81,7 @@ class CityInfo extends PureComponent {
 
         <div className="buttons">
           <a
-            href="https://miracle-messages-staging.netlify.com/form"
+            href="localhost:3000/form"
             target="_blank"
             rel="noopener noreferrer"
           >
