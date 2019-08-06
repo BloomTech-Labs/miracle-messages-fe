@@ -24,6 +24,7 @@ class Map extends Component {
       }
 
 
+//_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
       <Marker
@@ -36,8 +37,11 @@ class Map extends Component {
     );
   };
 
+//_renderPopup enables a pop-up to show if a city marker/pin is clicked
+
   _renderPopup() {
       const popupInfo = this.props.popupInfo
+      //popupInfo=city means popup will show for that city else =null means no popup will show
     return (
       popupInfo && (
         <Popup
@@ -58,16 +62,18 @@ class Map extends Component {
   
 }
 
+//_updateViewport updates the map view when a user zooms/pans etc.
   _updateViewport = viewport => {
     this.setState({ viewport });
-    console.log(viewport);
+    //viewport represents the current view/state of the map.
   };
 
   render() {
       const { viewport } = this.props;
     return (
       <div className="Map">
-    
+ 
+ {/* MapGL is the actual map that gets displayed  */}
         <MapGL
           {...viewport}
           width="100vw"
@@ -86,7 +92,7 @@ class Map extends Component {
     );
   }
 }
-
+//this is how we convert the state that was modified by the reducers to props
 const mapStateToProps = state => {
   return {
     chapter_data: state.mapReducer.chapter_data,
@@ -97,6 +103,7 @@ const mapStateToProps = state => {
   };
 };
 
+//this is how we connect the map.js component to the store
 export default connect(
   mapStateToProps,
   { getData, updatePopupAction, learnMoreAction}

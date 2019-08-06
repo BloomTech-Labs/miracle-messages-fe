@@ -32,6 +32,7 @@ import {
 
      export const mapReducer = (state = initialState, action )=>{
 
+        //reducer to set the state for chapter_data 
         switch (action.type){
             case FETCH_CHAPTER_INFO:
             return {
@@ -55,12 +56,15 @@ import {
                 error: action.payload
             };
 
+        //reducer to set the state for the city popups
             case UPDATE_POPUP:
             return {
                 ...state,
                 popupInfo:action.payload,
 
             }
+        
+            //reducer to set the state for the learn more toggle inside the city popups
             case TOGGLE_LEARN_MORE:
             return {
                 ...state,
