@@ -5,9 +5,9 @@ import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 import "mapbox-gl/dist/mapbox-gl.css";
 //import './CSS/MapGl.css';
-import { getData } from "../Actions/index";
-import { updatePopupAction } from "../Actions/updatePopupAction"
-import { learnMoreAction } from "../Actions/learnMoreAction";
+import { getData } from "../../Actions/index";
+import { updatePopupAction } from "../../Actions/updatePopupAction"
+import { learnMoreAction } from "../../Actions/learnMoreAction";
 import { connect } from "react-redux"; 
 
 require("dotenv").config();
