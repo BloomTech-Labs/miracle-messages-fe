@@ -1,8 +1,7 @@
 import React from 'react';
-
-import '../CSS/form.css';
+import '../../CSS/form.css';
 import { connect } from 'react-redux';
-import { addVolunteers } from '../Actions/FormActions';
+import { addVolunteers } from '../../Actions/FormActions';
 
 class VolunteerForm extends React.Component {
   state = {
