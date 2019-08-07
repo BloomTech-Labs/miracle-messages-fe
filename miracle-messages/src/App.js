@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import Map from './Map_Componenets/map'
 import './CSS/App.css';
 
+import {Route} from 'react-router-dom';
+import VolunteerForm from './Map_Componenets/VolunteerForm'
+
 class App extends Component {
   
   render() {
     return (
       <div className="App">
-        <Map/>
+         {/* <Map/> */}
+         <Route exact path = "/" component ={Map} />
+         <Route path ="/form" component ={VolunteerForm} />
+
       </div>
     );
   }

@@ -36,8 +36,9 @@ console.log(store)
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <Route exact path = "/" component ={App} />
-            <Route path ="/form" component ={VolunteerForm} />
+          <App />
+            {/* <Route exact path = "/" component ={App} />
+            <Route path ="/form" component ={VolunteerForm} /> */}
         </Router>       
     </Provider>, 
     document.getElementById('root')
