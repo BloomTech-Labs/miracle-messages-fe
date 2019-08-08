@@ -1,11 +1,21 @@
 .container {
-  background: green;
   margin: 0;
   padding: 0;
   width: 100%;
+  text-align: center;
   header {
     position: relative;
     height: 407px;
+    h1 {
+      color: white;
+      position: absolute;
+      top: 300px;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      z-index: 1;
+      // border: 1px red solid;
+    }
     .navbar {
       width: 97%;
       position: absolute;
@@ -14,14 +24,13 @@
       display: flex;
       justify-content: space-between;
       margin: 18px 1%;
-
       img {
         height: auto;
         max-width: 100%;
         width: 195px;
       }
       nav {
-        width: 60%;
+        width: 80%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -78,6 +87,54 @@
           bottom: 0;
           left: 0;
           background-color: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+
+  .main {
+    border: 1px red solid;
+    h2 {
+      margin: 0 auto;
+      height: 65px;
+      width: 627px;
+      color: #303030;
+      font-family: ProximaNova;
+      font-size: 48px;
+      font-weight: bold;
+      letter-spacing: 1.82px;
+      line-height: 65px;
+      // border: 1px solid blue;
+    }
+    form {
+      .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .formBox {
+        display: flex;
+        flex-direction: column;
+        border: 1px red solid;
+
+        label {
+          height: 22px;
+          width: 156px;
+          color: #303030;
+          font-family: ProximaNova;
+          font-size: 22px;
+          font-weight: 600;
+          letter-spacing: 1.24px;
+          line-height: 22px;
+          text-align: left;
+        }
+        .input {
+          height: 45px;
+          width: 777px;
+          border: 1px solid #b4b4b4;
+          border-radius: 2px;
+          background-color: #fbfbfb;
         }
       }
     }

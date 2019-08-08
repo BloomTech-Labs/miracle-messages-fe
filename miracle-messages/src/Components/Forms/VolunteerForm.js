@@ -93,162 +93,165 @@ class VolunteerForm extends React.Component {
               <a href="https://www.google.com/">DONATE</a>
             </nav>
           </div>
+          <h1>Want to get started, learn more, or stay updated?</h1>
+          {/* the below 3 divs are for the header image styling */}
           <div className="overlay">
             <div className="backImg">
               <div className="filter" />
             </div>
           </div>
         </header>
-        <form
-          className="form"
-          onSubmit={this.handleOnsubmit}
-          loading={this.addVolunteers}
-        >
-          <h2>Get Involved</h2>
+        <section className="main">
+          <h2>You're in the right place.</h2>
           <p>{this.props.message}</p>
-          <input
-            className="input"
-            type="text"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.fname}
-            name="fname"
-            placeholder="First Name"
-            required
-          />
-          <br />
-          <input
-            className="input"
-            type="text"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.lname}
-            name="lname"
-            placeholder="Last Name"
-            required
-          />
-          <br />
-          <input
-            className="input"
-            type="email"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.email}
-            name="email"
-            placeholder="E-mail"
-            required
-          />
-          <br />
-          <input
-            className="input"
-            type="tel"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.phone}
-            name="phone"
-            placeholder="Phone Number"
-          />
-          <br />
-          <input
-            className="input"
-            type="text"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.city}
-            name="city"
-            placeholder="City"
-            required
-          />
-          <br />
-          <input
-            className="input"
-            type="text"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.state}
-            name="state"
-            placeholder="State"
-            required
-          />
-          <br />
-          <input
-            className="input"
-            type="text"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.country}
-            name="country"
-            placeholder="Country"
-            required
-          />
-          <br />
-          <h2>I am Interested In</h2>
-          <input
-            onChange={this.handleToggle}
-            className="chbox"
-            type="checkbox"
-            name="volunteering"
-            checked={this.state.newInterests.volunteering}
-          />
-          Volunteering
-          <br />
-          <input
-            onChange={this.handleToggle}
-            className="chbox"
-            type="checkbox"
-            name="donating"
-            checked={this.state.newInterests.donating}
-          />
-          Donating
-          <br />
-          <input
-            onChange={this.handleToggle}
-            className="chbox"
-            type="checkbox"
-            name="joinmm"
-            checked={this.state.newInterests.joinmm}
-          />
-          Join MM
-          <br />
-          <input
-            onChange={this.handleToggle}
-            className="chbox"
-            type="checkbox"
-            name="mediacoverage"
-            checked={this.state.newInterests.mediacoverage}
-          />
-          Media Coverage
-          <br />
-          <input
-            className="chbox"
-            type="text"
-            onChange={this.handleOnChangeInterest}
-            name="somethingelse"
-            value={this.state.newInterests.somethingelse}
-          />
-          Something Else
-          <br />
-          <textarea
-            className="comment"
-            onChange={this.handleOnChange}
-            value={this.state.newVolunteer.comment}
-            name="comment"
-            placeholder="Leave Your Comments"
-          />
-          <br />
-          <button className="submitb" type="submit">
-            Submit
-          </button>
-          <button className="clearb" type="reset">
-            Clear
-          </button>
-        </form>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
+          <form
+            className="form"
+            onSubmit={this.handleOnsubmit}
+            loading={this.addVolunteers}
+          >
+            <div />
+            <section className="input-wrapper">
+              <div className="formBox">
+                <label>First Name *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.fname}
+                  name="fname"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>Last Name *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.lname}
+                  name="lname"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>Email Address *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.email}
+                  name="email"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>Phone *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.phone}
+                  name="phone"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>City *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.city}
+                  name="city"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>State *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.state}
+                  name="state"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>Country *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.country}
+                  name="country"
+                  required
+                />
+              </div>
+            </section>
+            <br />
+            <h6>I am Interested In</h6>
+            <input
+              onChange={this.handleToggle}
+              className="chbox"
+              type="checkbox"
+              name="volunteering"
+              checked={this.state.newInterests.volunteering}
+            />
+            Volunteering
+            <br />
+            <input
+              onChange={this.handleToggle}
+              className="chbox"
+              type="checkbox"
+              name="donating"
+              checked={this.state.newInterests.donating}
+            />
+            Donating
+            <br />
+            <input
+              onChange={this.handleToggle}
+              className="chbox"
+              type="checkbox"
+              name="joinmm"
+              checked={this.state.newInterests.joinmm}
+            />
+            Join MM
+            <br />
+            <input
+              onChange={this.handleToggle}
+              className="chbox"
+              type="checkbox"
+              name="mediacoverage"
+              checked={this.state.newInterests.mediacoverage}
+            />
+            Media Coverage
+            <br />
+            <input
+              className="chbox"
+              type="text"
+              onChange={this.handleOnChangeInterest}
+              name="somethingelse"
+              value={this.state.newInterests.somethingelse}
+            />
+            Something Else
+            <br />
+            <textarea
+              className="comment"
+              onChange={this.handleOnChange}
+              value={this.state.newVolunteer.comment}
+              name="comment"
+              placeholder="Leave Your Comments"
+            />
+            <br />
+            <button className="submitb" type="submit">
+              Submit
+            </button>
+            <button className="clearb" type="reset">
+              Clear
+            </button>
+          </form>
+        </section>
       </div>
     );
   }
