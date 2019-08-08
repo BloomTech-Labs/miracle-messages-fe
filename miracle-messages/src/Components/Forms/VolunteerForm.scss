@@ -1,10 +1,14 @@
 .container {
-
   header {
-    
-  
     position: relative;
     height: 407px;
+    .navbar {
+      position: absolute;
+      z-index: 22;
+      background: red;
+      height: 50px;
+    }
+
     .overlay {
       z-index: 99;
       .backImg {
@@ -27,4 +31,3 @@
     }
   }
 }
-

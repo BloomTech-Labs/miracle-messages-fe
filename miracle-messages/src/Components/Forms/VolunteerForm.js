@@ -3,7 +3,7 @@ import "./VolunteerForm.scss";
 import { connect } from "react-redux";
 import { addVolunteers } from "../../Actions/FormActions";
 
-import headerImg from "../../Assests/Imgs/header.png";
+// import headerImg from "../../Assests/Imgs/header.png";
 import logo from "../../Assests/Imgs/MM_Logo.png";
 
 class VolunteerForm extends React.Component {
@@ -84,13 +84,13 @@ class VolunteerForm extends React.Component {
     return (
       <div className="container">
         <header>
-          <div>
+          <div className="navbar">
             <img src={logo} alt="logo" />
             <nav>
-              <a>ABOUT</a>
-              <a>REUNION SERVICE</a>
-              <a>GET INVOLVED</a>
-              <a>DONATE</a>
+              <a href="https://www.google.com/">ABOUT</a>
+              <a href="https://www.google.com/">REUNION SERVICE</a>
+              <a href="https://www.google.com/">GET INVOLVED</a>
+              <a href="https://www.google.com/">DONATE</a>
             </nav>
           </div>
           <div className="overlay">
