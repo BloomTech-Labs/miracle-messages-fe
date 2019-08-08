@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addVolunteers } from "../../Actions/FormActions";
 
 import headerImg from "../../Assests/Imgs/header.png";
+import logo from "../../Assests/Imgs/MM_Logo.png";
 
 class VolunteerForm extends React.Component {
   state = {
@@ -83,6 +84,15 @@ class VolunteerForm extends React.Component {
     return (
       <div className="container">
         <header>
+          <div>
+            <img src={logo} alt="logo" />
+            <nav>
+              <a>ABOUT</a>
+              <a>REUNION SERVICE</a>
+              <a>GET INVOLVED</a>
+              <a>DONATE</a>
+            </nav>
+          </div>
           <div className="overlay">
             <div className="backImg">
               <div className="filter" />
