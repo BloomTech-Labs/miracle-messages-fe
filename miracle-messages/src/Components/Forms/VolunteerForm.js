@@ -111,27 +111,29 @@ class VolunteerForm extends React.Component {
           >
             <div />
             <section className="input-wrapper">
-              <div className="formBox">
-                <label>First Name *</label>
-                <input
-                  className="input"
-                  type="text"
-                  onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.fname}
-                  name="fname"
-                  required
-                />
-              </div>
-              <div className="formBox">
-                <label>Last Name *</label>
-                <input
-                  className="input"
-                  type="text"
-                  onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.lname}
-                  name="lname"
-                  required
-                />
+              <div className="name-wrapper">
+                <div className="formBox">
+                  <label>First Name *</label>
+                  <input
+                    className="input small"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.fname}
+                    name="fname"
+                    required
+                  />
+                </div>
+                <div className="formBox">
+                  <label>Last Name *</label>
+                  <input
+                    className="input small"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.lname}
+                    name="lname"
+                    required
+                  />
+                </div>
               </div>
               <div className="formBox">
                 <label>Email Address *</label>
@@ -155,16 +157,29 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-              <div className="formBox">
-                <label>City *</label>
-                <input
-                  className="input"
-                  type="text"
-                  onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.city}
-                  name="city"
-                  required
-                />
+              <div className="name-wrapper">
+                <div className="formBox small">
+                  <label>Country *</label>
+                  <input
+                    className="input"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.country}
+                    name="country"
+                    required
+                  />
+                </div>
+                <div className="formBox small">
+                  <label>City *</label>
+                  <input
+                    className="input"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.city}
+                    name="city"
+                    required
+                  />
+                </div>
               </div>
               <div className="formBox">
                 <label>State *</label>
@@ -174,17 +189,6 @@ class VolunteerForm extends React.Component {
                   onChange={this.handleOnChange}
                   value={this.state.newVolunteer.state}
                   name="state"
-                  required
-                />
-              </div>
-              <div className="formBox">
-                <label>Country *</label>
-                <input
-                  className="input"
-                  type="text"
-                  onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.country}
-                  name="country"
                   required
                 />
               </div>

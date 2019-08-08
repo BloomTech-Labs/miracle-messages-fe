@@ -113,10 +113,20 @@
         align-items: center;
       }
 
+      .name-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 780px;
+        // border: 1px red solid;
+        .small {
+          width: 360px;
+        }
+      }
+
       .formBox {
         display: flex;
         flex-direction: column;
-        border: 1px red solid;
+        // border: 1px red solid;
 
         label {
           height: 22px;
@@ -135,6 +145,10 @@
           border: 1px solid #b4b4b4;
           border-radius: 2px;
           background-color: #fbfbfb;
+        }
+
+        .small {
+          width: 360px;
         }
       }
     }
