@@ -1,12 +1,64 @@
 .container {
+  background: green;
+  margin: 0;
+  padding: 0;
+  width: 100%;
   header {
     position: relative;
     height: 407px;
     .navbar {
+      width: 97%;
       position: absolute;
-      z-index: 22;
-      background: red;
-      height: 50px;
+      z-index: 99;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      margin: 18px 1%;
+
+      img {
+        height: auto;
+        max-width: 100%;
+        width: 195px;
+      }
+      nav {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        a {
+          font-weight: 600;
+          font-style: normal;
+          font-size: 18px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          text-decoration: none;
+          line-height: 1em;
+          color: rgba(255, 255, 255, 0.9);
+          font-family: ProximaNova;
+
+          &:last-child {
+            background-color: #fff;
+            -moz-osx-font-smoothing: auto;
+            -webkit-font-smoothing: subpixel-antialiased;
+            color: #000;
+            -webkit-transition: background-color 0.1s 0s ease-in-out,
+              color 0.1s 0s ease-in-out;
+            -moz-transition: background-color 0.1s 0s ease-in-out,
+              color 0.1s 0s ease-in-out;
+            -ms-transition: background-color 0.1s 0s ease-in-out,
+              color 0.1s 0s ease-in-out;
+            -o-transition: background-color 0.1s 0s ease-in-out,
+              color 0.1s 0s ease-in-out;
+            transition: background-color 0.1s 0s ease-in-out,
+              color 0.1s 0s ease-in-out;
+            padding: 15px 30px;
+
+            &:hover {
+              background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
+            }
+          }
+        }
+      }
     }
 
     .overlay {
