@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
-import facbook from "../../icons/facebook.png";
-import google from "../../icons/google.png";
-import gmail from "../../icons/gmail.png";
+import facbook from "../../Assests/icons/facebook.png";
+import google from "../../Assests/icons/google.png";
+import gmail from "../../Assests/icons/gmail.png";
 import { learnMoreAction } from "../../Actions/learnMoreAction";
 import { connect } from "react-redux";
 

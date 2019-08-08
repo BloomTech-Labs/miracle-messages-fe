@@ -1,0 +1,43 @@
+.container {
+  // position: relative;
+
+  header {
+    // overflow: hidden;
+    position: relative;
+    height: 407px;
+    .overlay {
+      //   position: absolute;
+      //   top: 0;
+      //   right: 0;
+      //   bottom: 0;
+      //   left: 0;
+      //   background-color: rgba(0, 0, 0, 0.6);
+      //   overflow: hidden;
+      z-index: 99;
+      .backImg {
+        background-color: black;
+        background: url("../../Assests//Imgs/header.png") no-repeat center;
+        height: 407px;
+        background-size: cover;
+        // width: auto;
+        background-position-y: -169px;
+        // position: relative;
+        // top: 0;
+        // right: 0;
+        // bottom: 0;
+        // left: 0;
+        z-index: -15;
+
+        .filter {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.6);
+          //   overflow: hidden;
+        }
+      }
+    }
+  }
+}
