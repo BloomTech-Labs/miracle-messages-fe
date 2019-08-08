@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MapGL, { Marker, Popup, NavigationControl} from "react-map-gl";
-import DeckGL from "deck.gl";
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -9,13 +8,12 @@ import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction"
 import { learnMoreAction } from "../../Actions/learnMoreAction";
 import { connect } from "react-redux"; 
+import Drawer from "@material-ui/core/Drawer"
 
 require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
-
-
 
 class Map extends Component {
   //this fetches the data from the backend
@@ -56,6 +54,7 @@ class Map extends Component {
         >
           <CityInfo
             info={popupInfo} />
+          <Drawer open={true} anchor={'left'}>Hello</Drawer>
         </Popup>
       )
     );
@@ -78,7 +77,7 @@ class Map extends Component {
           {...viewport}
           width="100vw"
           height="100vh"
-          mapStyle="mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1"
+          mapStyle={STYLE}
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={TOKEN}
           minZoom={3}
@@ -108,23 +107,3 @@ export default connect(
   mapStateToProps,
   { getData, updatePopupAction, learnMoreAction}
 )(Map);
-
-
-
-// For use with DECK-GL:
-
-//initial state settings:
-// const WIDTH = "100vw";
-// const HEIGHT = "100vh";
-// const INITIAL_VIEW_STATE = {
-//   latitude: 37.785164,
-//   longitude: -100,
-//   zoom: 3.5
-// };
-
-//for use in the <map> div:
-{/* <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={{ dragRotate: false }}>
-<StaticMap mapboxApiAccessToken={TOKEN} mapStyle={STYLE}>
-  {this.props.chapter_data.map(this._renderCityMarker)}
-</StaticMap>
-</DeckGL> */}
