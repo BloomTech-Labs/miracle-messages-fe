@@ -3,6 +3,9 @@ import "./VolunteerForm.scss";
 import { connect } from "react-redux";
 import { addVolunteers } from "../../Actions/FormActions";
 
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+
 // import headerImg from "../../Assests/Imgs/header.png";
 import logo from "../../Assests/Imgs/MM_Logo.png";
 
@@ -29,7 +32,6 @@ class VolunteerForm extends React.Component {
 
   handleOnsubmit = e => {
     e.preventDefault();
-    console.log(this.props.message);
     this.props.addVolunteers(this.state);
 
     this.setState({
@@ -81,6 +83,7 @@ class VolunteerForm extends React.Component {
   };
 
   render() {
+    console.log(this.state.newVolunteer.phone);
     return (
       <div className="container">
         <header>
@@ -144,6 +147,17 @@ class VolunteerForm extends React.Component {
                   value={this.state.newVolunteer.email}
                   name="email"
                   required
+                />
+              </div>
+              <div className="formBox">
+                <label>Phone</label>
+                <PhoneInput
+                  placeholder="Enter phone number"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.phone}
+                  name="phone"
+                  displayInitialValueAsLocalNumber={true}
+                  country="US"
                 />
               </div>
               <div className="formBox">
@@ -244,8 +258,7 @@ class VolunteerForm extends React.Component {
 
               <div className="interest-wrapper">
                 <input
-                  className="somethingElse"
-                  className="chbox"
+                  className="somethingElse chbox"
                   type="checkbox"
                   onChange={this.handleToggle}
                   name="somethingelse"
