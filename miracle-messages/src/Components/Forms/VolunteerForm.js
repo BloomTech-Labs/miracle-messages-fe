@@ -233,7 +233,6 @@ class VolunteerForm extends React.Component {
 
               <div className="interest-wrapper">
                 <input
-                  onChange={this.handleToggle}
                   className="chbox"
                   type="checkbox"
                   name="mediacoverage"
@@ -245,15 +244,15 @@ class VolunteerForm extends React.Component {
 
               <div className="interest-wrapper">
                 <input
+                  className="somethingElse"
                   className="chbox"
-                  type="text"
-                  onChange={this.handleOnChangeInterest}
+                  type="checkbox"
+                  onChange={this.handleToggle}
                   name="somethingelse"
                   value={this.state.newInterests.somethingelse}
                 />
+                <h7>Something Else</h7>
               </div>
-
-              <h7>Something Else</h7>
               <textarea
                 className="comment"
                 onChange={this.handleOnChange}
@@ -261,13 +260,13 @@ class VolunteerForm extends React.Component {
                 name="comment"
                 placeholder="Leave Your Comments"
               />
-              <br />
+
               <button className="submitb" type="submit">
                 Submit
               </button>
-              <button className="clearb" type="reset">
+              {/* <button className="clearb" type="reset">
                 Clear
-              </button>
+              </button> */}
             </div>
           </form>
         </section>

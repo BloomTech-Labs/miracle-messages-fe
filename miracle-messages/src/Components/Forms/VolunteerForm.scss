@@ -131,7 +131,6 @@
         .formBox {
           display: flex;
           flex-direction: column;
-          // border: 1px red solid;
 
           label {
             height: 22px;
@@ -170,7 +169,7 @@
       }
 
       .interested {
-        border: 1px solid red;
+        // border: 1px solid red;
         display: flex;
         flex-direction: column;
         width: 780px;
@@ -186,8 +185,48 @@
           letter-spacing: 1.24px;
           line-height: 22px;
           text-align: left;
-          border: 1px solid purple;
+          // border: 1px solid purple;
         }
+
+        .interest-wrapper {
+          display: flex;
+          // border: 1px solid blue;
+          .chbox {
+            height: 25px;
+            width: 25px;
+            vertical-align: center;
+            // border: 1px solid red;
+          }
+          h7 {
+            width: 200px;
+            // border: 1px solid red;
+            text-align: left;
+            padding-top: 3px;
+            font-size: 16px;
+            font-family: "Open Sans";
+            color: #303030;
+          }
+        }
+      }
+      .comment {
+        height: 230px;
+        width: 777px;
+        border: 1px solid #b4b4b4;
+        border-radius: 2px;
+        background-color: #fbfbfb;
+      }
+      .submitb {
+        height: 45px;
+        width: 194px;
+        background-color: #5cbe80;
+        font-family: "Open Sans";
+        font-size: 24px;
+        color: #ffffff;
+        letter-spacing: 0.9px;
+        text-align: center;
+        margin-top: 35px;
+
+        // padding-bottom: 30px;
       }
     }
   }
