@@ -73,6 +73,15 @@ class VolunteerForm extends React.Component {
     });
   };
 
+  handleOnChangePhone = e => {
+    this.setState({
+      newVolunteer: {
+        ...this.state.newVolunteer,
+        phone: e.target.value
+      }
+    });
+  };
+
   handleOnChangeInterest = e => {
     this.setState({
       newInterests: {
@@ -150,14 +159,14 @@ class VolunteerForm extends React.Component {
                 />
               </div>
               <div className="formBox">
-                <label>Phone</label>
+                <label>Phone *</label>
                 <PhoneInput
                   placeholder="Enter phone number"
-                  onChange={this.handleOnChange}
+                  onChange={this.handleOnChangePhone}
                   value={this.state.newVolunteer.phone}
-                  name="phone"
                   displayInitialValueAsLocalNumber={true}
                   country="US"
+                  countryOptions={["US", "CA", "AU", "|", "..."]}
                 />
               </div>
               <div className="formBox">
