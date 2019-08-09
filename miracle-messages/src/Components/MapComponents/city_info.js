@@ -1,20 +1,28 @@
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+
+// Action imports
+import { slideToggleAction } from "../../Actions/SlideToggleAction";
+import { updatePopupAction } from "../../Actions/updatePopupAction";
+
+// Material UI imports
+import { IconButton } from "@material-ui/core";
+import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
+
+// Icon imports
 import facbook from "../../icons/facebook.png";
 import google from "../../icons/google.png";
 import gmail from "../../icons/gmail.png";
-import { learnMoreAction } from "../../Actions/learnMoreAction";
-import { connect } from "react-redux";
 
 class CityInfo extends PureComponent {
-  learnMoreToggle = e => {
-    e.preventDefault();
-    this.props.learnMoreAction(this.props.learnMore);
-  };
   render() {
+    const closeHandler = () => {
+      this.props.updatePopupAction(null);
+      this.props.slideToggleAction();
+    };
     const { info } = this.props;
 
     let display;
-    let button;
 
     if (this.props.learnMore) {
       display = (
@@ -51,7 +59,6 @@ class CityInfo extends PureComponent {
           </a>
         </div>
       );
-      button = "Back";
     } else {
       display = (
         <div>
@@ -62,12 +69,14 @@ class CityInfo extends PureComponent {
           <p>Reunions</p>
         </div>
       );
-      button = "Learn More";
     }
 
     return (
       <div className="popup">
         <div className="info">
+          <IconButton onClick={closeHandler}>
+            <ArrowBackIosRounded/>
+          </IconButton>
           <h3>{info.location.toUpperCase()}</h3>
           {display}
         </div>
@@ -80,7 +89,6 @@ class CityInfo extends PureComponent {
           >
             Join Chapter
           </a>
-          <button onClick={e => this.learnMoreToggle(e)}>{button}</button>
         </div>
       </div>
     );
@@ -95,5 +103,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { learnMoreAction }
+  { slideToggleAction, updatePopupAction  }
 )(CityInfo);
