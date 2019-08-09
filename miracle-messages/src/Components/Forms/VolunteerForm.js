@@ -94,7 +94,7 @@ class VolunteerForm extends React.Component {
             </nav>
           </div>
           <h1>Want to get started, learn more, or stay updated?</h1>
-          {/* the below 3 divs are for the header image styling */}
+          {/* the below  3 divs are for the header image styling */}
           <div className="overlay">
             <div className="backImg">
               <div className="filter" />
@@ -158,10 +158,10 @@ class VolunteerForm extends React.Component {
                 />
               </div>
               <div className="name-wrapper">
-                <div className="formBox small">
+                <div className="formBox">
                   <label>Country *</label>
                   <input
-                    className="input"
+                    className="input small"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.country}
@@ -169,10 +169,10 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-                <div className="formBox small">
+                <div className="formBox">
                   <label>City *</label>
                   <input
-                    className="input"
+                    className="input small"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.city}
@@ -181,10 +181,11 @@ class VolunteerForm extends React.Component {
                   />
                 </div>
               </div>
-              <div className="formBox">
+              <div className="formBox" id="stateId">
                 <label>State *</label>
                 <input
                   className="input"
+                  id="state"
                   type="text"
                   onChange={this.handleOnChange}
                   value={this.state.newVolunteer.state}
@@ -193,67 +194,81 @@ class VolunteerForm extends React.Component {
                 />
               </div>
             </section>
-            <br />
-            <h6>I am Interested In</h6>
-            <input
-              onChange={this.handleToggle}
-              className="chbox"
-              type="checkbox"
-              name="volunteering"
-              checked={this.state.newInterests.volunteering}
-            />
-            Volunteering
-            <br />
-            <input
-              onChange={this.handleToggle}
-              className="chbox"
-              type="checkbox"
-              name="donating"
-              checked={this.state.newInterests.donating}
-            />
-            Donating
-            <br />
-            <input
-              onChange={this.handleToggle}
-              className="chbox"
-              type="checkbox"
-              name="joinmm"
-              checked={this.state.newInterests.joinmm}
-            />
-            Join MM
-            <br />
-            <input
-              onChange={this.handleToggle}
-              className="chbox"
-              type="checkbox"
-              name="mediacoverage"
-              checked={this.state.newInterests.mediacoverage}
-            />
-            Media Coverage
-            <br />
-            <input
-              className="chbox"
-              type="text"
-              onChange={this.handleOnChangeInterest}
-              name="somethingelse"
-              value={this.state.newInterests.somethingelse}
-            />
-            Something Else
-            <br />
-            <textarea
-              className="comment"
-              onChange={this.handleOnChange}
-              value={this.state.newVolunteer.comment}
-              name="comment"
-              placeholder="Leave Your Comments"
-            />
-            <br />
-            <button className="submitb" type="submit">
-              Submit
-            </button>
-            <button className="clearb" type="reset">
-              Clear
-            </button>
+
+            <div className="interested">
+              <label>I am Interested In *</label>
+              <div className="interest-wrapper">
+                <input
+                  onChange={this.handleToggle}
+                  className="chbox"
+                  type="checkbox"
+                  name="volunteering"
+                  checked={this.state.newInterests.volunteering}
+                />
+                <h7>Volunteering</h7>
+              </div>
+
+              <div className="interest-wrapper">
+                <input
+                  onChange={this.handleToggle}
+                  className="chbox"
+                  type="checkbox"
+                  name="donating"
+                  checked={this.state.newInterests.donating}
+                />
+
+                <h7>Donating</h7>
+              </div>
+
+              <div className="interest-wrapper">
+                <input
+                  onChange={this.handleToggle}
+                  className="chbox"
+                  type="checkbox"
+                  name="joinmm"
+                  checked={this.state.newInterests.joinmm}
+                />
+                <h7>Join MM</h7>
+              </div>
+
+              <div className="interest-wrapper">
+                <input
+                  onChange={this.handleToggle}
+                  className="chbox"
+                  type="checkbox"
+                  name="mediacoverage"
+                  checked={this.state.newInterests.mediacoverage}
+                />
+
+                <h7>Media Coverage</h7>
+              </div>
+
+              <div className="interest-wrapper">
+                <input
+                  className="chbox"
+                  type="text"
+                  onChange={this.handleOnChangeInterest}
+                  name="somethingelse"
+                  value={this.state.newInterests.somethingelse}
+                />
+              </div>
+
+              <h7>Something Else</h7>
+              <textarea
+                className="comment"
+                onChange={this.handleOnChange}
+                value={this.state.newVolunteer.comment}
+                name="comment"
+                placeholder="Leave Your Comments"
+              />
+              <br />
+              <button className="submitb" type="submit">
+                Submit
+              </button>
+              <button className="clearb" type="reset">
+                Clear
+              </button>
+            </div>
           </form>
         </section>
       </div>

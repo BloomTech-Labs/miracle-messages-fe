@@ -24,6 +24,7 @@
       display: flex;
       justify-content: space-between;
       margin: 18px 1%;
+
       img {
         height: auto;
         max-width: 100%;
@@ -93,7 +94,7 @@
   }
 
   .main {
-    border: 1px red solid;
+    // border: 1px red solid;
     h2 {
       margin: 0 auto;
       height: 65px;
@@ -107,30 +108,77 @@
       // border: 1px solid blue;
     }
     form {
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       .input-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
+        // border: 1px solid red;
 
-      .name-wrapper {
-        display: flex;
-        justify-content: space-between;
-        width: 780px;
-        // border: 1px red solid;
-        .small {
-          width: 360px;
+        .name-wrapper {
+          display: flex;
+          justify-content: space-between;
+          width: 780px;
+          // border: 1px red solid;
+          // .small {
+          //   width: 360px;
+          // }
+        }
+
+        .formBox {
+          display: flex;
+          flex-direction: column;
+          // border: 1px red solid;
+
+          label {
+            height: 22px;
+            width: 156px;
+            color: #303030;
+            font-family: ProximaNova;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1.24px;
+            line-height: 22px;
+            text-align: left;
+          }
+
+          .input {
+            height: 45px;
+            width: 777px;
+            border: 1px solid #b4b4b4;
+            border-radius: 2px;
+            background-color: #fbfbfb;
+          }
+
+          .small {
+            width: 360px;
+          }
+        }
+
+        #stateId {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+
+          input {
+            width: 360px;
+          }
         }
       }
 
-      .formBox {
+      .interested {
+        border: 1px solid red;
         display: flex;
         flex-direction: column;
-        // border: 1px red solid;
+        width: 780px;
+        margin: 0 auto;
 
         label {
           height: 22px;
-          width: 156px;
+          width: 220px;
           color: #303030;
           font-family: ProximaNova;
           font-size: 22px;
@@ -138,17 +186,7 @@
           letter-spacing: 1.24px;
           line-height: 22px;
           text-align: left;
-        }
-        .input {
-          height: 45px;
-          width: 777px;
-          border: 1px solid #b4b4b4;
-          border-radius: 2px;
-          background-color: #fbfbfb;
-        }
-
-        .small {
-          width: 360px;
+          border: 1px solid purple;
         }
       }
     }
