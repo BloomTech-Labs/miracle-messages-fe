@@ -48,7 +48,7 @@ class Map extends Component {
     return (
       popupInfo && (
         <div>
-          <Drawer open={this.props.openDrawer}>
+          <Drawer open={this.props.openDrawer} variant="persistent">
             <CityInfo info={popupInfo} />
           </Drawer>
         </div>
