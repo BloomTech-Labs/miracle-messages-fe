@@ -22,10 +22,32 @@ class CityInfo extends PureComponent {
     };
     const { info } = this.props;
 
-    let display;
+    return (
+      <div className="popup">
+        <div className="info">
+          <IconButton onClick={closeHandler}>
+            <ArrowBackIosRounded/>
+          </IconButton>
+          <h3>{info.location.toUpperCase()}</h3>
+        </div>
 
-    if (this.props.learnMore) {
-      display = (
+        <div className="buttons">
+          <a
+            href="https://miracle-messages-staging.netlify.com/form"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join Chapter
+          </a>
+        </div>
+
+        <div>
+          <p>
+            Volunteers <span className="number">{info.numvolunteers}</span>
+          </p>
+          <p>Delivered Messages</p>
+          <p>Reunions</p>
+        </div>
         <div>
           <a
             href="https://www.facebook.com/miraclemessages/"
@@ -58,38 +80,7 @@ class CityInfo extends PureComponent {
             </span>
           </a>
         </div>
-      );
-    } else {
-      display = (
-        <div>
-          <p>
-            Volunteers <span className="number">{info.numvolunteers}</span>
-          </p>
-          <p>Delivered Messages</p>
-          <p>Reunions</p>
-        </div>
-      );
-    }
 
-    return (
-      <div className="popup">
-        <div className="info">
-          <IconButton onClick={closeHandler}>
-            <ArrowBackIosRounded/>
-          </IconButton>
-          <h3>{info.location.toUpperCase()}</h3>
-          {display}
-        </div>
-
-        <div className="buttons">
-          <a
-            href="https://miracle-messages-staging.netlify.com/form"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Join Chapter
-          </a>
-        </div>
       </div>
     );
   }
