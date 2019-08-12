@@ -3,6 +3,7 @@ import Map from "./Components/MapComponents/map";
 import "./CSS/App.css";
 import { Route } from "react-router-dom";
 import VolunteerForm from "./Components/Forms/VolunteerForm";
+import LoginFrom from './Components/Login/LoginForm.js'
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={Map} />
         <Route path="/form" component={VolunteerForm} />
+        <Route path="/login" component={LoginFrom}/>
       </div>
     );
   }

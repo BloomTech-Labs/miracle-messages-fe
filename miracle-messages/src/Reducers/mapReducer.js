@@ -1,66 +1,84 @@
+import { 
+    FETCH_CHAPTER_INFO, 
+    FETCH_CHAPTER_SUCCESS,
+     FETCH_CHAPTER_FAIL, 
+    
+    } from "../Actions/index";
+
 import {
-  FETCH_CHAPTER_INFO,
-  FETCH_CHAPTER_SUCCESS,
-  FETCH_CHAPTER_FAIL
-} from "../Actions/index";
+    UPDATE_POPUP
 
-import { UPDATE_POPUP } from "../Actions/updatePopupAction";
+} from "../Actions/updatePopupAction"
 
-import { TOGGLE_LEARN_MORE } from "../Actions/learnMoreAction";
+import { 
+    TOGGLE_LEARN_MORE 
+} from "../Actions/learnMoreAction";
 
-const initialState = {
-  chapter_data: [], //this gets populated with componentDidMount
-  popupInfo: null, //null means no pop-ups are being rendered for any of the cities
-  learnMore: false,
-  fetching: false,
-  error: null //learn more is a toggleinside the pop-ups
-};
 
-export const mapReducer = (state = initialState, action) => {
-  //reducer to set the state for chapter_data
-  switch (action.type) {
-    case FETCH_CHAPTER_INFO:
-      return {
-        ...state,
-        fetching: true,
-        error: null
-      };
+    const initialState = {
+        viewport: {
+            latitude: 37.785164,
+            longitude: -100,
+            zoom: 3.5,
+            bearing: 0,
+            pitch: 0
+          },
+          chapter_data: [], //this gets populated with componentDidMount
+          popupInfo: null, //null means no pop-ups are being rendered for any of the cities
+          learnMore: false,
+          fetching: false, 
+          error: null  //learn more is a toggleinside the pop-ups
+    };
 
-    case FETCH_CHAPTER_SUCCESS:
-      return {
-        ...state,
-        chapter_data: action.payload,
-        fetching: false,
-        error: null
-      };
+     export const mapReducer = (state = initialState, action )=>{
 
-    case FETCH_CHAPTER_FAIL:
-      return {
-        ...state,
-        fetching: false,
-        error: action.payload
-      };
+        //reducer to set the state for chapter_data 
+        switch (action.type){
+            case FETCH_CHAPTER_INFO:
+            return {
+                ...state, 
+                fetching: true,
+                error: null
+            };
 
-    //reducer to set the state for the city popups
-    case UPDATE_POPUP:
-      return {
-        ...state,
-        popupInfo: action.payload
-      };
+            case FETCH_CHAPTER_SUCCESS:
+            return {
+                ...state,
+                chapter_data: action.payload,
+                fetching:false,
+                error: null
+            };
 
-    //reducer to set the state for the learn more toggle inside the city popups
-    case TOGGLE_LEARN_MORE:
-      return {
-        ...state,
-        learnMore: action.payload
-      };
+            case FETCH_CHAPTER_FAIL:
+            return {
+                ...state,
+                fetching: false,
+                error: action.payload
+            };
 
-    default:
-      return state;
-  }
-};
+        //reducer to set the state for the city popups
+            case UPDATE_POPUP:
+            return {
+                ...state,
+                popupInfo:action.payload,
 
-// get chapter data chapter reducer x
+            }
+        
+            //reducer to set the state for the learn more toggle inside the city popups
+            case TOGGLE_LEARN_MORE:
+            return {
+                ...state,
+                learnMore: action.payload
+            }
+
+            default:
+            return state;
+        }
+
+    }
+
+
+// get chapter data chapter reducer x 
 
 //viewport reducer
 //popup reducer
