@@ -8,7 +8,7 @@ export const FETCH_CHAPTER_FAIL = 'FETCH_CHAPTER_FAIL';
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_CHAPTER_INFO});
  axios
-   .get ('http://localhost:5000/api/chapter')
+   .get ('https://miracle-messages-staging.herokuapp.com/api/chapter')
    .then(res => dispatch({type: FETCH_CHAPTER_SUCCESS, payload: res.data}))
    .catch(err => dispatch({type: FETCH_CHAPTER_FAIL}));
 }
