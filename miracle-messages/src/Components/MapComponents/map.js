@@ -9,15 +9,23 @@ import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { learnMoreAction } from "../../Actions/learnMoreAction";
 import { connect } from "react-redux";
+import ReactGA from "react-ga";
+import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 
-class Map extends Component {
-  //this fetches the data from the backend
+// Google Analytics:
+//this initializes GA
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
 
+//This tracks the page views on this component/path
+ReactGA.pageview("/map");
+
+class Map extends Component {
   state = {
     viewport: {
       latitude: 37.785164,
@@ -28,6 +36,7 @@ class Map extends Component {
     }
   };
 
+  //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
   }
@@ -40,13 +49,14 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin city={city} />
+        <div onClick={() => gaEvent("click", "city marker", "TESTERINO")}>
+          <CityPin city={city} />
+        </div>
       </Marker>
     );
   };
 
   //_renderPopup enables a pop-up to show if a city marker/pin is clicked
-
   _renderPopup() {
     const popupInfo = this.props.popupInfo;
     //popupInfo=city means popup will show for that city else =null means no popup will show
