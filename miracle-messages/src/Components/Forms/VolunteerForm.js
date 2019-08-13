@@ -2,12 +2,17 @@ import React from "react";
 import "./VolunteerForm.scss";
 import { connect } from "react-redux";
 import { addVolunteers } from "../../Actions/FormActions";
-
+import PlacesAutocomplete from "react-places-autocomplete";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import {
+  geocodeByAddress,
+  geocodeByPlaceId,
+  getLatLng
+} from "react-places-autocomplete";
+import logo from "../../Assests/Imgs/MM_Logo.png";
 
 // import headerImg from "../../Assests/Imgs/header.png";
-import logo from "../../Assests/Imgs/MM_Logo.png";
 
 class VolunteerForm extends React.Component {
   state = {
