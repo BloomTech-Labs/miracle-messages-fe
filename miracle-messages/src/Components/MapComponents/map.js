@@ -1,30 +1,47 @@
 import React, { Component } from "react";
-import MapGL, { Marker, Popup, NavigationControl} from "react-map-gl";
+import MapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import DeckGL from "deck.gl";
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 import "mapbox-gl/dist/mapbox-gl.css";
 //import './CSS/MapGl.css';
 import { getData } from "../../Actions/index";
-import { updatePopupAction } from "../../Actions/updatePopupAction"
+import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { learnMoreAction } from "../../Actions/learnMoreAction";
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
+import ReactGA from "react-ga";
+import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 
+// Google Analytics:
+//this initializes GA
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
 
+//This tracks the page views on this component/path
+ReactGA.pageview("/map");
 
 class Map extends Component {
-  //this fetches the data from the backend
-    componentDidMount() {
-        this.props.getData();
-      }
+  state = {
+    viewport: {
+      latitude: 37.785164,
+      longitude: -100,
+      zoom: 3.5,
+      bearing: 0,
+      pitch: 0
+    }
+  };
 
+  //this fetches the data from the backend:
+  componentDidMount() {
+    this.props.getData();
+  }
 
-//_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
+  //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
       <Marker
@@ -32,16 +49,17 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin city={city}/>
+        <div onClick={() => gaEvent("click", "city marker", "TESTERINO")}>
+          <CityPin city={city} />
+        </div>
       </Marker>
     );
   };
 
-//_renderPopup enables a pop-up to show if a city marker/pin is clicked
-
+  //_renderPopup enables a pop-up to show if a city marker/pin is clicked
   _renderPopup() {
-      const popupInfo = this.props.popupInfo
-      //popupInfo=city means popup will show for that city else =null means no popup will show
+    const popupInfo = this.props.popupInfo;
+    //popupInfo=city means popup will show for that city else =null means no popup will show
     return (
       popupInfo && (
         <Popup
@@ -54,26 +72,23 @@ class Map extends Component {
           closeOnClick={false}
           onClose={() => this.props.updatePopupAction(null)}
         >
-          <CityInfo
-            info={popupInfo} />
+          <CityInfo info={popupInfo} />
         </Popup>
       )
     );
-  
-}
+  }
 
-//_updateViewport updates the map view when a user zooms/pans etc.
+  //_updateViewport updates the map view when a user zooms/pans etc.
   _updateViewport = viewport => {
     this.setState({ viewport });
     //viewport represents the current view/state of the map.
   };
 
   render() {
-      const { viewport } = this.props;
+    const { viewport } = this.state;
     return (
       <div className="Map">
- 
- {/* MapGL is the actual map that gets displayed  */}
+        {/* MapGL is the actual map that gets displayed  */}
         <MapGL
           {...viewport}
           width="100vw"
@@ -85,6 +100,11 @@ class Map extends Component {
           maxPitch={0}
           dragRotate={false}
         >
+          <div
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
+          >
+            <NavigationControl />
+          </div>
           {this.props.chapter_data.map(this._renderCityMarker)}
           {this._renderPopup()}
         </MapGL>
@@ -98,18 +118,15 @@ const mapStateToProps = state => {
     chapter_data: state.mapReducer.chapter_data,
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
-    learnMore: state.mapReducer.learnMore,
-    viewport: state.mapReducer.viewport
+    learnMore: state.mapReducer.learnMore
   };
 };
 
 //this is how we connect the map.js component to the store
 export default connect(
   mapStateToProps,
-  { getData, updatePopupAction, learnMoreAction}
+  { getData, updatePopupAction, learnMoreAction }
 )(Map);
-
-
 
 // For use with DECK-GL:
 
@@ -123,8 +140,10 @@ export default connect(
 // };
 
 //for use in the <map> div:
-{/* <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={{ dragRotate: false }}>
+{
+  /* <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={{ dragRotate: false }}>
 <StaticMap mapboxApiAccessToken={TOKEN} mapStyle={STYLE}>
   {this.props.chapter_data.map(this._renderCityMarker)}
 </StaticMap>
-</DeckGL> */}
+</DeckGL> */
+}

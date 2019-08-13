@@ -1,9 +1,18 @@
 import { mapReducer } from './mapReducer';
 import { combineReducers } from 'redux';
 import { formReducer } from './FormReducer';
+import { loginReducer } from './LoginReducer';
+import { ChapterReducer } from './ChapterReducer';
+import { volunteersReducer} from './VolunteersReducer';
+import { usersReducer } from './UserReducer';
+
 
 
 export default combineReducers({
     mapReducer,
-    formReducer
+    formReducer,
+    loginReducer,
+    ChapterReducer,
+    volunteersReducer,
+    usersReducer
  });

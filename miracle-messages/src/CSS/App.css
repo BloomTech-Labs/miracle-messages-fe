@@ -1,7 +1,13 @@
 .App {
   box-sizing: border-box;
+  width: 100%;
 }
 /* Popup Style */
+
+@font-face {
+  font-family: ProximaNova;
+  src: url("../Assests/ProximaNova.otf");
+}
 
 .mapboxgl-popup {
   /* height: 203px; */
@@ -108,7 +114,7 @@
 
 .buttons button,
 .buttons a {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   letter-spacing: 0.5px;
   margin-top: 10px;
   color: white;
@@ -133,7 +139,7 @@
   margin-top: -3px;
   margin-bottom: 20px;
   color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 800;
   letter-spacing: 1.54px;
@@ -152,7 +158,7 @@
   justify-content: space-between;
   margin: 8px 8px 8px 0;
   color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .info a:hover {
