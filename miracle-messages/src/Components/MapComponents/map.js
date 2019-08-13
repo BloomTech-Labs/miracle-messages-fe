@@ -47,7 +47,7 @@ class Map extends Component {
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div>
+        <div className="chapterDrawer"> 
           <Drawer open={this.props.openDrawer} variant="persistent">
             <CityInfo info={popupInfo} />
           </Drawer>
@@ -60,6 +60,11 @@ class Map extends Component {
   _updateViewport = viewport => {
     this.props.onViewportChanged(viewport);
   };
+
+  //_zoomToCity will zoom into the searched or clicked city
+  // _zoomToCity = something => {
+
+  // }
 
   render() {
     const { viewport } = this.props;

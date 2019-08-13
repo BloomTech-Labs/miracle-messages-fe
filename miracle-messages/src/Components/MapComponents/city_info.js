@@ -23,15 +23,59 @@ class CityInfo extends PureComponent {
     const { info } = this.props;
 
     return (
-      <div className="popup">
-        <div className="info">
-          <IconButton onClick={closeHandler}>
-            <ArrowBackIosRounded/>
-          </IconButton>
-          <h3>{info.location.toUpperCase()}</h3>
+      <div className="chapterInfo">
+        <IconButton onClick={closeHandler}>
+          <ArrowBackIosRounded />
+        </IconButton>
+
+        {/* Contains the chapter picture, name, and estblish date */}
+        <div className="chapterTitle">
+          <img
+            src="https://funattic.com/wp-content/uploads/2016/08/youth-group-icebreakers.jpg"
+            alt="Chapter"
+            height="200px"
+            width="340px"
+          />
+          {info.location}
         </div>
 
+        {/* Contains the chapter statisics; members/reunions */}
+        <div className="chapterStats">
+          <div>
+            <p className="volunteers">
+              Volunteers
+              <span className="number">{info.numvolunteers}</span>
+            </p>
+            <p className="reunions">
+              Reunions
+              <span className="number">{info.numvolunteers}</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Contains the chapters message, and contact info */}
+        <div className="chapterDetails">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        </div>
+
+        {/* Links out */}
         <div className="buttons">
+          <a
+            href="https://miracle-messages-staging.netlify.com/form"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            JOIN CHAPTER
+          </a>
+
+          <a href="" target="_blank" rel="noopener noreferrer">
+            SEE REUNION STROIES
+          </a>
+        </div>
+
+        {/* <div className="buttons">
           <a
             href="https://miracle-messages-staging.netlify.com/form"
             target="_blank"
@@ -79,8 +123,7 @@ class CityInfo extends PureComponent {
               <img src={gmail} alt="gmail logo" />
             </span>
           </a>
-        </div>
-
+        </div> */}
       </div>
     );
   }
@@ -94,5 +137,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { slideToggleAction, updatePopupAction  }
+  { slideToggleAction, updatePopupAction }
 )(CityInfo);
