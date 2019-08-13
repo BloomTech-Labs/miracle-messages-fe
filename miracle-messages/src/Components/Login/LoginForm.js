@@ -3,11 +3,8 @@ import './LoginForm.css';
 import { fetchLogin } from '../../Actions/AdminPageActions';
 import { connect } from 'react-redux';
 import { loginReducer } from '../../Reducers/LoginReducer';
-import  Button  from '@material-ui/core/Button';
-// import Avatar from '@material-ui/core/Avatar';
-
 import logo from "../../Assests/Imgs/MM_Logo.png";
-import header from "../../Assests/Imgs/header.png";
+
 class LoginForm extends React.Component {
     state = {
         username: "",
@@ -21,7 +18,7 @@ class LoginForm extends React.Component {
 
         this.setState({
           username: "",
-          password: ""
+          password: "",
         });
     };
 
@@ -62,7 +59,7 @@ class LoginForm extends React.Component {
                   type="text"
                   name="username"
                   // placeholder="User Name"
-                  value={this.state.user}
+                  value={this.state.username}
                 />
                 <label className="label">Password</label>
                 <input
