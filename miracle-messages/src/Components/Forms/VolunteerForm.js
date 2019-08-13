@@ -12,10 +12,6 @@ import {
 } from "react-places-autocomplete";
 import logo from "../../Assests/Imgs/MM_Logo.png";
 
-
-
-//Google Maps API Key: AIzaSyBmT1LuUz1UXfowgnqjYFgoVWKd0Ll2w68
-
 // import headerImg from "../../Assests/Imgs/header.png";
 
 class VolunteerForm extends React.Component {
