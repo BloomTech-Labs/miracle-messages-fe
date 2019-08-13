@@ -14,8 +14,12 @@ import facbook from "../../icons/facebook.png";
 import google from "../../icons/google.png";
 import gmail from "../../icons/gmail.png";
 
+// CSS imports
+import "../../CSS/city_info.js";
+
 class CityInfo extends PureComponent {
   render() {
+    const classes = useStyles();
     const closeHandler = () => {
       this.props.updatePopupAction(null);
       this.props.slideToggleAction();
@@ -24,7 +28,9 @@ class CityInfo extends PureComponent {
 
     return (
       <div className="chapterInfo">
+        {/* IconButton = the close Slideout "circle" */}
         <IconButton onClick={closeHandler}>
+          {/* the below is the actual arrow Icon that enables closing the drawer */}
           <ArrowBackIosRounded />
         </IconButton>
 
@@ -71,7 +77,7 @@ class CityInfo extends PureComponent {
           </a>
 
           <a href="" target="_blank" rel="noopener noreferrer">
-            SEE REUNION STROIES
+            SEE REUNION STORIES
           </a>
         </div>
 
