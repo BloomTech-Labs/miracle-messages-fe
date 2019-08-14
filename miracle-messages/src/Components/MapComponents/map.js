@@ -49,7 +49,7 @@ class Map extends Component {
       popupInfo && (
         <div className="chapterDrawer"> 
         {/* clicking city pin opens the drawer below */}
-          <Drawer open={this.props.openDrawer} variant="persistent">
+          <Drawer open={this.props.openDrawer} variant="persistent" className="slide">
             <CityInfo info={popupInfo} />
           </Drawer>
         </div>

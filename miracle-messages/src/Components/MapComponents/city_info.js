@@ -6,7 +6,7 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 
 // Material UI imports
-import { IconButton } from "@material-ui/core";
+import { IconButton, Button } from "@material-ui/core";
 import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
 
 // Icon imports
@@ -15,11 +15,10 @@ import google from "../../icons/google.png";
 import gmail from "../../icons/gmail.png";
 
 // CSS imports
-import "../../CSS/city_info.js";
+import "../../CSS/city_info.css";
 
 class CityInfo extends PureComponent {
   render() {
-    const classes = useStyles();
     const closeHandler = () => {
       this.props.updatePopupAction(null);
       this.props.slideToggleAction();
@@ -40,23 +39,22 @@ class CityInfo extends PureComponent {
             src="https://funattic.com/wp-content/uploads/2016/08/youth-group-icebreakers.jpg"
             alt="Chapter"
             height="200px"
-            width="340px"
+            width="100%"
           />
-          {info.location}
+          <div className="title">{info.location}</div>
+          <div className="date">Est. 8/12/2019</div>
         </div>
 
         {/* Contains the chapter statisics; members/reunions */}
         <div className="chapterStats">
-          <div>
-            <p className="volunteers">
-              Volunteers
-              <span className="number">{info.numvolunteers}</span>
-            </p>
-            <p className="reunions">
-              Reunions
-              <span className="number">{info.numvolunteers}</span>
-            </p>
-          </div>
+          <p className="volunteers">
+            <span className="number">{info.numvolunteers}</span>
+            Members
+          </p>
+          <p className="reunions">
+            <span className="number">{info.numvolunteers}</span>
+            Reunions
+          </p>
         </div>
 
         {/* Contains the chapters message, and contact info */}
@@ -66,19 +64,37 @@ class CityInfo extends PureComponent {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
         </div>
 
-        {/* Links out */}
-        <div className="buttons">
+        <div>
           <a
-            href="https://miracle-messages-staging.netlify.com/form"
+            href="https://miraclemessages.org"
             target="_blank"
             rel="noopener noreferrer"
+            className="contact"
           >
-            JOIN CHAPTER
+            <span>
+              <img src={gmail} alt="gmail logo" className="gmailLogo" />
+            </span>
+            <span className="email">aMiracle@miraclemessages.org</span>
           </a>
+        </div>
 
-          <a href="" target="_blank" rel="noopener noreferrer">
-            SEE REUNION STORIES
-          </a>
+        {/* Links out */}
+        <div className="buttons">
+          <button className="green">
+            <a
+              href="https://miracle-messages-staging.netlify.com/form"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              JOIN CHAPTER
+            </a>
+          </button>
+
+          <button className="white">
+            <a href="" target="_blank" rel="noopener noreferrer">
+              SEE REUNION STORIES
+            </a>
+          </button>
         </div>
 
         {/* <div className="buttons">
