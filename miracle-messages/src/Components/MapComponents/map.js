@@ -1,45 +1,42 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // Mapbox imports
-import MapGL, { Marker, NavigationControl } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+import MapGL, { Marker, NavigationControl } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Custom file imports
-import CityPin from "./city_pin";
-import CityInfo from "./city_info";
+import CityPin from './city_pin';
+import CityInfo from './city_info';
 
 // Action imports
-import { getData } from "../../Actions/index";
-import { updatePopupAction } from "../../Actions/updatePopupAction";
+import { getData } from '../../Actions/index';
+import { updatePopupAction } from '../../Actions/updatePopupAction';
 
-import { slideToggleAction } from "../../Actions/SlideToggleAction";
-import { onViewportChanged } from "../../Actions/OnViewportAction";
+import { slideToggleAction } from '../../Actions/SlideToggleAction';
+import { onViewportChanged } from '../../Actions/OnViewportAction';
 
 // Material UI imports
-import Drawer from "@material-ui/core/Drawer";
+import Drawer from '@material-ui/core/Drawer';
 
 // Google anilytics imports
-import ReactGA from "react-ga";
-import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
+import ReactGA from 'react-ga';
+import { gaEvent } from '../Analytics/GAFunctions'; //enable event tracking
 
-
-require("dotenv").config();
+require('dotenv').config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
-const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
+const STYLE = 'mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1';
 
-
-class Map extends Component {
 // Google Analytics:
 //this initializes GA
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
-
 //This tracks the page views on this component/path
-ReactGA.pageview("/map");
+ReactGA.pageview('/map');
 
+class Map extends Component {
   //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
@@ -53,7 +50,11 @@ ReactGA.pageview("/map");
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <div onClick={() => gaEvent("click", "city marker", "TESTERINO")}>
+        <div
+          onClick={() =>
+            gaEvent('click', 'city marker', 'Click city marker pin')
+          }
+        >
           <CityPin city={city} />
         </div>
       </Marker>
@@ -65,9 +66,13 @@ ReactGA.pageview("/map");
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div className="chapterDrawer"> 
-        {/* clicking city pin opens the drawer below */}
-          <Drawer open={this.props.openDrawer} variant="persistent" className="slide">
+        <div className="chapterDrawer">
+          {/* clicking city pin opens the drawer below */}
+          <Drawer
+            open={this.props.openDrawer}
+            variant="persistent"
+            className="slide"
+          >
             <CityInfo info={popupInfo} />
           </Drawer>
         </div>
@@ -79,8 +84,6 @@ ReactGA.pageview("/map");
   _updateViewport = viewport => {
     this.props.onViewportChanged(viewport);
   };
-
-
 
   //_zoomToCity will zoom into the searched or clicked city
   // _zoomToCity = something => {
@@ -105,7 +108,7 @@ ReactGA.pageview("/map");
           dragRotate={false}
         >
           <div
-            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>
@@ -132,4 +135,3 @@ export default connect(
   mapStateToProps,
   { getData, updatePopupAction, slideToggleAction, onViewportChanged }
 )(Map);
-
