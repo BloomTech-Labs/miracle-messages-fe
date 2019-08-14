@@ -9,6 +9,16 @@
   src: url("../Assests/ProximaNova.otf");
 }
 
+@font-face {
+  font-family: ProximaNova_Bold;
+  src: url("../Assests/ProximaNova_Bold.otf")
+}
+
+@font-face {
+  font-family: ProximaNova_Semibold;
+  src: url("../Assests/ProximaNova_Semibold.otf")
+}
+
 .mapboxgl-popup {
   /* height: 203px; */
   /* width: 275px; */

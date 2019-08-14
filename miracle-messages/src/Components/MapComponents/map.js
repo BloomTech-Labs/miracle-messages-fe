@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 
 // Mapbox imports
@@ -35,10 +34,10 @@ const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 class Map extends Component {
 // Google Analytics:
 //this initializes GA
-ReactGA.initialize(process.env.REACT_APP_GA_ID);
+//ReactGA.initialize(process.env.REACT_APP_GA_ID);
 
 //This tracks the page views on this component/path
-ReactGA.pageview("/map");
+//ReactGA.pageview("/map");
 
   //this fetches the data from the backend:
   componentDidMount() {
@@ -79,8 +78,6 @@ ReactGA.pageview("/map");
   _updateViewport = viewport => {
     this.props.onViewportChanged(viewport);
   };
-
-
 
   //_zoomToCity will zoom into the searched or clicked city
   // _zoomToCity = something => {

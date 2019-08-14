@@ -10,9 +10,9 @@ import { IconButton, Button } from "@material-ui/core";
 import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
 
 // Icon imports
-import facbook from "../../icons/facebook.png";
-import google from "../../icons/google.png";
-import gmail from "../../icons/gmail.png";
+//import facbook from "../../icons/facebook.png";
+//import google from "../../icons/google.png";
+import gmail from "../../Assests/icons/gmail.png";
 
 // CSS imports
 import "../../CSS/city_info.css";
@@ -41,7 +41,7 @@ class CityInfo extends PureComponent {
             height="200px"
             width="100%"
           />
-          <div className="title">{info.location}</div>
+          <div className="title">Miracle Messages {info.location}</div>
           <div className="date">Est. 8/12/2019</div>
         </div>
 
