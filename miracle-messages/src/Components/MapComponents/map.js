@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { connect } from "react-redux";
 
 // Mapbox imports
@@ -12,19 +13,34 @@ import CityInfo from "./city_info";
 // Action imports
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
+
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
 import Drawer from "@material-ui/core/Drawer";
 
+// Google anilytics imports
+import ReactGA from "react-ga";
+import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
+
+
 require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
 const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 
+
 class Map extends Component {
-  //this fetches the data from the backend
+// Google Analytics:
+//this initializes GA
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
+
+//This tracks the page views on this component/path
+ReactGA.pageview("/map");
+
+  //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
   }
@@ -37,7 +53,9 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin city={city} />
+        <div onClick={() => gaEvent("click", "city marker", "TESTERINO")}>
+          <CityPin city={city} />
+        </div>
       </Marker>
     );
   };
@@ -71,6 +89,7 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.props;
+
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
@@ -85,6 +104,11 @@ class Map extends Component {
           maxPitch={0}
           dragRotate={false}
         >
+          <div
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
+          >
+            <NavigationControl />
+          </div>
           {this.props.chapter_data.map(this._renderCityMarker)}
           {this._renderSlide()}
         </MapGL>
@@ -108,3 +132,4 @@ export default connect(
   mapStateToProps,
   { getData, updatePopupAction, slideToggleAction, onViewportChanged }
 )(Map);
+
