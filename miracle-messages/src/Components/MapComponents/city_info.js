@@ -10,9 +10,9 @@ import { IconButton, Button } from "@material-ui/core";
 import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
 
 // Icon imports
-import facbook from "../../icons/facebook.png";
-import google from "../../icons/google.png";
-import gmail from "../../icons/gmail.png";
+// import facebook from "../../icons/facebook.png";
+// import google from "../../icons/google.png";
+import gmail from '../../Assests/icons/gmail.png';
 
 // CSS imports
 import "../../CSS/city_info.css";
