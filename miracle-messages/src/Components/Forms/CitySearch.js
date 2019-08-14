@@ -12,7 +12,7 @@ import Script from "react-load-script";
 require("dotenv").config();
 
 const G_PLACES_API_KEY = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
-const url = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBl5YzFZftBoLGc7BUbB-_eT9iHBbnyJv8&libraries=place`;
+const url = `https://maps.googleapis.com/maps/api/js?key=${G_PLACES_API_KEY}&libraries=places`;
 
 class CitySearch extends Component {
   // Define Constructor
@@ -69,7 +69,7 @@ class CitySearch extends Component {
     return (
       <div>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl5YzFZftBoLGc7BUbB-_eT9iHBbnyJv8&libraries=places"
+          url={`https://maps.googleapis.com/maps/api/js?key=${G_PLACES_API_KEY}&libraries=places`}
           onLoad={this.handleScriptLoad}
         />
         <MuiThemeProvider>
