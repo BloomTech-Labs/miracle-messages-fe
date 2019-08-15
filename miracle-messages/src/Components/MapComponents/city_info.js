@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import facbook from "../../Assests/icons/facebook.png";
-import google from "../../Assests/icons/google.png";
-import gmail from "../../Assests/icons/gmail.png";
-import { learnMoreAction } from "../../Actions/learnMoreAction";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import facbook from '../../Assets/icons/facebook.png';
+import google from '../../Assets/icons/google.png';
+import gmail from '../../Assets/icons/gmail.png';
+import { learnMoreAction } from '../../Actions/learnMoreAction';
+import { connect } from 'react-redux';
 
 class CityInfo extends PureComponent {
   learnMoreToggle = e => {
@@ -51,7 +51,7 @@ class CityInfo extends PureComponent {
           </a>
         </div>
       );
-      button = "Back";
+      button = 'Back';
     } else {
       display = (
         <div>
@@ -62,7 +62,7 @@ class CityInfo extends PureComponent {
           <p>Reunions</p>
         </div>
       );
-      button = "Learn More";
+      button = 'Learn More';
     }
 
     return (

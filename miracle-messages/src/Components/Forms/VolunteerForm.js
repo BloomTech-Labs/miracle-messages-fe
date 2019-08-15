@@ -1,32 +1,31 @@
-import React from "react";
-import "./VolunteerForm.scss";
-import { connect } from "react-redux";
-import { addVolunteers } from "../../Actions/FormActions";
+import React from 'react';
+import './VolunteerForm.scss';
+import { connect } from 'react-redux';
+import { addVolunteers } from '../../Actions/FormActions';
 
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
-// import headerImg from "../../Assests/Imgs/header.png";
-import logo from "../../Assests/Imgs/MM_Logo.png";
+import logo from '../../Assets/Imgs/MM_Logo.png';
 
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
-      fname: "",
-      lname: "",
-      email: "",
-      phone: "",
-      city: "",
-      state: "",
-      country: "",
-      comment: ""
+      fname: '',
+      lname: '',
+      email: '',
+      phone: '',
+      city: '',
+      state: '',
+      country: '',
+      comment: ''
     },
     newInterests: {
       volunteering: false,
       donating: false,
       joinmm: false,
       mediacoverage: false,
-      somethingelse: ""
+      somethingelse: ''
     }
   };
 
@@ -36,21 +35,21 @@ class VolunteerForm extends React.Component {
 
     this.setState({
       newVolunteer: {
-        fname: "",
-        lname: "",
-        email: "",
-        phone: "",
-        city: "",
-        state: "",
-        country: "",
-        comment: ""
+        fname: '',
+        lname: '',
+        email: '',
+        phone: '',
+        city: '',
+        state: '',
+        country: '',
+        comment: ''
       },
       newInterests: {
         volunteering: false,
         donating: false,
         joinmm: false,
         mediacoverage: false,
-        somethingelse: ""
+        somethingelse: ''
       }
     });
   };
@@ -166,7 +165,7 @@ class VolunteerForm extends React.Component {
                   value={this.state.newVolunteer.phone}
                   displayInitialValueAsLocalNumber={true}
                   country="US"
-                  countryOptions={["US", "CA", "AU", "|", "..."]}
+                  countryOptions={['US', 'CA', 'AU', '|', '...']}
                 />
               </div>
               <div className="formBox">
