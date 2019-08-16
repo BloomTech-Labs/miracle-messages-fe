@@ -12,7 +12,7 @@ import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
 // Icon imports
 // import facebook from "../../icons/facebook.png";
 // import google from "../../icons/google.png";
-import gmail from '../../Assests/icons/gmail.png';
+import gmail from "../../Assests/icons/gmail.png";
 
 // CSS imports
 import "../../CSS/city_info.css";
@@ -41,7 +41,7 @@ class CityInfo extends PureComponent {
             height="200px"
             width="100%"
           />
-          <div className="title">Miracle Messages {info.location}</div>
+          <div className="title">Miracle Messages {info.city}</div>
           <div className="date">Est. 8/12/2019</div>
         </div>
 
@@ -57,25 +57,11 @@ class CityInfo extends PureComponent {
           </p>
         </div>
 
-        {/* Contains the chapters message, and contact info */}
+        {/* Contains the chapters message */}
         <div className="chapterDetails">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        </div>
-
-        <div>
-          <a
-            href="https://miraclemessages.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact"
-          >
-            <span>
-              <img src={gmail} alt="gmail logo" className="gmailLogo" />
-            </span>
-            <span className="email">aMiracle@miraclemessages.org</span>
-          </a>
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
         </div>
 
         {/* Links out */}
@@ -97,55 +83,52 @@ class CityInfo extends PureComponent {
           </button>
         </div>
 
-        {/* <div className="buttons">
+        {/* Contains the featured reunioun story */}
+        <div className="featuredReunion">
+          <h2>FEATURED REUNION STORY</h2>
+          <img
+            src="https://funattic.com/wp-content/uploads/2016/08/youth-group-icebreakers.jpg"
+            alt="Chapter"
+            height="200px"
+            width="100%"
+          />
+          <div className="reunionStory">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            ipsum dolor sit amet, consectetur adipiscing elit. Do eiusmod tempor
+            incididunt.
+          </div>
           <a
-            href="https://miracle-messages-staging.netlify.com/form"
+            href="https://miraclemessages.org/stories"
             target="_blank"
             rel="noopener noreferrer"
+            className="stories"
           >
-            Join Chapter
+            See all reunion stories
           </a>
         </div>
 
+        {/* Contains the contact info */}
         <div>
-          <p>
-            Volunteers <span className="number">{info.numvolunteers}</span>
-          </p>
-          <p>Delivered Messages</p>
-          <p>Reunions</p>
+          <a
+            href="https://miraclemessages.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact"
+          >
+            <span>
+              <img src={gmail} alt="gmail logo" className="gmailLogo" />
+            </span>
+            <span className="email">aMiracle@miraclemessages.org</span>
+          </a>
         </div>
-        <div>
-          <a
-            href="https://www.facebook.com/miraclemessages/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Facebook
-            <span>
-              <img src={facbook} alt="facbook logo" />
-            </span>
-          </a>
-          <a
-            href="https://miraclemessages.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google Hangout
-            <span>
-              <img src={google} alt="google logo" />
-            </span>
-          </a>
-          <a
-            href="https://miraclemessages.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contact
-            <span>
-              <img src={gmail} alt="gmail logo" />
-            </span>
-          </a>
-        </div> */}
+
+        {/* Contains the Sponser Images */}
+        <div className="sponsorImages">
+          <h2>SPONSORS</h2>
+          {/* some images required */}
+        </div>
       </div>
     );
   }

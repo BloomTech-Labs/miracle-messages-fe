@@ -68,11 +68,10 @@
 }
 
 .chapterDetails {
-  padding: 20px 25px;
+  padding: 20px 25px 0px 25px;
   font-size: 13px;
   letter-spacing: 0.73px;
   line-height: 18px;
-  border-bottom: #d8d8d8 solid 0.25px;
 }
 
 .contact {
@@ -89,7 +88,7 @@
 }
 
 .gmailLogo {
-  width: 25px;
+  width: 18px;
   padding-right: 10px;
 }
 
@@ -98,8 +97,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 0px 10px;
   font-size: 16px;
+  border-bottom: #d8d8d8 solid 0.25px;
+  padding-bottom: 20px;
 }
 
 .green {
@@ -133,65 +134,40 @@
   letter-spacing: 0.9px;
 }
 
-/* button {
-    width: 80%;
+.featuredReunion {
+  font-family: ProximaNova;
+  padding: 0px 25px 10px;
+  font-size: 13px;
+  letter-spacing: 0.73px;
+  line-height: 16px;
+  border-bottom: #d8d8d8 solid 0.25px;
 }
 
-.buttons a {
-  background: #5cbe80;
-  margin-right: 20px;
-  border: none;
-  border: 1px #979797 solid;
-  padding: 2.1px 15px;
+.featuredReunion h2 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  line-height: 20px;
+}
+
+.reunionStory {
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+.stories {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.73px;
+  line-height: 16px;
   text-decoration: none;
-  border-radius: 1px;
-}
-
-.buttons a:hover {
   color: black;
-  transition: 0.6s;
-  border: 2px solid white;
-  transition: 0.4s;
 }
 
-.buttons button:last-child {
-  background: #484747;
-  border: 1px #979797 solid;
-  border-radius: 1px;
+.sponsorImages h2{
+  padding: 0px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  line-height: 20px;
 }
-
-.buttons button:last-child:hover {
-  border: 2px solid white;
-  transition: 0.4s;
-}
-
-.buttons button,
-.buttons .green {
-  font-family: "Open Sans", sans-serif;
-  letter-spacing: 0.5px;
-  margin-top: 10px;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  height: 23px;
-  width: 105px;
-  outline: none;
-  cursor: pointer;
-}
-
-.buttons .white {
-  font-family: "Open Sans", sans-serif;
-  letter-spacing: 0.5px;
-  margin-top: 10px;
-  color: #5cbe80;
-  background: white;
-  border: 1px #5cbe80 solid;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  height: 23px;
-  width: 105px;
-  outline: none;
-  cursor: pointer;
-} */
