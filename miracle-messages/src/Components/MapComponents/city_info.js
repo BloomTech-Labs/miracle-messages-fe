@@ -68,7 +68,7 @@ class CityInfo extends PureComponent {
     return (
       <div className="popup">
         <div className="info">
-          <h3>{info.location.toUpperCase()}</h3>
+          <h3>{info.title.toUpperCase()}</h3>
           {display}
         </div>
 

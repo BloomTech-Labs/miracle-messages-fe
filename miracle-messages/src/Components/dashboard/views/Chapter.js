@@ -28,7 +28,6 @@ class Chapter extends Component {
   };
 
   toggleEdit = () => {
-    console.log('here');
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
     }));
@@ -37,15 +36,19 @@ class Chapter extends Component {
     return (
       <Card className="cardChapter">
         <CardImg top width="100%" className="chapterImg" src={img1} />
+        {/* <CardImg
+          top
+          width="100%"
+          className="chapterImg"
+          src={this.props.info.chapter_img_url}
+        /> */}
+
         <CardBody>
-          <CardTitle>{this.props.info.location}</CardTitle>
+          <CardTitle>{this.props.info.title}</CardTitle>
           <CardSubtitle>
             Volunteers: {this.props.info.numvolunteers}
           </CardSubtitle>
-          <CardText>
-            test test test test test test test test test test test test test
-            test test test
-          </CardText>
+          <CardText>{this.props.info.description}</CardText>
           <Button style={{ marginRight: '10px' }} onClick={this.toggleEdit}>
             Edit
           </Button>
@@ -76,9 +79,11 @@ class Chapter extends Component {
               </Button>
             </ModalFooter>
           </Modal>
+
           <Button color="danger" onClick={this.toggle}>
             Delete
           </Button>
+
           <Modal
             isOpen={this.state.modal}
             toggle={this.toggle}

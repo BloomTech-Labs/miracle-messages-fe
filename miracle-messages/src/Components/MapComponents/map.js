@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import MapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
-import DeckGL from "deck.gl";
-import CityPin from "./city_pin";
-import CityInfo from "./city_info";
-import "mapbox-gl/dist/mapbox-gl.css";
+import React, { Component } from 'react';
+import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
+import DeckGL from 'deck.gl';
+import CityPin from './city_pin';
+import CityInfo from './city_info';
+import 'mapbox-gl/dist/mapbox-gl.css';
 //import './CSS/MapGl.css';
-import { getData } from "../../Actions/index";
-import { updatePopupAction } from "../../Actions/updatePopupAction";
-import { learnMoreAction } from "../../Actions/learnMoreAction";
-import { connect } from "react-redux";
+import { getData } from '../../Actions/index';
+import { updatePopupAction } from '../../Actions/updatePopupAction';
+import { learnMoreAction } from '../../Actions/learnMoreAction';
+import { connect } from 'react-redux';
 
-require("dotenv").config();
+require('dotenv').config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
-const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
+const STYLE = 'mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1';
 
 class Map extends Component {
   //this fetches the data from the backend
@@ -91,7 +91,7 @@ class Map extends Component {
           dragRotate={false}
         >
           <div
-            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>

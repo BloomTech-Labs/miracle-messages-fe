@@ -1,37 +1,37 @@
-import Starter from '../views/starter.js';
 import Volunteers from '../views/Volunteers.js';
 import Chapters from '../views/Chapters.js';
+import Sponsors from '../views/Sponsors/Sponsors.js';
 
 let ThemeRoutes = [
-  {
-    path: '/admin/dashboard',
-    name: 'Dashboard',
-    icon: 'fas fa-tachometer-alt',
-    component: Starter
-  },
-  {
-    path: '/admin/volunteers',
-    name: 'volunteers',
-    icon: 'fas fa-hands-helping',
-    component: Volunteers
-  },
   {
     path: '/admin/chapters',
     name: 'Chapters',
     icon: 'fas fa-building',
     component: Chapters
   },
-  // {
-  //   path: '/admin/admins',
-  //   name: 'Admins',
-  //   icon: 'fas fa-user-shield',
-  //   component: Admins
-  // },
+  {
+    path: '/admin/volunteers',
+    name: 'Volunteers',
+    icon: 'fas fa-users',
+    component: Volunteers
+  },
 
   {
+    path: '/admin/sponsors',
+    name: 'Sponsors',
+    icon: 'fas fa-hands-helping',
+    component: Sponsors
+  },
+  // {
+  //   path: '/admin/dashboard',
+  //   name: 'Dashboard',
+  //   icon: 'fas fa-tachometer-alt',
+  //   component:
+  // },
+  {
     path: '/admin',
-    pathTo: 'admin/dashboard',
-    name: 'Dashboard',
+    pathTo: 'admin/chapters',
+    name: 'Chapters',
     redirect: true
   }
 ];
