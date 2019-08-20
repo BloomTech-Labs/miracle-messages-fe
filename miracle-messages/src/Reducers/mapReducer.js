@@ -16,10 +16,31 @@ const initialState = {
     pitch: 0
   },
   chapter_data: [], //this gets populated with componentDidMount
-  popupInfo: null, //null means no pop-ups are being rendered for any of the cities
+  popupInfo: {
+    id: 17,
+    city: "San Francisco",
+    numvolunteers: 77,
+    longitude: -122.431297,
+    latitude: 37.773972,
+    state: "CA",
+    title: "San Francisco",
+    numreunions: 10,
+    msg_recorded: 75,
+    msg_delivered: 25,
+    chapter_img_url:
+      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    reunion_img_url:
+      "https://images.unsplash.com/photo-1503430410-6d2432cf3278?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    established_date: "08/13/2005",
+    description:
+      "Lorem ipsum dolor sit amet, vim ea probo posse, te erant semper delectus mea. Ne dolorum officiis iracundia his. Expetenda definiebas id vel, munere constituto in sed. Ad est wisi forensibus, ad sed dolore propriae neglegentur, augue debitis quo ad. Agam bonorum his ad",
+    story:
+      "Lorem ipsum dolor sit amet, vim ea probo posse, te erant semper delectus mea. Ne dolorum officiis iracundia his. Expetenda definiebas id vel, munere constituto in sed. Ad est wisi forensibus, ad sed dolore propriae neglegentur, augue debitis quo ad. Agam bonorum his ad",
+    email: "john@miracle-messages.com"
+  }, //null means no pop-ups are being rendered for any of the cities
   fetching: false,
   error: null, //learn more is a toggleinside the pop-ups
-  openDrawer: false
+  openDrawer: true
 };
 
 export const mapReducer = (state = initialState, action) => {
@@ -67,7 +88,7 @@ export const mapReducer = (state = initialState, action) => {
         ...state,
         viewport: action.payload
       };
-      
+
     default:
       return state;
   }
