@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 
-// Material UI imports
-import { IconButton, Button } from "@material-ui/core";
-import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
-
 // Icon imports
 // import facebook from "../../icons/facebook.png";
 // import google from "../../icons/google.png";
@@ -19,30 +15,20 @@ import "../../CSS/city_info.css";
 
 class CityInfo extends PureComponent {
   render() {
-    const closeHandler = () => {
-      this.props.updatePopupAction(null);
-      this.props.slideToggleAction();
-    };
     const { info } = this.props;
 
     return (
       <div className="chapterInfo">
-        {/* IconButton = the close Slideout "circle" */}
-        <IconButton onClick={closeHandler}>
-          {/* the below is the actual arrow Icon that enables closing the drawer */}
-          <ArrowBackIosRounded />
-        </IconButton>
-
         {/* Contains the chapter picture, name, and estblish date */}
         <div className="chapterTitle">
           <img
-            src="https://funattic.com/wp-content/uploads/2016/08/youth-group-icebreakers.jpg"
+            src={info.chapter_img_url}
             alt="Chapter"
             height="200px"
             width="100%"
           />
           <div className="title">Miracle Messages {info.city}</div>
-          <div className="date">Est. 8/12/2019</div>
+          <div className="date">{info.established_date}</div>
         </div>
 
         {/* Contains the chapter statisics; members/reunions */}
@@ -52,17 +38,13 @@ class CityInfo extends PureComponent {
             Members
           </p>
           <p className="reunions">
-            <span className="number">{info.numvolunteers}</span>
+            <span className="number">{info.numreunions}</span>
             Reunions
           </p>
         </div>
 
         {/* Contains the chapters message */}
-        <div className="chapterDetails">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
-        </div>
+        <div className="chapterDetails">{info.description}</div>
 
         {/* Links out */}
         <div className="buttons">
@@ -87,18 +69,12 @@ class CityInfo extends PureComponent {
         <div className="featuredReunion">
           <h2>FEATURED REUNION STORY</h2>
           <img
-            src="https://funattic.com/wp-content/uploads/2016/08/youth-group-icebreakers.jpg"
+            src={info.reunion_img_url}
             alt="Chapter"
             height="200px"
             width="100%"
           />
-          <div className="reunionStory">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            ipsum dolor sit amet, consectetur adipiscing elit. Do eiusmod tempor
-            incididunt.
-          </div>
+          <div className="reunionStory">{info.story}</div>
           <a
             href="https://miraclemessages.org/stories"
             target="_blank"
@@ -120,7 +96,7 @@ class CityInfo extends PureComponent {
             <span>
               <img src={gmail} alt="gmail logo" className="gmailLogo" />
             </span>
-            <span className="email">aMiracle@miraclemessages.org</span>
+            <span className="email">{info.email}</span>
           </a>
         </div>
 

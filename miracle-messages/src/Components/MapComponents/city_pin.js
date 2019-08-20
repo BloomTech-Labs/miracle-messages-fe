@@ -22,7 +22,7 @@ class CityPin extends PureComponent {
       this.props.updatePopupAction(this.props.city);
       this.props.slideToggleAction();
     };
-    const size = 20;
+    const size = 28;
 
     return (
       <svg

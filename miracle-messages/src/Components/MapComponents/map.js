@@ -2,38 +2,44 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 // Mapbox imports
-import MapGL, { Marker, NavigationControl } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import MapGL, { Marker, NavigationControl } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 // Custom file imports
-import CityPin from './city_pin';
-import CityInfo from './city_info';
+import CityPin from "./city_pin";
+import CityInfo from "./city_info";
 
 // Action imports
-import { getData } from '../../Actions/index';
-import { updatePopupAction } from '../../Actions/updatePopupAction';
+import { getData } from "../../Actions/index";
+import { updatePopupAction } from "../../Actions/updatePopupAction";
 
-import { slideToggleAction } from '../../Actions/SlideToggleAction';
-import { onViewportChanged } from '../../Actions/OnViewportAction';
+import { slideToggleAction } from "../../Actions/SlideToggleAction";
+import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from "@material-ui/core/Drawer";
+import { IconButton } from "@material-ui/core";
+import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
+import { Cancel } from "@material-ui/icons";
+
+// Scrollbar import
+import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
-import ReactGA from 'react-ga';
-import { gaEvent } from '../Analytics/GAFunctions'; //enable event tracking
+import ReactGA from "react-ga";
+import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
-require('dotenv').config();
+require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
-const STYLE = 'mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1';
+const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 
 // Google Analytics:
 //this initializes GA
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
 //This tracks the page views on this component/path
-ReactGA.pageview('/map');
+ReactGA.pageview("/map");
 
 class Map extends Component {
   //this fetches the data from the backend:
@@ -51,13 +57,18 @@ class Map extends Component {
       >
         <div
           onClick={() =>
-            gaEvent('click', 'city marker', 'Click city marker pin')
+            gaEvent("click", "city marker", "Click city marker pin")
           }
         >
           <CityPin city={city} />
         </div>
       </Marker>
     );
+  };
+
+  closeHandler = () => {
+    this.props.updatePopupAction(null);
+    this.props.slideToggleAction();
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -72,7 +83,23 @@ class Map extends Component {
             variant="persistent"
             className="slide"
           >
-            <CityInfo info={popupInfo} />
+            <IconButton
+              onClick={this.closeHandler}
+              style={{
+                position: "absolute",
+                right: "0",
+                zIndex: "99",
+                color: "black",
+                background: "whitesmoke",
+                width: "2px",
+                height: "2px"
+              }}
+            >
+              <Cancel style={{ position: "absolute", right: "0" }} />
+            </IconButton>
+            <Scrollbars style={{ width: 376 }} autoHide={true}>
+              <CityInfo info={popupInfo} />
+            </Scrollbars>
           </Drawer>
         </div>
       )
@@ -107,13 +134,13 @@ class Map extends Component {
           dragRotate={false}
         >
           <div
-            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>
           {this.props.chapter_data.map(this._renderCityMarker)}
-          {this._renderSlide()}
         </MapGL>
+        {this._renderSlide()}
       </div>
     );
   }
