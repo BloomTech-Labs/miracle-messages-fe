@@ -12,14 +12,12 @@ import CityInfo from "./city_info";
 // Action imports
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
-
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
 import Drawer from "@material-ui/core/Drawer";
 import { IconButton } from "@material-ui/core";
-import ArrowBackIosRounded from "@material-ui/icons/ArrowBackIosRounded";
 import { Cancel } from "@material-ui/icons";
 
 // Scrollbar import
@@ -47,6 +45,11 @@ class Map extends Component {
     this.props.getData();
   }
 
+  // to handle the GA events and hopefully the auto zoom
+  _onClickGA = e => {
+    gaEvent("click", "city marker", "Click city marker pin");
+  };
+
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
@@ -55,13 +58,7 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <div
-          onClick={() =>
-            gaEvent("click", "city marker", "Click city marker pin")
-          }
-        >
-          <CityPin city={city} />
-        </div>
+        <CityPin city={city} />
       </Marker>
     );
   };
@@ -89,8 +86,8 @@ class Map extends Component {
                 position: "absolute",
                 right: "0",
                 zIndex: "99",
-                color: "black",
-                background: "whitesmoke",
+                color: "whitesmoke",
+                background: "black",
                 width: "2px",
                 height: "2px"
               }}
