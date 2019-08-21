@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   Card,
   CardImg,
@@ -13,7 +14,6 @@ import {
   ModalFooter,
   Input
 } from 'reactstrap';
-import img1 from '../../../Assets/Imgs/group.jpg';
 
 class Chapter extends Component {
   state = {
@@ -32,16 +32,22 @@ class Chapter extends Component {
       modalEdit: !prevState.modalEdit
     }));
   };
+
+  deleteChapt = () =>{
+    this.toggle();
+    this.props.deleteChapter(this.props.info.id);
+  }
+  
+
   render() {
     return (
       <Card className="cardChapter">
-        <CardImg top width="100%" className="chapterImg" src={img1} />
-        {/* <CardImg
+        <CardImg
           top
           width="100%"
           className="chapterImg"
           src={this.props.info.chapter_img_url}
-        /> */}
+        />
 
         <CardBody>
           <CardTitle>{this.props.info.title}</CardTitle>
@@ -94,7 +100,7 @@ class Chapter extends Component {
               Are you sure you want to permanently delete this Chapter?
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onClick={this.toggle}>
+              <Button color="danger" onClick={this.deleteChapt}>
                 Delete
               </Button>{' '}
               <Button color="secondary" onClick={this.toggle}>
