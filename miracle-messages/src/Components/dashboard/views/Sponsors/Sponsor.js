@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
 import axios from 'axios';
-class Sponsor extends Component {
+import {deleteSponsor} from '../../../../Actions/index';
+import { connect } from 'react-redux';
 
-  state = {
-    modal: false,
-    editModal: false,
-    sponsor: {
-      id: "",
-      name: "",
-      site_url: "",
-      icon_url: null
+
+class Sponsor extends Component {
+  constructor(props) {
+        super(props);
+        this.state = {
+            modal: false,
+            sponsor: {
+                name: '',
+                site_url: '',
+                icon_url: null
+            }
+        };
     }
+
+
+  delete = () => {
+    const id = this.props.sponsor.id;
+    console.log(id);
+    axios
+      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+      .then( res => {
+        this.toggle()
+      })
+      .catch(err => (console.log(err)));
   };
 
-  handleDelete = e => {
-        e.preventDefault();
-        axios
-          .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${this.state.id}`)
-          .then(res => (console.log(res.data)))
-          .catch(err => console.log(err));
-         
-    }
-
+  
 
   toggle = () => {
     this.setState(prevState => ({
@@ -35,9 +43,11 @@ class Sponsor extends Component {
       editModal: !prevState.editModal
     }));
   };
-  render() {
+  render()  {
+    console.log(this.props.sponsor);
     return (
       <>
+    
         <Card className="partnersCard">
           <CardBody>
             <CardTitle className="mb-0">
@@ -79,7 +89,7 @@ class Sponsor extends Component {
             <ModalFooter>
               <Button color="primary" onClick={this.toggleEdit}>
                 Update
-              </Button>{' '}
+              </Button>
               <Button color="secondary" onClick={this.toggleEdit}>
                 Cancel
               </Button>
@@ -102,11 +112,11 @@ class Sponsor extends Component {
             <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
             <ModalBody>
               Are you sure you want to permanently delete this Sponsor?
-              Will Be deleted from all the Chapters!!!
+              Will Be Deleted From All The Chapters!!!
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onClick={this.handleDelete}>
-                Delete
+              <Button color="danger" onClick={this.delete}>
+                DeleteS
               </Button>{' '}
               <Button color="secondary" onClick={this.toggle}>
                 Cancel
@@ -119,4 +129,10 @@ class Sponsor extends Component {
     );
   }
 }
-export default Sponsor;
+
+const mapStateToProps = (state) => {
+  return {
+    sponsorData: state.partnerReducer.sponsorData,
+  }  
+}
+export default connect(mapStateToProps, {deleteSponsor})(Sponsor);

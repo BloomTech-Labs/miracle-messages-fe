@@ -25,9 +25,13 @@ class Sponsors extends React.Component {
     addSponsor = e => {
         e.preventDefault();
         console.log(this.state.sponsor);
+        const fd = new FormData();
+        fd.append("partner_icon", this.state.sponsor.icon_url )
+        fd.append("name", this.state.sponsor.name)
+        fd.append("site_url", this.state.sponsor.site_url)
         axios
-          .post('https://miracle-messages-staging.herokuapp.com/api/partner', this.state.sponsor)
-          .then(res=> console.log(res))
+          .post('https://miracle-messages-staging.herokuapp.com/api/partner', fd)
+          .then(res=> console.log("res",res))
           .catch(err=> console.log(err));
           this.setState({
               sponsor: {
@@ -38,15 +42,26 @@ class Sponsors extends React.Component {
           });
     };
 
-    // deleteSponsor = e => {
-    //     e.preventDefault();
-    //     axios
-    //       .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
-    //       .then(res => console.log(this.state))
-    //       .catch(err => console.log(err));
-    //       return this.props.getSponsor();
-    // }
+    update = () => {
+    const id = this.props.sponsor.id;
+    const fd = new FormData();
+        fd.append("partner_icon", this.state.sponsor.icon_url )
+        fd.append("name", this.state.sponsor.name)
+        fd.append("site_url", this.state.sponsor.site_url)
+    console.log(id);
+    axios
+     .update(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
+     .then(res=> console.log("res",res))
+      .catch(err=> console.log(err));
+       this.setState({
+              sponsor: {
+                  name: "",
+                  site_url: "",
+                  icon_url: null
+              }
+          });
 
+  }
     
      handleImg = e => {
          this.setState({

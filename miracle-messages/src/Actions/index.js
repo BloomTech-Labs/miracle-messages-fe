@@ -7,6 +7,10 @@ export const FETCHING_PARTNER = 'FETCHING_PARTNER';
 export const FETCH_PARTNER_SUCCCESS = 'FETCH_PARTNER_SUCCESS';
 export const FETCH_PARTNER_ERR = 'FETCH_PARTNER_ERR';
 
+export const DELETE_PARTNER = "DELETE_PARTNER";
+export const DELETE_PARTNER_SUCCESS = "DELETE_PARTNER_SUCCESS";
+export const DELETE_PARTNER_ERR = "DELETE_PARTNER_ERR";
+
 
 const URL = 'https://miracle-messages-staging.herokuapp.com/api';
 
@@ -19,7 +23,7 @@ export const getData = () => dispatch => {
    .catch(err => dispatch({type: FETCH_CHAPTER_FAIL}));
 }
 
-// // get pull partners data from the back-end
+// //  pull partners data from the back-end
 
 export const getSponsor = (data) => dispatch => {
    dispatch({type: FETCHING_PARTNER});
@@ -29,4 +33,17 @@ export const getSponsor = (data) => dispatch => {
           .catch(err => dispatch({
              type: FETCH_PARTNER_ERR, payload: err
           }));
+}
+
+export const deleteSponsor = ( id) => dispatch => {
+   dispatch({type: DELETE_PARTNER});
+   axios
+     .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+     .then(res => {
+        dispatch({type: DELETE_PARTNER_SUCCESS, payload: res.data});
+        getSponsor();
+     })
+     .catch(err => {
+        dispatch({type: DELETE_PARTNER_ERR})
+     });
 }

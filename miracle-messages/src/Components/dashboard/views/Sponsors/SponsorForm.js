@@ -24,7 +24,7 @@ class SponsorForm extends React.Component {
                 <br/>
                 <Label>Logo</Label>
                 <Input
-                value={this.props.sponsor.icon_img}
+                
                 onChange={this.props.handleImg}
                 name="icon_url"
                 type="file"
