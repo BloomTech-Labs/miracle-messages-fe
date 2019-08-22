@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import WebMercatorViewport from "viewport-mercator-project";
+import {LinearInterpolator} from 'react-map-gl';
 
 // Action imports
 import { updatePopupAction } from "../../Actions/updatePopupAction";
@@ -26,12 +27,12 @@ class CityPin extends PureComponent {
     const viewport = new WebMercatorViewport({
       latitude: this.props.city.latitude,
       longitude: this.props.city.longitude,
-      zoom: 12
+      zoom: 12,
+      transitionInterpolator: new LinearInterpolator({ around: [this.props.city.latitude, this.props.city.longitude] }),
+      transitionDuration: 1000
     });
 
     this.props.onViewportChanged(viewport);
-
-    console.log("hello");
     };
     const size = 28;
 
