@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
-
+import axios from 'axios';
 class Sponsor extends Component {
 
   state = {
     modal: false,
-    editModal: false
+    editModal: false,
+    sponsor: {
+      id: "",
+      name: "",
+      site_url: "",
+      icon_url: null
+    }
   };
+
+  handleDelete = e => {
+        e.preventDefault();
+        axios
+          .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${this.state.id}`)
+          .then(res => (console.log(res.data)))
+          .catch(err => console.log(err));
+         
+    }
+
 
   toggle = () => {
     this.setState(prevState => ({
@@ -86,9 +102,10 @@ class Sponsor extends Component {
             <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
             <ModalBody>
               Are you sure you want to permanently delete this Sponsor?
+              Will Be deleted from all the Chapters!!!
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onClick={this.toggle}>
+              <Button color="danger" onClick={this.handleDelete}>
                 Delete
               </Button>{' '}
               <Button color="secondary" onClick={this.toggle}>

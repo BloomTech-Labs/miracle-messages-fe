@@ -37,6 +37,17 @@ class Sponsors extends React.Component {
               }
           });
     };
+
+    // deleteSponsor = e => {
+    //     e.preventDefault();
+    //     axios
+    //       .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+    //       .then(res => console.log(this.state))
+    //       .catch(err => console.log(err));
+    //       return this.props.getSponsor();
+    // }
+
+    
      handleImg = e => {
          this.setState({
              sponsor: {
