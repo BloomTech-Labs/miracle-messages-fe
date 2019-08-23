@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: ProximaNova;
-  src: url("../Assests/ProximaNova.otf");
+  src: url('../Assets/ProximaNova.otf');
 }
 
 @font-face {
@@ -94,6 +94,7 @@
   /* text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white; */
 }
 
+
 .info {
   font-size: 18px;
   line-height: 10px;
@@ -106,7 +107,7 @@
   margin-top: -3px;
   margin-bottom: 20px;
   color: #ffffff;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   font-weight: 800;
   letter-spacing: 1.54px;
@@ -125,7 +126,7 @@
   justify-content: space-between;
   margin: 8px 8px 8px 0;
   color: #ffffff;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .info a:hover {

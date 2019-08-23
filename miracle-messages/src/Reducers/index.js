@@ -5,6 +5,8 @@ import { loginReducer } from './LoginReducer';
 import { ChapterReducer } from './ChapterReducer';
 import { volunteersReducer} from './VolunteersReducer';
 import { usersReducer } from './UserReducer';
+import { partnerReducer } from './partnerReducer';
+
 
 
 
@@ -14,5 +16,6 @@ export default combineReducers({
     loginReducer,
     ChapterReducer,
     volunteersReducer,
-    usersReducer
+    usersReducer,
+    partnerReducer
  });

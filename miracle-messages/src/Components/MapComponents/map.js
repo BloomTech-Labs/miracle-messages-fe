@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
@@ -29,7 +30,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
-require("dotenv").config();
+require('dotenv').config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -140,7 +141,7 @@ class Map extends Component {
           dragRotate={false}
         >
           <div
-            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>

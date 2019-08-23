@@ -1,3 +1,4 @@
+
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
@@ -99,6 +100,7 @@ class CityInfo extends PureComponent {
             <span className="email">{info.email}</span>
           </a>
         </div>
+
 
         {/* Contains the Sponser Images */}
         <div className="sponsorImages">
