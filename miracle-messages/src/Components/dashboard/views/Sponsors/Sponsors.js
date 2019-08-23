@@ -1,105 +1,114 @@
-import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, Button, CardImg } from 'reactstrap';
+import React from 'react';
+import axios from 'axios';
 
-class Volunteer extends Component {
-  render() {
-    return (
-      <>
-        <Card>
-          <CardBody>
-            <CardTitle className="mb-0">
-              <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-              The Salvation Army
-            </CardTitle>
-          </CardBody>
-          <CardBody className="border-top">
-            <CardImg
-              src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/The_Salvation_Army.svg/200px-The_Salvation_Army.svg.png"
-              style={{ heigh: '50px', width: '50px' }}
-            />
+import Sponsor from './Sponsor'
+import {getSponsor} from '../../../../Actions/index';
+import SponsorForm from '../Sponsors/SponsorForm';
+import { connect } from 'react-redux';
 
-            <span style={{ marginLeft: '190px' }}>
-              http://www.salvationarmyusa.org
-            </span>
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-            <Button
-              style={{ width: '100px', right: '200px', position: 'absolute' }}
-            >
-              Update
-            </Button>
-            <Button
-              color="danger"
-              style={{ width: '100px', right: '60px', position: 'absolute' }}
-            >
-              Delete
-            </Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <CardTitle className="mb-0">
-              <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-              Lambda School
-            </CardTitle>
-          </CardBody>
-          <CardBody className="border-top">
-            <CardImg
-              src="https://pbs.twimg.com/profile_images/1146473233895440384/p97lN1Jk.png"
-              style={{ heigh: '50px', width: '50px' }}
-            />
 
-            <span style={{ marginLeft: '190px' }}>
-              https://lambdaschool.com/
-            </span>
+class Sponsors extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal: false,
+            sponsor: {
+                name: '',
+                site_url: '',
+                icon_url: null
+            }
+        };
+    }
 
-            <Button
-              style={{ width: '100px', right: '200px', position: 'absolute' }}
-            >
-              Update
-            </Button>
-            <Button
-              color="danger"
-              style={{ width: '100px', right: '60px', position: 'absolute' }}
-            >
-              Delete
-            </Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <CardTitle className="mb-0">
-              <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-              Lending Club
-            </CardTitle>
-          </CardBody>
-          <CardBody className="border-top">
-            <CardImg
-              src="http://pattymccord.com/wp-content/uploads/2017/12/Lending-Club-Logo.jpg"
-              style={{ heigh: '50px', width: '50px' }}
-            />
+    addSponsor = e => {
+        e.preventDefault();
+        console.log(this.state.sponsor);
+        axios
+          .post('https://miracle-messages-staging.herokuapp.com/api/partner', this.state.sponsor)
+          .then(res=> console.log(res))
+          .catch(err=> console.log(err));
+          this.setState({
+              sponsor: {
+                  name: "",
+                  site_url: "",
+                  icon_url: null
+              }
+          });
+    };
+     handleImg = e => {
+         this.setState({
+             sponsor: {
+                 ...this.state.sponsor,
+                 [e.target.name]: e.target.files[0]
+             }
+         });
+     };
 
-            <span style={{ marginLeft: '190px' }}>
-              https://www.lendingclub.com/
-            </span>
+     handleInputChange = e => {
+         this.setState({
+             sponsor: {
+                 ...this.state.sponsor,
+                 [e.target.name]: e.target.value
+             }
+         });
+     };
 
-            <Button
-              style={{ width: '100px', right: '200px', position: 'absolute' }}
-            >
-              Update
-            </Button>
-            <Button
-              color="danger"
-              style={{ width: '100px', right: '60px', position: 'absolute' }}
-            >
-              Delete
-            </Button>
-          </CardBody>
-        </Card>
-        <Button className="addBtn" onClick={this.toggle}>
-          +
-        </Button>
-      </>
-    );
-  }
+     toggle = () => {
+         this.setState(prevState => ({
+             modal: !prevState.modal
+         }));
+     };
+    
+
+    componentDidMount() {
+      this.props.getSponsor();
+    }
+    render() {
+        return (
+            <div>
+                {this.props.sponsorData.map(sponsor => {console.log(sponsor);
+                    return < Sponsor sponsor={sponsor} key={sponsor.id} />
+                })}
+                <Button className="addBtn" onClick={this.toggle}>
+                   +
+                </Button>
+                <Modal
+                isOpen={this.state.modal}
+                toggle={this.toggle}
+                className={this.props.className}
+                backdrop="static"
+                >
+                <ModalHeader toggle={this.toggle}>Add Sponsor</ModalHeader>
+                <ModalBody>
+                    <SponsorForm
+                    change={this.handleInputChange}
+                    sponsor={this.state.sponsor}
+                    handleImg={this.handleImg}
+                    />
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="success" onClick={this.addSponsor}>
+                        Add Sponsor
+                    </Button>{' '}
+                    <Button color="secondary" onClick={this.toggle}>
+                        Cancel
+                    </Button>
+                </ModalFooter>
+                </Modal>
+            </div>
+        );
+    }
 }
-export default Volunteer;
+
+const mapStateToProps = state => {
+    return {
+        sponsorData: state.partnerReducer.sponsorData
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    {getSponsor}
+)(Sponsors);

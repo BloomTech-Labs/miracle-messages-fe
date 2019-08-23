@@ -43,6 +43,7 @@ class Header extends React.Component {
             <a
               className="nav-toggler d-block d-md-none"
               onClick={this.showMobilemenu}
+              href=""
             >
               <i className="fas fa-bars" />
             </a>

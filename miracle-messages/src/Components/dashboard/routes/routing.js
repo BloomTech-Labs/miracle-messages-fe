@@ -17,7 +17,7 @@ let ThemeRoutes = [
   },
 
   {
-    path: '/admin/sponsors',
+    path: '/admin/Sponsors',
     name: 'Sponsors',
     icon: 'fas fa-hands-helping',
     component: Sponsors
