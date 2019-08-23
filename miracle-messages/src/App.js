@@ -10,14 +10,14 @@ import './CSS/style.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Route exact path="/" component={Map} />
-        <Route exact path="/form" component={VolunteerForm} />
-        <Route exact path="/login" component={LoginFrom} />
+      <div className='App'>
+        <Route exact path='/' component={Map} />
+        <Route exact path='/form' component={VolunteerForm} />
+        <Route exact path='/login' component={LoginFrom} />
         <Switch>
-          {indexRoutes.map((prop, key) => {
+          {indexRoutes.map((prop, index) => {
             return (
-              <Route path={prop.path} key={key} component={prop.component} />
+              <Route path={prop.path} key={index} component={prop.component} />
             );
           })}
         </Switch>
