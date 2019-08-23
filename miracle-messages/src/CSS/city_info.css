@@ -164,10 +164,21 @@
   color: black;
 }
 
-.sponsorImages h2{
-  padding: 0px 25px;
+.sponsors, .partners {
+  border-bottom: #d8d8d8 solid 0.25px;
+  margin-left: 25px;
+}
+
+.sponsors h2, .partners h2{
+  /* padding: 0px 25px; */
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.9px;
   line-height: 20px;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

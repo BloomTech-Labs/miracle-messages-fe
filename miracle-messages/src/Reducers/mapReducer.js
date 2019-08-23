@@ -37,6 +37,7 @@ const initialState = {
     story:
       "Lorem ipsum dolor sit amet, vim ea probo posse, te erant semper delectus mea. Ne dolorum officiis iracundia his. Expetenda definiebas id vel, munere constituto in sed. Ad est wisi forensibus, ad sed dolore propriae neglegentur, augue debitis quo ad. Agam bonorum his ad",
     email: "john@miracle-messages.com"
+    
   }, //null means no pop-ups are being rendered for any of the cities
   fetching: false,
   error: null, //learn more is a toggleinside the pop-ups

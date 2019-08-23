@@ -101,9 +101,16 @@ class CityInfo extends PureComponent {
         </div>
 
         {/* Contains the Sponser Images */}
-        <div className='sponsorImages'>
+        <div className='sponsors'>
           <h2>SPONSORS</h2>
-          {/* some images required */}
+            
+              
+        </div>
+
+        {/* Contains the Partner Images */}
+        <div className='partners'>
+          <h2>PARTNERS</h2>
+          
         </div>
       </div>
     );
