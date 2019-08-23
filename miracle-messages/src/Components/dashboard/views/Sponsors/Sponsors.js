@@ -17,7 +17,8 @@ class Sponsors extends React.Component {
             sponsor: {
                 name: '',
                 site_url: '',
-                icon_url: null
+                icon_url: null,
+                category: ''
             }
         };
     }
@@ -37,32 +38,12 @@ class Sponsors extends React.Component {
               sponsor: {
                   name: "",
                   site_url: "",
-                  icon_url: null
+                  icon_url: null,
+                  category: ''
               }
           });
     };
 
-    update = () => {
-    const id = this.props.sponsor.id;
-    const fd = new FormData();
-        fd.append("partner_icon", this.state.sponsor.icon_url )
-        fd.append("name", this.state.sponsor.name)
-        fd.append("site_url", this.state.sponsor.site_url)
-    console.log(id);
-    axios
-     .update(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
-     .then(res=> console.log("res",res))
-      .catch(err=> console.log(err));
-       this.setState({
-              sponsor: {
-                  name: "",
-                  site_url: "",
-                  icon_url: null
-              }
-          });
-
-  }
-    
      handleImg = e => {
          this.setState({
              sponsor: {
@@ -112,6 +93,7 @@ class Sponsors extends React.Component {
                     change={this.handleInputChange}
                     sponsor={this.state.sponsor}
                     handleImg={this.handleImg}
+                    select={this.select}
                     />
                 </ModalBody>
                 <ModalFooter>

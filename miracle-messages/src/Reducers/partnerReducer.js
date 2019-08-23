@@ -4,7 +4,10 @@ import {
     FETCH_PARTNER_ERR,
     DELETE_PARTNER,
     DELETE_PARTNER_SUCCESS,
-    DELETE_PARTNER_ERR
+    DELETE_PARTNER_ERR,
+    PARTNER_UPDATE,
+    PARTNER_UPDATE_SUCCESS,
+    PARTNER_ERR
 }from '../Actions/index'
 
 const initialState = {
@@ -52,6 +55,24 @@ export const partnerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetching: false,
+                error: action.payload
+            }
+        case PARTNER_UPDATE:
+            return{
+                ...state,
+                fetching: true,
+                error: null
+            }
+        case PARTNER_UPDATE_SUCCESS:
+            return {
+                ...state,
+                sponsorData: action.payload,
+                fetching: false,
+                error:null
+            }
+        case PARTNER_ERR:
+            return {
+                ...state,
                 error: action.payload
             }
              default:

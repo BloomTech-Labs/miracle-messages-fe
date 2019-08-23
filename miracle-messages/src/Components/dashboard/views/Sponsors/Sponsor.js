@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
+import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
 import axios from 'axios';
-import {deleteSponsor} from '../../../../Actions/index';
+import {deleteSponsor, updateSponsor} from '../../../../Actions/index';
 import { connect } from 'react-redux';
 
 
@@ -10,10 +10,12 @@ class Sponsor extends Component {
         super(props);
         this.state = {
             modal: false,
+            dropdownOpen: false,
             sponsor: {
                 name: '',
                 site_url: '',
-                icon_url: null
+                icon_url: null,
+                category: ""
             }
         };
     }
@@ -30,6 +32,21 @@ class Sponsor extends Component {
       .catch(err => (console.log(err)));
   };
 
+  // updateSponsor = e => {
+  //       e.preventDefault();
+  //        const updated = this.state.sponsor;
+  //       const id = this.props.sponsor.id;
+  //       const fd = new FormData();
+  //       fd.append("partner_icon", this.state.sponsor.icon_url )
+  //       fd.append("name", this.state.sponsor.name)
+  //       fd.append("site_url", this.state.sponsor.site_url)
+  //       axios
+  //         .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
+  //         .then(res=> console.log("res",res))
+  //         .catch(err=> console.log(err));
+      
+  // };
+
   
 
   toggle = () => {
@@ -37,6 +54,18 @@ class Sponsor extends Component {
       modal: !prevState.modal
     }));
   };
+
+  toggleDrop = () => {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropDown
+    }));
+  };
+
+  select = () => {
+    this.setState(category => ({
+      category: category.select
+    }))
+  }
 
   toggleEdit = () => {
     this.setState(prevState => ({
@@ -87,7 +116,7 @@ class Sponsor extends Component {
               <Input value={this.props.icon_url} type="file"  />
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.toggleEdit}>
+              <Button color="primary" onClick={this.updateSponsor}>
                 Update
               </Button>
               <Button color="secondary" onClick={this.toggleEdit}>
@@ -135,4 +164,4 @@ const mapStateToProps = (state) => {
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }
-export default connect(mapStateToProps, {deleteSponsor})(Sponsor);
+export default connect(mapStateToProps, {deleteSponsor, updateSponsor})(Sponsor);

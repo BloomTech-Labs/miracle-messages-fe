@@ -1,8 +1,34 @@
 import React from 'react';
 
-import { Button, Input, Label } from 'reactstrap';
+import { Button, Input, Label, Dropdown, Container, DropdownToggle, DropdownMenu, DropdownItem,ButtonDropdown } from 'reactstrap';
+
+
 
 class SponsorForm extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.select = this.select.bind(this);
+        this.state = {
+          dropdownOpen: false,
+          
+        };
+    }  
+      
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+    select(event) {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      value: event.target.innerText,
+    });
+  }
+
     render() {
         return (
             <div>
@@ -23,12 +49,21 @@ class SponsorForm extends React.Component {
                 />
                 <br/>
                 <Label>Logo</Label>
-                <Input
-                
+                <Input                
                 onChange={this.props.handleImg}
                 name="icon_url"
                 type="file"
-                />
+                /><br/>
+                <h3>Choose your Interest:</h3>
+                <Container className="drop_down">
+                  <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                  <DropdownToggle>{this.state.value}</DropdownToggle>
+                    <DropdownMenu>
+                    <DropdownItem onClick={this.select} value={this.props.sponsor.category}>Sponsor</DropdownItem>
+                  <DropdownItem onClick={this.select} value={this.props.sponsor.category}>Partner</DropdownItem>
+                   </DropdownMenu>
+                  </ButtonDropdown>
+                </Container>
             </div>
         );
     }

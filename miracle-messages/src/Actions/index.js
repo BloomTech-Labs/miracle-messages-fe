@@ -11,6 +11,10 @@ export const DELETE_PARTNER = "DELETE_PARTNER";
 export const DELETE_PARTNER_SUCCESS = "DELETE_PARTNER_SUCCESS";
 export const DELETE_PARTNER_ERR = "DELETE_PARTNER_ERR";
 
+export const PARTNER_UPDATE = "PARTNER_UPDATE";
+export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS";
+export const PARTNER_ERR = "PARTNER_ERR";
+
 
 const URL = 'https://miracle-messages-staging.herokuapp.com/api';
 
@@ -47,3 +51,22 @@ export const deleteSponsor = ( id) => dispatch => {
         dispatch({type: DELETE_PARTNER_ERR})
      });
 }
+
+export const updateSponsor = (id, info) => dispatch => {
+   const updated = {
+       id: info.id,
+       name: info.name,
+       site_url: info.site_url,
+       icon_url: info.icon_url,
+       category: info.category
+   }
+   dispatch({type: PARTNER_UPDATE});
+   axios
+     .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, updated)
+     .then(e => {
+        dispatch({type:PARTNER_UPDATE_SUCCESS, payload: e.data})
+     })
+     .catch(err => {
+        dispatch({type: PARTNER_ERR})
+     });
+} 
