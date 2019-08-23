@@ -80,7 +80,7 @@ class Sponsor extends Component {
         <Card className="partnersCard">
           <CardBody>
             <CardTitle className="mb-0">
-              {/* <i className="mdi mdi-comment-processing-outline mr-2"> </i> */}
+              {/* <i className="mdi mdi-comment-processing-outline mr-2"> </i>jkdjkdjg */}
               {this.props.sponsor.name}
             </CardTitle>
           </CardBody>
@@ -132,7 +132,7 @@ class Sponsor extends Component {
             >
               Delete
             </Button>
-            
+          
             <Modal
             isOpen={this.state.modal}
             toggle={this.toggle}
