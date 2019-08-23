@@ -103,14 +103,42 @@ class CityInfo extends PureComponent {
         {/* Contains the Sponser Images */}
         <div className='sponsors'>
           <h2>SPONSORS</h2>
-            
-              
+          <div className='icons'>
+              {
+                info.partners
+                .filter(partner => partner.category === 'partner')
+                .map(partner => 
+                  <a href={partner.site_url}>
+                    <img
+                      src={partner.icon_url}
+                      alt="Icon"
+                      height="75px"
+                      width='57.71px' 
+                    />
+                  </a>
+                ) 
+              }
+          </div>  
         </div>
 
         {/* Contains the Partner Images */}
         <div className='partners'>
           <h2>PARTNERS</h2>
-          
+          <div className='icons'>
+            {info.partners
+                .filter(partner => partner.category === 'sponsor')
+                .map(sponsor => 
+                  <a href={sponsor.site_url}>
+                    <img
+                      src={sponsor.icon_url}
+                      alt="Icon"
+                      height="75px"
+                      width='57.71px' 
+                    />
+                  </a>
+                ) 
+              }
+          </div> 
         </div>
       </div>
     );
