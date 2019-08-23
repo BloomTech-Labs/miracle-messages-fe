@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import WebMercatorViewport from "viewport-mercator-project";
-import {LinearInterpolator} from 'react-map-gl';
+import { LinearInterpolator } from "react-map-gl";
 
 // Action imports
 import { updatePopupAction } from "../../Actions/updatePopupAction";
@@ -22,17 +22,19 @@ class CityPin extends PureComponent {
   render() {
     const PinClickHandler = () => {
       this.props.updatePopupAction(this.props.city);
-      this.props.slideToggleAction();      
-      
-    const viewport = new WebMercatorViewport({
-      latitude: this.props.city.latitude,
-      longitude: this.props.city.longitude,
-      zoom: 12,
-      transitionInterpolator: new LinearInterpolator({ around: [this.props.city.latitude, this.props.city.longitude] }),
-      transitionDuration: 1000
-    });
+      this.props.slideToggleAction();
 
-    this.props.onViewportChanged(viewport);
+      const viewport = new WebMercatorViewport({
+        latitude: this.props.city.latitude,
+        longitude: this.props.city.longitude,
+        zoom: 10,
+        transitionInterpolator: new LinearInterpolator({
+          around: [this.props.city.latitude, this.props.city.longitude]
+        }),
+        transitionDuration: 1000
+      });
+
+      this.props.onViewportChanged(viewport);
     };
     const size = 28;
 

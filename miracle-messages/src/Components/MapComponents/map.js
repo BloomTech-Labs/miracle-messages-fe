@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 // Mapbox imports
 import MapGL, { Marker, NavigationControl } from "react-map-gl";
+import WebMercatorViewport from "viewport-mercator-project";
+import { LinearInterpolator } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Custom file imports
@@ -66,6 +68,18 @@ class Map extends Component {
   closeHandler = () => {
     this.props.updatePopupAction(null);
     this.props.slideToggleAction();
+
+    const viewport = new WebMercatorViewport({
+      latitude: 40,
+      longitude: -91,
+      zoom: 3,
+      transitionInterpolator: new LinearInterpolator({
+        around: [this.latitude, this.longitude]
+      }),
+      transitionDuration: 1000
+    });
+
+    this._updateViewport(viewport);
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -107,11 +121,6 @@ class Map extends Component {
   _updateViewport = viewport => {
     this.props.onViewportChanged(viewport);
   };
-
-  //_zoomToCity will zoom into the searched or clicked city
-  // _zoomToCity = something => {
-
-  // }
 
   render() {
     const { viewport } = this.props;
