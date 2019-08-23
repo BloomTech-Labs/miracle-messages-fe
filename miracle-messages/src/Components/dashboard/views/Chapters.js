@@ -35,15 +35,30 @@ class Chapters extends React.Component {
 
   addChapter = e => {
     e.preventDefault();
-    console.log(this.state.chapter);
-    // const fd = new FormData();
-    // fd.append('img', this.state.chapter.chapter_img);
+    const fd = new FormData();
+    fd.append('chapter_img', this.state.chapter.chapter_img);
+    fd.append('reunion_img', this.state.chapter.reunion_img);
+    fd.append('title', this.state.chapter.title);
+    fd.append('established_date', this.state.chapter.established_date);
+    fd.append('description', this.state.chapter.description);
+    fd.append('city', this.state.chapter.city);
+    fd.append('state', this.state.chapter.state);
+    fd.append('latitude', this.state.chapter.latitude);
+    fd.append('longitude', this.state.chapter.longitude);
+    fd.append('email', this.state.chapter.email);
+    fd.append('numvolunteers', this.state.chapter.numvolunteers);
+    fd.append('msg_delivered', this.state.chapter.msg_delivered);
+    fd.append('msg_recorded', this.state.chapter.msg_recorded);
+    fd.append('numreunions', this.state.chapter.numreunions);
+    fd.append('story', this.state.chapter.story);
+
     axios
-      .post(
-        'https://miracle-messages-staging.herokuapp.com/api/chapter',
-        this.state.chapter
-      )
-      .then(res => console.log(res))
+      .post('https://miracle-messages-staging.herokuapp.com/api/chapter', fd)
+      .then(res => {
+        console.log(res);
+        this.toggle();
+        this.props.getData();
+      })
       .catch(err => console.log(err));
 
     this.setState({
@@ -74,7 +89,6 @@ class Chapters extends React.Component {
         [e.target.name]: e.target.files[0]
       }
     });
-    // console.log(this.state.chapter);
   };
 
   handleInputChange = e => {
@@ -93,25 +107,45 @@ class Chapters extends React.Component {
     }));
   };
 
+  deleteChapter = id => {
+    axios
+      .delete(
+        `https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`
+      )
+      .then(res => {
+        console.log('Deleted');
+        // this.setState({ state: this.state });
+        // this.forceUpdate();
+        this.props.getData();
+      })
+      .catch(err => console.log(err));
+  };
+
   componentDidMount() {
     this.props.getData();
   }
 
   render() {
     return (
-      <div className="chapter-felx">
+      <div className='chapter-felx'>
         {this.props.chapter_data.map(chapter => {
           // console.log(chapter);
-          return <Chapter info={chapter} key={chapter.id} />;
+          return (
+            <Chapter
+              info={chapter}
+              key={chapter.id}
+              deleteChapter={this.deleteChapter}
+            />
+          );
         })}
-        <Button className="addBtn" onClick={this.toggle}>
+        <Button className='addBtn' onClick={this.toggle}>
           +
         </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
-          backdrop="static"
+          backdrop='static'
         >
           <ModalHeader toggle={this.toggle}>Add Chapter</ModalHeader>
           <ModalBody>
@@ -122,10 +156,10 @@ class Chapters extends React.Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={this.addChapter}>
+            <Button color='success' onClick={this.addChapter}>
               Add Chapter
             </Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>
+            <Button color='secondary' onClick={this.toggle}>
               Cancel
             </Button>
           </ModalFooter>

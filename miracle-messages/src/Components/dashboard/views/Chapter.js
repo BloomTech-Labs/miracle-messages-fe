@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   Card,
   CardImg,
@@ -13,7 +14,8 @@ import {
   ModalFooter,
   Input
 } from 'reactstrap';
-import img1 from '../../../Assets/Imgs/group.jpg';
+
+import UpdateFrom from './Chapters/UpdateForm';
 
 class Chapter extends Component {
   state = {
@@ -32,16 +34,21 @@ class Chapter extends Component {
       modalEdit: !prevState.modalEdit
     }));
   };
+
+  deleteChapt = () => {
+    this.toggle();
+    this.props.deleteChapter(this.props.info.id);
+  };
+
   render() {
     return (
-      <Card className="cardChapter">
-        <CardImg top width="100%" className="chapterImg" src={img1} />
-        {/* <CardImg
+      <Card className='cardChapter'>
+        <CardImg
           top
-          width="100%"
-          className="chapterImg"
+          width='100%'
+          className='chapterImg'
           src={this.props.info.chapter_img_url}
-        /> */}
+        />
 
         <CardBody>
           <CardTitle>{this.props.info.title}</CardTitle>
@@ -56,31 +63,26 @@ class Chapter extends Component {
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}
             className={this.props.className}
-            backdrop="static"
+            backdrop='static'
           >
             <ModalHeader toggle={this.toggleEdit}>Add Chapter</ModalHeader>
             <ModalBody>
-              <Input value={this.props.info.location} placeholder="Title" />
-              <Input placeholder="Establishment Date" />
-              <div className="dropdown-divider" />
-              <Input placeholder="City" />
-              <Input placeholder="State" />
-              <div className="dropdown-divider" />
-              <Input placeholder="Longitude" />
-              <Input placeholder="Latitude" />
-              <div className="dropdown-divider" />
+              <UpdateFrom
+                toggleEdit={this.toggleEdit}
+                chapter={this.props.info}
+              />
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.toggleEdit}>
+              <Button color='primary' onClick={this.toggleEdit}>
                 Update
               </Button>{' '}
-              <Button color="secondary" onClick={this.toggleEdit}>
+              <Button color='secondary' onClick={this.toggleEdit}>
                 Cancel
               </Button>
             </ModalFooter>
           </Modal>
 
-          <Button color="danger" onClick={this.toggle}>
+          <Button color='danger' onClick={this.toggle}>
             Delete
           </Button>
 
@@ -94,10 +96,10 @@ class Chapter extends Component {
               Are you sure you want to permanently delete this Chapter?
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onClick={this.toggle}>
+              <Button color='danger' onClick={this.deleteChapt}>
                 Delete
               </Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>
+              <Button color='secondary' onClick={this.toggle}>
                 Cancel
               </Button>
             </ModalFooter>
