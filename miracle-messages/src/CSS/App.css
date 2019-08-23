@@ -11,12 +11,12 @@
 
 @font-face {
   font-family: ProximaNova_Bold;
-  src: url("../Assests/ProximaNova_Bold.otf")
+  src: url('../Assets/ProximaNova_Bold.otf');
 }
 
 @font-face {
   font-family: ProximaNova_Semibold;
-  src: url("../Assests/ProximaNova_Semibold.otf")
+  src: url('../Assets/ProximaNova_Semibold.otf');
 }
 
 .mapboxgl-popup {
@@ -93,7 +93,6 @@
   color: white !important;
   /* text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white; */
 }
-
 
 .info {
   font-size: 18px;
