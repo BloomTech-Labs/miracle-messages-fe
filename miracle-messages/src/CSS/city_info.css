@@ -166,19 +166,34 @@
 
 .sponsors, .partners {
   border-bottom: #d8d8d8 solid 0.25px;
-  margin-left: 25px;
+  padding-bottom: 15px;
+  /* margin-left: 25px; */
 }
 
 .sponsors h2, .partners h2{
   /* padding: 0px 25px; */
+  margin-top: 10px;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.9px;
   line-height: 20px;
 }
 
-.icons {
+.icons-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+}
+
+.icon-container {
+  height: 75px;
+  width: 75px;
+  margin-right: 35px;
+
+}
+
+.icon-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }

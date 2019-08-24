@@ -14,8 +14,37 @@ import gmail from '../../Assets/icons/gmail.png';
 import '../../CSS/city_info.css';
 
 class CityInfo extends PureComponent {
+
+  // displaySponsors() {
+  //   sponsors = this.props.partners.filter(partner => partner.category == 'sponsor')
+  //   if (sponsors.length !== 0 && sponsors !== undefined) {
+  //     return(
+  //        <h2>SPONSORS</h2>
+  //         <div className='icons'>
+  //             {
+  //               info.partners
+  //               .filter(partner => partner.category === 'partner')
+  //               .map(partner => 
+  //                 <a href={partner.site_url}>
+  //                   <img
+  //                     src={partner.icon_url}
+  //                     alt="Icon"
+  //                     height="75px"
+  //                     width='57.71px' 
+  //                   />
+  //                 </a>
+  //               ) 
+  //             }
+  //         </div>   
+  //     )
+  //   }
+  // }
+
   render() {
     const { info } = this.props;
+
+    const sponsors = info.partners.filter(partner => partner.category === 'sponsor');
+    const partners = info.partners.filter(partner => partner.category === 'partner');
 
     return (
       <div className='chapterInfo'>
@@ -100,46 +129,54 @@ class CityInfo extends PureComponent {
           </a>
         </div>
 
-        {/* Contains the Sponser Images */}
-        <div className='sponsors'>
-          <h2>SPONSORS</h2>
-          <div className='icons'>
-              {
-                info.partners
-                .filter(partner => partner.category === 'partner')
-                .map(partner => 
-                  <a href={partner.site_url}>
-                    <img
-                      src={partner.icon_url}
-                      alt="Icon"
-                      height="75px"
-                      width='57.71px' 
-                    />
-                  </a>
-                ) 
-              }
-          </div>  
-        </div>
+        {/* Contains the Sponsor Images */}
+            {
+              sponsors.length > 0 && (
+                <div className='sponsors'>
+                  <h2>SPONSORS</h2>
+                  <div className='icons-container'>
+                  {
+                    sponsors.map(sponsor => 
+                      <a href={sponsor.site_url}>
+                        <div className='icon-container'>
+                          <img
+                            src={sponsor.icon_url}
+                            alt="Icon"
+                            height="75px"
+                            width='57.71px' 
+                          />
+                        </div>
+                      </a>
+                    )
+                  }
+                  </div>
+                </div>
+              )
+            }
 
         {/* Contains the Partner Images */}
-        <div className='partners'>
-          <h2>PARTNERS</h2>
-          <div className='icons'>
-            {info.partners
-                .filter(partner => partner.category === 'sponsor')
-                .map(sponsor => 
-                  <a href={sponsor.site_url}>
-                    <img
-                      src={sponsor.icon_url}
-                      alt="Icon"
-                      height="75px"
-                      width='57.71px' 
-                    />
-                  </a>
-                ) 
-              }
-          </div> 
-        </div>
+          {
+            partners.length > 0 && (
+              <div className='partners'>
+                <h2>PARTNERS</h2>
+
+                <div className='icons-container'>
+                  {
+                    partners.map(partner => 
+                    <a href={partner.site_url}>
+                      <div className='icon-container'>
+                        <img
+                          src={partner.icon_url}
+                          alt="Icon"
+                        />
+                      </div>
+                    </a>
+                    )
+                  }
+                </div>
+              </div>
+            )
+          }
       </div>
     );
   }
