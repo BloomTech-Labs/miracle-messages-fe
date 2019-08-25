@@ -15,36 +15,12 @@ import '../../CSS/city_info.css';
 
 class CityInfo extends PureComponent {
 
-  // displaySponsors() {
-  //   sponsors = this.props.partners.filter(partner => partner.category == 'sponsor')
-  //   if (sponsors.length !== 0 && sponsors !== undefined) {
-  //     return(
-  //        <h2>SPONSORS</h2>
-  //         <div className='icons'>
-  //             {
-  //               info.partners
-  //               .filter(partner => partner.category === 'partner')
-  //               .map(partner => 
-  //                 <a href={partner.site_url}>
-  //                   <img
-  //                     src={partner.icon_url}
-  //                     alt="Icon"
-  //                     height="75px"
-  //                     width='57.71px' 
-  //                   />
-  //                 </a>
-  //               ) 
-  //             }
-  //         </div>   
-  //     )
-  //   }
-  // }
-
   render() {
     const { info } = this.props;
 
     const sponsors = info.partners.filter(partner => partner.category === 'sponsor');
     const partners = info.partners.filter(partner => partner.category === 'partner');
+
 
     return (
       <div className='chapterInfo'>
@@ -137,7 +113,7 @@ class CityInfo extends PureComponent {
                   <div className='icons-container'>
                   {
                     sponsors.map(sponsor => 
-                      <a href={sponsor.site_url}>
+                      <a href={sponsor.site_url} key={sponsor.id}>
                         <div className='icon-container'>
                           <img
                             src={sponsor.icon_url}
@@ -163,7 +139,7 @@ class CityInfo extends PureComponent {
                 <div className='icons-container'>
                   {
                     partners.map(partner => 
-                    <a href={partner.site_url}>
+                    <a href={partner.site_url} key={partner.id}>
                       <div className='icon-container'>
                         <img
                           src={partner.icon_url}
