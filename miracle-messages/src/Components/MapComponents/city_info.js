@@ -19,8 +19,9 @@ class CityInfo extends PureComponent {
     const { info } = this.props;
 
     const sponsors = info.partners.filter(partner => partner.category === 'sponsor');
+    console.log('SPONSORS: ', sponsors );
     const partners = info.partners.filter(partner => partner.category === 'partner');
-
+    console.log('PARTNERS: ', partners );
 
     return (
       <div className='chapterInfo'>
@@ -112,8 +113,8 @@ class CityInfo extends PureComponent {
                   <h2>SPONSORS</h2>
                   <div className='icons-container'>
                   {
-                    sponsors.map(sponsor => 
-                      <a href={sponsor.site_url} key={sponsor.id}>
+                    sponsors.map((sponsor, index) => 
+                      <a href={sponsor.site_url} key={`sponsor-${index}`}>
                         <div className='icon-container'>
                           <img
                             src={sponsor.icon_url}
@@ -138,8 +139,8 @@ class CityInfo extends PureComponent {
 
                 <div className='icons-container'>
                   {
-                    partners.map(partner => 
-                    <a href={partner.site_url} key={partner.id}>
+                    partners.map((partner, index) => 
+                    <a href={partner.site_url} key={`partner-${index}`}>
                       <div className='icon-container'>
                         <img
                           src={partner.icon_url}
