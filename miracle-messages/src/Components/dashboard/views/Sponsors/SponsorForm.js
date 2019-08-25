@@ -59,8 +59,8 @@ class SponsorForm extends React.Component {
                   <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                   <DropdownToggle>{this.state.value}</DropdownToggle>
                     <DropdownMenu>
-                    <DropdownItem onClick={this.select} value={this.props.sponsor.category}>Sponsor</DropdownItem>
-                  <DropdownItem onClick={this.select} value={this.props.sponsor.category}>Partner</DropdownItem>
+                    <DropdownItem onClickCapture={this.select} value={this.props.sponsor.category}>Sponsor</DropdownItem>
+                  <DropdownItem onSelect={this.select} value={this.props.sponsor.category}>Partner</DropdownItem>
                    </DropdownMenu>
                   </ButtonDropdown>
                 </Container>

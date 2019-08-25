@@ -30,6 +30,7 @@ class Sponsors extends React.Component {
         fd.append("partner_icon", this.state.sponsor.icon_url )
         fd.append("name", this.state.sponsor.name)
         fd.append("site_url", this.state.sponsor.site_url)
+        fd.append("category", this.state.sponsor.category)
         axios
           .post('https://miracle-messages-staging.herokuapp.com/api/partner', fd)
           .then(res=> console.log("res",res))
@@ -93,13 +94,12 @@ class Sponsors extends React.Component {
                     change={this.handleInputChange}
                     sponsor={this.state.sponsor}
                     handleImg={this.handleImg}
-                    select={this.select}
                     />
                 </ModalBody>
                 <ModalFooter>
                     <Button color="success" onClick={this.addSponsor}>
                         Add Sponsor
-                    </Button>{' '}
+                    </Button>
                     <Button color="secondary" onClick={this.toggle}>
                         Cancel
                     </Button>

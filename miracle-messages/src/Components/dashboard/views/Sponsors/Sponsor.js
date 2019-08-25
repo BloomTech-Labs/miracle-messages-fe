@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
 import axios from 'axios';
-import {deleteSponsor, updateSponsor} from '../../../../Actions/index';
+import {deleteSponsor} from '../../../../Actions/index';
 import { connect } from 'react-redux';
+import  UpdateSponsor  from './UpdateSponsor';
 
 
 class Sponsor extends Component {
@@ -73,7 +74,7 @@ class Sponsor extends Component {
     }));
   };
   render()  {
-    console.log(this.props.sponsor);
+    // console.log(this.props.sponsor);
     return (
       <>
     
@@ -93,6 +94,7 @@ class Sponsor extends Component {
             <span style={{ marginLeft: '190px' }}>
              {this.props.sponsor.site_url}
             </span>
+            <span style={{ marginRight: '60px'}}>{this.props.sponsor.category}</span>
 
             <Button
               style={{ width: '100px', right: '200px', position: 'absolute' }}
@@ -108,17 +110,15 @@ class Sponsor extends Component {
             >
             <ModalHeader toggle={this.toggleEdit}>Update Sponsor</ModalHeader>
             <ModalBody>
-              <Input value={this.props.name} placeholder="Update Name" />
-              <div className="dropdown-divider" />
-              <Input value={this.props.site_url} placeholder="Update Web Adress" />
-              <div className="dropdown-divider" />
-              <Label>Update Logo</Label>
-              <Input value={this.props.icon_url} type="file"  />
+              <UpdateSponsor 
+              toggleEdit={this.toggleEdit}
+              sponsor={this.props.sponsor}
+              />
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.updateSponsor}>
+              {/* <Button color="primary" onClick={this.updateSponsor}>
                 Update
-              </Button>
+              </Button> */}
               <Button color="secondary" onClick={this.toggleEdit}>
                 Cancel
               </Button>
@@ -145,7 +145,7 @@ class Sponsor extends Component {
             </ModalBody>
             <ModalFooter>
               <Button color="danger" onClick={this.delete}>
-                DeleteS
+                Delete
               </Button>{' '}
               <Button color="secondary" onClick={this.toggle}>
                 Cancel
@@ -164,4 +164,4 @@ const mapStateToProps = (state) => {
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }
-export default connect(mapStateToProps, {deleteSponsor, updateSponsor})(Sponsor);
+export default connect(mapStateToProps, {deleteSponsor})(Sponsor);
