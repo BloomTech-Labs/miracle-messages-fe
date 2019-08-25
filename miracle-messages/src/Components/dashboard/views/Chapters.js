@@ -1,9 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
+import { Link, Route } from 'react-router-dom';
+
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Chapter from './Chapter.js';
 import ChapterForm from './ChapterForm';
+
+import ChapterCard from './Chapters/ChapterCard';
 
 import { connect } from 'react-redux';
 import { getData } from '../../../Actions/index';
@@ -131,13 +135,16 @@ class Chapters extends React.Component {
         {this.props.chapter_data.map(chapter => {
           // console.log(chapter);
           return (
-            <Chapter
-              info={chapter}
-              key={chapter.id}
-              deleteChapter={this.deleteChapter}
-            />
+            <Link to={`/admin/chapters/${chapter.id}`} key={chapter.id}>
+              <Chapter
+                info={chapter}
+                key={chapter.id}
+                deleteChapter={this.deleteChapter}
+              />
+            </Link>
           );
         })}
+
         <Button className='addBtn' onClick={this.toggle}>
           +
         </Button>
