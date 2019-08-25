@@ -14,8 +14,14 @@ import gmail from '../../Assets/icons/gmail.png';
 import '../../CSS/city_info.css';
 
 class CityInfo extends PureComponent {
+
   render() {
     const { info } = this.props;
+
+    const sponsors = info.partners.filter(partner => partner.category === 'sponsor');
+    console.log('SPONSORS: ', sponsors );
+    const partners = info.partners.filter(partner => partner.category === 'partner');
+    console.log('PARTNERS: ', partners );
 
     return (
       <div className='chapterInfo'>
@@ -100,11 +106,54 @@ class CityInfo extends PureComponent {
           </a>
         </div>
 
-        {/* Contains the Sponser Images */}
-        <div className='sponsorImages'>
-          <h2>SPONSORS</h2>
-          {/* some images required */}
-        </div>
+        {/* Contains the Sponsor Images */}
+            {
+              sponsors.length > 0 && (
+                <div className='sponsors'>
+                  <h2>SPONSORS</h2>
+                  <div className='icons-container'>
+                  {
+                    sponsors.map((sponsor, index) => 
+                      <a href={sponsor.site_url} key={`sponsor-${index}`}>
+                        <div className='icon-container'>
+                          <img
+                            src={sponsor.icon_url}
+                            alt="Icon"
+                            height="75px"
+                            width='57.71px' 
+                          />
+                        </div>
+                      </a>
+                    )
+                  }
+                  </div>
+                </div>
+              )
+            }
+
+        {/* Contains the Partner Images */}
+          {
+            partners.length > 0 && (
+              <div className='partners'>
+                <h2>PARTNERS</h2>
+
+                <div className='icons-container'>
+                  {
+                    partners.map((partner, index) => 
+                    <a href={partner.site_url} key={`partner-${index}`}>
+                      <div className='icon-container'>
+                        <img
+                          src={partner.icon_url}
+                          alt="Icon"
+                        />
+                      </div>
+                    </a>
+                    )
+                  }
+                </div>
+              </div>
+            )
+          }
       </div>
     );
   }
