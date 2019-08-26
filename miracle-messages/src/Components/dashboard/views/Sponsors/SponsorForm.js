@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Input, Label, Container, DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
+import { Input, Label, Button, DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 
 
 
@@ -8,26 +8,7 @@ class SponsorForm extends React.Component {
     constructor(props) {
         super(props);
 
-        // this.toggle = this.toggle.bind(this);
-        // this.select = this.select.bind(this);
-        // this.state = {
-        //   dropdownOpen: false,
-          
-        // };
-    }  
-      
-  // toggle() {
-  //   this.setState({
-  //     dropdownOpen: !this.state.dropdownOpen
-  //   });
-  // }
-
-  //   select(e) {
-  //   this.setState({
-  //     // dropdownOpen: !this.state.dropdownOpen,
-  //     value: e.target.innerText,
-  //   });
-  // }
+    }
 
     render() {
         return (
@@ -65,5 +46,6 @@ class SponsorForm extends React.Component {
              </div>
         );
     }
+  
 }
 export default SponsorForm
