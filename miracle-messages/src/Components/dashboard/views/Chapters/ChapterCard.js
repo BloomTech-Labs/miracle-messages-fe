@@ -58,14 +58,28 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input
+} from 'reactstrap';
+
+import SponsorList from './SponsorList.js';
 
 const ChapterCard = props => {
   const [chapter, setChapter] = useState();
 
   useEffect(() => {
     const id = props.match.params.id;
-    // change ^^^ that line and grab the id from the URL
-    // You will NEED to add a dependency array to this effect hook
 
     axios
       .get(`https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`)
@@ -77,21 +91,25 @@ const ChapterCard = props => {
       });
   }, []);
 
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
-
   if (!chapter) {
-    return <div>Loading movie information...</div>;
+    return <div>Loading Chapter information...</div>;
   }
 
-  //   const { title, director, metascore, stars } = movie;
   return (
-    <div>
-      <h1 style={{ color: 'red' }}>hello</h1>
-      <h1>{chapter.city}</h1>
+    <div className='chapter-flex'>
+      <Card className='s-chapter'>
+        <CardImg src={chapter.chapter_img_url} />
+
+        <CardBody>
+          <CardTitle>{chapter.city}</CardTitle>
+          <CardSubtitle></CardSubtitle>
+          <CardText></CardText>
+          <Button style={{ marginRight: '10px' }}>Edit</Button>
+
+          <Button color='danger'>Delete</Button>
+        </CardBody>
+      </Card>
+      <SponsorList className='s-chapter-right' chapter={chapter} />
     </div>
   );
 };
