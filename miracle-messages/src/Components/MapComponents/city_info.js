@@ -114,7 +114,7 @@ class CityInfo extends PureComponent {
                   <div className='icons-container'>
                   {
                     sponsors.map((sponsor, index) => 
-                      <a href={sponsor.site_url} key={`sponsor-${index}`}>
+                      <a href={sponsor.site_url} target="_blank" key={`sponsor-${index}`}>
                         <div className='icon-container'>
                           <img
                             src={sponsor.icon_url}
@@ -140,7 +140,7 @@ class CityInfo extends PureComponent {
                 <div className='icons-container'>
                   {
                     partners.map((partner, index) => 
-                    <a href={partner.site_url} key={`partner-${index}`}>
+                    <a href={partner.site_url} target="_blank" key={`partner-${index}`}>
                       <div className='icon-container'>
                         <img
                           src={partner.icon_url}
