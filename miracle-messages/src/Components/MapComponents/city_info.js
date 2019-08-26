@@ -1,21 +1,27 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
 // Action imports
-import { slideToggleAction } from "../../Actions/SlideToggleAction";
-import { updatePopupAction } from "../../Actions/updatePopupAction";
+import { slideToggleAction } from '../../Actions/SlideToggleAction';
+import { updatePopupAction } from '../../Actions/updatePopupAction';
 
 // Icon imports
 // import facebook from "../../icons/facebook.png";
 // import google from "../../icons/google.png";
-import gmail from "../../Assests/icons/gmail.png";
+import gmail from '../../Assets/icons/gmail.png';
 
 // CSS imports
-import "../../CSS/city_info.css";
+import '../../CSS/city_info.css';
 
 class CityInfo extends PureComponent {
+
   render() {
     const { info } = this.props;
+
+    const sponsors = info.partners.filter(partner => partner.category === 'sponsor');
+    console.log('SPONSORS: ', sponsors );
+    const partners = info.partners.filter(partner => partner.category === 'partner');
+    console.log('PARTNERS: ', partners );
 
     return (
       <div className="chapterInfo">
@@ -50,17 +56,21 @@ class CityInfo extends PureComponent {
         <div className="buttons">
           <button className="green">
             <a
-              href="https://miracle-messages-staging.netlify.com/form"
+              href="https://miraclemessages.org/getinvolved"
               target="_blank"
               rel="noopener noreferrer"
             >
-              JOIN CHAPTER
+              GET INVOLVED
             </a>
           </button>
 
           <button className="white">
-            <a href="" target="_blank" rel="noopener noreferrer">
-              SEE REUNION STORIES
+            <a
+              href="https://www.classy.org/give/231839/#!/donation/checkout"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DONATE
             </a>
           </button>
         </div>
@@ -100,11 +110,51 @@ class CityInfo extends PureComponent {
           </a>
         </div>
 
-        {/* Contains the Sponser Images */}
-        <div className="sponsorImages">
-          <h2>SPONSORS</h2>
-          {/* some images required */}
-        </div>
+        {/* Contains the Sponsor Images */}
+        {sponsors.length > 0 && (
+          <div className="sponsors">
+            <h2>SPONSORS</h2>
+            <div className="icons-container">
+              {sponsors.map((sponsor, index) => (
+                <a
+                  href={sponsor.site_url}
+                  target="_blank"
+                  key={`sponsor-${index}`}
+                >
+                  <div className="icon-container">
+                    <img
+                      src={sponsor.icon_url}
+                      alt="Icon"
+                      height="75px"
+                      width="57.71px"
+                    />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Contains the Partner Images */}
+        {partners.length > 0 && (
+          <div className="partners">
+            <h2>PARTNERS</h2>
+
+            <div className="icons-container">
+              {partners.map((partner, index) => (
+                <a
+                  href={partner.site_url}
+                  target="_blank"
+                  key={`partner-${index}`}
+                >
+                  <div className="icon-container">
+                    <img src={partner.icon_url} alt="Icon" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
