@@ -99,7 +99,7 @@ class Sponsors extends React.Component {
                 <ModalFooter>
                     <Button color="success" onClick={this.addSponsor}>
                         Add Sponsor
-                    </Button>
+                    </Button>{''}
                     <Button color="secondary" onClick={this.toggle}>
                         Cancel
                     </Button>

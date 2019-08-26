@@ -13,19 +13,20 @@ import { getSponsor } from '../../../../Actions/index';
 class UpdateSponsor extends React.Component {
     state = {
         sponsor: this.props.sponsor, 
-        
+        newIcon_url: this.props.sponsor.newIcon_url,
+        newIcon_url: null
     };
     
     updateSponsor = e => {
         console.log("this.state",this.state.sponsor);
         e.preventDefault();
-        if (this.state.newIcon_url != null) {
-      fd.append('icon_url', this.state.newIcon_url);
-    }
         const id = this.props.sponsor.id;
         const fd = new FormData();
+        if (this.state.newIcon_url != null) {
+           fd.append("icon_url", this.state.newIcon_url)
+        }
         fd.append("name", this.state.sponsor.name);
-        fd.append("icon_url", this.state.sponsor.icon_url);        
+        // fd.append("icon_url", this.state.sponsor.icon_url);        
         fd.append("site_url", this.state.sponsor.site_url);
         fd.append("category", this.state.sponsor.category);
 
@@ -55,9 +56,6 @@ handleImg = e => {
       [e.target.name]: e.target.files[0]
     });
   };
-  componentDidMount() {
-      this.props.getSponsor();
-    }
 
   render() {
       return (
@@ -80,8 +78,9 @@ handleImg = e => {
               />
               <div className='dropdown-divider' />
               <Label>Logo</Label>
-              <Input                
-              onChange={this.props.handleImg}
+              <Input 
+            //   value={this.state.sponsor.icon_url}               
+              onChange={this.handleImg}
               name="icon_url"
               type="file"
               />
