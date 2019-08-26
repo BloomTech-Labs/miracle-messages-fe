@@ -65,6 +65,14 @@ const initialState = {
         site_url: "https://sfpl.org",
         icon_url:
           "https://labs14-miracle-messages-image-upload.s3.amazonaws.com/sfpl_logo.jpg"
+      },
+      {
+        category: "partner",
+        name: "Department of Homelessness and Supportive Housing",
+        site_url:
+          "https://sfgov.org/agency/homelessness-and-supportive-housing-department",
+        icon_url:
+          "https://labs14-miracle-messages-image-upload.s3.amazonaws.com/HSH_Logo.jpg"
       }
     ]
   }, //null means no pop-ups are being rendered for any of the cities
