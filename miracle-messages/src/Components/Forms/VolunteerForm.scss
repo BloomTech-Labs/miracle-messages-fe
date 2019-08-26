@@ -75,7 +75,7 @@
       z-index: 99;
       .backImg {
         background-color: black;
-        background: url("../../Assests//Imgs/header.png") no-repeat center;
+        background: url('../../Assets/Imgs/header.png') no-repeat center;
         height: 407px;
         background-size: cover;
         background-position-y: -169px;
@@ -203,7 +203,7 @@
             text-align: left;
             padding-top: 3px;
             font-size: 16px;
-            font-family: "Open Sans";
+            font-family: 'Open Sans';
             color: #303030;
           }
         }
@@ -219,7 +219,7 @@
         height: 45px;
         width: 194px;
         background-color: #5cbe80;
-        font-family: "Open Sans";
+        font-family: 'Open Sans';
         font-size: 24px;
         color: #ffffff;
         letter-spacing: 0.9px;
