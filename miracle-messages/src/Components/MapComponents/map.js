@@ -16,7 +16,7 @@ import CityInfo from "./city_info";
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
-import { onViewportChanged } from "../../Actions/OnViewportAction";
+import { onViewportChanged} from "../../Actions/OnViewportAction";
 
 // Material UI imports
 import Drawer from "@material-ui/core/Drawer";
@@ -69,18 +69,6 @@ class Map extends Component {
   closeHandler = () => {
     this.props.updatePopupAction(null);
     this.props.slideToggleAction();
-
-    const viewport = new WebMercatorViewport({
-      latitude: 40,
-      longitude: -91,
-      zoom: 3,
-      transitionInterpolator: new LinearInterpolator({
-        around: [this.latitude, this.longitude]
-      }),
-      transitionDuration: 1000
-    });
-
-    this._updateViewport(viewport);
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -104,10 +92,11 @@ class Map extends Component {
                 color: "whitesmoke",
                 background: "black",
                 width: "2px",
-                height: "2px"
+                height: "2px",
+                margin: "5px 10px 0px 0px"
               }}
             >
-              <Cancel style={{ position: "absolute", right: "0" }} />
+              <Cancel style={{ position: "absolute", right: "0"}} />
             </IconButton>
             <Scrollbars style={{ width: 376 }} autoHide={true}>
               <CityInfo info={popupInfo} />
@@ -166,5 +155,5 @@ const mapStateToProps = state => {
 //this is how we connect the map.js component to the store
 export default connect(
   mapStateToProps,
-  { getData, updatePopupAction, slideToggleAction, onViewportChanged }
+  { getData, updatePopupAction, slideToggleAction, onViewportChanged}
 )(Map);

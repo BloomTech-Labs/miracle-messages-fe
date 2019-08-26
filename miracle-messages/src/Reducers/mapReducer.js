@@ -5,12 +5,12 @@ import {
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
-import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
+import { ON_VIEWPORT_CHANGED, ON_VIEWPORT_ZOOM } from "../Actions/OnViewportAction";
 
 const initialState = {
   viewport: {
     latitude: 37.785164,
-    longitude: -100,
+    longitude: -110,
     zoom: 3.5,
     bearing: 0,
     pitch: 0
@@ -57,7 +57,8 @@ const initialState = {
   }, //null means no pop-ups are being rendered for any of the cities
   fetching: false,
   error: null, //learn more is a toggleinside the pop-ups
-  openDrawer: true
+  openDrawer: true,
+  zoom: false
 };
 
 export const mapReducer = (state = initialState, action) => {
