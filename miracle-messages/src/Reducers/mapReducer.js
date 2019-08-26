@@ -45,34 +45,13 @@ const initialState = {
         icon_url:
           "https://labs14-miracle-messages-image-upload.s3.amazonaws.com/att-logo.png"
       },
-      {
-        category: "partner",
-        name: "glide",
-        site_url: "https://www.glide.org/",
-        icon_url:
-          "https://unm5i3x3smv2e4zlycj53ret-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/logo.svg"
-      },
+
       {
         category: "partner",
         name: "DSCS",
         site_url: "https://www.dscs.org/",
         icon_url:
           "https://labs14-miracle-messages-image-upload.s3.amazonaws.com/DSCS.jpg"
-      },
-      {
-        category: "partner",
-        name: "San Francisco Public Library",
-        site_url: "https://sfpl.org",
-        icon_url:
-          "https://labs14-miracle-messages-image-upload.s3.amazonaws.com/sfpl_logo.jpg"
-      },
-      {
-        category: "partner",
-        name: "Department of Homelessness and Supportive Housing",
-        site_url:
-          "https://sfgov.org/agency/homelessness-and-supportive-housing-department",
-        icon_url:
-          "https://labs14-miracle-messages-image-upload.s3.amazonaws.com/HSH_Logo.jpg"
       }
     ]
   }, //null means no pop-ups are being rendered for any of the cities
