@@ -99,7 +99,7 @@ class CityInfo extends PureComponent {
         </div>
 
         {/* Contains the contact info */}
-        <h5 className='emailHeader'>CHAPTER LEADS CONTACT INFO</h5>
+        <h5 className='emailHeader'>CHAPTER CONTACT INFO</h5>
         <div className='contact'>
           <span>
             <img src={gmail} alt='gmail logo' className='gmailLogo' />
