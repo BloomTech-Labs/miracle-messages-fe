@@ -158,11 +158,6 @@ table {
   text-align: center;
 }
 
-.number {
-  margin-right: 15px;
-  float: right;
-}
-
 .info a {
   display: flex;
   text-decoration: none;
