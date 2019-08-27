@@ -37,7 +37,7 @@ class CityInfo extends PureComponent {
             width='100%'
           />
           <div className='title'>{info.title}</div>
-          <div className='date'>Est. {info.established_date}</div>
+          <div className='date'>Established on {info.established_date}</div>
         </div>
 
         {/* Contains the chapter statisics; members/reunions */}
