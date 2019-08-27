@@ -32,7 +32,7 @@ export const getData = () => dispatch => {
 export const getSponsor = (data) => dispatch => {
    dispatch({type: FETCHING_PARTNER});
      axios
-          .get('https://miracle-messages-staging.herokuapp.com/api/partner')
+          .get('https://miracle-messages-production.herokuapp.com/api/partner')
           .then(res => dispatch({type: FETCH_PARTNER_SUCCCESS, payload: res.data}))               
           .catch(err => dispatch({
              type: FETCH_PARTNER_ERR, payload: err

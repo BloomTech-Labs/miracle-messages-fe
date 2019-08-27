@@ -12,8 +12,9 @@ class SponsorForm extends React.Component {
     }
 
     render() {
+        // console.log(this.props.icon_url);
         return (
-            <form onSubmit={this.toggle}>
+            <div>
                 <Label>Organization Name</Label>
                 <Input
                 value={this.props.sponsor.name}
@@ -32,7 +33,7 @@ class SponsorForm extends React.Component {
                 <br/>
                 <Label>Logo</Label>
                 <Input                
-                onChange={this.handleImg}
+                onChange={this.props.handleImg}
                 name="icon_url"
                 type="file"
                 /><br/>
@@ -44,9 +45,9 @@ class SponsorForm extends React.Component {
                 type="text"
                 placeholder="Sponsor / Partner"
                 />
-                <Button color='success' onClick={this.addSponsor}>Refresh Dashboard</Button>
+                {/* <Button color='success' onClick={this.addSponsor}>Refresh Dashboard</Button>  */}
                 {/* <Button onClick={this.toggle}>Cancel</Button> */}
-             </form>
+             </div>
         );
     }
   

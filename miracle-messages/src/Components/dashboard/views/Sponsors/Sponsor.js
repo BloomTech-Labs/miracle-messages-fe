@@ -12,7 +12,6 @@ class Sponsor extends Component {
         super(props);
         this.state = {
             modal: false,
-            dropdownOpen: false,
             sponsor: {
                 name: '',
                 site_url: '',
@@ -27,28 +26,13 @@ class Sponsor extends Component {
     const id = this.props.sponsor.id;
     console.log(id);
     axios
-      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+      .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
       .then( res => {
-        this.toggle()
-        this.setState()
+        // this.props.toggle()
+        // this.props.getSponsor()
       })
       .catch(err => (console.log(err)));
   };
-
-  // updateSponsor = e => {
-  //       e.preventDefault();
-  //        const updated = this.state.sponsor;
-  //       const id = this.props.sponsor.id;
-  //       const fd = new FormData();
-  //       fd.append("partner_icon", this.state.sponsor.icon_url )
-  //       fd.append("name", this.state.sponsor.name)
-  //       fd.append("site_url", this.state.sponsor.site_url)
-  //       axios
-  //         .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
-  //         .then(res=> console.log("res",res))
-  //         .catch(err=> console.log(err));
-      
-  // };
 
   
 
@@ -75,7 +59,7 @@ class Sponsor extends Component {
       editModal: !prevState.editModal
     }));
   };
-
+  
   
   render()  {
     // console.log(this.props.sponsor);
@@ -98,7 +82,7 @@ class Sponsor extends Component {
                    
 
             <span style={{ marginLeft: '190px' }}>{this.props.sponsor.site_url}</span>
-            <span style={{marginLeft: '90px'  }}>{this.props.sponsor.category}</span>
+            <span style={{marginLeft: '190px', position: 'center' }}>{this.props.sponsor.category}</span>
             <Button
               style={{ width: '100px', right: '200px', position: 'absolute' }}
               onClick={this.toggleEdit}

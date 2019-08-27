@@ -24,14 +24,14 @@ class UpdateSponsor extends React.Component {
         const fd = new FormData();
         // const newIcon = this.props.icon_url;
         if (this.state.newIcon != null)  {
-            fd.append(this.props.sponsor.icon_url, this.state.newIcon)
+            fd.append("icon_url", this.state.newIcon)
         }
         fd.append("name", this.state.sponsor.name);   
-        fd.append("site_url", this.state.sponsor.newIcon);
+        fd.append("site_url", this.state.sponsor.site_url);
         fd.append("category", this.state.sponsor.category);
 
         axios
-          .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
+          .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
           .then(res => {console.log(res);
               this.props.toggleEdit();
               this.props.getSponsor();
