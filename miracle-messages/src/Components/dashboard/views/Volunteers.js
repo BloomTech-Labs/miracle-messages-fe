@@ -9,7 +9,7 @@ class Volunteers extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://miracle-messages-staging.herokuapp.com/api/form')
+      .get('https://miracle-messages-production.herokuapp.com/api/form')
       .then(res => {
         this.setState({
           data: res.data

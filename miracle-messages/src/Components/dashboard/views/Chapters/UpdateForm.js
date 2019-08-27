@@ -52,7 +52,7 @@ class UpdateForm extends React.Component {
 
     axios
       .put(
-        `https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`,
+        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}`,
         fd
       )
       .then(res => {
