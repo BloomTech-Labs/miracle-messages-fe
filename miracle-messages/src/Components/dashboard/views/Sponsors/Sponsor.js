@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
+import { Card, CardBody, CardTitle, CardHeader, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
 import axios from 'axios';
-import {deleteSponsor} from '../../../../Actions/index';
+import {deleteSponsor, getSponsor } from '../../../../Actions/index';
 import { connect } from 'react-redux';
 import  UpdateSponsor  from './UpdateSponsor';
+// import "./sponsor.css";
 
 
 class Sponsor extends Component {
@@ -29,6 +30,7 @@ class Sponsor extends Component {
       .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
       .then( res => {
         this.toggle()
+        this.setState()
       })
       .catch(err => (console.log(err)));
   };
@@ -62,17 +64,19 @@ class Sponsor extends Component {
     }));
   };
 
-  select = () => {
-    this.setState(category => ({
-      category: category.select
-    }))
-  }
+  // select = () => {
+  //   this.setState(category => ({
+  //     category: category.select
+  //   }))
+  // }
 
   toggleEdit = () => {
     this.setState(prevState => ({
       editModal: !prevState.editModal
     }));
   };
+
+  
   render()  {
     // console.log(this.props.sponsor);
     return (
@@ -84,18 +88,17 @@ class Sponsor extends Component {
               {/* <i className="mdi mdi-comment-processing-outline mr-2"> </i>jkdjkdjg */}
               {this.props.sponsor.name}
             </CardTitle>
+            {/* <CardSubtitle></CardSubtitle> */}
           </CardBody>
           <CardBody className="border-top">
             <CardImg
               src={this.props.sponsor.icon_url}
               style={{ heigh: '50px', width: '50px' }}
-            />
+            />  
+                   
 
-            <span style={{ marginLeft: '190px' }}>
-             {this.props.sponsor.site_url}
-            </span>
-            <span style={{ marginRight: '60px'}}>{this.props.sponsor.category}</span>
-
+            <span style={{ marginLeft: '190px' }}>{this.props.sponsor.site_url}</span>
+            <span style={{marginLeft: '90px'  }}>{this.props.sponsor.category}</span>
             <Button
               style={{ width: '100px', right: '200px', position: 'absolute' }}
               onClick={this.toggleEdit}
@@ -116,7 +119,7 @@ class Sponsor extends Component {
               />
             </ModalBody>
             <ModalFooter>
-              {/* <Button color="primary" onClick={this.updateSponsor}>
+              {/* <Button color="primary" onClick={this.toggleEdit}>
                 Update
               </Button> */}
               <Button color="secondary" onClick={this.toggleEdit}>
@@ -128,7 +131,7 @@ class Sponsor extends Component {
             <Button
               color="danger"
               style={{ width: '100px', right: '60px', position: 'absolute' }}
-              onClick={this.toggle}
+              onClick={this.toggle}              
             >
               Delete
             </Button>

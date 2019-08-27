@@ -75,7 +75,7 @@ class Sponsors extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div onSubmit={this.toggle}>
                 {this.props.sponsorData.map(sponsor => {console.log(sponsor);
                     return < Sponsor sponsor={sponsor} key={sponsor.id} />
                 })}
@@ -87,6 +87,7 @@ class Sponsors extends React.Component {
                 toggle={this.toggle}
                 className={this.props.className}
                 backdrop="static"
+                
                 >
                 <ModalHeader toggle={this.toggle}>Add Sponsor</ModalHeader>
                 <ModalBody>
@@ -97,9 +98,9 @@ class Sponsors extends React.Component {
                     />
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={this.addSponsor}>
+                    <Button color="success"  onClick={this.addSponsor}>
                         Add Sponsor
-                    </Button>{''}
+                    </Button>{' '}
                     <Button color="secondary" onClick={this.toggle}>
                         Cancel
                     </Button>

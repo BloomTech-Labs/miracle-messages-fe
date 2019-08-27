@@ -9,23 +9,25 @@ import {
 
 import { connect } from 'react-redux';
 import { getSponsor } from '../../../../Actions/index';
+import sponsor from './Sponsor'
 
 class UpdateSponsor extends React.Component {
     state = {
-        sponsor: this.props.sponsor, 
+        sponsor: this.props.sponsor,
         newIcon: null
     };
     
     updateSponsor = e => {
-        console.log("this.state",this.state.sponsor);
+        console.log("this.state",this.state);
         e.preventDefault();
         const id = this.props.sponsor.id;
         const fd = new FormData();
-        if ( this.state.newIcon != null) {
-            fd.append('newIcon', this.state.newIcon)
+        // const newIcon = this.props.icon_url;
+        if (this.state.newIcon != null)  {
+            fd.append(this.props.sponsor.icon_url, this.state.newIcon)
         }
         fd.append("name", this.state.sponsor.name);   
-        fd.append("site_url", this.state.sponsor.site_url);
+        fd.append("site_url", this.state.sponsor.newIcon);
         fd.append("category", this.state.sponsor.category);
 
         axios
@@ -89,7 +91,7 @@ handleImg = e => {
                onChange={this.handleChange}
                type="text"
                />
-               <Button onClick={this.updateSponsor}>Update</Button>
+               <Button color="primary" onClick={this.updateSponsor}>Update</Button>
           </div>
       )
   }

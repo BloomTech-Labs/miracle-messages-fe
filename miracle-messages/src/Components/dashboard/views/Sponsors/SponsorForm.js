@@ -1,5 +1,6 @@
 import React from 'react';
-
+// import { addSponsor } from './Sponsors';
+// import { connect } from 'react-redux';
 import { Input, Label, Button, DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 
 
@@ -12,7 +13,7 @@ class SponsorForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <form onSubmit={this.toggle}>
                 <Label>Organization Name</Label>
                 <Input
                 value={this.props.sponsor.name}
@@ -31,7 +32,7 @@ class SponsorForm extends React.Component {
                 <br/>
                 <Label>Logo</Label>
                 <Input                
-                onChange={this.props.handleImg}
+                onChange={this.handleImg}
                 name="icon_url"
                 type="file"
                 /><br/>
@@ -43,9 +44,16 @@ class SponsorForm extends React.Component {
                 type="text"
                 placeholder="Sponsor / Partner"
                 />
-             </div>
+                <Button color='success' onClick={this.addSponsor}>Refresh Dashboard</Button>
+                {/* <Button onClick={this.toggle}>Cancel</Button> */}
+             </form>
         );
     }
   
 }
-export default SponsorForm
+// const mapStateToProps = state => {
+//     sponsorData: state.partnerReducer.sponsorData
+// }
+// export default connect(
+//     mapStateToProps,{addSponsor}
+export default SponsorForm;
