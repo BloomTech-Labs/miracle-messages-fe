@@ -39,10 +39,10 @@ class CityInfo extends PureComponent {
 
         {/* Contains the chapter statisics; members/reunions */}
         <div className="chapterStats">
-          <p className="volunteers">
+          <div className="volunteers">
             <span className="number">{info.numvolunteers}</span>
             Members
-          </p>
+          </div>
           <p className="reunions">
             <span className="number">{info.numreunions}</span>
             Reunions

@@ -57,6 +57,8 @@
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 0.9px;
+  margin-bottom: -1rem;
+  
 }
 
 .number {
@@ -65,7 +67,7 @@
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 0.9px;
-  margin-right: 0px;
+  /* margin-right: 0px; */
 }
 
 .chapterDetails {
