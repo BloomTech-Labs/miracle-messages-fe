@@ -25,7 +25,7 @@ class Sponsor extends Component {
     const id = this.props.sponsor.id;
     console.log(id);
     axios
-      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+      .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
       .then( res => {
         this.toggle()
       })
@@ -41,7 +41,7 @@ class Sponsor extends Component {
   //       fd.append("name", this.state.sponsor.name)
   //       fd.append("site_url", this.state.sponsor.site_url)
   //       axios
-  //         .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
+  //         .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
   //         .then(res=> console.log("res",res))
   //         .catch(err=> console.log(err));
       

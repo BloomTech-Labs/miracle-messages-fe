@@ -31,7 +31,7 @@ class Sponsors extends React.Component {
         fd.append("name", this.state.sponsor.name)
         fd.append("site_url", this.state.sponsor.site_url)
         axios
-          .post('https://miracle-messages-staging.herokuapp.com/api/partner', fd)
+          .post('https://miracle-messages-production.herokuapp.com/api/partner', fd)
           .then(res=> console.log("res",res))
           .catch(err=> console.log(err));
           this.setState({
