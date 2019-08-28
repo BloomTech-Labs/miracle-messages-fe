@@ -125,6 +125,7 @@ class VolunteerUpdate extends React.Component {
           name='country'
           placeholder='Country'
         />
+        <Button color="primary" onClick={this.updateVolunteer}>Update</Button>
       </div>
     );
   }
