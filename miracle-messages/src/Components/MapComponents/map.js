@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
@@ -30,7 +29,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
-require('dotenv').config();
+require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -48,11 +47,6 @@ class Map extends Component {
     this.props.getData();
   }
 
-  // to handle the GA events and hopefully the auto zoom
-  _onClickGA = e => {
-    gaEvent("click", "city marker", "Click city marker pin");
-  };
-
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
@@ -61,7 +55,13 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin city={city} />
+        <div
+          onClick={() => {
+            gaEvent("click", "chapter pin", `${city.title}`);
+          }}
+        >
+          <CityPin city={city} />
+        </div>
       </Marker>
     );
   };
@@ -69,18 +69,6 @@ class Map extends Component {
   closeHandler = () => {
     this.props.updatePopupAction(null);
     this.props.slideToggleAction();
-
-    const viewport = new WebMercatorViewport({
-      latitude: 40,
-      longitude: -91,
-      zoom: 3,
-      transitionInterpolator: new LinearInterpolator({
-        around: [this.latitude, this.longitude]
-      }),
-      transitionDuration: 1000
-    });
-
-    this._updateViewport(viewport);
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -104,7 +92,8 @@ class Map extends Component {
                 color: "whitesmoke",
                 background: "black",
                 width: "2px",
-                height: "2px"
+                height: "2px",
+                margin: "5px 10px 0px 0px"
               }}
             >
               <Cancel style={{ position: "absolute", right: "0" }} />
@@ -141,7 +130,7 @@ class Map extends Component {
           dragRotate={false}
         >
           <div
-            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>

@@ -25,14 +25,21 @@ class Sponsors extends React.Component {
 
     addSponsor = e => {
         e.preventDefault();
-        console.log(this.state.sponsor);
+        console.log(this.state.sponsor.icon_url);
         const fd = new FormData();
         fd.append("partner_icon", this.state.sponsor.icon_url )
         fd.append("name", this.state.sponsor.name)
         fd.append("site_url", this.state.sponsor.site_url)
+        fd.append("category", this.state.sponsor.category)
+        console.log(fd.getAll("partner_icon"));
         axios
-          .post('https://miracle-messages-staging.herokuapp.com/api/partner', fd)
-          .then(res=> console.log("res",res))
+          .post('https://miracle-messages-production.herokuapp.com/api/partner', fd)
+          .then(res=>  {
+        console.log(res);
+        this.toggle();
+        this.props.getSponsor();
+      })
+          
           .catch(err=> console.log(err));
           this.setState({
               sponsor: {
@@ -43,6 +50,7 @@ class Sponsors extends React.Component {
               }
           });
     };
+
 
      handleImg = e => {
          this.setState({
@@ -74,9 +82,9 @@ class Sponsors extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div onSubmit={this.toggle}>
                 {this.props.sponsorData.map(sponsor => {console.log(sponsor);
-                    return < Sponsor sponsor={sponsor} key={sponsor.id} />
+                    return < Sponsor sponsor={sponsor} key={sponsor.id} delete={this.delete}/>
                 })}
                 <Button className="addBtn" onClick={this.toggle}>
                    +
@@ -86,6 +94,7 @@ class Sponsors extends React.Component {
                 toggle={this.toggle}
                 className={this.props.className}
                 backdrop="static"
+                
                 >
                 <ModalHeader toggle={this.toggle}>Add Sponsor</ModalHeader>
                 <ModalBody>
@@ -93,11 +102,10 @@ class Sponsors extends React.Component {
                     change={this.handleInputChange}
                     sponsor={this.state.sponsor}
                     handleImg={this.handleImg}
-                    select={this.select}
                     />
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={this.addSponsor}>
+                    <Button color="success"  onClick={this.addSponsor}>
                         Add Sponsor
                     </Button>{' '}
                     <Button color="secondary" onClick={this.toggle}>

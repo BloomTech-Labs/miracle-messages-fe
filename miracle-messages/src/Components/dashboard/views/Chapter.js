@@ -40,7 +40,7 @@ class Chapter extends Component {
     this.toggle();
     this.props.deleteChapter(this.props.info.id);
   };
-
+  
   render() {
     return (
       <Card className='cardChapter'>
@@ -52,6 +52,7 @@ class Chapter extends Component {
             src={this.props.info.chapter_img_url}
           />
         </Link>
+
         <CardBody>
           <CardTitle>{this.props.info.title}</CardTitle>
           <CardSubtitle>
