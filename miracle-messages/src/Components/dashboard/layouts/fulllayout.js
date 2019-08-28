@@ -71,7 +71,7 @@ class Fulllayout extends React.Component {
 
         <div className='page-wrapper d-block'>
           <div className='page-content container-fluid'>
-            <Switch>
+            <div>
               {ThemeRoutes.map((prop, key) => {
                 if (prop.redirect) {
                   return (
@@ -79,7 +79,7 @@ class Fulllayout extends React.Component {
                   );
                 } else {
                   return (
-                    <div key={key}>
+                    <Switch key={key}>
                       <Route
                         exact
                         path={prop.path}
@@ -90,11 +90,11 @@ class Fulllayout extends React.Component {
                         path='/admin/chapters/:id'
                         render={props => <ChapterCard {...props} />}
                       />
-                    </div>
+                    </Switch>
                   );
                 }
               })}
-            </Switch>
+            </div>
           </div>
           <Footer />
         </div>
