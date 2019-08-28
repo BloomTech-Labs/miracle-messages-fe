@@ -77,7 +77,7 @@ describe("Admin page", function() {
 
   it("should click the cancel add Chapter button", function() {
     cy.get(".btn-secondary")
-      .eq(25)
+      .eq(26).contains("Cancel")
       .click();
   });
 
@@ -90,7 +90,6 @@ describe("Admin page", function() {
 
   it("should click the cancel delete Chapter button", function() {
     cy.get(".btn-secondary")
-      .eq(25)
       .contains("Cancel")
       .click()
       .wait(1000);
