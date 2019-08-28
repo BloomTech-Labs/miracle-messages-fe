@@ -131,13 +131,16 @@ class Chapters extends React.Component {
         {this.props.chapter_data.map(chapter => {
           // console.log(chapter);
           return (
+            // <Link to={`/admin/chapters/${chapter.id}`} key={chapter.id}>
             <Chapter
               info={chapter}
               key={chapter.id}
               deleteChapter={this.deleteChapter}
             />
+            // </Link>
           );
         })}
+
         <Button className='addBtn' onClick={this.toggle}>
           +
         </Button>

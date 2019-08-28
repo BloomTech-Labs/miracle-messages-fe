@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import indexRoutes from './Components/dashboard/routes/index.js';
 import VolunteerForm from './Components/Forms/VolunteerForm';
 import LoginFrom from './Components/Login/LoginForm.js';
+// import ChapterCard from './Components/dashboard/views/Chapters/ChapterCard.js';
 import './CSS/style.css';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         <Route exact path='/' component={Map} />
         <Route exact path='/form' component={VolunteerForm} />
         <Route exact path='/login' component={LoginFrom} />
+
         <Switch>
           {indexRoutes.map((prop, index) => {
             return (

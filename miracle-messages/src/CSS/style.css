@@ -8761,4 +8761,47 @@ ul.list-style-none {
     font-size: 40px;
   }
 
+  .chapter-flex{
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .s-chapter{
+    width: 48%;
+    /* position: absolute;
+    left: 0; */
+  }
+
+  .s-chapter-right{
+    width: 48%;
+    /* position: absolute;
+    right: 0; */
+    height: auto;
+  }
+
+  .partner-card-s{
+    /* width: 100px; */
+    height: auto;
+    background: white;
+   margin: 10px 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+  }
+
+  .partner-card-s div {
+    display: flex;
+    align-items: center;
+  }
  
+
+ .partnerColumn{
+   display: flex;
+   justify-content: space-evenly;
+ }
+
+ .partSoponCol{
+   width: 45%;
+  margin-bottom: 20px;   
+ }

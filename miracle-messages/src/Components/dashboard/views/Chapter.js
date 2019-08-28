@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardImg,
@@ -43,13 +44,14 @@ class Chapter extends Component {
   render() {
     return (
       <Card className='cardChapter'>
-        
-        <CardImg
-          top
-          width='100%'
-          className='chapterImg'
-          src={this.props.info.chapter_img_url}
-        />
+        <Link to={`/admin/chapters/${this.props.info.id}`}>
+          <CardImg
+            top
+            width='100%'
+            className='chapterImg'
+            src={this.props.info.chapter_img_url}
+          />
+        </Link>
 
         <CardBody>
           <CardTitle>{this.props.info.title}</CardTitle>
