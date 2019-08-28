@@ -1,7 +1,10 @@
 import {
     FETCH_VOLUNTEER_INFO,
     FETCH_VOLUNTEER_SUCCESS,
-    FETCH_VOLUNTEER_FAIL
+    FETCH_VOLUNTEER_FAIL,
+    DELETE_PARTNER,
+    DELETE_PARTNER_SUCCESS,
+    DELETE_PARTNER_ERR,
 } from '../Actions/index';
 
 const initialState = {
@@ -31,67 +34,27 @@ export const voluntReducer = (state = initialState, action) => {
                 fetching: false,
                 error: action.payload
             }
-//         case ADD_VOLUNTEERS_START: 
-//             return {
-//                 ...state,
-//                 isFetching: true,
-//                 isRendering: false,
-//                 isAdding: false,
-//                 isDeleting: false,
-//                 error: null,
-//                 message: 'Started Fetching'
-//             }
-//         case ADD_VOLUNTEERS_SUCCESS: 
-//             return {
-//                 ...state,
-//                 isFetching: false,
-//                 isRendering: true,
-//                 isAdding: true,
-//                 isDeleting: false,
-//                 error: null,
-//                 message: 'Added volunteer'
-//             }
-//         case ADD_VOLUNTEERS_FAIL:
-//             return {
-//                 ...state,
-//                 isFetching: false,
-//                 isRendering: false,
-//                 isAdding: false,
-//                 isDeleting: false,
-//                 error: action.payload,
-//                 message: 'Fail to Add Volunteers'
-//             }
-//         case DELETE_VOLUNTEERS_START: 
-//             return {
-//                 ...state,
-//                 isFetching: true,
-//                 isRendering: false,
-//                 isAdding: false,
-//                 isDeleting: false,
-//                 error: null,
-//                 message: 'Started Deleting'
-//             }
-//         case DELETE_VOLUNTEERS_SUCCESS: 
-//             return {
-//                 ...state,
-//                 isFetching: false,
-//                 isRendering: false,
-//                 isAdding: false,
-//                 isDeleting: true,
-//                 error: null,
-//                 message: 'Deleted volunteer'
-//             }
-//         case DELETE_VOLUNTEERS_FAIL:
-//             return {
-//                 ...state,
-//                 isFetching: false,
-//                 isRendering: false,
-//                 isAdding: false,
-//                 isDeleting: false,
-//                 error: action.payload,
-//                 message: 'Fail to Delete Volunteers'
-//             }
-//             default:
-//                 return state
-//     }
-// }
+        case DELETE_VOLUNTEER:
+            return {
+                ...state,
+                error: null,
+                fetching: true
+            }
+        case DELETE_VOLUNTEER_SUCCESS:
+            return {
+                ...state,
+                fetching:false,
+                error: null,
+                sponsorData: null
+            }
+        case DELETE_VOLUNTEER_ERR:
+            return {
+                ...state,
+                fetching: false,
+                error: action.payload
+            }
+        
+            default:
+                 return state
+    }
+}

@@ -1,7 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Volunteer from './Volunteer';
+import VolunteerForm from './VolunteerForm';
+
 import { connect } from 'react-redux';
+import { getVolunteer } from '../../../Actions/index';
 
 class Volunteers extends React.Component {
   constructor(props) {
@@ -60,7 +65,7 @@ class Volunteers extends React.Component {
 
   handleInputChange = e => {
     this.setState({
-      chapter: {
+      volunteer: {
         ...this.state.volunteer,
         [e.target.name]: e.target.value
       }
@@ -73,14 +78,14 @@ class Volunteers extends React.Component {
     }));
   };
 
-  deleteVolunteer = id => {
-    axios
-      .delete(`https://miracle-messages-staging.herokuapp.com/api/form/${id}`)
-      .then(res => {
-        this.props.getVolunteer();
-      })
-      .catch(err => console.log(err));
-  }
+  // deleteVolunteer = id => {
+  //   axios
+  //     .delete(`https://miracle-messages-staging.herokuapp.com/api/form/${id}`)
+  //     .then(res => {
+  //       this.props.getVolunteer();
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   componentDidMount() {
     this.props.getVolunteer();
@@ -88,15 +93,10 @@ class Volunteers extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.data.map((vol, key) => {
-          return (
-            <Volunteer 
-            volunteer={volunteer} 
-            key={volunteer.id} 
-            deleteVolunteer={this.deleteVolunteer}
-          />
-          );
+      <div onSubmit={this.toggle}>
+        {this.props.volunteerData.map(volunteer => {
+          console.log(volunteer);
+          return <Volunteer  volunteer={volunteer} key={volunteer.id} deleteVolunteer={this.deleteVolunteer}/>                      
         })}
         <Button className='addBtn' onClick={this.toggle}>
           +

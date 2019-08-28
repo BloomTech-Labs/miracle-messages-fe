@@ -19,6 +19,10 @@ export const FETCH_VOLUNTEER_INFO = 'FETCH_VOLUNTEER_INFO';
 export const FETCH_VOLUNTEER_SUCCESS = 'FETCH_VOLUNTEER_SUCCESS';
 export const FETCH_VOLUNTEER_FAIL = 'FETCH_VOLUNTEER_FAIL';
 
+export const DELETE_VOLUNTEER = 'DELETE_VOLUNTEER';
+export const DELETE_VOLUNTEER_SUCCESS = 'DELETE_VOLUNTEER_SUCCESS';
+export const DELETE_VOLUNTEER_ERR = 'DELETE_VOLUNTEER_ERR';
+
 
 const URL = 'https://miracle-messages-staging.herokuapp.com/api';
 
@@ -51,18 +55,31 @@ export const getVolunteer = () => dispatch => {
    .catch(err => dispatch({type: FETCH_VOLUNTEER_FAIL}));
 }
 
-// export const deleteSponsor = ( id) => dispatch => {
-//    dispatch({type: DELETE_PARTNER});
-//    axios
-//      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
-//      .then(res => {
-//         dispatch({type: DELETE_PARTNER_SUCCESS, payload: res.data});
-//         getSponsor();
-//      })
-//      .catch(err => {
-//         dispatch({type: DELETE_PARTNER_ERR})
-//      });
-// }
+export const deleteSponsor = ( id) => dispatch => {
+   dispatch({type: DELETE_PARTNER});
+   axios
+     .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+     .then(res => {
+        dispatch({type: DELETE_PARTNER_SUCCESS, payload: res.data});
+        getSponsor();
+     })
+     .catch(err => {
+        dispatch({type: DELETE_PARTNER_ERR})
+     });
+}
+
+export const deleteVolunteer = ( id) => dispatch => {
+   dispatch({type: DELETE_VOLUNTEER});
+   axios
+     .delete(`https://miracle-messages-staging.herokuapp.com/api/form/${id}`)
+     .then(res => {
+        dispatch({type: DELETE_VOLUNTEER_SUCCESS, payload: res.data});
+        getSponsor();
+     })
+     .catch(err => {
+        dispatch({type: DELETE_VOLUNTEER_ERR})
+     });
+}
 
 // export const updateSponsor = (id, info) => dispatch => {
 //    const updated = {
