@@ -1244,7 +1244,7 @@
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.1.0.tgz#497c67a1cef50d1a2459ba60f315e448d2ad87fe"
   integrity sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q==
 
-"@material-ui/core@^4.3.1":
+"@material-ui/core@^4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.3.3.tgz#38a02331da7916c18e65c3dc56f3f6a67ba60c07"
   integrity sha512-wUQjoJEbtVWYi+R9gBWCPGy0O+c0oY8cAp2TugyB70f89ahq/cnfnTbMZl6O2arKe2xQlfAMzY8rOOy8UMzJoQ==
@@ -1273,7 +1273,7 @@
   dependencies:
     "@babel/runtime" "^7.2.0"
 
-"@material-ui/styles@^4.3.0", "@material-ui/styles@^4.3.3":
+"@material-ui/styles@^4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.3.3.tgz#39867dd6f3779a8326075e097d72208d3c5b4977"
   integrity sha512-quupQ6RYXbtKBJxhLkF3RQx6LSfrfuh2lYpILvk7p9XNkfqOQq36fuNVgrJ/A+NNn03uqDFfQYIWh4CByKr4hA==
@@ -2173,6 +2173,11 @@ axobject-query@^2.0.2:
   integrity sha512-MCeek8ZH7hKyO1rWUbKNQBbl4l2eY0ntk7OGi+q0RlafrCnfPxC06WZA+uebCfmYp4mNU9jRBP1AhGyf8+W3ww==
   dependencies:
     ast-types-flow "0.0.7"
+
+axois@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/axois/-/axois-1.0.0.tgz#f02b16c2e9606cc8ca16d14fd4b565bbcbd1df6d"
+  integrity sha512-EpgknN8bme3k3oxrM8sDV0AQ8bN6brE7ZcnhA6ZJftI9rEyjEAIn/G1qW1+yFrgRnzJxh6MPxshiS8fmQoI/oA==
 
 babel-code-frame@^6.22.0:
   version "6.26.0"
@@ -3654,7 +3659,7 @@ decamelize@^2.0.0:
   dependencies:
     xregexp "4.0.0"
 
-deck.gl@^7.1.10:
+deck.gl@^7.2.2:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/deck.gl/-/deck.gl-7.2.2.tgz#3275b01e91d806949beb97b42e581b5f8e0e7ea5"
   integrity sha512-uhzEYxaWpICEljAK9gFFzS2Dv7qtd4TYiVbyWgQPY3Sq8igjmCGTmUx7H3Vn/kwfv7iBfAnLW4Czz85YSuzOPQ==
@@ -3957,7 +3962,7 @@ dotenv@6.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
 
-dotenv@^8.0.0:
+dotenv@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.1.0.tgz#d811e178652bfb8a1e593c6dd704ec7e90d85ea2"
   integrity sha512-GUE3gqcDCaMltj2++g6bRQ5rBJWtkWTmqmD0fo1RnnMuUqHNCt2oTPeDnS9n6fKYvlhn7AeBkb38lymBtWBQdA==
@@ -9391,7 +9396,7 @@ react-dev-utils@^9.0.3:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.8.6:
+react-dom@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
   integrity sha512-YFT2rxO9hM70ewk9jq0y6sQk8cL02xm4+IzYBz75CQGlClQQ1Bxq0nhHF6OtSbit+AIahujJgb/CPRibFkMNJQ==
@@ -9431,7 +9436,7 @@ react-load-script@^0.0.6:
   resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
   integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
-react-map-gl@^5.0.7:
+react-map-gl@^5.0.10:
   version "5.0.10"
   resolved "https://registry.yarnpkg.com/react-map-gl/-/react-map-gl-5.0.10.tgz#8b1640dd9269d1335d579d4ff6bfc3c5c711828e"
   integrity sha512-gjdHGpeFBoNBhlBSJtaginy9CPpQAnqd3yXELK2+9bIMp785tsnMykVzRhjhcd6gTi0fLkxpMtcHIr4oMkym2g==
@@ -9493,7 +9498,8 @@ react-popper@^1.3.3:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-redux@^7.1.0:
+react-redux@^7.1.1:
+
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.1.tgz#ce6eee1b734a7a76e0788b3309bf78ff6b34fa0a"
   integrity sha512-QsW0vcmVVdNQzEkrgzh2W3Ksvr8cqpAv5FhEk7tNEft+5pp7rXxAudTz3VOPawRkLIepItpkEIyLcN/VVXzjTg==
@@ -9635,7 +9641,7 @@ react-virtualized-auto-sizer@^1.0.2:
   resolved "https://registry.yarnpkg.com/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.2.tgz#a61dd4f756458bbf63bd895a92379f9b70f803bd"
   integrity sha512-MYXhTY1BZpdJFjUovvYHVBmkq79szK/k7V3MO+36gJkWGkrXKtyr4vCPtpphaTLRAdDNoYEYFZWE8LjN+PIHNg==
 
-react@^16.8.6:
+react@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
   integrity sha512-+7LQnFBwkiw+BobzOF6N//BdoNw0ouwmSJTEm9cglOOmsg/TMiFHZLe2sEoN5M7LgJTj9oHH0gxklfnQe66S1w==

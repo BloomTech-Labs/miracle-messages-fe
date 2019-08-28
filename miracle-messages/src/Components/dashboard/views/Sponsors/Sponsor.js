@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import {
   Card,
@@ -15,7 +16,7 @@ import {
 import axios from "axios";
 import { deleteSponsor, updateSponsor } from "../../../../Actions/index";
 import { connect } from "react-redux";
-
+import  UpdateSponsor  from './UpdateSponsor';
 class Sponsor extends Component {
   constructor(props) {
     super(props);
@@ -35,14 +36,14 @@ class Sponsor extends Component {
     const id = this.props.sponsor.id;
     console.log(id);
     axios
-      .delete(
-        `https://miracle-messages-production.herokuapp.com/api/partner/${id}`
-      )
-      .then(res => {
+      .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
+      .then( res => {
         this.toggle();
+        this.props.getSponsor();
       })
       .catch(err => console.log(err));
   };
+
 
   // updateSponsor = e => {
   //       e.preventDefault();
@@ -59,6 +60,9 @@ class Sponsor extends Component {
 
   // };
 
+  
+
+
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
@@ -71,38 +75,36 @@ class Sponsor extends Component {
     }));
   };
 
-  select = () => {
-    this.setState(category => ({
-      category: category.select
-    }));
-  };
+
+
 
   toggleEdit = () => {
     this.setState(prevState => ({
       editModal: !prevState.editModal
     }));
   };
-  render() {
-    console.log(this.props.sponsor);
+
+  
+  
+  render()  {
     return (
       <>
         <Card className="partnersCard">
           <CardBody>
             <CardTitle className="mb-0">
-              {/* <i className="mdi mdi-comment-processing-outline mr-2"> </i>jkdjkdjg */}
               {this.props.sponsor.name}
             </CardTitle>
           </CardBody>
           <CardBody className="border-top">
             <CardImg
               src={this.props.sponsor.icon_url}
-              style={{ heigh: "50px", width: "50px" }}
-            />
+              style={{ heigh: '50px', width: '50px' }}
+            />  
+                   
 
-            <span style={{ marginLeft: "190px" }}>
-              {this.props.sponsor.site_url}
-            </span>
 
+            <span style={{ marginLeft: '190px' }}>{this.props.sponsor.site_url}</span>
+            <span style={{marginLeft: '190px', position: 'center' }}>{this.props.sponsor.category}</span>
             <Button
               style={{ width: "100px", right: "200px", position: "absolute" }}
               onClick={this.toggleEdit}
@@ -115,32 +117,28 @@ class Sponsor extends Component {
               className={this.props.className}
               backdrop="static"
             >
-              <ModalHeader toggle={this.toggleEdit}>Update Sponsor</ModalHeader>
-              <ModalBody>
-                <Input value={this.props.name} placeholder="Update Name" />
-                <div className="dropdown-divider" />
-                <Input
-                  value={this.props.site_url}
-                  placeholder="Update Web Adress"
-                />
-                <div className="dropdown-divider" />
-                <Label>Update Logo</Label>
-                <Input value={this.props.icon_url} type="file" />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={this.updateSponsor}>
-                  Update
-                </Button>
-                <Button color="secondary" onClick={this.toggleEdit}>
-                  Cancel
-                </Button>
-              </ModalFooter>
+
+            <ModalHeader toggle={this.toggleEdit}>Update Sponsor</ModalHeader>
+            <ModalBody>
+              <UpdateSponsor 
+              toggleEdit={this.toggleEdit}
+              sponsor={this.props.sponsor}
+              />
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={this.toggleEdit}>
+                Cancel
+              </Button>
+            </ModalFooter>
+
             </Modal>
 
             <Button
               color="danger"
-              style={{ width: "100px", right: "60px", position: "absolute" }}
-              onClick={this.toggle}
+
+              style={{ width: '100px', right: '60px', position: 'absolute' }}
+              onClick={this.toggle}              
+
             >
               Delete
             </Button>
@@ -150,19 +148,19 @@ class Sponsor extends Component {
               toggle={this.toggle}
               className={this.props.className}
             >
-              <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
-              <ModalBody>
-                Are you sure you want to permanently delete this Sponsor? Will
-                Be Deleted From All The Chapters!!!
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" onClick={this.delete}>
-                  DeleteS
-                </Button>{" "}
-                <Button color="secondary" onClick={this.toggle}>
-                  Cancel
-                </Button>
-              </ModalFooter>
+            <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
+            <ModalBody>
+              Are you sure you want to permanently delete this Sponsor?
+              Will Be Deleted From All The Chapters!!!
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" onClick={this.delete}>
+                Delete
+              </Button>{' '}
+              <Button color="secondary" onClick={this.toggle}>
+                Cancel
+              </Button>
+            </ModalFooter>
             </Modal>
           </CardBody>
         </Card>
@@ -173,10 +171,8 @@ class Sponsor extends Component {
 
 const mapStateToProps = state => {
   return {
-    sponsorData: state.partnerReducer.sponsorData
-  };
-};
-export default connect(
-  mapStateToProps,
-  { deleteSponsor, updateSponsor }
-)(Sponsor);
+    sponsorData: state.partnerReducer.sponsorData,
+  }  
+}
+export default connect(mapStateToProps, {deleteSponsor, getSponsor})(Sponsor);
+
