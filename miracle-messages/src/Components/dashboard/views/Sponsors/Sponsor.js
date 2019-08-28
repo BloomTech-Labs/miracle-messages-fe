@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, CardHeader, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
+import { Card, CardBody, CardTitle,  Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
 import axios from 'axios';
 import {deleteSponsor, getSponsor } from '../../../../Actions/index';
 import { connect } from 'react-redux';
 import  UpdateSponsor  from './UpdateSponsor';
-// import "./sponsor.css";
 
 
 class Sponsor extends Component {
@@ -28,8 +27,8 @@ class Sponsor extends Component {
     axios
       .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
       .then( res => {
-        // this.props.toggle()
-        // this.props.getSponsor()
+        this.toggle();
+        this.props.getSponsor();
       })
       .catch(err => (console.log(err)));
   };
@@ -48,11 +47,6 @@ class Sponsor extends Component {
     }));
   };
 
-  // select = () => {
-  //   this.setState(category => ({
-  //     category: category.select
-  //   }))
-  // }
 
   toggleEdit = () => {
     this.setState(prevState => ({
@@ -62,17 +56,14 @@ class Sponsor extends Component {
   
   
   render()  {
-    // console.log(this.props.sponsor);
     return (
       <>
     
         <Card className="partnersCard">
           <CardBody>
             <CardTitle className="mb-0">
-              {/* <i className="mdi mdi-comment-processing-outline mr-2"> </i>jkdjkdjg */}
               {this.props.sponsor.name}
             </CardTitle>
-            {/* <CardSubtitle></CardSubtitle> */}
           </CardBody>
           <CardBody className="border-top">
             <CardImg
@@ -103,9 +94,6 @@ class Sponsor extends Component {
               />
             </ModalBody>
             <ModalFooter>
-              {/* <Button color="primary" onClick={this.toggleEdit}>
-                Update
-              </Button> */}
               <Button color="secondary" onClick={this.toggleEdit}>
                 Cancel
               </Button>
@@ -151,4 +139,4 @@ const mapStateToProps = (state) => {
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }
-export default connect(mapStateToProps, {deleteSponsor})(Sponsor);
+export default connect(mapStateToProps, {deleteSponsor, getSponsor})(Sponsor);
