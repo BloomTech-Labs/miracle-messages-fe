@@ -1,6 +1,7 @@
 export const ON_VIEWPORT_CHANGED = "ON_VIEWPORT_CHANGED";
+export const ON_VIEWPORT_ZOOM = "ON_VIEWPORT_ZOOM";
 
-//this action enables us to toggle the "learn more" button back and forth inside the city pop-ups
+
 export const onViewportChanged = viewport => dispatch => {
   dispatch({
     type: ON_VIEWPORT_CHANGED,
