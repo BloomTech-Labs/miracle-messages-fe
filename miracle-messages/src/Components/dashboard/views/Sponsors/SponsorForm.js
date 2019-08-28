@@ -12,7 +12,6 @@ class SponsorForm extends React.Component {
     }
 
     render() {
-        // console.log(this.props.icon_url);
         return (
             <div>
                 <Label>Organization Name</Label>

@@ -9,12 +9,11 @@ import {
 
 import { connect } from 'react-redux';
 import { getSponsor } from '../../../../Actions/index';
-import sponsor from './Sponsor'
 
 class UpdateSponsor extends React.Component {
     state = {
         sponsor: this.props.sponsor,
-        newIcon: null
+        newIcon: null,
     };
     
     updateSponsor = e => {
@@ -22,14 +21,13 @@ class UpdateSponsor extends React.Component {
         e.preventDefault();
         const id = this.props.sponsor.id;
         const fd = new FormData();
-        // const newIcon = this.props.icon_url;
         if (this.state.newIcon != null)  {
-            fd.append("icon_url", this.state.newIcon)
+            fd.append("partner_icon", this.state.newIcon)
         }
         fd.append("name", this.state.sponsor.name);   
         fd.append("site_url", this.state.sponsor.site_url);
         fd.append("category", this.state.sponsor.category);
-
+console.log(fd.getAll("partner_icon"));
         axios
           .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
           .then(res => {console.log(res);
