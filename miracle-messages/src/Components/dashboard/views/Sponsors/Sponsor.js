@@ -174,5 +174,5 @@ const mapStateToProps = state => {
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }
-export default connect(mapStateToProps, {deleteSponsor, getSponsor})(Sponsor);
+export default connect(mapStateToProps, {deleteSponsor})(Sponsor);
 
