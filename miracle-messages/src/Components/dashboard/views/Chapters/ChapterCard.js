@@ -1,63 +1,9 @@
-// import React from 'react';
-// import axios from 'axios';
-
-// class ChapterCard extends React.Component {
-//   state = {
-//     chapter: null
-//   };
-
-//   componentDidMount() {
-//     const target = this.props.match.params.id;
-//     const id = 1;
-//     console.log(`my idddddddddd is : ${id} and ${target}`);
-//     // this.getChapter(id);
-//     axios
-//       .get(`https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`)
-//       .then(res => {
-//         console.log(res);
-//         this.setState({ chapter: res.data });
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
-//   }
-
-//   componentDidUpdate(newProps) {
-//     if (this.props.match.params.id !== newProps.match.params.id) {
-//       this.getChapter(newProps.match.params.id);
-//     }
-//   }
-
-//   getChapter = id => {
-//     axios
-//       .get(`https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`)
-//       .then(res => {
-//         console.log(res);
-//         this.setState({ chapter: res.data });
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
-//   };
-
-//   render() {
-//     // console.log(this.state.chapter.latitude);
-//     if (!this.state.chpater) {
-//       return <div>Loading Chapter information...</div>;
-//     }
-//     return (
-//       <div>
-//         <h1 style={{ color: 'red' }}>hello</h1>
-//         <h1>{this.state.chapter.city}</h1>
-//       </div>
-//     );
-//   }
-// }
-
-// export default ChapterCard;
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
+
+import SponsorList from './SponsorList.js';
+import SelectPartner from './SelectPartners.js';
+
 import {
   Card,
   CardImg,
@@ -73,45 +19,236 @@ import {
   Input
 } from 'reactstrap';
 
-import SponsorList from './SponsorList.js';
+class ChapterCard extends React.Component {
+  state = {
+    chapter: null,
+    data: {
+      allSponsors: [],
+      allPartners: [],
+      currentSponsors: [],
+      currentPartners: []
+    }
+  };
 
-const ChapterCard = props => {
-  const [chapter, setChapter] = useState();
-
-  useEffect(() => {
-    const id = props.match.params.id;
-
+  getChapter = id => {
     axios
       .get(`https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`)
-      .then(response => {
-        setChapter(response.data);
+      .then(res => {
+        this.setState({ chapter: res.data });
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  };
 
-  if (!chapter) {
-    return <div>Loading Chapter information...</div>;
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    this.getAllPartners();
+    this.getChapterPartners(id);
+    this.getChapter(id);
   }
 
-  return (
-    <div className='chapter-flex'>
-      <Card className='s-chapter'>
-        <CardImg src={chapter.chapter_img_url} />
+  getAllPartners = () => {
+    axios
+      .get('https://miracle-messages-staging.herokuapp.com/api/partner')
+      .then(res => {
+        const data = res.data;
+        let sponsors = [];
+        let partners = [];
+        data.forEach(element => {
+          if (element.category == 'partner') {
+            partners.push(element);
+          } else {
+            sponsors.push(element);
+          }
+        });
+        this.setState({
+          data: {
+            ...this.state.data,
+            allSponsors: sponsors,
+            allPartners: partners
+          }
+        });
+      })
 
-        <CardBody>
-          <CardTitle>{chapter.city}</CardTitle>
-          <CardSubtitle></CardSubtitle>
-          <CardText></CardText>
-          <Button style={{ marginRight: '10px' }}>Edit</Button>
+      .catch(err => console.log(err));
+  };
 
-          <Button color='danger'>Delete</Button>
-        </CardBody>
-      </Card>
-      <SponsorList className='s-chapter-right' chapter={chapter} />
-    </div>
-  );
-};
+  // handleToggle = e => {
+  //   this.setState({
+  //     newInterests: {
+  //       ...this.state.newInterests,
+  //       [e.target.name]: e.target.checked
+  //     }
+  //   });
+  // };
+
+  getChapterPartners = id => {
+    axios
+      .get(
+        `https://miracle-messages-staging.herokuapp.com/api/chapter/${id}/partners`
+      )
+      .then(res => {
+        const data = res.data;
+        let sponsors = [];
+        let partners = [];
+        data.forEach(element => {
+          if (element.category == 'partner') {
+            partners.push(element);
+          } else {
+            sponsors.push(element);
+          }
+        });
+        this.setState({
+          data: {
+            ...this.state.data,
+            currentSponsors: sponsors,
+            currentPartners: partners
+          }
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  unassignPartner = id => {
+    const chapterid = this.props.match.params.id;
+    axios
+      .delete(
+        `https://miracle-messages-staging.herokuapp.com/api/chapter/${chapterid}/partners/${id}`
+      )
+      .then(res => {
+        this.getAllPartners();
+        this.getChapterPartners(chapterid);
+      })
+      .catch(err => console.log(err));
+  };
+
+  assignPartner = id => {
+    const chapterid = this.props.match.params.id;
+
+    const partnerId = { partnerId: id };
+    axios
+      .post(
+        `https://miracle-messages-staging.herokuapp.com/api/chapter/${chapterid}/partners`,
+        partnerId
+      )
+      .then(res => {
+        this.getAllPartners();
+        this.getChapterPartners(chapterid);
+      })
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    if (!this.state.chapter) {
+      return <div>Loading Chapter information...</div>;
+    }
+    return (
+      <div className='chapter-flex'>
+        <Card className='s-chapter'>
+          <CardImg src={this.state.chapter.chapter_img_url} />
+
+          <CardBody>
+            <h1>{this.state.chapter.title}</h1>
+            <h4>Established: {this.state.chapter.established_date}</h4>
+            <h4>Description</h4>
+            <p>{this.state.chapter.description}</p>
+            <h4>City: {this.state.chapter.city}</h4>
+            <h4>State: {this.state.chapter.state}</h4>
+            <h4>Latitude: {this.state.chapter.latitude}</h4>
+            <h4>Longitude: {this.state.chapter.longitude}</h4>
+            <h4>Email: {this.state.chapter.email}</h4>
+            <h4>Volunteers: {this.state.chapter.numvolunteers}</h4>
+            <h4>Delivered Messages: {this.state.chapter.msg_delivered}</h4>
+            <h4>Messages Recorded: {this.state.chapter.msg_recorded}</h4>
+            <h4>Reunions: {this.state.chapter.numreunions}</h4>
+            <h4>Featured Story</h4>
+            <p>{this.state.chapter.story}</p>
+            <CardImg src={this.state.chapter.reunion_img_url} />
+          </CardBody>
+        </Card>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <SponsorList
+            className='s-chapter-right'
+            data={this.state.data}
+            unassign={this.unassignPartner}
+          />
+          <SelectPartner data={this.state.data} assign={this.assignPartner} />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default ChapterCard;
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import {
+//   Card,
+//   CardImg,
+//   CardText,
+//   CardBody,
+//   CardTitle,
+//   CardSubtitle,
+//   Button,
+//   Modal,
+//   ModalHeader,
+//   ModalBody,
+//   ModalFooter,
+//   Input
+// } from 'reactstrap';
+
+// import SponsorList from './SponsorList.js';
+// import SelectPartner from './SelectPartners.js';
+
+// const ChapterCard = props => {
+//   const [chapter, setChapter] = useState();
+
+//   const getData = () => {
+//     const id = props.match.params.id;
+
+//     axios
+//       .get(`https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`)
+//       .then(response => {
+//         setChapter(response.data);
+//       })
+//       .catch(error => {
+//         console.error(error);
+//       });
+//   };
+//   useEffect(() => {
+//     getData();
+//   }, []);
+
+//   if (!chapter) {
+//     return <div>Loading Chapter information...</div>;
+//   }
+
+//   return (
+//     <div className='chapter-flex'>
+//       <Card className='s-chapter'>
+//         <CardImg src={chapter.chapter_img_url} />
+
+//         <CardBody>
+//           <CardTitle>{chapter.city}</CardTitle>
+//           <CardSubtitle></CardSubtitle>
+//           <CardText></CardText>
+//           <Button style={{ marginRight: '10px' }}>Edit</Button>
+
+//           <Button color='danger'>Delete</Button>
+//         </CardBody>
+//       </Card>
+//       <div style={{ display: 'flex', flexDirection: 'column' }}>
+//         <SponsorList
+//           className='s-chapter-right'
+//           chapter={chapter}
+//           refresh={getData}
+//         />
+//         <SelectPartner chapter={chapter} />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ChapterCard;

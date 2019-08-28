@@ -102,7 +102,7 @@ class UpdateForm extends React.Component {
           onChange={this.changeHandler}
           name='established_date'
           value={this.state.chapter.established_date}
-          type='date'
+          // type='date'
           placeholder='Establishment Date'
         />
         <div className='dropdown-divider' />

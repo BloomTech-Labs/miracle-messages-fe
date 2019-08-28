@@ -8787,6 +8787,12 @@ ul.list-style-none {
    margin: 10px 0;
    display: flex;
    align-items: center;
+   justify-content: space-between;
+  }
+
+  .partner-card-s div {
+    display: flex;
+    align-items: center;
   }
  
 
@@ -8797,6 +8803,5 @@ ul.list-style-none {
 
  .partSoponCol{
    width: 45%;
-   border: 1px solid red;
-   
+  margin-bottom: 20px;   
  }
