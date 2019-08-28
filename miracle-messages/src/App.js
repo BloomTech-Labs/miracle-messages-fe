@@ -26,7 +26,7 @@ class App extends Component {
               );
             } 
             // else {
-            //   return <Redirect to="/login" />;
+            //   return <Redirect to="/login" key={index} />;
             // }
           })}
         </Switch>

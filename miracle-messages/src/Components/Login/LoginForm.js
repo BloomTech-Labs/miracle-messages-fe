@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     console.log(this.state);
     this.props.fetchLogin(this.state).then(() => {
-      this.props.history.push("./admin");
+      this.props.history.push("./admin/chapters");
     });
 
     this.setState({
