@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
+import { Card, CardBody, CardTitle,  Button, CardImg, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, ButtonGroup} from 'reactstrap';
 import axios from 'axios';
-import {deleteSponsor, updateSponsor} from '../../../../Actions/index';
+import {deleteSponsor, getSponsor } from '../../../../Actions/index';
 import { connect } from 'react-redux';
+import  UpdateSponsor  from './UpdateSponsor';
 
 
 class Sponsor extends Component {
@@ -10,7 +11,6 @@ class Sponsor extends Component {
         super(props);
         this.state = {
             modal: false,
-            dropdownOpen: false,
             sponsor: {
                 name: '',
                 site_url: '',
@@ -25,27 +25,13 @@ class Sponsor extends Component {
     const id = this.props.sponsor.id;
     console.log(id);
     axios
-      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+      .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
       .then( res => {
-        this.toggle()
+        this.toggle();
+        this.props.getSponsor();
       })
       .catch(err => (console.log(err)));
   };
-
-  // updateSponsor = e => {
-  //       e.preventDefault();
-  //        const updated = this.state.sponsor;
-  //       const id = this.props.sponsor.id;
-  //       const fd = new FormData();
-  //       fd.append("partner_icon", this.state.sponsor.icon_url )
-  //       fd.append("name", this.state.sponsor.name)
-  //       fd.append("site_url", this.state.sponsor.site_url)
-  //       axios
-  //         .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
-  //         .then(res=> console.log("res",res))
-  //         .catch(err=> console.log(err));
-      
-  // };
 
   
 
@@ -61,26 +47,21 @@ class Sponsor extends Component {
     }));
   };
 
-  select = () => {
-    this.setState(category => ({
-      category: category.select
-    }))
-  }
 
   toggleEdit = () => {
     this.setState(prevState => ({
       editModal: !prevState.editModal
     }));
   };
+  
+  
   render()  {
-    console.log(this.props.sponsor);
     return (
       <>
     
         <Card className="partnersCard">
           <CardBody>
             <CardTitle className="mb-0">
-              {/* <i className="mdi mdi-comment-processing-outline mr-2"> </i>jkdjkdjg */}
               {this.props.sponsor.name}
             </CardTitle>
           </CardBody>
@@ -88,12 +69,11 @@ class Sponsor extends Component {
             <CardImg
               src={this.props.sponsor.icon_url}
               style={{ heigh: '50px', width: '50px' }}
-            />
+            />  
+                   
 
-            <span style={{ marginLeft: '190px' }}>
-             {this.props.sponsor.site_url}
-            </span>
-
+            <span style={{ marginLeft: '190px' }}>{this.props.sponsor.site_url}</span>
+            <span style={{marginLeft: '190px', position: 'center' }}>{this.props.sponsor.category}</span>
             <Button
               style={{ width: '100px', right: '200px', position: 'absolute' }}
               onClick={this.toggleEdit}
@@ -108,17 +88,12 @@ class Sponsor extends Component {
             >
             <ModalHeader toggle={this.toggleEdit}>Update Sponsor</ModalHeader>
             <ModalBody>
-              <Input value={this.props.name} placeholder="Update Name" />
-              <div className="dropdown-divider" />
-              <Input value={this.props.site_url} placeholder="Update Web Adress" />
-              <div className="dropdown-divider" />
-              <Label>Update Logo</Label>
-              <Input value={this.props.icon_url} type="file"  />
+              <UpdateSponsor 
+              toggleEdit={this.toggleEdit}
+              sponsor={this.props.sponsor}
+              />
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.updateSponsor}>
-                Update
-              </Button>
               <Button color="secondary" onClick={this.toggleEdit}>
                 Cancel
               </Button>
@@ -128,7 +103,7 @@ class Sponsor extends Component {
             <Button
               color="danger"
               style={{ width: '100px', right: '60px', position: 'absolute' }}
-              onClick={this.toggle}
+              onClick={this.toggle}              
             >
               Delete
             </Button>
@@ -145,7 +120,7 @@ class Sponsor extends Component {
             </ModalBody>
             <ModalFooter>
               <Button color="danger" onClick={this.delete}>
-                DeleteS
+                Delete
               </Button>{' '}
               <Button color="secondary" onClick={this.toggle}>
                 Cancel
@@ -164,4 +139,4 @@ const mapStateToProps = (state) => {
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }
-export default connect(mapStateToProps, {deleteSponsor, updateSponsor})(Sponsor);
+export default connect(mapStateToProps, {deleteSponsor, getSponsor})(Sponsor);
