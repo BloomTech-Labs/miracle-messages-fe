@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import indexRoutes from "./Components/dashboard/routes/index.js";
 import VolunteerForm from "./Components/Forms/VolunteerForm";
 import LoginFrom from "./Components/Login/LoginForm.js";
+import {PrivateRoute} from "./Components/PrivateRoute";
 import "./CSS/style.css";
 
 class App extends Component {
@@ -16,18 +17,9 @@ class App extends Component {
           <Route exact path="/form" component={VolunteerForm} />
           <Route exact path="/login" component={LoginFrom} />
           {indexRoutes.map((prop, index) => {
-            if (localStorage.getItem("token")) {
-              return (
-                <Route
-                  path={prop.path}
-                  key={index}
-                  component={prop.component}
-                />
-              );
-            } 
-            // else {
-            //   return <Redirect to="/login" key={index} />;
-            // }
+            return (
+              <PrivateRoute path={prop.path} key={index} component={prop.component} />
+            );
           })}
         </Switch>
       </div>
