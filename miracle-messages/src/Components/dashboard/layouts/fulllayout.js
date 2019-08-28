@@ -5,6 +5,8 @@ import Sidebar from '../sidebar/sidebar.js';
 import Footer from '../footer/footer.js';
 import ThemeRoutes from '../routes/routing.js';
 
+import ChapterCard from '../views/Chapters/ChapterCard';
+
 class Fulllayout extends React.Component {
   constructor(props) {
     super(props);
@@ -55,20 +57,20 @@ class Fulllayout extends React.Component {
   render() {
     return (
       <div
-        id="main-wrapper"
-        data-theme="light"
-        data-layout="vertical"
-        data-sidebartype="full"
-        data-sidebar-position="fixed"
-        data-header-position="fixed"
-        data-boxed-layout="full"
+        id='main-wrapper'
+        data-theme='light'
+        data-layout='vertical'
+        data-sidebartype='full'
+        data-sidebar-position='fixed'
+        data-header-position='fixed'
+        data-boxed-layout='full'
       >
         <Header data={this.state} />
 
         <Sidebar data={this.state} {...this.props} routes={ThemeRoutes} />
 
-        <div className="page-wrapper d-block">
-          <div className="page-content container-fluid">
+        <div className='page-wrapper d-block'>
+          <div className='page-content container-fluid'>
             <Switch>
               {ThemeRoutes.map((prop, key) => {
                 if (prop.redirect) {
@@ -77,11 +79,18 @@ class Fulllayout extends React.Component {
                   );
                 } else {
                   return (
-                    <Route
-                      path={prop.path}
-                      component={prop.component}
-                      key={key}
-                    />
+                    <div key={key}>
+                      <Route
+                        exact
+                        path={prop.path}
+                        component={prop.component}
+                      />
+                      <Route
+                        exact
+                        path='/admin/chapters/:id'
+                        render={props => <ChapterCard {...props} />}
+                      />
+                    </div>
                   );
                 }
               })}
