@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
@@ -14,7 +13,7 @@ import CityInfo from "./city_info";
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
-import { onViewportChanged} from "../../Actions/OnViewportAction";
+import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
 import Drawer from "@material-ui/core/Drawer";
@@ -28,7 +27,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
-require('dotenv').config();
+require("dotenv").config();
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -46,11 +45,6 @@ class Map extends Component {
     this.props.getData();
   }
 
-  // to handle the GA events and hopefully the auto zoom
-  _onClickGA = e => {
-    gaEvent("click", "city marker", "Click city marker pin");
-  };
-
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
@@ -59,7 +53,13 @@ class Map extends Component {
         latitude={city.latitude}
         longitude={city.longitude}
       >
-        <CityPin city={city} />
+        <div
+          onClick={() => {
+            gaEvent("click", "chapter pin", `${city.title}`);
+          }}
+        >
+          <CityPin city={city} />
+        </div>
       </Marker>
     );
   };
@@ -94,7 +94,7 @@ class Map extends Component {
                 margin: "5px 10px 0px 0px"
               }}
             >
-              <Cancel style={{ position: "absolute", right: "0"}} />
+              <Cancel style={{ position: "absolute", right: "0" }} />
             </IconButton>
             <Scrollbars style={{ width: 376 }} autoHide={true}>
               <CityInfo info={popupInfo} />
@@ -128,7 +128,7 @@ class Map extends Component {
           dragRotate={false}
         >
           <div
-            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>
@@ -153,5 +153,5 @@ const mapStateToProps = state => {
 //this is how we connect the map.js component to the store
 export default connect(
   mapStateToProps,
-  { getData, updatePopupAction, slideToggleAction, onViewportChanged}
+  { getData, updatePopupAction, slideToggleAction, onViewportChanged }
 )(Map);

@@ -37,10 +37,11 @@ class Chapter extends Component {
     this.toggle();
     this.props.deleteChapter(this.props.info.id);
   };
-
+  
   render() {
     return (
       <Card className='cardChapter'>
+        
         <CardImg
           top
           width='100%'

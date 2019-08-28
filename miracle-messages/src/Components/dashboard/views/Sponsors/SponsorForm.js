@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Input, Label, Container, DropdownToggle, DropdownMenu, DropdownItem,ButtonDropdown } from 'reactstrap';
+
+import { Input, Label } from 'reactstrap';
+
 
 
 
@@ -8,26 +10,7 @@ class SponsorForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
-        this.select = this.select.bind(this);
-        this.state = {
-          dropdownOpen: false,
-          
-        };
-    }  
-      
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
-
-    select(event) {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
-      value: event.target.innerText,
-    });
-  }
+    }
 
     render() {
         return (
@@ -54,18 +37,16 @@ class SponsorForm extends React.Component {
                 name="icon_url"
                 type="file"
                 /><br/>
-                <h3>Choose your Interest:</h3>
-                <Container className="drop_down">
-                  <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                  <DropdownToggle>{this.state.value}</DropdownToggle>
-                    <DropdownMenu>
-                    <DropdownItem onClick={this.select} value={this.props.sponsor.category}>Sponsor</DropdownItem>
-                  <DropdownItem onClick={this.select} value={this.props.sponsor.category}>Partner</DropdownItem>
-                   </DropdownMenu>
-                  </ButtonDropdown>
-                </Container>
-            </div>
+                <Label>Category</Label>
+                <Input
+                onChange={this.props.change}
+                name="category"
+                type="text"
+                placeholder="Sponsor / Partner"
+                />
+             </div>
         );
     }
+  
 }
-export default SponsorForm
+export default SponsorForm;
