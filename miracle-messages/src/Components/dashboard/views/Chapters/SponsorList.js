@@ -9,6 +9,7 @@ class SponsorList extends React.Component {
         <div className='partnerColumn'>
           <div className='partSoponCol'>
             <h2>Current Partners</h2>
+
             {this.props.data.currentPartners &&
               this.props.data.currentPartners.map((partner, key) => {
                 return (

@@ -1,13 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-import { Link, Route } from 'react-router-dom';
-
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Chapter from './Chapter.js';
 import ChapterForm from './ChapterForm';
-
-import ChapterCard from './Chapters/ChapterCard';
 
 import { connect } from 'react-redux';
 import { getData } from '../../../Actions/index';

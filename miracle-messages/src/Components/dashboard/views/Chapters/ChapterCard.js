@@ -4,20 +4,7 @@ import axios from 'axios';
 import SponsorList from './SponsorList.js';
 import SelectPartner from './SelectPartners.js';
 
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Input
-} from 'reactstrap';
+import { Card, CardImg, CardBody } from 'reactstrap';
 
 class ChapterCard extends React.Component {
   state = {
@@ -62,6 +49,12 @@ class ChapterCard extends React.Component {
             sponsors.push(element);
           }
         });
+        // let filteredSponsor = []
+        // sponsors.forEach((sponsor,index) =>{
+        //   for(let i =0; i < this.state.data.currentSponsors.length; i++){
+        //     if(sponsor.name !=this.state.data.currentSponsors[i].name)
+        //   }
+        // })
         this.setState({
           data: {
             ...this.state.data,
@@ -73,15 +66,6 @@ class ChapterCard extends React.Component {
 
       .catch(err => console.log(err));
   };
-
-  // handleToggle = e => {
-  //   this.setState({
-  //     newInterests: {
-  //       ...this.state.newInterests,
-  //       [e.target.name]: e.target.checked
-  //     }
-  //   });
-  // };
 
   getChapterPartners = id => {
     axios
