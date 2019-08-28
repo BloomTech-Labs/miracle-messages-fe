@@ -15,8 +15,7 @@ export const PARTNER_UPDATE = "PARTNER_UPDATE";
 export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS";
 export const PARTNER_ERR = "PARTNER_ERR";
 
-
-const URL = 'https://miracle-messages-production.herokuapp.com/api';
+// const URL = 'https://miracle-messages-production.herokuapp.com/api';
 
 //this data pull enables us to get chapter related data from backend so we can display on the map
 export const getData = () => dispatch => {

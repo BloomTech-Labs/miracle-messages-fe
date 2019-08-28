@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Input, Label } from 'reactstrap';
+import { Input, Label } from 'reactstrap';
 
 class ChapterForm extends React.Component {
   render() {

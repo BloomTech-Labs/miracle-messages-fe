@@ -6,14 +6,12 @@ import {
   Label,
   CardImg,
   CardImgOverlay,
-  CardText,
   CardTitle,
   Card
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { getData } from '../../../../Actions/index';
-import { thisExpression } from '@babel/types';
 
 class UpdateForm extends React.Component {
   state = {

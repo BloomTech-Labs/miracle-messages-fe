@@ -116,6 +116,7 @@ class CityInfo extends PureComponent {
                 <a
                   href={sponsor.site_url}
                   target='_blank'
+                  rel="noopener noreferrer"
                   key={`sponsor-${index}`}
                 >
                   <div className='icon-container'>
@@ -142,6 +143,7 @@ class CityInfo extends PureComponent {
                 <a
                   href={partner.site_url}
                   target='_blank'
+                  rel="noopener noreferrer"
                   key={`partner-${index}`}
                 >
                   <div className='icon-container'>

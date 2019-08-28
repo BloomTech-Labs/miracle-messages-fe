@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {
   Card,
   CardImg,
@@ -11,8 +10,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Input
+  ModalFooter
 } from 'reactstrap';
 
 import UpdateFrom from './Chapters/UpdateForm';

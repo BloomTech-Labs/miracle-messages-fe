@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 
 // Mapbox imports
 import MapGL, { Marker, NavigationControl } from "react-map-gl";
-import WebMercatorViewport from "viewport-mercator-project";
-import { LinearInterpolator } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Custom file imports
