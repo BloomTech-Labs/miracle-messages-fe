@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Nav,
   Navbar,
@@ -11,9 +11,10 @@ import {
   Button
 } from 'reactstrap';
 
-import profilephoto from '../../../Assets/Imgs/kev.jpg';
 
-import logodarkicon from '../../../Assets/Imgs/MM_Logo_black.png';
+import profilephoto from "../../../Assets/Imgs/kev.jpg";
+
+import logodarkicon from "../../../Assets/Imgs/MM_Logo_black.png";
 
 class Header extends React.Component {
   state = {
@@ -27,8 +28,12 @@ class Header extends React.Component {
   };
 
   showMobilemenu() {
-    document.getElementById('main-wrapper').classList.toggle('show-sidebar');
+    document.getElementById("main-wrapper").classList.toggle("show-sidebar");
   }
+
+  logoutHandler = () => {
+    localStorage.removeItem("token");
+  };
 
   render() {
     return (
@@ -85,9 +90,8 @@ class Header extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right className='user-dd'>
                   <DropdownItem divider />
-
-                  <DropdownItem href='/pages/login'>
-                    <i className='fa fa-power-off mr-1 ml-1' /> Logout
+                  <DropdownItem href="/login" onClick={this.logoutHandler}>
+                    <i className="fa fa-power-off mr-1 ml-1" /> Logout
                   </DropdownItem>
                   <DropdownItem divider />
                 </DropdownMenu>

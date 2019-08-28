@@ -5,7 +5,7 @@ import {
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
-import { ON_VIEWPORT_CHANGED, ON_VIEWPORT_ZOOM } from "../Actions/OnViewportAction";
+import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
 
 const initialState = {
   viewport: {

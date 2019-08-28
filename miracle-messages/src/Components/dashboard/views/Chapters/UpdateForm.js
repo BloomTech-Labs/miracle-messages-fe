@@ -6,14 +6,12 @@ import {
   Label,
   CardImg,
   CardImgOverlay,
-  CardText,
   CardTitle,
   Card
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { getData } from '../../../../Actions/index';
-import { thisExpression } from '@babel/types';
 
 class UpdateForm extends React.Component {
   state = {
@@ -52,7 +50,7 @@ class UpdateForm extends React.Component {
 
     axios
       .put(
-        `https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`,
+        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}`,
         fd
       )
       .then(res => {

@@ -12,8 +12,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Input
+  ModalFooter
 } from 'reactstrap';
 
 import UpdateFrom from './Chapters/UpdateForm';

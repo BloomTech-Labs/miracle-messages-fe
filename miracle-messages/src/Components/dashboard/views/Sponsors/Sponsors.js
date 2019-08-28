@@ -39,7 +39,6 @@ class Sponsors extends React.Component {
         this.toggle();
         this.props.getSponsor();
       })
-          
           .catch(err=> console.log(err));
           this.setState({
               sponsor: {

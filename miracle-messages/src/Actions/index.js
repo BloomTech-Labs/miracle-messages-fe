@@ -15,14 +15,13 @@ export const PARTNER_UPDATE = "PARTNER_UPDATE";
 export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS";
 export const PARTNER_ERR = "PARTNER_ERR";
 
-
-const URL = 'https://miracle-messages-staging.herokuapp.com/api';
+// const URL = 'https://miracle-messages-production.herokuapp.com/api';
 
 //this data pull enables us to get chapter related data from backend so we can display on the map
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_CHAPTER_INFO});
  axios
-   .get ('https://miracle-messages-staging.herokuapp.com/api/chapter')
+   .get ('https://miracle-messages-production.herokuapp.com/api/chapter')
    .then(res => dispatch({type: FETCH_CHAPTER_SUCCESS, payload: res.data}))
    .catch(err => dispatch({type: FETCH_CHAPTER_FAIL}));
 }
@@ -42,7 +41,7 @@ export const getSponsor = (data) => dispatch => {
 export const deleteSponsor = ( id) => dispatch => {
    dispatch({type: DELETE_PARTNER});
    axios
-     .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+     .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
      .then(res => {
         dispatch({type: DELETE_PARTNER_SUCCESS, payload: res.data});
         getSponsor();
@@ -62,7 +61,7 @@ export const updateSponsor = (id, info) => dispatch => {
    }
    dispatch({type: PARTNER_UPDATE});
    axios
-     .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, updated)
+     .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, updated)
      .then(e => {
         dispatch({type:PARTNER_UPDATE_SUCCESS, payload: e.data})
      })
