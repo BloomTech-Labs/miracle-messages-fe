@@ -1,34 +1,139 @@
 import React from 'react';
 import axios from 'axios';
 import Volunteer from './Volunteer';
+import { connect } from 'react-redux';
 
 class Volunteers extends React.Component {
-  state = {
-    data: []
-  };
+  constructor(props) {
+    super(props);
+      this.state = {
+        modal: false,
+        volunteer: {
+           fname: '',
+           lname: '',
+           email: '',
+           phone: '',
+           city: '',
+           state: '',
+           country: '',
+           comment: ''
+        }      
+    };
+  }
 
-  componentDidMount() {
+  addVolunteer = e => {
+    e.preventDefault();
+    const fd = new FormData();
+
+    fd.append('fname', this.state.volunteer.fname);
+    fd.append('lname', this.state.volunteer.lname);
+    fd.append('email', this.state.volunteer.email);
+    fd.append('phone', this.state.volunteer.phone);
+    fd.append('city', this.state.volunteer.city);
+    fd.append('state', this.state.volunteer.state);
+    fd.append('country', this.state.volunteer.country);
+    fd.append('comment', this.state.volunteer.comment);
     axios
-      .get('https://miracle-messages-staging.herokuapp.com/api/form')
+      .post('https://miracle-messages-staging.herokuapp.com/api/form')
       .then(res => {
-        this.setState({
-          data: res.data
-        });
-      })
+        console.log(res);
+        this.toggle();
+        this.props.getVolunteer();
+        })      
       .catch(err => {
         console.log(err);
       });
+
+      this.setState({
+        volunteer: {
+           fname: '',
+           lname: '',
+           email: '',
+           phone: '',
+           city: '',
+           state: '',
+           country: '',
+           comment: ''
+        }
+      });  
+  };
+
+  handleInputChange = e => {
+    this.setState({
+      chapter: {
+        ...this.state.volunteer,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+  
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
+
+  deleteVolunteer = id => {
+    axios
+      .delete(`https://miracle-messages-staging.herokuapp.com/api/form/${id}`)
+      .then(res => {
+        this.props.getVolunteer();
+      })
+      .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    this.props.getVolunteer();
   }
 
   render() {
     return (
       <div>
         {this.state.data.map((vol, key) => {
-          return <Volunteer vol={vol} key={key} />;
+          return (
+            <Volunteer 
+            volunteer={volunteer} 
+            key={volunteer.id} 
+            deleteVolunteer={this.deleteVolunteer}
+          />
+          );
         })}
+        <Button className='addBtn' onClick={this.toggle}>
+          +
+        </Button>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+          backdrop='static'
+        >
+          <ModalHeader toggle={this.toggle}>Add Volunteer</ModalHeader>
+          <ModalBody>
+            <VolunteerForm
+              change={this.handleInputChange}
+              volunteer={this.state.volunteer}
+            />
+            </ModalBody>
+            <ModalFooter>
+            <Button color='success' onClick={this.addVolunteer}>
+              Add Volunteer
+            </Button>{' '}
+            <Button color='secondary' onClick={this.toggle}>
+              Cancel
+            </Button>
+          </ModalFooter>          
+        </Modal>
       </div>
     );
   }
 }
 
-export default Volunteers;
+const mapStateToProps = state => {
+  return {
+    volunteerData: state.voluntReducer.volunteerData
+  };
+};
+export default connect(
+  mapStateToProps,
+  {getVolunteer}
+)(Volunteers);

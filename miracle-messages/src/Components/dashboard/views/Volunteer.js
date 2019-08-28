@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, Button } from 'reactstrap';
 
 class Volunteer extends Component {
+  state = {
+    modal: false,
+    modalEdit: false
+  }
+
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
+
+  toggleEdit = () => {
+    this.setState(prevState => ({
+      modalEdit: prevState.modalEdit
+    }));
+  };
+
+  deleteVolunteer = () => {
+    this.toggle();
+    this.props.deleteVolunteer(this.props.data.id)
+  };
   render() {
     return (
       <Card>
