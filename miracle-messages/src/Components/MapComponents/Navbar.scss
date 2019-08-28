@@ -1,0 +1,64 @@
+.navbar {
+  width: 100%;
+  position: fixed !important;
+  z-index: 99;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  background: #212121;
+  font-family: ProximaNova;
+  @media (max-width: 1100px) {
+    display: none !important;
+  }
+  img {
+    height: auto;
+    max-width: 100%;
+    width: 195px;
+  }
+  nav {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    @media (max-width: 1400px) {
+      width: 60%;
+    }
+
+    a {
+      font-weight: 600;
+      font-style: normal;
+      font-size: 18px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1em;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: ProximaNova;
+
+      &:hover {
+        color: white;
+      }
+      &:last-child {
+        background-color: #fff;
+        -moz-osx-font-smoothing: auto;
+        -webkit-font-smoothing: subpixel-antialiased;
+        color: #000;
+        -webkit-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        -moz-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        -ms-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        -o-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        padding: 15px 30px;
+
+        &:hover {
+          background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
+        }
+      }
+    }
+  }
+}
