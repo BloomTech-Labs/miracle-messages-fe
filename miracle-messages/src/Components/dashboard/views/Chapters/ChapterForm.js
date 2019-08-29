@@ -19,7 +19,6 @@ class ChapterForm extends React.Component {
           onChange={this.props.change}
           name='established_date'
           value={this.props.chapter.established_date}
-          // type='date'
           placeholder='Establishment Date'
         />
         <div className='dropdown-divider' />

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
   Card,
@@ -15,7 +14,7 @@ import {
   ModalFooter
 } from 'reactstrap';
 
-import UpdateFrom from './Chapters/UpdateForm';
+import UpdateFrom from './UpdateForm';
 
 class Chapter extends Component {
   state = {
@@ -39,7 +38,7 @@ class Chapter extends Component {
     this.toggle();
     this.props.deleteChapter(this.props.info.id);
   };
-  
+
   render() {
     return (
       <Card className='cardChapter'>
@@ -75,9 +74,9 @@ class Chapter extends Component {
               />
             </ModalBody>
             <ModalFooter>
-              <Button color='primary' onClick={this.toggleEdit}>
+              {/* <Button color='primary' onClick={this.toggleEdit}>
                 Update
-              </Button>{' '}
+              </Button>{' '} */}
               <Button color='secondary' onClick={this.toggleEdit}>
                 Cancel
               </Button>

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import PartnerCard from './PartnerCard.js';
 
 class SponsorList extends React.Component {
