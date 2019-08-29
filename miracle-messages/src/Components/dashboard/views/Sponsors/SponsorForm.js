@@ -3,10 +3,6 @@ import React from 'react';
 import { Input, Label } from 'reactstrap';
 
 class SponsorForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
