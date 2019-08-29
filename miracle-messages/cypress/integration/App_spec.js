@@ -34,7 +34,7 @@ describe("home page App.js", function() {
 
   it("should click on svg", function() {
     cy.get("svg")
-      .first()
+      .eq(4).wait(2000)
       .click();
   });
 

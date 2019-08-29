@@ -3,9 +3,6 @@
 
 /* eslint-disable no-undef */
 describe("Admin page", function() {
-  it("should successfully load the admin page", function() {
-    cy.visit("/admin/chapters");
-  });
 
   it("should get all the chapter elements", function() {
     cy.get(".card").then($el => {
@@ -77,7 +74,7 @@ describe("Admin page", function() {
 
   it("should click the cancel add Chapter button", function() {
     cy.get(".btn-secondary")
-      .eq(26).contains("Cancel")
+      .contains("Cancel")
       .click();
   });
 
@@ -95,16 +92,7 @@ describe("Admin page", function() {
       .wait(1000);
   });
 
-  it("should click the image to open toggle logout", function() {
-    cy.get(".rounded-circle")
-      .click()
-      .wait(2000);
-  });
-
-  it("should click the image to close toggle logout", function() {
-    cy.get(".rounded-circle").click();
-  });
-
+  
   it("should click the sidebar link for Volunteers", function() {
     cy.get(".sidebar-link")
       .eq(1)
@@ -112,11 +100,23 @@ describe("Admin page", function() {
       .wait(2000);
   });
 
+  it("should fill input fields", function() {
+    cy.get("input").first().type('admin', { delay: 100 });
+    cy.get("input").eq(1).type('superuser01', { delay: 100 })
+    
+  });
+
+  it("should click to submit", function() {
+    cy.get(".btn-primary").click();
+  });
+  
   it("should click the sidebar link for Sponsors", function() {
     cy.get(".sidebar-link")
       .eq(2)
       .click();
   });
+
+  
 
   it("should click the first Sponsor update button", function() {
     cy.get(".btn-secondary")
