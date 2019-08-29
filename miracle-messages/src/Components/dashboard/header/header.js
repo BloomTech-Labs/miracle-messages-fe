@@ -44,12 +44,13 @@ class Header extends React.Component {
               </b>
             </NavbarBrand>
 
-            <a
+            <button
+              style={{ border: 'none', background: 'white' }}
               className='nav-toggler d-block d-md-none'
               onClick={this.showMobilemenu}
             >
               <i className='fas fa-bars' />
-            </a>
+            </button>
           </div>
           <Collapse
             className='navbarbg'
@@ -65,6 +66,7 @@ class Header extends React.Component {
               <a
                 href='https://miracle-messages-production.netlify.com'
                 target='_blank'
+                rel='noopener noreferrer'
                 style={{
                   height: '80%',
                   marginRight: '30px',

@@ -8,6 +8,7 @@ class PartnerCard extends React.Component {
           <img
             style={{ width: '50px', height: '50px' }}
             src={this.props.partner.icon_url}
+            alt=''
           />
           <h3>{this.props.partner.name}</h3>
         </div>
