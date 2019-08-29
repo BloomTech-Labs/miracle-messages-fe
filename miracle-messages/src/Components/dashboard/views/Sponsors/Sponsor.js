@@ -14,7 +14,7 @@ import {
   Label
 } from "reactstrap";
 import axios from "axios";
-import { deleteSponsor, updateSponsor } from "../../../../Actions/index";
+import { deleteSponsor, updateSponsor, getSponsor } from "../../../../Actions/index";
 import { connect } from "react-redux";
 import  UpdateSponsor  from './UpdateSponsor';
 class Sponsor extends Component {
@@ -36,7 +36,7 @@ class Sponsor extends Component {
     const id = this.props.sponsor.id;
     console.log(id);
     axios
-      .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
+      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
       .then( res => {
         this.toggle();
         this.props.getSponsor();
@@ -45,21 +45,26 @@ class Sponsor extends Component {
   };
 
 
-  // updateSponsor = e => {
-  //       e.preventDefault();
-  //        const updated = this.state.sponsor;
-  //       const id = this.props.sponsor.id;
-  //       const fd = new FormData();
-  //       fd.append("partner_icon", this.state.sponsor.icon_url )
-  //       fd.append("name", this.state.sponsor.name)
-  //       fd.append("site_url", this.state.sponsor.site_url)
-  //       axios
-  //         .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
-  //         .then(res=> console.log("res",res))
-  //         .catch(err=> console.log(err));
-
-  // };
-
+//  updateSponsor = e => {
+//         console.log("this.state",this.state);
+//         e.preventDefault();
+//         const id = this.props.sponsor.id;
+//         const fd = new FormData();
+//         if (this.state.newIcon != null)  {
+//             fd.append("partner_icon", this.state.newIcon)
+//         }
+//         fd.append("name", this.state.sponsor.name);   
+//         fd.append("site_url", this.state.sponsor.site_url);
+//         fd.append("category", this.state.sponsor.category);
+// console.log(fd.getAll("partner_icon"));
+//         axios
+//           .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
+//           .then(res => {console.log(res);
+//               this.props.toggleEdit();
+//               this.props.getSponsor();
+//           })
+//           .catch(err => console.log(err));
+//     };
   
 
 
@@ -69,11 +74,11 @@ class Sponsor extends Component {
     }));
   };
 
-  toggleDrop = () => {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropDown
-    }));
-  };
+  // toggleDrop = () => {
+  //   this.setState(prevState => ({
+  //     dropdownOpen: !prevState.dropDown
+  //   }));
+  // };
 
 
 
@@ -174,5 +179,5 @@ const mapStateToProps = state => {
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }
-export default connect(mapStateToProps, {deleteSponsor})(Sponsor);
+export default connect(mapStateToProps, {deleteSponsor, getSponsor})(Sponsor);
 
