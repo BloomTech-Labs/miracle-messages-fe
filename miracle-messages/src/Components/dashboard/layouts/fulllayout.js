@@ -5,8 +5,6 @@ import Sidebar from '../sidebar/sidebar.js';
 import Footer from '../footer/footer.js';
 import ThemeRoutes from '../routes/routing.js';
 
-import ChapterCard from '../views/Chapters/ChapterCard';
-
 class Fulllayout extends React.Component {
   constructor(props) {
     super(props);
@@ -71,7 +69,7 @@ class Fulllayout extends React.Component {
 
         <div className='page-wrapper d-block'>
           <div className='page-content container-fluid'>
-            <div>
+            <Switch>
               {ThemeRoutes.map((prop, key) => {
                 if (prop.redirect) {
                   return (
@@ -79,22 +77,16 @@ class Fulllayout extends React.Component {
                   );
                 } else {
                   return (
-                    <Switch key={key}>
-                      <Route
-                        exact
-                        path={prop.path}
-                        component={prop.component}
-                      />
-                      <Route
-                        exact
-                        path='/admin/chapters/:id'
-                        render={props => <ChapterCard {...props} />}
-                      />
-                    </Switch>
+                    <Route
+                      exact
+                      key={key}
+                      path={prop.path}
+                      render={props => <prop.component {...props} />}
+                    />
                   );
                 }
               })}
-            </div>
+            </Switch>
           </div>
           <Footer />
         </div>
