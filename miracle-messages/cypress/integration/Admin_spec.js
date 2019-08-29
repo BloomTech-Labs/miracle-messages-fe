@@ -3,9 +3,6 @@
 
 /* eslint-disable no-undef */
 describe("Admin page", function() {
-  // it("should successfully load the admin page", function() {
-  //   cy.visit("/admin/chapters");
-  // });
 
   it("should get all the chapter elements", function() {
     cy.get(".card").then($el => {
