@@ -1,5 +1,4 @@
-
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Card,
   CardBody,
@@ -9,6 +8,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+
   ModalFooter,
   Input,
   Label
@@ -24,10 +24,10 @@ class Sponsor extends Component {
       modal: false,
       dropdownOpen: false,
       sponsor: {
-        name: "",
-        site_url: "",
+        name: '',
+        site_url: '',
         icon_url: null,
-        category: ""
+        category: ''
       }
     };
   }
@@ -36,6 +36,7 @@ class Sponsor extends Component {
     const id = this.props.sponsor.id;
     console.log(id);
     axios
+
       .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
       .then( res => {
         this.toggle();
@@ -43,6 +44,7 @@ class Sponsor extends Component {
       })
       .catch(err => console.log(err));
   };
+
 
 
 //  updateSponsor = e => {
@@ -80,38 +82,33 @@ class Sponsor extends Component {
   //   }));
   // };
 
-
-
-
   toggleEdit = () => {
     this.setState(prevState => ({
       editModal: !prevState.editModal
     }));
   };
 
-  
-  
-  render()  {
+  render() {
     return (
       <>
-        <Card className="partnersCard">
+        <Card className='partnersCard'>
           <CardBody>
-            <CardTitle className="mb-0">
-              {this.props.sponsor.name}
-            </CardTitle>
+            <CardTitle className='mb-0'>{this.props.sponsor.name}</CardTitle>
           </CardBody>
-          <CardBody className="border-top">
+          <CardBody className='border-top'>
             <CardImg
               src={this.props.sponsor.icon_url}
               style={{ heigh: '50px', width: '50px' }}
-            />  
-                   
+            />
 
-
-            <span style={{ marginLeft: '190px' }}>{this.props.sponsor.site_url}</span>
-            <span style={{marginLeft: '190px', position: 'center' }}>{this.props.sponsor.category}</span>
+            <span style={{ marginLeft: '190px' }}>
+              {this.props.sponsor.site_url}
+            </span>
+            <span style={{ marginLeft: '190px', position: 'center' }}>
+              {this.props.sponsor.category}
+            </span>
             <Button
-              style={{ width: "100px", right: "200px", position: "absolute" }}
+              style={{ width: '100px', right: '200px', position: 'absolute' }}
               onClick={this.toggleEdit}
             >
               Update
@@ -120,30 +117,26 @@ class Sponsor extends Component {
               isOpen={this.state.editModal}
               toggle={this.toggleEdit}
               className={this.props.className}
-              backdrop="static"
+              backdrop='static'
             >
-
-            <ModalHeader toggle={this.toggleEdit}>Update Sponsor</ModalHeader>
-            <ModalBody>
-              <UpdateSponsor 
-              toggleEdit={this.toggleEdit}
-              sponsor={this.props.sponsor}
-              />
-            </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" onClick={this.toggleEdit}>
-                Cancel
-              </Button>
-            </ModalFooter>
-
+              <ModalHeader toggle={this.toggleEdit}>Update Sponsor</ModalHeader>
+              <ModalBody>
+                <UpdateSponsor
+                  toggleEdit={this.toggleEdit}
+                  sponsor={this.props.sponsor}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button color='secondary' onClick={this.toggleEdit}>
+                  Cancel
+                </Button>
+              </ModalFooter>
             </Modal>
 
             <Button
-              color="danger"
-
+              color='danger'
               style={{ width: '100px', right: '60px', position: 'absolute' }}
-              onClick={this.toggle}              
-
+              onClick={this.toggle}
             >
               Delete
             </Button>
@@ -153,19 +146,19 @@ class Sponsor extends Component {
               toggle={this.toggle}
               className={this.props.className}
             >
-            <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
-            <ModalBody>
-              Are you sure you want to permanently delete this Sponsor?
-              Will Be Deleted From All The Chapters!!!
-            </ModalBody>
-            <ModalFooter>
-              <Button color="danger" onClick={this.delete}>
-                Delete
-              </Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>
-                Cancel
-              </Button>
-            </ModalFooter>
+              <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
+              <ModalBody>
+                Are you sure you want to permanently delete this Sponsor? Will
+                Be Deleted From All The Chapters!!!
+              </ModalBody>
+              <ModalFooter>
+                <Button color='danger' onClick={this.delete}>
+                  Delete
+                </Button>{' '}
+                <Button color='secondary' onClick={this.toggle}>
+                  Cancel
+                </Button>
+              </ModalFooter>
             </Modal>
           </CardBody>
         </Card>
@@ -176,6 +169,7 @@ class Sponsor extends Component {
 
 const mapStateToProps = state => {
   return {
+
     sponsorData: state.partnerReducer.sponsorData,
   }  
 }

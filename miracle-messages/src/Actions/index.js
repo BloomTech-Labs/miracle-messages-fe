@@ -7,13 +7,14 @@ export const FETCHING_PARTNER = 'FETCHING_PARTNER';
 export const FETCH_PARTNER_SUCCCESS = 'FETCH_PARTNER_SUCCESS';
 export const FETCH_PARTNER_ERR = 'FETCH_PARTNER_ERR';
 
-export const DELETE_PARTNER = "DELETE_PARTNER";
-export const DELETE_PARTNER_SUCCESS = "DELETE_PARTNER_SUCCESS";
-export const DELETE_PARTNER_ERR = "DELETE_PARTNER_ERR";
+export const DELETE_PARTNER = 'DELETE_PARTNER';
+export const DELETE_PARTNER_SUCCESS = 'DELETE_PARTNER_SUCCESS';
+export const DELETE_PARTNER_ERR = 'DELETE_PARTNER_ERR';
 
-export const PARTNER_UPDATE = "PARTNER_UPDATE";
-export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS";
-export const PARTNER_ERR = "PARTNER_ERR";
+export const PARTNER_UPDATE = 'PARTNER_UPDATE';
+export const PARTNER_UPDATE_SUCCESS = 'PARTNER_UPDATE_SUCCESS';
+export const PARTNER_ERR = 'PARTNER_ERR';
+
 
 // const url = 'https://miracle-messages-staging.herokuapp.com/api';
 
@@ -69,3 +70,4 @@ export const deleteSponsor = ( id) => dispatch => {
 //         dispatch({type: PARTNER_ERR})
 //      });
 // } 
+

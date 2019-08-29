@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Chapter from './Chapter.js';
+import Chapter from './Chapter';
 import ChapterForm from './ChapterForm';
 
 import { connect } from 'react-redux';
-import { getData } from '../../../Actions/index';
+import { getData } from '../../../../Actions/index';
 
 class Chapters extends React.Component {
   constructor(props) {
@@ -53,9 +53,8 @@ class Chapters extends React.Component {
     fd.append('story', this.state.chapter.story);
 
     axios
-      .post('https://miracle-messages-production.herokuapp.com/api/chapter', fd)
+      .post('https://miracle-messages-staging.herokuapp.com/api/chapter', fd)
       .then(res => {
-        console.log(res);
         this.toggle();
         this.props.getData();
       })
@@ -98,7 +97,6 @@ class Chapters extends React.Component {
         [e.target.name]: e.target.value
       }
     });
-    // console.log(this.state.chapter);
   };
 
   toggle = () => {
@@ -110,12 +108,9 @@ class Chapters extends React.Component {
   deleteChapter = id => {
     axios
       .delete(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}`
+        `https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`
       )
       .then(res => {
-        console.log('Deleted');
-        // this.setState({ state: this.state });
-        // this.forceUpdate();
         this.props.getData();
       })
       .catch(err => console.log(err));
@@ -129,15 +124,12 @@ class Chapters extends React.Component {
     return (
       <div className='chapter-felx'>
         {this.props.chapter_data.map(chapter => {
-          // console.log(chapter);
           return (
-            // <Link to={`/admin/chapters/${chapter.id}`} key={chapter.id}>
             <Chapter
               info={chapter}
               key={chapter.id}
               deleteChapter={this.deleteChapter}
             />
-            // </Link>
           );
         })}
 

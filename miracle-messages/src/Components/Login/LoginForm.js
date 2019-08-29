@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./LoginForm.css";
 import {
@@ -12,22 +13,22 @@ import { loginReducer } from "../../Reducers/LoginReducer";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 
 
+
 class LoginForm extends React.Component {
   state = {
-    username: "",
-    password: ""
+    username: '',
+    password: ''
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     this.props.fetchLogin(this.state).then(() => {
-      this.props.history.push("./admin/chapters");
+      this.props.history.push('./admin/chapters');
     });
 
     this.setState({
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     });
   };
 
@@ -36,6 +37,7 @@ class LoginForm extends React.Component {
   };
 
   render() {
+
     return (      
         <Container className="LoginForm" >
         <h2>Sign In</h2>
@@ -76,6 +78,7 @@ class LoginForm extends React.Component {
       </footer>
       </Container>
       
+
     );
   }
 }
@@ -84,7 +87,6 @@ const mapStateToProps = state => ({
   isLoggedIn: state.loginReducer.isLoggedIn,
   isLoggedOut: state.loginReducer.isLoggedOut,
   isFetching: state.loginReducer.isFetching
-  // errors: state.loginReducer.errors
 });
 
 export default connect(
