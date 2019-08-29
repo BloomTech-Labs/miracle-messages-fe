@@ -23,6 +23,6 @@ describe("Login page", function() {
     cy.get(".sidebar-link")
       .eq(0)
       .click()
-      .wait(2000);
+      .wait(1000);
   });
 })
