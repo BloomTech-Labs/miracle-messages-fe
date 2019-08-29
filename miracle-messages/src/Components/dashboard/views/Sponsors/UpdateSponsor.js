@@ -29,7 +29,7 @@ class UpdateSponsor extends React.Component {
         fd.append("category", this.state.sponsor.category);
 console.log(fd.getAll("partner_icon"));
         axios
-          .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
+          .put(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`, fd)
           .then(res => {console.log(res);
               this.props.toggleEdit();
               this.props.getSponsor();
