@@ -37,15 +37,10 @@ class LoginForm extends React.Component {
 
   render() {
     return (      
-        <Container className="App">
+        <Container className="LoginForm">
           <header>
           <div className="navbar">
-            <img src={logo} alt="logo" />
-            <nav>
-              <a href="https://www.google.com/">ABOUT</a>
-              <a href="https://www.google.com/">REUNION SERVICE</a>
-              <a href="https://www.google.com/">GET INVOLVED</a>
-            </nav>
+            <a href="https://miracle-messages-staging.netlify.com"><img src={logo} alt="logo" /></a>
           </div>
           <div className="backImg">
             <div className="overlay">
