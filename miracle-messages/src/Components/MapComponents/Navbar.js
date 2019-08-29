@@ -6,7 +6,7 @@ import './Navbar.scss';
 class Navbar extends React.Component {
   render() {
     return (
-      <div className='navbar'>
+      <div className='navbar-map'>
         <a href='https://miraclemessages.org/'>
           <img src={logo} alt='logo' />
         </a>

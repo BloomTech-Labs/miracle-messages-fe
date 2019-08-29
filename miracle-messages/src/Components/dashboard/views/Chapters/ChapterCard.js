@@ -43,7 +43,7 @@ class ChapterCard extends React.Component {
         let sponsors = [];
         let partners = [];
         data.forEach(element => {
-          if (element.category == 'partner') {
+          if (element.category === 'partner') {
             partners.push(element);
           } else {
             sponsors.push(element);
@@ -77,7 +77,7 @@ class ChapterCard extends React.Component {
         let sponsors = [];
         let partners = [];
         data.forEach(element => {
-          if (element.category == 'partner') {
+          if (element.category === 'partner') {
             partners.push(element);
           } else {
             sponsors.push(element);
