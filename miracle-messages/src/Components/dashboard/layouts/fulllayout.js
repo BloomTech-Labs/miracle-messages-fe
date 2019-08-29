@@ -55,20 +55,20 @@ class Fulllayout extends React.Component {
   render() {
     return (
       <div
-        id="main-wrapper"
-        data-theme="light"
-        data-layout="vertical"
-        data-sidebartype="full"
-        data-sidebar-position="fixed"
-        data-header-position="fixed"
-        data-boxed-layout="full"
+        id='main-wrapper'
+        data-theme='light'
+        data-layout='vertical'
+        data-sidebartype='full'
+        data-sidebar-position='fixed'
+        data-header-position='fixed'
+        data-boxed-layout='full'
       >
         <Header data={this.state} />
 
         <Sidebar data={this.state} {...this.props} routes={ThemeRoutes} />
 
-        <div className="page-wrapper d-block">
-          <div className="page-content container-fluid">
+        <div className='page-wrapper d-block'>
+          <div className='page-content container-fluid'>
             <Switch>
               {ThemeRoutes.map((prop, key) => {
                 if (prop.redirect) {
@@ -78,9 +78,10 @@ class Fulllayout extends React.Component {
                 } else {
                   return (
                     <Route
-                      path={prop.path}
-                      component={prop.component}
+                      exact
                       key={key}
+                      path={prop.path}
+                      render={props => <prop.component {...props} />}
                     />
                   );
                 }

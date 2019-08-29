@@ -1,6 +1,7 @@
 import Volunteers from '../views/Volunteers.js';
-import Chapters from '../views/Chapters.js';
+import Chapters from '../views/Chapters/Chapters.js';
 import Sponsors from '../views/Sponsors/Sponsors.js';
+import ChapterCard from '../views/Chapters/ChapterCard';
 
 let ThemeRoutes = [
   {
@@ -10,6 +11,12 @@ let ThemeRoutes = [
     component: Chapters
   },
   {
+    path: '/admin/Sponsors',
+    name: 'Sponsors',
+    icon: 'fas fa-hands-helping',
+    component: Sponsors
+  },
+  {
     path: '/admin/volunteers',
     name: 'Volunteers',
     icon: 'fas fa-users',
@@ -17,17 +24,9 @@ let ThemeRoutes = [
   },
 
   {
-    path: '/admin/Sponsors',
-    name: 'Sponsors',
-    icon: 'fas fa-hands-helping',
-    component: Sponsors
+    path: '/admin/chapters/:id',
+    component: ChapterCard
   },
-  // {
-  //   path: '/admin/dashboard',
-  //   name: 'Dashboard',
-  //   icon: 'fas fa-tachometer-alt',
-  //   component:
-  // },
   {
     path: '/admin',
     pathTo: 'admin/chapters',

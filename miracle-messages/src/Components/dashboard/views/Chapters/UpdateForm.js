@@ -6,14 +6,12 @@ import {
   Label,
   CardImg,
   CardImgOverlay,
-  CardText,
   CardTitle,
   Card
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { getData } from '../../../../Actions/index';
-import { thisExpression } from '@babel/types';
 
 class UpdateForm extends React.Component {
   state = {
@@ -27,7 +25,6 @@ class UpdateForm extends React.Component {
   updateChapter = e => {
     e.preventDefault();
 
-    console.log(this.state.chapter);
     const id = this.props.chapter.id;
     const fd = new FormData();
     if (this.state.newChapterImg != null) {
@@ -56,7 +53,6 @@ class UpdateForm extends React.Component {
         fd
       )
       .then(res => {
-        console.log(res);
         this.props.toggleEdit();
         this.props.getData();
       })
@@ -82,10 +78,6 @@ class UpdateForm extends React.Component {
     });
   };
 
-  // componentDidMount() {
-  //   this.props.getData();
-  // }
-
   render() {
     return (
       <div>
@@ -102,7 +94,6 @@ class UpdateForm extends React.Component {
           onChange={this.changeHandler}
           name='established_date'
           value={this.state.chapter.established_date}
-          type='date'
           placeholder='Establishment Date'
         />
         <div className='dropdown-divider' />
@@ -227,13 +218,13 @@ class UpdateForm extends React.Component {
           placeholder='Story'
           rows='5'
         />
-        <Button onClick={this.updateChapter}>update</Button>
+        <Button color='info' onClick={this.updateChapter}>
+          Update
+        </Button>
       </div>
     );
   }
 }
-
-// export default UpdateForm;
 
 const mapStateToProps = state => {
   return {

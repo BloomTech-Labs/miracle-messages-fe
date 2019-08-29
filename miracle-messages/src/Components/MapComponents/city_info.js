@@ -13,6 +13,15 @@ import gmail from '../../Assets/icons/gmail.png';
 // CSS imports
 import '../../CSS/city_info.css';
 
+//GA Imports:
+import ReactGA from 'react-ga';
+import { gaEvent } from '../Analytics/GAFunctions';
+
+//initializing GA
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
+//tracking slide-out view
+ReactGA.pageview('/slide-out');
+
 class CityInfo extends PureComponent {
   render() {
     const { info } = this.props;
@@ -20,11 +29,9 @@ class CityInfo extends PureComponent {
     const sponsors = info.partners.filter(
       partner => partner.category === 'sponsor'
     );
-    console.log('SPONSORS: ', sponsors);
     const partners = info.partners.filter(
       partner => partner.category === 'partner'
     );
-    console.log('PARTNERS: ', partners);
 
     return (
       <div className='chapterInfo'>
@@ -57,7 +64,12 @@ class CityInfo extends PureComponent {
 
         {/* Links out */}
         <div className='buttons'>
-          <button className='green'>
+          <button
+            className='green'
+            onClick={() => {
+              gaEvent('click', 'Get Involved Button', `${info.title}`);
+            }}
+          >
             <a
               href='https://miraclemessages.org/getinvolved'
               target='_blank'
@@ -67,7 +79,12 @@ class CityInfo extends PureComponent {
             </a>
           </button>
 
-          <button className='white'>
+          <button
+            className='white'
+            onClick={() => {
+              gaEvent('click', 'Donate Button', `${info.title}`);
+            }}
+          >
             <a
               href='https://www.classy.org/give/231839/#!/donation/checkout'
               target='_blank'
@@ -116,6 +133,7 @@ class CityInfo extends PureComponent {
                 <a
                   href={sponsor.site_url}
                   target='_blank'
+                  rel='noopener noreferrer'
                   key={`sponsor-${index}`}
                 >
                   <div className='icon-container'>
@@ -142,6 +160,7 @@ class CityInfo extends PureComponent {
                 <a
                   href={partner.site_url}
                   target='_blank'
+                  rel='noopener noreferrer'
                   key={`partner-${index}`}
                 >
                   <div className='icon-container'>
