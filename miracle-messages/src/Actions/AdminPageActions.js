@@ -43,7 +43,10 @@ export const DELETE_CHAPTER_FAIL = 'DELETE_CHAPTERS_FAIL';
 export const fetchLogin = user => dispatch => {
   dispatch({ type: START_LOGIN });
   return axios
-    .post('https://miracle-messages-staging.herokuapp.com/api/user/login', user)
+    .post(
+      'https://miracle-messages-production.herokuapp.com/api/user/login',
+      user
+    )
 
     .then(res => {
       dispatch({ type: SUCCESS_LOGIN });
@@ -63,7 +66,7 @@ export const addUser = (username, password) => dispatch => {
   dispatch({ type: ADD_USERS_START });
   return axios
     .post(
-      'https://miracle-messages-staging.herokuapp.com/api/user/register',
+      'https://miracle-messages-production.herokuapp.com/api/user/register',
       username,
       password
     )
@@ -78,7 +81,7 @@ export const addUser = (username, password) => dispatch => {
 export const getUsers = () => dispatch => {
   dispatch({ type: GET_USERS_START });
   axios
-    .get('https://miracle-messages-staging.herokuapp.com/api/user/users')
+    .get('https://miracle-messages-production.herokuapp.com/api/user/users')
     .then(res => {
       dispatch({ type: GET_USERS_SUCCESS, payload: res.data });
     })
@@ -109,7 +112,7 @@ export const addVolunteer = volunteer => dispatch => {
   dispatch({ type: ADD_VOLUNTEERS_START });
   return axios
     .post(
-      'https://miracle-messages-sthttps://miracle-messages-staging.herokuapp.com/api/form',
+      'https://miracle-messages-sthttps://miracle-messages-production.herokuapp.com/api/form',
       volunteer
     )
     .thern(res => {

@@ -33,7 +33,7 @@ class Sponsors extends React.Component {
         fd.append("category", this.state.sponsor.category)
         console.log(fd.getAll("partner_icon"));
         axios
-          .post('https://miracle-messages-staging.herokuapp.com/api/partner', fd)
+          .post('https://miracle-messages-production.herokuapp.com/api/partner', fd)
           .then(res=>  {
         console.log(res);
 

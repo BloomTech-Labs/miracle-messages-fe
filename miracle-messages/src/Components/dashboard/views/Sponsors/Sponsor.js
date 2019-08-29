@@ -37,7 +37,7 @@ class Sponsor extends Component {
     console.log(id);
     axios
 
-      .delete(`https://miracle-messages-staging.herokuapp.com/api/partner/${id}`)
+      .delete(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`)
       .then( res => {
         this.toggle();
         this.props.getSponsor();

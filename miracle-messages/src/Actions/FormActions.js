@@ -10,7 +10,10 @@ export const addVolunteers = volunteer => async dispatch => {
   });
 
   axios
-    .post('https://miracle-messages-staging.herokuapp.com/api/form', volunteer)
+    .post(
+      'https://miracle-messages-production.herokuapp.com/api/form',
+      volunteer
+    )
     .then(res => {
       return dispatch({
         type: ADD_VOLUNTEER_SUCCESS

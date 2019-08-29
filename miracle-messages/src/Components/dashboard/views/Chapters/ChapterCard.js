@@ -19,7 +19,7 @@ class ChapterCard extends React.Component {
 
   getChapter = id => {
     axios
-      .get(`https://miracle-messages-staging.herokuapp.com/api/chapter/${id}`)
+      .get(`https://miracle-messages-production.herokuapp.com/api/chapter/${id}`)
       .then(res => {
         this.setState({ chapter: res.data });
       })
@@ -37,7 +37,7 @@ class ChapterCard extends React.Component {
 
   getAllPartners = () => {
     axios
-      .get(`https://miracle-messages-staging.herokuapp.com/api/partner`)
+      .get(`https://miracle-messages-production.herokuapp.com/api/partner`)
       .then(res => {
         const data = res.data;
         let sponsors = [];
@@ -66,7 +66,7 @@ class ChapterCard extends React.Component {
   getChapterPartners = id => {
     axios
       .get(
-        `https://miracle-messages-staging.herokuapp.com/api/chapter/${id}/partners`
+        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}/partners`
       )
       .then(res => {
         const data = res.data;
@@ -94,7 +94,7 @@ class ChapterCard extends React.Component {
     const chapterid = this.props.match.params.id;
     axios
       .delete(
-        `https://miracle-messages-staging.herokuapp.com/api/chapter/${chapterid}/partners/${id}`
+        `https://miracle-messages-production.herokuapp.com/api/chapter/${chapterid}/partners/${id}`
       )
       .then(res => {
         this.getAllPartners();
@@ -109,7 +109,7 @@ class ChapterCard extends React.Component {
     const partnerId = { partnerId: id };
     axios
       .post(
-        `https://miracle-messages-staging.herokuapp.com/api/chapter/${chapterid}/partners`,
+        `https://miracle-messages-production.herokuapp.com/api/chapter/${chapterid}/partners`,
         partnerId
       )
       .then(res => {
