@@ -28,6 +28,7 @@ import ReactGA from 'react-ga';
 import { gaEvent } from '../Analytics/GAFunctions'; //enable event tracking
 
 import Navbar from './Navbar';
+import NewChapter from './NewChapter';
 
 require('dotenv').config();
 
@@ -73,6 +74,10 @@ class Map extends Component {
 
   _renderNavbar() {
     return <Navbar />;
+  }
+
+  _renderNewChapter() {
+    return <NewChapter />;
   }
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -124,6 +129,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         {this._renderNavbar()}
+        {this._renderNewChapter()}
         <MapGL
           {...viewport}
           width='100vw'
