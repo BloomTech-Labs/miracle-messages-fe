@@ -112,7 +112,7 @@ describe("Admin page", function() {
   
   it("should click the sidebar link for Sponsors", function() {
     cy.get(".sidebar-link")
-      .eq(2)
+      .contains("Sponsors")
       .click();
   });
 
