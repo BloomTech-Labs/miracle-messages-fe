@@ -56,6 +56,20 @@ export const deleteSponsor = id => dispatch => {
     });
 };
 
+export const FETCH_CHAPTER_DEFAULT_INFO = 'FETCH_CHAPTER_DEFAULT_INFO';
+export const FETCH_CHAPTER_DEFAULT_SUCCESS = 'FETCH_CHAPTER_DEFAULT_SUCCESS';
+export const FETCH_CHAPTER_DEFAULT_FAIL = 'FETCH_CHAPTER_DEFAULT_FAIL';
+
+export const getDefault = () => dispatch => {
+  dispatch({ type: FETCH_CHAPTER_DEFAULT_INFO });
+  axios
+    .get('https://miracle-messages-production.herokuapp.com/api/chapter/1')
+    .then(res =>
+      dispatch({ type: FETCH_CHAPTER_DEFAULT_SUCCESS, payload: res.data })
+    )
+    .catch(err => dispatch({ type: FETCH_CHAPTER_DEFAULT_FAIL }));
+};
+
 // export const updateSponsor = (id, info) => dispatch => {
 //    const updated = {
 //        id: info.id,
