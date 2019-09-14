@@ -10,7 +10,7 @@ import CityPin from './city_pin';
 import CityInfo from './city_info';
 
 // Action imports
-import { getData } from '../../Actions/index';
+import { getData, getDefault } from '../../Actions/index';
 import { updatePopupAction } from '../../Actions/updatePopupAction';
 import { slideToggleAction } from '../../Actions/SlideToggleAction';
 import { onViewportChanged } from '../../Actions/OnViewportAction';
@@ -46,6 +46,7 @@ class Map extends Component {
   //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
+    this.props.getDefault();
   }
 
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
@@ -156,6 +157,7 @@ class Map extends Component {
 //this is how we convert the state that was modified by the reducers to props
 const mapStateToProps = state => {
   return {
+    // popupInfo: state.mapReducer.popupInfo,
     chapter_data: state.mapReducer.chapter_data,
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
@@ -167,5 +169,11 @@ const mapStateToProps = state => {
 //this is how we connect the map.js component to the store
 export default connect(
   mapStateToProps,
-  { getData, updatePopupAction, slideToggleAction, onViewportChanged }
+  {
+    getData,
+    updatePopupAction,
+    slideToggleAction,
+    onViewportChanged,
+    getDefault
+  }
 )(Map);
