@@ -32,7 +32,7 @@ import NewChapter from './NewChapter';
 
 require('dotenv').config();
 
-const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+// const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const STYLE = 'mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1';
 
@@ -137,7 +137,7 @@ class Map extends Component {
           height='100vh'
           onViewportChange={this._updateViewport}
           mapStyle={STYLE}
-          mapboxApiAccessToken={TOKEN}
+          mapboxApiAccessToken={"pk.eyJ1IjoibWlyYWNsZWxhYiIsImEiOiJjazJ1cGJxbXAxOGE3M2JudDgyYjR6YnJ2In0.Pm7sHdg0FThDPuRmy2DI5A"}
           minZoom={3}
           maxPitch={0}
           dragRotate={false}
