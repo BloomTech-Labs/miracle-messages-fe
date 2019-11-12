@@ -1,11 +1,13 @@
 .container {
   margin: 0;
   padding: 0;
-  width: 100%;
+  max-width: match-parent;
   text-align: center;
+
   header {
     position: relative;
     height: 407px;
+
     h1 {
       color: white;
       position: absolute;
@@ -14,57 +16,64 @@
       text-align: center;
       width: 100%;
       z-index: 1;
-      // border: 1px red solid;
     }
+
     .navbar {
-      width: 97%;
+      width: 100%;
       position: absolute;
       z-index: 99;
-      height: auto;
-      display: flex;
-      justify-content: space-between;
-      margin: 18px 1%;
 
       img {
         height: auto;
         max-width: 100%;
-        width: 195px;
+        width: 196px;
+        margin: 8px;
       }
-      nav {
+
+      .tabsnavbar {
         width: 80%;
-        display: flex;
         align-items: center;
-        justify-content: space-evenly;
-        a {
-          font-weight: 600;
-          font-style: normal;
-          font-size: 18px;
-          letter-spacing: 1.2px;
-          text-transform: uppercase;
-          text-decoration: none;
-          line-height: 1em;
-          color: rgba(255, 255, 255, 0.9);
-          font-family: ProximaNova;
+        nav {
+          width: match-parent;
+          display: flex;
+          align-items: right;
+          text-align: center;
+          justify-content: flex-end;
 
-          &:last-child {
-            background-color: #fff;
-            -moz-osx-font-smoothing: auto;
-            -webkit-font-smoothing: subpixel-antialiased;
-            color: #000;
-            -webkit-transition: background-color 0.1s 0s ease-in-out,
-              color 0.1s 0s ease-in-out;
-            -moz-transition: background-color 0.1s 0s ease-in-out,
-              color 0.1s 0s ease-in-out;
-            -ms-transition: background-color 0.1s 0s ease-in-out,
-              color 0.1s 0s ease-in-out;
-            -o-transition: background-color 0.1s 0s ease-in-out,
-              color 0.1s 0s ease-in-out;
-            transition: background-color 0.1s 0s ease-in-out,
-              color 0.1s 0s ease-in-out;
-            padding: 15px 30px;
+          a {
+            font-weight: 600;
+            font-style: normal;
+            font-size: 1rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            line-height: 1em;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: ProximaNova;
+            padding: 13.5px 20px;
 
-            &:hover {
-              background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
+            &:last-child {
+              background-color: #fff;
+              -moz-osx-font-smoothing: auto;
+              -webkit-font-smoothing: subpixel-antialiased;
+              color: #000;
+              -webkit-transition: background-color 0.1s 0s ease-in-out,
+                color 0.1s 0s ease-in-out;
+              -moz-transition: background-color 0.1s 0s ease-in-out,
+                color 0.1s 0s ease-in-out;
+              -ms-transition: background-color 0.1s 0s ease-in-out,
+                color 0.1s 0s ease-in-out;
+              -o-transition: background-color 0.1s 0s ease-in-out,
+                color 0.1s 0s ease-in-out;
+              transition: background-color 0.1s 0s ease-in-out,
+                color 0.1s 0s ease-in-out;
+
+              &:hover {
+                background: darken(
+                  $color: rgba(214, 214, 214, 0.6),
+                  $amount: 1%
+                );
+              }
             }
           }
         }
@@ -75,7 +84,7 @@
       z-index: 99;
       .backImg {
         background-color: black;
-        background: url('../../Assets/Imgs/header.png') no-repeat center;
+        background: url("../../Assets/Imgs/header.png") no-repeat center;
         height: 407px;
         background-size: cover;
         background-position-y: -169px;
@@ -95,6 +104,7 @@
 
   .main {
     // border: 1px red solid;
+    background: #fff;
     h2 {
       margin: 0 auto;
       height: 65px;
@@ -149,7 +159,6 @@
             width: 777px;
             border: 1px solid #b4b4b4;
             border-radius: 2px;
-            background-color: #fbfbfb;
           }
 
           .small {
@@ -203,7 +212,7 @@
             text-align: left;
             padding-top: 3px;
             font-size: 16px;
-            font-family: 'Open Sans';
+            font-family: "Open Sans";
             color: #303030;
           }
         }
@@ -213,20 +222,19 @@
         width: 777px;
         border: 1px solid #b4b4b4;
         border-radius: 2px;
-        background-color: #fbfbfb;
+        // background-color: #fbfbfb;
       }
       .submitb {
         height: 45px;
         width: 194px;
         background-color: #5cbe80;
-        font-family: 'Open Sans';
+        font-family: "Open Sans";
         font-size: 24px;
         color: #ffffff;
         letter-spacing: 0.9px;
         text-align: center;
         margin-top: 35px;
-
-        // padding-bottom: 30px;
+        padding-bottom: 30px;
       }
     }
   }
