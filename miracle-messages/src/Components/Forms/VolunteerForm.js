@@ -145,8 +145,10 @@ class VolunteerForm extends React.Component {
           </div>
         </header>
         <section className="main">
-          <h2>You're in the right place.</h2>
-          <p>{this.props.message}</p>
+          <strong>
+            <h2>You're in the right place.</h2>
+          </strong>
+          {/* <p>{this.props.message}</p> */}
           <form
             className="form"
             onSubmit={this.handleOnsubmit}

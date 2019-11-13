@@ -103,25 +103,34 @@
   }
 
   .main {
-    // border: 1px red solid;
+    border: 1px red solid;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+
+    // strong {
+    //   font-weight: 900px;
+    // }
     h2 {
       margin: 0 auto;
-      height: 65px;
-      width: 627px;
+      // height: 65px;
+      // width: 627px;
       color: #303030;
       font-family: ProximaNova;
-      font-size: 48px;
-      font-weight: bold;
-      letter-spacing: 1.82px;
-      line-height: 65px;
+      font-size: 40px;
+      // font-weight: bolder;
+      letter-spacing: 1px;
+      line-height: 1.2em;
+      margin-top: 100px;
       // border: 1px solid blue;
     }
     form {
-      // border: 1px solid red;
+      // border: 1px solid purple;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 50px;
+
       .input-wrapper {
         display: flex;
         flex-direction: column;
