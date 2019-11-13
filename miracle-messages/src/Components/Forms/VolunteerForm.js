@@ -156,11 +156,11 @@ class VolunteerForm extends React.Component {
           >
             <div />
             <section className="input-wrapper">
-              <div className="name-wrapper">
+              <div>
                 <div className="formBox">
                   <label>First Name *</label>
                 </div>
-                <div>
+                <div className="formBox">
                   <input
                     className="input small"
                     type="text"
@@ -174,7 +174,7 @@ class VolunteerForm extends React.Component {
                 <div className="formBox">
                   <label>Last Name *</label>
                 </div>
-                <div>
+                <div className="formBox">
                   <input
                     className="input small"
                     type="text"
@@ -219,7 +219,7 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-                <div className="name-wrapper">
+                <div>
                   <div className="formBox">
                     <label>Country *</label>
                     <input
