@@ -137,7 +137,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 1px solid purple;
+        margin: 0 0 24px;
+        // border: 1px solid purple;
 
         // .name-wrapper {
         //   display: flex;
@@ -172,9 +173,9 @@
             border-radius: 2px;
           }
 
-          .small {
-            width: 360px;
-          }
+          // .small {
+          //   width: 360px;
+          // }
         }
 
         #stateId {
@@ -182,9 +183,9 @@
           display: flex;
           justify-content: flex-start;
 
-          input {
-            width: 360px;
-          }
+          // input {
+          //   width: 360px;
+          // }
         }
       }
 
@@ -198,7 +199,7 @@
         label {
           height: 22px;
           width: 220px;
-          color: #303030;
+          color: rgba(26, 26, 26, 0.7);
           font-family: ProximaNova;
           font-size: 22px;
           font-weight: 600;
@@ -212,19 +213,23 @@
           display: flex;
           // border: 1px solid blue;
           .chbox {
-            height: 25px;
-            width: 25px;
+            height: 13px;
+            width: 13px;
             vertical-align: center;
+            margin-right: 5px;
             // border: 1px solid red;
           }
-          h7 {
+          .interest-labels {
             width: 200px;
             // border: 1px solid red;
             text-align: left;
             padding-top: 3px;
-            font-size: 16px;
-            font-family: "Open Sans";
-            color: #303030;
+            font-size: 13px;
+            line-height: normal;
+            font-family: "proxima-nova";
+            letter-spacing: 0px;
+            font-weight: 400;
+            color: rgba(26, 26, 26, 0.7);
           }
         }
       }

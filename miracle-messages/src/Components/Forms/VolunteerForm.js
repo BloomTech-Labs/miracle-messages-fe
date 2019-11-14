@@ -162,7 +162,7 @@ class VolunteerForm extends React.Component {
                 </div>
                 <div className="formBox">
                   <input
-                    className="input small"
+                    className="input"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.fname}
@@ -176,7 +176,7 @@ class VolunteerForm extends React.Component {
                 </div>
                 <div className="formBox">
                   <input
-                    className="input small"
+                    className="input"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.lname}
@@ -187,7 +187,7 @@ class VolunteerForm extends React.Component {
                 <div className="formBox">
                   <label>Email Address *</label>
                 </div>
-                <div>
+                <div className="formBox">
                   <input
                     className="input"
                     type="text"
@@ -197,7 +197,7 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-                <div className="formBox">
+                {/* <div className="formBox">
                   <label>Phone *</label>
                   <PhoneInput
                     placeholder="Enter phone number"
@@ -207,11 +207,11 @@ class VolunteerForm extends React.Component {
                     country="US"
                     countryOptions={["US", "CA", "AU", "|", "..."]}
                   />
-                </div>
+                </div> */}
                 <div className="formBox">
                   <label>Phone *</label>
                   <input
-                    className="input"
+                    className="input small"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.phone}
@@ -220,17 +220,6 @@ class VolunteerForm extends React.Component {
                   />
                 </div>
                 <div>
-                  <div className="formBox">
-                    <label>Country *</label>
-                    <input
-                      className="input small"
-                      type="text"
-                      onChange={this.handleOnChange}
-                      value={this.state.newVolunteer.country}
-                      name="country"
-                      required
-                    />
-                  </div>
                   <div className="formBox">
                     <label>City *</label>
                     <input
@@ -244,7 +233,7 @@ class VolunteerForm extends React.Component {
                   </div>
                 </div>
                 <div className="formBox" id="stateId">
-                  <label>State *</label>
+                  <label>State/Province *</label>
                   <input
                     className="input"
                     id="state"
@@ -252,6 +241,17 @@ class VolunteerForm extends React.Component {
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.state}
                     name="state"
+                    required
+                  />
+                </div>
+                <div className="formBox">
+                  <label>Country *</label>
+                  <input
+                    className="input small"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.country}
+                    name="country"
                     required
                   />
                 </div>
@@ -295,14 +295,16 @@ class VolunteerForm extends React.Component {
               </div>
 
               <div className="interest-wrapper">
-                <input
-                  className="chbox"
-                  type="checkbox"
-                  name="mediacoverage"
-                  checked={this.state.newInterests.mediacoverage}
-                />
-
-                <h7>Media Coverage</h7>
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="mediacoverage"
+                    checked={this.state.newInterests.mediacoverage}
+                  />
+                  Media Coverage
+                </label>
               </div>
 
               <div className="interest-wrapper">
