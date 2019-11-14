@@ -15,21 +15,22 @@ import logo from "../../Assets/Imgs/MM_Logo.png"
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
-      fname: "",
-      lname: "",
-      email: "",
-      phone: "",
-      city: "",
-      state: "",
-      country: "",
-      comment: ""
+      fname: '',
+      lname: '',
+      password: '',
+      email: '',
+      phone: '',
+      city: '',
+      state: '',
+      country: '',
+      comment: ''
     },
     newInterests: {
       volunteering: false,
       donating: false,
       joinmm: false,
       mediacoverage: false,
-      somethingelse: ""
+      somethingelse: false
     }
   }
 
@@ -39,21 +40,23 @@ class VolunteerForm extends React.Component {
 
     this.setState({
       newVolunteer: {
-        fname: "",
-        lname: "",
-        email: "",
-        phone: "",
-        city: "",
-        state: "",
-        country: "",
-        comment: ""
+        fname: '',
+        lname: '',
+        password: '',
+        email: '',
+        phone: '',
+        city: '',
+        state: '',
+        country: '',
+        comment: ''
       },
       newInterests: {
         volunteering: false,
         donating: false,
         joinmm: false,
         mediacoverage: false,
-        somethingelse: ""
+        somethingelse: false
+
       }
     })
   }
@@ -184,6 +187,52 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
+                <div className='formBox'>
+                  <label> Password *</label>
+                  <input
+                    className='input small'
+                    type='text'
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.password}
+                    name='password'
+                    required
+                  />
+                </div>
+              </div>
+              <div className="formBox">
+                <label>Email Address *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.email}
+                  name="email"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>Phone *</label>
+                <PhoneInput
+                  placeholder="Enter phone number"
+                  onChange={this.handleOnChangePhone}
+                  value={this.state.newVolunteer.phone}
+                  displayInitialValueAsLocalNumber={true}
+                  country="US"
+                  countryOptions={["US", "CA", "AU", "|", "..."]}
+                />
+              </div>
+              <div className="formBox">
+                <label>Phone *</label>
+                <input
+                  className="input"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.phone}
+                  name="phone"
+                  required
+                />
+              </div>
+              <div className="name-wrapper">
                 <div className="formBox">
                   <label>Email Address *</label>
                 </div>
