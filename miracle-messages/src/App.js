@@ -20,7 +20,7 @@ class App extends Component {
 
           <Route exact path="/form" component={VolunteerForm} />
           
-          <Route exact path='/login' component={LoginFrom} />
+          <Route exact path='/admin/login' component={LoginFrom} />
           
 
           {indexRoutes.map((prop, index) => {
