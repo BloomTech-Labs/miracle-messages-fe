@@ -15,6 +15,7 @@ export const addVolunteers = volunteer => async dispatch => {
       volunteer
     )
     .then(res => {
+      console.log("This is the response from FormActions", res)
       return dispatch({
         type: ADD_VOLUNTEER_SUCCESS
       });
