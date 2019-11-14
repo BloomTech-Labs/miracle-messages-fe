@@ -9,7 +9,23 @@
   </a>
 </p>
 
-> In n this project we built out a fully functioning map component which shows where chapters are, reunions take place, how many volunteers are in a chapter, and gives a beautiful visual aid to show volunteers how their help directly impacts others.
+# Partner Information
+
+### Miracle Messages
+
+We are a nonprofit reunion service to help our neighbors experiencing homelessness reunite with their loved ones in a positive and supportive way.
+
+[Website](https://miraclemessages.org/)
+Contact: Kevin Alder
+Product Manager: Jessica Wilkinson
+
+---
+
+# Mission
+
+"I didn't realize I was homeless until I lost my friends and family"
+
+We believe everyone is somebody's someone, and no one should be defined by what they lack. Miracle Messages Map connects volunteers, making it easy to join together to reunite more homeless people with their families.
 
 ### 🏠 [Homepage](https://miracle-messages-production.netlify.com/)
 
