@@ -4,7 +4,7 @@ import "./CSS/App.css"
 import { Route, Switch } from "react-router-dom"
 import indexRoutes from "./Components/dashboard/routes/index.js"
 import VolunteerForm from "./Components/Forms/VolunteerForm"
-import LoginFrom from "./Components/Login/LoginForm.js"
+import LoginForm from "./Components/Login/LoginForm.js"
 import { PrivateRoute } from "./Components/PrivateRoute"
 import "./CSS/style.css"
 
@@ -15,7 +15,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Map} />
           <Route exact path="/form" component={VolunteerForm} />
-          <Route exact path="/login" component={LoginFrom} />
+          <Route exact path="/login" component={LoginForm} />
           {indexRoutes.map((prop, index) => {
             return (
               <PrivateRoute
