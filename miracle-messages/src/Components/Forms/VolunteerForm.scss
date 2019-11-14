@@ -103,51 +103,46 @@
   }
 
   .main {
-    // border: 1px red solid;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+
+    .main-bold {
+      h2 {
+        font-weight: 900;
+      }
+    }
+
     h2 {
       margin: 0 auto;
-      height: 65px;
-      width: 627px;
       color: #303030;
       font-family: ProximaNova;
-      font-size: 48px;
-      font-weight: bold;
-      letter-spacing: 1.82px;
-      line-height: 65px;
-      // border: 1px solid blue;
+      font-size: 40px;
+      // font-weight: bolder;
+      letter-spacing: 1px;
+      line-height: 1.2em;
+      margin-top: 100px;
     }
     form {
-      // border: 1px solid red;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 30px;
+
       .input-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        // border: 1px solid red;
-
-        .name-wrapper {
-          display: flex;
-          justify-content: space-between;
-          width: 780px;
-          // border: 1px red solid;
-          // .small {
-          //   width: 360px;
-          // }
-        }
+        margin: 0 0 24px;
 
         .formBox {
           display: flex;
           flex-direction: column;
 
           label {
-            height: 22px;
-            width: 156px;
-            color: #303030;
+            color: rgba(26, 26, 26, 0.7);
             font-family: ProximaNova;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 600;
             letter-spacing: 1.24px;
             line-height: 22px;
@@ -161,9 +156,9 @@
             border-radius: 2px;
           }
 
-          .small {
-            width: 360px;
-          }
+          // .small {
+          //   width: 360px;
+          // }
         }
 
         #stateId {
@@ -171,9 +166,9 @@
           display: flex;
           justify-content: flex-start;
 
-          input {
-            width: 360px;
-          }
+          // input {
+          //   width: 360px;
+          // }
         }
       }
 
@@ -187,7 +182,7 @@
         label {
           height: 22px;
           width: 220px;
-          color: #303030;
+          color: rgba(26, 26, 26, 0.7);
           font-family: ProximaNova;
           font-size: 22px;
           font-weight: 600;
@@ -201,19 +196,23 @@
           display: flex;
           // border: 1px solid blue;
           .chbox {
-            height: 25px;
-            width: 25px;
+            height: 13px;
+            width: 13px;
             vertical-align: center;
+            margin-right: 5px;
             // border: 1px solid red;
           }
-          h7 {
+          .interest-labels {
             width: 200px;
             // border: 1px solid red;
             text-align: left;
             padding-top: 3px;
-            font-size: 16px;
-            font-family: "Open Sans";
-            color: #303030;
+            font-size: 13px;
+            line-height: normal;
+            font-family: "proxima-nova";
+            letter-spacing: 0px;
+            font-weight: 400;
+            color: rgba(26, 26, 26, 0.7);
           }
         }
       }
