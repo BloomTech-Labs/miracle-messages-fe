@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react"
 import Map from "./Components/MapComponents/map"
 import "./CSS/App.css"
@@ -13,9 +14,13 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Map} />
+
+          <Route exact path='/' component={Map} />
+
           <Route exact path="/form" component={VolunteerForm} />
+
           <Route exact path="/login" component={LoginForm} />
+
           {indexRoutes.map((prop, index) => {
             return (
               <PrivateRoute
@@ -25,6 +30,9 @@ class App extends Component {
               />
             )
           })}
+
+          <Redirect from='*' to='/' />
+
         </Switch>
       </div>
     )

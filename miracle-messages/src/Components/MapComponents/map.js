@@ -32,7 +32,7 @@ import NewChapter from './NewChapter';
 
 require('dotenv').config();
 
-const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+const TOKEN = "pk.eyJ1IjoibWlyYWNsZW1lc3NhZ2VzIiwiYSI6ImNqeWhleGtzbTAwdXAzZ21uaGlienhmdHMifQ.FYmU9s5SYQbUonIeBAG9Lw";
 
 const STYLE = 'mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1';
 
