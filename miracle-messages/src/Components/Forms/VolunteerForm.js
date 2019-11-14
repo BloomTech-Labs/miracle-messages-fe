@@ -15,21 +15,22 @@ import logo from "../../Assets/Imgs/MM_Logo.png"
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
-      fname: "",
-      lname: "",
-      email: "",
-      phone: "",
-      city: "",
-      state: "",
-      country: "",
-      comment: ""
+      fname: '',
+      lname: '',
+      password: '',
+      email: '',
+      phone: '',
+      city: '',
+      state: '',
+      country: '',
+      comment: ''
     },
     newInterests: {
       volunteering: false,
       donating: false,
       joinmm: false,
       mediacoverage: false,
-      somethingelse: ""
+      somethingelse: false
     }
   }
 
@@ -39,21 +40,23 @@ class VolunteerForm extends React.Component {
 
     this.setState({
       newVolunteer: {
-        fname: "",
-        lname: "",
-        email: "",
-        phone: "",
-        city: "",
-        state: "",
-        country: "",
-        comment: ""
+        fname: '',
+        lname: '',
+        password: '',
+        email: '',
+        phone: '',
+        city: '',
+        state: '',
+        country: '',
+        comment: ''
       },
       newInterests: {
         volunteering: false,
         donating: false,
         joinmm: false,
         mediacoverage: false,
-        somethingelse: ""
+        somethingelse: false
+
       }
     })
   }
@@ -174,6 +177,17 @@ class VolunteerForm extends React.Component {
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.lname}
                     name="lname"
+                    required
+                  />
+                </div>
+                <div className='formBox'>
+                  <label> Password *</label>
+                  <input
+                    className='input small'
+                    type='text'
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.password}
+                    name='password'
                     required
                   />
                 </div>
