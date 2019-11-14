@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { axiosWithAuth } from "./AxiosWithAuth.js"; 
 
 export const ADD_VOLUNTEER_START = 'ADD_VOLUNTEER_START';
