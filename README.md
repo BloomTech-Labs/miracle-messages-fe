@@ -16,22 +16,23 @@
 ### Tech Stach
 
 - Frontend:
-  [x] React-Redux
-  [x] Mapbox API to display the data points on the map
-  [x] react-map-gl library built by Uber to use react with mapbox
-  [x] Google Analytics/ ReactGA for analytics
-  [x] CSS/Node-sass for some styling on top of styled components
-  [x] Material UI, Reactstrap libraries for styled components
-  [x] Cypress for testing
-  [x] react-places-autocomplete to integrate with Google Maps for the Volunteer sign up form. (though we didn't finish this part of the project)
+
+  - [x] React-Redux
+  - [x] Mapbox API to display the data points on the map
+  - [x] react-map-gl library built by Uber to use react with mapbox
+  - [x] Google Analytics/ ReactGA for analytics
+  - [x] CSS/Node-sass for some styling on top of styled components
+  - [x] Material UI, Reactstrap libraries for styled components
+  - [x] Cypress for testing
+  - [x] react-places-autocomplete to integrate with Google Maps for the Volunteer sign up form. (though we didn't finish this part of the project)
 
 - Backend:
-  [x] Node.js/Express to build the server/endpoints etc.
-  [x] Knex for SQL querying using Node
-  [x] Postgres for our database
-  [x] Heroku for our server/backend deployment
-  [x] AWS for images/files upload storage
-  [x] jest for testing
+  - [x] Node.js/Express to build the server/endpoints etc.
+  - [x] Knex for SQL querying using Node
+  - [x] Postgres for our database
+  - [x] Heroku for our server/backend deployment
+  - [x] AWS for images/files upload storage
+  - [x] jest for testing
 
 ## Authors
 
