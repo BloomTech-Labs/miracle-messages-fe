@@ -1,46 +1,47 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 // Mapbox imports
-import MapGL, { Marker, NavigationControl } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import MapGL, { Marker, NavigationControl } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 // Custom file imports
-import CityPin from './city_pin';
-import CityInfo from './city_info';
+import CityPin from "./city_pin";
+import CityInfo from "./city_info";
 
 // Action imports
-import { getData, getDefault } from '../../Actions/index';
-import { updatePopupAction } from '../../Actions/updatePopupAction';
-import { slideToggleAction } from '../../Actions/SlideToggleAction';
-import { onViewportChanged } from '../../Actions/OnViewportAction';
+import { getData, getDefault } from "../../Actions/index";
+import { updatePopupAction } from "../../Actions/updatePopupAction";
+import { slideToggleAction } from "../../Actions/SlideToggleAction";
+import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
-import Drawer from '@material-ui/core/Drawer';
-import { IconButton } from '@material-ui/core';
-import { Cancel } from '@material-ui/icons';
+import Drawer from "@material-ui/core/Drawer";
+import { IconButton } from "@material-ui/core";
+import { Cancel } from "@material-ui/icons";
 
 // Scrollbar import
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
-import ReactGA from 'react-ga';
-import { gaEvent } from '../Analytics/GAFunctions'; //enable event tracking
+import ReactGA from "react-ga";
+import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
-import Navbar from './Navbar';
-import NewChapter from './NewChapter';
+import Navbar from "./Navbar";
+import NewChapter from "./NewChapter";
 
-require('dotenv').config();
+require("dotenv").config();
 
-const TOKEN = "pk.eyJ1IjoibWlyYWNsZW1lc3NhZ2VzIiwiYSI6ImNqeWhleGtzbTAwdXAzZ21uaGlienhmdHMifQ.FYmU9s5SYQbUonIeBAG9Lw";
+const TOKEN =
+  "pk.eyJ1IjoibWlyYWNsZW1lc3NhZ2VzIiwiYSI6ImNqeWhleGtzbTAwdXAzZ21uaGlienhmdHMifQ.FYmU9s5SYQbUonIeBAG9Lw";
 
-const STYLE = 'mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1';
+const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
 
 // Google Analytics:
 //this initializes GA
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
 //This tracks the page views on this component/path
-ReactGA.pageview('/map');
+ReactGA.pageview("/map");
 
 class Map extends Component {
   //this fetches the data from the backend:
@@ -59,7 +60,7 @@ class Map extends Component {
       >
         <div
           onClick={() => {
-            gaEvent('click', 'chapter pin', `${city.title}`);
+            gaEvent("click", "chapter pin", `${city.title}`);
           }}
         >
           <CityPin city={city} />
@@ -86,27 +87,27 @@ class Map extends Component {
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div className='chapterDrawer'>
+        <div className="chapterDrawer">
           {/* clicking city pin opens the drawer below */}
           <Drawer
             open={this.props.openDrawer}
-            variant='persistent'
-            className='slide'
+            variant="persistent"
+            className="slide"
           >
             <IconButton
               onClick={this.closeHandler}
               style={{
-                position: 'absolute',
-                right: '0',
-                zIndex: '99',
-                color: 'whitesmoke',
-                background: 'black',
-                width: '2px',
-                height: '2px',
-                margin: '5px 10px 0px 0px'
+                position: "absolute",
+                right: "0",
+                zIndex: "99",
+                color: "whitesmoke",
+                background: "black",
+                width: "2px",
+                height: "2px",
+                margin: "5px 10px 0px 0px"
               }}
             >
-              <Cancel style={{ position: 'absolute', right: '0' }} />
+              <Cancel style={{ position: "absolute", right: "0" }} />
             </IconButton>
             <Scrollbars style={{ width: 376 }} autoHide={true}>
               <CityInfo info={popupInfo} />
@@ -126,15 +127,15 @@ class Map extends Component {
     const { viewport } = this.props;
 
     return (
-      <div className='Map'>
+      <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
 
         {this._renderNavbar()}
         {this._renderNewChapter()}
         <MapGL
           {...viewport}
-          width='100vw'
-          height='100vh'
+          width="100vw"
+          height="100vh"
           onViewportChange={this._updateViewport}
           mapStyle={STYLE}
           mapboxApiAccessToken={TOKEN}
@@ -143,7 +144,7 @@ class Map extends Component {
           dragRotate={false}
         >
           <div
-            style={{ position: 'absolute', right: 0, bottom: 30, zIndex: 1 }}
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>
@@ -167,13 +168,10 @@ const mapStateToProps = state => {
 };
 
 //this is how we connect the map.js component to the store
-export default connect(
-  mapStateToProps,
-  {
-    getData,
-    updatePopupAction,
-    slideToggleAction,
-    onViewportChanged,
-    getDefault
-  }
-)(Map);
+export default connect(mapStateToProps, {
+  getData,
+  updatePopupAction,
+  slideToggleAction,
+  onViewportChanged,
+  getDefault
+})(Map);
