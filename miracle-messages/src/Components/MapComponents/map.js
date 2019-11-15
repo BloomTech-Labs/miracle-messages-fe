@@ -6,13 +6,16 @@ import MapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Custom file imports
+// import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 
 // Action imports
 import { getData, getDefault } from "../../Actions/index";
+
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
+
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
@@ -50,6 +53,9 @@ class Map extends Component {
     this.props.getDefault();
   }
 
+
+  
+
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
@@ -60,9 +66,11 @@ class Map extends Component {
       >
         <div
           onClick={() => {
+            // console.log(city)
             gaEvent("click", "chapter pin", `${city.title}`);
           }}
         >
+          {/* <PlaceTwoTone /> */}
           <CityPin city={city} />
         </div>
       </Marker>
@@ -155,6 +163,7 @@ class Map extends Component {
     );
   }
 }
+
 //this is how we convert the state that was modified by the reducers to props
 const mapStateToProps = state => {
   return {
