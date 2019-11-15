@@ -234,15 +234,27 @@
       }
     }
   }
+  .footer-icons {
+    padding: 35px;
+    background: #333333;
+  }
   .footer-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 0 24px;
     background: #1f1f1f;
     color: white;
-    font-size: 20px;
-
+    font-size: 16px;
+    padding: 64px 32px;
+    .footer-phone-email {
+      letter-spacing: 2px;
+      .phone {
+        padding-right: 5px;
+      }
+      .email {
+        padding-left: 5px;
+      }
+    }
     .footer {
       font-size: 20px;
       color: #797979;
@@ -261,7 +273,7 @@
         background: #5dc683;
         padding: 21px 34px;
         text-align: center;
-        margin-bottom: 100px;
+        margin-bottom: 40px;
         cursor: pointer;
       }
     }

@@ -334,18 +334,21 @@ class VolunteerForm extends React.Component {
                 name="comment"
                 placeholder="Leave Your Comments"
               />
-              <div className="button-div">
-                <button className="submitb" type="submit">
-                  Submit
-                </button>
-              </div>
+              <button className="submitb" type="submit">
+                Submit
+              </button>
             </div>
           </form>
         </section>
         {/* This is the footer section here */}
+        <div className="footer-icons">
+          <h1>placeholder for icons</h1>
+        </div>
         <div className="footer-wrapper">
-          <p> 1-800-MISS-YOU </p>
-          <p>HELLO@MIRACLEMESSAGES.ORG </p>
+          <div className="footer-phone-email">
+            <span className="phone">1-800-MISS-YOU </span>
+            <span className="email">HELLO@MIRACLEMESSAGES.ORG </span>
+          </div>
           <p className="footer">
             © 2019. Miracle Messages is a fiscally sponsored project of Netroots
             Foundation, a CA 501(c)3 <br />
