@@ -16,8 +16,8 @@
 We are a nonprofit reunion service to help our neighbors experiencing homelessness reunite with their loved ones in a positive and supportive way.
 
 [Website](https://miraclemessages.org/)
-Contact: Kevin Alder
-Product Manager: Jessica Wilkinson
+- Contact: Kevin Alder
+- Product Manager: Jessica Wilkinson
 
 ---
 

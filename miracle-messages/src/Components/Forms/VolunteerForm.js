@@ -334,7 +334,7 @@ class VolunteerForm extends React.Component {
                 name="comment"
                 placeholder="Leave Your Comments"
               />
-              <div>
+              <div className="button-div">
                 <button className="submitb" type="submit">
                   Submit
                 </button>
