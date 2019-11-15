@@ -241,7 +241,13 @@
     margin: 0 0 24px;
     background: #1f1f1f;
     color: white;
+    font-size: 20px;
 
+    .footer {
+      font-size: 20px;
+      color: #797979;
+      line-height: normal;
+    }
     a {
       text-decoration: none;
       div {

@@ -344,13 +344,16 @@ class VolunteerForm extends React.Component {
         </section>
         {/* This is the footer section here */}
         <div className="footer-wrapper">
-          <p className="footer"> 1-800-MISS-YOU </p>
+          <p> 1-800-MISS-YOU </p>
           <p>HELLO@MIRACLEMESSAGES.ORG </p>
-          <p>
+          <p className="footer">
             © 2019. Miracle Messages is a fiscally sponsored project of Netroots
-            Foundation, a CA 501(c)3 corporation. EIN #20-8672843.
+            Foundation, a CA 501(c)3 <br />
+            corporation. EIN #20-8672843.
           </p>
-          <p>MIRACLE MESSAGES is a trademark of Miracle Messages.</p>
+          <p className="footer">
+            MIRACLE MESSAGES is a trademark of Miracle Messages.
+          </p>
           <a
             href="https://www.google.com/"
             target="_blank"
