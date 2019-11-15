@@ -16,6 +16,7 @@
 We are a nonprofit reunion service to help our neighbors experiencing homelessness reunite with their loved ones in a positive and supportive way.
 
 [Website](https://miraclemessages.org/)
+
 - Contact: Kevin Alder
 - Product Manager: Jessica Wilkinson
 
@@ -27,7 +28,7 @@ We are a nonprofit reunion service to help our neighbors experiencing homelessne
 
 We believe everyone is somebody's someone, and no one should be defined by what they lack. Miracle Messages Map connects volunteers, making it easy to join together to reunite more homeless people with their families.
 
-### 🏠 [Homepage](https://miracle-messages-production.netlify.com/)
+### 🏠 [View Our Work](https://miracle-messages-production.netlify.com/)
 
 ### Tech Stach
 
@@ -56,26 +57,34 @@ We believe everyone is somebody's someone, and no one should be defined by what 
 
 - [x] Team Leader
 
-- Website: PORTFOLIO SITE HERE
 - Twitter: [@Efrain*V*](https://twitter.com/Efrain_V_)
 - Github: [@efrainva](https://github.com/efrainva)
 
-👤 **Madison McKown**
+:princess: **Shelby Diamond**
+
+- [x] Front End Developer
+
+- Website: shelbydiamond.com
+- Twitter: [@ShelbyN_Diamond](https://twitter.com/shelbyN_Diamond)
+- Github: [@shelbydiamond](https://github.com/shelbydiamond)
+
+  👤 **Mimi Hoang**
+
+- [x] Front End Developer
+
+- Website: PORTFOLIO SITE HERE
+- Github: [@meowmimi1](https://github.com/meowmimi1)
+
+  👤 **Madison McKown**
 
 - [x] Front End Developer
 
 - Website: PORTFOLIO SITE HERE
 - Github: [@MadisonViaLux ](https://github.com/MadisonViaLux)
 
-:princess: **Shelby Diamond** -[x] Front End Developer
-
-- Website: shelbydiamond.com
-- Twitter: [@ShelbyN_Diamond](https://twitter.com/shelbyN_Diamond)
-- Github: [@shelbydiamond](https://github.com/shelbydiamond)
-
 👤 **Adrian Garcia**
 
-- [x] Front End Developer
+- [x] Back End Developer
 
 - Website: PORTFOLIO SITE HERE
 - Twitter: [@adriangarcia777](https://twitter.com/adriangarcia777)
@@ -96,13 +105,6 @@ We believe everyone is somebody's someone, and no one should be defined by what 
 - Website: PORTFOLIO SITE HERE
 - Twitter: [@raberin\_](https://twitter.com/raberin_)
 - Github: [@raberin](https://github.com/raberin)
-
-👤 **Mimi Hoang**
-
-- [x] Back End Developer
-
-- Website: PORTFOLIO SITE HERE
-- Github: [@meowmimi1](https://github.com/meowmimi1)
 
 ## Show your support
 
