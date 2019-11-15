@@ -118,7 +118,6 @@
       color: #303030;
       font-family: ProximaNova;
       font-size: 40px;
-      // font-weight: bolder;
       letter-spacing: 1px;
       line-height: 1.2em;
       margin-top: 100px;
@@ -155,20 +154,12 @@
             border: 1px solid #b4b4b4;
             border-radius: 2px;
           }
-
-          // .small {
-          //   width: 360px;
-          // }
         }
 
         #stateId {
           width: 100%;
           display: flex;
           justify-content: flex-start;
-
-          // input {
-          //   width: 360px;
-          // }
         }
       }
 
@@ -178,6 +169,7 @@
         flex-direction: column;
         width: 780px;
         margin: 0 auto;
+        justify-content: center;
 
         label {
           height: 22px;
@@ -223,6 +215,11 @@
         border-radius: 2px;
         // background-color: #fbfbfb;
       }
+      .button-div {
+        display: flex;
+        justify-content: center;
+      }
+
       .submitb {
         height: 45px;
         width: 194px;
@@ -232,8 +229,34 @@
         color: #ffffff;
         letter-spacing: 0.9px;
         text-align: center;
-        margin-top: 35px;
+        margin: 35px 0 100px 0;
         padding-bottom: 30px;
+      }
+    }
+  }
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 24px;
+    background: #1f1f1f;
+    color: white;
+
+    a {
+      text-decoration: none;
+      div {
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        background: #5dc683;
+        padding: 21px 34px;
+        text-align: center;
+        margin-bottom: 100px;
+        cursor: pointer;
       }
     }
   }
