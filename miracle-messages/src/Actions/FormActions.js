@@ -1,4 +1,5 @@
-import { axiosWithAuth } from "./AxiosWithAuth.js"; 
+// import { axiosWithAuth } from "./AxiosWithAuth.js"; 
+import axios from "axios"; 
 
 export const ADD_VOLUNTEER_START = 'ADD_VOLUNTEER_START';
 export const ADD_VOLUNTEER_SUCCESS = 'ADD_VOLUNTEER_SUCCESS';
@@ -9,9 +10,10 @@ export const addVolunteers = volunteer => async dispatch => {
     type: ADD_VOLUNTEER_START
   });
 
-  axiosWithAuth()
+  // axiosWithAuth()
+  axios
     .post( 
-      'https://miracle-messages-production.herokuapp.com/api/form',
+      ' https://miracle-messages-production.herokuapp.com/api/form',
       volunteer
     )
     .then(res => {
@@ -24,3 +26,4 @@ export const addVolunteers = volunteer => async dispatch => {
       return dispatch({ type: ADD_VOLUNTEER_FAIL, payload: err });
     });
 };
+
