@@ -125,6 +125,14 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
+  // _renderNavbar() {
+  //   return <Navbar />;
+  // }
+
+  // _renderNewChapter() {
+  //   return <NewChapter />;
+  // }
+
   render() {
     const { viewport } = this.props;
 
@@ -135,6 +143,10 @@ class Map extends Component {
         <Navbar />
 
         <NewChapter />
+
+
+        {/* {this._renderNavbar()}
+        {this._renderNewChapter()} */}
         
         <MapGL
           {...viewport}
