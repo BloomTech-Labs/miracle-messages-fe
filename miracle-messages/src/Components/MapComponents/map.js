@@ -48,14 +48,13 @@ ReactGA.initialize(process.env.REACT_APP_GA_ID);
 ReactGA.pageview("/map");
 
 class Map extends Component {
+
   //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
     this.props.getDefault();
   }
 
-
-  
 
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
