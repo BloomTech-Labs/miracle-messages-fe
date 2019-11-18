@@ -103,51 +103,45 @@
   }
 
   .main {
-    // border: 1px red solid;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+
+    .main-bold {
+      h2 {
+        font-weight: 900;
+      }
+    }
+
     h2 {
       margin: 0 auto;
-      height: 65px;
-      width: 627px;
       color: #303030;
       font-family: ProximaNova;
-      font-size: 48px;
-      font-weight: bold;
-      letter-spacing: 1.82px;
-      line-height: 65px;
-      // border: 1px solid blue;
+      font-size: 40px;
+      letter-spacing: 1px;
+      line-height: 1.2em;
+      margin-top: 100px;
     }
     form {
-      // border: 1px solid red;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 30px;
+
       .input-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        // border: 1px solid red;
-
-        .name-wrapper {
-          display: flex;
-          justify-content: space-between;
-          width: 780px;
-          // border: 1px red solid;
-          // .small {
-          //   width: 360px;
-          // }
-        }
+        margin: 0 0 24px;
 
         .formBox {
           display: flex;
           flex-direction: column;
 
           label {
-            height: 22px;
-            width: 156px;
-            color: #303030;
+            color: rgba(26, 26, 26, 0.7);
             font-family: ProximaNova;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 600;
             letter-spacing: 1.24px;
             line-height: 22px;
@@ -160,20 +154,12 @@
             border: 1px solid #b4b4b4;
             border-radius: 2px;
           }
-
-          .small {
-            width: 360px;
-          }
         }
 
         #stateId {
           width: 100%;
           display: flex;
           justify-content: flex-start;
-
-          input {
-            width: 360px;
-          }
         }
       }
 
@@ -183,11 +169,12 @@
         flex-direction: column;
         width: 780px;
         margin: 0 auto;
+        justify-content: center;
 
         label {
           height: 22px;
           width: 220px;
-          color: #303030;
+          color: rgba(26, 26, 26, 0.7);
           font-family: ProximaNova;
           font-size: 22px;
           font-weight: 600;
@@ -201,19 +188,23 @@
           display: flex;
           // border: 1px solid blue;
           .chbox {
-            height: 25px;
-            width: 25px;
+            height: 13px;
+            width: 13px;
             vertical-align: center;
+            margin-right: 5px;
             // border: 1px solid red;
           }
-          h7 {
+          .interest-labels {
             width: 200px;
             // border: 1px solid red;
             text-align: left;
             padding-top: 3px;
-            font-size: 16px;
-            font-family: "Open Sans";
-            color: #303030;
+            font-size: 13px;
+            line-height: normal;
+            font-family: "proxima-nova";
+            letter-spacing: 0px;
+            font-weight: 400;
+            color: rgba(26, 26, 26, 0.7);
           }
         }
       }
@@ -222,8 +213,8 @@
         width: 777px;
         border: 1px solid #b4b4b4;
         border-radius: 2px;
-        // background-color: #fbfbfb;
       }
+
       .submitb {
         height: 45px;
         width: 194px;
@@ -233,8 +224,52 @@
         color: #ffffff;
         letter-spacing: 0.9px;
         text-align: center;
-        margin-top: 35px;
+        margin: 35px 0 100px 0;
         padding-bottom: 30px;
+      }
+    }
+  }
+  .footer-icons {
+    padding: 35px;
+    background: #333333;
+  }
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1f1f1f;
+    color: white;
+    font-size: 16px;
+    padding: 64px 32px;
+    .footer-phone-email {
+      letter-spacing: 2px;
+      .phone {
+        padding-right: 5px;
+      }
+      .email {
+        padding-left: 5px;
+      }
+    }
+    .footer {
+      font-size: 20px;
+      color: #797979;
+      line-height: normal;
+    }
+    a {
+      text-decoration: none;
+      div {
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        background: #5dc683;
+        padding: 21px 34px;
+        text-align: center;
+        margin-bottom: 40px;
+        cursor: pointer;
       }
     }
   }

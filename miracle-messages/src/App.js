@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import Map from "./Components/MapComponents/map";
 import "./CSS/App.css";
@@ -8,6 +9,7 @@ import LoginForm from "./Components/Login/LoginForm.js";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import "./CSS/style.css";
 import LoginPage from "./Components/Login/UserLogin";
+
 
 class App extends Component {
   render() {
@@ -21,6 +23,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginForm} />
 
           <Route exact path="/user/login" component={LoginPage} />
+
 
           {indexRoutes.map((prop, index) => {
             return (
