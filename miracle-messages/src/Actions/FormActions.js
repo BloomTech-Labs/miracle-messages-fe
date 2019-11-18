@@ -1,4 +1,3 @@
-// import { axiosWithAuth } from "./AxiosWithAuth.js"; 
 import axios from "axios"; 
 
 export const ADD_VOLUNTEER_START = 'ADD_VOLUNTEER_START';
@@ -10,7 +9,6 @@ export const addVolunteers = volunteer => async dispatch => {
     type: ADD_VOLUNTEER_START
   });
 
-  // axiosWithAuth()
   axios
     .post( 
       ' https://miracle-messages-production.herokuapp.com/api/form',
