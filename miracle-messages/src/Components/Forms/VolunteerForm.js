@@ -148,8 +148,10 @@ class VolunteerForm extends React.Component {
           </div>
         </header>
         <section className="main">
-          <h2>You're in the right place.</h2>
-          <p>{this.props.message}</p>
+          <strong className="main-bold">
+            <h2>You're in the right place.</h2>
+          </strong>
+          {/* <p>{this.props.message}</p> */}
           <form
             className="form"
             onSubmit={this.handleOnsubmit}
@@ -157,11 +159,13 @@ class VolunteerForm extends React.Component {
           >
             <div />
             <section className="input-wrapper">
-              <div className="name-wrapper">
+              <div>
                 <div className="formBox">
                   <label>First Name *</label>
+                </div>
+                <div className="formBox">
                   <input
-                    className="input small"
+                    className="input"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.fname}
@@ -169,10 +173,13 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
+
                 <div className="formBox">
                   <label>Last Name *</label>
+                </div>
+                <div className="formBox">
                   <input
-                    className="input small"
+                    className="input"
                     type="text"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.lname}
@@ -227,6 +234,66 @@ class VolunteerForm extends React.Component {
               </div>
               <div className="name-wrapper">
                 <div className="formBox">
+                  <label>Email Address *</label>
+                </div>
+                <div className="formBox">
+                  <input
+                    className="input"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.email}
+                    name="email"
+                    required
+                  />
+                </div>
+                {/* <div className="formBox">
+                  <label>Phone *</label>
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    onChange={this.handleOnChangePhone}
+                    value={this.state.newVolunteer.phone}
+                    displayInitialValueAsLocalNumber={true}
+                    country="US"
+                    countryOptions={["US", "CA", "AU", "|", "..."]}
+                  />
+                </div> */}
+                <div className="formBox">
+                  <label>Phone *</label>
+                  <input
+                    className="input small"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.phone}
+                    name="phone"
+                    required
+                  />
+                </div>
+                <div>
+                  <div className="formBox">
+                    <label>City *</label>
+                    <input
+                      className="input small"
+                      type="text"
+                      onChange={this.handleOnChange}
+                      value={this.state.newVolunteer.city}
+                      name="city"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="formBox" id="stateId">
+                  <label>State/Province *</label>
+                  <input
+                    className="input"
+                    id="state"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.state}
+                    name="state"
+                    required
+                  />
+                </div>
+                <div className="formBox">
                   <label>Country *</label>
                   <input
                     className="input small"
@@ -237,29 +304,6 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-                <div className="formBox">
-                  <label>City *</label>
-                  <input
-                    className="input small"
-                    type="text"
-                    onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.city}
-                    name="city"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="formBox" id="stateId">
-                <label>State *</label>
-                <input
-                  className="input"
-                  id="state"
-                  type="text"
-                  onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.state}
-                  name="state"
-                  required
-                />
               </div>
             </section>
 
@@ -300,14 +344,16 @@ class VolunteerForm extends React.Component {
               </div>
 
               <div className="interest-wrapper">
-                <input
-                  className="chbox"
-                  type="checkbox"
-                  name="mediacoverage"
-                  checked={this.state.newInterests.mediacoverage}
-                />
-
-                <h7>Media Coverage</h7>
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="mediacoverage"
+                    checked={this.state.newInterests.mediacoverage}
+                  />
+                  Media Coverage
+                </label>
               </div>
 
               <div className="interest-wrapper">
