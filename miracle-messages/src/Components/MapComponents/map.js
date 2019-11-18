@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import MapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+
 // Custom file imports
 // import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
 import CityPin from "./city_pin";
@@ -59,10 +60,11 @@ class Map extends Component {
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
   _renderCityMarker = (city, index) => {
     return (
-      <Marker
+      <Marker className="markerMAP"
         key={`marker-${index}`}
         latitude={city.latitude}
         longitude={city.longitude}
+
       >
         <div
           onClick={() => {
@@ -82,13 +84,6 @@ class Map extends Component {
     this.props.slideToggleAction();
   };
 
-  _renderNavbar() {
-    return <Navbar />;
-  }
-
-  _renderNewChapter() {
-    return <NewChapter />;
-  }
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
   _renderSlide() {
@@ -138,8 +133,10 @@ class Map extends Component {
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
 
-        {this._renderNavbar()}
-        {this._renderNewChapter()}
+        <Navbar />
+
+        <NewChapter />
+        
         <MapGL
           {...viewport}
           width="100vw"
@@ -158,7 +155,9 @@ class Map extends Component {
           </div>
           {this.props.chapter_data.map(this._renderCityMarker)}
         </MapGL>
+
         {this._renderSlide()}
+      
       </div>
     );
   }
