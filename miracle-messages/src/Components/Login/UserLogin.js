@@ -110,27 +110,32 @@ class LoginPage extends Component {
                   {this.state.error}
                 </h3>
               )}
-              <div className="interest-wrapper">
-                <label className="interest-labels">Username</label>
-                <input
-                  type="text"
-                  data-test="username"
-                  value={this.state.username}
-                  onChange={this.handleUserChange}
-                />
-              </div>
-              <div className="interest-wrapper">
-                <label className="interest-labels">
-                  Password
+              <section className="input-wrapper">
+                <div className="formBox">
+                  <label className="interest-labels">Username*</label>
+                  <input
+                    type="text"
+                    data-test="username"
+                    value={this.state.username}
+                    onChange={this.handleUserChange}
+                  />
+                </div>
+                <div className="formBox">
+                  <label className="interest-labels">Password*</label>
                   <input
                     type="password"
                     data-test="password"
                     value={this.state.password}
                     onChange={this.handlePassChange}
                   />
-                </label>
-              </div>
-              <input type="submit" value="Login" data-test="submit" />
+                </div>
+                <input
+                  className="submitb"
+                  type="submit"
+                  value="Login"
+                  data-test="submit"
+                />
+              </section>
             </form>
           </div>
         </section>

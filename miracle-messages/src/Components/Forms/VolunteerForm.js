@@ -12,6 +12,7 @@ import { addVolunteers } from "../../Actions/FormActions"
 // } from 'react-places-autocomplete';
 import logo from "../../Assets/Imgs/MM_Logo.png"
 import FormFooter from "../FormFooter"
+import FormHeader from "../FormHeader"
 
 class VolunteerForm extends React.Component {
   state = {
@@ -101,52 +102,7 @@ class VolunteerForm extends React.Component {
     console.log(this.state.newVolunteer.phone)
     return (
       <div className="container">
-        <header>
-          <div className="navbar">
-            <div className="logonavbar">
-              <img src={logo} alt="logo" />
-            </div>
-            <div className="tabsnavbar">
-              <nav>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>ABOUT</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>REUNION SERVICE</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>GET INVOLVED</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>DONATE</div>
-                </a>
-              </nav>
-            </div>
-          </div>
-          <h1>Want to be apart of the Miracle Messages Community?</h1>
-          {/* the below  3 divs are for the header image styling */}
-          <div className="overlay">
-            <div className="backImg">
-              <div className="filter" />
-            </div>
-          </div>
-        </header>
+        <FormHeader />
         <section className="main">
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
@@ -258,7 +214,6 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-              {/* </div> */}
             </section>
 
             <div className="interested">
