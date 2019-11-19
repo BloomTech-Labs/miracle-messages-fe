@@ -32,7 +32,7 @@ const FormHeader = () => {
               <div>GET INVOLVED</div>
             </a>
             <a
-              href="https://www.google.com/"
+              href="https://www.classy.org/give/231839/#!/donation/checkout"
               target="_blank"
               rel="noopener noreferrer"
             >

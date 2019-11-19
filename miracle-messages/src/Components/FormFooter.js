@@ -21,7 +21,7 @@ const FormFooter = () => {
           MIRACLE MESSAGES is a trademark of Miracle Messages.
         </p>
         <a
-          href="https://www.google.com/"
+          href="https://www.classy.org/give/231839/#!/donation/checkout"
           target="_blank"
           rel="noopener noreferrer"
         >
