@@ -12,7 +12,7 @@ export const addVolunteers = volunteer => async dispatch => {
   axios
     .post( 
       // ' https://miracle-messages-production.herokuapp.com/api/form',
-      "https://localhost:5000/api/volunteer/register",
+      "http://localhost:5000/api/volunteer/register",
       volunteer
     )
     .then(res => {
