@@ -81,7 +81,7 @@ class LoginPage extends Component {
                   <div>GET INVOLVED</div>
                 </a>
                 <a
-                  href="https://www.google.com/"
+                  href="https://www.classy.org/give/231839/#!/donation/checkout"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -114,6 +114,7 @@ class LoginPage extends Component {
                 <div className="formBox">
                   <label className="interest-labels">Username*</label>
                   <input
+                    className="formBox"
                     type="text"
                     data-test="username"
                     value={this.state.username}
@@ -123,6 +124,7 @@ class LoginPage extends Component {
                 <div className="formBox">
                   <label className="interest-labels">Password*</label>
                   <input
+                    className="formBox"
                     type="password"
                     data-test="password"
                     value={this.state.password}
