@@ -11,7 +11,8 @@ import { addVolunteers } from "../../Actions/FormActions"
 //   getLatLng
 // } from 'react-places-autocomplete';
 import logo from "../../Assets/Imgs/MM_Logo.png"
-
+import FormFooter from "../FormFooter"
+import FormHeader from "../FormHeader"
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
@@ -33,11 +34,9 @@ class VolunteerForm extends React.Component {
       somethingelse: false
     }
   }
-
   handleOnsubmit = e => {
     e.preventDefault()
     this.props.addVolunteers(this.state)
-
     this.setState({
       newVolunteer: {
         fname: "",
@@ -59,7 +58,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleToggle = e => {
     this.setState({
       newInterests: {
@@ -68,7 +66,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChange = e => {
     this.setState({
       newVolunteer: {
@@ -77,7 +74,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangePhone = e => {
     this.setState({
       newVolunteer: {
@@ -86,7 +82,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangeInterest = e => {
     this.setState({
       newInterests: {
@@ -95,7 +90,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   render() {
     console.log(this.state.newVolunteer.phone)
     return (
@@ -103,91 +97,8 @@ class VolunteerForm extends React.Component {
 
 
       <div className="container">
-        <header>
-          <div className="navbar">
-            <div className="logonavbar">
-              <img src={logo} alt="logo" />
-            </div>
-            <div className="tabsnavbar">
-              <nav>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>ABOUT</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>REUNION SERVICE</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>GET INVOLVED</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>DONATE</div>
-                </a>
-              </nav>
-            </div>
-          </div>
-          <h1>Want to be apart of the Miracle Messages Community?</h1>
-          {/* the below  3 divs are for the header image styling */}
-          <div className="overlay">
-            <div className="backImg">
-              <div className="filter" />
-            </div>
-          </div>
-        </header>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <FormHeader />
 
         <section className="main">
 
@@ -225,7 +136,6 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-
                 <div className="formBox">
                   <label>Last Name *</label>
                 </div>
@@ -243,7 +153,7 @@ class VolunteerForm extends React.Component {
                   <label> Password *</label>
                   <input
                     className="input small"
-                    type="text"
+                    type="password"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.password}
                     name="password"
@@ -262,7 +172,6 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-
               <div className="formBox">
                 <label>Phone *</label>
                 <input
@@ -310,11 +219,7 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-              
             </section>
-
-
-
 
 
 
@@ -338,7 +243,6 @@ class VolunteerForm extends React.Component {
                   Volunteering
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -351,7 +255,6 @@ class VolunteerForm extends React.Component {
                   Donating
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -364,7 +267,6 @@ class VolunteerForm extends React.Component {
                   Join MM
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -377,7 +279,6 @@ class VolunteerForm extends React.Component {
                   Media Coverage
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -402,91 +303,19 @@ class VolunteerForm extends React.Component {
                 Submit
               </button>
             </div>
-         
-         
-         
-         
-         
-         
-         
-         
-         
-          </form>
 
+          </form>
         </section>
 
+        <FormFooter />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* This is the footer section here */}
-        <div className="footer-icons">
-          <h1>placeholder for icons</h1>
-        </div>
-        <div className="footer-wrapper">
-          <div className="footer-phone-email">
-            <span className="phone">1-800-MISS-YOU </span>
-            <span className="email">HELLO@MIRACLEMESSAGES.ORG </span>
-          </div>
-          <p className="footer">
-            © 2019. Miracle Messages is a fiscally sponsored project of Netroots
-            Foundation, a CA 501(c)3 <br />
-            corporation. EIN #20-8672843.
-          </p>
-          <p className="footer">
-            MIRACLE MESSAGES is a trademark of Miracle Messages.
-          </p>
-          <a
-            href="https://www.google.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>DONATE</div>
-          </a>
-        </div>
       </div>
     )
   }
 }
-
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
   }
 }
-
 export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
