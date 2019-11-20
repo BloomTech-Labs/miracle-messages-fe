@@ -1,7 +1,7 @@
 import axios from "axios"; 
 
-export const GET_VOLUNTEERS_SUCCESS
-export const GET_VOLUNTEERS_FAIL
+export const POST_VOLUNTEERS_SUCCESS
+export const POST_VOLUNTEERS_FAIL
 
 export const addEmail = email => async dispatch => {
     dispatch({
