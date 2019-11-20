@@ -20,6 +20,7 @@ const ForgotPasswordForm = props => {
       ...addExistingEmail,
       [event.target.name]: event.target.value
     })
+    console.log(event.target.value)
   }
 
   return (

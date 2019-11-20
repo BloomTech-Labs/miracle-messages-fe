@@ -1,7 +1,8 @@
 import axios from "axios"
 
-export const GET_VOLUNTEERS_SUCCESS = "GET_VOLUNTEERS_SUCCESS"
-export const GET_VOLUNTEERS_FAIL = "GET_VOLUNTEERS_FAIL"
+export const GET_VOLUNTEERS_SUCCESS = "POST_VOLUNTEERS_SUCCESS"
+export const GET_VOLUNTEERS_EMAIL_NOT_FOUND = "GET_VOLUNTEERS_EMAIL_NOT_FOUND"
+export const GET_VOLUNTEERS_FAIL = "POST_VOLUNTEERS_FAIL"
 
 export const addEmail = email => async dispatch => {
   dispatch({
@@ -10,13 +11,19 @@ export const addEmail = email => async dispatch => {
 
   axios
     .post
-    // API from Twilio goes here!
+    // Back end API goes in here
     ()
     .then(res => {
       console.log("This is the response from AddEmail", res)
-      return dispatch({
-        type: GET_VOLUNTEERS_SUCCESS
-      })
+      if (res === action.payload) {
+        return dispatch({
+          type: GET_VOLUNTEERS_SUCCESS
+        })
+      } else {
+        return dispatch({
+          type: GET_VOLUNTEERS_EMAIL_NOT_FOUND
+        })
+      }
     })
     .catch(error => {
       console.log("This is the catch from AddEmail", error)
