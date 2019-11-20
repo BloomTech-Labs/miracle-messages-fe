@@ -3,7 +3,6 @@ import {
  POST_VOLUNTEERS_FAIL
 } 
 from "../Actions/ForgotPasswordActions.js"
-import { Message } from "@material-ui/icons";
 
 const initialState = {
     email: {},
