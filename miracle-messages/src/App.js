@@ -21,7 +21,19 @@ class App extends Component {
 
           <Route exact path="/login" component={LoginForm} />
 
-          <Route exact path="/user/login" component={UserLogin} />
+          <Route exact path="/user/login" component={LoginPage} />
+
+          <Route
+            exact
+            path="/user/forgotpassword1"
+            component={ConfirmPassword}
+          />
+
+          <Route
+            exact
+            path="/user/forgotpassword2"
+            component={ConfirmPassword}
+          />
 
           {indexRoutes.map((prop, index) => {
             return (
