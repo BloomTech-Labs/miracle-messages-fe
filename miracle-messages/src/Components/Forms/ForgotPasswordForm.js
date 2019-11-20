@@ -34,6 +34,7 @@ const ForgotPasswordForm = (props) => {
                 onChange={handleChange}
                 loading={addEmail}
                 />
+                <button onClick="submit"> Submit </button>
             </form>
             </>
         )
