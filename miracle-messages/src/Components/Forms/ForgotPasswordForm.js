@@ -9,19 +9,20 @@ const ForgotPasswordForm = (props) => {
         email: ""
     })
 
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault()
-        props.addEmail({type: payload})
+        props.addEmail({type: props.email})
         setAddExistingEmail({
             email: ""
         })
     }
 
-    handleChange = event => {
+    const handleChange = event => {
         setAddExistingEmail({
             ...addExistingEmail, 
             [event.target.name]: event.target.value
         })
+        console.log(event.target.value)
     }
 
         return(
