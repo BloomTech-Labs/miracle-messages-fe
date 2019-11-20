@@ -1,29 +1,38 @@
 import React from "react"; 
-// import { connect } from "react-redux"; 
+import { connect } from "react-redux"; 
+import { addEmail } from "../../Actions/ForgotPasswordActions.js"; 
 
 
-class ForgotPasswordForm extends React.Component  {
-    constructor() {
-        super()
-        this.state = {
-            resetEmail: ""
-        }  
+const ForgotPasswordForm = () => {
+   
+    const [addExistingEmail, setAddExistingEmail] = useState({
+        email: ""
+    })
+
+    handleSubmit = event => {
+        event.preventDefault()
+        
     }
 
-    render() {
+    handleChange = event => {
+        setAddExistingEmail({
+            ...addExistingEmail, 
+            [event.target.name]: event.target.value
+        })
+    }
+
         return(
             <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                 name="email"
                 type="text"
-    
-                onChange={}
+                placeholder="please enter email"
+                onChange={handleChange}
                 />
             </form>
             </>
         )
-    }
 }
 
 export default ForgotPasswordForm; 
