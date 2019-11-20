@@ -13,7 +13,6 @@ import { addVolunteers } from "../../Actions/FormActions"
 import logo from "../../Assets/Imgs/MM_Logo.png"
 import FormFooter from "../FormFooter"
 import FormHeader from "../FormHeader"
-
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
@@ -35,11 +34,9 @@ class VolunteerForm extends React.Component {
       somethingelse: false
     }
   }
-
   handleOnsubmit = e => {
     e.preventDefault()
     this.props.addVolunteers(this.state)
-
     this.setState({
       newVolunteer: {
         fname: "",
@@ -61,7 +58,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleToggle = e => {
     this.setState({
       newInterests: {
@@ -70,7 +66,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChange = e => {
     this.setState({
       newVolunteer: {
@@ -79,7 +74,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangePhone = e => {
     this.setState({
       newVolunteer: {
@@ -88,7 +82,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangeInterest = e => {
     this.setState({
       newInterests: {
@@ -97,7 +90,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   render() {
     console.log(this.state.newVolunteer.phone)
     return (
@@ -129,7 +121,6 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-
                 <div className="formBox">
                   <label>Last Name *</label>
                 </div>
@@ -156,86 +147,137 @@ class VolunteerForm extends React.Component {
                 </div>
               </div>
               <div className="formBox">
+                <label>Email Address *</label>
                 <input
                   className="input"
                   type="text"
                   onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.fname}
-                  name="fname"
+                  value={this.state.newVolunteer.email}
+                  name="email"
                   required
                 />
               </div>
               <div className="formBox">
-                <label>Last Name *</label>
-              </div>
-              <div className="formBox">
+                <label>Phone *</label>
                 <input
                   className="input"
                   type="text"
                   onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.lname}
-                  name="lname"
+                  value={this.state.newVolunteer.phone}
+                  name="phone"
                   required
                 />
               </div>
-              <div className="formBox">
-                <label> Password *</label>
+              <div>
+                <div className="formBox">
+                  <label>City *</label>
+                  <input
+                    className="input small"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.city}
+                    name="city"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="formBox" id="stateId">
+                <label>State/Province *</label>
                 <input
-                  className="input small"
-                  type="password"
+                  className="input"
+                  id="state"
+                  type="text"
                   onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.password}
-                  name="password"
+                  value={this.state.newVolunteer.state}
+                  name="state"
                   required
                 />
               </div>
-            </div>
-            <div className="formBox">
-              <label>Email Address *</label>
-              <input
-                className="input"
-                type="text"
-                onChange={this.handleOnChange}
-                value={this.state.newVolunteer.email}
-                name="email"
-                required
-              />
-            </div>
-            <div className="formBox">
-              <label>Phone *</label>
-              <input
-                className="input"
-                type="text"
-                onChange={this.handleOnChange}
-                value={this.state.newVolunteer.phone}
-                name="phone"
-                required
-              />
-            </div>
-            <div>
               <div className="formBox">
-                <label>City *</label>
+                <label>Country *</label>
                 <input
                   className="input small"
                   type="text"
                   onChange={this.handleOnChange}
-                  value={this.state.newVolunteer.city}
-                  name="city"
+                  value={this.state.newVolunteer.country}
+                  name="country"
                   required
                 />
               </div>
-            </div>
-            <div className="formBox" id="stateId">
-              <label>State/Province *</label>
-              <input
-                className="input"
-                id="state"
-                type="text"
+            </section>
+            <div className="interested">
+              <label>I am Interested In *</label>
+              <div className="interest-wrapper">
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="volunteering"
+                    checked={this.state.newInterests.volunteering}
+                  />
+                  Volunteering
+                </label>
+              </div>
+              <div className="interest-wrapper">
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="donating"
+                    checked={this.state.newInterests.donating}
+                  />
+                  Donating
+                </label>
+              </div>
+              <div className="interest-wrapper">
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="joinmm"
+                    checked={this.state.newInterests.joinmm}
+                  />
+                  Join MM
+                </label>
+              </div>
+              <div className="interest-wrapper">
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="mediacoverage"
+                    checked={this.state.newInterests.mediacoverage}
+                  />
+                  Media Coverage
+                </label>
+              </div>
+              <div className="interest-wrapper">
+                <label className="interest-labels">
+                  <input
+                    className="somethingElse chbox"
+                    type="checkbox"
+                    onChange={this.handleToggle}
+                    name="somethingelse"
+                    value={this.state.newInterests.somethingelse}
+                  />
+                  Something Else
+                </label>
+              </div>
+              <label className="interest-labels">Comments</label>
+              <textarea
+                className="comment"
                 onChange={this.handleOnChange}
-                value={this.state.newVolunteer.state}
-                name="state"
-                required
+                value={this.state.newVolunteer.comment}
+                name="comment"
+                placeholder="Leave Your Comments"
               />
+              <button className="submitb" type="submit">
+                Submit
+              </button>
             </div>
           </form>
         </section>
@@ -244,11 +286,9 @@ class VolunteerForm extends React.Component {
     )
   }
 }
-
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
   }
 }
-
 export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
