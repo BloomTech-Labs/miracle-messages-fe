@@ -9,7 +9,7 @@ import LoginForm from "./Components/Login/LoginForm.js";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import "./CSS/style.css";
 import LoginPage from "./Components/Login/UserLogin";
-
+import InterestForm from "./Components/Forms/InterestForm";
 
 class App extends Component {
   render() {
@@ -24,7 +24,7 @@ class App extends Component {
 
           <Route exact path="/user/login" component={LoginPage} />
 
-
+          <Route exact path="/form/interest" component={InterestForm} />
           {indexRoutes.map((prop, index) => {
             return (
               <PrivateRoute

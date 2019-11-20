@@ -10,10 +10,9 @@ import { addVolunteers } from "../../Actions/FormActions"
 //   geocodeByPlaceId,
 //   getLatLng
 // } from 'react-places-autocomplete';
-// import logo from "../../Assets/Imgs/MM_Logo.png"
+import logo from "../../Assets/Imgs/MM_Logo.png"
 import FormFooter from "../FormFooter"
 import FormHeader from "../FormHeader"
-
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
@@ -35,11 +34,9 @@ class VolunteerForm extends React.Component {
       somethingelse: false
     }
   }
-
   handleOnsubmit = e => {
     e.preventDefault()
     this.props.addVolunteers(this.state)
-
     this.setState({
       newVolunteer: {
         fname: "",
@@ -61,7 +58,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleToggle = e => {
     this.setState({
       newInterests: {
@@ -70,7 +66,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChange = e => {
     this.setState({
       newVolunteer: {
@@ -79,7 +74,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangePhone = e => {
     this.setState({
       newVolunteer: {
@@ -88,7 +82,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangeInterest = e => {
     this.setState({
       newInterests: {
@@ -97,34 +90,38 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   render() {
     console.log(this.state.newVolunteer.phone)
     return (
 
 
 
-
-
-
       <div className="container">
+
         <FormHeader />
+
         <section className="main">
+
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
           {/* <p>{this.props.message}</p> */}
 
 
-
-          
           <form
             className="form"
             onSubmit={this.handleOnsubmit}
             loading={this.addVolunteers}
           >
-            <div />
-            <section className="input-wrapper">
+            
+
+
+
+
+
+
+
+            {/* <section className="input-wrapper">
               <div>
                 <div className="formBox">
                   <label>First Name *</label>
@@ -139,7 +136,6 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-
                 <div className="formBox">
                   <label>Last Name *</label>
                 </div>
@@ -176,7 +172,6 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-
               <div className="formBox">
                 <label>Phone *</label>
                 <input
@@ -224,20 +219,7 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-            </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </section> */}
 
 
 
@@ -261,7 +243,6 @@ class VolunteerForm extends React.Component {
                   Volunteering
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -274,7 +255,6 @@ class VolunteerForm extends React.Component {
                   Donating
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -287,7 +267,6 @@ class VolunteerForm extends React.Component {
                   Join MM
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -300,7 +279,6 @@ class VolunteerForm extends React.Component {
                   Media Coverage
                 </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -325,23 +303,20 @@ class VolunteerForm extends React.Component {
                 Submit
               </button>
             </div>
+
           </form>
         </section>
 
-
-
-
-
         <FormFooter />
+
       </div>
     )
   }
 }
-
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
   }
 }
-
 export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
+
