@@ -99,6 +99,9 @@ class VolunteerForm extends React.Component {
   render() {
     console.log(this.state.newVolunteer.phone)
     return (
+
+
+
       <div className="container">
         <header>
           <div className="navbar">
@@ -146,17 +149,67 @@ class VolunteerForm extends React.Component {
             </div>
           </div>
         </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section className="main">
+
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
           {/* <p>{this.props.message}</p> */}
+
+
           <form
             className="form"
             onSubmit={this.handleOnsubmit}
             loading={this.addVolunteers}
           >
-            <div />
+            
+
+
+
+
+
+
+
             <section className="input-wrapper">
               <div>
                 <div className="formBox">
@@ -257,8 +310,19 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-              {/* </div> */}
+              
             </section>
+
+
+
+
+
+
+
+
+
+
+
 
             <div className="interested">
               <label>I am Interested In *</label>
@@ -338,8 +402,57 @@ class VolunteerForm extends React.Component {
                 Submit
               </button>
             </div>
+         
+         
+         
+         
+         
+         
+         
+         
+         
           </form>
+
         </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* This is the footer section here */}
         <div className="footer-icons">
           <h1>placeholder for icons</h1>
