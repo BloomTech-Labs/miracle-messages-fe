@@ -10,9 +10,9 @@ import { addVolunteers } from "../../Actions/FormActions"
 //   geocodeByPlaceId,
 //   getLatLng
 // } from 'react-places-autocomplete';
-import logo from "../../Assets/Imgs/MM_Logo.png"
 import FormFooter from "../FormFooter"
 import FormHeader from "../FormHeader"
+
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {

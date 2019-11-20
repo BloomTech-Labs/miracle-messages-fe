@@ -8,7 +8,8 @@ import LoginForm from "./Components/Login/LoginForm.js"
 import { PrivateRoute } from "./Components/PrivateRoute"
 import "./CSS/style.css"
 import LoginPage from "./Components/Login/UserLogin"
-import ConfirmPassword from "./Components/Login/ConfirmPassword"
+import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
+import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 
 class App extends Component {
   render() {
@@ -22,6 +23,18 @@ class App extends Component {
           <Route exact path="/login" component={LoginForm} />
 
           <Route exact path="/user/login" component={LoginPage} />
+
+          <Route
+            exact
+            path="/user/forgotpassword1"
+            component={ForgotPasswordForm}
+          />
+
+          <Route
+            exact
+            path="/user/forgotpassword2"
+            component={ConfirmPassword}
+          />
 
           {indexRoutes.map((prop, index) => {
             return (
