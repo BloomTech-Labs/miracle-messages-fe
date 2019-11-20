@@ -9,14 +9,13 @@ export const addVolunteers = (volunteer) => async dispatch => {
     type: ADD_VOLUNTEER_START
   })
 
-  console.log(volunteer)
+  console.log(volunteer.newVolunteer)
   
   axios
     .post( 
       // ' https://miracle-messages-production.herokuapp.com/api/form',
-      // 'http://localhost:5000/api/volunteer/register',
-      'http://localhost:5000/api/form/register',
-      volunteer
+      'http://localhost:5000/api/volunteer/register',
+      volunteer.newVolunteer
     )
     .then(res => {
       console.log("This is the response from FormActions", res)
