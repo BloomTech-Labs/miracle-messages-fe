@@ -4,11 +4,10 @@ export const POST_NEWPASS_SUCCESS = "POST_NEWPASS_SUCCESS"
 export const POST_NEWPASS_FAIL = "POST_NEWPASS_FAIL"
 export const POST_NEWPASSCATCH_FAIL = "POST_NEWPASSCATCH_FAIL"
 
-export const addNewPassword = password => async dispatch => {
+export const addNewPassword = (password, action) => async dispatch => {
   dispatch({
     type: POST_NEWPASS_SUCCESS
   })
-
   axios
     .put
     // "API from volunteer form" , password
@@ -23,7 +22,6 @@ export const addNewPassword = password => async dispatch => {
         returndispatch({ POST_NEWPASS_FAIL })
       }
     })
-
     .catch(error => {
       console.log("This is the catch from addNewPassword", error)
       return dispatch({

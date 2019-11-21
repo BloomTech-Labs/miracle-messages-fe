@@ -1,6 +1,7 @@
 import React from "react"
 import logo from "../Assets/Imgs/MM_Logo.png"
 
+// in order for this to work, you need to render inside of the <div className="container"> div of the component you want it to render in.
 const FormHeader = () => {
   return (
     <header>

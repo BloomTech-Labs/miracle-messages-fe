@@ -3,17 +3,23 @@ import FormFooter from "../../FormFooter"
 import FormHeader from "../../FormHeader"
 
 class ConfirmPassword extends React.Component {
-  state = {
-    password: "",
-    confirmPassword: ""
+  constructor() {
+    super()
+    this.state = {
+      password: ""
+    }
+
+    this.handlePassChange = this.handlePassChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.dismissError = this.dismissError.bind(this)
   }
 
-  dismissError = () => {
+  dismissError() {
     this.setState({ error: "" })
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
+  handleSubmit(evt) {
+    evt.preventDefault()
 
     if (!this.state.password) {
       return this.setState({ error: "Password is required" })
@@ -22,10 +28,9 @@ class ConfirmPassword extends React.Component {
     return this.setState({ error: "" })
   }
 
-  handlePassChange = event => {
+  handlePassChange(evt) {
     this.setState({
-      ...this.state,
-      [event.target.name]: event.target.value
+      password: evt.target.value
     })
   }
 
@@ -50,7 +55,6 @@ class ConfirmPassword extends React.Component {
                   <label className="interest-labels">Password*</label>
                   <input
                     className="formBox"
-                    name="password"
                     type="password"
                     data-test="password"
                     value={this.state.password}
@@ -62,7 +66,6 @@ class ConfirmPassword extends React.Component {
                   <label className="interest-labels">Confirm Password*</label>
                   <input
                     className="formBox"
-                    name="confirmPassword"
                     type="password"
                     data-test="password"
                     value={this.state.password}

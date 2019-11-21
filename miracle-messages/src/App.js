@@ -1,4 +1,3 @@
-
 import React, { Component } from "react"
 import Map from "./Components/MapComponents/map"
 import "./CSS/App.css"

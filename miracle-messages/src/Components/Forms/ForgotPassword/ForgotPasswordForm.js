@@ -1,47 +1,55 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { addEmail } from "../../../Actions/ForgotPasswordActions.js"
+import FormHeader from "../../FormHeader"
+import logo from "../../../Assets/Imgs/MM_Logo.png"
+import FormFooter from "../../FormFooter"
 
 const ForgotPasswordForm = props => {
-  const [addExistingEmail, setAddExistingEmail] = useState({
-    email: ""
-  })
+  const [email, setEmail] = useState("")
 
   const handleSubmit = event => {
     event.preventDefault()
-    props.addEmail({ type: props.email })
-    setAddExistingEmail({
+    props.addEmail(email)
+    setEmail({
       email: ""
     })
   }
 
-  const handleChange = event => {
-    setAddExistingEmail({
-      ...addExistingEmail,
-      [event.target.name]: event.target.value
-    })
-    console.log(event.target.value)
-  }
-
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="please enter email"
-          onChange={handleChange}
-          loading={addEmail}
-        />
-        <button onClick="submit"> Submit </button>
-      </form>
-    </>
+    <div className="container">
+      <FormHeader />
+      <section className="main">
+        <strong className="main-bold">
+          <h2>Forgot Your Password? </h2>
+        </strong>
+
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="formBox">
+            <label>Email*</label>
+          </div>
+          <div className="formBox">
+            <input
+              className="input"
+              name="email"
+              type="text"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+              loading={addEmail}
+              required
+            />
+          </div>
+          <button onClick="submit"> Submit </button>
+        </form>
+        <FormFooter />
+      </section>
+    </div>
   )
 }
 
 const mapStateTopProps = state => {
   return {
-    email: state.volunteersReducer.status.email
+    email: state.volunteersReducer.status
   }
 }
 

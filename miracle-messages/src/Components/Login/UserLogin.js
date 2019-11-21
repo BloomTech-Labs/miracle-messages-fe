@@ -14,20 +14,13 @@ constructor() {
       password: "",
       error: ""
     }
-
-    this.handlePassChange = this.handlePassChange.bind(this)
-    this.handleUserChange = this.handleUserChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.dismissError = this.dismissError.bind(this)
   }
 
-  
-
-  dismissError() {
+  dismissError = () => {
     this.setState({ error: "" })
   }
 
-  handleSubmit(evt) {
+  handleSubmit = evt => {
     evt.preventDefault()
 
     if (!this.state.email) {
@@ -37,7 +30,9 @@ constructor() {
     if (!this.state.password) {
       return this.setState({ error: "Password is required" })
     }
-    
+
+    //return this.setState({ error: "" })
+
     axios.post('http://localhost:5000/api/volunteer/login', this.state)
       .then(res => {
         console.log(res)
@@ -47,7 +42,7 @@ constructor() {
       .catch(e => console.log(e))
   }
 
-  handleUserChange(evt) {
+  handleUserChange = evt => {
     this.setState({
       email: evt.target.value
     })
@@ -114,7 +109,6 @@ constructor() {
             <h2>Login Here</h2>
           </strong>
           <div className="Login">
-
             <form onSubmit={this.handleSubmit}>
               {this.state.error && (
                 <h3 data-test="error" onClick={this.dismissError}>
@@ -122,7 +116,6 @@ constructor() {
                   {this.state.error}
                 </h3>
               )}
-
 
               <section className="input-wrapper">
                 <div className="formBox">
