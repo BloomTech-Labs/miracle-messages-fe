@@ -12,11 +12,6 @@ class LoginPage extends Component {
       password: "",
       error: ""
     }
-
-    // this.handlePassChange = this.handlePassChange.bind(this)
-    // this.handleUserChange = this.handleUserChange.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
-    // this.dismissError = this.dismissError.bind(this)
   }
 
   dismissError = () => {
