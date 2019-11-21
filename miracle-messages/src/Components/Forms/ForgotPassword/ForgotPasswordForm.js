@@ -3,24 +3,14 @@ import { connect } from "react-redux"
 import { addEmail } from "../../../Actions/ForgotPasswordActions.js"
 
 const ForgotPasswordForm = props => {
-  const [addExistingEmail, setAddExistingEmail] = useState({
-    email: ""
-  })
+  const [email, setEmail] = useState("")
 
   const handleSubmit = event => {
     event.preventDefault()
-    props.addEmail({ type: props.email })
-    setAddExistingEmail({
+    props.addEmail(email)
+    setEmail({
       email: ""
     })
-  }
-
-  const handleChange = event => {
-    setAddExistingEmail({
-      ...addExistingEmail,
-      [event.target.name]: event.target.value
-    })
-    console.log(event.target.value)
   }
 
   return (
@@ -29,9 +19,11 @@ const ForgotPasswordForm = props => {
         <input
           name="email"
           type="text"
+          value={email}
           placeholder="please enter email"
-          onChange={handleChange}
+          onChange={event => setEmail(event.target.value)}
           loading={addEmail}
+          required
         />
         <button onClick="submit"> Submit </button>
       </form>

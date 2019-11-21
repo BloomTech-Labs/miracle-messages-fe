@@ -35,12 +35,11 @@ class LoginPage extends Component {
     }
 
     return this.setState({ error: "" })
-    
   }
 
   handleUserChange(evt) {
     this.setState({
-      username: evt.target.value
+      email: evt.target.value
     })
   }
 
@@ -105,7 +104,6 @@ class LoginPage extends Component {
             <h2>Login Here</h2>
           </strong>
           <div className="Login">
-
             <form onSubmit={this.handleSubmit}>
               {this.state.error && (
                 <h3 data-test="error" onClick={this.dismissError}>
@@ -113,7 +111,6 @@ class LoginPage extends Component {
                   {this.state.error}
                 </h3>
               )}
-
 
               <section className="input-wrapper">
                 <div className="formBox">
