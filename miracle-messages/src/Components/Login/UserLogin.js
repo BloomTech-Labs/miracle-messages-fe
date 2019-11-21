@@ -8,7 +8,7 @@ class LoginPage extends Component {
   constructor() {
     super()
     this.state = {
-      username: "",
+      email: "",
       password: "",
       error: ""
     }
@@ -26,8 +26,8 @@ class LoginPage extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
 
-    if (!this.state.username) {
-      return this.setState({ error: "Username is required" })
+    if (!this.state.email) {
+      return this.setState({ error: "email is required" })
     }
 
     if (!this.state.password) {
@@ -35,6 +35,7 @@ class LoginPage extends Component {
     }
 
     return this.setState({ error: "" })
+    
   }
 
   handleUserChange(evt) {
@@ -51,6 +52,7 @@ class LoginPage extends Component {
 
   render() {
     return (
+      //did not import Form Header because
       <div className="container">
         <header>
           <div className="navbar">
@@ -103,6 +105,7 @@ class LoginPage extends Component {
             <h2>Login Here</h2>
           </strong>
           <div className="Login">
+
             <form onSubmit={this.handleSubmit}>
               {this.state.error && (
                 <h3 data-test="error" onClick={this.dismissError}>
@@ -110,14 +113,16 @@ class LoginPage extends Component {
                   {this.state.error}
                 </h3>
               )}
+
+
               <section className="input-wrapper">
                 <div className="formBox">
-                  <label className="interest-labels">Username*</label>
+                  <label className="interest-labels">Email*</label>
                   <input
                     className="formBox"
-                    type="text"
-                    data-test="username"
-                    value={this.state.username}
+                    type="email"
+                    data-test="email"
+                    value={this.state.email}
                     onChange={this.handleUserChange}
                   />
                 </div>

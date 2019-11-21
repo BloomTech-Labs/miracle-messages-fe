@@ -1,15 +1,15 @@
 
-import React, { Component } from "react";
-import Map from "./Components/MapComponents/map";
-import "./CSS/App.css";
-import { Route, Switch, Redirect } from "react-router-dom";
-import indexRoutes from "./Components/dashboard/routes/index.js";
-import VolunteerForm from "./Components/Forms/VolunteerForm";
-import LoginForm from "./Components/Login/LoginForm.js";
-import { PrivateRoute } from "./Components/PrivateRoute";
-import "./CSS/style.css";
-import LoginPage from "./Components/Login/UserLogin";
-import InterestForm from "./Components/Forms/InterestForm";
+import React, { Component } from "react"
+import Map from "./Components/MapComponents/map"
+import "./CSS/App.css"
+import { Route, Switch, Redirect } from "react-router-dom"
+import indexRoutes from "./Components/dashboard/routes/index.js"
+import VolunteerForm from "./Components/Forms/VolunteerForm"
+import LoginForm from "./Components/Login/LoginForm.js"
+import { PrivateRoute } from "./Components/PrivateRoute"
+import "./CSS/style.css"
+import LoginPage from "./Components/Login/UserLogin"
+import ConfirmPassword from "./Components/Login/ConfirmPassword"
 
 class App extends Component {
   render() {
@@ -24,7 +24,7 @@ class App extends Component {
 
           <Route exact path="/user/login" component={LoginPage} />
 
-          <Route exact path="/form/interest" component={InterestForm} />
+
           {indexRoutes.map((prop, index) => {
             return (
               <PrivateRoute
@@ -32,14 +32,14 @@ class App extends Component {
                 key={index}
                 component={prop.component}
               />
-            );
+            )
           })}
 
           <Redirect from="*" to="/" />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

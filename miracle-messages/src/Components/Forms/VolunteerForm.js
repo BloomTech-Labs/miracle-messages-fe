@@ -92,18 +92,27 @@ class VolunteerForm extends React.Component {
   render() {
     console.log(this.state.newVolunteer.phone)
     return (
+
+
+
       <div className="container">
+
         <FormHeader />
+
         <section className="main">
+
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
           {/* <p>{this.props.message}</p> */}
+
+
           <form
             className="form"
             onSubmit={this.handleOnsubmit}
             loading={this.addVolunteers}
           >
+
             <section className="input-wrapper">
               <div>
                 <div className="formBox">
@@ -216,6 +225,7 @@ class VolunteerForm extends React.Component {
                 />
               </div>
             </section>
+
             <div className="interested">
               <label>I am Interested In *</label>
               <div className="interest-wrapper">
@@ -290,9 +300,12 @@ class VolunteerForm extends React.Component {
                 Submit
               </button>
             </div>
+
           </form>
         </section>
+
         <FormFooter />
+
       </div>
     )
   }
@@ -302,4 +315,6 @@ const mapStateToProps = state => {
     message: state.formReducer.status.message
   }
 }
+
 export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
+
