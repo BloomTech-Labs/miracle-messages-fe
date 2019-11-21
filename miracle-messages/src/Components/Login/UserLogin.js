@@ -13,17 +13,17 @@ class LoginPage extends Component {
       error: ""
     }
 
-    this.handlePassChange = this.handlePassChange.bind(this)
-    this.handleUserChange = this.handleUserChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.dismissError = this.dismissError.bind(this)
+    // this.handlePassChange = this.handlePassChange.bind(this)
+    // this.handleUserChange = this.handleUserChange.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
+    // this.dismissError = this.dismissError.bind(this)
   }
 
-  dismissError() {
+  dismissError = () => {
     this.setState({ error: "" })
   }
 
-  handleSubmit(evt) {
+  handleSubmit = evt => {
     evt.preventDefault()
 
     if (!this.state.email) {
@@ -37,7 +37,7 @@ class LoginPage extends Component {
     return this.setState({ error: "" })
   }
 
-  handleUserChange(evt) {
+  handleUserChange = evt => {
     this.setState({
       email: evt.target.value
     })

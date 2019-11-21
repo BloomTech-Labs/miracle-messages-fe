@@ -12,8 +12,8 @@ class ConfirmPassword extends React.Component {
     this.setState({ error: "" })
   }
 
-  handleSubmit = evt => {
-    evt.preventDefault()
+  handleSubmit = event => {
+    event.preventDefault()
 
     if (!this.state.password) {
       return this.setState({ error: "Password is required" })

@@ -94,7 +94,6 @@ class VolunteerForm extends React.Component {
     return (
       <div className="container">
         <FormHeader />
-
         <section className="main">
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
@@ -130,19 +129,6 @@ class VolunteerForm extends React.Component {
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.lname}
                     name="lname"
-                    required
-                  />
-                </div>
-                <div className="formBox">
-                  <label>Username *</label>
-                </div>
-                <div className="formBox">
-                  <input
-                    className="input"
-                    type="text"
-                    onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.username}
-                    name="username"
                     required
                   />
                 </div>
@@ -217,7 +203,7 @@ class VolunteerForm extends React.Component {
                 />
               </div>
             </section>
-
+            {/* This is the start of the 2nd part of the form that has the interested boxes and those inputs.  */}
             <div className="interested">
               <label>I am Interested In *</label>
               <div className="interest-wrapper">
