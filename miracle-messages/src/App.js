@@ -1,3 +1,4 @@
+
 import React, { Component } from "react"
 import Map from "./Components/MapComponents/map"
 import "./CSS/App.css"
@@ -22,6 +23,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginForm} />
 
           <Route exact path="/user/login" component={LoginPage} />
+
 
           {indexRoutes.map((prop, index) => {
             return (
