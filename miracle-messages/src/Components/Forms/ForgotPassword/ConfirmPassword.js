@@ -1,5 +1,6 @@
 import React from "react"
-import FormFooter from "../FormFooter"
+import FormFooter from "../../FormFooter"
+import FormHeader from "../../FormHeader"
 
 class ConfirmPassword extends React.Component {
   constructor() {
@@ -35,7 +36,8 @@ class ConfirmPassword extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <FormHeader />
         <section className="main">
           <strong className="main-bold">
             <h2>Please enter your new password</h2>

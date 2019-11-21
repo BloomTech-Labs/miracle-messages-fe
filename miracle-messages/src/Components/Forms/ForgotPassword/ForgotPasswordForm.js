@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
-import { addEmail } from "../../Actions/ForgotPasswordActions.js"
+import { addEmail } from "../../../Actions/ForgotPasswordActions.js"
 
 const ForgotPasswordForm = props => {
   const [addExistingEmail, setAddExistingEmail] = useState({

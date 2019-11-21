@@ -1,7 +1,9 @@
 import axios from "axios"
+
 export const POST_NEWPASS_SUCCESS = "POST_NEWPASS_SUCCESS"
 export const POST_NEWPASS_FAIL = "POST_NEWPASS_FAIL"
 export const POST_NEWPASSCATCH_FAIL = "POST_NEWPASSCATCH_FAIL"
+
 export const addNewPassword = password => async dispatch => {
   dispatch({
     type: POST_NEWPASS_SUCCESS

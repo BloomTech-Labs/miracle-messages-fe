@@ -52,7 +52,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      //did not import Form Header because
+      //did not import Form Header because I needed to update the h1 tag on line 94
       <div className="container">
         <header>
           <div className="navbar">
