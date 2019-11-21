@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { connect } from "react-redux"
 import { addEmail } from "../../../Actions/ForgotPasswordActions.js"
 import FormHeader from "../../FormHeader"
+import logo from "../../../Assets/Imgs/MM_Logo.png"
 import FormFooter from "../../FormFooter"
 
 const ForgotPasswordForm = props => {
@@ -20,10 +21,7 @@ const ForgotPasswordForm = props => {
       <FormHeader />
       <section className="main">
         <strong className="main-bold">
-          <h2>
-            Forgot Your Password? <br />
-            Please enter your email address below.
-          </h2>
+          <h2>Forgot Your Password? </h2>
         </strong>
 
         <form className="form" onSubmit={handleSubmit}>
