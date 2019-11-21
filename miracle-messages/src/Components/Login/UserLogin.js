@@ -5,7 +5,7 @@ import "../Forms/VolunteerForm.scss"
 import FormFooter from "../FormFooter"
 
 class LoginPage extends Component {
-  constructor() {
+constructor() {
     super()
     this.state = {
       email: "",
@@ -33,14 +33,14 @@ class LoginPage extends Component {
     if (!this.state.password) {
       return this.setState({ error: "Password is required" })
     }
-
+    
     return this.setState({ error: "" })
     
   }
 
   handleUserChange(evt) {
     this.setState({
-      username: evt.target.value
+      email: evt.target.value
     })
   }
 
@@ -122,8 +122,10 @@ class LoginPage extends Component {
                     className="formBox"
                     type="email"
                     data-test="email"
+                    name="email"
                     value={this.state.email}
                     onChange={this.handleUserChange}
+                    required
                   />
                 </div>
                 <div className="formBox">
@@ -132,8 +134,10 @@ class LoginPage extends Component {
                     className="formBox"
                     type="password"
                     data-test="password"
+                    name="password"
                     value={this.state.password}
                     onChange={this.handlePassChange}
+                    required
                   />
                 </div>
                 <input

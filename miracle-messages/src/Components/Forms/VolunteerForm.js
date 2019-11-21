@@ -18,7 +18,6 @@ class VolunteerForm extends React.Component {
     newVolunteer: {
       fname: "",
       lname: "",
-      username: "",
       password: "",
       email: "",
       phone: "",
@@ -40,7 +39,6 @@ class VolunteerForm extends React.Component {
       newVolunteer: {
         fname: "",
         lname: "",
-        username: "",
         password: "",
         email: "",
         phone: "",
@@ -138,19 +136,6 @@ class VolunteerForm extends React.Component {
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.lname}
                     name="lname"
-                    required
-                  />
-                </div>
-                <div className="formBox">
-                  <label>Username *</label>
-                </div>
-                <div className="formBox">
-                  <input
-                    className="input"
-                    type="text"
-                    onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.username}
-                    name="username"
                     required
                   />
                 </div>
