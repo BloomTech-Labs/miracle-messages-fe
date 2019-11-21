@@ -1,11 +1,13 @@
 import React, { Component } from "react"
+import axios from 'axios'
 import "./UserLogin.js"
 import logo from "../../Assets/Imgs/MM_Logo.png"
 import "../Forms/VolunteerForm.scss"
 import FormFooter from "../FormFooter"
+import {axiosWithAuth} from '../../Actions/AxiosWithAuth'
 
 class LoginPage extends Component {
-  constructor() {
+constructor() {
     super()
     this.state = {
       email: "",
@@ -29,7 +31,15 @@ class LoginPage extends Component {
       return this.setState({ error: "Password is required" })
     }
 
-    return this.setState({ error: "" })
+    //return this.setState({ error: "" })
+
+    axios.post('http://localhost:5000/api/volunteer/login', this.state)
+      .then(res => {
+        console.log(res)
+        localStorage.setItem('token', res.data.token);
+        this.props.history.push('/')
+      })
+      .catch(e => console.log(e))
   }
 
   handleUserChange = evt => {
@@ -114,8 +124,10 @@ class LoginPage extends Component {
                     className="formBox"
                     type="email"
                     data-test="email"
+                    name="email"
                     value={this.state.email}
                     onChange={this.handleUserChange}
+                    required
                   />
                 </div>
                 <div className="formBox">
@@ -124,16 +136,15 @@ class LoginPage extends Component {
                     className="formBox"
                     type="password"
                     data-test="password"
+                    name="password"
                     value={this.state.password}
                     onChange={this.handlePassChange}
+                    required
                   />
                 </div>
-                <input
-                  className="submitb"
-                  type="submit"
-                  value="Login"
-                  data-test="submit"
-                />
+                <button className="submitb" type="submit" data-test="submit">
+                Login
+              </button>
               </section>
             </form>
           </div>

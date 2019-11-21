@@ -18,7 +18,6 @@ class VolunteerForm extends React.Component {
     newVolunteer: {
       fname: "",
       lname: "",
-      username: "",
       password: "",
       email: "",
       phone: "",
@@ -40,7 +39,6 @@ class VolunteerForm extends React.Component {
       newVolunteer: {
         fname: "",
         lname: "",
-        username: "",
         password: "",
         email: "",
         phone: "",

@@ -5,6 +5,7 @@ class Volunteer extends Component {
   render() {
     return (
       <Card>
+        {/* {console.log(this.props.vol)} */}
         <CardBody>
           <CardTitle className="mb-0">
             <i className="mdi mdi-comment-processing-outline mr-2"> </i>
