@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "cypress": "^3.6.1"
   }
-}
+ }

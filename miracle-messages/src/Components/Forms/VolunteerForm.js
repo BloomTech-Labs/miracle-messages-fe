@@ -3,29 +3,29 @@ import "./VolunteerForm.scss"
 import { connect } from "react-redux"
 import { addVolunteers } from "../../Actions/FormActions"
 // import PlacesAutocomplete from 'react-places-autocomplete';
-import "react-phone-number-input/style.css"
-import PhoneInput from "react-phone-number-input"
+// import "react-phone-number-input/style.css"
+// import PhoneInput from "react-phone-number-input"
 // import {
 //   geocodeByAddress,
 //   geocodeByPlaceId,
 //   getLatLng
 // } from 'react-places-autocomplete';
-import logo from "../../Assets/Imgs/MM_Logo.png"
+import FormFooter from "../FormFooter"
+import FormHeader from "../FormHeader"
 
 class VolunteerForm extends React.Component {
   state = {
     newVolunteer: {
-      fname: '',
-      lname: '',
-      password: '',
-      email: '',
-      phone: '',
-      city: '',
-      state: '',
-      country: '',
-      comment: ''
-    },
-    newInterests: {
+      fname: "",
+      lname: "",
+      username: "",
+      password: "",
+      email: "",
+      phone: "",
+      city: "",
+      state: "",
+      country: "",
+      comment: "",
       volunteering: false,
       donating: false,
       joinmm: false,
@@ -33,43 +33,38 @@ class VolunteerForm extends React.Component {
       somethingelse: false
     }
   }
-
   handleOnsubmit = e => {
     e.preventDefault()
     this.props.addVolunteers(this.state)
-
     this.setState({
       newVolunteer: {
-        fname: '',
-        lname: '',
-        password: '',
-        email: '',
-        phone: '',
-        city: '',
-        state: '',
-        country: '',
-        comment: ''
-      },
-      newInterests: {
+        fname: "",
+        lname: "",
+        username: "",
+        password: "",
+        email: "",
+        phone: "",
+        city: "",
+        state: "",
+        country: "",
+        comment: "",
         volunteering: false,
         donating: false,
         joinmm: false,
         mediacoverage: false,
         somethingelse: false
-
       }
     })
+    this.props.history.push("/user/login")
   }
-
   handleToggle = e => {
     this.setState({
-      newInterests: {
-        ...this.state.newInterests,
+      newVolunteer: {
+        ...this.state.newVolunteer,
         [e.target.name]: e.target.checked
       }
     })
   }
-
   handleOnChange = e => {
     this.setState({
       newVolunteer: {
@@ -78,7 +73,6 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangePhone = e => {
     this.setState({
       newVolunteer: {
@@ -87,77 +81,38 @@ class VolunteerForm extends React.Component {
       }
     })
   }
-
   handleOnChangeInterest = e => {
     this.setState({
-      newInterests: {
-        ...this.state.newInterests,
+      newVolunteer: {
+        ...this.state.newVolunteer,
         [e.target.name]: e.target.value
       }
     })
   }
-
   render() {
     console.log(this.state.newVolunteer.phone)
     return (
+
+
+
       <div className="container">
-        <header>
-          <div className="navbar">
-            <div className="logonavbar">
-              <img src={logo} alt="logo" />
-            </div>
-            <div className="tabsnavbar">
-              <nav>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>ABOUT</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>REUNION SERVICE</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>GET INVOLVED</div>
-                </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>DONATE</div>
-                </a>
-              </nav>
-            </div>
-          </div>
-          <h1>Want to get started, learn more, or stay updated?</h1>
-          {/* the below  3 divs are for the header image styling */}
-          <div className="overlay">
-            <div className="backImg">
-              <div className="filter" />
-            </div>
-          </div>
-        </header>
+
+        <FormHeader />
+
         <section className="main">
+
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
           {/* <p>{this.props.message}</p> */}
+
+
           <form
             className="form"
             onSubmit={this.handleOnsubmit}
             loading={this.addVolunteers}
           >
-            <div />
+
             <section className="input-wrapper">
               <div>
                 <div className="formBox">
@@ -173,7 +128,6 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-
                 <div className="formBox">
                   <label>Last Name *</label>
                 </div>
@@ -187,14 +141,27 @@ class VolunteerForm extends React.Component {
                     required
                   />
                 </div>
-                <div className='formBox'>
+                <div className="formBox">
+                  <label>Username *</label>
+                </div>
+                <div className="formBox">
+                  <input
+                    className="input"
+                    type="text"
+                    onChange={this.handleOnChange}
+                    value={this.state.newVolunteer.username}
+                    name="username"
+                    required
+                  />
+                </div>
+                <div className="formBox">
                   <label> Password *</label>
                   <input
-                    className='input small'
-                    type='text'
+                    className="input small"
+                    type="password"
                     onChange={this.handleOnChange}
                     value={this.state.newVolunteer.password}
-                    name='password'
+                    name="password"
                     required
                   />
                 </div>
@@ -212,17 +179,6 @@ class VolunteerForm extends React.Component {
               </div>
               <div className="formBox">
                 <label>Phone *</label>
-                <PhoneInput
-                  placeholder="Enter phone number"
-                  onChange={this.handleOnChangePhone}
-                  value={this.state.newVolunteer.phone}
-                  displayInitialValueAsLocalNumber={true}
-                  country="US"
-                  countryOptions={["US", "CA", "AU", "|", "..."]}
-                />
-              </div>
-              <div className="formBox">
-                <label>Phone *</label>
                 <input
                   className="input"
                   type="text"
@@ -232,117 +188,82 @@ class VolunteerForm extends React.Component {
                   required
                 />
               </div>
-              <div className="name-wrapper">
+              <div>
                 <div className="formBox">
-                  <label>Email Address *</label>
-                </div>
-                <div className="formBox">
-                  <input
-                    className="input"
-                    type="text"
-                    onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.email}
-                    name="email"
-                    required
-                  />
-                </div>
-                {/* <div className="formBox">
-                  <label>Phone *</label>
-                  <PhoneInput
-                    placeholder="Enter phone number"
-                    onChange={this.handleOnChangePhone}
-                    value={this.state.newVolunteer.phone}
-                    displayInitialValueAsLocalNumber={true}
-                    country="US"
-                    countryOptions={["US", "CA", "AU", "|", "..."]}
-                  />
-                </div> */}
-                <div className="formBox">
-                  <label>Phone *</label>
+                  <label>City *</label>
                   <input
                     className="input small"
                     type="text"
                     onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.phone}
-                    name="phone"
+                    value={this.state.newVolunteer.city}
+                    name="city"
                     required
                   />
                 </div>
-                <div>
-                  <div className="formBox">
-                    <label>City *</label>
-                    <input
-                      className="input small"
-                      type="text"
-                      onChange={this.handleOnChange}
-                      value={this.state.newVolunteer.city}
-                      name="city"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="formBox" id="stateId">
-                  <label>State/Province *</label>
-                  <input
-                    className="input"
-                    id="state"
-                    type="text"
-                    onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.state}
-                    name="state"
-                    required
-                  />
-                </div>
-                <div className="formBox">
-                  <label>Country *</label>
-                  <input
-                    className="input small"
-                    type="text"
-                    onChange={this.handleOnChange}
-                    value={this.state.newVolunteer.country}
-                    name="country"
-                    required
-                  />
-                </div>
+              </div>
+              <div className="formBox" id="stateId">
+                <label>State/Province *</label>
+                <input
+                  className="input"
+                  id="state"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.state}
+                  name="state"
+                  required
+                />
+              </div>
+              <div className="formBox">
+                <label>Country *</label>
+                <input
+                  className="input small"
+                  type="text"
+                  onChange={this.handleOnChange}
+                  value={this.state.newVolunteer.country}
+                  name="country"
+                  required
+                />
               </div>
             </section>
 
             <div className="interested">
               <label>I am Interested In *</label>
               <div className="interest-wrapper">
-                <input
-                  onChange={this.handleToggle}
-                  className="chbox"
-                  type="checkbox"
-                  name="volunteering"
-                  checked={this.state.newInterests.volunteering}
-                />
-                <h7>Volunteering</h7>
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="volunteering"
+                    checked={this.state.newVolunteer.volunteering}
+                  />
+                  Volunteering
+                </label>
               </div>
-
               <div className="interest-wrapper">
-                <input
-                  onChange={this.handleToggle}
-                  className="chbox"
-                  type="checkbox"
-                  name="donating"
-                  checked={this.state.newInterests.donating}
-                />
-
-                <h7>Donating</h7>
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="donating"
+                    checked={this.state.newVolunteer.donating}
+                  />
+                  Donating
+                </label>
               </div>
-
               <div className="interest-wrapper">
-                <input
-                  onChange={this.handleToggle}
-                  className="chbox"
-                  type="checkbox"
-                  name="joinmm"
-                  checked={this.state.newInterests.joinmm}
-                />
-                <h7>Join MM</h7>
+                <label className="interest-labels">
+                  <input
+                    onChange={this.handleToggle}
+                    className="chbox"
+                    type="checkbox"
+                    name="joinmm"
+                    checked={this.state.newVolunteer.joinmm}
+                  />
+                  Join MM
+                </label>
               </div>
-
               <div className="interest-wrapper">
                 <label className="interest-labels">
                   <input
@@ -350,22 +271,24 @@ class VolunteerForm extends React.Component {
                     className="chbox"
                     type="checkbox"
                     name="mediacoverage"
-                    checked={this.state.newInterests.mediacoverage}
+                    checked={this.state.newVolunteer.mediacoverage}
                   />
                   Media Coverage
                 </label>
               </div>
-
               <div className="interest-wrapper">
-                <input
-                  className="somethingElse chbox"
-                  type="checkbox"
-                  onChange={this.handleToggle}
-                  name="somethingelse"
-                  value={this.state.newInterests.somethingelse}
-                />
-                <h7>Something Else</h7>
+                <label className="interest-labels">
+                  <input
+                    className="somethingElse chbox"
+                    type="checkbox"
+                    onChange={this.handleToggle}
+                    name="somethingelse"
+                    value={this.state.newVolunteer.somethingelse}
+                  />
+                  Something Else
+                </label>
               </div>
+              <label className="interest-labels">Comments</label>
               <textarea
                 className="comment"
                 onChange={this.handleOnChange}
@@ -373,28 +296,25 @@ class VolunteerForm extends React.Component {
                 name="comment"
                 placeholder="Leave Your Comments"
               />
-
-              <button className="submitb" type="submit">
+              <button className="submitb" type="submit" >
                 Submit
               </button>
-              {/* <button className="clearb" type="reset">
-                Clear
-              </button> */}
             </div>
+
           </form>
         </section>
+
+        <FormFooter />
+
       </div>
     )
   }
 }
-
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { addVolunteers }
-)(VolunteerForm)
+export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
+
