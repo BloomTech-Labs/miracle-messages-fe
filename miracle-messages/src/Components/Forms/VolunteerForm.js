@@ -112,13 +112,6 @@ class VolunteerForm extends React.Component {
             onSubmit={this.handleOnsubmit}
             loading={this.addVolunteers}
           >
-            
-
-
-
-
-
-
 
             <section className="input-wrapper">
               <div>
@@ -233,14 +226,6 @@ class VolunteerForm extends React.Component {
               </div>
             </section>
 
-
-
-
-
-
-
-
-
             <div className="interested">
               <label>I am Interested In *</label>
               <div className="interest-wrapper">
@@ -330,4 +315,6 @@ const mapStateToProps = state => {
     message: state.formReducer.status.message
   }
 }
+
 export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
+
