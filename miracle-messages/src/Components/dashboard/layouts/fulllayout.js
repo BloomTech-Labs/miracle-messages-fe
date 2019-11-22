@@ -33,12 +33,27 @@ class Fulllayout extends React.Component {
     window.addEventListener("resize", this.updateDimensions);
   }
 
-  updateDimensions() {
+  //Previous settings for media queries
+  // updateDimensions() {
+  //   let element = document.getElementById("main-wrapper");
+  //   this.setState({
+  //     width: window.innerWidth
+  //   });
+  //   if (this.state.width < 1170) {
+  //     element.setAttribute("data-sidebartype", "mini-sidebar");
+  //     element.classList.add("mini-sidebar");
+  //   } else {
+  //     element.setAttribute("data-sidebartype", "full");
+  //     element.classList.remove("mini-sidebar");
+  //   }
+  // }
+
+    updateDimensions() {
     let element = document.getElementById("main-wrapper");
     this.setState({
       width: window.innerWidth
     });
-    if (this.state.width < 1170) {
+    if (this.state.width < 767) {
       element.setAttribute("data-sidebartype", "mini-sidebar");
       element.classList.add("mini-sidebar");
     } else {
