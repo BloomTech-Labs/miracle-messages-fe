@@ -16,7 +16,9 @@ export const addEmail = email => async dispatch => {
     ()
     .then(res => {
       console.log("This is the response from AddEmail", res)
+
       if (res === email) {
+
         return dispatch({
           type: GET_VOLUNTEERS_SUCCESS
         })
