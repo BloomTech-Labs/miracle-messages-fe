@@ -25,9 +25,7 @@ const ForgotPasswordForm = props => {
         </strong>
 
         <form className="form" onSubmit={handleSubmit}>
-          <div className="formBox">
-            <label>Email*</label>
-          </div>
+          <label>Email*</label>
           <div className="formBox">
             <input
               className="input"
@@ -39,7 +37,9 @@ const ForgotPasswordForm = props => {
               required
             />
           </div>
-          <button onClick="submit"> Submit </button>
+          <button className="submitb" onClick="submit">
+            Submit
+          </button>
         </form>
         <FormFooter />
       </section>

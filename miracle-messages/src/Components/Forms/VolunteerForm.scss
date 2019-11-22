@@ -137,6 +137,7 @@
         .formBox {
           display: flex;
           flex-direction: column;
+          width: 100%;
 
           label {
             color: rgba(26, 26, 26, 0.7);
@@ -149,7 +150,6 @@
             margin: 10px auto;
             // border: 1px solid purple;
           }
-
           .input {
             height: 45px;
             width: 777px;
@@ -157,7 +157,6 @@
             border-radius: 2px;
           }
         }
-
         #stateId {
           width: 100%;
           display: flex;
