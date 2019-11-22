@@ -3478,7 +3478,8 @@ input[type="button"].btn-block {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1.25rem; }
+  padding: 1.25rem; 
+}
 
 .card-title {
   margin-bottom: 0.75rem; }
@@ -8806,4 +8807,10 @@ ul.list-style-none {
  .partSoponCol{
    width: 45%;
   margin-bottom: 20px;   
+ }
+
+ /* Styling on ChapterCard Component */
+
+ .chapterTitle {
+   color: red; 
  }
