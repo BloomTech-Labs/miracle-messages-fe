@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { addEmail } from "../../../Actions/ForgotPasswordActions.js"
-import FormHeader from "../../FormHeader"
-import logo from "../../../Assets/Imgs/MM_Logo.png"
-import FormFooter from "../../FormFooter"
+import FormHeader from "../../Header-Footer/FormHeader"
+import FormFooter from "../../Header-Footer/FormFooter"
 
 const ForgotPasswordForm = props => {
   const [email, setEmail] = useState("")
@@ -25,9 +24,7 @@ const ForgotPasswordForm = props => {
         </strong>
 
         <form className="form" onSubmit={handleSubmit}>
-          <div className="formBox">
-            <label>Email*</label>
-          </div>
+          <label>Email*</label>
           <div className="formBox">
             <input
               className="input"
@@ -39,7 +36,9 @@ const ForgotPasswordForm = props => {
               required
             />
           </div>
-          <button onClick="submit"> Submit </button>
+          <button className="submitb" onClick="submit">
+            Submit
+          </button>
         </form>
         <FormFooter />
       </section>
