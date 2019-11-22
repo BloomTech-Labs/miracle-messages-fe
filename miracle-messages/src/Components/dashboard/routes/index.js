@@ -1,5 +1,5 @@
-import Fulllayout from '../layouts/fulllayout';
+import Fulllayout from "../layouts/fulllayout";
 
-let indexRoutes = [{ path: '/admin', name: 'Starter', component: Fulllayout }];
+let indexRoutes = [{ path: "/admin", name: "Starter", component: Fulllayout }];
 
 export default indexRoutes;

@@ -162,7 +162,6 @@ class UpdateForm extends React.Component {
         <Button color="info" onClick={this.updateChapter}>
           Update
         </Button>
-
         {console.log(this.props.chapter_data)}
       </div>
     );

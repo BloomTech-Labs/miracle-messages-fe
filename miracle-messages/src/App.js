@@ -20,7 +20,7 @@ class App extends Component {
 
           <Route exact path="/form" component={VolunteerForm} />
 
-          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/admin/login" component={LoginForm} />
 
           <Route exact path="/user/login" component={LoginPage} />
 
