@@ -11,9 +11,8 @@ import { addVolunteers } from "../../Actions/FormActions";
 //   getLatLng
 // } from 'react-places-autocomplete';
 
-import FormFooter from "../Header-Footer/FormFooter"
-import FormHeader from "../Header-Footer/FormHeader"
-
+import FormFooter from "../Header-Footer/FormFooter";
+import FormHeader from "../Header-Footer/FormHeader";
 
 class VolunteerForm extends React.Component {
   state = {
@@ -90,7 +89,7 @@ class VolunteerForm extends React.Component {
     });
   };
   render() {
-    console.log(this.state.newVolunteer.phone);
+    // console.log(this.state.newVolunteer.phone);
     return (
       <div className="container">
         <FormHeader />
@@ -98,7 +97,6 @@ class VolunteerForm extends React.Component {
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
-
 
           <form
             className="form"
@@ -290,10 +288,7 @@ class VolunteerForm extends React.Component {
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
-
   };
 };
 
-
-export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
-
+export default connect(mapStateToProps, { addVolunteers })(VolunteerForm);

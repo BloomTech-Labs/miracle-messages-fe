@@ -1,34 +1,34 @@
-import React, { Component } from "react"
-import axios from "axios"
-import "./UserLogin.js"
-import logo from "../../Assets/Imgs/MM_Logo.png"
-import "../Forms/VolunteerForm.scss"
-import FormFooter from "../Header-Footer/FormFooter"
-import { axiosWithAuth } from "../../Actions/AxiosWithAuth"
+import React, { Component } from "react";
+import axios from "axios";
+import "./UserLogin.js";
+import logo from "../../Assets/Imgs/MM_Logo.png";
+import "../Forms/VolunteerForm.scss";
+import FormFooter from "../Header-Footer/FormFooter";
+import { axiosWithAuth } from "../../Actions/AxiosWithAuth";
 
 class LoginPage extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: "",
       password: "",
       error: ""
-    }
+    };
   }
 
   dismissError = () => {
-    this.setState({ error: "" })
-  }
+    this.setState({ error: "" });
+  };
 
   handleSubmit = evt => {
-    evt.preventDefault()
+    evt.preventDefault();
 
     if (!this.state.email) {
-      return this.setState({ error: "email is required" })
+      return this.setState({ error: "email is required" });
     }
 
     if (!this.state.password) {
-      return this.setState({ error: "Password is required" })
+      return this.setState({ error: "Password is required" });
     }
 
     //return this.setState({ error: "" })
@@ -36,24 +36,18 @@ class LoginPage extends Component {
     axios
       .post("http://localhost:5000/api/volunteer/login", this.state)
       .then(res => {
-        console.log(res)
-        localStorage.setItem("token", res.data.token)
-        this.props.history.push("/")
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        this.props.history.push("/");
       })
-      .catch(e => console.log(e))
-  }
+      .catch(e => console.log(e));
+  };
 
-  handleUserChange = evt => {
+  handleChange = evt => {
     this.setState({
-      email: evt.target.value
-    })
-  }
-
-  handlePassChange(evt) {
-    this.setState({
-      password: evt.target.value
-    })
-  }
+      [evt.target.name]: evt.target.value
+    });
+  };
 
   render() {
     return (
@@ -124,7 +118,7 @@ class LoginPage extends Component {
                     data-test="email"
                     name="email"
                     value={this.state.email}
-                    onChange={this.handleUserChange}
+                    onChange={this.handleChange}
                     required
                   />
                 </div>
@@ -136,7 +130,7 @@ class LoginPage extends Component {
                     data-test="password"
                     name="password"
                     value={this.state.password}
-                    onChange={this.handlePassChange}
+                    onChange={this.handleChange}
                     required
                   />
                 </div>
@@ -149,8 +143,8 @@ class LoginPage extends Component {
         </section>
         <FormFooter />
       </div>
-    )
+    );
   }
 }
 
-export default LoginPage
+export default LoginPage;
