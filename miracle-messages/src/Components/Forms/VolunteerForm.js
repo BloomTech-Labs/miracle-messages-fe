@@ -10,8 +10,10 @@ import { addVolunteers } from "../../Actions/FormActions";
 //   geocodeByPlaceId,
 //   getLatLng
 // } from 'react-places-autocomplete';
-import FormFooter from "../FormFooter";
-import FormHeader from "../FormHeader";
+
+import FormFooter from "../Header-Footer/FormFooter"
+import FormHeader from "../Header-Footer/FormHeader"
+
 
 class VolunteerForm extends React.Component {
   state = {
@@ -92,12 +94,11 @@ class VolunteerForm extends React.Component {
     return (
       <div className="container">
         <FormHeader />
-
         <section className="main">
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
-          {/* <p>{this.props.message}</p> */}
+
 
           <form
             className="form"
@@ -203,7 +204,7 @@ class VolunteerForm extends React.Component {
                 />
               </div>
             </section>
-
+            {/* This is the start of the 2nd part of the form that has the interested boxes and those inputs.  */}
             <div className="interested">
               <label>I am Interested In *</label>
               <div className="interest-wrapper">
@@ -289,7 +290,10 @@ class VolunteerForm extends React.Component {
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
+
   };
 };
 
-export default connect(mapStateToProps, { addVolunteers })(VolunteerForm);
+
+export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
+

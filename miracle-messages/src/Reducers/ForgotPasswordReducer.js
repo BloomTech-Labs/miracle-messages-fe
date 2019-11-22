@@ -5,7 +5,7 @@ import {
 } from "../Actions/ForgotPasswordActions.js"
 
 const initialState = {
-  email: {},
+  email: "",
   emailNotFound: "Email Not Found",
   error: "Get Failed"
 }

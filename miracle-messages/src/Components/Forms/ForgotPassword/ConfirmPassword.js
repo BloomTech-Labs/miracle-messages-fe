@@ -1,25 +1,19 @@
 import React from "react"
-import FormFooter from "../../FormFooter"
-import FormHeader from "../../FormHeader"
+import FormFooter from "../../Header-Footer/FormFooter"
+import FormHeader from "../../Header-Footer/FormHeader"
 
 class ConfirmPassword extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      password: ""
-    }
-
-    this.handlePassChange = this.handlePassChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.dismissError = this.dismissError.bind(this)
+  state = {
+    password: "",
+    confirmPassword: ""
   }
 
-  dismissError() {
+  dismissError = () => {
     this.setState({ error: "" })
   }
 
-  handleSubmit(evt) {
-    evt.preventDefault()
+  handleSubmit = event => {
+    event.preventDefault()
 
     if (!this.state.password) {
       return this.setState({ error: "Password is required" })
@@ -28,9 +22,10 @@ class ConfirmPassword extends React.Component {
     return this.setState({ error: "" })
   }
 
-  handlePassChange(evt) {
+  handlePassChange = event => {
     this.setState({
-      password: evt.target.value
+      ...this.state,
+      [event.target.name]: event.target.value
     })
   }
 
@@ -40,7 +35,7 @@ class ConfirmPassword extends React.Component {
         <FormHeader />
         <section className="main">
           <strong className="main-bold">
-            <h2>Please enter your new password</h2>
+            <h2>Please enter your new password.</h2>
           </strong>
           <div className="Login">
             <form onSubmit={this.handleSubmit}>
@@ -55,6 +50,7 @@ class ConfirmPassword extends React.Component {
                   <label className="interest-labels">Password*</label>
                   <input
                     className="formBox"
+                    name="password"
                     type="password"
                     data-test="password"
                     value={this.state.password}
@@ -66,9 +62,10 @@ class ConfirmPassword extends React.Component {
                   <label className="interest-labels">Confirm Password*</label>
                   <input
                     className="formBox"
+                    name="confirmPassword"
                     type="password"
-                    data-test="password"
-                    value={this.state.password}
+                    data-test="confirmPassword"
+                    value={this.state.confirmPassword}
                     onChange={this.handlePassChange}
                     required
                   />
