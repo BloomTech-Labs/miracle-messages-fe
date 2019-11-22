@@ -1,7 +1,7 @@
-import React from "react"
-import "./VolunteerForm.scss"
-import { connect } from "react-redux"
-import { addVolunteers } from "../../Actions/FormActions"
+import React from "react";
+import "./VolunteerForm.scss";
+import { connect } from "react-redux";
+import { addVolunteers } from "../../Actions/FormActions";
 // import PlacesAutocomplete from 'react-places-autocomplete';
 // import "react-phone-number-input/style.css"
 // import PhoneInput from "react-phone-number-input"
@@ -10,8 +10,8 @@ import { addVolunteers } from "../../Actions/FormActions"
 //   geocodeByPlaceId,
 //   getLatLng
 // } from 'react-places-autocomplete';
-import FormFooter from "../FormFooter"
-import FormHeader from "../FormHeader"
+import FormFooter from "../FormFooter";
+import FormHeader from "../FormHeader";
 
 class VolunteerForm extends React.Component {
   state = {
@@ -31,10 +31,10 @@ class VolunteerForm extends React.Component {
       mediacoverage: false,
       somethingelse: false
     }
-  }
+  };
   handleOnsubmit = e => {
-    e.preventDefault()
-    this.props.addVolunteers(this.state)
+    e.preventDefault();
+    this.props.addVolunteers(this.state);
     this.setState({
       newVolunteer: {
         fname: "",
@@ -52,65 +52,58 @@ class VolunteerForm extends React.Component {
         mediacoverage: false,
         somethingelse: false
       }
-    })
-    this.props.history.push("/user/login")
-  }
+    });
+    this.props.history.push("/user/login");
+  };
   handleToggle = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         [e.target.name]: e.target.checked
       }
-    })
-  }
+    });
+  };
   handleOnChange = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         [e.target.name]: e.target.value
       }
-    })
-  }
+    });
+  };
   handleOnChangePhone = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         phone: e.target.value
       }
-    })
-  }
+    });
+  };
   handleOnChangeInterest = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         [e.target.name]: e.target.value
       }
-    })
-  }
+    });
+  };
   render() {
-    console.log(this.state.newVolunteer.phone)
+    console.log(this.state.newVolunteer.phone);
     return (
-
-
-
       <div className="container">
-
         <FormHeader />
 
         <section className="main">
-
           <strong className="main-bold">
             <h2>You're in the right place.</h2>
           </strong>
           {/* <p>{this.props.message}</p> */}
-
 
           <form
             className="form"
             onSubmit={this.handleOnsubmit}
             loading={this.addVolunteers}
           >
-
             <section className="input-wrapper">
               <div>
                 <div className="formBox">
@@ -281,25 +274,22 @@ class VolunteerForm extends React.Component {
                 name="comment"
                 placeholder="Leave Your Comments"
               />
-              <button className="submitb" type="submit" >
+              <button className="submitb" type="submit">
                 Submit
               </button>
             </div>
-
           </form>
         </section>
 
         <FormFooter />
-
       </div>
-    )
+    );
   }
 }
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
-
+export default connect(mapStateToProps, { addVolunteers })(VolunteerForm);
