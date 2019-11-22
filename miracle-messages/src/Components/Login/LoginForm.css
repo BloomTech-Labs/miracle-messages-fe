@@ -1,8 +1,17 @@
 .LoginForm {
-  background-color: transparent;
+  /* background-color: transparent; */
   margin-top: 10%;
-
-  border: 2px solid #a7a5a5;
+  border: 1.4px solid #4598b9;
   border-radius: 10px;
-  box-shadow: 0px 5px 20px 10px #a7a5a5;
+  -webkit-box-shadow: 10px 10px 4.5px 0px rgba(167, 165, 165, 0.39);
+  -moz-box-shadow: 10px 10px 4.5px 0px rgba(167, 165, 165, 0.39);
+  box-shadow: 10px 10px 4.5px 0px rgba(167, 165, 165, 0.39);
+}
+.LoginForm h2 {
+  padding-top: 35px;
+}
+
+body .LoginForm {
+  width: 350px;
+  background: white;
 }
