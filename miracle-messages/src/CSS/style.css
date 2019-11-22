@@ -8577,7 +8577,7 @@ ul.list-style-none {
       left: auto; }
 
 
-@media (max-width: 767px) {
+@media (max-width: 1100px) {
   .topbar .top-navbar .navbar-collapse.show,
   .topbar .top-navbar .navbar-collapse.collapsing {
     display: block;
