@@ -1,6 +1,6 @@
 import React from "react"
-import FormFooter from "../../FormFooter"
-import FormHeader from "../../FormHeader"
+import FormFooter from "../../Header-Footer/FormFooter"
+import FormHeader from "../../Header-Footer/FormHeader"
 
 class ConfirmPassword extends React.Component {
   state = {
@@ -35,7 +35,7 @@ class ConfirmPassword extends React.Component {
         <FormHeader />
         <section className="main">
           <strong className="main-bold">
-            <h2>Please enter your new password</h2>
+            <h2>Please enter your new password.</h2>
           </strong>
           <div className="Login">
             <form onSubmit={this.handleSubmit}>
@@ -64,8 +64,8 @@ class ConfirmPassword extends React.Component {
                     className="formBox"
                     name="confirmPassword"
                     type="password"
-                    data-test="password"
-                    value={this.state.password}
+                    data-test="confirmPassword"
+                    value={this.state.confirmPassword}
                     onChange={this.handlePassChange}
                     required
                   />

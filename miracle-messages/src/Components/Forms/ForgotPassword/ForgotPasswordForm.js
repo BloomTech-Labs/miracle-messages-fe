@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { addEmail } from "../../../Actions/ForgotPasswordActions.js"
-import FormHeader from "../../FormHeader"
-import logo from "../../../Assets/Imgs/MM_Logo.png"
-import FormFooter from "../../FormFooter"
+import FormHeader from "../../Header-Footer/FormHeader"
+import FormFooter from "../../Header-Footer/FormFooter"
 
 const ForgotPasswordForm = props => {
   const [email, setEmail] = useState("")
