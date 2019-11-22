@@ -62,6 +62,11 @@ class Chapter extends Component {
           <Button style={{ marginRight: "10px" }} onClick={this.toggleEdit}>
             Edit
           </Button>
+          <Button style={{ marginRight: "10px" }}>
+            <Link to={`/admin/chapters/${this.props.info.id}`}>
+              Chapter Info
+            </Link>
+          </Button>
           <Modal
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}
