@@ -41,12 +41,13 @@ class Chapter extends Component {
 
   render() {
     return (
-      <Card className="cardChapter">
+      <Card className="cardChapter" style={{maxWidth:"50%", maxHeight: "50%", minWidth:"250px"}}>
         {/* {console.log(this.props)} */}
 
         <CardImg
           top
           width="100%"
+          height="auto"
           className="chapterImg"
           src={this.props.info.chapter_img_url}
         />
@@ -58,11 +59,11 @@ class Chapter extends Component {
           </CardSubtitle>
           <CardText>{this.props.info.description}</CardText>
 
-          <Button style={{ marginRight: "10px" }} onClick={this.toggleEdit}>
+          <Button style={{ marginRight: "10px", position: "static", marginBottom: "10px"}} onClick={this.toggleEdit}>
             Edit
           </Button>
 
-          <Button style={{ marginRight: "10px" }}>
+          <Button style={{ marginRight: "10px", position: "static", marginBottom: "10px" }}>
             <Link to={`/admin/chapters/${this.props.info.id}`}>
               Chapter Info
             </Link>
@@ -91,7 +92,7 @@ class Chapter extends Component {
             </ModalFooter> */}
           </Modal>
 
-          <Button color="danger" onClick={this.toggle}>
+          <Button style={{ marginRight: "10px", position: "static", marginBottom: "10px"}} color="danger" onClick={this.toggle}>
             Delete
           </Button>
 
