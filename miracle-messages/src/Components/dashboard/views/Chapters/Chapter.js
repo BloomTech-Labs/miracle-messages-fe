@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -12,9 +12,9 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter
-} from 'reactstrap';
+} from "reactstrap";
 
-import UpdateFrom from './UpdateForm';
+import UpdateFrom from "./UpdateForm";
 
 class Chapter extends Component {
   state = {
@@ -41,15 +41,15 @@ class Chapter extends Component {
 
   render() {
     return (
-      <Card className='cardChapter'>
-        <Link to={`/admin/chapters/${this.props.info.id}`}>
-          <CardImg
-            top
-            width='100%'
-            className='chapterImg'
-            src={this.props.info.chapter_img_url}
-          />
-        </Link>
+      <Card className="cardChapter">
+        {/* {console.log(this.props)} */}
+
+        <CardImg
+          top
+          width="100%"
+          className="chapterImg"
+          src={this.props.info.chapter_img_url}
+        />
 
         <CardBody>
           <CardTitle>{this.props.info.title}</CardTitle>
@@ -57,33 +57,41 @@ class Chapter extends Component {
             Volunteers: {this.props.info.numvolunteers}
           </CardSubtitle>
           <CardText>{this.props.info.description}</CardText>
-          <Button style={{ marginRight: '10px' }} onClick={this.toggleEdit}>
+
+          <Button style={{ marginRight: "10px" }} onClick={this.toggleEdit}>
             Edit
           </Button>
+
+          <Button style={{ marginRight: "10px" }}>
+            <Link to={`/admin/chapters/${this.props.info.id}`}>
+              Chapter Info
+            </Link>
+          </Button>
+
           <Modal
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}
             className={this.props.className}
-            backdrop='static'
+            backdrop="static"
           >
-            <ModalHeader toggle={this.toggleEdit}>Add Chapter</ModalHeader>
+            <ModalHeader toggle={this.toggleEdit}>Edit Chapter</ModalHeader>
             <ModalBody>
               <UpdateFrom
                 toggleEdit={this.toggleEdit}
                 chapter={this.props.info}
               />
             </ModalBody>
-            <ModalFooter>
-              {/* <Button color='primary' onClick={this.toggleEdit}>
+            {/* <ModalFooter>
+              <Button color='primary' onClick={this.toggleEdit}>
                 Update
-              </Button>{' '} */}
-              <Button color='secondary' onClick={this.toggleEdit}>
+              </Button>{' '}
+              <Button color="secondary" type="submit" onClick={this.toggleEdit}>
                 Cancel
               </Button>
-            </ModalFooter>
+            </ModalFooter> */}
           </Modal>
 
-          <Button color='danger' onClick={this.toggle}>
+          <Button color="danger" onClick={this.toggle}>
             Delete
           </Button>
 
@@ -97,10 +105,10 @@ class Chapter extends Component {
               Are you sure you want to permanently delete this Chapter?
             </ModalBody>
             <ModalFooter>
-              <Button color='danger' onClick={this.deleteChapt}>
+              <Button color="danger" onClick={this.deleteChapt}>
                 Delete
-              </Button>{' '}
-              <Button color='secondary' onClick={this.toggle}>
+              </Button>{" "}
+              <Button color="secondary" onClick={this.toggle}>
                 Cancel
               </Button>
             </ModalFooter>

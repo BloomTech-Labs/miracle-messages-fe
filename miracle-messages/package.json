@@ -3,19 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.6.0",
+    "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.6.0",
     "@turf/bbox": "^6.0.1",
     "axios": "^0.19.0",
     "axois": "^0.0.1-security",
-    "deck.gl": "^7.3.5",
+    "deck.gl": "^7.3.6",
     "dotenv": "^8.2.0",
+    "formik": "^2.0.5",
     "material-ui-search-bar": "^0.4.2",
     "node-sass": "^4.13.0",
-    "react": "^16.11.0",
+    "react": "^16.12.0",
     "react-custom-scrollbars": "^4.2.1",
-    "react-dom": "^16.11.0",
+    "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
     "react-gtm-module": "^2.0.8",
     "react-load-script": "^0.0.6",
@@ -30,7 +31,8 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "viewport-mercator-project": "^6.2.2"
+    "viewport-mercator-project": "^6.2.2",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -57,4 +59,4 @@
     "cors": "^2.8.5",
     "cypress": "^3.6.1"
   }
- }
+}

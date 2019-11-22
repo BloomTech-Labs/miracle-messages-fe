@@ -1,8 +1,10 @@
 import React, { Component } from "react"
+import axios from "axios"
 import "./UserLogin.js"
 import logo from "../../Assets/Imgs/MM_Logo.png"
 import "../Forms/VolunteerForm.scss"
-import FormFooter from "../FormFooter"
+import FormFooter from "../Header-Footer/FormFooter"
+import { axiosWithAuth } from "../../Actions/AxiosWithAuth"
 
 class LoginPage extends Component {
   constructor() {
@@ -12,18 +14,13 @@ class LoginPage extends Component {
       password: "",
       error: ""
     }
-
-    this.handlePassChange = this.handlePassChange.bind(this)
-    this.handleUserChange = this.handleUserChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.dismissError = this.dismissError.bind(this)
   }
 
-  dismissError() {
+  dismissError = () => {
     this.setState({ error: "" })
   }
 
-  handleSubmit(evt) {
+  handleSubmit = evt => {
     evt.preventDefault()
 
     if (!this.state.email) {
@@ -34,13 +31,21 @@ class LoginPage extends Component {
       return this.setState({ error: "Password is required" })
     }
 
-    return this.setState({ error: "" })
-    
+    //return this.setState({ error: "" })
+
+    axios
+      .post("http://localhost:5000/api/volunteer/login", this.state)
+      .then(res => {
+        console.log(res)
+        localStorage.setItem("token", res.data.token)
+        this.props.history.push("/")
+      })
+      .catch(e => console.log(e))
   }
 
-  handleUserChange(evt) {
+  handleUserChange = evt => {
     this.setState({
-      username: evt.target.value
+      email: evt.target.value
     })
   }
 
@@ -62,25 +67,22 @@ class LoginPage extends Component {
             <div className="tabsnavbar">
               <nav>
                 <a
-                  href="https://www.google.com/"
+                  href="https://miraclemessages.org/who"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <div>ABOUT</div>
                 </a>
                 <a
-                  href="https://www.google.com/"
+                  href="https://miraclemessages.org/partner"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <div>REUNION SERVICE</div>
                 </a>
-                <a
-                  href="https://www.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="localhost:3000/form">
                   <div>GET INVOLVED</div>
+                  {/* this anchor tag should have a drop down to the register page, login form, forgot password page */}
                 </a>
                 <a
                   href="https://www.classy.org/give/231839/#!/donation/checkout"
@@ -105,7 +107,6 @@ class LoginPage extends Component {
             <h2>Login Here</h2>
           </strong>
           <div className="Login">
-
             <form onSubmit={this.handleSubmit}>
               {this.state.error && (
                 <h3 data-test="error" onClick={this.dismissError}>
@@ -114,7 +115,6 @@ class LoginPage extends Component {
                 </h3>
               )}
 
-
               <section className="input-wrapper">
                 <div className="formBox">
                   <label className="interest-labels">Email*</label>
@@ -122,8 +122,10 @@ class LoginPage extends Component {
                     className="formBox"
                     type="email"
                     data-test="email"
+                    name="email"
                     value={this.state.email}
                     onChange={this.handleUserChange}
+                    required
                   />
                 </div>
                 <div className="formBox">
@@ -132,16 +134,15 @@ class LoginPage extends Component {
                     className="formBox"
                     type="password"
                     data-test="password"
+                    name="password"
                     value={this.state.password}
                     onChange={this.handlePassChange}
+                    required
                   />
                 </div>
-                <input
-                  className="submitb"
-                  type="submit"
-                  value="Login"
-                  data-test="submit"
-                />
+                <button className="submitb" type="submit" data-test="submit">
+                  Login
+                </button>
               </section>
             </form>
           </div>
