@@ -8803,11 +8803,21 @@ ul.list-style-none {
  .partnerColumn{
    display: flex;
    justify-content: space-evenly;
+   flex-direction: column;
+   margin: 1rem;
+   border: 1.2px solid #4598b9;
+   border-radius: 10px;
+   -webkit-box-shadow: 10px 10px 4.5px 0px rgba(167, 165, 165, 0.39);
+   -moz-box-shadow: 10px 10px 4.5px 0px rgba(167, 165, 165, 0.39);
+   box-shadow: 10px 10px 4.5px 0px rgba(167, 165, 165, 0.39);
  }
 
  .partSoponCol{
-   width: 45%;
-  margin-bottom: 20px;   
+   width: 95%;
+   padding: .5rem;
+  margin-bottom: 20px;
+  margin: .5rem;
+  /* border: 2px solid red; */
  }
 
  /* Styling on ChapterCard Component */
