@@ -22,6 +22,7 @@ class SponsorList extends React.Component {
                 );
               })}
           </div>
+          <div className="dropdown-divider" />
           <div className="partSoponCol">
             <h3>Current Sponsors:</h3>
             {this.props.data.currentSponsors &&

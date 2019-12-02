@@ -1,5 +1,4 @@
 import React from "react";
-
 import PartnerCard from "./PartnerCard.js";
 
 class SelectPartner extends React.Component {
@@ -22,6 +21,7 @@ class SelectPartner extends React.Component {
                 );
               })}
           </div>
+          <div className="dropdown-divider" />
           <div className="partSoponCol">
             <h3>Available sponsors:</h3>
             {this.props.data.allSponsors &&
