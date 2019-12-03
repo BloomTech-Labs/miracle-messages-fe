@@ -1,5 +1,6 @@
 import { axiosWithAuth } from "./AxiosWithAuth";
 
+export const GET_CHAPTERS_FETCHING = "GET)CHAPTERS_FETCHING"; 
 export const GET_CHAPTERS_SUCCESS = "GET_CHAPTERS_SUCCESS"; 
 export const GET_CHAPTERS_FAIL = "GET_CHAPTERS_FAIL"; 
 
