@@ -15,7 +15,7 @@ export const getChapter = chapter => async dispatch => {
     })
     .catch(error => {
         console.log(error)
-        dispatch: ({
+        return dispatch ({
             type: GET_CHAPTERS_FAIL
         });
     });
