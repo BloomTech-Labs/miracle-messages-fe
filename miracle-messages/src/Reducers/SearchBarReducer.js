@@ -26,6 +26,7 @@ export const SearchBarReducer = (state = initialState, action) => {
         case GET_CHAPTERS_SUCCESS:
             return {
                 ...state, 
+                chapter: action.payload,
                 isFetching: false,
                 isSuccessful: true,   
                 isFailing: false, 
