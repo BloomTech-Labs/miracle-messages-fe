@@ -35,6 +35,8 @@ export const SearchBarReducer = (state = initialState, action) => {
             case GET_CHAPTERS_FAIL: 
                 return {
                     ...state, 
+                    isFetching: false,
+                    isSuccessful: false,  
                     isFailing: true, 
                     message: "Failed getting chapters"
                 }
