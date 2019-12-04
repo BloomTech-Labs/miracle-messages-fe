@@ -8,12 +8,15 @@ const SearchBar = () => {
         getChapter
     }, [])
 
-    const handleChange = () => {
-        
+    const handleChange = event => {
+        setState({
+            ...state, 
+            [event.target.name]: event.target.value
+        })
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = event => {
+        event.preventDefault()
     }
 
     return(
