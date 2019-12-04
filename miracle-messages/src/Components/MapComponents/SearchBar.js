@@ -1,4 +1,5 @@
 import React from "react"; 
+
 import getChapter from "../../Actions/SearchBarAction.js"; 
 
 const SearchBar = () => {
@@ -29,3 +30,4 @@ const SearchBar = () => {
         </>
     );
 }; 
+
