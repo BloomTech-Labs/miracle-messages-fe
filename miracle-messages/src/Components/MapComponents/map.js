@@ -34,6 +34,10 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 import Navbar from "./Navbar";
 import NewChapter from "./NewChapter";
 
+// search bar component  below 
+import SearchBar from "../MapComponents/SearchBar.js"; 
+// search bar above 
+
 require("dotenv").config();
 
 const TOKEN =
@@ -141,6 +145,8 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         <Navbar />
+
+        <SearchBar /> 
 
         <NewChapter />
 

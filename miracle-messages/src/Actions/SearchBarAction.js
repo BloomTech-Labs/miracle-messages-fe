@@ -4,7 +4,7 @@ export const GET_CHAPTERS_FETCHING = "GET)CHAPTERS_FETCHING";
 export const GET_CHAPTERS_SUCCESS = "GET_CHAPTERS_SUCCESS"; 
 export const GET_CHAPTERS_FAIL = "GET_CHAPTERS_FAIL"; 
 
-export const getChapter = chapter => async dispatch => {
+const getChapter = chapter => async dispatch => {
      dispatch({
         type: GET_CHAPTERS_FETCHING
     }); 
@@ -24,3 +24,5 @@ export const getChapter = chapter => async dispatch => {
         });
     });
 }
+
+export  default getChapter; 

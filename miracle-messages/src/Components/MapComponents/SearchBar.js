@@ -1,4 +1,5 @@
-import React from "react"; 
+import React, {useState, useEffect} from "react"; 
+import { connect } from "react-redux"; 
 
 import getChapter from "../../Actions/SearchBarAction.js"; 
 
@@ -6,7 +7,7 @@ const SearchBar = props => {
     const [search, setSearch] = useState("")
 
     useEffect(() => {
-        getChapter
+        getChapter()
     }, [])
 
     const handleChange = event => {
@@ -23,7 +24,7 @@ const SearchBar = props => {
         const filterChapters = getChapter.filter(chapter => 
             chapter.location
             .toLowerCase()
-            .includes(find.toLowerCase())     
+            .includes(search.toLowerCase())     
         )
     // filter to filter through chapter above 
 
@@ -48,6 +49,6 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps(getChapter))(SearchBar)
+export default connect(mapStateToProps, {getChapter})(SearchBar)
 
 
