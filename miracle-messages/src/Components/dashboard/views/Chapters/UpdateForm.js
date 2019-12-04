@@ -41,10 +41,7 @@ class UpdateForm extends React.Component {
     fd.append("story", this.state.chapter.story);
 
     axios
-      .put(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}`,
-        fd
-      )
+      .put(`http://localhost:5000/api/chapter/${id}`, fd)
       .then(res => {
         this.props.toggleEdit();
         this.props.getData();

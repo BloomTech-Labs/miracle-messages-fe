@@ -17,12 +17,10 @@ class ChapterCard extends React.Component {
       currentPartners: []
     }
   };
-
+  //https://miracle-messages-production.herokuapp.com <-- replace the url when in production
   getChapter = id => {
     axios
-      .get(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}`
-      )
+      .get(`http://localhost:5000/api/chapter/${id}`)
       .then(res => {
         this.setState({ chapter: res.data });
       })
@@ -40,7 +38,7 @@ class ChapterCard extends React.Component {
 
   getAllPartners = () => {
     axios
-      .get(`https://miracle-messages-production.herokuapp.com/api/partner`)
+      .get(`http://localhost:5000/api/partner`)
       .then(res => {
         const data = res.data;
         let sponsors = [];
@@ -68,9 +66,7 @@ class ChapterCard extends React.Component {
 
   getChapterPartners = id => {
     axios
-      .get(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}/partners`
-      )
+      .get(`http://localhost:5000/api/chapter/${id}/partners`)
       .then(res => {
         const data = res.data;
         let sponsors = [];
@@ -96,9 +92,7 @@ class ChapterCard extends React.Component {
   unassignPartner = id => {
     const chapterid = this.props.match.params.id;
     axios
-      .delete(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${chapterid}/partners/${id}`
-      )
+      .delete(`http://localhost:5000/api/chapter/${chapterid}/partners/${id}`)
       .then(res => {
         this.getAllPartners();
         this.getChapterPartners(chapterid);
@@ -112,7 +106,7 @@ class ChapterCard extends React.Component {
     const partnerId = { partnerId: id };
     axios
       .post(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${chapterid}/partners`,
+        `http://localhost:5000/api/chapter/${chapterid}/partners`,
         partnerId
       )
       .then(res => {
@@ -128,6 +122,7 @@ class ChapterCard extends React.Component {
     }
     return (
       <div className="chapter-flex">
+        {/* {console.log(this.state.chapter)} */}
         <Card
           className="s-chapter"
           style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "300px" }}

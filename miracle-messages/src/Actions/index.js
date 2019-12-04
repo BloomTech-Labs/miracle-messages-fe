@@ -1,19 +1,19 @@
-import axios from 'axios';
-export const FETCH_CHAPTER_INFO = 'FETCH_CHAPTER_INFO';
-export const FETCH_CHAPTER_SUCCESS = 'FETCH_CHAPTER_SUCCESS';
-export const FETCH_CHAPTER_FAIL = 'FETCH_CHAPTER_FAIL';
+import axios from "axios";
+export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO";
+export const FETCH_CHAPTER_SUCCESS = "FETCH_CHAPTER_SUCCESS";
+export const FETCH_CHAPTER_FAIL = "FETCH_CHAPTER_FAIL";
 
-export const FETCHING_PARTNER = 'FETCHING_PARTNER';
-export const FETCH_PARTNER_SUCCCESS = 'FETCH_PARTNER_SUCCESS';
-export const FETCH_PARTNER_ERR = 'FETCH_PARTNER_ERR';
+export const FETCHING_PARTNER = "FETCHING_PARTNER";
+export const FETCH_PARTNER_SUCCCESS = "FETCH_PARTNER_SUCCESS";
+export const FETCH_PARTNER_ERR = "FETCH_PARTNER_ERR";
 
-export const DELETE_PARTNER = 'DELETE_PARTNER';
-export const DELETE_PARTNER_SUCCESS = 'DELETE_PARTNER_SUCCESS';
-export const DELETE_PARTNER_ERR = 'DELETE_PARTNER_ERR';
+export const DELETE_PARTNER = "DELETE_PARTNER";
+export const DELETE_PARTNER_SUCCESS = "DELETE_PARTNER_SUCCESS";
+export const DELETE_PARTNER_ERR = "DELETE_PARTNER_ERR";
 
-export const PARTNER_UPDATE = 'PARTNER_UPDATE';
-export const PARTNER_UPDATE_SUCCESS = 'PARTNER_UPDATE_SUCCESS';
-export const PARTNER_ERR = 'PARTNER_ERR';
+export const PARTNER_UPDATE = "PARTNER_UPDATE";
+export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS";
+export const PARTNER_ERR = "PARTNER_ERR";
 
 // const url = 'https://miracle-messages-production.herokuapp.com/api';
 
@@ -21,7 +21,7 @@ export const PARTNER_ERR = 'PARTNER_ERR';
 export const getData = url => dispatch => {
   dispatch({ type: FETCH_CHAPTER_INFO });
   axios
-    .get('https://miracle-messages-production.herokuapp.com/api/chapter')
+    .get("http://localhost:5000/api/chapter")
     .then(res => dispatch({ type: FETCH_CHAPTER_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_CHAPTER_FAIL }));
 };
@@ -31,7 +31,7 @@ export const getData = url => dispatch => {
 export const getSponsor = data => dispatch => {
   dispatch({ type: FETCHING_PARTNER });
   axios
-    .get('https://miracle-messages-production.herokuapp.com/api/partner')
+    .get("http://localhost:5000/api/partner")
     .then(res => dispatch({ type: FETCH_PARTNER_SUCCCESS, payload: res.data }))
     .catch(err =>
       dispatch({
@@ -56,14 +56,14 @@ export const deleteSponsor = id => dispatch => {
     });
 };
 
-export const FETCH_CHAPTER_DEFAULT_INFO = 'FETCH_CHAPTER_DEFAULT_INFO';
-export const FETCH_CHAPTER_DEFAULT_SUCCESS = 'FETCH_CHAPTER_DEFAULT_SUCCESS';
-export const FETCH_CHAPTER_DEFAULT_FAIL = 'FETCH_CHAPTER_DEFAULT_FAIL';
+export const FETCH_CHAPTER_DEFAULT_INFO = "FETCH_CHAPTER_DEFAULT_INFO";
+export const FETCH_CHAPTER_DEFAULT_SUCCESS = "FETCH_CHAPTER_DEFAULT_SUCCESS";
+export const FETCH_CHAPTER_DEFAULT_FAIL = "FETCH_CHAPTER_DEFAULT_FAIL";
 
 export const getDefault = () => dispatch => {
   dispatch({ type: FETCH_CHAPTER_DEFAULT_INFO });
   axios
-    .get('https://miracle-messages-production.herokuapp.com/api/chapter/1')
+    .get("https://miracle-messages-production.herokuapp.com/api/chapter/1")
     .then(res =>
       dispatch({ type: FETCH_CHAPTER_DEFAULT_SUCCESS, payload: res.data })
     )
