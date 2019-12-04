@@ -4,7 +4,6 @@ import getChapter from "../../Actions/SearchBarAction.js";
 
 const SearchBar = () => {
     
-
     useEffect(() => {
         getChapter
     }, [])
