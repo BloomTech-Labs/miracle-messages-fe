@@ -21,8 +21,25 @@ class Navbar extends React.Component {
           </a>
         </nav>
       </div>
+      
+      <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">REUNION SERVICE</a>
+      <a href="#">GET INVOLVED</a>
+      <a href='#'> DONATE> </a>
+      </div>
+      <div id="main">
+      <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+      <h2>Collapsed Sidebar</h2>
+      <p>Content...</p>
+      </div>
+    
     );
   }
 }
+
+ 
 
 export default Navbar;
