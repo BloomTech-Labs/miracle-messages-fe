@@ -1,5 +1,5 @@
 .navbar-map {
-  width: 100%;
+  width: 100vw;
   position: fixed !important;
   z-index: 99;
   height: auto;
@@ -7,23 +7,22 @@
   justify-content: space-between;
   background: #212121;
   font-family: ProximaNova;
-  @media (max-width: 1100px) {
-    display: none !important;
-  }
+ 
+  // @media (max-width: 1100px) {
+  //   display: none !important;
+  // }
   img {
     height: auto;
     max-width: 100%;
     width: 195px;
   }
   nav {
-    width: 50%;
+    width: 80vw;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    @media (max-width: 1400px) {
-      width: 60%;
-    }
-
+    
     a {
       font-weight: 600;
       font-style: normal;
@@ -34,7 +33,15 @@
       line-height: 1em;
       color: rgba(255, 255, 255, 0.9);
       font-family: ProximaNova;
-
+      display: block;
+      @media only screen and (max-width: 500px){
+        width: 50vw;
+        margin: 0 8vw;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        text-align: left;
+        }
       &:hover {
         color: white;
       }
