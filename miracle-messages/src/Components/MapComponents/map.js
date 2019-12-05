@@ -6,7 +6,7 @@ import MapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Custom file imports
-// import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
+import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 
@@ -152,7 +152,7 @@ class Map extends Component {
     axios
       .post("http://localhost:5000/api/chapter", fd)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         this.toggle();
         this.props.getData();
       })
@@ -214,6 +214,8 @@ class Map extends Component {
 
         {/* <NewChapter /> */}
 
+        {/* {console.log(this.props.chapter_data)} */}
+
         <MapGL
           {...viewport}
           width="100vw"
@@ -225,32 +227,24 @@ class Map extends Component {
           maxPitch={0}
           dragRotate={false}
         >
-          <div
-            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
-          >
+          <div style={{ position: "absolute", right: 0, top: 30, zIndex: 1 }}>
             <NavigationControl />
           </div>
+
           {this.props.chapter_data.map((city, index) => (
             <Marker
               className="markerMAP"
               key={`marker-${index}`}
               latitude={city.latitude}
               longitude={city.longitude}
+              onClick={() => {
+                gaEvent("click", "chapter pin", `${city.title}`);
+              }}
             >
-              {/* {console.log(city)} */}
-              <div
-                onClick={() => {
-                  // console.log(city)
-                  gaEvent("click", "chapter pin", `${city.title}`);
-                }}
-              >
-                {/* <PlaceTwoTone /> */}
-                <CityPin city={city} />
-              </div>
+              {/* <PlaceTwoTone /> */}
+              <CityPin city={city} />
             </Marker>
           ))}
-
-          {/* {console.log(this.props.chapter_data)} */}
 
           <Button className="addBtn" onClick={this.toggle}>
             +
