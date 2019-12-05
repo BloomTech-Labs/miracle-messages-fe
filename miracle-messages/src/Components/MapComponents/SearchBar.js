@@ -5,9 +5,12 @@ import { getChapter } from "../../Actions/SearchBarAction.js";
 const SearchBar = props => {
     const [search, setSearch] = useState("")
 
-    useEffect(() => {
+    useEffect(res => {
        props.getChapter()
+       console.log(res)
     }, [])
+
+    // console.log(getChapter())
 
     const handleChange = event => {
         console.log(event)
