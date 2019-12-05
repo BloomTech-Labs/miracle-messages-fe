@@ -20,7 +20,10 @@ import combineReducers from './Reducers';
 //   applyMiddleware(thunk)
 //   // other store enhancers if any
 // );
-const store = createStore(combineReducers, compose(applyMiddleware(thunk)));
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(combineReducers, composeEnhancer(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

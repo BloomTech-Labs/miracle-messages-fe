@@ -46,10 +46,10 @@ const ForgotPasswordForm = props => {
   )
 }
 
-const mapStateTopProps = state => {
+const mapStateToProps = state => {
   return {
     email: state.volunteersReducer.status
   }
 }
 
-export default connect(mapStateTopProps, { addEmail })(ForgotPasswordForm)
+export default connect(mapStateToProps, { addEmail })(ForgotPasswordForm)

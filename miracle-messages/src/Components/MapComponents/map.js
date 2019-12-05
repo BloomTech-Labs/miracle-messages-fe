@@ -188,7 +188,8 @@ const mapStateToProps = state => {
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
     openDrawer: state.mapReducer.openDrawer,
-    viewport: state.mapReducer.viewport
+    viewport: state.mapReducer.viewport,
+    // chapter: state.searchBarReducer.chapters
   };
 };
 

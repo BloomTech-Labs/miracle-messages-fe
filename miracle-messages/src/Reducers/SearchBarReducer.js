@@ -5,14 +5,14 @@ import {
 } from "../Actions/SearchBarAction.js"; 
 
 const initialState = {
-    chapter: [],
-    isFetching: false, 
-    isSuccessful: false, 
-    isFailing: false, 
-    message: ""
+        chapters: [],
+        isFetching: false, 
+        isSuccessful: false, 
+        isFailing: false, 
+        message: ""
 }
 
-export const SearchBarReducer = (state = initialState, action) => {
+export const searchBarReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_CHAPTERS_FETCHING:
             return {

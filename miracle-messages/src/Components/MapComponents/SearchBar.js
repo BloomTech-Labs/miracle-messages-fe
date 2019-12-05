@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react"; 
 import { connect } from "react-redux"; 
-
-import getChapter from "../../Actions/SearchBarAction.js"; 
+import { getChapter, filterChapters } from "../../Actions/SearchBarAction.js"; 
+import Chapters from "../dashboard/views/Chapters/Chapters.js";
 
 const SearchBar = props => {
     const [search, setSearch] = useState("")
 
     useEffect(() => {
-        getChapter()
+       props.getChapter()
     }, [])
 
     const handleChange = event => {
@@ -16,27 +16,25 @@ const SearchBar = props => {
         )
     }
 
-    const handleSubmit = event => {
-        event.preventDefault()
-    }
+    //    const filterChapters = getChapter.filter(chapter => 
+    //        chapter.location
+    //        .toLowerCase()
+    //        .includes(search.toLowerCase())     
+    //    )
 
-    // filter to filter through chapters below 
-        const filterChapters = getChapter.filter(chapter => 
-            chapter.location
-            .toLowerCase()
-            .includes(search.toLowerCase())     
-        )
-    // filter to filter through chapter above 
+    
+    console.log('chapter test', props.chapter)
 
     return(
         <>
-        <form onSubmit={handleSubmit}> 
+        <form> 
             <input 
             type="text"
             name="location"
             placeholder="Search Chapters"
             value={search}
             onChange={handleChange}
+            style={{margin: "100px"}}
             />
         </form>
         </>
@@ -44,11 +42,11 @@ const SearchBar = props => {
 }; 
 
 const mapStateToProps = state => {
-    return{
+    return {
         chapter: state.searchBarReducer.chapter
     }
 }
 
-export default connect(mapStateToProps, {getChapter})(SearchBar)
+export default connect(mapStateToProps, { getChapter, filterChapters })(SearchBar); 
 
 
