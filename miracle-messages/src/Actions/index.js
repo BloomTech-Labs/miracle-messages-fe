@@ -44,9 +44,7 @@ export const getSponsor = data => dispatch => {
 export const deleteSponsor = id => dispatch => {
   dispatch({ type: DELETE_PARTNER });
   axios
-    .delete(
-      `https://miracle-messages-production.herokuapp.com/api/partner/${id}`
-    )
+    .delete(`http://localhost:5000/api/partner/${id}`)
     .then(res => {
       dispatch({ type: DELETE_PARTNER_SUCCESS, payload: res.data });
       getSponsor();
@@ -63,7 +61,7 @@ export const FETCH_CHAPTER_DEFAULT_FAIL = "FETCH_CHAPTER_DEFAULT_FAIL";
 export const getDefault = () => dispatch => {
   dispatch({ type: FETCH_CHAPTER_DEFAULT_INFO });
   axios
-    .get("https://miracle-messages-production.herokuapp.com/api/chapter/1")
+    .get("http://localhost:5000/api/chapter/1")
     .then(res =>
       dispatch({ type: FETCH_CHAPTER_DEFAULT_SUCCESS, payload: res.data })
     )
