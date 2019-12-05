@@ -152,7 +152,6 @@ class Map extends Component {
     axios
       .post("http://localhost:5000/api/chapter", fd)
       .then(res => {
-        // console.log(res);
         this.toggle();
         this.props.getData();
       })
@@ -209,13 +208,8 @@ class Map extends Component {
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
-
         <Navbar />
-
-        {/* <NewChapter /> */}
-
-        {/* {console.log(this.props.chapter_data)} */}
-
+        <NewChapter />
         <MapGL
           {...viewport}
           width="100vw"
@@ -283,7 +277,6 @@ class Map extends Component {
 //this is how we convert the state that was modified by the reducers to props
 const mapStateToProps = state => {
   return {
-    // popupInfo: state.mapReducer.popupInfo,
     chapter_data: state.mapReducer.chapter_data,
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
