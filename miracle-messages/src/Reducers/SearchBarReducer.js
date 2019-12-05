@@ -1,36 +1,52 @@
 import {
     GET_CHAPTERS_FETCHING,
     GET_CHAPTERS_SUCCESS,
-    GET_CHAPTERS_FAIL
+    GET_CHAPTERS_FAIL,
+    FILTER_CHAPTERS 
 } from "../Actions/SearchBarAction.js"; 
 
 const initialState = {
-        chapters: [],
-        isFetching: false, 
-        isSuccessful: false, 
-        isFailing: false, 
-        message: ""
+    chapters: [],
+    filteredChapter: "", 
+    isFetching: false, 
+    isSuccessful: false, 
+    isFiltering: false, 
+    isFailing: false, 
+    message: ""
 }
+
 
 export const searchBarReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_CHAPTERS_FETCHING:
             return {
                 ...state, 
-                chapter: [], 
+                chapters: [], 
                 isFetching: true, 
                 isSuccessful: false, 
+                isFiltering: false, 
                 isFailing: false, 
                 message: "fetching chapters"
             }
         case GET_CHAPTERS_SUCCESS:
             return {
                 ...state, 
-                chapter: action.payload,
+                chapters: action.payload,
                 isFetching: false,
-                isSuccessful: true,   
+                isSuccessful: true,  
+                isFiltering: false, 
                 isFailing: false, 
                 message: "Got chapter successfully"
+            }
+            case FILTER_CHAPTERS: 
+            return {
+                ...state, 
+                chapterFilter: action.payload,
+                isFetching: false, 
+                isSuccessful: true, 
+                isFiltering: true, 
+                isFailing: false,
+                message: "Filtering through chapters"
             }
             case GET_CHAPTERS_FAIL: 
                 return {

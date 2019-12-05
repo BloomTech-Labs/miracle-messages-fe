@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react"; 
 import { connect } from "react-redux"; 
-import { getChapter, filterChapters } from "../../Actions/SearchBarAction.js"; 
-import Chapters from "../dashboard/views/Chapters/Chapters.js";
+import { getChapter } from "../../Actions/SearchBarAction.js"; 
 
 const SearchBar = props => {
     const [search, setSearch] = useState("")
@@ -11,19 +10,13 @@ const SearchBar = props => {
     }, [])
 
     const handleChange = event => {
+        console.log(event)
         setSearch(
              event.target.value
         )
     }
-
-    //    const filterChapters = getChapter.filter(chapter => 
-    //        chapter.location
-    //        .toLowerCase()
-    //        .includes(search.toLowerCase())     
-    //    )
-
-    
-    console.log('chapter test', props.chapter)
+     
+    // maybe decided to do filter on searchbar component
 
     return(
         <>
@@ -38,15 +31,16 @@ const SearchBar = props => {
             />
         </form>
         </>
+        // map here
     );
 }; 
 
 const mapStateToProps = state => {
     return {
-        chapter: state.searchBarReducer.chapter
+        chapter: state.searchBarReducer.chapters
     }
 }
 
-export default connect(mapStateToProps, { getChapter, filterChapters })(SearchBar); 
+export default connect(mapStateToProps, { getChapter })(SearchBar); 
 
 

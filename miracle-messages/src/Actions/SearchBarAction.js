@@ -7,17 +7,26 @@ export const GET_CHAPTERS_FAIL = "GET_CHAPTERS_FAIL";
 export const FILTER_CHAPTERS = "FILTER_CHAPTERS"
 // to filter through chapters
 
-export const getChapter = chapter => async dispatch => {
+export const getChapter = (chapters, filterChapters) => async dispatch => {
      dispatch({
         type: GET_CHAPTERS_FETCHING
     }); 
 
     axios
-    .get("localhost:5000/api/chapter", chapter)
+    .get("localhost:5000/api/chapter", chapters)
     .then(res => {
         console.log(res)
         dispatch({
             type: GET_CHAPTERS_SUCCESS
+        })
+        .then(res => {
+            console.log("responses for filter", res)
+            dispatch({
+                type: FILTER_CHAPTERS, 
+                payload: {
+                    chapter: chapters.filter(c => c.includes(chapters.toLowerCase()))
+                }
+            })
         })
     })
     .catch(error => {
@@ -28,11 +37,11 @@ export const getChapter = chapter => async dispatch => {
     });
 }
 
-export const filterChapters = chapters => dispatch => {
-    return dispatch[{
-        type: FILTER_CHAPTERS, 
-        payload: {
-          chapter: chapters
-        }
-    }]
-}
+// export const filterChapters = chapters => dispatch => {
+//     return dispatch[{
+//         type: FILTER_CHAPTERS, 
+//         payload: {
+//           chapter: chapters.filter(c => c.location.includes(chapters.toLowerCase()))
+//         }
+//     }]
+// }
