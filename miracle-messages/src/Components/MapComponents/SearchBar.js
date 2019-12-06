@@ -35,7 +35,6 @@ const SearchBar = props => {
  
     const handleChange = event => {
         setSearch(
-            console.log(event),
             event.target.value
         )
     }
