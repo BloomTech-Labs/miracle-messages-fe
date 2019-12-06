@@ -11,6 +11,8 @@ const FormFooter = () => {
       <div className="footer-icons">
         <div className="icon-div">
           <GoMail
+            action="https://mailthis.to/hello@miraclemessages.com"
+            method="POST"
             style={{
               fontSize: "35px",
               textDecoration: "none",
@@ -19,33 +21,40 @@ const FormFooter = () => {
               cursor: "pointer"
             }}
           />
-          <FaFacebookF
-            style={{
-              fontSize: "35px",
-              textDecoration: "none",
-              margin: "5px",
-              color: "white",
-              cursor: "pointer"
-            }}
-          />
-          <FaYoutube
-            style={{
-              fontSize: "35px",
-              textDecoration: "none",
-              margin: "5px",
-              color: "white",
-              cursor: "pointer"
-            }}
-          />
-          <FaTwitter
-            style={{
-              fontSize: "35px",
-              textDecoration: "none",
-              margin: "10px",
-              color: "white",
-              cursor: "pointer"
-            }}
-          />
+
+          <a href="https://www.facebook.com/miraclemessages">
+            <FaFacebookF
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "5px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          </a>
+          <a href="https://www.youtube.com/miraclemessages">
+            <FaYoutube
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "5px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          </a>
+          <a href="https://twitter.com/miraclemessages">
+            <FaTwitter
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "10px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          </a>
         </div>
       </div>
 
