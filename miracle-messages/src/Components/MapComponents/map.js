@@ -33,6 +33,7 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 import Navbar from "./Navbar";
 import NewChapter from "./NewChapter";
+import Sidebar from './Sidebar';
 
 require("dotenv").config();
 
@@ -144,6 +145,7 @@ class Map extends Component {
 
         <NewChapter />
 
+        <Sidebar />
 
         {/* {this._renderNavbar()}
         {this._renderNewChapter()} */}

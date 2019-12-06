@@ -14,32 +14,19 @@ class Navbar extends React.Component {
           <a href='https://miraclemessages.org/'>HOME</a>
           <a href='https://miraclemessages.org/who'>ABOUT</a>
           <a href='https://miraclemessages.org/partner'>REUNION SERVICE</a>
-          {/* <a href='https://miraclemessages.org/getinvolved'>GET INVOLVED</a> */}
+          <a href='https://miraclemessages.org/getinvolved'>GET INVOLVED</a>
           <a href='http://localhost:3000/form'>GET INVOLVED</a>
           <a href='https://www.classy.org/give/231839/#!/donation/checkout'>
             DONATE
           </a>
-        </nav>
-      </div>
-      
-      <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">HOME</a>
-      <a href="#">ABOUT</a>
-      <a href="#">REUNION SERVICE</a>
-      <a href="#">GET INVOLVED</a>
-      <a href='#'> DONATE> </a>
-      </div>
-      <div id="main">
-      <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-      <h2>Collapsed Sidebar</h2>
-      <p>Content...</p>
-      </div>
-    
-    );
-  }
+         </nav> 
+         </div>
+         
+    )
 }
+}
+    
 
- 
-
+      
+    
 export default Navbar;
