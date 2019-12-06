@@ -37,7 +37,11 @@ import axios from "axios";
 
 import Navbar from "./Navbar";
 import NewChapter from "./NewChapter";
+
+import Sidebar from './Sidebar';
+
 import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
+
 
 require("dotenv").config();
 
@@ -210,6 +214,12 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
         <Navbar />
         <NewChapter />
+
+        <Sidebar />
+
+       
+        
+
         <MapGL
           {...viewport}
           width="100vw"
