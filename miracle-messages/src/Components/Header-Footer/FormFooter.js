@@ -1,10 +1,61 @@
 import React from "react"
+import "./FormFooter.scss"
+import { FaFacebookF } from "react-icons/fa"
+import { GoMail } from "react-icons/go"
+import { FaYoutube } from "react-icons/fa"
+import { FaTwitter } from "react-icons/fa"
 
 const FormFooter = () => {
   return (
     <div>
       <div className="footer-icons">
-        <h1>placeholder for icons</h1>
+        <div className="icon-div">
+          <GoMail
+            action="https://mailthis.to/hello@miraclemessages.com"
+            method="POST"
+            style={{
+              fontSize: "35px",
+              textDecoration: "none",
+              margin: "5px",
+              color: "white",
+              cursor: "pointer"
+            }}
+          />
+
+          <a href="https://www.facebook.com/miraclemessages">
+            <FaFacebookF
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "5px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          </a>
+          <a href="https://www.youtube.com/miraclemessages">
+            <FaYoutube
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "5px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          </a>
+          <a href="https://twitter.com/miraclemessages">
+            <FaTwitter
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "10px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          </a>
+        </div>
       </div>
 
       <div className="footer-wrapper">

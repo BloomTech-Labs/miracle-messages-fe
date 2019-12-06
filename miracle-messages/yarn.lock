@@ -9902,6 +9902,13 @@ react-gtm-module@^2.0.8:
   resolved "https://registry.yarnpkg.com/react-gtm-module/-/react-gtm-module-2.0.8.tgz#0d37c4f2a4e3a8efa40c76c8b2aa1b7cacc16c6f"
   integrity sha512-OU5FwAHC3gWnnxJ+MLwBMLZO1Pmn1DiVCGHqptwDnNojE3QRrNxjqozkW5cNS4Zp+C6HZ8a4ZIt0QPNlpzua4Q==
 
+react-icons@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.8.0.tgz#229de5904809696c9f46932bd9b6126b2522866e"
+  integrity sha512-rA/8GRKjPulft8BSBSMsHkE1AGPqJ7LjNsyk0BE7XjG70Iz62zOled2SJk7LDo8x9z86a3xOstDlKlMZ4pAy7A==
+  dependencies:
+    camelcase "^5.0.0"
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.11.0.tgz#b85dfecd48ad1ce469ff558a882ca8e8313928fa"
