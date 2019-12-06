@@ -8,6 +8,7 @@ body {
 
   /* Give app full page to work with */
   height: 100vh;
+ 
 }
 
 #page-wrap {
@@ -15,7 +16,9 @@ body {
 
   /* Prevent sidebar from showing a scrollbar on page */
   overflow: auto;
+ 
 }
+
 
 /* Individual item */
 .bm-item {
@@ -42,8 +45,14 @@ body {
   height: 30px;
   left: 36px;
   top: 36px;
+  
 }
 
+@media screen and (min-width: 1101px) and (max-width: 1400px) {
+.bm-burger-bars {
+  display: none;
+}
+}
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #373a47;
@@ -65,6 +74,7 @@ body {
   background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -81,3 +91,5 @@ body {
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+
