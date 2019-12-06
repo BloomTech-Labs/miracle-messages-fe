@@ -10,10 +10,7 @@ const FormFooter = () => {
     <div>
       <div className="footer-icons">
         <div className="icon-div">
-          <a
-            action="https://mailthis.to/hello@miraclemessages.com"
-            method="GET"
-          >
+          <a href="mailto:hello@miraclemessages.com">
             <GoMail
               style={{
                 fontSize: "35px",
