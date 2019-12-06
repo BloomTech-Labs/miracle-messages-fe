@@ -10,18 +10,18 @@ const FormFooter = () => {
     <div>
       <div className="footer-icons">
         <div className="icon-div">
-          <GoMail
-            action="https://mailthis.to/hello@miraclemessages.com"
-            method="POST"
-            style={{
-              fontSize: "35px",
-              textDecoration: "none",
-              margin: "5px",
-              color: "white",
-              cursor: "pointer"
-            }}
-          />
-
+          <a href="mailto:hello@miraclemessages.com">
+            <GoMail
+              style={{
+                fontSize: "35px",
+                textDecoration: "none",
+                margin: "5px",
+                color: "white",
+                fontWeight: "bold",
+                cursor: "pointer"
+              }}
+            />
+          </a>
           <a href="https://www.facebook.com/miraclemessages">
             <FaFacebookF
               style={{
