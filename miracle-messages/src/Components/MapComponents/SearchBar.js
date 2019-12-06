@@ -1,26 +1,53 @@
 import React, {useState, useEffect} from "react"; 
-import { connect } from "react-redux"; 
-import { getChapter } from "../../Actions/SearchBarAction.js"; 
+// import { connect } from "react-redux"; 
+// import { getChapter } from "../../Actions/SearchBarAction.js"; 
+import axios from "axios"; 
+import SearchBarCard from "./SearchBarCard.js"; 
 
 const SearchBar = props => {
     const [search, setSearch] = useState("")
+    const [chapters, setChapters] = useState([
+        {
+            id: 1, 
+            city: "", 
+            state: "", 
+            description: "", 
+            email: ""
+        }
+    ])
 
-    useEffect(res => {
-       props.getChapter()
-       console.log(res)
-    }, [])
-
-    // console.log(getChapter())
-
+    // useEffect(res => {
+    //     props.getChapter()
+    //     console.log(res)
+    // }, [])
+    
+    useEffect(() => {
+        axios
+    .get("http://localhost:5000/api/chapter", chapters)
+    .then(res => {
+        console.log("response from SearchBar axios call", res)
+        setChapters(res.data)
+    })
+    .catch(error => {
+       console.log("this is catch from SearchBar", error) 
+    })
+}, [])
+ 
     const handleChange = event => {
-        console.log(event)
         setSearch(
-             event.target.value
+            console.log(event),
+            event.target.value
         )
     }
      
     // maybe decided to do filter on searchbar component
 
+    const filterFunction = chapters.filter(chapter => 
+        chapter.city
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    )
+    
     return(
         <>
         <form> 
@@ -33,17 +60,20 @@ const SearchBar = props => {
             style={{margin: "100px"}}
             />
         </form>
+        {/* map here */}
+        { filterFunction.map(chapter => {
+           return  <SearchBarCard key={chapter.id} chapter={chapter} history={props.history} />
+        })}
         </>
-        // map here
     );
 }; 
 
-const mapStateToProps = state => {
-    return {
-        chapter: state.searchBarReducer.chapters
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         chapter: state.searchBarReducer.chapters
+//     }
+// }
 
-export default connect(mapStateToProps, { getChapter })(SearchBar); 
+// export default connect(mapStateToProps, { getChapter })(SearchBar); 
 
-
+export  default SearchBar; 

@@ -15,19 +15,19 @@ export const getChapter = (chapters, filterChapters) => async dispatch => {
     axios
     .get("localhost:5000/api/chapter", chapters)
     .then(res => {
-        console.log(res)
+        // console.log(res)
         dispatch({
             type: GET_CHAPTERS_SUCCESS
         })
-        .then(res => {
-            console.log("responses for filter", res)
-            dispatch({
-                type: FILTER_CHAPTERS, 
-                payload: {
-                    chapter: chapters.filter(c => c.includes(chapters.toLowerCase()))
-                }
-            })
-        })
+        // .then(res => {
+        //     console.log("responses for filter", res)
+        //     dispatch({
+        //         type: FILTER_CHAPTERS, 
+        //         payload: {
+        //             chapter: chapters.filter(c => c.includes(chapters.toLowerCase()))
+        //         }
+        //     })
+        // })
     })
     .catch(error => {
         console.log(error)
