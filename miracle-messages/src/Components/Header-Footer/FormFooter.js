@@ -1,10 +1,52 @@
 import React from "react"
+import "./FormFooter.scss"
+import { FaFacebookF } from "react-icons/fa"
+import { GoMail } from "react-icons/go"
+import { FaYoutube } from "react-icons/fa"
+import { FaTwitter } from "react-icons/fa"
 
 const FormFooter = () => {
   return (
     <div>
       <div className="footer-icons">
-        <h1>placeholder for icons</h1>
+        <div className="icon-div">
+          <GoMail
+            style={{
+              fontSize: "35px",
+              textDecoration: "none",
+              margin: "5px",
+              color: "white",
+              cursor: "pointer"
+            }}
+          />
+          <FaFacebookF
+            style={{
+              fontSize: "35px",
+              textDecoration: "none",
+              margin: "5px",
+              color: "white",
+              cursor: "pointer"
+            }}
+          />
+          <FaYoutube
+            style={{
+              fontSize: "35px",
+              textDecoration: "none",
+              margin: "5px",
+              color: "white",
+              cursor: "pointer"
+            }}
+          />
+          <FaTwitter
+            style={{
+              fontSize: "35px",
+              textDecoration: "none",
+              margin: "10px",
+              color: "white",
+              cursor: "pointer"
+            }}
+          />
+        </div>
       </div>
 
       <div className="footer-wrapper">
