@@ -150,7 +150,6 @@ class Map extends Component {
 
         <NewChapter />
 
-
         {/* {this._renderNavbar()}
         {this._renderNewChapter()} */}
         

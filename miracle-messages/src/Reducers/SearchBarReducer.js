@@ -10,7 +10,6 @@ const initialState = {
     filteredChapter: "", 
     isFetching: false, 
     isSuccessful: false, 
-    isFiltering: false, 
     isFailing: false, 
     message: ""
 }
@@ -24,7 +23,6 @@ export const searchBarReducer = (state = initialState, action) => {
                 chapters: [], 
                 isFetching: true, 
                 isSuccessful: false, 
-                isFiltering: false, 
                 isFailing: false, 
                 message: "fetching chapters"
             }
@@ -34,19 +32,8 @@ export const searchBarReducer = (state = initialState, action) => {
                 chapters: action.payload,
                 isFetching: false,
                 isSuccessful: true,  
-                isFiltering: false, 
                 isFailing: false, 
                 message: "Got chapter successfully"
-            }
-            case FILTER_CHAPTERS: 
-            return {
-                ...state, 
-                chapterFilter: action.payload,
-                isFetching: false, 
-                isSuccessful: true, 
-                isFiltering: true, 
-                isFailing: false,
-                message: "Filtering through chapters"
             }
             case GET_CHAPTERS_FAIL: 
                 return {

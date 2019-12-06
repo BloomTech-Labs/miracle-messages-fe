@@ -52,7 +52,7 @@ const SearchBar = props => {
         <form> 
             <input 
             type="text"
-            name="location"
+            // name="location"
             placeholder="Search Chapters"
             value={search}
             onChange={handleChange}
