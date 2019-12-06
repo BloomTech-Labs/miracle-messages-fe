@@ -17,6 +17,7 @@ const FormFooter = () => {
                 textDecoration: "none",
                 margin: "5px",
                 color: "white",
+                fontWeight: "bold",
                 cursor: "pointer"
               }}
             />
