@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
-import Sponsor from './Sponsor';
-import { getSponsor } from '../../../../Actions/index';
-import SponsorForm from '../Sponsors/SponsorForm';
-import { connect } from 'react-redux';
+import Sponsor from "./Sponsor";
+import { getSponsor } from "../../../../Actions/index";
+import SponsorForm from "../Sponsors/SponsorForm";
+import { connect } from "react-redux";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 class Sponsors extends React.Component {
   constructor(props) {
@@ -14,27 +14,26 @@ class Sponsors extends React.Component {
     this.state = {
       modal: false,
       sponsor: {
-        name: '',
-        site_url: '',
+        name: "",
+        site_url: "",
         icon_url: null,
-        category: ''
+        category: ""
       }
     };
   }
 
-
-    addSponsor = e => {
-        e.preventDefault();
-        console.log(this.state.sponsor.icon_url);
-        const fd = new FormData();
-        fd.append("partner_icon", this.state.sponsor.icon_url )
-        fd.append("name", this.state.sponsor.name)
-        fd.append("site_url", this.state.sponsor.site_url)
-        fd.append("category", this.state.sponsor.category)
-        console.log(fd.getAll("partner_icon"));
-        axios
-          .post('https://miracle-messages-production.herokuapp.com/api/partner', fd)
-          .then(res=>  {
+  addSponsor = e => {
+    e.preventDefault();
+    console.log(this.state.sponsor.icon_url);
+    const fd = new FormData();
+    fd.append("partner_icon", this.state.sponsor.icon_url);
+    fd.append("name", this.state.sponsor.name);
+    fd.append("site_url", this.state.sponsor.site_url);
+    fd.append("category", this.state.sponsor.category);
+    console.log(fd.getAll("partner_icon"));
+    axios
+      .post("http://localhost:5000/api/partner", fd)
+      .then(res => {
         console.log(res);
 
         this.toggle();
@@ -43,10 +42,10 @@ class Sponsors extends React.Component {
       .catch(err => console.log(err));
     this.setState({
       sponsor: {
-        name: '',
-        site_url: '',
+        name: "",
+        site_url: "",
         icon_url: null,
-        category: ''
+        category: ""
       }
     });
   };
@@ -86,14 +85,14 @@ class Sponsors extends React.Component {
             <Sponsor sponsor={sponsor} key={sponsor.id} delete={this.delete} />
           );
         })}
-        <Button className='addBtn' onClick={this.toggle}>
+        <Button className="addBtn" onClick={this.toggle}>
           +
         </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
-          backdrop='static'
+          backdrop="static"
         >
           <ModalHeader toggle={this.toggle}>Add Sponsor</ModalHeader>
           <ModalBody>
@@ -104,10 +103,10 @@ class Sponsors extends React.Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color='success' onClick={this.addSponsor}>
+            <Button color="success" onClick={this.addSponsor}>
               Add Sponsor
-            </Button>{' '}
-            <Button color='secondary' onClick={this.toggle}>
+            </Button>{" "}
+            <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
           </ModalFooter>
@@ -123,7 +122,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getSponsor }
-)(Sponsors);
+export default connect(mapStateToProps, { getSponsor })(Sponsors);
