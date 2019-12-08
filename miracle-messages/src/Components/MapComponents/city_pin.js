@@ -1,25 +1,25 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
+import React, { PureComponent } from "react"
+import { connect } from "react-redux"
 
 // import WebMercatorViewport from 'viewport-mercator-project';
 // import { LinearInterpolator } from 'react-map-gl';
 
 // Action imports
-import { updatePopupAction } from "../../Actions/updatePopupAction";
-import { slideToggleAction } from "../../Actions/SlideToggleAction";
-import { onViewportChanged } from "../../Actions/OnViewportAction";
+import { updatePopupAction } from "../../Actions/updatePopupAction"
+import { slideToggleAction } from "../../Actions/SlideToggleAction"
+import { onViewportChanged } from "../../Actions/OnViewportAction"
 
 const pinStyle = {
   fill: "black"
-};
+}
 
 class CityPin extends PureComponent {
   render() {
     // console.log(this.props.city)
 
     const PinClickHandler = () => {
-      this.props.updatePopupAction(this.props.city);
-      this.props.slideToggleAction();
+      this.props.updatePopupAction(this.props.city)
+      this.props.slideToggleAction()
 
       // const viewport = new WebMercatorViewport({
       //   latitude: this.props.city.latitude,
@@ -29,12 +29,12 @@ class CityPin extends PureComponent {
       //     around: [this.props.city.latitude, this.props.city.longitude]
       //   }),
       //   transitionDuration: 1000
-      // });
+      // })
 
-      // this.props.onViewportChanged(viewport);
-    };
+      // this.props.onViewportChanged(viewport)
+    }
 
-    const size = 28;
+    const size = 28
 
     return (
       <svg
@@ -63,18 +63,18 @@ class CityPin extends PureComponent {
           <path d="m12.763 10.208c1.152-1.1536 2.1531-2.0975 2.2246-2.0975.07151 0 1.0726.94386 2.2246 2.0975l2.0946 2.0975h-8.6383z" />
         </g>
       </svg>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     popupInfo: state.mapReducer.popupInfo
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, {
   updatePopupAction,
   slideToggleAction,
   onViewportChanged
-})(CityPin);
+})(CityPin)
