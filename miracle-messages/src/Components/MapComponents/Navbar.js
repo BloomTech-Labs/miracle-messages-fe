@@ -10,7 +10,6 @@ class Navbar extends React.Component {
           <img src={logo} alt="logo" />
         </a>
         <nav>
-
           <a href="https://miraclemessages.org/">HOME</a>
           <a href="https://miraclemessages.org/who">ABOUT</a>
           <a href="https://miraclemessages.org/partner">REUNION SERVICE</a>
@@ -32,21 +31,6 @@ class Navbar extends React.Component {
       </div>
     )
   }
-
-   //       <a href='https://miraclemessages.org/'>HOME</a>
-     //     <a href='https://miraclemessages.org/who'>ABOUT</a>
-       //   <a href='https://miraclemessages.org/partner'>REUNION SERVICE</a>
-         // <a href='https://miraclemessages.org/getinvolved'>GET INVOLVED</a>
-         // <a href='http://localhost:3000/form'>GET INVOLVED</a>
-         // <a href='https://www.classy.org/give/231839/#!/donation/checkout'>
-          //  DONATE
-        //  </a>
-        // </nav> 
-        // </div>
-         
-   // )
-// }
-
 }
-    
-export default Navbar;
+
+export default Navbar
