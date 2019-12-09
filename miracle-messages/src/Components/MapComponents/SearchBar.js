@@ -57,9 +57,11 @@ const SearchBar = props => {
             />
         </form>
         {/* map here */}
+        <div className="side-by-side"> 
         { filterFunction.map(chapter => {
            return  <SearchBarCard key={chapter.id} chapter={chapter} history={props.history} />
         })}
+        </div> 
         </>
     );
 }; 

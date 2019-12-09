@@ -5,9 +5,10 @@ const SearchBarCard = props => {
     console.log(props)
     return(
         <div className="card">
-        <h3 className="center"> city: {props.chapter.city} </h3>
-        <h3 className="center"> state: {props.chapter.state} </h3>
-        <h3 className="center"> email: {props.chapter.email} </h3> 
+        <div className="center"> {props.chapter.chapter_img_url} </div> 
+        <h3 className="center"> city: <p> {props.chapter.city} </p>  </h3>
+        <h3 className="center"> state: <p> {props.chapter.state} </p> </h3>
+        <h3 className="center"> email: <p> {props.chapter.email} </p> </h3> 
         </div>
     )
 }
