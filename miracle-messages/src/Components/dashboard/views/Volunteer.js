@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardTitle, Button } from "reactstrap";
+import { Card, CardBody, CardTitle } from "reactstrap";
 
 class Volunteer extends Component {
   render() {

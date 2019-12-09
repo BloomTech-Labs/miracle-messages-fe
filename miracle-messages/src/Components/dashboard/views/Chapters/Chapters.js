@@ -53,8 +53,9 @@ class Chapters extends React.Component {
     fd.append("story", this.state.chapter.story);
 
     axios
-      .post("https://miracle-messages-production.herokuapp.com/api/chapter", fd)
+      .post("http://localhost:5000/api/chapter", fd)
       .then(res => {
+        console.log(res);
         this.toggle();
         this.props.getData();
       })
@@ -107,9 +108,7 @@ class Chapters extends React.Component {
 
   deleteChapter = id => {
     axios
-      .delete(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}`
-      )
+      .delete(`http://localhost:5000/api/chapter/${id}`)
       .then(res => {
         this.props.getData();
       })
@@ -123,6 +122,7 @@ class Chapters extends React.Component {
   render() {
     return (
       <div className="chapter-felx">
+        {/* {console.log(this.props.chapter_data)} */}
         {this.props.chapter_data.map(chapter => {
           return (
             <Chapter
