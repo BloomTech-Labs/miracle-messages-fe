@@ -5,12 +5,18 @@ const SearchBarCard = props => {
     console.log(props)
     return(
         <div className="card">
-        <div className="center"> {props.chapter.chapter_img_url} </div> 
-        <h3 className="center"> city: <p> {props.chapter.city} </p>  </h3>
-        <h3 className="center"> state: <p> {props.chapter.state} </p> </h3>
-        <h3 className="center"> email: <p> {props.chapter.email} </p> </h3> 
+        <div className="center"> {props.chapter.chapter_img_url} </div>
+        
+        <h3 className="center"> city: </h3> 
+        <p className="center"> {props.chapter.city} </p> 
+
+        <h3 className="center"> state: </h3> 
+        <p className="center"> {props.chapter.state} </p> 
+
+        <h3 className="center"> email: </h3>  
+        <p className="center"> {props.chapter.email} </p> 
         </div>
     )
 }
 
-export default SearchBarCard
+export default SearchBarCard; 
