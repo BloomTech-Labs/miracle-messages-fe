@@ -1,6 +1,6 @@
-import React from "react"
-import logo from "../../Assets/Imgs/MM_Logo.png"
-import "./Navbar.scss"
+import React from "react";
+import logo from "../../Assets/Imgs/MM_Logo.png";
+import "./Navbar.scss";
 
 class Navbar extends React.Component {
   render() {
@@ -30,8 +30,8 @@ class Navbar extends React.Component {
           </a>
         </nav>
       </div>
-    )
+    );
   }
 }
 
-export default Navbar
+export default Navbar;
