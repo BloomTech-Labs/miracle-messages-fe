@@ -4,7 +4,7 @@ import "./UserLogin.js";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import "../Forms/VolunteerForm.scss";
 import FormFooter from "../Header-Footer/FormFooter";
-import { BrowserRouter as Link } from "react-router-dom"
+import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
 // import { axiosWithAuth } from "../../Actions/AxiosWithAuth";
 
 class LoginPage extends Component {
@@ -140,7 +140,7 @@ class LoginPage extends Component {
                 </button>
               </section>
 
-              <Link style={{fontSize: "50px"}} to="/user/forgotpassword1"> 
+              <Link to="/user/forgotpassword1"> 
                 Rest Password
               </Link>
 
