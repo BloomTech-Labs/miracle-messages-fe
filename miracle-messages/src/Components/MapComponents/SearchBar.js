@@ -46,6 +46,7 @@ const SearchBar = props => {
     return(
         <>
         <form className="form"> 
+        <a name="chapters"></a>
             <input 
             type="text"
             // name="location"

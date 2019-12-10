@@ -20,8 +20,6 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={props => <Map {...props} />} />
 
-          {/* <Route exact path="/searchbar" component={SearchBar} /> */}
-
           <Route exact path="/form" component={VolunteerForm} />
 
           <Route exact path="/admin/login" component={LoginForm} />

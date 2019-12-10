@@ -13,7 +13,7 @@ class Navbar extends React.Component {
           <a href="https://miraclemessages.org/">HOME</a>
           <a href="https://miraclemessages.org/who">ABOUT</a>
           <a href="https://miraclemessages.org/partner">REUNION SERVICE</a>
-          {/* <a > Search </a> */}
+          <a href="#chapters"> Search </a>
 
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
