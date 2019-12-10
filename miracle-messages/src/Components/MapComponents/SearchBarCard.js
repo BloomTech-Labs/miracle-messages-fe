@@ -5,7 +5,7 @@ const SearchBarCard = props => {
     console.log(props)
     return(
         <div className="card">
-        <div className="center"> {props.chapter.chapter_img_url} </div>
+        <img className="width" src={props.chapter.chapter_img_url} />
         
         <h3 className="center"> city: </h3> 
         <p className="center"> {props.chapter.city} </p> 

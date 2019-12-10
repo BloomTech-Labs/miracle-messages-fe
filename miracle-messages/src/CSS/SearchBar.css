@@ -33,3 +33,15 @@
     justify-content: center; 
     background: white; 
 }
+
+.width {
+    width: 500px;
+    height: auto;
+    display: flex; 
+    justify-content: center; 
+}
+
+img {
+    display: flex; 
+    justify-content: center; 
+}
