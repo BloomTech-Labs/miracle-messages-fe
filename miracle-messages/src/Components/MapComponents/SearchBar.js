@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react"; 
-// import { connect } from "react-redux"; 
-// import { getChapter } from "../../Actions/SearchBarAction.js"; 
 import axios from "axios"; 
 import SearchBarCard from "./SearchBarCard.js"; 
+
+import "../../CSS/SearchBar.css"; 
+
 
 const SearchBar = props => {
     const [search, setSearch] = useState("")
@@ -16,10 +17,6 @@ const SearchBar = props => {
         }
     ])
 
-    // useEffect(res => {
-    //     props.getChapter()
-    //     console.log(res)
-    // }, [])
     
     useEffect(() => {
         axios
@@ -39,7 +36,6 @@ const SearchBar = props => {
         )
     }
      
-    // maybe decided to do filter on searchbar component
 
     const filterFunction = chapters.filter(chapter => 
         chapter.city
@@ -49,30 +45,27 @@ const SearchBar = props => {
     
     return(
         <>
-        <form> 
+        <form className="form"> 
+        <a name="chapters"></a>
             <input 
             type="text"
             // name="location"
             placeholder="Search Chapters"
             value={search}
             onChange={handleChange}
-            style={{margin: "100px"}}
+            style={{margin: "50px"}}
+            className="input"
             />
         </form>
         {/* map here */}
+        <div className="side-by-side"> 
         { filterFunction.map(chapter => {
            return  <SearchBarCard key={chapter.id} chapter={chapter} history={props.history} />
         })}
+        </div> 
         </>
     );
 }; 
 
-// const mapStateToProps = state => {
-//     return {
-//         chapter: state.searchBarReducer.chapters
-//     }
-// }
-
-// export default connect(mapStateToProps, { getChapter })(SearchBar); 
 
 export  default SearchBar; 

@@ -41,14 +41,13 @@ import NewChapter from "./NewChapter"
 
 import Sidebar from "./Sidebar"
 
-
 // search bar component  below 
 import SearchBar from "../MapComponents/SearchBar.js"; 
 // search bar above 
+import ChapterForm from "../dashboard/views/Chapters/ChapterForm"
 
 require("dotenv").config();
 
-import ChapterForm from "../dashboard/views/Chapters/ChapterForm"
 
 
 const TOKEN =
@@ -222,14 +221,12 @@ class Map extends Component {
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
-        <Navbar />
 
-        <SearchBar /> 
+        <Navbar />
 
         <NewChapter />
 
         <Sidebar />
-
 
         <MapGL
           {...viewport}
@@ -242,6 +239,9 @@ class Map extends Component {
           maxPitch={0}
           dragRotate={false}
         >
+
+        
+
           <div style={{ position: "absolute", right: 0, top: 30, zIndex: 1 }}>
             <NavigationControl />
           </div>
@@ -289,6 +289,7 @@ class Map extends Component {
             </ModalFooter>
           </Modal>
         </MapGL>
+        <SearchBar /> 
         {this._renderSlide()}
       </div>
     )
