@@ -2,7 +2,7 @@ import React from "react";
 
 import "./NewChapter.scss";
 
-class NewChapter extends React.Component {
+class NewChapterLink extends React.Component {
   render() {
     return (
       <div className="banner">
@@ -22,4 +22,4 @@ class NewChapter extends React.Component {
   }
 }
 
-export default NewChapter;
+export default NewChapterLink;

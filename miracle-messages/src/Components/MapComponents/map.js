@@ -31,7 +31,7 @@ import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 import Navbar from "./Navbar";
-import NewChapter from "./NewChapter";
+import NewChapterLink from "./NewChapterLink";
 
 require("dotenv").config();
 
@@ -131,7 +131,7 @@ class Map extends Component {
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
         <Navbar />
-        <NewChapter />
+        <NewChapterLink />
         <MapGL
           {...viewport}
           width="100vw"
