@@ -1,18 +1,18 @@
-import { axiosWithAuth } from "./AxiosWithAuth";
+import axios from "axios"; 
 
-export const GET_CHAPTERS_FETCHING = "GET)CHAPTERS_FETCHING"; 
+export const GET_CHAPTERS_FETCHING = "GET_CHAPTERS_FETCHING"; 
 export const GET_CHAPTERS_SUCCESS = "GET_CHAPTERS_SUCCESS"; 
 export const GET_CHAPTERS_FAIL = "GET_CHAPTERS_FAIL"; 
 
-export const getChapter = chapter => async dispatch => {
+export const getChapter = (chapters, filterChapters) => async dispatch => {
      dispatch({
         type: GET_CHAPTERS_FETCHING
     }); 
 
-    axiosWithAuth()
-    .get("localhost:5000/api/chapter", chapter)
+    axios
+    .get("localhost:5000/api/chapter", chapters)
     .then(res => {
-        console.log(res)
+        // console.log(res)
         dispatch({
             type: GET_CHAPTERS_SUCCESS
         })

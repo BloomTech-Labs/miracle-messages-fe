@@ -1,5 +1,5 @@
 .navbar-map {
-  width: 100%;
+  width: 100vw;
   position: fixed !important;
   z-index: 99;
   height: auto;
@@ -7,22 +7,22 @@
   justify-content: space-between;
   background: #212121;
   font-family: ProximaNova;
+
   @media (max-width: 1100px) {
     display: none !important;
   }
+
   img {
     height: auto;
     max-width: 100%;
     width: 195px;
   }
   nav {
-    width: 50%;
+    width: 70vw;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    @media (max-width: 1400px) {
-      width: 60%;
-    }
 
     a {
       font-weight: 600;
@@ -34,7 +34,15 @@
       line-height: 1em;
       color: rgba(255, 255, 255, 0.9);
       font-family: ProximaNova;
-
+      display: block;
+      @media only screen and (max-width: 500px) {
+        width: 50vw;
+        margin: 0 8vw;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        text-align: left;
+      }
       &:hover {
         color: white;
       }
@@ -59,6 +67,49 @@
           background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
         }
       }
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+
+      .dropbtn,
+      .dropbtn:hover {
+        font-weight: 600;
+        font-style: normal;
+        font-size: 18px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        line-height: 1em;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: ProximaNova;
+      }
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #212121;
+      z-index: 99;
+      min-width: 260px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin-top: 0.5rem;
+
+        padding: 0.5rem 1.5rem;
+        &:hover {
+          color: #212121;
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+      }
+      .not-last-child {
+        display: none;
+      }
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
   }
 }
