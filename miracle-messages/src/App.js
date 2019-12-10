@@ -8,6 +8,7 @@ import LoginForm from "./Components/Login/LoginForm.js";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import "./CSS/style.css";
 import LoginPage from "./Components/Login/UserLogin";
+import NewChapter from "./Components/Forms/NewChapter";
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword";
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm";
 
@@ -24,6 +25,8 @@ class App extends Component {
           <Route exact path="/admin/login" component={LoginForm} />
 
           <Route exact path="/user/login" component={LoginPage} />
+
+          <Route exact path="/user/newchapter" component={NewChapter} />
 
           <Route
             exact
