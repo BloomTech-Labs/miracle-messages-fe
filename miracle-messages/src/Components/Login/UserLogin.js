@@ -14,6 +14,15 @@ import {
 } from "reactstrap"
 import { Link } from "react-router-dom"
 // import FormFooter from "../Header-Footer/FormFooter"
+
+// import React, { Component } from "react";
+// import axios from "axios";
+// import "./UserLogin.js";
+// import logo from "../../Assets/Imgs/MM_Logo.png";
+// import "../Forms/VolunteerForm.scss";
+// import FormFooter from "../Header-Footer/FormFooter";
+// import { BrowserRouter as Router, Route,  Link } from "react-router-dom"
+
 // import { axiosWithAuth } from "../../Actions/AxiosWithAuth";
 
 class LoginPage extends Component {
@@ -119,6 +128,47 @@ class LoginPage extends Component {
         </div>
       </Container>
     )
+
+    //           <section className="input-wrapper">
+    //             <div className="formBox">
+    //               <label className="interest-labels">Email*</label>
+    //               <input
+    //                 className="formBox"
+    //                 type="email"
+    //                 data-test="email"
+    //                 name="email"
+    //                 value={this.state.email}
+    //                 onChange={this.handleChange}
+    //                 required
+    //               />
+    //             </div>
+    //             <div className="formBox">
+    //               <label className="interest-labels">Password*</label>
+    //               <input
+    //                 className="formBox"
+    //                 type="password"
+    //                 data-test="password"
+    //                 name="password"
+    //                 value={this.state.password}
+    //                 onChange={this.handleChange}
+    //                 required
+    //               />
+    //             </div>
+    //             <button className="submitb" type="submit" data-test="submit">
+    //               Login
+    //             </button>
+    //           </section>
+
+    //           <Link to="/user/forgotpassword1">
+    //             Rest Password
+    //           </Link>
+
+    //         </form>
+    //       </div>
+    //     </section>
+    //     <FormFooter />
+    //   </div>
+    // );
   }
 }
 
