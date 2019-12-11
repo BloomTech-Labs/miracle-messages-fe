@@ -18,7 +18,10 @@
   }
 
   p {
-    margin: 0 10px;
+    position: relative;
+    left: 0px;
+    top: 25px;
+    // margin: 0 10px;
     height: 75px;
     width: 224px;
     color: #303030;
@@ -27,6 +30,10 @@
     letter-spacing: -0.16px;
     line-height: 21px;
     text-align: center;
+  }
+
+  .x:hover {
+    cursor: pointer;
   }
 
   a {
