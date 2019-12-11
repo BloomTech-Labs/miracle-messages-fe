@@ -8,8 +8,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
 // Custom file imports
 
 // import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
+
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
+
 
 // Action imports
 import { getData, getDefault } from "../../Actions/index";
@@ -28,6 +30,7 @@ import { Cancel } from "@material-ui/icons";
 import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
+
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
@@ -42,6 +45,7 @@ import SearchBar from "../MapComponents/SearchBar.js";
 import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
 
 require("dotenv").config();
+
 
 const TOKEN =
   "pk.eyJ1IjoibWlyYWNsZW1lc3NhZ2VzIiwiYSI6ImNqeWhleGtzbTAwdXAzZ21uaGlienhmdHMifQ.FYmU9s5SYQbUonIeBAG9Lw";
@@ -96,7 +100,11 @@ class Map extends Component {
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div className="chapterDrawer">
+        <div
+          style={{
+            marginTop: "58px"
+          }}
+        >
           {/* clicking city pin opens the drawer below */}
           <Drawer
             open={this.props.openDrawer}
@@ -113,7 +121,7 @@ class Map extends Component {
                 background: "black",
                 width: "2px",
                 height: "2px",
-                margin: "5px 10px 0px 0px"
+                margin: "63px 10px 0px 0px"
               }}
             >
               <Cancel style={{ position: "absolute", right: "0" }} />
@@ -131,6 +139,7 @@ class Map extends Component {
   _updateViewport = viewport => {
     this.props.onViewportChanged(viewport);
   };
+
 
   render() {
     const { viewport } = this.props;
@@ -191,10 +200,10 @@ const mapStateToProps = state => {
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
     openDrawer: state.mapReducer.openDrawer,
-
     viewport: state.mapReducer.viewport
   };
 };
+
 
 //this is how we connect the map.js component to the store
 export default connect(mapStateToProps, {
