@@ -1,33 +1,71 @@
-import React from "react"; 
+import React, {useState, useEffect} from "react"; 
+import axios from "axios"; 
+import SearchBarCard from "./SearchBarCard.js"; 
 
-import getChapter from "../../Actions/SearchBarAction.js"; 
+import "../../CSS/SearchBar.css"; 
 
-const SearchBar = () => {
+
+const SearchBar = props => {
+    const [search, setSearch] = useState("")
+    const [chapters, setChapters] = useState([
+        {
+            id: 1, 
+            city: "", 
+            state: "", 
+            description: "", 
+            email: ""
+        }
+    ])
+
     
-
     useEffect(() => {
-        getChapter
-    }, [])
-
+        axios
+    .get("http://localhost:5000/api/chapter", chapters)
+    .then(res => {
+        console.log("response from SearchBar axios call", res)
+        setChapters(res.data)
+    })
+    .catch(error => {
+       console.log("this is catch from SearchBar", error) 
+    })
+}, [])
+ 
     const handleChange = event => {
-        setState({
-            ...state, 
-            [event.target.name]: event.target.value
-        })
+        setSearch(
+            event.target.value
+        )
     }
+     
 
-    const handleSubmit = event => {
-        event.preventDefault()
-    }
-
+    const filterFunction = chapters.filter(chapter => 
+        chapter.city
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    )
+    
     return(
         <>
-        <form> 
+        <form className="form"> 
+        <a name="chapters"></a>
             <input 
-
+            type="text"
+            // name="location"
+            placeholder="Search Chapters"
+            value={search}
+            onChange={handleChange}
+            style={{margin: "50px"}}
+            className="input"
             />
         </form>
+        {/* map here */}
+        <div className="side-by-side"> 
+        { filterFunction.map(chapter => {
+           return  <SearchBarCard key={chapter.id} chapter={chapter} history={props.history} />
+        })}
+        </div> 
         </>
     );
 }; 
 
+
+export  default SearchBar; 

@@ -7,7 +7,8 @@ import MapGL, { Marker, NavigationControl } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
 // Custom file imports
-import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone"
+
+// import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
 import CityPin from "./city_pin"
 import CityInfo from "./city_info"
 
@@ -31,16 +32,14 @@ import { Scrollbars } from "react-custom-scrollbars"
 import ReactGA from "react-ga"
 import { gaEvent } from "../Analytics/GAFunctions" //enable event tracking
 
-// React strap imports
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
-
-import axios from "axios"
-
 import Navbar from "./Navbar"
-import NewChapter from "./NewChapter"
+import NewChapterLink from "./NewChapterLink"
 
 import Sidebar from "./Sidebar"
 
+// search bar component  below
+import SearchBar from "../MapComponents/SearchBar.js"
+// search bar above
 import ChapterForm from "../dashboard/views/Chapters/ChapterForm"
 
 require("dotenv").config()
@@ -138,90 +137,16 @@ class Map extends Component {
     this.props.onViewportChanged(viewport)
   }
 
-  addChapter = e => {
-    e.preventDefault()
-    const fd = new FormData()
-    fd.append("chapter_img", this.state.chapter.chapter_img)
-    fd.append("reunion_img", this.state.chapter.reunion_img)
-    fd.append("title", this.state.chapter.title)
-    fd.append("established_date", this.state.chapter.established_date)
-    fd.append("description", this.state.chapter.description)
-    fd.append("city", this.state.chapter.city)
-    fd.append("state", this.state.chapter.state)
-    fd.append("latitude", this.state.chapter.latitude)
-    fd.append("longitude", this.state.chapter.longitude)
-    fd.append("email", this.state.chapter.email)
-    fd.append("numvolunteers", this.state.chapter.numvolunteers)
-    fd.append("msg_delivered", this.state.chapter.msg_delivered)
-    fd.append("msg_recorded", this.state.chapter.msg_recorded)
-    fd.append("numreunions", this.state.chapter.numreunions)
-    fd.append("story", this.state.chapter.story)
-
-    axios
-      .post("http://localhost:5000/api/chapter", fd)
-      .then(res => {
-        this.toggle()
-        this.props.getData()
-      })
-      .catch(err => console.log(err))
-
-    this.setState({
-      chapter: {
-        title: "",
-        established_date: "",
-        description: "",
-        chapter_img: null,
-        city: "",
-        state: "",
-        latitude: "",
-        longitude: "",
-        email: "",
-        numvolunteers: "",
-        msg_delivered: "",
-        msg_recorded: "",
-        numreunions: "",
-        story: "",
-        reunion_img: null
-      }
-    })
-  }
-
-  handleImg = e => {
-    this.setState({
-      chapter: {
-        ...this.state.chapter,
-        [e.target.name]: e.target.files[0]
-      }
-    })
-  }
-
-  handleInputChange = e => {
-    this.setState({
-      chapter: {
-        ...this.state.chapter,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
-
-  toggle = () => {
-    if (localStorage.getItem("token")) {
-      return this.setState(prevState => ({
-        modal: !prevState.modal
-      }))
-    } else {
-      return this.props.history.push("/user/login")
-    }
-  }
-
   render() {
     const { viewport } = this.props
 
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
+
         <Navbar />
-        <NewChapter />
+
+        <NewChapterLink />
 
         <Sidebar />
 
@@ -236,7 +161,9 @@ class Map extends Component {
           maxPitch={0}
           dragRotate={false}
         >
-          <div style={{ position: "absolute", right: 0, top: 30, zIndex: 1 }}>
+          <div
+            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
+          >
             <NavigationControl />
           </div>
 
@@ -254,35 +181,8 @@ class Map extends Component {
               <CityPin city={city} />
             </Marker>
           ))}
-
-          <Button className="addBtn" onClick={this.toggle}>
-            +
-          </Button>
-
-          <Modal
-            isOpen={this.state.modal}
-            toggle={this.toggle}
-            className={this.props.className}
-            backdrop="static"
-          >
-            <ModalHeader toggle={this.toggle}>Add Chapter</ModalHeader>
-            <ModalBody>
-              <ChapterForm
-                change={this.handleInputChange}
-                chapter={this.state.chapter}
-                handleImg={this.handleImg}
-              />
-            </ModalBody>
-            <ModalFooter>
-              <Button color="success" onClick={this.addChapter}>
-                Add Chapter
-              </Button>{" "}
-              <Button color="secondary" onClick={this.toggle}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
         </MapGL>
+        <SearchBar />
         {this._renderSlide()}
       </div>
     )

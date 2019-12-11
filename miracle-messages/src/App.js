@@ -10,7 +10,10 @@ import "./CSS/style.css"
 import LoginPage from "./Components/Login/UserLogin"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
-// Notes
+
+import SearchBar from "./Components/MapComponents/SearchBar.js"
+import NewChapter from "./Components/Forms/NewChapter"
+
 class App extends Component {
   render() {
     return (
@@ -24,6 +27,8 @@ class App extends Component {
           <Route exact path="/admin/login" component={LoginForm} />
 
           <Route exact path="/user/login" component={LoginPage} />
+
+          <Route exact path="/user/newchapter" component={NewChapter} />
 
           <Route
             exact
