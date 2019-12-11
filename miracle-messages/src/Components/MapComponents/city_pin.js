@@ -10,7 +10,7 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction"
 import { onViewportChanged } from "../../Actions/OnViewportAction"
 
 const pinStyle = {
-  fill: "black"
+  fill: "blue"
 }
 
 class CityPin extends PureComponent {
