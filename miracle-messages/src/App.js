@@ -10,7 +10,7 @@ import "./CSS/style.css"
 import LoginPage from "./Components/Login/UserLogin"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
-
+// Notes
 class App extends Component {
   render() {
     return (
