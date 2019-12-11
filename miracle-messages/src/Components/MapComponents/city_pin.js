@@ -10,18 +10,20 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction"
 import { onViewportChanged } from "../../Actions/OnViewportAction"
 
 const pinStyle = {
-  fill: "black"
+  fill: "dodgerblue"
 }
+
 
 class CityPin extends PureComponent {
   render() {
     // console.log(this.props.city)
 
+// Dom manipulation for hover effect 
     const PinClickHandler = () => {
       this.props.updatePopupAction(this.props.city)
       this.props.slideToggleAction()
 
-      // const viewport = new WebMercatorViewport({
+      // const viewport = new WebMercatorViewport({ls
       //   latitude: this.props.city.latitude,
       //   longitude: this.props.city.longitude,
       //   zoom: 10,
@@ -34,7 +36,7 @@ class CityPin extends PureComponent {
       // this.props.onViewportChanged(viewport)
     }
 
-    const size = 28
+    const size = 29
 
     return (
       <svg
@@ -43,7 +45,8 @@ class CityPin extends PureComponent {
         style={{
           ...pinStyle,
           transform: `translate(${-size / 2}px,${-size}px)`,
-          cursor: "pointer"
+          cursor: "pointer", 
+          
         }}
         onClick={PinClickHandler}
       >
