@@ -10,7 +10,7 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction"
 import { onViewportChanged } from "../../Actions/OnViewportAction"
 
 const pinStyle = {
-  fill: "dodgerblue" 
+  fill: "dodgerblue"
 }
 
 
@@ -18,12 +18,12 @@ class CityPin extends PureComponent {
   render() {
     // console.log(this.props.city)
 
-
+// Dom manipulation for hover effect 
     const PinClickHandler = () => {
       this.props.updatePopupAction(this.props.city)
       this.props.slideToggleAction()
 
-      // const viewport = new WebMercatorViewport({
+      // const viewport = new WebMercatorViewport({ls
       //   latitude: this.props.city.latitude,
       //   longitude: this.props.city.longitude,
       //   zoom: 10,
