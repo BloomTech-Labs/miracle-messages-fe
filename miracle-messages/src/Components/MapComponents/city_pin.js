@@ -10,12 +10,14 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction"
 import { onViewportChanged } from "../../Actions/OnViewportAction"
 
 const pinStyle = {
-  fill: "blue", 
+  fill: "dodgerblue" 
 }
+
 
 class CityPin extends PureComponent {
   render() {
     // console.log(this.props.city)
+
 
     const PinClickHandler = () => {
       this.props.updatePopupAction(this.props.city)
@@ -43,7 +45,8 @@ class CityPin extends PureComponent {
         style={{
           ...pinStyle,
           transform: `translate(${-size / 2}px,${-size}px)`,
-          cursor: "pointer"
+          cursor: "pointer", 
+          
         }}
         onClick={PinClickHandler}
       >
