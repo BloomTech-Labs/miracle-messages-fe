@@ -10,7 +10,7 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction"
 import { onViewportChanged } from "../../Actions/OnViewportAction"
 
 const pinStyle = {
-  fill: "blue"
+  fill: "blue", 
 }
 
 class CityPin extends PureComponent {
@@ -34,7 +34,7 @@ class CityPin extends PureComponent {
       // this.props.onViewportChanged(viewport)
     }
 
-    const size = 28
+    const size = 29
 
     return (
       <svg
