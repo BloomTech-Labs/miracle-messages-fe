@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBarCard from "./SearchBarCard.js";
 
-import "../../CSS/SearchBar.css";
+import "./SearchBar.scss";
 
 const SearchBar = props => {
   const [search, setSearch] = useState("");
@@ -38,7 +38,7 @@ const SearchBar = props => {
 
   return (
     <>
-      <form className="form">
+      <form className="search-form">
         <a name="chapters"></a>
         <input
           type="text"
