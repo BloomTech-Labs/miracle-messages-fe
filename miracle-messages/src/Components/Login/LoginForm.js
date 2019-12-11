@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <Container className="LoginForm">
-        <h2>Sign In</h2>
+        <h2>Admin login</h2>
         <Form className="form" onSubmit={this.handleSubmit}>
           <Col>
             <FormGroup>
