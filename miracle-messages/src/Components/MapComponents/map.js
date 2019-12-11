@@ -98,7 +98,11 @@ class Map extends Component {
     const popupInfo = this.props.popupInfo
     return (
       popupInfo && (
-        <div className="chapterDrawer">
+        <div
+          style={{
+            marginTop: "58px"
+          }}
+        >
           {/* clicking city pin opens the drawer below */}
           <Drawer
             open={this.props.openDrawer}
@@ -115,7 +119,7 @@ class Map extends Component {
                 background: "black",
                 width: "2px",
                 height: "2px",
-                margin: "5px 10px 0px 0px"
+                margin: "63px 10px 0px 0px"
               }}
             >
               <Cancel style={{ position: "absolute", right: "0" }} />
