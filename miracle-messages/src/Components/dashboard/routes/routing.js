@@ -14,7 +14,7 @@ let ThemeRoutes = [
   {
     path: "/admin/pending",
     name: "Pending",
-    icon: "fas fa-building",
+    icon: "fas fa-wrench",
     component: PendingChapter
   },
   {
