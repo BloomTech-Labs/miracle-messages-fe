@@ -6,12 +6,12 @@ import "../../../Forms/VolunteerForm.scss";
 class ChapterForm extends React.Component {
   render() {
     return (
-      <form className="form">
+      <form className="chapter-form">
         {/* {console.log(this.props)} */}
-        <div className="formBox">
+        <div className="label">
           <label>Title</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.title}
             onChange={this.props.change}
@@ -20,10 +20,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Establishment Date</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             onChange={this.props.change}
             name="established_date"
@@ -32,10 +32,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Description</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.description}
             onChange={this.props.change}
@@ -46,10 +46,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Chapter Image</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             onChange={this.props.handleImg}
             name="chapter_img"
@@ -57,10 +57,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>City</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.city}
             onChange={this.props.change}
@@ -69,10 +69,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>State</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.state}
             onChange={this.props.change}
@@ -81,10 +81,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Latitude</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.latitude}
             onChange={this.props.change}
@@ -93,10 +93,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Longitude</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.longitude}
             onChange={this.props.change}
@@ -105,10 +105,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Contact Email</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.email}
             onChange={this.props.change}
@@ -118,10 +118,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Number of Volunteers</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.numvolunteers}
             onChange={this.props.change}
@@ -130,10 +130,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Number of Delivered Messages</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.msg_delivered}
             onChange={this.props.change}
@@ -142,10 +142,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Number of Recorded Messages</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.msg_recorded}
             onChange={this.props.change}
@@ -154,10 +154,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Number of Reunions</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.numreunions}
             onChange={this.props.change}
@@ -166,10 +166,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Featured Story Image</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             onChange={this.props.handleImg}
             name="reunion_img"
@@ -177,10 +177,10 @@ class ChapterForm extends React.Component {
           />
         </div>
 
-        <div className="formBox">
+        <div className="label">
           <label>Featured Story</label>
         </div>
-        <div className="formBox">
+        <div className="label">
           <input
             value={this.props.chapter.story}
             onChange={this.props.change}
