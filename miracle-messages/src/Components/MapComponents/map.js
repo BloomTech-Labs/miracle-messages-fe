@@ -166,21 +166,24 @@ class Map extends Component {
           >
             <NavigationControl />
           </div>
-
-          {this.props.chapter_data.map((city, index) => (
-            <Marker
-              className="markerMAP"
-              key={`marker-${index}`}
-              latitude={city.latitude}
-              longitude={city.longitude}
-              onClick={() => {
-                gaEvent("click", "chapter pin", `${city.title}`);
-              }}
-            >
-              {/* <PlaceTwoTone /> */}
-              <CityPin city={city} />
-            </Marker>
-          ))}
+          {this.props.chapter_data.map((city, index) => {
+            if (city.approved === true) {
+              return (
+                <Marker
+                  className="markerMAP"
+                  key={`marker-${index}`}
+                  latitude={city.latitude}
+                  longitude={city.longitude}
+                  onClick={() => {
+                    gaEvent("click", "chapter pin", `${city.title}`);
+                  }}
+                >
+                  {/* <PlaceTwoTone /> */}
+                  <CityPin city={city} />
+                </Marker>
+              );
+            }
+          })}
         </MapGL>
         <SearchBar />
         {this._renderSlide()}
