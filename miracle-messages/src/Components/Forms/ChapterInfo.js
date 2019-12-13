@@ -4,9 +4,17 @@ import FormFooter from "../Header-Footer/FormFooter"
 import FormHeader from "../Header-Footer/FormHeader"
 
 const ChapterInfo = () => {
+  // toggle = () => {
+  //   if (localStorage.getItem("token")) {
+  //     return this.setState(prevState => ({
+  //       modal: !prevState.modal
+  //     }))
+  //   } else {
+  //     return this.props.history.push("/user/login")
+  //   }
+  // }
   return (
     <div className="container">
-      <FormHeader />
       <div className="main">
         <div className="main-bold">
           <h2>Chapter Information</h2>
@@ -61,7 +69,6 @@ const ChapterInfo = () => {
           <button className="submitb">I want to create a new chapter</button>
         </div>
       </div>
-      <FormFooter />
     </div>
   )
 }

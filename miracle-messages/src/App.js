@@ -11,7 +11,6 @@ import LoginPage from "./Components/Login/UserLogin"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 import NewChapter from "./Components/Forms/NewChapter"
-import ChapterInfo from "./Components/Forms/ChapterInfo"
 
 class App extends Component {
   render() {
