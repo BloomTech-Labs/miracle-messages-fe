@@ -71,7 +71,7 @@ class PendingCards extends Component {
           >
             Approve
           </Button>
-
+          {/* {console.log(this.props.info.approved)} */}
           <Modal
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}

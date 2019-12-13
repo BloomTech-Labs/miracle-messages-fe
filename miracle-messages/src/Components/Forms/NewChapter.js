@@ -8,6 +8,7 @@ import { Button } from "reactstrap";
 import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
 import FormFooter from "../Header-Footer/FormFooter";
 import FormHeader from "../Header-Footer/FormHeader";
+import ChapterInfo from "./ChapterInfo";
 
 class NewChapter extends React.Component {
   constructor(props) {
@@ -104,6 +105,7 @@ class NewChapter extends React.Component {
       <div className="container">
         <FormHeader />
         <div>
+          <ChapterInfo />
           <ChapterForm
             change={this.handleInputChange}
             chapter={this.state.chapter}
