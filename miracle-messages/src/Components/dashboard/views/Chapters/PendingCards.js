@@ -13,7 +13,7 @@ import {
   ModalFooter
 } from "reactstrap";
 
-import UpdateFrom from "./UpdateForm";
+import PendingTrue from "./PendingTrue";
 
 class PendingCards extends Component {
   state = {
@@ -38,19 +38,13 @@ class PendingCards extends Component {
     this.props.deleteChapter(this.props.info.id);
   };
 
-  approve = props => {
-    if (this.props.info.approved === false) {
-      return this.props.info.approved === true;
-    }
-  };
-
   render() {
     return (
       <Card
         className="cardChapter"
         style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
       >
-        {console.log(this.props.info)}
+        {/* {console.log(this.props)} */}
 
         <CardImg
           top
@@ -73,7 +67,7 @@ class PendingCards extends Component {
               position: "static",
               marginBottom: "10px"
             }}
-            onClick={(this.approve, console.log(this.props.info.approved))}
+            onClick={this.toggleEdit}
           >
             Approve
           </Button>
@@ -86,19 +80,11 @@ class PendingCards extends Component {
           >
             <ModalHeader toggle={this.toggleEdit}>Edit Chapter</ModalHeader>
             <ModalBody>
-              <UpdateFrom
+              <PendingTrue
                 toggleEdit={this.toggleEdit}
                 chapter={this.props.info}
               />
             </ModalBody>
-            {/* <ModalFooter>
-              <Button color='primary' onClick={this.toggleEdit}>
-                Update
-              </Button>{' '}
-              <Button color="secondary" type="submit" onClick={this.toggleEdit}>
-                Cancel
-              </Button>
-            </ModalFooter> */}
           </Modal>
 
           <Button
