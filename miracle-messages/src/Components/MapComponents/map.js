@@ -34,7 +34,7 @@ import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 import Navbar from "./Navbar";
-import NewChapterLink from "./NewChapterLink";
+import BoxLink from "./BoxLink";
 
 import Sidebar from "./Sidebar";
 
@@ -146,7 +146,7 @@ class Map extends Component {
 
         <Navbar />
 
-        <NewChapterLink />
+        <BoxLink />
 
         <Sidebar />
 

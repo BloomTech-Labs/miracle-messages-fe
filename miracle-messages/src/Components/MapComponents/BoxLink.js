@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React from "react";
 
-import "./NewChapter.scss"
+import "./BoxLink.scss";
 
-class NewChapter extends React.Component {
+class BoxLink extends React.Component {
   state = {
     open: true
-  }
+  };
   render() {
     return (
       <>
@@ -35,7 +35,7 @@ class NewChapter extends React.Component {
             </div>
             <a
               style={{ position: "relative", bottom: "15px" }}
-              href="https://miraclemessages.org/getinvolved"
+              href="http://localhost:3000/user/newchapter"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -44,8 +44,8 @@ class NewChapter extends React.Component {
           </div>
         )}
       </>
-    )
+    );
   }
 }
 
-export default NewChapter
+export default BoxLink;
