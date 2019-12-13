@@ -1,10 +1,11 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
-import SponsorList from './SponsorList.js';
-import SelectPartner from './SelectPartners.js';
+import SponsorList from "./SponsorList.js";
+import SelectPartner from "./SelectPartners.js";
+// import "../../../../CSS/style.css";
 
-import { Card, CardImg, CardBody } from 'reactstrap';
+import { Card, CardImg, CardBody } from "reactstrap";
 
 class ChapterCard extends React.Component {
   state = {
@@ -16,10 +17,10 @@ class ChapterCard extends React.Component {
       currentPartners: []
     }
   };
-
+  //https://miracle-messages-production.herokuapp.com <-- replace the url when in production
   getChapter = id => {
     axios
-      .get(`https://miracle-messages-production.herokuapp.com/api/chapter/${id}`)
+      .get(`http://localhost:5000/api/chapter/${id}`)
       .then(res => {
         this.setState({ chapter: res.data });
       })
@@ -37,14 +38,14 @@ class ChapterCard extends React.Component {
 
   getAllPartners = () => {
     axios
-      .get(`https://miracle-messages-production.herokuapp.com/api/partner`)
+      .get(`http://localhost:5000/api/partner`)
       .then(res => {
         const data = res.data;
         let sponsors = [];
         let partners = [];
 
         data.forEach(element => {
-          if (element.category === 'partner') {
+          if (element.category === "partner") {
             partners.push(element);
           } else {
             sponsors.push(element);
@@ -65,15 +66,13 @@ class ChapterCard extends React.Component {
 
   getChapterPartners = id => {
     axios
-      .get(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${id}/partners`
-      )
+      .get(`http://localhost:5000/api/chapter/${id}/partners`)
       .then(res => {
         const data = res.data;
         let sponsors = [];
         let partners = [];
         data.forEach(element => {
-          if (element.category === 'partner') {
+          if (element.category === "partner") {
             partners.push(element);
           } else {
             sponsors.push(element);
@@ -93,9 +92,7 @@ class ChapterCard extends React.Component {
   unassignPartner = id => {
     const chapterid = this.props.match.params.id;
     axios
-      .delete(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${chapterid}/partners/${id}`
-      )
+      .delete(`http://localhost:5000/api/chapter/${chapterid}/partners/${id}`)
       .then(res => {
         this.getAllPartners();
         this.getChapterPartners(chapterid);
@@ -109,7 +106,7 @@ class ChapterCard extends React.Component {
     const partnerId = { partnerId: id };
     axios
       .post(
-        `https://miracle-messages-production.herokuapp.com/api/chapter/${chapterid}/partners`,
+        `http://localhost:5000/api/chapter/${chapterid}/partners`,
         partnerId
       )
       .then(res => {
@@ -124,32 +121,42 @@ class ChapterCard extends React.Component {
       return <div>Loading Chapter information...</div>;
     }
     return (
-      <div className='chapter-flex'>
-        <Card className='s-chapter'>
+      <div className="chapter-flex">
+        {/* {console.log(this.state.chapter)} */}
+        <Card
+          className="s-chapter"
+          style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "300px" }}
+        >
           <CardImg src={this.state.chapter.chapter_img_url} />
 
           <CardBody>
             <h1>{this.state.chapter.title}</h1>
-            <h4>Established: {this.state.chapter.established_date}</h4>
+            <h4>Established: </h4>
+            <p> {this.state.chapter.established_date} </p>
             <h4>Description</h4>
             <p>{this.state.chapter.description}</p>
-            <h4>City: {this.state.chapter.city}</h4>
-            <h4>State: {this.state.chapter.state}</h4>
-            <h4>Latitude: {this.state.chapter.latitude}</h4>
-            <h4>Longitude: {this.state.chapter.longitude}</h4>
-            <h4>Email: {this.state.chapter.email}</h4>
-            <h4>Volunteers: {this.state.chapter.numvolunteers}</h4>
-            <h4>Delivered Messages: {this.state.chapter.msg_delivered}</h4>
-            <h4>Messages Recorded: {this.state.chapter.msg_recorded}</h4>
-            <h4>Reunions: {this.state.chapter.numreunions}</h4>
+            <h4>City: </h4>
+            <p> {this.state.chapter.city} </p>
+            <h4>State: </h4>
+            <p> {this.state.chapter.state} </p>
+            <h4>Email: </h4>
+            <p> {this.state.chapter.email} </p>
+            <h4>Volunteers: </h4>
+            <p> {this.state.chapter.numvolunteers} </p>
+            <h4>Delivered Messages: </h4>
+            <p> {this.state.chapter.msg_delivered} </p>
+            <h4>Messages Recorded: </h4>
+            <p> {this.state.chapter.msg_recorded} </p>
+            <h4>Reunions: </h4>
+            <p> {this.state.chapter.numreunions} </p>
             <h4>Featured Story</h4>
             <p>{this.state.chapter.story}</p>
             <CardImg src={this.state.chapter.reunion_img_url} />
           </CardBody>
         </Card>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <SponsorList
-            className='s-chapter-right'
+            className="s-chapter-right"
             data={this.state.data}
             unassign={this.unassignPartner}
           />

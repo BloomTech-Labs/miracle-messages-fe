@@ -1,14 +1,16 @@
 import React from "react";
 import axios from "axios";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import Chapter from "./Chapter";
-import ChapterForm from "./ChapterForm";
+import "./VolunteerForm.scss";
 
-import { connect } from "react-redux";
-import { getData } from "../../../../Actions/index";
+import { Button } from "reactstrap";
 
-class Chapters extends React.Component {
+import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
+import FormFooter from "../Header-Footer/FormFooter";
+import FormHeader from "../Header-Footer/FormHeader";
+import ChapterInfo from "./ChapterInfo";
+
+class NewChapter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,8 +58,6 @@ class Chapters extends React.Component {
       .post("http://localhost:5000/api/chapter", fd)
       .then(res => {
         console.log(res);
-        this.toggle();
-        this.props.getData();
       })
       .catch(err => console.log(err));
 
@@ -82,15 +82,6 @@ class Chapters extends React.Component {
     });
   };
 
-  handleImg = e => {
-    this.setState({
-      chapter: {
-        ...this.state.chapter,
-        [e.target.name]: e.target.files[0]
-      }
-    });
-  };
-
   handleInputChange = e => {
     this.setState({
       chapter: {
@@ -100,76 +91,34 @@ class Chapters extends React.Component {
     });
   };
 
-  toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
+  handleImg = e => {
+    this.setState({
+      chapter: {
+        ...this.state.chapter,
+        [e.target.name]: e.target.files[0]
+      }
+    });
   };
-
-  deleteChapter = id => {
-    axios
-      .delete(`http://localhost:5000/api/chapter/${id}`)
-      .then(res => {
-        this.props.getData();
-      })
-      .catch(err => console.log(err));
-  };
-
-  componentDidMount() {
-    this.props.getData();
-  }
 
   render() {
     return (
-      <div className="chapter-felx">
-        {this.props.chapter_data.map(chapter => {
-          if (chapter.approved === true) {
-            return (
-              <Chapter
-                info={chapter}
-                key={chapter.id}
-                deleteChapter={this.deleteChapter}
-              />
-            );
-          }
-        })}
-
-        <Button className="addBtn" onClick={this.toggle}>
-          +
-        </Button>
-
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}
-          backdrop="static"
-        >
-          <ModalHeader toggle={this.toggle}>Add Chapter</ModalHeader>
-          <ModalBody>
-            <ChapterForm
-              change={this.handleInputChange}
-              chapter={this.state.chapter}
-              handleImg={this.handleImg}
-            />
-          </ModalBody>
-          <ModalFooter>
-            <Button color="success" onClick={this.addChapter}>
-              Add Chapter
-            </Button>{" "}
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
+      <div className="container">
+        <FormHeader />
+        <div>
+          <ChapterInfo />
+          <ChapterForm
+            change={this.handleInputChange}
+            chapter={this.state.chapter}
+            handleImg={this.handleImg}
+          />
+          <Button color="success" onClick={this.addChapter}>
+            Send Chapter Request
+          </Button>
+        </div>
+        <FormFooter />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    chapter_data: state.mapReducer.chapter_data
-  };
-};
-
-export default connect(mapStateToProps, { getData })(Chapters);
+export default NewChapter;

@@ -5,9 +5,10 @@ import { connect } from "react-redux";
 import MapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-
 // Custom file imports
+
 // import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
+
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 
@@ -28,11 +29,18 @@ import { Cancel } from "@material-ui/icons";
 import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
+
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 import Navbar from "./Navbar";
-import NewChapter from "./NewChapter";
+import BoxLink from "./BoxLink";
+
+import Sidebar from "./Sidebar";
+
+// search bar component  below
+import SearchBar from "../MapComponents/SearchBar.js";
+// search bar above
 
 require("dotenv").config();
 
@@ -48,48 +56,52 @@ ReactGA.initialize(process.env.REACT_APP_GA_ID);
 ReactGA.pageview("/map");
 
 class Map extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+      chapter: {
+        title: "",
+        established_date: "",
+        description: "",
+        chapter_img: null,
+        city: "",
+        state: "",
+        latitude: "",
+        longitude: "",
+        email: "",
+        numvolunteers: "",
+        msg_delivered: "",
+        msg_recorded: "",
+        numreunions: "",
+        story: "",
+        reunion_img: null
+      }
+    };
+  }
   //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
     this.props.getDefault();
   }
 
-
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
-  _renderCityMarker = (city, index) => {
-    return (
-      <Marker className="markerMAP"
-        key={`marker-${index}`}
-        latitude={city.latitude}
-        longitude={city.longitude}
-
-      >
-        <div
-          onClick={() => {
-            // console.log(city)
-            gaEvent("click", "chapter pin", `${city.title}`);
-          }}
-        >
-          {/* <PlaceTwoTone /> */}
-          <CityPin city={city} />
-        </div>
-      </Marker>
-    );
-  };
 
   closeHandler = () => {
     this.props.updatePopupAction(null);
     this.props.slideToggleAction();
   };
 
-
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
   _renderSlide() {
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div className="chapterDrawer">
+        <div
+          style={{
+            marginTop: "58px"
+          }}
+        >
           {/* clicking city pin opens the drawer below */}
           <Drawer
             open={this.props.openDrawer}
@@ -106,7 +118,7 @@ class Map extends Component {
                 background: "black",
                 width: "2px",
                 height: "2px",
-                margin: "5px 10px 0px 0px"
+                margin: "63px 10px 0px 0px"
               }}
             >
               <Cancel style={{ position: "absolute", right: "0" }} />
@@ -125,14 +137,6 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
-  // _renderNavbar() {
-  //   return <Navbar />;
-  // }
-
-  // _renderNewChapter() {
-  //   return <NewChapter />;
-  // }
-
   render() {
     const { viewport } = this.props;
 
@@ -142,12 +146,10 @@ class Map extends Component {
 
         <Navbar />
 
-        <NewChapter />
+        <BoxLink />
 
+        <Sidebar />
 
-        {/* {this._renderNavbar()}
-        {this._renderNewChapter()} */}
-        
         <MapGL
           {...viewport}
           width="100vw"
@@ -164,11 +166,27 @@ class Map extends Component {
           >
             <NavigationControl />
           </div>
-          {this.props.chapter_data.map(this._renderCityMarker)}
+          {this.props.chapter_data.map((city, index) => {
+            if (city.approved === true) {
+              return (
+                <Marker
+                  className="markerMAP"
+                  key={`marker-${index}`}
+                  latitude={city.latitude}
+                  longitude={city.longitude}
+                  onClick={() => {
+                    gaEvent("click", "chapter pin", `${city.title}`);
+                  }}
+                >
+                  {/* <PlaceTwoTone /> */}
+                  <CityPin city={city} />
+                </Marker>
+              );
+            }
+          })}
         </MapGL>
-
+        <SearchBar />
         {this._renderSlide()}
-      
       </div>
     );
   }
@@ -177,7 +195,6 @@ class Map extends Component {
 //this is how we convert the state that was modified by the reducers to props
 const mapStateToProps = state => {
   return {
-    // popupInfo: state.mapReducer.popupInfo,
     chapter_data: state.mapReducer.chapter_data,
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardTitle, Button } from "reactstrap";
+import { Card, CardBody, CardTitle } from "reactstrap";
 
 class Volunteer extends Component {
   render() {
     return (
-      <Card>
+      <Card style={{ maxWidth: "60%", minWidth: "650px" }}>
         {/* {console.log(this.props.vol)} */}
         <CardBody>
           <CardTitle className="mb-0">
@@ -21,12 +21,12 @@ class Volunteer extends Component {
 
           <span style={{ marginRight: "30px" }}>{this.props.vol.state}</span>
           <span style={{ marginRight: "20px" }}>{this.props.vol.country}</span>
-          <Button
+          {/* <Button
             color="danger"
             style={{ width: "100px", right: "60px", position: "absolute" }}
           >
             Delete
-          </Button>
+          </Button> */}
         </CardBody>
       </Card>
     );
