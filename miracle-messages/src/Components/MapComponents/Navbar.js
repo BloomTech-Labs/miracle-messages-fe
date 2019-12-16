@@ -2,6 +2,10 @@ import React from "react";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import "./Navbar.scss";
 
+// search bar component  below
+import SearchBar from "../MapComponents/SearchBar.js";
+// search bar above
+
 class Navbar extends React.Component {
   render() {
     return (
@@ -10,7 +14,13 @@ class Navbar extends React.Component {
           <img src={logo} alt="logo" />
         </a>
         <nav>
-        <a href="#chapters"> Search </a>
+        {/* <a href="#chapters"> Search </a> */}
+        <div className="dropdown"> 
+        <a className="dropbtn"> Search </a>
+        <div className="dropdown-content"> 
+          <SearchBar />
+          </div> 
+          </div>
       <div style={{margin: "15px"}}> </div>
           <a href="https://miraclemessages.org/">HOME</a>
           <a href="https://miraclemessages.org/who">ABOUT</a>
@@ -30,6 +40,7 @@ class Navbar extends React.Component {
           <a href="https://www.classy.org/give/231839/#!/donation/checkout">
             DONATE
           </a>
+          
         </nav>
       </div>
     );
