@@ -50,8 +50,9 @@ const SearchBar = props => {
           className="input"
         />
       </form>
+      {/* side-by-side */}
       {/* map here */}
-      <div className="side-by-side">
+      <div className=""> 
         {filterFunction.map(chapter => {
           return (
             <SearchBarCard
