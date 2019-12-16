@@ -148,13 +148,27 @@
             line-height: 22px;
             text-align: left;
             margin: 10px auto;
-            // border: 1px solid purple;
           }
           .input {
             height: 45px;
             width: 777px;
             border: 1px solid #b4b4b4;
             border-radius: 2px;
+          }
+          .image-input {
+            align-self: center;
+          }
+          .textarea {
+            height: 445px;
+            width: 777px;
+            border: 1px solid #b4b4b4;
+            border-radius: 2px;
+          }
+          .textarea::placeholder {
+            font-size: 1.4rem;
+            color: dodgerblue;
+            text-align: center;
+            padding-top: 180px;
           }
         }
         #stateId {
