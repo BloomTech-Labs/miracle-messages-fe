@@ -1,17 +1,18 @@
-import React from "react";
-import axios from "axios";
+import React from "react"
+import axios from "axios"
 
-import "./VolunteerForm.scss";
+import "./VolunteerForm.scss"
 
-import { Button } from "reactstrap";
+import { Button } from "reactstrap"
 
-import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
-import FormFooter from "../Header-Footer/FormFooter";
-import FormHeader from "../Header-Footer/FormHeader";
+import ChapterForm from "../dashboard/views/Chapters/ChapterForm"
+import FormFooter from "../Header-Footer/FormFooter"
+import FormHeader from "../Header-Footer/FormHeader"
+// import ChapterInfo from "../Forms/ChapterInfo"
 
 class NewChapter extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       modal: false,
       chapter: {
@@ -31,34 +32,34 @@ class NewChapter extends React.Component {
         story: "",
         reunion_img: null
       }
-    };
+    }
   }
 
   addChapter = e => {
-    e.preventDefault();
-    const fd = new FormData();
-    fd.append("chapter_img", this.state.chapter.chapter_img);
-    fd.append("reunion_img", this.state.chapter.reunion_img);
-    fd.append("title", this.state.chapter.title);
-    fd.append("established_date", this.state.chapter.established_date);
-    fd.append("description", this.state.chapter.description);
-    fd.append("city", this.state.chapter.city);
-    fd.append("state", this.state.chapter.state);
-    fd.append("latitude", this.state.chapter.latitude);
-    fd.append("longitude", this.state.chapter.longitude);
-    fd.append("email", this.state.chapter.email);
-    fd.append("numvolunteers", this.state.chapter.numvolunteers);
-    fd.append("msg_delivered", this.state.chapter.msg_delivered);
-    fd.append("msg_recorded", this.state.chapter.msg_recorded);
-    fd.append("numreunions", this.state.chapter.numreunions);
-    fd.append("story", this.state.chapter.story);
+    e.preventDefault()
+    const fd = new FormData()
+    fd.append("chapter_img", this.state.chapter.chapter_img)
+    fd.append("reunion_img", this.state.chapter.reunion_img)
+    fd.append("title", this.state.chapter.title)
+    fd.append("established_date", this.state.chapter.established_date)
+    fd.append("description", this.state.chapter.description)
+    fd.append("city", this.state.chapter.city)
+    fd.append("state", this.state.chapter.state)
+    fd.append("latitude", this.state.chapter.latitude)
+    fd.append("longitude", this.state.chapter.longitude)
+    fd.append("email", this.state.chapter.email)
+    fd.append("numvolunteers", this.state.chapter.numvolunteers)
+    fd.append("msg_delivered", this.state.chapter.msg_delivered)
+    fd.append("msg_recorded", this.state.chapter.msg_recorded)
+    fd.append("numreunions", this.state.chapter.numreunions)
+    fd.append("story", this.state.chapter.story)
 
     axios
       .post("http://localhost:5000/api/chapter", fd)
       .then(res => {
-        console.log(res);
+        console.log(res)
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
 
     this.setState({
       chapter: {
@@ -78,8 +79,8 @@ class NewChapter extends React.Component {
         story: "",
         reunion_img: null
       }
-    });
-  };
+    })
+  }
 
   handleInputChange = e => {
     this.setState({
@@ -87,8 +88,8 @@ class NewChapter extends React.Component {
         ...this.state.chapter,
         [e.target.name]: e.target.value
       }
-    });
-  };
+    })
+  }
 
   handleImg = e => {
     this.setState({
@@ -96,13 +97,14 @@ class NewChapter extends React.Component {
         ...this.state.chapter,
         [e.target.name]: e.target.files[0]
       }
-    });
-  };
+    })
+  }
 
   render() {
     return (
       <div className="container">
         <FormHeader />
+        {/* <ChapterInfo /> */}
         <div>
           <ChapterForm
             change={this.handleInputChange}
@@ -115,8 +117,8 @@ class NewChapter extends React.Component {
         </div>
         <FormFooter />
       </div>
-    );
+    )
   }
 }
 
-export default NewChapter;
+export default NewChapter
