@@ -136,22 +136,10 @@
     .dropdown-search {
       display: none;
       position: absolute;
-      background-color: #212121;
+      background-color: #ffffff;
       z-index: 99;
       min-width: 260px;
 
-      a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        margin-top: 0.5rem;
-
-        padding: 0.5rem 1.5rem;
-        &:hover {
-          color: #212121;
-          background-color: rgba(255, 255, 255, 0.9);
-        }
-      }
       .not-last-child {
         display: none;
       }
@@ -159,9 +147,5 @@
     .search-bar:hover .dropdown-search {
       display: block;
     }
-
-
-
-
   }
 }

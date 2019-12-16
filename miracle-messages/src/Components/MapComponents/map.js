@@ -38,10 +38,6 @@ import NewChapterLink from "./NewChapterLink";
 
 import Sidebar from "./Sidebar";
 
-// search bar component  below
-import SearchBar from "../MapComponents/SearchBar.js";
-// search bar above
-
 require("dotenv").config();
 
 const TOKEN =
@@ -182,7 +178,6 @@ class Map extends Component {
             </Marker>
           ))}
         </MapGL>
-        <SearchBar />
         {this._renderSlide()}
       </div>
     );
