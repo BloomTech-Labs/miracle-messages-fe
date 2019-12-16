@@ -20,7 +20,8 @@
   transition: 0.3s;
   border-radius: 5px;
   display: flex;
-  align-items: center;
+  // align-items: center;
+  // margin-right: 400px; 
 
   .center {
     display: flex;
@@ -41,8 +42,9 @@
   }
 }
 .side-by-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: white;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // background: white;
+  margin-right: 300px;
 }
