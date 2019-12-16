@@ -15,9 +15,9 @@ class Navbar extends React.Component {
         </a>
         <nav>
         {/* <a href="#chapters"> Search </a> */}
-        <div className="dropdown"> 
-        <a className="dropbtn"> Search </a>
-        <div className="dropdown-content"> 
+        <div className="search-bar"> 
+        <a className="drop-search"> Search </a>
+        <div className="dropdown-search"> 
           <SearchBar />
           </div> 
           </div>
