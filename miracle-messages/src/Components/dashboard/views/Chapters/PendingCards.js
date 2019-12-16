@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -14,9 +13,9 @@ import {
   ModalFooter
 } from "reactstrap";
 
-import UpdateFrom from "./UpdateForm";
+import PendingTrue from "./PendingTrue";
 
-class Chapter extends Component {
+class PendingCards extends Component {
   state = {
     modal: false,
     modalEdit: false
@@ -45,6 +44,8 @@ class Chapter extends Component {
         className="cardChapter"
         style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
       >
+        {/* {console.log(this.props)} */}
+
         <CardImg
           top
           width="100%"
@@ -68,21 +69,9 @@ class Chapter extends Component {
             }}
             onClick={this.toggleEdit}
           >
-            Edit
+            Approve
           </Button>
-
-          <Button
-            style={{
-              marginRight: "10px",
-              position: "static",
-              marginBottom: "10px"
-            }}
-          >
-            <Link to={`/admin/chapters/${this.props.info.id}`}>
-              Chapter Info
-            </Link>
-          </Button>
-
+          {/* {console.log(this.props.info.approved)} */}
           <Modal
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}
@@ -91,19 +80,11 @@ class Chapter extends Component {
           >
             <ModalHeader toggle={this.toggleEdit}>Edit Chapter</ModalHeader>
             <ModalBody>
-              <UpdateFrom
+              <PendingTrue
                 toggleEdit={this.toggleEdit}
                 chapter={this.props.info}
               />
             </ModalBody>
-            {/* <ModalFooter>
-              <Button color='primary' onClick={this.toggleEdit}>
-                Update
-              </Button>{' '}
-              <Button color="secondary" type="submit" onClick={this.toggleEdit}>
-                Cancel
-              </Button>
-            </ModalFooter> */}
           </Modal>
 
           <Button
@@ -142,4 +123,4 @@ class Chapter extends Component {
   }
 }
 
-export default Chapter;
+export default PendingCards;

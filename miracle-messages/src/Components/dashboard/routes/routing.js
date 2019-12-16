@@ -2,6 +2,7 @@ import Volunteers from "../views/Volunteers.js";
 import Chapters from "../views/Chapters/Chapters.js";
 import Sponsors from "../views/Sponsors/Sponsors.js";
 import ChapterCard from "../views/Chapters/ChapterCard";
+import PendingChapter from "../views/Chapters/PendingChapter";
 
 let ThemeRoutes = [
   {
@@ -9,6 +10,12 @@ let ThemeRoutes = [
     name: "Chapters",
     icon: "fas fa-building",
     component: Chapters
+  },
+  {
+    path: "/admin/pending",
+    name: "Pending",
+    icon: "fas fa-wrench",
+    component: PendingChapter
   },
   {
     path: "/admin/Sponsors",

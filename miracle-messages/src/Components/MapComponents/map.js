@@ -12,7 +12,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 
-
 // Action imports
 import { getData, getDefault } from "../../Actions/index";
 
@@ -35,17 +34,15 @@ import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 import Navbar from "./Navbar";
-import NewChapterLink from "./NewChapterLink";
+import BoxLink from "./BoxLink";
 
 import Sidebar from "./Sidebar";
 
 // search bar component  below
 import SearchBar from "../MapComponents/SearchBar.js";
 // search bar above
-import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
 
 require("dotenv").config();
-
 
 const TOKEN =
   "pk.eyJ1IjoibWlyYWNsZW1lc3NhZ2VzIiwiYSI6ImNqeWhleGtzbTAwdXAzZ21uaGlienhmdHMifQ.FYmU9s5SYQbUonIeBAG9Lw";
@@ -140,7 +137,6 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
-
   render() {
     const { viewport } = this.props;
 
@@ -150,7 +146,7 @@ class Map extends Component {
 
         <Navbar />
 
-        <NewChapterLink />
+        <BoxLink />
 
         <Sidebar />
 
@@ -170,21 +166,24 @@ class Map extends Component {
           >
             <NavigationControl />
           </div>
-
-          {this.props.chapter_data.map((city, index) => (
-            <Marker
-              className="markerMAP"
-              key={`marker-${index}`}
-              latitude={city.latitude}
-              longitude={city.longitude}
-              onClick={() => {
-                gaEvent("click", "chapter pin", `${city.title}`);
-              }}
-            >
-              {/* <PlaceTwoTone /> */}
-              <CityPin city={city} />
-            </Marker>
-          ))}
+          {this.props.chapter_data.map((city, index) => {
+            if (city.approved === true) {
+              return (
+                <Marker
+                  className="markerMAP"
+                  key={`marker-${index}`}
+                  latitude={city.latitude}
+                  longitude={city.longitude}
+                  onClick={() => {
+                    gaEvent("click", "chapter pin", `${city.title}`);
+                  }}
+                >
+                  {/* <PlaceTwoTone /> */}
+                  <CityPin city={city} />
+                </Marker>
+              );
+            }
+          })}
         </MapGL>
         <SearchBar />
         {this._renderSlide()}
@@ -203,7 +202,6 @@ const mapStateToProps = state => {
     viewport: state.mapReducer.viewport
   };
 };
-
 
 //this is how we connect the map.js component to the store
 export default connect(mapStateToProps, {

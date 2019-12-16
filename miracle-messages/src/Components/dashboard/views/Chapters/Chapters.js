@@ -122,15 +122,16 @@ class Chapters extends React.Component {
   render() {
     return (
       <div className="chapter-felx">
-        {/* {console.log(this.props.chapter_data)} */}
         {this.props.chapter_data.map(chapter => {
-          return (
-            <Chapter
-              info={chapter}
-              key={chapter.id}
-              deleteChapter={this.deleteChapter}
-            />
-          );
+          if (chapter.approved === true) {
+            return (
+              <Chapter
+                info={chapter}
+                key={chapter.id}
+                deleteChapter={this.deleteChapter}
+              />
+            );
+          }
         })}
 
         <Button className="addBtn" onClick={this.toggle}>
