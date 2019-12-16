@@ -10,10 +10,12 @@ class Navbar extends React.Component {
           <img src={logo} alt="logo" />
         </a>
         <nav>
+        <a href="#chapters"> Search </a>
+      <div style={{margin: "15px"}}> </div>
           <a href="https://miraclemessages.org/">HOME</a>
           <a href="https://miraclemessages.org/who">ABOUT</a>
           <a href="https://miraclemessages.org/partner">REUNION SERVICE</a>
-          <a href="#chapters"> Search </a>
+          
 
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
