@@ -148,13 +148,27 @@
             line-height: 22px;
             text-align: left;
             margin: 10px auto;
-            // border: 1px solid purple;
           }
           .input {
             height: 45px;
             width: 777px;
             border: 1px solid #b4b4b4;
             border-radius: 2px;
+          }
+          .image-input {
+            align-self: center;
+          }
+          .textarea {
+            height: 445px;
+            width: 777px;
+            border: 1px solid #b4b4b4;
+            border-radius: 2px;
+          }
+          .textarea::placeholder {
+            font-size: 1.4rem;
+            color: dodgerblue;
+            text-align: center;
+            padding-top: 180px;
           }
         }
         #stateId {
@@ -229,27 +243,5 @@
         padding-bottom: 30px;
       }
     }
-  }
-}
-
-.chapter-form{
- 
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: 300px;
-  height: 400px;
-  align-items: baseline;
-  
-  
-  .label{
-     
-    height: 50px; 
-    width: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
-    
   }
 }
