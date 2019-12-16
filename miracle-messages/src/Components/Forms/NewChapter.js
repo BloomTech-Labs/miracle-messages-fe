@@ -108,6 +108,7 @@ class NewChapter extends React.Component {
             change={this.handleInputChange}
             chapter={this.state.chapter}
             handleImg={this.handleImg}
+            addChapter={this.addChapter}
           />
           {/* <Button
             style={{

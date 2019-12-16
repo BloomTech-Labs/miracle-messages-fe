@@ -211,7 +211,7 @@ class ChapterForm extends React.Component {
               paddingBottom: "30px"
             }}
             color="success"
-            onClick={this.addChapter}
+            onClick={this.props.addChapter}
           >
             Send Chapter Request
           </Button>
