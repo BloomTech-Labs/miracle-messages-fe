@@ -73,8 +73,8 @@ const SearchBar = props => {
       </form>
       {/* side-by-side */}
       {/* map here */}
-      <Scroll> 
       <div>
+      <Scroll> 
          {filterFunction.map(chapter => {
           return (
             <SearchBarCard
@@ -84,8 +84,8 @@ const SearchBar = props => {
             />
           );
         })}
-        </div>
        </Scroll> 
+        </div>
     </>
   );
 };
