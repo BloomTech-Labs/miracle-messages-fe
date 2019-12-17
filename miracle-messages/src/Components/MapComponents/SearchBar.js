@@ -4,6 +4,9 @@ import SearchBarCard from "./SearchBarCard.js";
 
 import "./SearchBar.scss";
 
+// Scrollbar import
+import { Scrollbars }  from "react-custom-scrollbars"; 
+
 const SearchBar = props => {
   const [search, setSearch] = useState("");
   const [chapters, setChapters] = useState([
@@ -36,6 +39,24 @@ const SearchBar = props => {
     chapter.city.toLowerCase().includes(search.toLowerCase())
   );
 
+  // For scroll bar
+    const style = ({style, ...props}) => {
+      const thumbStyle = {
+        borderRadius: 6,
+        width: 376
+      }
+      return <div style={{ ...style, ...thumbStyle}} {...props} />
+    }
+
+    const Scroll = props => (
+      <Scrollbars 
+      renderThumbHorizontal={style}
+      renderThumbVertical={style}
+      {...props}
+      />
+    )
+  // For scroll bar
+
   return (
     <>
       <form className="search-form">
@@ -52,8 +73,9 @@ const SearchBar = props => {
       </form>
       {/* side-by-side */}
       {/* map here */}
-      <div className=""> 
-        {filterFunction.map(chapter => {
+      <Scroll> 
+      <div>
+         {filterFunction.map(chapter => {
           return (
             <SearchBarCard
               key={chapter.id}
@@ -62,7 +84,8 @@ const SearchBar = props => {
             />
           );
         })}
-      </div>
+        </div>
+       </Scroll> 
     </>
   );
 };
