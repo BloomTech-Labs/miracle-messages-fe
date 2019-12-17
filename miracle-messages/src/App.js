@@ -12,6 +12,7 @@ import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 import NewChapter from "./Components/Forms/NewChapter"
 
+
 class App extends Component {
   render() {
     return (
