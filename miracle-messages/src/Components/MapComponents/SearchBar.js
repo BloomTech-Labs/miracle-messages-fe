@@ -3,11 +3,9 @@ import axios from "axios";
 import SearchBarCard from "./SearchBarCard.js";
 
 import "./SearchBar.scss";
-import "./Scroll.scss"
 
 // Scrollbar import
 import { Scrollbars }  from "react-custom-scrollbars"; 
-import { height } from "@material-ui/system";
 
 const SearchBar = props => {
   const [search, setSearch] = useState("");
