@@ -6,6 +6,7 @@ import "./Navbar.scss";
 import SearchBar from "../MapComponents/SearchBar.js";
 // search bar above
 
+
 class Navbar extends React.Component {
   render() {
     return (

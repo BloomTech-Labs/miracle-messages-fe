@@ -3,9 +3,11 @@ import axios from "axios";
 import SearchBarCard from "./SearchBarCard.js";
 
 import "./SearchBar.scss";
+import "./Scroll.scss"
 
 // Scrollbar import
 import { Scrollbars }  from "react-custom-scrollbars"; 
+import { height } from "@material-ui/system";
 
 const SearchBar = props => {
   const [search, setSearch] = useState("");
@@ -40,27 +42,28 @@ const SearchBar = props => {
   );
 
   // For scroll bar
-    const style = ({style, ...props}) => {
-      const thumbStyle = {
-        borderRadius: 6,
-        width: 376
-      }
-      return <div style={{ ...style, ...thumbStyle}} {...props} />
-    }
+    // const style = ({style, ...props}) => {
+    //   const thumbStyle = {
+    //     borderRadius: 6,
+    //     width: 376
+    //   }
+    //   return <div style={{ ...style, ...thumbStyle}} {...props} />
+    // }
 
-    const Scroll = props => (
-      <Scrollbars 
-      renderThumbHorizontal={style}
-      renderThumbVertical={style}
-      {...props}
-      />
-    )
+    // const Scroll = props => (
+    //   <Scrollbars 
+    //   renderThumbHorizontal={style}
+    //   renderThumbVertical={style}
+    //   {...props}
+    //   />
+    // )
   // For scroll bar
 
   return (
     <>
+    <div> 
+
       <form className="search-form">
-        <a name="chapters"></a>
         <input
           type="text"
           // name="location"
@@ -69,14 +72,15 @@ const SearchBar = props => {
           onChange={handleChange}
           style={{ margin: "50px" }}
           className="input"
-        />
+          />
       </form>
-      {/* side-by-side */}
+
       {/* map here */}
+       <aside>
       <div>
-      <Scroll> 
+        <Scrollbars style={{height: "800px", width: "800px"}}> 
          {filterFunction.map(chapter => {
-          return (
+           return (
             <SearchBarCard
               key={chapter.id}
               chapter={chapter}
@@ -84,7 +88,9 @@ const SearchBar = props => {
             />
           );
         })}
-       </Scroll> 
+        </Scrollbars>
+        </div>
+        </aside>
         </div>
     </>
   );
