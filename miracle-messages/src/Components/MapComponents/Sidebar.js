@@ -1,6 +1,9 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidebar.scss";
+
+import SearchBar from "./SearchBar.js"
+
 export default props => {
   return (
     // Pass on our props
@@ -23,6 +26,13 @@ export default props => {
       >
         DONATE
       </a>
+      
+      <div className="search-bar"> 
+        <a className="drop-search"> Search </a>
+        <div className="dropdown-search"> 
+          <SearchBar />
+          </div> 
+          </div>
     </Menu>
   );
 };

@@ -69,51 +69,51 @@
       }
     }
 
-// shelby's stuff SCSS
+    // shelby's stuff SCSS
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
+.dropdown {
+  position: relative;
+  display: inline-block;
 
-      .dropbtn,
-      .dropbtn:hover {
-        font-weight: 600;
-        font-style: normal;
-        font-size: 18px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        text-decoration: none;
-        line-height: 1em;
-        color: rgba(255, 255, 255, 0.9);
-        font-family: ProximaNova;
-      }
+  .dropbtn,
+  .dropbtn:hover {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1em;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: ProximaNova;
+  }
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #212121;
+  z-index: 99;
+  min-width: 260px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-top: 0.5rem;
+
+    padding: 0.5rem 1.5rem;
+    &:hover {
+      color: #212121;
+      background-color: rgba(255, 255, 255, 0.9);
     }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #212121;
-      z-index: 99;
-      min-width: 260px;
-
-      a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        margin-top: 0.5rem;
-
-        padding: 0.5rem 1.5rem;
-        &:hover {
-          color: #212121;
-          background-color: rgba(255, 255, 255, 0.9);
-        }
-      }
-      .not-last-child {
-        display: none;
-      }
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+  }
+  .not-last-child {
+    display: none;
+  }
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
      // Styling for Search Drop Down! :) 
      .search-bar {
