@@ -47,11 +47,14 @@ class LoginPage extends Component {
       [evt.target.name]: evt.target.value
     });
   };
-
+  scroll =()=>{
+    window.scroll(0,0)
+  }
   render() {
     return (
       //did not import Form Header because I needed to update the h1 tag on line 94
       <div className="container">
+        {this.scroll()}
         <header>
           <div className="navbar">
             <div className="logonavbar">

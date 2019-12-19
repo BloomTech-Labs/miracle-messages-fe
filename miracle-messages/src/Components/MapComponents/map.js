@@ -33,6 +33,7 @@ import SearchBar from "../MapComponents/SearchBar.js";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
+
 require("dotenv").config();
 
 const TOKEN =
@@ -151,7 +152,6 @@ class Map extends Component {
             }
           })}
         </MapGL>
-        <SearchBar />
         {this._renderSlide()}
       </div>
     );

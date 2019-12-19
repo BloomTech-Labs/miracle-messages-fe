@@ -11,7 +11,7 @@ export const addEmail = email => async dispatch => {
   });
 
   axios
-    .post()
+    .post("http://localhost:5000/forgotPassword")
     // Back end API goes in here
     .then(res => {
       console.log("This is the response from AddEmail", res);
