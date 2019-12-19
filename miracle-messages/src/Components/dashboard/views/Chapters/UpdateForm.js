@@ -23,7 +23,7 @@ class UpdateForm extends React.Component {
   };
 
   updateChapter = e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const id = this.props.chapter.id;
     const fd = new FormData();
@@ -174,7 +174,6 @@ class UpdateForm extends React.Component {
           value={this.state.chapter.facebook}
           onChange={this.changeHandler}
           name="facebook"
-          type="link"
           placeholder="facebook link here"
         />
         <br />
