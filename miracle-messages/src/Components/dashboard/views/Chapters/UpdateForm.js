@@ -170,7 +170,7 @@ class UpdateForm extends React.Component {
           type="number"
         />
         <br />
-        <Label>Mumber of Reunions</Label>
+        <Label>Number of Reunions</Label>
         <Input
           value={this.state.chapter.numreunions}
           onChange={this.changeHandler}
