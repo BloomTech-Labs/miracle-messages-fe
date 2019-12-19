@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBarCard from "./SearchBarCard.js";
-
+import SideBar from "./Sidebar.js"; 
 import "./SearchBar.scss";
 
 // Scrollbar import
@@ -41,8 +41,8 @@ const SearchBar = props => {
 
   return (
     <>
+    <SideBar className="sidebar-search"/> 
     <div> 
-
       <form className="search-form">
         <input
           type="text"

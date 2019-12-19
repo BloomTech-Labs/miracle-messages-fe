@@ -1,6 +1,13 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidebar.scss";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 import SearchBar from "./SearchBar.js"
 
@@ -26,18 +33,17 @@ export default props => {
       >
         DONATE
       </a>
-      
-      {/* <a className="menu-item" href="http://localhost:5000/api/chapter/">
-        Search
-      </a> */}
 
+      <Link to="/searchbar"> 
+        Search 
+      </Link> 
 
-      <div className="burger-bar"> 
+      {/* <div className="burger-bar"> 
         <a className="burger-search"> Search </a>
         <div className="burger-dropdown"> 
           <SearchBar />
           </div> 
-          </div>
+          </div> */}
     </Menu>
   );
 };
