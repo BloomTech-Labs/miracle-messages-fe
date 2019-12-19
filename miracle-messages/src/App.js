@@ -11,7 +11,7 @@ import LoginPage from "./Components/Login/UserLogin"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 import NewChapter from "./Components/Forms/NewChapter"
-
+import NewChapterForm from "./Components/Forms/NewChapterForm"
 
 class App extends Component {
   render() {
@@ -28,6 +28,8 @@ class App extends Component {
           <Route exact path="/user/login" component={LoginPage} />
 
           <Route exact path="/user/newchapter" component={NewChapter} />
+
+          <Route exact path="/user/newchapterform" component={NewChapterForm} />
 
           <Route
             exact
