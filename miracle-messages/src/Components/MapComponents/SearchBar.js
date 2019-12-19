@@ -57,8 +57,8 @@ const SearchBar = props => {
 
       {/* map here */}
        <aside>
-      <div>
-        <Scrollbars style={{height: "800px", width: "800px"}}> 
+      <div className="body">
+        <Scrollbars style={{height: "600px", width: "600px"}}> 
          {filterFunction.map(chapter => {
            return (
             <SearchBarCard
