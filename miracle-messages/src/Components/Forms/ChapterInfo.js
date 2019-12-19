@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 const ChapterInfo = () => {
   return (
     <div className="container">
+      <FormHeader />
       <div className="main">
         <div className="main-bold">
           <h2>Chapter Information</h2>
@@ -56,11 +57,14 @@ const ChapterInfo = () => {
           </p>
         </div>
         <div>
+
           <Link to="/user/newchapterform">
             <button className="submitb">I want to create a new chapter</button>
           </Link>
+
         </div>
       </div>
+      <FormFooter />
     </div>
   )
 }
