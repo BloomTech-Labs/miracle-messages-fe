@@ -5,19 +5,10 @@ import { connect } from "react-redux";
 import MapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-// Custom file imports
-
-// import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
-
-import CityPin from "./city_pin";
-import CityInfo from "./city_info";
-
 // Action imports
 import { getData } from "../../Actions/index";
-
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
-
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
@@ -29,17 +20,18 @@ import { Cancel } from "@material-ui/icons";
 import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
-
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
+// Custom file imports
+import CityPin from "./city_pin";
+import CityInfo from "./city_info";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
 import Sidebar from "./Sidebar";
-
-// search bar component  below
 import SearchBar from "../MapComponents/SearchBar.js";
-// search bar above
+
+////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
 require("dotenv").config();
 
@@ -59,8 +51,6 @@ class Map extends Component {
   componentDidMount() {
     this.props.getData();
   }
-
-  //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
 
   closeHandler = () => {
     this.props.updatePopupAction(null);
@@ -85,7 +75,6 @@ class Map extends Component {
             variant="persistent"
             className="open-drawer"
           >
-            {/* <Modal isOpen={this.state.modal} toggle={this.toggle}> */}
             <IconButton
               onClick={this.closeHandler}
               style={{
@@ -104,7 +93,6 @@ class Map extends Component {
             <Scrollbars style={{ width: 376 }} autoHide={true}>
               <CityInfo info={popupInfo} />
             </Scrollbars>
-            {/* </Modal> */}
           </Drawer>
         </div>
       )
@@ -122,8 +110,6 @@ class Map extends Component {
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
-
-        {/* {console.log(this.props)} */}
 
         <Navbar />
 
@@ -159,7 +145,6 @@ class Map extends Component {
                     gaEvent("click", "chapter pin", `${city.title}`);
                   }}
                 >
-                  {/* <PlaceTwoTone /> */}
                   <CityPin city={city} />
                 </Marker>
               );

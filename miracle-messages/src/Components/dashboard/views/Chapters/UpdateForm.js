@@ -23,7 +23,7 @@ class UpdateForm extends React.Component {
   };
 
   updateChapter = e => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const id = this.props.chapter.id;
     const fd = new FormData();

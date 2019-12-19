@@ -1,5 +1,5 @@
-import React from "react"
-import "./LoginForm.css"
+import React from "react";
+import "./LoginForm.css";
 import {
   Container,
   Col,
@@ -8,34 +8,33 @@ import {
   Label,
   Input,
   Button
-} from "reactstrap"
+} from "reactstrap";
 
-import { fetchLogin } from "../../Actions/AdminPageActions"
-import { connect } from "react-redux"
-import { loginReducer } from "../../Reducers/LoginReducer"
-// import logo from "../../Assets/Imgs/MM_Logo.png";
+import { fetchLogin } from "../../Actions/AdminPageActions";
+import { connect } from "react-redux";
+import { loginReducer } from "../../Reducers/LoginReducer";
 
 class LoginForm extends React.Component {
   state = {
     username: "",
     password: ""
-  }
+  };
 
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
     this.props.fetchLogin(this.state).then(() => {
-      this.props.history.push("./admin/chapters")
-    })
+      this.props.history.push("./admin/chapters");
+    });
 
     this.setState({
       username: "",
       password: ""
-    })
-  }
+    });
+  };
 
   handleOnChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
     return (
@@ -83,7 +82,7 @@ class LoginForm extends React.Component {
           <a href="https://miraclemessages.org/">Miracle Messages</a>.
         </footer>
       </Container>
-    )
+    );
   }
 }
 
@@ -91,6 +90,8 @@ const mapStateToProps = state => ({
   isLoggedIn: state.loginReducer.isLoggedIn,
   isLoggedOut: state.loginReducer.isLoggedOut,
   isFetching: state.loginReducer.isFetching
-})
+});
 
-export default connect(mapStateToProps, { fetchLogin, loginReducer })(LoginForm)
+export default connect(mapStateToProps, { fetchLogin, loginReducer })(
+  LoginForm
+);

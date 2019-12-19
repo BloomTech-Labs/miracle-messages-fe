@@ -44,8 +44,6 @@ class PendingCards extends Component {
         className="cardChapter"
         style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
       >
-        {/* {console.log(this.props.info)} */}
-
         <CardImg
           top
           width="100%"
@@ -71,7 +69,6 @@ class PendingCards extends Component {
           >
             Approve
           </Button>
-          {/* {console.log(this.props.info.approved)} */}
           <Modal
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}

@@ -3,7 +3,6 @@ import axios from "axios";
 
 import SponsorList from "./SponsorList.js";
 import SelectPartner from "./SelectPartners.js";
-// import "../../../../CSS/style.css";
 
 import { Card, CardImg, CardBody } from "reactstrap";
 

@@ -35,7 +35,6 @@ class PendingChapter extends React.Component {
     axios
       .delete(`http://localhost:5000/api/chapter/${id}`)
       .then(res => {
-        // console.log(res, this.props.getData());
         this.props.getData();
       })
       .catch(err => console.log(err));
@@ -49,7 +48,6 @@ class PendingChapter extends React.Component {
     return (
       <div className="chapter-felx">
         {this.props.chapter_data.map(chapter => {
-          //   console.log(chapter);
           if (!chapter || null) {
             return <div>No Chapters Pending</div>;
           } else if (chapter.approved === false) {

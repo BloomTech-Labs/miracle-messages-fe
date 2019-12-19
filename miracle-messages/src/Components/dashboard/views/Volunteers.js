@@ -27,7 +27,6 @@ class Volunteers extends React.Component {
     return (
       <div>
         {this.state.data.map((vol, key) => {
-          // console.log(vol)
           return <Volunteer vol={vol} key={key} />;
         })}
       </div>
