@@ -20,6 +20,9 @@ class Navbar extends React.Component {
             <div className="dropdown-content">
               <a href="http://localhost:3000/form">Register Volunteer</a>
               <a href="http://localhost:3000/user/login">Volunteer Login</a>
+              <a href="http://localhost:3000/user/newchapter">
+                Create a Chapter
+              </a>
               <a href="http://localhost:3000/admin/login">Admin Login</a>
               <a className="not-last-child">test</a>
             </div>

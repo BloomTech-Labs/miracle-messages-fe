@@ -50,7 +50,9 @@ class PendingChapter extends React.Component {
       <div className="chapter-felx">
         {this.props.chapter_data.map(chapter => {
           //   console.log(chapter);
-          if (chapter.approved === false) {
+          if (!chapter || null) {
+            return <div>No Chapters Pending</div>;
+          } else if (chapter.approved === false) {
             return (
               <PendingCards
                 info={chapter}
