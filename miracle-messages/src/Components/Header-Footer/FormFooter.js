@@ -4,10 +4,12 @@ import { FaFacebookF } from "react-icons/fa"
 import { GoMail } from "react-icons/go"
 import { FaYoutube } from "react-icons/fa"
 import { FaTwitter } from "react-icons/fa"
+import FooterLinks from "./FooterLinks"
 
 const FormFooter = () => {
   return (
     <div>
+      {/* Strip of social media icons */}
       <div className="footer-icons">
         <div className="icon-div">
           <a href="mailto:hello@miraclemessages.com">
@@ -57,7 +59,7 @@ const FormFooter = () => {
           </a>
         </div>
       </div>
-
+      {/* Middle section of footer -- dark black box. */}
       <div className="footer-wrapper">
         <div className="footer-phone-email">
           <span className="phone">1-800-MISS-YOU </span>
@@ -78,6 +80,10 @@ const FormFooter = () => {
         >
           <div>DONATE</div>
         </a>
+      </div>
+      {/* Bottom portion of the footer */}
+      <div className="footer-wrapper">
+        <FooterLinks />
       </div>
     </div>
   )

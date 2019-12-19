@@ -4,15 +4,6 @@ import FormFooter from "../Header-Footer/FormFooter"
 import FormHeader from "../Header-Footer/FormHeader"
 
 const ChapterInfo = () => {
-  // toggle = () => {
-  //   if (localStorage.getItem("token")) {
-  //     return this.setState(prevState => ({
-  //       modal: !prevState.modal
-  //     }))
-  //   } else {
-  //     return this.props.history.push("/user/login")
-  //   }
-  // }
   return (
     <div className="container">
       <div className="main">

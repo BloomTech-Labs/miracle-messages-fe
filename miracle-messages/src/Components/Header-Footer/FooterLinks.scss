@@ -1,0 +1,40 @@
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1f1f1f;
+  color: white;
+  font-size: 16px;
+  padding: 64px 32px;
+  .footer-phone-email {
+    letter-spacing: 2px;
+    .phone {
+      padding-right: 5px;
+    }
+    .email {
+      padding-left: 5px;
+    }
+  }
+  .footer {
+    font-size: 20px;
+    color: #797979;
+    line-height: normal;
+  }
+  a {
+    text-decoration: none;
+    div {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      background: #5dc683;
+      padding: 21px 34px;
+      text-align: center;
+      margin-bottom: 40px;
+      cursor: pointer;
+    }
+  }
+}

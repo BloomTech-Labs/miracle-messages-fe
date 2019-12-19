@@ -5,10 +5,10 @@ import "./VolunteerForm.scss"
 
 import { Button } from "reactstrap"
 
-import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
-import FormFooter from "../Header-Footer/FormFooter";
-import FormHeader from "../Header-Footer/FormHeader";
-import ChapterInfo from "./ChapterInfo";
+import ChapterForm from "../dashboard/views/Chapters/ChapterForm"
+import FormFooter from "../Header-Footer/FormFooter"
+import FormHeader from "../Header-Footer/FormHeader"
+import ChapterInfo from "./ChapterInfo"
 
 class NewChapter extends React.Component {
   constructor(props) {
@@ -112,24 +112,6 @@ class NewChapter extends React.Component {
             handleImg={this.handleImg}
             addChapter={this.addChapter}
           />
-          {/* <Button
-            style={{
-              height: "45px",
-              width: "300px",
-              backgroundColor: "#5cbe80",
-              fontFamily: "Open Sans",
-              fontSize: "24px",
-              color: "#ffffff",
-              letterSpacing: "0.9px",
-              textAlign: "center",
-              margin: "35px 0 100px 0",
-              paddingBottom: "30px"
-            }}
-            color="success"
-            onClick={this.addChapter}
-          >
-            Send Chapter Request
-          </Button> */}
         </div>
         <FormFooter />
       </div>
