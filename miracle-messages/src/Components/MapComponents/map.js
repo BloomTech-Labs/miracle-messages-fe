@@ -13,7 +13,7 @@ import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 
 // Action imports
-import { getData, getDefault } from "../../Actions/index";
+import { getData } from "../../Actions/index";
 
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
@@ -35,7 +35,6 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
-
 import Sidebar from "./Sidebar";
 
 // search bar component  below
@@ -56,33 +55,9 @@ ReactGA.initialize(process.env.REACT_APP_GA_ID);
 ReactGA.pageview("/map");
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false,
-      chapter: {
-        title: "",
-        established_date: "",
-        description: "",
-        chapter_img: null,
-        city: "",
-        state: "",
-        latitude: "",
-        longitude: "",
-        email: "",
-        numvolunteers: "",
-        msg_delivered: "",
-        msg_recorded: "",
-        numreunions: "",
-        story: "",
-        reunion_img: null
-      }
-    };
-  }
   //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
-    this.props.getDefault();
   }
 
   //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
@@ -92,22 +67,25 @@ class Map extends Component {
     this.props.slideToggleAction();
   };
 
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
+
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
   _renderSlide() {
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div
-          style={{
-            marginTop: "58px"
-          }}
-        >
+        <div>
           {/* clicking city pin opens the drawer below */}
           <Drawer
             open={this.props.openDrawer}
             variant="persistent"
-            className="slide"
+            className="open-drawer"
           >
+            {/* <Modal isOpen={this.state.modal} toggle={this.toggle}> */}
             <IconButton
               onClick={this.closeHandler}
               style={{
@@ -126,6 +104,7 @@ class Map extends Component {
             <Scrollbars style={{ width: 376 }} autoHide={true}>
               <CityInfo info={popupInfo} />
             </Scrollbars>
+            {/* </Modal> */}
           </Drawer>
         </div>
       )
@@ -143,6 +122,8 @@ class Map extends Component {
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
+
+        {/* {console.log(this.props)} */}
 
         <Navbar />
 
@@ -208,6 +189,5 @@ export default connect(mapStateToProps, {
   getData,
   updatePopupAction,
   slideToggleAction,
-  onViewportChanged,
-  getDefault
+  onViewportChanged
 })(Map);
