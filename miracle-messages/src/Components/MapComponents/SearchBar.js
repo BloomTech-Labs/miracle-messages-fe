@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBarCard from "./SearchBarCard.js";
-
+import SideBar from "./Sidebar.js"; 
 import "./SearchBar.scss";
+
+// Scrollbar import
+import { Scrollbars }  from "react-custom-scrollbars"; 
 
 const SearchBar = props => {
   const [search, setSearch] = useState("");
@@ -38,8 +41,9 @@ const SearchBar = props => {
 
   return (
     <>
+    <SideBar className="sidebar-search"/> 
+    <div> 
       <form className="search-form">
-        <a name="chapters"></a>
         <input
           type="text"
           // name="location"
@@ -48,12 +52,15 @@ const SearchBar = props => {
           onChange={handleChange}
           style={{ margin: "50px" }}
           className="input"
-        />
+          />
       </form>
+
       {/* map here */}
-      <div className="side-by-side">
-        {filterFunction.map(chapter => {
-          return (
+       <aside>
+      <div className="body">
+        <Scrollbars style={{height: "600px", width: "600px"}}> 
+         {filterFunction.map(chapter => {
+           return (
             <SearchBarCard
               key={chapter.id}
               chapter={chapter}
@@ -61,7 +68,10 @@ const SearchBar = props => {
             />
           );
         })}
-      </div>
+        </Scrollbars>
+        </div>
+        </aside>
+        </div>
     </>
   );
 };

@@ -11,6 +11,7 @@ import LoginPage from "./Components/Login/UserLogin"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 import NewChapter from "./Components/Forms/NewChapter"
+import SearchBar from "./Components/MapComponents/SearchBar.js"; 
 
 
 class App extends Component {
@@ -39,6 +40,12 @@ class App extends Component {
             exact
             path="/user/forgotpassword2"
             component={ConfirmPassword}
+          />
+
+          {/* Takes to searchbar component  */}
+          <Route 
+          path="/searchbar"
+          component={SearchBar}
           />
 
           <PrivateRoute path="/admin" component={Fulllayout} />

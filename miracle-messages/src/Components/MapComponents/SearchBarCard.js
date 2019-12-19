@@ -5,7 +5,8 @@ import { Card } from "reactstrap";
 const SearchBarCard = props => {
   // console.log(props)
   return (
-    <Card className="search-card">
+    <>
+    <div className="search-card">
       <div className="img-center">
         <img className="width" src={props.chapter.chapter_img_url} />
       </div>
@@ -18,7 +19,8 @@ const SearchBarCard = props => {
 
       <h3 className="center"> email: </h3>
       <p className="center"> {props.chapter.email} </p>
-    </Card>
+    </div>
+    </>
   );
 };
 

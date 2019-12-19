@@ -37,10 +37,6 @@ import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
 import Sidebar from "./Sidebar";
 
-// search bar component  below
-import SearchBar from "../MapComponents/SearchBar.js";
-// search bar above
-
 require("dotenv").config();
 
 const TOKEN =
@@ -166,7 +162,6 @@ class Map extends Component {
             }
           })}
         </MapGL>
-        <SearchBar />
         {this._renderSlide()}
       </div>
     );
