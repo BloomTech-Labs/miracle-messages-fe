@@ -13,6 +13,9 @@ import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPassword
 import NewChapter from "./Components/Forms/NewChapter"
 import SearchBar from "./Components/MapComponents/SearchBar.js"; 
 
+import NewChapterForm from "./Components/Forms/NewChapterForm"
+
+import ChapterInfo from "./Components/Forms/ChapterInfo"
 
 class App extends Component {
   render() {
@@ -30,6 +33,8 @@ class App extends Component {
 
           <Route exact path="/user/newchapter" component={NewChapter} />
 
+          <Route exact path="/user/newchapterform" component={NewChapterForm} />
+
           <Route
             exact
             path="/user/forgotpassword1"
@@ -41,6 +46,7 @@ class App extends Component {
             path="/user/forgotpassword2"
             component={ConfirmPassword}
           />
+          <Route exact path="/testing" component={ChapterInfo} />
 
           {/* Takes to searchbar component  */}
           <Route 

@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "../../Assets/Imgs/MM_Logo.png";
-import "./Navbar.scss";
+import React from "react"
+import logo from "../../Assets/Imgs/MM_Logo.png"
+import "./Navbar.scss"
 
 // search bar component  below
 import SearchBar from "../MapComponents/SearchBar.js";
@@ -31,7 +31,7 @@ class Navbar extends React.Component {
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
             <div className="dropdown-content">
-              <a href="http://localhost:3000/form">Register Volunteer</a>
+              <a href="http://localhost:3000/form">Volunteer Registration</a>
               <a href="http://localhost:3000/user/login">Volunteer Login</a>
               <a href="http://localhost:3000/user/newchapter">
                 Create a Chapter
@@ -47,8 +47,8 @@ class Navbar extends React.Component {
           
         </nav>
       </div>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default Navbar

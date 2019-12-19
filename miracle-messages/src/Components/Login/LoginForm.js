@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.fetchLogin(this.state).then(() => {
-      this.props.history.push("./admin/chapters")
+      this.props.history.push("/admin/chapters")
     })
 
     this.setState({

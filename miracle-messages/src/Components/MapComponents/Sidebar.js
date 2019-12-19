@@ -1,14 +1,12 @@
-import React from "react";
-import { slide as Menu } from "react-burger-menu";
-import "./Sidebar.scss";
+import React from "react"
+import { slide as Menu } from "react-burger-menu"
+import "./Sidebar.scss"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
-
 import SearchBar from "./SearchBar.js"
 
 export default props => {
@@ -26,6 +24,15 @@ export default props => {
       </a>
       <a className="menu-item" href="http://localhost:3000/form">
         GET INVOLVED
+      </a>
+      <a className="menu-item" href="http://localhost:3000/form">
+        REGISTER AS A VOLUNTEER
+      </a>
+      <a className="menu-item" href="http://localhost:3000/user/login">
+        VOLUNTEER LOGIN
+      </a>
+      <a className="menu-item" href="http://localhost:3000/admin/login">
+        ADMIN LOGIN
       </a>
       <a
         className="menu-item"
@@ -45,5 +52,5 @@ export default props => {
           </div> 
           </div> */}
     </Menu>
-  );
-};
+  )
+}
