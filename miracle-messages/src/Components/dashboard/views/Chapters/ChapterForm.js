@@ -250,7 +250,7 @@ class ChapterForm extends React.Component {
           <section className="input-wrapper">
             <div className="chapter-div">
               <div className="formBox">
-                <label>Title of Chapter</label>
+                <label>*Title of Chapter</label>
               </div>
 
               <div className="formBox">
@@ -264,7 +264,7 @@ class ChapterForm extends React.Component {
               </div>
 
               <div className="formBox">
-                <label>Contact Email</label>
+                <label>*Contact Email</label>
               </div>
               <div className="formBox">
                 <input
@@ -278,7 +278,7 @@ class ChapterForm extends React.Component {
               </div>
 
               <div className="formBox">
-                <label>Latitude</label>
+                <label>*Latitude</label>
               </div>
               <div className="formBox">
                 <input
@@ -292,7 +292,7 @@ class ChapterForm extends React.Component {
 
             <div className="chapter-div">
               <div className="formBox">
-                <label>City</label>
+                <label>*City</label>
               </div>
               <div className="formBox">
                 <input
@@ -304,7 +304,7 @@ class ChapterForm extends React.Component {
               </div>
 
               <div className="formBox">
-                <label>State</label>
+                <label>*State</label>
               </div>
               <div className="formBox">
                 <input
@@ -316,7 +316,7 @@ class ChapterForm extends React.Component {
               </div>
 
               <div className="formBox">
-                <label>Longitude</label>
+                <label>*Longitude</label>
               </div>
               <div className="formBox">
                 <input
@@ -347,9 +347,9 @@ class ChapterForm extends React.Component {
 
               <div className="formBox">
                 <label className="labelV2">
-                  Give us some details and information about this chapter and
+                  *Give us some details and information about this chapter and
                   what your goals might be by partnering and outreaching with
-                  Miracle Messages.
+                  Miracle Messages.*
                 </label>
               </div>
               <div className="formBox">

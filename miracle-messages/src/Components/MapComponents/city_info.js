@@ -124,7 +124,7 @@ class CityInfo extends PureComponent {
           <span className="email">{info.email}</span>
         </div>
 
-        <h5 className="emailHeader">JOIN OUR CHAPTERS FACEBOOK</h5>
+        <h5 className="emailHeader">JOIN OUR CHAPTERS FACEBOOK GROUP</h5>
         <div className="contact">
           <span>
             <img src={facebook} alt="gmail logo" className="gmailLogo" />
