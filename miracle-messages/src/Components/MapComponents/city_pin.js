@@ -1,9 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
-// import WebMercatorViewport from 'viewport-mercator-project';
-// import { LinearInterpolator } from 'react-map-gl';
-
 // Action imports
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
@@ -15,24 +12,10 @@ const pinStyle = {
 
 class CityPin extends PureComponent {
   render() {
-    // console.log(this.props.city)
-
     // Dom manipulation for hover effect
     const PinClickHandler = () => {
       this.props.updatePopupAction(this.props.city);
       this.props.slideToggleAction();
-
-      // const viewport = new WebMercatorViewport({ls
-      //   latitude: this.props.city.latitude,
-      //   longitude: this.props.city.longitude,
-      //   zoom: 10,
-      //   transitionInterpolator: new LinearInterpolator({
-      //     around: [this.props.city.latitude, this.props.city.longitude]
-      //   }),
-      //   transitionDuration: 1000
-      // })
-
-      // this.props.onViewportChanged(viewport)
     };
 
     const size = 29;

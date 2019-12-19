@@ -1,6 +1,14 @@
 import React from "react"
 import { slide as Menu } from "react-burger-menu"
 import "./Sidebar.scss"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import SearchBar from "./SearchBar.js"
+
 export default props => {
   return (
     // Pass on our props
@@ -32,6 +40,17 @@ export default props => {
       >
         DONATE
       </a>
+
+      <Link to="/searchbar"> 
+        Search 
+      </Link> 
+
+      {/* <div className="burger-bar"> 
+        <a className="burger-search"> Search </a>
+        <div className="burger-dropdown"> 
+          <SearchBar />
+          </div> 
+          </div> */}
     </Menu>
   )
 }

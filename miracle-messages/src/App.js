@@ -11,6 +11,7 @@ import LoginPage from "./Components/Login/UserLogin"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 import NewChapter from "./Components/Forms/NewChapter"
+import SearchBar from "./Components/MapComponents/SearchBar.js"; 
 
 import NewChapterForm from "./Components/Forms/NewChapterForm"
 
@@ -46,6 +47,12 @@ class App extends Component {
             component={ConfirmPassword}
           />
           <Route exact path="/testing" component={ChapterInfo} />
+
+          {/* Takes to searchbar component  */}
+          <Route 
+          path="/searchbar"
+          component={SearchBar}
+          />
 
           <PrivateRoute path="/admin" component={Fulllayout} />
 
