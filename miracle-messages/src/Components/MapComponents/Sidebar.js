@@ -27,9 +27,14 @@ export default props => {
         DONATE
       </a>
       
-      <div className="search-bar"> 
-        <a className="drop-search"> Search </a>
-        <div className="dropdown-search"> 
+      {/* <a className="menu-item" href="http://localhost:5000/api/chapter/">
+        Search
+      </a> */}
+
+
+      <div className="burger-bar"> 
+        <a className="burger-search"> Search </a>
+        <div className="burger-dropdown"> 
           <SearchBar />
           </div> 
           </div>

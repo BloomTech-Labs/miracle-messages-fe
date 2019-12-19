@@ -39,24 +39,6 @@ const SearchBar = props => {
     chapter.city.toLowerCase().includes(search.toLowerCase())
   );
 
-  // For scroll bar
-    // const style = ({style, ...props}) => {
-    //   const thumbStyle = {
-    //     borderRadius: 6,
-    //     width: 376
-    //   }
-    //   return <div style={{ ...style, ...thumbStyle}} {...props} />
-    // }
-
-    // const Scroll = props => (
-    //   <Scrollbars 
-    //   renderThumbHorizontal={style}
-    //   renderThumbVertical={style}
-    //   {...props}
-    //   />
-    // )
-  // For scroll bar
-
   return (
     <>
     <div> 

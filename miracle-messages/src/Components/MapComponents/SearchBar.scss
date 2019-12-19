@@ -49,3 +49,64 @@
   // background: white;
   margin-right: 300px;
 }
+
+
+
+// For Responsive
+
+@media screen and (max-width: 1101px) {
+
+  search-form {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    background: white;
+  
+    .input {
+      border-radius: 30px;
+      text-align: center;
+    }
+  }
+  .search-card {
+    width: 50%;
+    height: auto;
+    margin-left: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    display: flex;
+    // align-items: center;
+    margin-right: 500px; 
+    margin-left: 200px; 
+    background: blue;
+  
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .width {
+      width: 450px;
+      height: auto;
+    }
+  
+    .img-center {
+      display: none; 
+      // display: flex;
+      // align-content: center;
+      // align-items: center;
+      // justify-content: center;
+    }
+  }
+  .side-by-side {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // background: white;
+    margin-right: 300px;
+  }
+}

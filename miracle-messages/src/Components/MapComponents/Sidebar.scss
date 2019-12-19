@@ -87,13 +87,6 @@ body {
   background: rgba(0, 0, 0, 0.3);
 }
 
-nav {
-  width: 70vw;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-
   a {
     font-weight: 600;
     font-style: normal;
@@ -142,12 +135,13 @@ nav {
 
 
    // Styling for Search Drop Down! :) 
-   .search-bar {
+   .burger-bar {
     position: relative;
     display: inline-block;
+    background: green; 
 
-    .drop-search,
-    .drop-search:hover {
+    .burger-search,
+    .burger-search:hover {
       font-weight: 600;
       font-style: normal;
       font-size: 18px;
@@ -156,21 +150,23 @@ nav {
       text-decoration: none;
       line-height: 1em;
       color: rgba(255, 255, 255, 0.9);
-      font-family: ProximaNova;
+      font-family: ProximaNova; 
     }
   }
-  .dropdown-search {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    z-index: 99;
-    min-width: 260px;
+  .burger-dropdown {
+    // display: none;
+    // position: absolute;
+    // background-color: #ffffff;
+    // z-index: 99;
+    // min-width: 260px;
 
     .not-last-child {
       display: none;
     }
   }
-  .search-bar:hover .dropdown-search {
+  .burger-search:hover .burger-bar {
     display: block;
   }
-}
+
+
+
