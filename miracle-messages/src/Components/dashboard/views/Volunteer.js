@@ -12,7 +12,6 @@ class Volunteer extends Component {
   render() {
     return (
       <Card style={{ maxWidth: "60%", minWidth: "650px" }}>
-        {/* {console.log(this.props.vol)} */}
         <CardBody>
           <CardTitle className="mb-0">
             <i className="mdi mdi-comment-processing-outline mr-2"> </i>
