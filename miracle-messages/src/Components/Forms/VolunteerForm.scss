@@ -120,19 +120,158 @@
       font-size: 40px;
       letter-spacing: 1px;
       line-height: 1.2em;
-      margin-top: 100px;
+      margin-top: 2.5rem;
     }
-    form {
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // form {
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   margin-top: 30px;
+
+    //   .input-wrapper {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     margin: 0 0 24px;
+
+    //     .formBox {
+    //       display: flex;
+    //       flex-direction: column;
+    //       width: 100%;
+
+    //       label {
+    //         color: rgba(26, 26, 26, 0.7);
+    //         font-family: ProximaNova;
+    //         font-size: 18px;
+    //         font-weight: 600;
+    //         letter-spacing: 1.24px;
+    //         line-height: 22px;
+    //         text-align: left;
+    //         margin: 10px auto;
+    //       }
+    //       .input {
+    //         height: 45px;
+    //         width: 777px;
+    //         border: 1px solid #b4b4b4;
+    //         border-radius: 2px;
+    //       }
+    //       .image-input {
+    //         align-self: center;
+    //       }
+    //       .textarea {
+    //         height: 445px;
+    //         width: 777px;
+    //         border: 1px solid #b4b4b4;
+    //         border-radius: 2px;
+    //       }
+    //       .textarea::placeholder {
+    //         font-size: 1.4rem;
+    //         color: dodgerblue;
+    //         text-align: center;
+    //         padding-top: 180px;
+    //       }
+    //     }
+    //     #stateId {
+    //       width: 100%;
+    //       display: flex;
+    //       justify-content: flex-start;
+    //     }
+    //   }
+
+    //   .interested {
+    //     // border: 1px solid red;
+    //     display: flex;
+    //     flex-direction: column;
+    //     width: 780px;
+    //     margin: 0 auto;
+    //     justify-content: center;
+
+    //     label {
+    //       height: 22px;
+    //       width: 220px;
+    //       color: rgba(26, 26, 26, 0.7);
+    //       font-family: ProximaNova;
+    //       font-size: 22px;
+    //       font-weight: 600;
+    //       letter-spacing: 1.24px;
+    //       line-height: 22px;
+    //       text-align: left;
+    //       // border: 1px solid purple;
+    //     }
+
+    //     .interest-wrapper {
+    //       display: flex;
+    //       // border: 1px solid blue;
+    //       .chbox {
+    //         height: 13px;
+    //         width: 13px;
+    //         vertical-align: center;
+    //         margin-right: 5px;
+    //         // border: 1px solid red;
+    //       }
+    //       .interest-labels {
+    //         width: 200px;
+    //         // border: 1px solid purple;
+    //         text-align: left;
+    //         padding-top: 3px;
+    //         font-size: 13px;
+    //         line-height: normal;
+    //         font-family: "proxima-nova";
+    //         letter-spacing: 0px;
+    //         font-weight: 400;
+    //         color: rgba(26, 26, 26, 0.7);
+    //       }
+    //     }
+    //   }
+    //   .comment {
+    //     height: 230px;
+    //     width: 777px;
+    //     border: 1px solid #b4b4b4;
+    //     border-radius: 2px;
+    //   }
+
+    //   .submitb {
+    //     height: 45px;
+    //     width: 194px;
+    //     background-color: #5cbe80;
+    //     font-family: "Open Sans";
+    //     font-size: 24px;
+    //     color: #ffffff;
+    //     letter-spacing: 0.9px;
+    //     text-align: center;
+    //     margin: 35px 0 100px 0;
+    //     padding-bottom: 30px;
+    //   }
+    // }
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    .chapter-form {
       display: flex;
       flex-direction: column;
+      background-color: rgba(240, 240, 240, 0.822);
       align-items: center;
-      margin-top: 30px;
+      margin: 1rem auto;
+      width: 45rem;
+      height: 43rem;
+
+      h6 {
+        margin-top: 1rem;
+      }
 
       .input-wrapper {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
         align-items: center;
-        margin: 0 0 24px;
+
+        .chapter-div {
+          margin: 0.5rem;
+        }
+
+        .chapter-div-bottom {
+          margin-top: 1rem;
+        }
 
         .formBox {
           display: flex;
@@ -147,11 +286,20 @@
             letter-spacing: 1.24px;
             line-height: 22px;
             text-align: left;
-            margin: 10px auto;
+          }
+          .labelV2 {
+            color: rgba(26, 26, 26, 0.7);
+            font-family: ProximaNova;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1.24px;
+            line-height: 22px;
+            text-align: left;
+            margin-top: 1rem;
           }
           .input {
-            height: 45px;
-            width: 777px;
+            height: 2rem;
+            width: 15rem;
             border: 1px solid #b4b4b4;
             border-radius: 2px;
           }
@@ -159,16 +307,16 @@
             align-self: center;
           }
           .textarea {
-            height: 445px;
-            width: 777px;
+            height: 10rem;
+            width: 95%;
             border: 1px solid #b4b4b4;
             border-radius: 2px;
+            margin: 0rem auto;
           }
           .textarea::placeholder {
             font-size: 1.4rem;
             color: dodgerblue;
             text-align: center;
-            padding-top: 180px;
           }
         }
         #stateId {
@@ -243,5 +391,6 @@
         padding-bottom: 30px;
       }
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////
   }
 }

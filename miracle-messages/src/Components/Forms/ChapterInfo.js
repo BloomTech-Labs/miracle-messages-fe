@@ -1,7 +1,7 @@
-import React from "react"
-import "./ChapterInfo.scss"
-import FormFooter from "../Header-Footer/FormFooter"
-import FormHeader from "../Header-Footer/FormHeader"
+import React from "react";
+import "./ChapterInfo.scss";
+import FormFooter from "../Header-Footer/FormFooter";
+import FormHeader from "../Header-Footer/FormHeader";
 
 const ChapterInfo = () => {
   // toggle = () => {
@@ -65,12 +65,12 @@ const ChapterInfo = () => {
             quaerat veritatis, dolorum asperiores reprehenderit?
           </p>
         </div>
-        <div>
+        {/* <div>
           <button className="submitb">I want to create a new chapter</button>
-        </div>
+        </div> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChapterInfo
+export default ChapterInfo;

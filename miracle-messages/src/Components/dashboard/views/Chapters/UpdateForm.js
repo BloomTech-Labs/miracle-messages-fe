@@ -34,6 +34,7 @@ class UpdateForm extends React.Component {
       fd.append("reunion_img", this.state.newReunionImg);
     }
     fd.append("title", this.state.chapter.title);
+    fd.append("established_date", this.state.chapter.established_date);
     fd.append("description", this.state.chapter.description);
     fd.append("city", this.state.chapter.city);
     fd.append("state", this.state.chapter.state);
@@ -113,6 +114,14 @@ class UpdateForm extends React.Component {
         <Label>Chapter Image</Label>
         <Input onChange={this.handleImg} name="newChapterImg" type="file" />
         <br />
+        <Label>Established Date</Label>
+        <Input
+          value={this.state.chapter.established_date}
+          onChange={this.changeHandler}
+          name="established_date"
+          type="date"
+          placeholder={Date.now()}
+        />
         <Label>City </Label>
         <Input
           value={this.state.chapter.city}
