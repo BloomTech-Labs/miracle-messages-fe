@@ -3,7 +3,6 @@ import axios from "axios";
 
 import SponsorList from "./SponsorList.js";
 import SelectPartner from "./SelectPartners.js";
-// import "../../../../CSS/style.css";
 
 import { Card, CardImg, CardBody } from "reactstrap";
 
@@ -122,7 +121,7 @@ class ChapterCard extends React.Component {
     }
     return (
       <div className="chapter-flex">
-        {/* {console.log(this.state.chapter)} */}
+        {console.log(this.state.chapter)}
         <Card
           className="s-chapter"
           style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "300px" }}
@@ -149,6 +148,8 @@ class ChapterCard extends React.Component {
             <p> {this.state.chapter.msg_recorded} </p>
             <h4>Reunions: </h4>
             <p> {this.state.chapter.numreunions} </p>
+            <h4>Chapter Facebook Link: </h4>
+            <p> {this.state.chapter.facebook} </p>
             <h4>Featured Story</h4>
             <p>{this.state.chapter.story}</p>
             <CardImg src={this.state.chapter.reunion_img_url} />

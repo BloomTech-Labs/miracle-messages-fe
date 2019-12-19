@@ -42,38 +42,11 @@ class Sponsor extends Component {
       .catch(err => console.log(err));
   };
 
-  //  updateSponsor = e => {
-  //         console.log("this.state",this.state);
-  //         e.preventDefault();
-  //         const id = this.props.sponsor.id;
-  //         const fd = new FormData();
-  //         if (this.state.newIcon != null)  {
-  //             fd.append("partner_icon", this.state.newIcon)
-  //         }
-  //         fd.append("name", this.state.sponsor.name);
-  //         fd.append("site_url", this.state.sponsor.site_url);
-  //         fd.append("category", this.state.sponsor.category);
-  // console.log(fd.getAll("partner_icon"));
-  //         axios
-  //           .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, fd)
-  //           .then(res => {console.log(res);
-  //               this.props.toggleEdit();
-  //               this.props.getSponsor();
-  //           })
-  //           .catch(err => console.log(err));
-  //     };
-
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   };
-
-  // toggleDrop = () => {
-  //   this.setState(prevState => ({
-  //     dropdownOpen: !prevState.dropDown
-  //   }));
-  // };
 
   toggleEdit = () => {
     this.setState(prevState => ({

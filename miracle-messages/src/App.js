@@ -1,21 +1,32 @@
-import React, { Component } from "react"
-import Map from "./Components/MapComponents/map"
-import "./CSS/App.css"
-import { Route, Switch, Redirect } from "react-router-dom"
-import Fulllayout from "./Components/dashboard/layouts/fulllayout"
-import VolunteerForm from "./Components/Forms/VolunteerForm"
-import LoginForm from "./Components/Login/LoginForm.js"
-import { PrivateRoute } from "./Components/PrivateRoute"
-import "./CSS/style.css"
-import LoginPage from "./Components/Login/UserLogin"
-import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
-import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
-import NewChapter from "./Components/Forms/NewChapter"
+
+import React, { Component } from "react";
+
+//Router
+import { Route, Switch, Redirect } from "react-router-dom";
+
+//Styles
+import "./CSS/App.css";
+import "./CSS/style.css";
+
+//Imported Components
+import Map from "./Components/MapComponents/map";
+import Fulllayout from "./Components/dashboard/layouts/fulllayout";
+import VolunteerForm from "./Components/Forms/VolunteerForm";
+import LoginForm from "./Components/Login/LoginForm.js";
+import LoginPage from "./Components/Login/UserLogin";
+import NewChapter from "./Components/Forms/NewChapter";
+import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm";
+import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword";
+
+//Custom Imports
+import { PrivateRoute } from "./Components/PrivateRoute";
+
 import SearchBar from "./Components/MapComponents/SearchBar.js"; 
 
 import NewChapterForm from "./Components/Forms/NewChapterForm"
 
 import ChapterInfo from "./Components/Forms/ChapterInfo"
+
 
 class App extends Component {
   render() {
@@ -59,8 +70,8 @@ class App extends Component {
           <Redirect from="*" to="/" />
         </Switch>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

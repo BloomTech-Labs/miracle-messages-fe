@@ -6,7 +6,7 @@ import { slideToggleAction } from "../../Actions/SlideToggleAction";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 
 // Icon imports
-// import facebook from "../../icons/facebook.png";
+import facebook from "../../Assets/icons/facebook.png";
 // import google from "../../icons/google.png";
 import gmail from "../../Assets/icons/gmail.png";
 
@@ -122,6 +122,14 @@ class CityInfo extends PureComponent {
             <img src={gmail} alt="gmail logo" className="gmailLogo" />
           </span>
           <span className="email">{info.email}</span>
+        </div>
+
+        <h5 className="emailHeader">JOIN OUR CHAPTERS FACEBOOK GROUP</h5>
+        <div className="contact">
+          <span>
+            <img src={facebook} alt="gmail logo" className="gmailLogo" />
+          </span>
+          <a href={info.facebook}>{info.facebook}</a>
         </div>
 
         {/* Contains the Sponsor Images */}
