@@ -29,10 +29,8 @@ import CityInfo from "./city_info";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
 import Sidebar from "./Sidebar";
-import SearchBar from "../MapComponents/SearchBar.js";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
-
 
 require("dotenv").config();
 

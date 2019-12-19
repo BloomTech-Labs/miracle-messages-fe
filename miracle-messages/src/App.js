@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 
 //Router
@@ -20,13 +19,8 @@ import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword";
 
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute";
-
-import SearchBar from "./Components/MapComponents/SearchBar.js"; 
-
-import NewChapterForm from "./Components/Forms/NewChapterForm"
-
-import ChapterInfo from "./Components/Forms/ChapterInfo"
-
+import SearchBar from "./Components/MapComponents/SearchBar.js";
+import ChapterInfo from "./Components/Forms/ChapterInfo";
 
 class App extends Component {
   render() {
@@ -44,8 +38,6 @@ class App extends Component {
 
           <Route exact path="/user/newchapter" component={NewChapter} />
 
-          <Route exact path="/user/newchapterform" component={NewChapterForm} />
-
           <Route
             exact
             path="/user/forgotpassword1"
@@ -60,10 +52,7 @@ class App extends Component {
           <Route exact path="/testing" component={ChapterInfo} />
 
           {/* Takes to searchbar component  */}
-          <Route 
-          path="/searchbar"
-          component={SearchBar}
-          />
+          <Route path="/searchbar" component={SearchBar} />
 
           <PrivateRoute path="/admin" component={Fulllayout} />
 

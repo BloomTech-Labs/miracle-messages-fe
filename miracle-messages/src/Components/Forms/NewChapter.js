@@ -1,13 +1,10 @@
-
-import React from "react"
-import axios from "axios"
-import "./VolunteerForm.scss"
-import FormFooter from "../Header-Footer/FormFooter"
-import FormHeader from "../Header-Footer/FormHeader"
-import ChapterInfo from "./ChapterInfo"
-import ChapterForm from "../dashboard/views/Chapters/ChapterForm"
-import { Button } from "reactstrap";
-
+import React from "react";
+import axios from "axios";
+import "./NewChapter.scss";
+import FormFooter from "../Header-Footer/FormFooter";
+import FormHeader from "../Header-Footer/FormHeader";
+import ChapterInfo from "./ChapterInfo";
+import ChapterForm from "../dashboard/views/Chapters/ChapterForm";
 
 class NewChapter extends React.Component {
   constructor(props) {
@@ -82,7 +79,6 @@ class NewChapter extends React.Component {
     return (
       <div className="container">
         <FormHeader />
-        {/* <ChapterInfo /> */}
         <div>
           <ChapterInfo />
 
@@ -92,7 +88,6 @@ class NewChapter extends React.Component {
             handleImg={this.handleImg}
             addChapter={this.addChapter}
           />
-
         </div>
         <FormFooter />
       </div>

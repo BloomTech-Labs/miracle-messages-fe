@@ -87,7 +87,58 @@ body {
   background: rgba(0, 0, 0, 0.3);
 }
 
-  a {
+.menu-item {
+  font-weight: 600;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1em;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: ProximaNova;
+  display: block;
+  @media only screen and (max-width: 500px) {
+    width: 50vw;
+    margin: 0 8vw;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    text-align: left;
+  }
+  &:hover {
+    color: white;
+  }
+  &:last-child {
+    background-color: #fff;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #000;
+    -webkit-transition: background-color 0.1s 0s ease-in-out,
+      color 0.1s 0s ease-in-out;
+    -moz-transition: background-color 0.1s 0s ease-in-out,
+      color 0.1s 0s ease-in-out;
+    -ms-transition: background-color 0.1s 0s ease-in-out,
+      color 0.1s 0s ease-in-out;
+    -o-transition: background-color 0.1s 0s ease-in-out,
+      color 0.1s 0s ease-in-out;
+    transition: background-color 0.1s 0s ease-in-out, color 0.1s 0s ease-in-out;
+    padding: 15px 30px;
+
+    &:hover {
+      background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
+    }
+  }
+}
+
+// Styling for Search Drop Down! :)
+.burger-bar {
+  position: relative;
+  display: inline-block;
+  background: blue;
+
+  .burger-search,
+  .burger-search:hover {
     font-weight: 600;
     font-style: normal;
     font-size: 18px;
@@ -97,76 +148,19 @@ body {
     line-height: 1em;
     color: rgba(255, 255, 255, 0.9);
     font-family: ProximaNova;
-    display: block;
-    @media only screen and (max-width: 500px) {
-      width: 50vw;
-      margin: 0 8vw;
-      display: flex;
-      flex-direction: column;
-      align-self: flex-start;
-      text-align: left;
-    }
-    &:hover {
-      color: white;
-    }
-    &:last-child {
-      background-color: #fff;
-      -moz-osx-font-smoothing: auto;
-      -webkit-font-smoothing: subpixel-antialiased;
-      color: #000;
-      -webkit-transition: background-color 0.1s 0s ease-in-out,
-        color 0.1s 0s ease-in-out;
-      -moz-transition: background-color 0.1s 0s ease-in-out,
-        color 0.1s 0s ease-in-out;
-      -ms-transition: background-color 0.1s 0s ease-in-out,
-        color 0.1s 0s ease-in-out;
-      -o-transition: background-color 0.1s 0s ease-in-out,
-        color 0.1s 0s ease-in-out;
-      transition: background-color 0.1s 0s ease-in-out,
-        color 0.1s 0s ease-in-out;
-      padding: 15px 30px;
-
-      &:hover {
-        background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
-      }
-    }
   }
+}
+.burger-dropdown {
+  // display: none;
+  // position: absolute;
+  // background-color: #ffffff;
+  // z-index: 99;
+  // min-width: 260px;
 
-
-
-   // Styling for Search Drop Down! :) 
-   .burger-bar {
-    position: relative;
-    display: inline-block;
-    background: blue; 
-
-    .burger-search,
-    .burger-search:hover {
-      font-weight: 600;
-      font-style: normal;
-      font-size: 18px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      line-height: 1em;
-      color: rgba(255, 255, 255, 0.9);
-      font-family: ProximaNova; 
-    }
+  .not-last-child {
+    display: none;
   }
-  .burger-dropdown {
-    // display: none;
-    // position: absolute;
-    // background-color: #ffffff;
-    // z-index: 99;
-    // min-width: 260px;
-
-    .not-last-child {
-      display: none;
-    }
-  }
-  .burger-search:hover .burger-bar {
-    display: block;
-  }
-
-
-
+}
+.burger-search:hover .burger-bar {
+  display: block;
+}

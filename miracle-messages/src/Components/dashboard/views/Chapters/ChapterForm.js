@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "reactstrap";
-import "../../../Forms/VolunteerForm.scss";
+import "../../../Forms/NewChapter.scss";
 
 class ChapterForm extends React.Component {
   render() {
@@ -24,11 +24,11 @@ class ChapterForm extends React.Component {
           {/* PLEASE DELETE THIS DIV AFTER SYNCING STATE/CITY TO AUTO FILL AND REPLACE LAT/LONG FOR THE FORM */}
           <section className="input-wrapper">
             <div className="chapter-div">
-              <div className="formBox">
-                <label>*Title of Chapter</label>
+              <div className="chapter-formBox">
+                <label className="label">*Title of Chapter</label>
               </div>
 
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="input"
                   value={this.props.chapter.title}
@@ -38,10 +38,10 @@ class ChapterForm extends React.Component {
                 />
               </div>
 
-              <div className="formBox">
-                <label>*Contact Email</label>
+              <div className="chapter-formBox">
+                <label className="label">*Contact Email</label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="input"
                   value={this.props.chapter.email}
@@ -52,10 +52,10 @@ class ChapterForm extends React.Component {
                 />
               </div>
 
-              <div className="formBox">
-                <label>*Latitude</label>
+              <div className="chapter-formBox">
+                <label className="label">*Latitude</label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="input"
                   value={this.props.chapter.latitude}
@@ -66,10 +66,10 @@ class ChapterForm extends React.Component {
             </div>
 
             <div className="chapter-div">
-              <div className="formBox">
-                <label>*City</label>
+              <div className="chapter-formBox">
+                <label className="label">*City</label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="input"
                   value={this.props.chapter.city}
@@ -78,10 +78,10 @@ class ChapterForm extends React.Component {
                 />
               </div>
 
-              <div className="formBox">
-                <label>*State</label>
+              <div className="chapter-formBox">
+                <label className="label">*State</label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="input"
                   value={this.props.chapter.state}
@@ -90,10 +90,10 @@ class ChapterForm extends React.Component {
                 />
               </div>
 
-              <div className="formBox">
-                <label>*Longitude</label>
+              <div className="chapter-formBox">
+                <label className="label">*Longitude</label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="input"
                   value={this.props.chapter.longitude}
@@ -104,14 +104,14 @@ class ChapterForm extends React.Component {
             </div>
 
             <div className="chapter-div chapter-div-bottom">
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <label className="labelV2">
                   *Please upload an image of you helping out someone in your
                   area along with this Chapter Request.* (May be used as the
                   main page image for this requested chapter.)
                 </label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <input
                   className="image-input"
                   onChange={this.props.handleImg}
@@ -120,14 +120,14 @@ class ChapterForm extends React.Component {
                 />
               </div>
 
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <label className="labelV2">
                   *Give us some details and information about this chapter and
                   what your goals might be by partnering and outreaching with
                   Miracle Messages.*
                 </label>
               </div>
-              <div className="formBox">
+              <div className="chapter-formBox">
                 <textarea
                   className="textarea"
                   value={this.props.chapter.description}
@@ -150,7 +150,7 @@ class ChapterForm extends React.Component {
               color: "#ffffff",
               letterSpacing: "0.9px",
               textAlign: "center",
-              margin: "1rem auto",
+              margin: "0rem auto",
               paddingBottom: "30px"
             }}
             color="success"

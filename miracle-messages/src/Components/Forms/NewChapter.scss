@@ -1,0 +1,196 @@
+//////////////////////////////////////////////////////New Chapter section
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: match-parent;
+  text-align: center;
+
+  header {
+    position: relative;
+    height: 407px;
+
+    h1 {
+      color: white;
+      position: absolute;
+      top: 300px;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .navbar {
+      width: 100%;
+      position: absolute;
+      z-index: 99;
+
+      img {
+        height: auto;
+        max-width: 100%;
+        width: 196px;
+        margin: 8px;
+      }
+
+      .tabsnavbar {
+        width: 80%;
+        align-items: center;
+        nav {
+          width: match-parent;
+          display: flex;
+          align-items: right;
+          text-align: center;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    .overlay {
+      z-index: 99;
+      .backImg {
+        background-color: black;
+        background: url("../../Assets/Imgs/header.png") no-repeat center;
+        height: 407px;
+        background-size: cover;
+        background-position-y: -169px;
+        z-index: -15;
+
+        .filter {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+
+  .main {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+
+    .main-bold {
+      h2 {
+        font-weight: 900;
+      }
+    }
+
+    h2 {
+      margin: 0 auto;
+      color: #303030;
+      font-family: ProximaNova;
+      font-size: 40px;
+      letter-spacing: 1px;
+      line-height: 1.2em;
+      margin-top: 2.5rem;
+    }
+
+    .chapter-form {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(240, 240, 240, 0.822);
+      align-items: center;
+      margin: 1rem auto;
+      width: 45rem;
+      height: 43rem;
+
+      h6 {
+        margin-top: 1rem;
+      }
+
+      .input-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .chapter-div {
+          margin: 0.5rem;
+        }
+
+        .chapter-div-bottom {
+          margin-top: 1rem;
+        }
+
+        .chapter-formBox {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          .label {
+            color: rgba(26, 26, 26, 0.7);
+            font-family: ProximaNova;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1.24px;
+            line-height: 22px;
+            text-align: left;
+          }
+          .labelV2 {
+            color: rgba(26, 26, 26, 0.7);
+            font-family: ProximaNova;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1.24px;
+            line-height: 22px;
+            text-align: left;
+            margin-top: 1rem;
+          }
+          .input {
+            height: 2rem;
+            width: 15rem;
+            border: 1px solid #b4b4b4;
+            border-radius: 2px;
+          }
+          .image-input {
+            align-self: center;
+          }
+          .textarea {
+            height: 10rem;
+            width: 95%;
+            border: 1px solid #b4b4b4;
+            border-radius: 2px;
+            margin: 0rem auto;
+          }
+          .textarea::placeholder {
+            font-size: 1.4rem;
+            color: dodgerblue;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////ChapterInfo section
+.title {
+  color: #303030;
+  text-align: left;
+}
+
+.paragraph {
+  color: #3e5569;
+  text-align: left;
+
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 18px;
+  font-size: 16px;
+  letter-spacing: 1.24px;
+}
+
+.submitb {
+  height: 45px;
+  background-color: #5cbe80;
+  font-family: "Open Sans";
+  font-size: 24px;
+  color: #ffffff;
+  letter-spacing: 0.9px;
+  text-align: center;
+  margin: 35px 0 100px 0;
+  padding-bottom: 30px;
+}
