@@ -38,6 +38,11 @@ class UpdateForm extends React.Component {
     fd.append("city", this.state.chapter.city);
     fd.append("state", this.state.chapter.state);
     fd.append("email", this.state.chapter.email);
+    fd.append("numvolunteers", this.state.chapter.numvolunteers);
+    fd.append("msg_delivered", this.state.chapter.msg_delivered);
+    fd.append("msg_recorded", this.state.chapter.msg_recorded);
+    fd.append("numreunions", this.state.chapter.numreunions);
+    fd.append("facebook", this.state.chapter.facebook);
     fd.append("story", this.state.chapter.story);
 
     axios
@@ -89,6 +94,7 @@ class UpdateForm extends React.Component {
           placeholder="Description"
           rows="5"
         />
+        <br />
         <Card>
           <CardImg src={this.state.current_chapter_imgUrl} />
           <CardImgOverlay>
@@ -130,6 +136,48 @@ class UpdateForm extends React.Component {
           type="email"
           placeholder="Email"
         />
+        <br />
+        <Label>Number of Volunteers</Label>
+        <Input
+          value={this.state.chapter.numvolunteers}
+          onChange={this.changeHandler}
+          name="numvolunteers"
+          type="number"
+        />
+        <br />
+        <Label>Messages Delivered</Label>
+        <Input
+          value={this.state.chapter.msg_delivered}
+          onChange={this.changeHandler}
+          name="msg_delivered"
+          type="number"
+        />
+        <br />
+        <Label>Messages Recorded</Label>
+        <Input
+          value={this.state.chapter.msg_recorded}
+          onChange={this.changeHandler}
+          name="msg_recorded"
+          type="number"
+        />
+        <br />
+        <Label>Mumber of Reunions</Label>
+        <Input
+          value={this.state.chapter.numreunions}
+          onChange={this.changeHandler}
+          name="numreunions"
+          type="number"
+        />
+        <br />
+        <Label>Chapter Facebook Page</Label>
+        <Input
+          value={this.state.chapter.facebook}
+          onChange={this.changeHandler}
+          name="facebook"
+          type="link"
+          placeholder="facebook link here"
+        />
+        <br />
         <Card>
           <CardImg src={this.state.current_reunion_imgUrl} />
           <CardImgOverlay>
@@ -156,6 +204,7 @@ class UpdateForm extends React.Component {
           placeholder="Story"
           rows="5"
         />
+        <br />
         <Button color="info" onClick={this.updateChapter}>
           Update
         </Button>

@@ -112,24 +112,6 @@ class NewChapter extends React.Component {
             handleImg={this.handleImg}
             addChapter={this.addChapter}
           />
-          {/* <Button
-            style={{
-              height: "45px",
-              width: "300px",
-              backgroundColor: "#5cbe80",
-              fontFamily: "Open Sans",
-              fontSize: "24px",
-              color: "#ffffff",
-              letterSpacing: "0.9px",
-              textAlign: "center",
-              margin: "35px 0 100px 0",
-              paddingBottom: "30px"
-            }}
-            color="success"
-            onClick={this.addChapter}
-          >
-            Send Chapter Request
-          </Button> */}
         </div>
         <FormFooter />
       </div>
