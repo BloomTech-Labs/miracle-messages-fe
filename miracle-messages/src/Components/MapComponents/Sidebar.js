@@ -1,12 +1,7 @@
 import React from "react"
 import { slide as Menu } from "react-burger-menu"
 import "./Sidebar.scss"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import SearchBar from "./SearchBar.js"
 
 export default props => {
@@ -22,16 +17,22 @@ export default props => {
       <a className="menu-item" href="https://miraclemessages.org/partner">
         REUNION SERVICE
       </a>
-      <a className="menu-item" href="http://localhost:3000/form">
+      <a className="menu-item" href="https://miracle-message.netlify.com/form">
         GET INVOLVED
       </a>
-      <a className="menu-item" href="http://localhost:3000/form">
+      <a className="menu-item" href="https://miracle-message.netlify.com/form">
         REGISTER AS A VOLUNTEER
       </a>
-      <a className="menu-item" href="http://localhost:3000/user/login">
+      <a
+        className="menu-item"
+        href="https://miracle-message.netlify.com/user/login"
+      >
         VOLUNTEER LOGIN
       </a>
-      <a className="menu-item" href="http://localhost:3000/admin/login">
+      <a
+        className="menu-item"
+        href="https://miracle-message.netlify.com/admin/login"
+      >
         ADMIN LOGIN
       </a>
       <a
@@ -41,9 +42,7 @@ export default props => {
         DONATE
       </a>
 
-      <Link to="/searchbar"> 
-        Search 
-      </Link> 
+      <Link to="/searchbar">Search</Link>
 
       {/* <div className="burger-bar"> 
         <a className="burger-search"> Search </a>

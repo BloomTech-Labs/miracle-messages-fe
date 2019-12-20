@@ -3,9 +3,8 @@ import logo from "../../Assets/Imgs/MM_Logo.png"
 import "./Navbar.scss"
 
 // search bar component  below
-import SearchBar from "../MapComponents/SearchBar.js";
+import SearchBar from "../MapComponents/SearchBar.js"
 // search bar above
-
 
 class Navbar extends React.Component {
   render() {
@@ -15,28 +14,33 @@ class Navbar extends React.Component {
           <img src={logo} alt="logo" />
         </a>
         <nav>
-        {/* <a href="#chapters"> Search </a> */}
-        <div className="search-bar"> 
-        <a className="drop-search"> Search </a>
-        <div className="dropdown-search"> 
-          <SearchBar />
-          </div> 
+          {/* <a href="#chapters"> Search </a> */}
+          <div className="search-bar">
+            <a className="drop-search"> Search </a>
+            <div className="dropdown-search">
+              <SearchBar />
+            </div>
           </div>
-      <div style={{margin: "15px"}}> </div>
+          <div style={{ margin: "15px" }}> </div>
           <a href="https://miraclemessages.org/">HOME</a>
           <a href="https://miraclemessages.org/who">ABOUT</a>
           <a href="https://miraclemessages.org/partner">REUNION SERVICE</a>
-          
 
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
             <div className="dropdown-content">
-              <a href="http://localhost:3000/form">Volunteer Registration</a>
-              <a href="http://localhost:3000/user/login">Volunteer Login</a>
-              <a href="http://localhost:3000/user/newchapter">
+              <a href="https://miracle-message.netlify.com/form">
+                Volunteer Registration
+              </a>
+              <a href="https://miracle-message.netlify.com/user/login">
+                Volunteer Login
+              </a>
+              <a href="https://miracle-message.netlify.com/user/newchapter">
                 Create a Chapter
               </a>
-              <a href="http://localhost:3000/admin/login">Admin Login</a>
+              <a href="https://miracle-message.netlify.com/admin/login">
+                Admin Login
+              </a>
               <a className="not-last-child">test</a>
             </div>
           </div>
@@ -44,7 +48,6 @@ class Navbar extends React.Component {
           <a href="https://www.classy.org/give/231839/#!/donation/checkout">
             DONATE
           </a>
-          
         </nav>
       </div>
     )

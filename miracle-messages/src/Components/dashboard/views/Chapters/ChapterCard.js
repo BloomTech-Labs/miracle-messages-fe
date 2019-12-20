@@ -1,10 +1,10 @@
-import React from "react";
-import axios from "axios";
+import React from "react"
+import axios from "axios"
 
-import SponsorList from "./SponsorList.js";
-import SelectPartner from "./SelectPartners.js";
+import SponsorList from "./SponsorList.js"
+import SelectPartner from "./SelectPartners.js"
 
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardImg, CardBody } from "reactstrap"
 
 class ChapterCard extends React.Component {
   state = {
@@ -15,41 +15,41 @@ class ChapterCard extends React.Component {
       currentSponsors: [],
       currentPartners: []
     }
-  };
+  }
   //https://miracle-messages-production.herokuapp.com <-- replace the url when in production
   getChapter = id => {
     axios
-      .get(`http://localhost:5000/api/chapter/${id}`)
+      .get(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
       .then(res => {
-        this.setState({ chapter: res.data });
+        this.setState({ chapter: res.data })
       })
       .catch(error => {
-        console.error(error);
-      });
-  };
+        console.error(error)
+      })
+  }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.getAllPartners();
-    this.getChapterPartners(id);
-    this.getChapter(id);
+    const id = this.props.match.params.id
+    this.getAllPartners()
+    this.getChapterPartners(id)
+    this.getChapter(id)
   }
 
   getAllPartners = () => {
     axios
-      .get(`http://localhost:5000/api/partner`)
+      .get(`https://miracle-messages-dev.herokuapp.com/api/partner`)
       .then(res => {
-        const data = res.data;
-        let sponsors = [];
-        let partners = [];
+        const data = res.data
+        let sponsors = []
+        let partners = []
 
         data.forEach(element => {
           if (element.category === "partner") {
-            partners.push(element);
+            partners.push(element)
           } else {
-            sponsors.push(element);
+            sponsors.push(element)
           }
-        });
+        })
 
         this.setState({
           data: {
@@ -57,67 +57,71 @@ class ChapterCard extends React.Component {
             allSponsors: sponsors,
             allPartners: partners
           }
-        });
+        })
       })
 
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   getChapterPartners = id => {
     axios
-      .get(`http://localhost:5000/api/chapter/${id}/partners`)
+      .get(
+        `https://miracle-messages-dev.herokuapp.com/api/chapter/${id}/partners`
+      )
       .then(res => {
-        const data = res.data;
-        let sponsors = [];
-        let partners = [];
+        const data = res.data
+        let sponsors = []
+        let partners = []
         data.forEach(element => {
           if (element.category === "partner") {
-            partners.push(element);
+            partners.push(element)
           } else {
-            sponsors.push(element);
+            sponsors.push(element)
           }
-        });
+        })
         this.setState({
           data: {
             ...this.state.data,
             currentSponsors: sponsors,
             currentPartners: partners
           }
-        });
+        })
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   unassignPartner = id => {
-    const chapterid = this.props.match.params.id;
+    const chapterid = this.props.match.params.id
     axios
-      .delete(`http://localhost:5000/api/chapter/${chapterid}/partners/${id}`)
+      .delete(
+        `https://miracle-messages-dev.herokuapp.com/api/chapter/${chapterid}/partners/${id}`
+      )
       .then(res => {
-        this.getAllPartners();
-        this.getChapterPartners(chapterid);
+        this.getAllPartners()
+        this.getChapterPartners(chapterid)
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   assignPartner = id => {
-    const chapterid = this.props.match.params.id;
+    const chapterid = this.props.match.params.id
 
-    const partnerId = { partnerId: id };
+    const partnerId = { partnerId: id }
     axios
       .post(
-        `http://localhost:5000/api/chapter/${chapterid}/partners`,
+        `https://miracle-messages-dev.herokuapp.com/api/chapter/${chapterid}/partners`,
         partnerId
       )
       .then(res => {
-        this.getAllPartners();
-        this.getChapterPartners(chapterid);
+        this.getAllPartners()
+        this.getChapterPartners(chapterid)
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   render() {
     if (!this.state.chapter) {
-      return <div>Loading Chapter information...</div>;
+      return <div>Loading Chapter information...</div>
     }
     return (
       <div className="chapter-flex">
@@ -164,8 +168,8 @@ class ChapterCard extends React.Component {
           <SelectPartner data={this.state.data} assign={this.assignPartner} />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ChapterCard;
+export default ChapterCard

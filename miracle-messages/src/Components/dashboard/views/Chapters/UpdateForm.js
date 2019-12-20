@@ -1,5 +1,5 @@
-import React from "react";
-import axios from "axios";
+import React from "react"
+import axios from "axios"
 import {
   Button,
   Input,
@@ -8,10 +8,10 @@ import {
   CardImgOverlay,
   CardTitle,
   Card
-} from "reactstrap";
+} from "reactstrap"
 
-import { connect } from "react-redux";
-import { getData } from "../../../../Actions/index";
+import { connect } from "react-redux"
+import { getData } from "../../../../Actions/index"
 
 class UpdateForm extends React.Component {
   state = {
@@ -20,59 +20,59 @@ class UpdateForm extends React.Component {
     current_reunion_imgUrl: this.props.chapter.reunion_img_url,
     newChapterImg: null,
     newReunionImg: null
-  };
+  }
 
   updateChapter = e => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const id = this.props.chapter.id;
-    const fd = new FormData();
+    const id = this.props.chapter.id
+    const fd = new FormData()
     if (this.state.newChapterImg != null) {
-      fd.append("chapter_img", this.state.newChapterImg);
+      fd.append("chapter_img", this.state.newChapterImg)
     }
     if (this.state.newReunionImg != null) {
-      fd.append("reunion_img", this.state.newReunionImg);
+      fd.append("reunion_img", this.state.newReunionImg)
     }
-    fd.append("title", this.state.chapter.title);
-    fd.append("established_date", this.state.chapter.established_date);
-    fd.append("description", this.state.chapter.description);
-    fd.append("city", this.state.chapter.city);
-    fd.append("state", this.state.chapter.state);
-    fd.append("email", this.state.chapter.email);
-    fd.append("numvolunteers", this.state.chapter.numvolunteers);
-    fd.append("msg_delivered", this.state.chapter.msg_delivered);
-    fd.append("msg_recorded", this.state.chapter.msg_recorded);
-    fd.append("numreunions", this.state.chapter.numreunions);
-    fd.append("facebook", this.state.chapter.facebook);
-    fd.append("story", this.state.chapter.story);
+    fd.append("title", this.state.chapter.title)
+    fd.append("established_date", this.state.chapter.established_date)
+    fd.append("description", this.state.chapter.description)
+    fd.append("city", this.state.chapter.city)
+    fd.append("state", this.state.chapter.state)
+    fd.append("email", this.state.chapter.email)
+    fd.append("numvolunteers", this.state.chapter.numvolunteers)
+    fd.append("msg_delivered", this.state.chapter.msg_delivered)
+    fd.append("msg_recorded", this.state.chapter.msg_recorded)
+    fd.append("numreunions", this.state.chapter.numreunions)
+    fd.append("facebook", this.state.chapter.facebook)
+    fd.append("story", this.state.chapter.story)
 
     axios
-      .put(`http://localhost:5000/api/chapter/${id}`, fd)
+      .put(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`, fd)
       .then(res => {
-        this.props.toggleEdit();
-        this.props.getData();
+        this.props.toggleEdit()
+        this.props.getData()
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   changeHandler = ev => {
-    ev.persist();
-    let value = ev.target.value;
+    ev.persist()
+    let value = ev.target.value
 
     this.setState(prevState => ({
       chapter: {
         ...prevState.chapter,
         [ev.target.name]: value
       }
-    }));
-  };
+    }))
+  }
 
   handleImg = e => {
     this.setState({
       ...this.state,
       [e.target.name]: e.target.files[0]
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -218,14 +218,14 @@ class UpdateForm extends React.Component {
         </Button>
         {/* {console.log(this.props.chapter_data)} */}
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     chapter_data: state.mapReducer.chapter_data
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, { getData })(UpdateForm);
+export default connect(mapStateToProps, { getData })(UpdateForm)
