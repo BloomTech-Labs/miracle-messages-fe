@@ -6,9 +6,10 @@ const SearchBarCard = props => {
   // console.log(props)
   return (
     <>
+    <div className="search-card-parent"> 
     <div className="search-card">
       <div className="img-center">
-        <img className="width" src={props.chapter.chapter_img_url} />
+        <img src={props.chapter.chapter_img_url} />
       </div>
 
       <h3 className="center"> city: </h3>
@@ -20,6 +21,7 @@ const SearchBarCard = props => {
       <h3 className="center"> email: </h3>
       <p className="center"> {props.chapter.email} </p>
     </div>
+    </div> 
     </>
   );
 };

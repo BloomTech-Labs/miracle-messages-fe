@@ -1,7 +1,11 @@
+.form-div{
+  background:white;
+}
+
 .search-form {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-right: 20px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -12,6 +16,7 @@
     text-align: center;
   }
 }
+
 .search-card {
   width: 50%;
   height: auto;
@@ -19,11 +24,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  margin-right: 300px; 
-  margin-left: 100px; 
-  display: flex;
-  flex-direction: column; 
-  // justify-content: center; 
+  margin-right: 150px; 
+  margin-left: 150px; 
 
   .center {
     display: flex;
@@ -31,8 +33,8 @@
     align-items: center;
   }
 
-  .width {
-    width: 450px;
+  img {
+    width: 100%;
     height: auto;
   }
 
@@ -42,13 +44,14 @@
     align-items: center;
     justify-content: center;
   }
+
 }
 .side-by-side {
   // display: flex;
   // flex-direction: column;
   // justify-content: center;
   // background: white;
-  margin-right: 300px;
+  // margin-right: 300px;
 }
 
 
@@ -58,8 +61,8 @@
 
 @media screen and (max-width: 800px) {
 
-  .body {
-    overflow-x: hidden !important;
+  .middle20 {
+    overflow-x: hidden; 
   }
 
   .search-form {
@@ -71,54 +74,39 @@
     justify-content: center;
     background: white;
   
+    
     .input {
       border-radius: 30px;
       text-align: center;
     }
-  }
-  .search-card {
-    width: 50%;
-    height: 50%;
-    // margin: 10px 10px;
-    // margin-left: 3px; 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-around; 
-    // align-content: center; 
-
-    // margin-right: 500px; 
-    // margin-left: 200px; 
-    // background: blue; 
-  
-    .center {
-      display: flex;
-      justify-content: center;
-      justify-content: space-around; 
-      align-items: center;
-    }
-  
-    .width {
-      width: 300px;
-      height: auto;
-    }
-  
-    .img-center {
-      display: flex;
-      align-content: center;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-  .side-by-side {
+   
+}  
+  .search-card-parent {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: white;
-    margin-right: 300px;
+
+  .search-card {
+    width: 50%;
+    height: auto;
+    margin-right: 10%; 
+    margin-left: 10%; 
+    background: white; 
+
+
+  .center {
+    display: flex; 
+    align-content: center; 
+    justify-content: center
   }
+
+.side-by-side {
+  margin-right: 0px;
+}
+
+}
+
+}
 }
 
 @media screen and (min-width: 765px) {
