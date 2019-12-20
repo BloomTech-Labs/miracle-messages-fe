@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "reactstrap";
-import "../../../Forms/NewChapter.scss";
+import React from "react"
+import { Button } from "reactstrap"
+import "../../../Forms/NewChapter.scss"
 
 class ChapterForm extends React.Component {
   render() {
@@ -140,7 +140,7 @@ class ChapterForm extends React.Component {
               </div>
             </div>
           </section>
-          <Button
+          <button
             style={{
               height: "50px",
               width: "300px",
@@ -153,15 +153,14 @@ class ChapterForm extends React.Component {
               margin: "0rem auto",
               paddingBottom: "30px"
             }}
-            color="success"
             onClick={this.props.addChapter}
           >
             Send Chapter Request
-          </Button>
+          </button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default ChapterForm;
+export default ChapterForm
