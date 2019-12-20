@@ -42,7 +42,7 @@ const SearchBar = props => {
   return (
     <>
     <SideBar className="sidebar-search"/> 
-    <div> 
+    <div className="form-div"> 
       <form className="search-form">
         <input
           type="text"
@@ -57,7 +57,7 @@ const SearchBar = props => {
 
       {/* map here */}
        <aside>
-      <div className="body">
+      <div className="middle20">
         <Scrollbars style={{height: "600px", width: "600px"}}> 
          {filterFunction.map(chapter => {
            return (
