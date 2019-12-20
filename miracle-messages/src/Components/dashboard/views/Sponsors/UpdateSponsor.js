@@ -24,7 +24,7 @@ class UpdateSponsor extends React.Component {
     fd.append("category", this.state.sponsor.category);
     console.log(fd.getAll("partner_icon"));
     axios
-      .put(`http://localhost:5000/api/partner/${id}`, fd)
+      .put(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`, fd)
       .then(res => {
         console.log(res);
         this.props.toggleEdit();
@@ -44,7 +44,7 @@ class UpdateSponsor extends React.Component {
     fd.append("site_url", this.state.sponsor.site_url);
     fd.append("category", this.state.sponsor.category);
     axios
-      .put(`http://localhost:5000/api/partner/${id}`, fd)
+      .put(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`, fd)
       .then(res => {
         this.props.toggleEdit();
         this.props.getSponsor();

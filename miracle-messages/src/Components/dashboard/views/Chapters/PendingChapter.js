@@ -1,14 +1,14 @@
-import React from "react";
-import axios from "axios";
+import React from "react"
+import axios from "axios"
 
-import PendingCards from "./PendingCards";
+import PendingCards from "./PendingCards"
 
-import { connect } from "react-redux";
-import { getData } from "../../../../Actions/index";
+import { connect } from "react-redux"
+import { getData } from "../../../../Actions/index"
 
 class PendingChapter extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       modal: false,
       chapter: {
@@ -28,20 +28,20 @@ class PendingChapter extends React.Component {
         story: "",
         reunion_img: null
       }
-    };
+    }
   }
 
   deleteChapter = id => {
     axios
-      .delete(`http://localhost:5000/api/chapter/${id}`)
+      .delete(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
       .then(res => {
-        this.props.getData();
+        this.props.getData()
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   componentDidMount() {
-    this.props.getData();
+    this.props.getData()
   }
 
   render() {
@@ -49,7 +49,7 @@ class PendingChapter extends React.Component {
       <div className="chapter-felx">
         {this.props.chapter_data.map(chapter => {
           if (!chapter || null) {
-            return <div>No Chapters Pending</div>;
+            return <div>No Chapters Pending</div>
           } else if (chapter.approved === false) {
             return (
               <PendingCards
@@ -57,18 +57,18 @@ class PendingChapter extends React.Component {
                 key={chapter.id}
                 deleteChapter={this.deleteChapter}
               />
-            );
+            )
           }
         })}
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     chapter_data: state.mapReducer.chapter_data
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, { getData })(PendingChapter);
+export default connect(mapStateToProps, { getData })(PendingChapter)

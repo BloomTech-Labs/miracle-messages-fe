@@ -1,23 +1,23 @@
-import React from "react";
-import axios from "axios";
+import React from "react"
+import axios from "axios"
 
-import Chapter from "./Chapter";
+import Chapter from "./Chapter"
 
-import { connect } from "react-redux";
-import { getData } from "../../../../Actions/index";
+import { connect } from "react-redux"
+import { getData } from "../../../../Actions/index"
 
 class Chapters extends React.Component {
   deleteChapter = id => {
     axios
-      .delete(`http://localhost:5000/api/chapter/${id}`)
+      .delete(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
       .then(res => {
-        this.props.getData();
+        this.props.getData()
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   componentDidMount() {
-    this.props.getData();
+    this.props.getData()
   }
 
   render() {
@@ -31,18 +31,18 @@ class Chapters extends React.Component {
                 key={chapter.id}
                 deleteChapter={this.deleteChapter}
               />
-            );
+            )
           }
         })}
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     chapter_data: state.mapReducer.chapter_data
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, { getData })(Chapters);
+export default connect(mapStateToProps, { getData })(Chapters)

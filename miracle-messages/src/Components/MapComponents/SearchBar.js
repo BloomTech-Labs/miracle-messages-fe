@@ -21,7 +21,7 @@ const SearchBar = props => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/chapter", chapters)
+      .get("https://miracle-messages-dev.herokuapp.com/api/chapter", chapters)
       .then(res => {
         // console.log("response from SearchBar axios call", res)
         setChapters(res.data);
