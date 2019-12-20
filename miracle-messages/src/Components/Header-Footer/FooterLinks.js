@@ -75,13 +75,19 @@ const FooterLinks = () => {
       <div>
         <h5>Volunteer</h5>
         <div>
-          <a href="http://localhost:3000/form">Volunteer Registration</a>
+          <a href="https://miracle-message.netlify.com/form">
+            Volunteer Registration
+          </a>
         </div>
         <div>
-          <a href="http://localhost:3000/user/login">Volunteer Login</a>
+          <a href="https://miracle-message.netlify.com/user/login">
+            Volunteer Login
+          </a>
         </div>
         <div>
-          <a href="http://localhost:3000/admin/login">Admin Login</a>
+          <a href="https://miracle-message.netlify.com/admin/login">
+            Admin Login
+          </a>
         </div>
         <div>
           <h5>Contact Us</h5>

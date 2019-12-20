@@ -43,7 +43,7 @@ export const DELETE_CHAPTER_FAIL = "DELETE_CHAPTERS_FAIL"
 export const fetchLogin = user => dispatch => {
   dispatch({ type: START_LOGIN })
   return axios
-    .post("http://localhost:5000/api/user/login", user)
+    .post("https://miracle-messages-dev.herokuapp.com/api/user/login", user)
 
     .then(res => {
       dispatch({ type: SUCCESS_LOGIN })
@@ -62,7 +62,11 @@ export const fetchLogin = user => dispatch => {
 export const addUser = (username, password) => dispatch => {
   dispatch({ type: ADD_USERS_START })
   return axios
-    .post("http://localhost:5000/api/user/register", username, password)
+    .post(
+      "http://https://miracle-messages-dev.herokuapp.com/api/user/register",
+      username,
+      password
+    )
     .thern(res => {
       dispatch({ type: ADD_USERS_SUCCESS, payload: res.user.data })
     })
@@ -74,7 +78,7 @@ export const addUser = (username, password) => dispatch => {
 export const getUsers = () => dispatch => {
   dispatch({ type: GET_USERS_START })
   axios
-    .get("http://localhost:5000/api/user/users")
+    .get("https://miracle-messages-dev.herokuapp.com/api/user/users")
     .then(res => {
       dispatch({ type: GET_USERS_SUCCESS, payload: res.data })
     })
@@ -104,7 +108,7 @@ export const deleteUser = user => dispatch => {
 export const addVolunteer = volunteer => dispatch => {
   dispatch({ type: ADD_VOLUNTEERS_START })
   return axios
-    .post("http://localhost:5000/api/form", volunteer)
+    .post("https://miracle-messages-dev.herokuapp.com/api/form", volunteer)
     .thern(res => {
       dispatch({ type: ADD_VOLUNTEERS_SUCCESS, payload: res.volunteer.data })
     })

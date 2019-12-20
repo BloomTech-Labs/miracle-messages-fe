@@ -5,7 +5,7 @@ import axios from "axios"
 class Volunteer extends Component {
   deleteVolunteer = id => {
     axios
-      .delete(`http://localhost:5000/api/form/${id}`)
+      .delete(`https://miracle-messages-dev.herokuapp.com/api/form/${id}`)
       .then(response => console.log("Successfully Deleted"))
       .catch(error => console.log(error, "There is an error"))
   }

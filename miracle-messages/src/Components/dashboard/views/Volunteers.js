@@ -8,10 +8,10 @@ class Volunteers extends React.Component {
   }
 
   //https://miracle-messages-production.herokuapp.com/api/form
-  // http://localhost:5000/api/form
+  // https://miracle-messages-dev.herokuapp.com/api/form
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/form")
+      .get("https://miracle-messages-dev.herokuapp.com/api/form")
       .then(res => {
         // console.log(res)
         this.setState({
@@ -27,9 +27,7 @@ class Volunteers extends React.Component {
     return (
       <div>
         {this.state.data.map((vol, key) => {
-
-          return <Volunteer vol={vol} key={key} />;
-
+          return <Volunteer vol={vol} key={key} />
         })}
       </div>
     )
