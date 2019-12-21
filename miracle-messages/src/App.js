@@ -1,26 +1,27 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 //Router
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom"
 
 //Styles
-import "./CSS/App.css";
-import "./CSS/style.css";
+import "./CSS/App.css"
+import "./CSS/style.css"
 
 //Imported Components
-import Map from "./Components/MapComponents/map";
-import Fulllayout from "./Components/dashboard/layouts/fulllayout";
-import VolunteerForm from "./Components/Forms/VolunteerForm";
-import LoginForm from "./Components/Login/LoginForm.js";
-import LoginPage from "./Components/Login/UserLogin";
-import NewChapter from "./Components/Forms/NewChapter";
-import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm";
-import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword";
+import Map from "./Components/MapComponents/map"
+import Fulllayout from "./Components/dashboard/layouts/fulllayout"
+import VolunteerForm from "./Components/Forms/VolunteerForm"
+import LoginForm from "./Components/Login/LoginForm.js"
+import LoginPage from "./Components/Login/UserLogin"
+import NewChapter from "./Components/Forms/NewChapter"
+import ChapterForm from "./Components/Forms/ChapterForm"
+import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
+import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
+import SearchBar from "./Components/MapComponents/SearchBar.js"
+import ChapterInfo from "./Components/Forms/ChapterInfo"
 
 //Custom Imports
-import { PrivateRoute } from "./Components/PrivateRoute";
-import SearchBar from "./Components/MapComponents/SearchBar.js";
-import ChapterInfo from "./Components/Forms/ChapterInfo";
+import { PrivateRoute } from "./Components/PrivateRoute"
 
 class App extends Component {
   render() {
@@ -37,6 +38,8 @@ class App extends Component {
           <Route exact path="/user/login" component={LoginPage} />
 
           <Route exact path="/user/newchapter" component={NewChapter} />
+
+          <Route exact path="/user/newchapterform" component={ChapterForm} />
 
           <Route
             exact
@@ -59,8 +62,8 @@ class App extends Component {
           <Redirect from="*" to="/" />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,5 +1,6 @@
-import React from "react";
-import "./NewChapter.scss";
+import React from "react"
+import "./NewChapter.scss"
+import { Link } from "react-router-dom"
 
 const ChapterInfo = () => {
   return (
@@ -45,6 +46,8 @@ const ChapterInfo = () => {
           corrupti tempore molestiae similique, reiciendis aperiam quae quaerat
           veritatis, dolorum asperiores reprehenderit?
         </p>
+      </div>
+      <div>
         <h3 className="title">Who to contact</h3>
         <p className="paragraph">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
@@ -52,9 +55,12 @@ const ChapterInfo = () => {
           corrupti tempore molestiae similique, reiciendis aperiam quae quaerat
           veritatis, dolorum asperiores reprehenderit?
         </p>
+        <Link to="/user/newchapterform">
+          <button className="submitb">I want to create a chapter</button>
+        </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChapterInfo;
+export default ChapterInfo
