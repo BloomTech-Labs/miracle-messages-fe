@@ -1,6 +1,5 @@
 import React from "react"
 import axios from "axios"
-import "./NewChapter"
 import "./NewChapter.scss"
 
 class ChapterForm extends React.Component {
