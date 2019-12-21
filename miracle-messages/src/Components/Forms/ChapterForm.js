@@ -1,6 +1,5 @@
 import React from "react"
 import axios from "axios"
-import { Button } from "reactstrap"
 import "./NewChapter"
 import "./NewChapter.scss"
 
@@ -82,17 +81,6 @@ class ChapterForm extends React.Component {
           </strong>
 
           <form className="chapter-form">
-            {/* PLEASE DELETE THIS DIV AFTER SYNCING STATE/CITY TO AUTO FILL AND REPLACE LAT/LONG FOR THE FORM */}
-            {/* <div className="chapter-div">
-              <h6>
-                ***please use this link to get the desired latitude and
-                longitude for your intended chapter***
-              </h6>
-              <a href="https://www.latlong.net/" target="_blank">
-                Find your intended location here
-              </a>
-            </div> */}
-            {/* PLEASE DELETE THIS DIV AFTER SYNCING STATE/CITY TO AUTO FILL AND REPLACE LAT/LONG FOR THE FORM */}
             <section className="input-wrapper">
               <div className="chapter-div">
                 <div className="chapter-formBox">

@@ -13,12 +13,12 @@ import Fulllayout from "./Components/dashboard/layouts/fulllayout"
 import VolunteerForm from "./Components/Forms/VolunteerForm"
 import LoginForm from "./Components/Login/LoginForm.js"
 import LoginPage from "./Components/Login/UserLogin"
-import NewChapter from "./Components/Forms/NewChapter"
+import NewChapterInfo from "./Components/Forms/NewChapterInfo"
 import ChapterForm from "./Components/Forms/ChapterForm"
 import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPasswordForm"
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import SearchBar from "./Components/MapComponents/SearchBar.js"
-import ChapterInfo from "./Components/Forms/ChapterInfo"
+import ChapterInfo from "./Components/Forms/NewChapterInfo"
 
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute"
@@ -37,7 +37,7 @@ class App extends Component {
 
           <Route exact path="/user/login" component={LoginPage} />
 
-          <Route exact path="/user/newchapter" component={NewChapter} />
+          <Route exact path="/user/newchapter" component={NewChapterInfo} />
 
           <Route exact path="/user/newchapterform" component={ChapterForm} />
 
