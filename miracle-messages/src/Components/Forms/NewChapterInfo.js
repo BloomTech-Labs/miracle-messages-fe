@@ -28,10 +28,10 @@ const NewChapterInfo = () => {
               Some of the responsibilities that come with a chapter include a
               monthly outreach event (such as going to a shelter or the streets
               to record messages), at least one person from the chapter
-              attending WEEKLY Case Solving Community calls, (These take place
-              every Wednesday at 5:30 pm PT), and at least one person attends
-              TWO sessions of the Outreach Volunteers calls (which take place
-              Thursdays at 5:30 pm PT).
+              attending <strong> WEEKLY</strong> Case Solving Community calls,
+              (These take place every Wednesday at 5:30 pm PT), and at least one
+              person attends <strong>TWO</strong> sessions of the Outreach
+              Volunteers calls (which take place Thursdays at 5:30 pm PT).
             </p>
           </div>
           <div>
@@ -46,8 +46,8 @@ const NewChapterInfo = () => {
             <p className="paragraph">
               A list of the Miracle Messages meeting dates, events, office
               hours, trainings, and other events and times can be found at
-              <br />
               <a href="https://miraclemessages.org/events">
+                {" "}
                 https://miraclemessages.org/events
               </a>
               .
@@ -59,7 +59,9 @@ const NewChapterInfo = () => {
               If you have any further questions, or would like more clarifying
               information before commiting to a new chapter, please do not
               hesistate to contact Kevin F. Adler, the Miracle Messages CEO and
-              founder at hello@miraclemessages.com.
+              founder at
+              <a href="hello@miraclemessages.com"> hello@miraclemessages.com</a>
+              .
             </p>
             <Link to="/user/newchapterform">
               <button className="submitb">I want to create a chapter</button>
