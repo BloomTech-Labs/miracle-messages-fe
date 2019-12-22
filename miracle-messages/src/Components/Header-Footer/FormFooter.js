@@ -82,9 +82,7 @@ const FormFooter = () => {
         </a>
       </div>
       {/* Bottom portion of the footer */}
-      <div className="footer-wrapper">
-        <FooterLinks />
-      </div>
+      <FooterLinks />
     </div>
   )
 }
