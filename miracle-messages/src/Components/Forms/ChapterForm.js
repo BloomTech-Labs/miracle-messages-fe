@@ -34,10 +34,10 @@ class ChapterForm extends React.Component {
 
     axios
       .post("https://miracle-messages-dev.herokuapp.com/api/chapter", fd)
-      .then(res => {
-        console.log(res)
+      .then(response => {
+        console.log(response)
       })
-      .catch(err => console.log(err))
+      .catch(error => console.log(error))
 
     this.setState({
       chapter: {
@@ -53,20 +53,20 @@ class ChapterForm extends React.Component {
     })
   }
 
-  handleInputChange = e => {
+  handleInputChange = event => {
     this.setState({
       chapter: {
         ...this.state.chapter,
-        [e.target.name]: e.target.value
+        [event.target.name]: event.target.value
       }
     })
   }
 
-  handleImg = e => {
+  handleImg = event => {
     this.setState({
       chapter: {
         ...this.state.chapter,
-        [e.target.name]: e.target.files[0]
+        [event.target.name]: event.target.files[0]
       }
     })
   }
