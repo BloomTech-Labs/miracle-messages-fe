@@ -27,9 +27,9 @@ const FormHeader = () => {
             >
               <div>REUNION SERVICE</div>
             </a>
-            <div className="dropdown">
-              <a className="dropbtn">GET INVOLVED</a>
-              <div className="dropdown-content">
+            {/* <div className="dropdown"> */}
+            <a className="dropbtn">GET INVOLVED</a>
+            {/* <div className="dropdown-content">
                 <a href="https://miracle-message.netlify.com/form">
                   Volunteer Registration
                 </a>
@@ -44,7 +44,7 @@ const FormHeader = () => {
                 </a>
                 <a className="not-last-child">test</a>
               </div>
-            </div>
+            </div> */}
 
             <a
               href="https://www.classy.org/give/231839/#!/donation/checkout"
