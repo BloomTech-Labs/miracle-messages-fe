@@ -15,56 +15,63 @@ const NewChapterInfo = () => {
             <h2>Chapter Information</h2>
           </div>
           <div>
-            <h3 className="title">What Is A Chapter?</h3>
+            <h3 className="title">WHAT IS A CHAPTER?</h3>
             <p className="paragraph">
-              A Chapter is our way of referencing the different hubs or cities
-              that are available to join. You can create a new one if your city
-              is missing. Getting connected in a chapter is a great way to find
-              support, other volunteers, encouragment, help, and to let us know
-              where you are volunteering so we can partner you with other
-              volunteers.
-            </p>
-            <p className="paragraph">
-              Some of the responsibilities that come with a chapter include a
-              monthly outreach event (such as going to a shelter or the streets
-              to record messages), at least one person from the chapter
-              attending <strong> WEEKLY</strong> Case Solving Community calls,
-              (These take place every Wednesday at 5:30 pm PT), and at least one
-              person attends <strong>TWO</strong> sessions of the Outreach
-              Volunteers calls (which take place Thursdays at 5:30 pm PT).
+              A Chapter refers to a regional area like a city, state or other
+              area. If no Chapter already exists in your city, you can create
+              one.
             </p>
           </div>
           <div>
-            <h3 className="title">All Volunteers Need To Know... </h3>
+            <h3 className="title">WHY ARE CHAPTERS IMPORTANT?</h3>
             <p className="paragraph">
-              If you are volunteering to CREATE a chapter, it is expected that
-              you review the training materials, sign the Miracle Messages
-              volunteer waiver and code of conduct, and make sure that everyone
-              who joins the chapter you create understands these comitments.
-              These resources can be found <a href="#">here</a>.
-            </p>
-            <p className="paragraph">
-              A list of the Miracle Messages meeting dates, events, office
-              hours, trainings, and other events and times can be found at
-              <a href="https://miraclemessages.org/events">
-                {" "}
-                https://miraclemessages.org/events
-              </a>
-              .
+              Chapters serve as that central point where people in the same area
+              connect, find support, work with other volunteers and more.
             </p>
           </div>
           <div>
-            <h3 className="title">Who to contact</h3>
+            <h3 className="title">
+              WHAT DO I NEED TO DO AS PART OF A CHAPTER?
+            </h3>
             <p className="paragraph">
-              If you have any further questions, or would like more clarifying
-              information before commiting to a new chapter, please do not
-              hesistate to contact Kevin F. Adler, the Miracle Messages CEO and
-              founder at
-              <a href="hello@miraclemessages.com"> hello@miraclemessages.com</a>
-              .
+              Starting a Chapter or joining a Chapter is an important first step
+              toward supporting your community. You will also be asked to attend
+              at least one monthly outreach event (i.e. visiting a shelter,
+              record street messages, etc.). You may also be asked to attend a
+              Weekly Case Solving Community call which take place every
+              Wednesday at 5:30 pm PST. Lastly, you will need to attend at least
+              TWO Outreach Volunteer calls which take place on Thursdays at 5:30
+              pm PST.
             </p>
+          </div>
+          <div>
+            <h3 className="title"> HOW DO I CREATE A CHAPTER?</h3>
+            <p className="paragraph">
+              If there isn't a Chapter already in your city, you can volunteer
+              to create one using the "START A CHAPTER" button below. You will
+              need to review the training materials and sign a few documents
+              including the Miracle Messages Volunteer Waiver and the Code Of
+              Conduct requirements. Also, please make sure everyone who joins
+              your Chapter reads, understands and agrees to these same
+              commitments.
+            </p>
+          </div>
+          <div>
+            <h3 className="title">WHERE CAN I FIND MORE INFORMATION?</h3>
+            <p className="paragraph">
+              A list of Miracle Messsage meeting dates, events, office hours,
+              trainings and more can be found here.
+            </p>
+          </div>
+          <div>
+            <h3 className="title"> WHAT IF I HAVE MORE QUESTIONS?</h3>
+            <p className="paragraph">
+              If you have questions or need additional support, please contact
+              us at your earliest convenience here.
+            </p>
+
             <Link to="/user/newchapterform">
-              <button className="submitb">I want to create a chapter</button>
+              <button className="submitb">I Want To Create A Chapter</button>
             </Link>
           </div>
         </div>
