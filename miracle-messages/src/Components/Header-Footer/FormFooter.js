@@ -68,7 +68,7 @@ const FormFooter = () => {
         <p className="footer">
           © 2019. Miracle Messages is a fiscally sponsored project of Netroots
           Foundation, a CA 501(c)3 <br />
-          corporation.EIN #20-8672843.
+          corporation.EIN #82-4179328.
         </p>
         <p className="footer">
           MIRACLE MESSAGES is a trademark of Miracle Messages.

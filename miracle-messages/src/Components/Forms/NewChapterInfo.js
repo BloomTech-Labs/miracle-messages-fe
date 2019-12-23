@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import FormFooter from "../Header-Footer/FormFooter"
 import FormHeader from "../Header-Footer/FormHeader"
 
-// THIS IS A WORK IN PROGRESS... THIS IS NOT THE FINAL COPY. I AM WAITING FOR FEEDBACK FROM SOMEONE.
 const NewChapterInfo = () => {
   return (
     <div className="container">
@@ -37,22 +36,22 @@ const NewChapterInfo = () => {
               Starting a Chapter or joining a Chapter is an important first step
               toward supporting your community. You will also be asked to attend
               at least one monthly outreach event (i.e. visiting a shelter,
-              record street messages, etc.). You may also be asked to attend a
-              Weekly Case Solving Community call which take place every
-              Wednesday at 5:30 pm PST. Lastly, you will need to attend at least
-              TWO Outreach Volunteer calls which take place on Thursdays at 5:30
-              pm PST.
+              record street messages, etc.). You will also be asked to attend
+              <strong> WEEKLY</strong> Case Solving Community call which take
+              place every Wednesday at 5:30 pm PST. Lastly, you will need to
+              attend at least <strong>TWO</strong> Outreach Volunteer calls
+              which take place on Thursdays at 5:30 pm PST.
             </p>
           </div>
           <div>
             <h3 className="title"> HOW DO I CREATE A CHAPTER?</h3>
             <p className="paragraph">
               If there isn't a Chapter already in your city, you can volunteer
-              to create one using the "START A CHAPTER" button below. You will
-              need to review the training materials and sign a few documents
-              including the Miracle Messages Volunteer Waiver and the Code Of
-              Conduct requirements. Also, please make sure everyone who joins
-              your Chapter reads, understands and agrees to these same
+              to create one using the "I Want To Create A Chapter" button below.
+              You will need to review the training materials and sign a few
+              documents including the Miracle Messages Volunteer Waiver and the
+              Code Of Conduct requirements. Also, please make sure everyone who
+              joins your Chapter reads, understands and agrees to these same
               commitments.
             </p>
           </div>
@@ -60,7 +59,8 @@ const NewChapterInfo = () => {
             <h3 className="title">WHERE CAN I FIND MORE INFORMATION?</h3>
             <p className="paragraph">
               A list of Miracle Messsage meeting dates, events, office hours,
-              trainings and more can be found here.
+              trainings and more can be found{" "}
+              <a href="https://miraclemessages.org/events">here</a>.
             </p>
           </div>
           <div>

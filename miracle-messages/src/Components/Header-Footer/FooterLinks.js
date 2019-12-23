@@ -59,7 +59,7 @@ const FooterLinks = () => {
 
       <div className="column">
         <h5>Contact Us</h5>
-        <a href="mailto:hello@miraclemessages.com">Email Kevin Adler</a>
+        <a href="mailto:hello@miraclemessages.com">Email Kevin F. Adler</a>
       </div>
     </div>
   )
