@@ -67,7 +67,8 @@ const NewChapterInfo = () => {
             <h3 className="title"> WHAT IF I HAVE MORE QUESTIONS?</h3>
             <p className="paragraph">
               If you have questions or need additional support, please contact
-              us at your earliest convenience here.
+              us at your earliest convenience{" "}
+              <a href="hello@miraclemessages.com">here</a>.
             </p>
 
             <Link to="/user/newchapterform">
