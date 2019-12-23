@@ -35,9 +35,6 @@ class Navbar extends React.Component {
               <a href="https://miracle-message.netlify.com/user/login">
                 Volunteer Login
               </a>
-              <a href="https://miracle-message.netlify.com/user/newchapter">
-                Create a Chapter
-              </a>
               <a href="https://miracle-message.netlify.com/admin/login">
                 Admin Login
               </a>

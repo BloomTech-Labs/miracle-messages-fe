@@ -92,7 +92,7 @@ class ChapterForm extends React.Component {
                     value={this.state.chapter.title}
                     onChange={this.handleInputChange}
                     name="title"
-                    placeholder="Please use name of City in title."
+                    placeholder="Phoenix Fans"
                   />
                 </div>
 
@@ -106,19 +106,7 @@ class ChapterForm extends React.Component {
                     onChange={this.handleInputChange}
                     name="email"
                     type="email"
-                    placeholder="So we may get in contact with you."
-                  />
-                </div>
-
-                <div className="chapter-formBox">
-                  <label className="label">Latitude*</label>
-                </div>
-                <div className="chapter-formBox">
-                  <input
-                    className="input"
-                    value={this.state.chapter.latitude}
-                    onChange={this.handleInputChange}
-                    name="latitude"
+                    placeholder="Sample@gmail.com"
                   />
                 </div>
               </div>
@@ -133,6 +121,7 @@ class ChapterForm extends React.Component {
                     value={this.state.chapter.city}
                     onChange={this.handleInputChange}
                     name="city"
+                    placeholder="Phoenix"
                   />
                 </div>
 
@@ -145,36 +134,57 @@ class ChapterForm extends React.Component {
                     value={this.state.chapter.state}
                     onChange={this.handleInputChange}
                     name="state"
-                  />
-                </div>
-
-                <div className="chapter-formBox">
-                  <label className="label">Longitude*</label>
-                </div>
-                <div className="chapter-formBox">
-                  <input
-                    className="input"
-                    value={this.state.chapter.longitude}
-                    onChange={this.handleInputChange}
-                    name="longitude"
+                    placeholder="AZ"
                   />
                 </div>
               </div>
               <div className="chapter-div">
                 <h6>
-                  ***please use this link to get the desired latitude and
-                  longitude for your intended chapter***
+                  ***Please use
+                  <a href="https://www.latlong.net/" target="_blank">
+                    {" "}
+                    this link{" "}
+                  </a>{" "}
+                  to get the desired latitude and longitude for your intended
+                  chapter***
                 </h6>
-                <a href="https://www.latlong.net/" target="_blank">
-                  Find your intended location here
-                </a>
+              </div>
+              <div className="chapter-div2">
+                <div>
+                  <div className="chapter-formBox">
+                    <label className="label">Latitude*</label>
+                  </div>
+                  <div className="chapter-formBox">
+                    <input
+                      className="input"
+                      value={this.state.chapter.latitude}
+                      onChange={this.handleInputChange}
+                      name="latitude"
+                      placeholder="33.448376"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="chapter-formBox">
+                    <label className="label">Longitude*</label>
+                  </div>
+                  <div className="chapter-formBox">
+                    <input
+                      className="input"
+                      value={this.state.chapter.longitude}
+                      onChange={this.handleInputChange}
+                      name="longitude"
+                      placeholder="-112.074036"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="chapter-div chapter-div-bottom">
                 <div className="chapter-formBox">
                   <label className="labelV2">
-                    *Please upload an image of you helping out someone in your
-                    area along with this Chapter Request.* (May be used as the
-                    main page image for this requested chapter.)
+                    Please upload an image to be used as the main page image for
+                    this chapter.
                   </label>
                 </div>
                 <div className="chapter-formBox">
@@ -187,13 +197,6 @@ class ChapterForm extends React.Component {
                 </div>
 
                 <div className="chapter-formBox">
-                  <label className="labelV2">
-                    *Give us some details and information about this chapter and
-                    what your goals might be by partnering and outreaching with
-                    Miracle Messages.*
-                  </label>
-                </div>
-                <div className="chapter-formBox">
                   <textarea
                     className="textarea"
                     value={this.state.chapter.description}
@@ -205,26 +208,26 @@ class ChapterForm extends React.Component {
                   />
                 </div>
               </div>
+              <button
+                className="submitb"
+                style={{
+                  height: "50px",
+                  width: "315px",
+                  backgroundColor: "#5cbe80",
+                  fontFamily: "Open Sans",
+                  fontSize: "24px",
+                  color: "#ffffff",
+                  letterSpacing: "0.9px",
+                  textAlign: "center",
+                  margin: "0rem auto",
+                  paddingBottom: "30px"
+                }}
+                color="success"
+                onClick={this.addChapter}
+              >
+                Submit Chapter Request
+              </button>
             </section>
-            <button
-              className="submitb"
-              style={{
-                height: "50px",
-                width: "315px",
-                backgroundColor: "#5cbe80",
-                fontFamily: "Open Sans",
-                fontSize: "24px",
-                color: "#ffffff",
-                letterSpacing: "0.9px",
-                textAlign: "center",
-                margin: "0rem auto",
-                paddingBottom: "30px"
-              }}
-              color="success"
-              onClick={this.addChapter}
-            >
-              Submit Chapter Request
-            </button>
           </form>
         </div>
       </div>
