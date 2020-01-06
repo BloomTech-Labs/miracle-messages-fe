@@ -141,7 +141,11 @@ class ChapterForm extends React.Component {
               <div className="chapter-div">
                 <h6>
                   ***Please use
-                  <a href="https://www.latlong.net/" target="_blank">
+                  <a
+                    href="https://www.latlong.net/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {" "}
                     this link{" "}
                   </a>{" "}
@@ -183,8 +187,7 @@ class ChapterForm extends React.Component {
               <div className="chapter-div chapter-div-bottom">
                 <div className="chapter-formBox">
                   <label className="labelV2">
-                    Please upload an image to be used as the main page image for
-                    this chapter.
+                    Please upload an image for this chapter.
                   </label>
                 </div>
                 <div className="chapter-formBox">
