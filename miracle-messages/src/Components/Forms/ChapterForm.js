@@ -187,7 +187,8 @@ class ChapterForm extends React.Component {
               <div className="chapter-div chapter-div-bottom">
                 <div className="chapter-formBox">
                   <label className="labelV2">
-                    Please upload an image for this chapter.
+                    Please upload an image to be used as the main page image for
+                    this chapter.
                   </label>
                 </div>
                 <div className="chapter-formBox">
