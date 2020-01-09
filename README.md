@@ -28,7 +28,7 @@ We are a nonprofit reunion service to help our neighbors experiencing homelessne
 
 We believe everyone is somebody's someone, and no one should be defined by what they lack. Miracle Messages Map connects volunteers, making it easy to join together to reunite more homeless people with their families.
 
-### 🏠 [View Our Work](https://miracle-messages-production.netlify.com/)
+### 🏠 [View Our Work](https://miracle-message.netlify.com/)
 
 ### Tech Stach
 
@@ -64,47 +64,50 @@ We believe everyone is somebody's someone, and no one should be defined by what 
 
 - [x] Front End Developer
 
-- Website: shelbydiamond.com
+- Website: [Shelbydiamond.com](shelbydiamond.com)
 - Twitter: [@ShelbyN_Diamond](https://twitter.com/shelbyN_Diamond)
 - Github: [@shelbydiamond](https://github.com/shelbydiamond)
+- Email: shelbydiamond518@gmail.com
 
-  👤 **Mimi Hoang**
+  :ghost: **Mimi Hoang**
 
 - [x] Front End Developer
 
-- Website: PORTFOLIO SITE HERE
 - Github: [@meowmimi1](https://github.com/meowmimi1)
+- Email: miminhoang1@gmail.com
 
-  👤 **Madison McKown**
+  :space_invader: **Madison McKown**
 
 - [x] Front End Developer
 
-- Website: PORTFOLIO SITE HERE
 - Github: [@MadisonViaLux ](https://github.com/MadisonViaLux)
+- Email: madison.s.mckown@gmail.com
 
-👤 **Adrian Garcia**
+:sunglasses: **Adrian Garcia**
 
 - [x] Back End Developer
 
-- Website: PORTFOLIO SITE HERE
 - Twitter: [@adriangarcia777](https://twitter.com/adriangarcia777)
 - Github: [@adriangarcia5](https://github.com/adriangarcia5)
+- Email: agarcf5@gmail.com
 
-👤 **Noah Franco**
+:man_astronaut: **Noah Franco**
 
 - [x] Back End Developer
 
-- Website: PORTFOLIO SITE HERE
+- Website: [Noahfranco.com](noahfranco.com)
 - Twitter: [@noahfranco\_](https://twitter.com/noahfranco_)
 - Github: [@noahfranco](https://github.com/noahfranco)
+- Email: noahfra@gmail.com
 
-👤 **Roenz Aberin**
+:nerd_face: **Roenz Aberin**
 
 - [x] Back End Developer
 
-- Website: raberin.me
+- Website: [raberin.me](raberin.me)
 - Twitter: [@raberin\_](https://twitter.com/raberin_)
 - Github: [@raberin](https://github.com/raberin)
+- Email: tenchuchoy@gmail.com
 
 ## Show your support
 
