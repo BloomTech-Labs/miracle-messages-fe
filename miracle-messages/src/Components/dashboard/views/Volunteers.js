@@ -7,8 +7,6 @@ class Volunteers extends React.Component {
     data: []
   }
 
-  //https://miracle-messages-production.herokuapp.com/api/form
-  // https://miracle-messages-dev.herokuapp.com/api/form
   componentDidMount() {
     axios
       .get("https://miracle-messages-dev.herokuapp.com/api/form")

@@ -16,7 +16,7 @@ class ChapterCard extends React.Component {
       currentPartners: []
     }
   }
-  //https://miracle-messages-production.herokuapp.com <-- replace the url when in production
+
   getChapter = id => {
     axios
       .get(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
@@ -24,7 +24,7 @@ class ChapterCard extends React.Component {
         this.setState({ chapter: res.data })
       })
       .catch(error => {
-        console.error(error)
+        // console.error(error)
       })
   }
 
@@ -60,7 +60,7 @@ class ChapterCard extends React.Component {
         })
       })
 
-      .catch(err => console.log(err))
+      .catch(error => console.log(err))
   }
 
   getChapterPartners = id => {
@@ -125,7 +125,7 @@ class ChapterCard extends React.Component {
     }
     return (
       <div className="chapter-flex">
-        {console.log(this.state.chapter)}
+        {/* {console.log(this.state.chapter)} */}
         <Card
           className="s-chapter"
           style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "300px" }}

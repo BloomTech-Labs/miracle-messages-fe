@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import {
   Card,
   CardBody,
@@ -9,14 +9,14 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter
-} from "reactstrap";
-import axios from "axios";
-import { deleteSponsor, getSponsor } from "../../../../Actions/index";
-import { connect } from "react-redux";
-import UpdateSponsor from "./UpdateSponsor";
+} from "reactstrap"
+import axios from "axios"
+import { deleteSponsor, getSponsor } from "../../../../Actions/index"
+import { connect } from "react-redux"
+import UpdateSponsor from "./UpdateSponsor"
 class Sponsor extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       modal: false,
       dropdownOpen: false,
@@ -26,33 +26,33 @@ class Sponsor extends Component {
         icon_url: null,
         category: ""
       }
-    };
+    }
   }
 
   delete = () => {
-    const id = this.props.sponsor.id;
-    console.log(id);
+    const id = this.props.sponsor.id
+    // console.log(id);
     axios
 
       .delete(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`)
       .then(res => {
-        this.toggle();
-        this.props.getSponsor();
+        this.toggle()
+        this.props.getSponsor()
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
-    }));
-  };
+    }))
+  }
 
   toggleEdit = () => {
     this.setState(prevState => ({
       editModal: !prevState.editModal
-    }));
-  };
+    }))
+  }
 
   render() {
     return (
@@ -141,13 +141,13 @@ class Sponsor extends Component {
           </CardBody>
         </Card>
       </>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     sponsorData: state.partnerReducer.sponsorData
-  };
-};
-export default connect(mapStateToProps, { deleteSponsor, getSponsor })(Sponsor);
+  }
+}
+export default connect(mapStateToProps, { deleteSponsor, getSponsor })(Sponsor)
