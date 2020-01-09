@@ -43,13 +43,6 @@ export default props => {
       </a>
 
       <Link to="/searchbar">Search</Link>
-
-      {/* <div className="burger-bar"> 
-        <a className="burger-search"> Search </a>
-        <div className="burger-dropdown"> 
-          <SearchBar />
-          </div> 
-          </div> */}
     </Menu>
   )
 }

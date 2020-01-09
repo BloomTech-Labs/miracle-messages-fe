@@ -2,9 +2,8 @@ import React from "react"
 import logo from "../../Assets/Imgs/MM_Logo.png"
 import "./Navbar.scss"
 
-// search bar component  below
+// search bar component
 import SearchBar from "../MapComponents/SearchBar.js"
-// search bar above
 
 class Navbar extends React.Component {
   render() {
@@ -14,7 +13,6 @@ class Navbar extends React.Component {
           <img src={logo} alt="logo" />
         </a>
         <nav>
-          {/* <a href="#chapters"> Search </a> */}
           <div className="search-bar">
             <a className="drop-search"> Search </a>
             <div className="dropdown-search">

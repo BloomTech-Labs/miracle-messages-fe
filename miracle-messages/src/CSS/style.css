@@ -451,18 +451,7 @@ pre {
   padding-left: 0;
   margin-right: auto;
   margin-left: auto; }
-  /* @media (max-width: 576px) {
-    .container {
-      max-width: 540px; } }
-  @media (max-width: 768px) {
-    .container {
-      max-width: 720px; } }
-  @media (max-width: 992px) {
-    .container {
-      max-width: 960px; } }
-  @media (max-width: 1200px) {
-    .container {
-      max-width: 1140px; } } */
+
 
 .container-fluid {
   width: 100%;
@@ -8773,19 +8762,14 @@ ul.list-style-none {
 
   .s-chapter{
     width: 48%;
-    /* position: absolute;
-    left: 0; */
   }
 
   .s-chapter-right{
     width: 48%;
-    /* position: absolute;
-    right: 0; */
-    height: auto;
+     height: auto;
   }
 
   .partner-card-s{
-    /* width: 100px; */
     height: auto;
     background: white;
    margin: 10px 0;
@@ -8817,7 +8801,6 @@ ul.list-style-none {
    padding: .5rem;
   margin-bottom: 20px;
   margin: .5rem;
-  /* border: 2px solid red; */
  }
 
  /* Styling on ChapterCard Component */
