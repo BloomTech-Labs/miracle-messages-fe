@@ -60,7 +60,7 @@ class ChapterCard extends React.Component {
         })
       })
 
-      .catch(error => console.log(err))
+      .catch(error => console.log(error))
   }
 
   getChapterPartners = id => {

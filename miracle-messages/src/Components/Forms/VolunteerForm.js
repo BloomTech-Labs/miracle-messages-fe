@@ -1,10 +1,10 @@
-import React from "react";
-import "./VolunteerForm.scss";
-import { connect } from "react-redux";
-import { addVolunteers } from "../../Actions/FormActions";
+import React from "react"
+import "./VolunteerForm.scss"
+import { connect } from "react-redux"
+import { addVolunteers } from "../../Actions/FormActions"
 
-import FormFooter from "../Header-Footer/FormFooter";
-import FormHeader from "../Header-Footer/FormHeader";
+import FormFooter from "../Header-Footer/FormFooter"
+import FormHeader from "../Header-Footer/FormHeader"
 
 class VolunteerForm extends React.Component {
   state = {
@@ -24,10 +24,10 @@ class VolunteerForm extends React.Component {
       mediacoverage: false,
       somethingelse: false
     }
-  };
+  }
   handleOnsubmit = e => {
-    e.preventDefault();
-    this.props.addVolunteers(this.state);
+    e.preventDefault()
+    this.props.addVolunteers(this.state)
     this.setState({
       newVolunteer: {
         fname: "",
@@ -45,41 +45,41 @@ class VolunteerForm extends React.Component {
         mediacoverage: false,
         somethingelse: false
       }
-    });
-    this.props.history.push("/user/login");
-  };
+    })
+    this.props.history.push("/user/login")
+  }
   handleToggle = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         [e.target.name]: e.target.checked
       }
-    });
-  };
+    })
+  }
   handleOnChange = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         [e.target.name]: e.target.value
       }
-    });
-  };
+    })
+  }
   handleOnChangePhone = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         phone: e.target.value
       }
-    });
-  };
+    })
+  }
   handleOnChangeInterest = e => {
     this.setState({
       newVolunteer: {
         ...this.state.newVolunteer,
         [e.target.name]: e.target.value
       }
-    });
-  };
+    })
+  }
   render() {
     // console.log(this.state.newVolunteer.phone);
     return (
@@ -274,13 +274,13 @@ class VolunteerForm extends React.Component {
 
         <FormFooter />
       </div>
-    );
+    )
   }
 }
 const mapStateToProps = state => {
   return {
     message: state.formReducer.status.message
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, { addVolunteers })(VolunteerForm);
+export default connect(mapStateToProps, { addVolunteers })(VolunteerForm)
