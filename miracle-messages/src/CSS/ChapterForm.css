@@ -1,0 +1,18 @@
+.label-div {
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  color: rgba(26, 26, 26, 0.7);
+  font-family: ProximaNova;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.24px;
+  line-height: 22px;
+  text-align: left;
+  margin: 10px auto;
+  border: 1px solid purple;
+}

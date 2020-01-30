@@ -44,8 +44,6 @@ class PendingCards extends Component {
         className="cardChapter"
         style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
       >
-        {/* {console.log(this.props)} */}
-
         <CardImg
           top
           width="100%"
@@ -57,7 +55,7 @@ class PendingCards extends Component {
         <CardBody>
           <CardTitle>{this.props.info.title}</CardTitle>
           <CardSubtitle>
-            Volunteers: {this.props.info.numvolunteers}
+            Requested Volunteer's Email: {this.props.info.email}
           </CardSubtitle>
           <CardText>{this.props.info.description}</CardText>
 
@@ -71,7 +69,6 @@ class PendingCards extends Component {
           >
             Approve
           </Button>
-          {/* {console.log(this.props.info.approved)} */}
           <Modal
             isOpen={this.state.modalEdit}
             toggle={this.toggleEdit}

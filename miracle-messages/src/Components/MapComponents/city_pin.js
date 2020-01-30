@@ -1,42 +1,24 @@
-import React, { PureComponent } from "react"
-import { connect } from "react-redux"
-
-// import WebMercatorViewport from 'viewport-mercator-project';
-// import { LinearInterpolator } from 'react-map-gl';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 // Action imports
-import { updatePopupAction } from "../../Actions/updatePopupAction"
-import { slideToggleAction } from "../../Actions/SlideToggleAction"
-import { onViewportChanged } from "../../Actions/OnViewportAction"
+import { updatePopupAction } from "../../Actions/updatePopupAction";
+import { slideToggleAction } from "../../Actions/SlideToggleAction";
+import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 const pinStyle = {
   fill: "dodgerblue"
-}
-
+};
 
 class CityPin extends PureComponent {
   render() {
-    // console.log(this.props.city)
-
-// Dom manipulation for hover effect 
+    // Dom manipulation for hover effect
     const PinClickHandler = () => {
-      this.props.updatePopupAction(this.props.city)
-      this.props.slideToggleAction()
+      this.props.updatePopupAction(this.props.city);
+      this.props.slideToggleAction();
+    };
 
-      // const viewport = new WebMercatorViewport({ls
-      //   latitude: this.props.city.latitude,
-      //   longitude: this.props.city.longitude,
-      //   zoom: 10,
-      //   transitionInterpolator: new LinearInterpolator({
-      //     around: [this.props.city.latitude, this.props.city.longitude]
-      //   }),
-      //   transitionDuration: 1000
-      // })
-
-      // this.props.onViewportChanged(viewport)
-    }
-
-    const size = 29
+    const size = 29;
 
     return (
       <svg
@@ -45,8 +27,7 @@ class CityPin extends PureComponent {
         style={{
           ...pinStyle,
           transform: `translate(${-size / 2}px,${-size}px)`,
-          cursor: "pointer", 
-          
+          cursor: "pointer"
         }}
         onClick={PinClickHandler}
       >
@@ -66,18 +47,18 @@ class CityPin extends PureComponent {
           <path d="m12.763 10.208c1.152-1.1536 2.1531-2.0975 2.2246-2.0975.07151 0 1.0726.94386 2.2246 2.0975l2.0946 2.0975h-8.6383z" />
         </g>
       </svg>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     popupInfo: state.mapReducer.popupInfo
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, {
   updatePopupAction,
   slideToggleAction,
   onViewportChanged
-})(CityPin)
+})(CityPin);

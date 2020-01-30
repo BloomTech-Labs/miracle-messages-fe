@@ -1,6 +1,9 @@
-import React from "react";
-import logo from "../../Assets/Imgs/MM_Logo.png";
-import "./Navbar.scss";
+import React from "react"
+import logo from "../../Assets/Imgs/MM_Logo.png"
+import "./Navbar.scss"
+
+// search bar component
+import SearchBar from "../MapComponents/SearchBar.js"
 
 class Navbar extends React.Component {
   render() {
@@ -10,17 +13,29 @@ class Navbar extends React.Component {
           <img src={logo} alt="logo" />
         </a>
         <nav>
+          <div className="search-bar">
+            <a className="drop-search"> Search </a>
+            <div className="dropdown-search">
+              <SearchBar />
+            </div>
+          </div>
+          <div style={{ margin: "15px" }}> </div>
           <a href="https://miraclemessages.org/">HOME</a>
           <a href="https://miraclemessages.org/who">ABOUT</a>
           <a href="https://miraclemessages.org/partner">REUNION SERVICE</a>
-          <a href="#chapters"> Search </a>
 
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
             <div className="dropdown-content">
-              <a href="http://localhost:3000/form">Register Volunteer</a>
-              <a href="http://localhost:3000/user/login">Volunteer Login</a>
-              <a href="http://localhost:3000/admin/login">Admin Login</a>
+              <a href="https://miracle-message.netlify.com/form">
+                Volunteer Registration
+              </a>
+              <a href="https://miracle-message.netlify.com/user/login">
+                Volunteer Login
+              </a>
+              <a href="https://miracle-message.netlify.com/admin/login">
+                Admin Login
+              </a>
               <a className="not-last-child">test</a>
             </div>
           </div>
@@ -30,8 +45,8 @@ class Navbar extends React.Component {
           </a>
         </nav>
       </div>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default Navbar

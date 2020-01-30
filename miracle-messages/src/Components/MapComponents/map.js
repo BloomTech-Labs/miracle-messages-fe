@@ -5,19 +5,10 @@ import { connect } from "react-redux";
 import MapGL, { Marker, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-// Custom file imports
-
-// import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
-
-import CityPin from "./city_pin";
-import CityInfo from "./city_info";
-
 // Action imports
-import { getData, getDefault } from "../../Actions/index";
-
+import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { slideToggleAction } from "../../Actions/SlideToggleAction";
-
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
@@ -29,18 +20,17 @@ import { Cancel } from "@material-ui/icons";
 import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
-
 import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
+// Custom file imports
+import CityPin from "./city_pin";
+import CityInfo from "./city_info";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
-
 import Sidebar from "./Sidebar";
 
-// search bar component  below
-import SearchBar from "../MapComponents/SearchBar.js";
-// search bar above
+////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
 require("dotenv").config();
 
@@ -56,40 +46,20 @@ ReactGA.initialize(process.env.REACT_APP_GA_ID);
 ReactGA.pageview("/map");
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false,
-      chapter: {
-        title: "",
-        established_date: "",
-        description: "",
-        chapter_img: null,
-        city: "",
-        state: "",
-        latitude: "",
-        longitude: "",
-        email: "",
-        numvolunteers: "",
-        msg_delivered: "",
-        msg_recorded: "",
-        numreunions: "",
-        story: "",
-        reunion_img: null
-      }
-    };
-  }
   //this fetches the data from the backend:
   componentDidMount() {
     this.props.getData();
-    this.props.getDefault();
   }
-
-  //_renderCityMarker plugs into line 83 array map to enable the marker for each city to display on map
 
   closeHandler = () => {
     this.props.updatePopupAction(null);
     this.props.slideToggleAction();
+  };
+
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -97,16 +67,12 @@ class Map extends Component {
     const popupInfo = this.props.popupInfo;
     return (
       popupInfo && (
-        <div
-          style={{
-            marginTop: "58px"
-          }}
-        >
+        <div>
           {/* clicking city pin opens the drawer below */}
           <Drawer
             open={this.props.openDrawer}
             variant="persistent"
-            className="slide"
+            className="open-drawer"
           >
             <IconButton
               onClick={this.closeHandler}
@@ -178,14 +144,12 @@ class Map extends Component {
                     gaEvent("click", "chapter pin", `${city.title}`);
                   }}
                 >
-                  {/* <PlaceTwoTone /> */}
                   <CityPin city={city} />
                 </Marker>
               );
             }
           })}
         </MapGL>
-        <SearchBar />
         {this._renderSlide()}
       </div>
     );
@@ -208,6 +172,5 @@ export default connect(mapStateToProps, {
   getData,
   updatePopupAction,
   slideToggleAction,
-  onViewportChanged,
-  getDefault
+  onViewportChanged
 })(Map);

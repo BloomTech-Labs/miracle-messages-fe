@@ -145,14 +145,11 @@ table {
 }
 
 .mapboxgl-popup {
-  /* height: 203px; */
-  /* width: 275px; */
   text-align: center;
   cursor: auto;
 }
 
 .mapboxgl-popup-content {
-  /* height: 183px; */
   width: 275px;
   background: #484747 !important;
   color: #fff;
@@ -162,8 +159,6 @@ table {
 .mapboxgl-popup-tip {
   border-left: 10px solid transparent !important;
   border-right: 10px solid transparent !important;
-  /* border-top: 10px solid transparent !important;
-  border-bottom: 10px solid transparent !important; */
 }
 
 /* Tip Color */
@@ -176,7 +171,6 @@ table {
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
   border-bottom-color: #484747 !important;
-  /* height: 30px; To be used later */
 }
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
@@ -185,14 +179,12 @@ table {
 }
 
 .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-  /* border-right-color: #484747 !important; */
   border-top: 10px solid transparent !important;
   border-bottom: 10px solid transparent !important;
   border-right: 20px solid #484747 !important;
   margin: 15px -2px 0 0;
 }
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-  /* border-left-color: #484747 !important; */
   border-top: 10px solid transparent !important;
   border-bottom: 10px solid transparent !important;
   border-left: 20px solid #484747 !important;
@@ -202,8 +194,6 @@ table {
 .mapboxgl-popup-close-button {
   color: whitesmoke !important;
   font-size: 20px;
-  /* margin: 2px 5px 5px 5px; */
-  /* border: 1px solid white; */
   background: transparent !important;
   width: 40px;
   height: 40px;
@@ -212,11 +202,7 @@ table {
 
 .mapboxgl-popup-close-button:hover {
   font-size: 26px;
-  /* transition: 0.5s; */
-  /* transform: rotate(-90deg);
-  transition: transform 650ms ease; */
   color: white !important;
-  /* text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white; */
 }
 
 .info {

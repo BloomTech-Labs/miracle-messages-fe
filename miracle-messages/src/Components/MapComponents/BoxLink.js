@@ -1,11 +1,11 @@
-import React from "react";
+import React from "react"
 
-import "./BoxLink.scss";
+import "./BoxLink.scss"
 
 class BoxLink extends React.Component {
   state = {
     open: true
-  };
+  }
   render() {
     return (
       <>
@@ -35,7 +35,7 @@ class BoxLink extends React.Component {
             </div>
             <a
               style={{ position: "relative", bottom: "15px" }}
-              href="http://localhost:3000/user/newchapter"
+              href="https://miracle-message.netlify.com/user/newchapter"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -44,8 +44,8 @@ class BoxLink extends React.Component {
           </div>
         )}
       </>
-    );
+    )
   }
 }
 
-export default BoxLink;
+export default BoxLink

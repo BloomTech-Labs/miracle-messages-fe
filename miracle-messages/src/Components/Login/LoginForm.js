@@ -13,7 +13,6 @@ import {
 import { fetchLogin } from "../../Actions/AdminPageActions"
 import { connect } from "react-redux"
 import { loginReducer } from "../../Reducers/LoginReducer"
-// import logo from "../../Assets/Imgs/MM_Logo.png";
 
 class LoginForm extends React.Component {
   state = {
@@ -39,50 +38,54 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <Container className="LoginForm">
-        <h2>Admin login</h2>
-        <Form className="form" onSubmit={this.handleSubmit}>
-          <Col>
-            <FormGroup>
-              <Label>User Name</Label>
-              <Input
-                type="text"
-                name="username"
-                onChange={this.handleOnChange}
-                value={this.state.username}
-                placeholder="User Name"
-              />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                placeholder="********"
-                onChange={this.handleOnChange}
-                value={this.state.password}
-              />
-            </FormGroup>
-          </Col>
-          <Button
-            style={{
-              width: "100px",
-              background: "#5FC484",
-              borderRadius: "15px;"
-            }}
-            color="primary"
-            onClick={this.handleSubmit}
-          >
-            Submit
-          </Button>
-        </Form>
-        <footer className="footer text-center">
-          © 2019. Miracle Messages{" "}
-          <a href="https://miraclemessages.org/">Miracle Messages</a>.
-        </footer>
-      </Container>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "10%" }}
+      >
+        <Container className="LoginForm">
+          <h2>Admin login</h2>
+          <Form className="form" onSubmit={this.handleSubmit}>
+            <Col>
+              <FormGroup>
+                <Label>User Name</Label>
+                <Input
+                  type="text"
+                  name="username"
+                  onChange={this.handleOnChange}
+                  value={this.state.username}
+                  placeholder="User Name"
+                />
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="********"
+                  onChange={this.handleOnChange}
+                  value={this.state.password}
+                />
+              </FormGroup>
+            </Col>
+            <Button
+              style={{
+                width: "100px",
+                background: "#5FC484",
+                borderRadius: "15px;"
+              }}
+              color="primary"
+              onClick={this.handleSubmit}
+            >
+              Submit
+            </Button>
+          </Form>
+          <footer className="footer text-center">
+            © 2019. Miracle Messages{" "}
+            <a href="https://miraclemessages.org/">Miracle Messages</a>.
+          </footer>
+        </Container>
+      </div>
     )
   }
 }

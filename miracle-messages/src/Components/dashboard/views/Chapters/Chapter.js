@@ -96,14 +96,6 @@ class Chapter extends Component {
                 chapter={this.props.info}
               />
             </ModalBody>
-            {/* <ModalFooter>
-              <Button color='primary' onClick={this.toggleEdit}>
-                Update
-              </Button>{' '}
-              <Button color="secondary" type="submit" onClick={this.toggleEdit}>
-                Cancel
-              </Button>
-            </ModalFooter> */}
           </Modal>
 
           <Button

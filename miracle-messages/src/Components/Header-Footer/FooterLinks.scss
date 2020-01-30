@@ -1,0 +1,24 @@
+.footer-wrapper2 {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  background: #1f1f1f;
+  color: white;
+  font-size: 16px;
+  padding: 64px 32px;
+  .column {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    h5 {
+      font: 1em sans-serif;
+      font-weight: 900;
+      color: #e0e0e0;
+    }
+    a {
+      color: #797979;
+    }
+  }
+}
