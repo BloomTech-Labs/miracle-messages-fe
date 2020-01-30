@@ -17,21 +17,27 @@ export default props => {
       <a className="menu-item" href="https://miraclemessages.org/partner">
         REUNION SERVICE
       </a>
-      <a className="menu-item" href="https://miracle-message.netlify.com/form">
+      <a
+        className="menu-item"
+        href="https://https://miracle-messages.shelbydiamond.now.sh/form"
+      >
         GET INVOLVED
       </a>
-      <a className="menu-item" href="https://miracle-message.netlify.com/form">
+      <a
+        className="menu-item"
+        href="https://https://miracle-messages.shelbydiamond.now.sh/form"
+      >
         REGISTER AS A VOLUNTEER
       </a>
       <a
         className="menu-item"
-        href="https://miracle-message.netlify.com/user/login"
+        href="https://https://miracle-messages.shelbydiamond.now.sh/user/login"
       >
         VOLUNTEER LOGIN
       </a>
       <a
         className="menu-item"
-        href="https://miracle-message.netlify.com/admin/login"
+        href="https://miracle-messages.shelbydiamond.now.sh/admin/login"
       >
         ADMIN LOGIN
       </a>

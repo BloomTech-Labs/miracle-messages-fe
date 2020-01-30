@@ -27,13 +27,13 @@ class Navbar extends React.Component {
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
             <div className="dropdown-content">
-              <a href="https://miracle-message.netlify.com/form">
+              <a href="https://https://miracle-messages.shelbydiamond.now.sh/form">
                 Volunteer Registration
               </a>
-              <a href="https://miracle-message.netlify.com/user/login">
+              <a href="https://miracle-messages.shelbydiamond.now.sh/user/login">
                 Volunteer Login
               </a>
-              <a href="https://miracle-message.netlify.com/admin/login">
+              <a href="https://miracle-messages.shelbydiamond.now.sh/admin/login">
                 Admin Login
               </a>
               <a className="not-last-child">test</a>
