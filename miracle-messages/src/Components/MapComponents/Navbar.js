@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { updateChapters } from '../../Actions/SearchBarAction';
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import "./Navbar.scss";
+import { Link } from 'react-router-dom';
+
 
 // search bar component
 // import SearchBar from "../MapComponents/SearchBar.js";
@@ -59,15 +61,15 @@ const Navbar = props => {
           <div className="dropdown">
             <a className="dropbtn">GET INVOLVED</a>
             <div className="dropdown-content">
-              <a href="https://https://miracle-messages.shelbydiamond.now.sh/form">
+              <Link to="/form">
                 Volunteer Registration
-              </a>
-              <a href="https://miracle-messages.shelbydiamond.now.sh/user/login">
+              </Link>
+              <Link to="/user/login">
                 Volunteer Login
-              </a>
-              <a href="https://miracle-messages.shelbydiamond.now.sh/admin/login">
+              </Link>
+              <Link to="/admin/login">
                 Admin Login
-              </a>
+              </Link>
               <a className="not-last-child">test</a>
             </div>
           </div>
