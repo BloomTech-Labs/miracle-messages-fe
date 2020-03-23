@@ -4,11 +4,12 @@ import {
   FETCH_CHAPTER_FAIL,
   FETCH_CHAPTER_DEFAULT_INFO,
   FETCH_CHAPTER_DEFAULT_SUCCESS,
-  FETCH_CHAPTER_DEFAULT_FAIL
-} from "../Actions/index"
-import { UPDATE_POPUP } from "../Actions/updatePopupAction"
-import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction"
-import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction"
+  FETCH_CHAPTER_DEFAULT_FAIL,
+} from "../Actions/index";
+import { UPDATE_POPUP } from "../Actions/updatePopupAction";
+import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
+import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
+import { UPDATE_CHAPTERS } from '../Actions/SearchBarAction';
 
 const initialState = {
   viewport: {
@@ -88,6 +89,12 @@ export const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         viewport: action.payload
+      }
+
+    case UPDATE_CHAPTERS:
+      return {
+        ...state,
+        chapter_data: action.payload,
       }
 
     default:
