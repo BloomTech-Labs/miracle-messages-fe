@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import SearchBarCard from "./SearchBarCard.js"
-import SideBar from "./Sidebar.js"
-import "./SearchBar.scss"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import SearchBarCard from "./SearchBarCard.js";
+import SideBar from "./Sidebar.js";
+import "./SearchBar.scss";
 
 // Scrollbar import
-import { Scrollbars } from "react-custom-scrollbars"
+import { Scrollbars } from "react-custom-scrollbars";
 
 const SearchBar = props => {
   const [search, setSearch] = useState("")
