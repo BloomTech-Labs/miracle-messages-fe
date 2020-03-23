@@ -19,8 +19,19 @@ import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPassword
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import SearchBar from "./Components/MapComponents/SearchBar.js"
 
+//Octa Import
+
+// import { Security, LoginCallback } from '@okta/okta-react';
+
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute"
+
+// const config = {
+//   issuer: 'https://${yourOktaDomain}/oauth2/default',
+//   redirectUri: window.location.origin + '/implicit/callback',
+//   clientId: '{clientId}',
+//   pkce: true
+// };
 
 class App extends Component {
   render() {

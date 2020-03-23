@@ -14,12 +14,38 @@ import { fetchLogin } from "../../Actions/AdminPageActions"
 import { connect } from "react-redux"
 import { loginReducer } from "../../Reducers/LoginReducer"
 
+//Octa Imports and Code
+
+// import { useOktaAuth } from '@okta/okta-react';
+
+// const Home = () => { 
+//   const { authState, authService } = useOktaAuth();
+
+//   const login = async () => { 
+//     // Redirect to '/' after login
+//     authService.login('./admin/chapters');
+//   }
+
+// const logout = async () => { 
+//   // Redirect to '/' after logout
+//   authService.logout('/');
+// }
+
+// if (authState.isPending) { 
+//   return <div>Loading...</div>;
+// }
+
+// return authState.isAuthenticated ?
+//     <button onClick={logout}>Logout</button> :
+//     <button onClick={login}>Login</button>;
+// };
+
 class LoginForm extends React.Component {
   state = {
     username: "",
     password: ""
   }
-
+  //Remove handleSubmit after activiting Octa?
   handleSubmit = e => {
     e.preventDefault()
     this.props.fetchLogin(this.state).then(() => {
