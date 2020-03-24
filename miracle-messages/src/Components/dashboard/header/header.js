@@ -39,11 +39,13 @@ class Header extends React.Component {
       <header className='topbar navbarbg' data-navbarbg='skin1'>
         <Navbar className='top-navbar' dark expand='md'>
           <div className='navbar-header' id='logobg' data-logobg='skin6'>
-            <NavbarBrand href='/'>
-              <b className='logo-icon'>
-                <img src={logodarkicon} alt='homepage' className='dark-logo' />
-              </b>
-            </NavbarBrand>
+            <Link to="/">
+              <NavbarBrand>
+                <b className='logo-icon'>
+                  <img src={logodarkicon} alt='homepage' className='dark-logo' />
+                </b>
+              </NavbarBrand>
+            </Link>
 
             <button
               style={{ border: 'none', background: 'white' }}
