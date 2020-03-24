@@ -1,48 +1,48 @@
-import React from "react"
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import Chapter from "./Chapter"
+import Chapter from "./Chapter";
 
-import { connect } from "react-redux"
-import { getData } from "../../../../Actions/index"
+import { connect } from "react-redux";
+import { getData } from "../../../../Actions/index";
+import { useOktaAuth } from '@okta/okta-react';
 
-class Chapters extends React.Component {
-  deleteChapter = id => {
+const Chapters = props => {
+  
+  const deleteChapter = id => {
     axios
       .delete(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
       .then(res => {
-        this.props.getData()
+        props.getData();
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
+  
+  useEffect(() => {
+    props.getData();
+  }, [])
 
-  componentDidMount() {
-    this.props.getData()
-  }
-
-  render() {
-    return (
-      <div className="chapter-felx">
-        {this.props.chapter_data.map(chapter => {
-          if (chapter.approved === true) {
-            return (
-              <Chapter
-                info={chapter}
-                key={chapter.id}
-                deleteChapter={this.deleteChapter}
-              />
-            )
-          }
-        })}
-      </div>
-    )
-  }
-}
+  return (
+    <div className="chapter-felx">
+      {this.props.chapter_data.map(chapter => {
+        if (chapter.approved === true) {
+          return (
+            <Chapter
+              info={chapter}
+              key={chapter.id}
+              deleteChapter={this.deleteChapter}
+            />
+          )
+        }
+      })}
+    </div>
+  )
+};
 
 const mapStateToProps = state => {
   return {
     chapter_data: state.mapReducer.chapter_data
   }
-}
+};
 
-export default connect(mapStateToProps, { getData })(Chapters)
+export default connect(mapStateToProps, { getData })(Chapters);

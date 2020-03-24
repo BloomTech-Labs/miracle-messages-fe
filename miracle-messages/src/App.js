@@ -21,17 +21,17 @@ import SearchBar from "./Components/MapComponents/SearchBar.js"
 
 //Octa Import
 
-// import { Security, LoginCallback } from '@okta/okta-react';
+import { Security, LoginCallback } from '@okta/okta-react';
 
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute"
 
-// const config = {
-//   issuer: 'https://${yourOktaDomain}/oauth2/default',
-//   redirectUri: window.location.origin + '/implicit/callback',
-//   clientId: '{clientId}',
-//   pkce: true
-// };
+const config = {
+  issuer: `https://donyawebgroup-us.okta.com/oauth2/default`,
+  redirectUri: window.location.origin + `/implicit/callback`,
+  clientId: `0oa4sd1nfAm7D5kIA4x6`,
+  pkce: true
+};
 
 class App extends Component {
   render() {
@@ -43,26 +43,17 @@ class App extends Component {
 
           <Route exact path="/form" component={VolunteerForm} />
 
-          <Route exact path="/admin/login" component={LoginForm} />
+          
 
           <Route exact path="/user/login" component={LoginPage} />
-
-          <Route exact path="/user/newchapter" component={NewChapterInfo} />
-
-          <Route exact path="/user/newchapterform" component={ChapterForm} />
-
-          <Route
-            exact
-            path="/user/forgotpassword1"
-            component={ForgotPasswordForm}
-          />
-
-          <Route
-            exact
-            path="/user/forgotpassword2"
-            component={ConfirmPassword}
-          />
-
+          <Route exact path="/admin/login" component={LoginForm} />
+          <Security {...config}>
+            
+            <Route exact path="/user/newchapter" component={NewChapterInfo} />
+            <Route exact path="/user/newchapterform" component={ChapterForm} />
+            <Route path='/implicit/callback' component={LoginCallback}/>
+          </Security>
+          
           {/* Takes to searchbar component  */}
           <Route path="/searchbar" component={SearchBar} />
 
