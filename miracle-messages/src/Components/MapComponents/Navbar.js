@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
+import logo from "../../Assets/Imgs/MM_Logo.png"
 import { connect } from 'react-redux';
+import "./Navbar.scss"
 import { updateChapters } from '../../Actions/SearchBarAction';
-import logo from "../../Assets/Imgs/MM_Logo.png";
-import "./Navbar.scss";
-import { Link } from 'react-router-dom';
-
 
 // search bar component
 // import SearchBar from "../MapComponents/SearchBar.js";
@@ -37,9 +36,9 @@ const Navbar = props => {
     );
     return (
       <div className="navbar-map">
-        <a href="https://miraclemessages.org/">
+        <Link to="/">
           <img src={logo} alt="logo" />
-        </a>
+        </Link>
         <nav>
           <div className="search-bar">
             <form>
@@ -54,12 +53,12 @@ const Navbar = props => {
             </form>
           </div>
           <div style={{ margin: "15px" }}> </div>
-          <a href="https://miraclemessages.org/">HOME</a>
-          <a href="https://miraclemessages.org/who">ABOUT</a>
-          <a href="https://miraclemessages.org/partner">REUNION SERVICE</a>
+          <Link to="https://miraclemessages.org/">HOME</Link>
+          <Link to="https://miraclemessages.org/who">ABOUT</Link>
+          <Link to="https://miraclemessages.org/partner">REUNION SERVICE</Link>
 
           <div className="dropdown">
-            <a className="dropbtn">GET INVOLVED</a>
+            <Link className="dropbtn">GET INVOLVED</Link>
             <div className="dropdown-content">
               <Link to="/form">
                 Volunteer Registration
@@ -70,13 +69,13 @@ const Navbar = props => {
               <Link to="/admin/login">
                 Admin Login
               </Link>
-              <a className="not-last-child">test</a>
+              <Link className="not-last-child">test</Link>
             </div>
           </div>
 
-          <a href="https://www.classy.org/give/231839/#!/donation/checkout">
+          <Link to="https://www.classy.org/give/231839/#!/donation/checkout">
             DONATE
-          </a>
+          </Link>
         </nav>
       </div>
     )

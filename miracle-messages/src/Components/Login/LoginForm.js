@@ -1,99 +1,65 @@
-import React from "react"
-import "./LoginForm.css"
-import {
-  Container,
-  Col,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button
-} from "reactstrap"
+/*
+ * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
+ *
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and limitations under the License.
+ */
 
-import { fetchLogin } from "../../Actions/AdminPageActions"
-import { connect } from "react-redux"
-import { loginReducer } from "../../Reducers/LoginReducer"
+import React, { useEffect } from 'react';
+import * as OktaSignIn from '@okta/okta-signin-widget';
+import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
-class LoginForm extends React.Component {
-  state = {
-    username: "",
-    password: ""
-  }
+import config from '../../config/config';
 
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.fetchLogin(this.state).then(() => {
-      this.props.history.push("./admin/chapters")
-    })
+const LoginForm = () => {
+  useEffect(() => {
+    const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
+    const widget = new OktaSignIn({
+      /**
+       * Note: when using the Sign-In Widget for an OIDC flow, it still
+       * needs to be configured with the base URL for your Okta Org. Here
+       * we derive it from the given issuer for convenience.
+       */
+      baseUrl: issuer.split('/oauth2')[0],
+      clientId,
+      redirectUri,
+      logo: '/react.svg',
+      i18n: {
+        en: {
+          'primaryauth.title': 'Sign in to Miracle Messages',
+        },
+      },
+      authParams: {
+        pkce,
+        issuer,
+        display: 'page',
+        scopes,
+      },
+    });
 
-    this.setState({
-      username: "",
-      password: ""
-    })
-  }
+    widget.renderEl(
+      { el: '#sign-in-widget' },
+      () => {
+        /**
+         * In this flow, the success handler will not be called beacuse we redirect
+         * to the Okta org for the authentication workflow.
+         */
+      },
+      (err) => {
+        throw err;
+      },
+    );
+  }, []);
 
-  handleOnChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
-  render() {
-    return (
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "10%" }}
-      >
-        <Container className="LoginForm">
-          <h2>Admin login</h2>
-          <Form className="form" onSubmit={this.handleSubmit}>
-            <Col>
-              <FormGroup>
-                <Label>User Name</Label>
-                <Input
-                  type="text"
-                  name="username"
-                  onChange={this.handleOnChange}
-                  value={this.state.username}
-                  placeholder="User Name"
-                />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label for="examplePassword">Password</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="********"
-                  onChange={this.handleOnChange}
-                  value={this.state.password}
-                />
-              </FormGroup>
-            </Col>
-            <Button
-              style={{
-                width: "100px",
-                background: "#5FC484",
-                borderRadius: "15px;"
-              }}
-              color="primary"
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </Button>
-          </Form>
-          <footer className="footer text-center">
-            © 2019. Miracle Messages{" "}
-            <a href="https://miraclemessages.org/">Miracle Messages</a>.
-          </footer>
-        </Container>
-      </div>
-    )
-  }
-}
-
-const mapStateToProps = state => ({
-  isLoggedIn: state.loginReducer.isLoggedIn,
-  isLoggedOut: state.loginReducer.isLoggedOut,
-  isFetching: state.loginReducer.isFetching
-})
-
-export default connect(mapStateToProps, { fetchLogin, loginReducer })(LoginForm)
+  return (
+    <div>
+      <div id="sign-in-widget" />
+    </div>
+  );
+};
+export default LoginForm;
