@@ -1,5 +1,5 @@
-const CLIENT_ID = process.env.CLIENT_ID || '{clientId}';
-const ISSUER = process.env.ISSUER || 'https://{yourOktaDomain}.com/oauth2/default';
+const CLIENT_ID = process.env.CLIENT_ID || '0oa4stu89kEpHK1sZ4x6';
+const ISSUER = process.env.ISSUER || 'https://donyawebgroup-us.okta.com/oauth2/default';
 //might not need profile 
 export default {
     oidc: {
