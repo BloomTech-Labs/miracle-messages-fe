@@ -5,6 +5,7 @@ import Sidebar from "../sidebar/sidebar.js";
 import Footer from "../footer/footer.js";
 import ThemeRoutes from "../routes/routing.js";
 
+
 class Fulllayout extends React.Component {
   constructor(props) {
     super(props);

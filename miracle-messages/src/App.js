@@ -33,19 +33,27 @@ import { PrivateRoute } from "./Components/PrivateRoute";
 //   pkce: true
 // };
 
-//const history = useHistory();
+//SHAWN OKTA
+import CustomLogin from './Components/Login/CustomLogin';
 
-const customAuthHandler = () => {
-  // Redirect to the /login page that has a CustomLoginComponent
-  //history.push('/login');
-};
 
-const App = props => {
 
+const App = () => {
+  const history = useHistory();
+  const onAuthRequired = () => {
+    // Redirect to the /login page that has a CustomLoginComponent
+    history.push('/admin/login');
+  };
+  
     return (
       <div className="App">
-        <Security {...config.oidc}
-        onAuthRequired={customAuthHandler}>
+        <Security 
+        issuer='https://dev-662389.okta.com/oauth2/default'
+        clientId='0oa4sulf3qW8OTVdF4x6'
+        redirectUri={window.location.origin + '/implicit/callback'}
+        onAuthRequired={onAuthRequired}
+        pkce={true}
+        >
         {/* Routes */}
           <Switch>
             <Route exact path="/" render={props => <Map {...props} />} />
@@ -55,7 +63,10 @@ const App = props => {
             
 
             <Route exact path="/user/login" component={LoginPage} />
-            <Route exact path="/admin/login" component={LoginForm} />
+            {/* <Route exact path="/admin/login" component={LoginForm} /> */}
+            <Route exact path='/admin/login' render={() => <CustomLogin baseUrl='https://dev-662389.okta.com' />} />
+            <Route path='/implicit/callback' component={LoginCallback}/>
+
             
               
               <Route exact path="/user/newchapter" component={NewChapterInfo} />
@@ -65,8 +76,9 @@ const App = props => {
             
             {/* Takes to searchbar component  */}
             <Route path="/searchbar" component={SearchBar} />
-            <Route path='/implicit/callback' component={LoginCallback}/>
-            <PrivateRoute path="/admin" component={Fulllayout} />
+
+            <Route path="/admin" component={Fulllayout} />
+
 
             <Redirect from="*" to="/" />
           </Switch>

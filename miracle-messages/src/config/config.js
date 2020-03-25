@@ -5,8 +5,10 @@ export default {
     oidc: {
       clientId: CLIENT_ID,
       issuer: ISSUER,
-      redirectUri: 'https://production.d1v4uoi0wi2hmy.amplifyapp.com/admin/',
+      // redirectUri: window.location.origin + '/implicit/callback',
+      redirectUri: 'http://localhost:3001/implicit/callback',
       scopes: ['openid', 'profile', 'email'],
+      // onAuthRequired={onAuthRequired},
       pkce: true,
     },
     /*
