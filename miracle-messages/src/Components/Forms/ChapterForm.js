@@ -71,6 +71,34 @@ class ChapterForm extends React.Component {
     })
   }
 
+  getLocation = () => {
+    const success = position => {
+      this.setState({
+        chapter: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+      })
+    }
+
+    const error = () => {
+      // ALERT HERE
+      alert('Please refresh the page and allow location access.')
+    }
+
+    if (!navigator.geolocation) {
+      console.log('Geolocation is not supported by your browser')
+      // ALERT HERE
+      alert('Please try this page again in Google Chrome!')
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  }
+
+  componentWillMount() {
+    this.getLocation()
+  }
+
   render() {
     return (
       <div className="container">
@@ -138,52 +166,7 @@ class ChapterForm extends React.Component {
                   />
                 </div>
               </div>
-              <div className="chapter-div">
-                <h6>
-                  ***Please use
-                  <a
-                    href="https://www.latlong.net/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {" "}
-                    this link{" "}
-                  </a>{" "}
-                  to get the desired latitude and longitude for your intended
-                  chapter***
-                </h6>
-              </div>
-              <div className="chapter-div2">
-                <div>
-                  <div className="chapter-formBox">
-                    <label className="label">Latitude*</label>
-                  </div>
-                  <div className="chapter-formBox">
-                    <input
-                      className="input"
-                      value={this.state.chapter.latitude}
-                      onChange={this.handleInputChange}
-                      name="latitude"
-                      placeholder="33.448376"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="chapter-formBox">
-                    <label className="label">Longitude*</label>
-                  </div>
-                  <div className="chapter-formBox">
-                    <input
-                      className="input"
-                      value={this.state.chapter.longitude}
-                      onChange={this.handleInputChange}
-                      name="longitude"
-                      placeholder="-112.074036"
-                    />
-                  </div>
-                </div>
-              </div>
+              
               <div className="chapter-div chapter-div-bottom">
                 <div className="chapter-formBox">
                   <label className="labelV2">
