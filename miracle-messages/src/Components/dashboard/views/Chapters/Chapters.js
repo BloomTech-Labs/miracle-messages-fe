@@ -24,13 +24,13 @@ const Chapters = props => {
 
   return (
     <div className="chapter-felx">
-      {this.props.chapter_data.map(chapter => {
+      {props.chapter_data.map(chapter => {
         if (chapter.approved === true) {
           return (
             <Chapter
               info={chapter}
               key={chapter.id}
-              deleteChapter={this.deleteChapter}
+              deleteChapter={deleteChapter}
             />
           )
         }
