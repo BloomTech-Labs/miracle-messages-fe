@@ -77,7 +77,9 @@ const App = () => {
             {/* Takes to searchbar component  */}
             <Route path="/searchbar" component={SearchBar} />
 
-            <Route path="/admin" component={Fulllayout} />
+            {/* <PrivateRoute path="/admin" component={Fulllayout} /> */}
+            {/* <SecureRoute path="/admin" component={Fulllayout} /> */}
+            <SecureRoute path="/admin" render={props => <Fulllayout {...props} />} />
 
 
             <Redirect from="*" to="/" />

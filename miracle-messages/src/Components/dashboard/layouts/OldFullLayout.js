@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "../header/header.js";
 import Sidebar from "../sidebar/sidebar.js";
 import Footer from "../footer/footer.js";
 import ThemeRoutes from "../routes/routing.js";
 
 
-const Fulllayout = props => {
-    const history = useHistory();
+class Fulllayout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.updateDimensions = this.updateDimensions.bind(this);
+    this.state = {
+      isOpen: false,
+      width: window.innerWidth
+    };
 
-
-    const [ state, setState ] = useState({
-        isOpen: false,
-        width: window.innerWidth
-      });
-
-    history.listen((location, action) => {
+    this.props.history.listen((location, action) => {
       if (
         window.innerWidth < 767 &&
         document
@@ -27,13 +27,12 @@ const Fulllayout = props => {
           .classList.toggle("show-sidebar");
       }
     });
+  }
 
-
-  useEffect(() => {
-      window.addEventListener("load", updateDimensions);
-      window.addEventListener("resize", updateDimensions);
-    },[])
-  
+  componentDidMount() {
+    window.addEventListener("load", this.updateDimensions);
+    window.addEventListener("resize", this.updateDimensions);
+  }
 
   //Previous settings for media queries
   // updateDimensions() {
@@ -50,12 +49,12 @@ const Fulllayout = props => {
   //   }
   // }
 
-    const updateDimensions = () => {
+    updateDimensions() {
     let element = document.getElementById("main-wrapper");
-    setState({
+    this.setState({
       width: window.innerWidth
     });
-    if (state.width < 767) {
+    if (this.state.width < 767) {
       element.setAttribute("data-sidebartype", "mini-sidebar");
       element.classList.add("mini-sidebar");
     } else {
@@ -64,12 +63,12 @@ const Fulllayout = props => {
     }
   }
 
-//   componentWillUnmount() {
-//     window.removeEventListener("load", this.updateDimensions);
-//     window.removeEventListener("resize", this.updateDimensions);
-//   }
+  componentWillUnmount() {
+    window.removeEventListener("load", this.updateDimensions);
+    window.removeEventListener("resize", this.updateDimensions);
+  }
 
-
+  render() {
     return (
       <div
         id="main-wrapper"
@@ -80,9 +79,9 @@ const Fulllayout = props => {
         data-header-position="fixed"
         data-boxed-layout="full"
       >
-        <Header data={state} />
+        <Header data={this.state} />
 
-        <Sidebar data={state} {...props} routes={ThemeRoutes} />
+        <Sidebar data={this.state} {...this.props} routes={ThemeRoutes} />
 
         <div className="page-wrapper d-block">
           <div className="page-content container-fluid">
@@ -110,5 +109,6 @@ const Fulllayout = props => {
         </div>
       </div>
     );
+  }
 }
 export default Fulllayout;
