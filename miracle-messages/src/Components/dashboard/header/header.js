@@ -9,6 +9,7 @@ import {
   DropdownToggle,
   DropdownMenu
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import profilephoto from '../../../Assets/Imgs/kev.jpg';
 
@@ -38,11 +39,13 @@ class Header extends React.Component {
       <header className='topbar navbarbg' data-navbarbg='skin1'>
         <Navbar className='top-navbar' dark expand='md'>
           <div className='navbar-header' id='logobg' data-logobg='skin6'>
-            <NavbarBrand href='/'>
-              <b className='logo-icon'>
-                <img src={logodarkicon} alt='homepage' className='dark-logo' />
-              </b>
-            </NavbarBrand>
+            <Link to="/">
+              <NavbarBrand>
+                <b className='logo-icon'>
+                  <img src={logodarkicon} alt='homepage' className='dark-logo' />
+                </b>
+              </NavbarBrand>
+            </Link>
 
             <button
               style={{ border: 'none', background: 'white' }}
@@ -63,10 +66,8 @@ class Header extends React.Component {
               navbar
               style={{ display: 'flex' }}
             >
-              <a
-                href='https://miracle-messages-production.netlify.com'
-                target='_blank'
-                rel='noopener noreferrer'
+              <Link
+              to='/'
                 style={{
                   height: '80%',
                   marginRight: '30px',
@@ -78,7 +79,7 @@ class Header extends React.Component {
                 }}
               >
                 Live Map
-              </a>
+              </Link>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret className='pro-pic'>
                   <img
