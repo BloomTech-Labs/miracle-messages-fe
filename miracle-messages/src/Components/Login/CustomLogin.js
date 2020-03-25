@@ -10,7 +10,7 @@ const CustomLogin = ({ baseUrl }) => {
     return <div>Loading...</div>;
   }
   return authState.isAuthenticated ?
-    <Redirect to={{ pathname: '/' }}/> :
+    <Redirect to={{ pathname: '/admin' }}/> :
     <CustomLoginForm baseUrl={baseUrl} />;
 };
 
