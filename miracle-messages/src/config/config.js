@@ -5,7 +5,7 @@ export default {
     oidc: {
       clientId: CLIENT_ID,
       issuer: ISSUER,
-      redirectUri: 'https://production.d1v4uoi0wi2hmy.amplifyapp.com/implicit/callback',
+      redirectUri: 'https://production.d1v4uoi0wi2hmy.amplifyapp.com/admin/',
       scopes: ['openid', 'profile', 'email'],
       pkce: true,
     },
