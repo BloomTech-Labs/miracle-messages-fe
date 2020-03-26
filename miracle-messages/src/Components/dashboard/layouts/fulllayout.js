@@ -6,7 +6,7 @@ import Footer from "../footer/footer.js";
 import ThemeRoutes from "../routes/routing.js";
 
 
-const Fulllayout = props => {
+const FullLayout = props => {
     const history = useHistory();
 
 
@@ -111,4 +111,4 @@ const Fulllayout = props => {
       </div>
     );
 }
-export default Fulllayout;
+export default FullLayout;
