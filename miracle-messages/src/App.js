@@ -9,7 +9,7 @@ import "./CSS/style.css"
 
 //Imported Components
 import Map from "./Components/MapComponents/map";
-import Fulllayout from "./Components/dashboard/layouts/Fulllayout";
+import FullLayout from "./Components/dashboard/layouts/FullLayout";
 import VolunteerForm from "./Components/Forms/VolunteerForm";
 import LoginForm from "./Components/Login/LoginForm.js";
 import LoginPage from "./Components/Login/UserLogin";
@@ -79,7 +79,7 @@ const App = () => {
 
             {/* <PrivateRoute path="/admin" component={Fulllayout} /> */}
             {/* <SecureRoute path="/admin" component={Fulllayout} /> */}
-            <SecureRoute path="/admin" render={props => <Fulllayout {...props} />} />
+            <SecureRoute path="/admin" render={props => <FullLayout {...props} />} />
 
 
             <Redirect from="*" to="/" />
