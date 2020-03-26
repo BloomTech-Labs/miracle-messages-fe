@@ -64,7 +64,7 @@ const App = () => {
 
             <Route exact path="/user/login" component={LoginPage} />
             {/* <Route exact path="/admin/login" component={LoginForm} /> */}
-            <Route exact path='/admin/login' render={() => <CustomLogin baseUrl='https://dev-662389.okta.com' />} />
+            <Route exact path='/admin/login' render={() => <LoginForm baseUrl='https://dev-662389.okta.com' />} />
             <Route path='/implicit/callback' component={LoginCallback}/>
 
             
