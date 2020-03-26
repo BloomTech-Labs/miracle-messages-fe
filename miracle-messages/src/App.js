@@ -22,7 +22,7 @@ import SearchBar from "./Components/MapComponents/SearchBar.js"
 //Octa Import
 
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
-import config from './config/config';
+import config from './config/config.js';
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute";
 
