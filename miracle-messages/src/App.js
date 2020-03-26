@@ -9,7 +9,7 @@ import "./CSS/style.css"
 
 //Imported Components
 import Map from "./Components/MapComponents/map";
-import FullLayout from "./Components/dashboard/layouts/FullLayout";
+import FullLayout from "./Components/dashboard/layouts/fulllayout";
 import VolunteerForm from "./Components/Forms/VolunteerForm";
 import LoginForm from "./Components/Login/LoginForm.js";
 import LoginPage from "./Components/Login/UserLogin";
