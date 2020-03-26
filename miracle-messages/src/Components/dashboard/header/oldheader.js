@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import {
   Nav,
   Navbar,
@@ -10,39 +10,31 @@ import {
   DropdownMenu
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { useOktaAuth } from '@okta/okta-react';
-
 
 import profilephoto from '../../../Assets/Imgs/kev.jpg';
 
 import logodarkicon from '../../../Assets/Imgs/MM_Logo_black.png';
 
-const Header = () => {
-  const { authState, authService } = useOktaAuth();
-  const [ state, setState ] = useState({
+class Header extends React.Component {
+  state = {
     isOpen: false
-  });
+  };
 
-  if (authState.isPending) { 
-    return <div>Loading...</div>;
-  }
-
-  const toggle = () => {
-    setState({
-      isOpen: !state.isOpen
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
     });
   };
 
-  const showMobilemenu = () => {
+  showMobilemenu() {
     document.getElementById('main-wrapper').classList.toggle('show-sidebar');
   }
 
-  const logoutHandler = () => {
-    // localStorage.removeItem('token');
-    authService.logout()
+  logoutHandler = () => {
+    localStorage.removeItem('token');
   };
 
-
+  render() {
     return (
       <header className='topbar navbarbg' data-navbarbg='skin1'>
         <Navbar className='top-navbar' dark expand='md'>
@@ -58,14 +50,14 @@ const Header = () => {
             <button
               style={{ border: 'none', background: 'white' }}
               className='nav-toggler d-block d-md-none'
-              onClick={showMobilemenu}
+              onClick={this.showMobilemenu}
             >
               <i className='fas fa-bars' />
             </button>
           </div>
           <Collapse
             className='navbarbg'
-            isOpen={state.isOpen}
+            isOpen={this.state.isOpen}
             navbar
             data-navbarbg='skin1'
           >
@@ -99,7 +91,7 @@ const Header = () => {
                 </DropdownToggle>
                 <DropdownMenu right className='user-dd'>
                   <DropdownItem divider />
-                  <DropdownItem href='/login' onClick={logoutHandler}>
+                  <DropdownItem href='/login' onClick={this.logoutHandler}>
                     <i className='fa fa-power-off mr-1 ml-1' /> Logout
                   </DropdownItem>
                   <DropdownItem divider />
@@ -111,5 +103,5 @@ const Header = () => {
       </header>
     );
   }
-
+}
 export default Header;
