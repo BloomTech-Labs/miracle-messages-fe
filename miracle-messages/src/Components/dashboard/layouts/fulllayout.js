@@ -82,7 +82,8 @@ const FullLayout = props => {
       >
         <Header data={state} />
 
-        <Sidebar data={state} {...props} routes={ThemeRoutes} />
+        {/* <Sidebar data={state} {...props} routes={ThemeRoutes} /> */}
+
 
         <div className="page-wrapper d-block">
           <div className="page-content container-fluid">
