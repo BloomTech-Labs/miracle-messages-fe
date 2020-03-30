@@ -1,6 +1,6 @@
 const CLIENT_ID = process.env.CLIENT_ID || '0oa4z3i22O2AsShIr4x6';
 const ISSUER = process.env.ISSUER || 'https://dev-636641.okta.com/oauth2/default';
-const REDIRECT_URI = process.env.REDIRECT_URI || 'https://friday-okta-implementation.d1v4uoi0wi2hmy.amplifyapp.com/implicit/callback';
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI || 'https://friday-okta-implementation.d1v4uoi0wi2hmy.amplifyapp.com/implicit/callback';
 const OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
 
 export default {
