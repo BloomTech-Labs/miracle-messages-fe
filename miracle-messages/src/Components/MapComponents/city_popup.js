@@ -19,7 +19,7 @@ const CityPopup = props => {
       );
     return (
         <div className='chapter-Info'>
-            <div className='chapterTitle'>
+            <div className='chapter-Title'>
 
             </div>
             {/* Contains the chapter statisics; members/reunions */}
@@ -38,18 +38,20 @@ const CityPopup = props => {
         <div className="chapter-Details">{info.description}</div>
 
         {/* Contains the contact info */}
-        <h5 className="email-Header">CHAPTER CONTACT INFO</h5>
         <div className="contact">
+        <h5 className="email-Header">CHAPTER CONTACT INFO</h5>
           <span>
-            <img src={gmail} alt="gmail logo" className="gmailLogo" />
           </span>
           <span className="email">{info.email}</span>
         </div>
-
-        <h5 className="email-Header">JOIN OUR CHAPTERS FACEBOOK GROUP</h5>
         <div className="contact">
-          <span>
-            <img src={facebook} alt="gmail-logo" className="gmailLogo" />
+          <span>         
+            <div classname='social'>
+                <img src={gmail} alt="gmail logo" className="gmailLogo" />
+
+                <img src={facebook} alt="gmail-logo" className="gmailLogo" />
+            </div>
+            
           </span>
           <a href={info.facebook}>{info.facebook}</a>
         </div>

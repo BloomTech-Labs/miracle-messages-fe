@@ -1,7 +1,8 @@
 .chapter-Info {
     width: 250px;
     font-family: ProximaNova;
-    margin-top: 57px;
+    margin-top: 10px;
+    color: white;
   }
   
   .chapter-Title {
@@ -9,6 +10,7 @@
     flex-direction: column;
     border-bottom: #d8d8d8 solid 0.25px;
     padding-bottom: 20px;
+    color: white;
   }
   
   .chapter-Stats {
@@ -17,6 +19,7 @@
     justify-content: center;
     border-bottom: #d8d8d8 solid 0.25px;
     padding: 10px 0px;
+    color: white;
   }
   
   .volunteers {
@@ -28,6 +31,7 @@
     font-weight: 600;
     font-size: 16px;
     letter-spacing: 0.9px;
+    color: white;
   }
   
   .reunions {
@@ -39,6 +43,7 @@
     font-size: 16px;
     letter-spacing: 0.9px;
     margin-bottom: -1rem;
+    color: white;
   }
   
   .number {
@@ -48,6 +53,7 @@
     font-weight: bold;
     letter-spacing: 0.9px;
     margin-left: 1px;
+    color: white;
   }
   
   .chapter-Details {
@@ -55,15 +61,20 @@
     font-size: 13px;
     letter-spacing: 0.73px;
     line-height: 18px;
+    color: white;
+    font-weight: bold;
   }
   
   .contact {
+ 
     font-family: ProximaNova_Bold;
-    padding: 20px 25px;
+    padding: 20px 0px;
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
     text-decoration: none;
-    color: black;
+    justify-content: center;
+    color: white;
     font-weight: bold;
     letter-spacing: 0.73px;
     font-size: 13px;
@@ -72,17 +83,29 @@
   
   .email-Header {
     font-family: ProximaNova_Semibold;
-    margin: 20px 0 0 25px;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.9px;
     line-height: 20px;
+    width: 100%;
+  
   }
   
-  .gmail-Logo {
-    width: 18px;
-    padding-right: 10px;
+  .gmailLogo {
+    width: 60px;
+    /* padding-right: 10px; */
   }
+
+  .social {
+    display: flex;
+    flex-flow: row nowrap;
+    /* align-items: center;
+    justify-items: center;
+    align-content: center; */
+    margin: 0 auto;
+    justify-content: space-around !important;
+    
+ }
 
 
   

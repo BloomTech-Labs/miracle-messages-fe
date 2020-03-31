@@ -10,7 +10,7 @@ import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
 import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
 import { UPDATE_CHAPTERS } from '../Actions/SearchBarAction';
-import { TOGGLE_POPUP } from "../Actions/popupToggleAction";
+import { TOGGLE_POPUP, CLOSE_POPUP } from "../Actions/popupToggleAction";
 
 const initialState = {
   viewport: {
@@ -94,6 +94,12 @@ export const mapReducer = (state = initialState, action) => {
         openPopup: action.payload.openPopup,
         latitude: action.payload.latitude,
         longitude: action.payload.longitude
+      }
+
+    case CLOSE_POPUP:
+      return {
+        ...state,
+        openPopup: action.payload.openPopup
       }
 
     //reducer for viewport
