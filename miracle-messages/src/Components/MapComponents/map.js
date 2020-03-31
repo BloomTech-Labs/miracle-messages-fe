@@ -8,7 +8,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 // Action imports
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
-import { popupToggleAction } from "../../Actions/popupToggleAction";
+import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
@@ -158,7 +158,7 @@ class Map extends Component {
                           longitude={this.props.longitude}
                           closeButton={true}
                           closeOnClick={false}
-                          onClose={() => this.closeHandler}
+                          onClose={() => this.props.popupClose()}
                           anchor='top' >
                             <CityPopup info={this.props.popupInfo}></CityPopup>
                           </Popup>
@@ -189,5 +189,6 @@ export default connect(mapStateToProps, {
   getData,
   updatePopupAction,
   popupToggleAction,
-  onViewportChanged
+  onViewportChanged,
+  popupClose
 })(Map);

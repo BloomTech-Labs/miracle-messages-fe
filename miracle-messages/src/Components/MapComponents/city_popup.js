@@ -1,12 +1,12 @@
 import React, { useState, useEffect, PureComponent } from 'react';
 import { connect } from 'react-redux';
-// TODO Create Action
+
 import { popupToggleAction } from '../../Actions/popupToggleAction';
 import { updatePopupAction } from '../../Actions/updatePopupAction';
 
 import facebook from "../../Assets/icons/facebook.png";
 import gmail from "../../Assets/icons/gmail.png";
-// TODO Create CSS
+
 import '../../CSS/city_popup.css';
 
 const CityPopup = props => {
@@ -18,12 +18,12 @@ const CityPopup = props => {
         partner => partner.category === "partner"
       );
     return (
-        <div className='chapterInfo'>
-            <div className='chapterTitle'>
+        <div className='chapter-Info'>
+            <div className='chapter-Title'>
 
             </div>
             {/* Contains the chapter statisics; members/reunions */}
-            <div className="chapterStats">
+            <div className="chapter-Stats">
                 <div className="volunteers">
                     <span className="number">{info.numvolunteers}</span>
                     Members
@@ -35,25 +35,26 @@ const CityPopup = props => {
             </div>
 
         {/* Contains the chapters message */}
-        <div className="chapterDetails">{info.description}</div>
+        <div className="chapter-Details">{info.description}</div>
 
         {/* Contains the contact info */}
-        <h5 className="emailHeader">CHAPTER CONTACT INFO</h5>
         <div className="contact">
+        <h5 className="email-Header">CHAPTER CONTACT INFO</h5>
           <span>
-            <img src={gmail} alt="gmail logo" className="gmailLogo" />
           </span>
           <span className="email">{info.email}</span>
         </div>
-
-        <h5 className="emailHeader">JOIN OUR CHAPTERS FACEBOOK GROUP</h5>
         <div className="contact">
-          <span>
-            <img src={facebook} alt="gmail logo" className="gmailLogo" />
+          <span>         
+            <div classname='social'>
+                <img src={gmail} alt="gmail logo" className="gmailLogo" />
+
+                <img src={facebook} alt="gmail-logo" className="gmailLogo" />
+            </div>
+            
           </span>
           <a href={info.facebook}>{info.facebook}</a>
         </div>
-        )}
         </div>
     )
 }
