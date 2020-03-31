@@ -11,7 +11,7 @@
 
 # Partner Information
 
-### Miracle Messages
+## Miracle Messages
 
 We are a nonprofit reunion service to help our neighbors experiencing homelessness reunite with their loved ones in a positive and supportive way.
 
@@ -28,9 +28,18 @@ We are a nonprofit reunion service to help our neighbors experiencing homelessne
 
 We believe everyone is somebody's someone, and no one should be defined by what they lack. Miracle Messages Map connects volunteers, making it easy to join together to reunite more homeless people with their families.
 
-### 🏠 [View Our Work](https://miracle-message.netlify.com/)
+## 🏠 [View Our Work](https://miracle-message.netlify.com/)
 
-### Tech Stach
+## Environment
+
+The following environment variables control the front-end:
+
+*Note: When using Create React App, environment variables _must_ be prepended with `REACT_APP`*
+
+- REACT_APP_CALLBACK_SSL (Default: true)
+  - If true, the authentication callback URL will use https; otherwise the callback url will use http
+
+## Tech Stack
 
 - Frontend:
 
