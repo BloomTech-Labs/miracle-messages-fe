@@ -2,7 +2,7 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID || '0oa4z3i22O2AsShIr4x6';
 const ISSUER = process.env.REACT_APP_ISSUER || 'https://dev-636641.okta.com/oauth2/default';
 
 // The callback path always goes to the same route
-const CALLBACK_PATH = '/implicit/callback';
+const CALLBACK_PATH = '/implicit/callback/';
 
 // The callback may be on HTTP or HTTPS; default to HTTPS
 const CALLBACK_SSL = process.env.REACT_APP_CALLBACK_SSL || true
