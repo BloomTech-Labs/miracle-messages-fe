@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 // Mapbox imports
-import MapGL, { Marker, NavigationControl } from "react-map-gl";
+import MapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Action imports
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
-import { slideToggleAction } from "../../Actions/SlideToggleAction";
+import { popupToggleAction } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
@@ -26,6 +26,7 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 // Custom file imports
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
+import CityPopup from './city_popup';
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
 import Sidebar from "./Sidebar";
@@ -53,7 +54,8 @@ class Map extends Component {
 
   closeHandler = () => {
     this.props.updatePopupAction(null);
-    this.props.slideToggleAction();
+    //this.props.slideToggleAction();
+    this.props.popupToggleAction()
   };
 
   toggle = () => {
@@ -149,8 +151,21 @@ class Map extends Component {
               );
             }
           })}
+
+                        {
+                          this.props.openPopup && <Popup
+                          latitude={this.props.latitude}
+                          longitude={this.props.longitude}
+                          closeButton={true}
+                          closeOnClick={false}
+                          onClose={() => this.closeHandler}
+                          anchor='top' >
+                            <CityPopup info={this.props.popupInfo}></CityPopup>
+                          </Popup>
+                        }
+
         </MapGL>
-        {this._renderSlide()}
+        {/*{this._renderSlide()}*/}
       </div>
     );
   }
@@ -162,7 +177,9 @@ const mapStateToProps = state => {
     chapter_data: state.mapReducer.chapter_data,
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
-    openDrawer: state.mapReducer.openDrawer,
+    openPopup: state.mapReducer.openPopup,
+    latitude: state.mapReducer.latitude,
+    longitude: state.mapReducer.longitude,
     viewport: state.mapReducer.viewport
   };
 };
@@ -171,6 +188,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   getData,
   updatePopupAction,
-  slideToggleAction,
+  popupToggleAction,
   onViewportChanged
 })(Map);

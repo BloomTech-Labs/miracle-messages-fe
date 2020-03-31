@@ -10,6 +10,7 @@ import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
 import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
 import { UPDATE_CHAPTERS } from '../Actions/SearchBarAction';
+import { TOGGLE_POPUP } from "../Actions/popupToggleAction";
 
 const initialState = {
   viewport: {
@@ -23,8 +24,11 @@ const initialState = {
   popupInfo: null,
   fetching: false,
   error: null, //learn more is a toggleinside the pop-ups
-  openDrawer: true,
-  zoom: false
+  //openDrawer: true,
+  openPopup: false,
+  zoom: false,
+  latitude: 37.785164,
+  longitude: -110
 }
 
 export const mapReducer = (state = initialState, action) => {
@@ -82,6 +86,14 @@ export const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         openDrawer: action.payload
+      }
+    
+    case TOGGLE_POPUP:
+      return {
+        ...state,
+        openPopup: action.payload.openPopup,
+        latitude: action.payload.latitude,
+        longitude: action.payload.longitude
       }
 
     //reducer for viewport
