@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 // Action imports
 import { updatePopupAction } from "../../Actions/updatePopupAction";
-import { slideToggleAction } from "../../Actions/SlideToggleAction";
+import { popupToggleAction } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 const pinStyle = {
@@ -15,7 +15,7 @@ class CityPin extends PureComponent {
     // Dom manipulation for hover effect
     const PinClickHandler = () => {
       this.props.updatePopupAction(this.props.city);
-      this.props.slideToggleAction();
+      this.props.popupToggleAction(this.props.city, this.props.openPopup);
     };
 
     const size = 29;
@@ -53,12 +53,13 @@ class CityPin extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    popupInfo: state.mapReducer.popupInfo
+    popupInfo: state.mapReducer.popupInfo,
+    openPopup: state.mapReducer.openPopup
   };
 };
 
 export default connect(mapStateToProps, {
   updatePopupAction,
-  slideToggleAction,
+  popupToggleAction,
   onViewportChanged
 })(CityPin);
