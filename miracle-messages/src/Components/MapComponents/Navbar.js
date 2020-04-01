@@ -11,30 +11,31 @@ import axios from "axios";
 
 const Navbar = props => {
   const [search, updateSearch] = useState("");
-
   const [chapters, updateChapters] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("https://miracle-messages-dev.herokuapp.com/api/chapter", chapters)
-      .then(res => {
-        updateChapters(res.data);
-      })
-      .catch(err => {
-        console.log("search", err);
-      });
-  }, []);
 
-  const handleChange = e => {
-    updateSearch(e.target.value);
-    props.updateChapters(filterFunction);
-    if (search === "") {
-      props.updateChapters(chapters);
-    }
-  };
-  const filterFunction = chapters.filter(chapter =>
-    chapter.city.toLowerCase().includes(search.toLowerCase())
-  );
+  
+    useEffect(() => {
+      axios
+        .get("https://miracle-messages-dev.herokuapp.com/api/chapter", chapters)
+        .then(res => {
+          updateChapters(res.data);
+        })
+        .catch(err => {
+          console.log("search", err);
+        });
+    }, []);
+  
+    const handleChange = e => {
+      updateSearch(e.target.value);
+    };
+  
+    useEffect(() => {
+          props.updateChapters(chapters.filter(chapter =>
+            chapter.city.toLowerCase().includes(search.toLowerCase())))
+      },[search])
+
+
   return (
     <div className="navbar-map">
       <Link to="/">
