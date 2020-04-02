@@ -55,7 +55,7 @@ class App extends Component {
           {/* Takes to searchbar component  */}
           <Route path="/searchbar" component={SearchBar} />
 
-          <PrivateRoute path="/admin" component={Fulllayout} />
+          <Route path="/admin" component={Fulllayout} />
 
           <Redirect from="*" to="/" />
         </Switch>
