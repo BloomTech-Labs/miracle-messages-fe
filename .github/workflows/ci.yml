@@ -24,14 +24,14 @@
     
         runs-on: ubuntu-latest
     
-        steps:	
+        steps:
+          - run: cd miracle-messages	
           - uses: actions/checkout@master
           - uses: actions/setup-node@master
             with:
               node-version: "12"
-          - run: cd miracle-messages && yarn
+          - run: yarn
           - uses: paambaati/codeclimate-action@v2.4.0
-            run: cd miracle-messages
             env:
               CC_TEST_REPORTER_ID: 2affb04730faece34523487a061ab618f2eb6cc90cb80cd7019bb066c1d7cfb4
             with:
