@@ -24,15 +24,19 @@
     
         runs-on: ubuntu-latest
     
-        steps:
-          - run: cd miracle-messages	
+        steps:	
           - uses: actions/checkout@master
           - uses: actions/setup-node@master
             with:
               node-version: "12"
-          - run: yarn
+          name: Install dependencies
+          - run: cd miracle-messages && yarn
+
+
           - uses: paambaati/codeclimate-action@v2.4.0
             env:
+              CI: true
               CC_TEST_REPORTER_ID: 2affb04730faece34523487a061ab618f2eb6cc90cb80cd7019bb066c1d7cfb4
+            run: cd miracle-messages
             with:
               coverageCommand: yarn coverage
