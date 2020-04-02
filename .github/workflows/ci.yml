@@ -30,9 +30,10 @@
             with:
               node-version: "12"
           - run: cd miracle-messages && yarn
+          - run: cd miracle-messages
           - uses: paambaati/codeclimate-action@v2.4.0
             env:
               CI: true
               CC_TEST_REPORTER_ID: 2affb04730faece34523487a061ab618f2eb6cc90cb80cd7019bb066c1d7cfb4
             with:
-              coverageCommand: yarn coverage --prefix miracle-messages
+              coverageCommand: yarn coverage
