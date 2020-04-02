@@ -40,9 +40,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
-    "coverage": "CI=true yarn test --coverage --passWithNoTests || true "
+    "coverage": "CI=true yarn test --coverage || true "
   },
   "eslintConfig": {
     "extends": "react-app"
