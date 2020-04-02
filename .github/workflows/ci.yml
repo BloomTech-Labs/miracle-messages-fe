@@ -34,6 +34,5 @@
             env:
               CI: true
               CC_TEST_REPORTER_ID: 2affb04730faece34523487a061ab618f2eb6cc90cb80cd7019bb066c1d7cfb4
-            run: cd miracle-messages
             with:
-              coverageCommand: yarn coverage
+              coverageCommand: yarn coverage --prefix miracle-messages
