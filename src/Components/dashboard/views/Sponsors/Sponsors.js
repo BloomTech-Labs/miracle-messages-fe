@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Sponsor from "./Sponsor";
 import { getSponsor } from "../../../../Actions/index";
-import SponsorForm from "../Sponsors/SponsorForm";
+import SponsorForm from "./SponsorForm";
 import { connect } from "react-redux";
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";

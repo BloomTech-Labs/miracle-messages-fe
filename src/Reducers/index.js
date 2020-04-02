@@ -6,7 +6,7 @@ import { ChapterReducer } from './ChapterReducer';
 import { volunteersReducer} from './VolunteersReducer';
 import { usersReducer } from './UserReducer';
 import { partnerReducer } from './partnerReducer';
-import { searchBarReducer } from "../Reducers/SearchBarReducer.js"; 
+import { searchBarReducer } from "./SearchBarReducer.js"; 
 
 
 

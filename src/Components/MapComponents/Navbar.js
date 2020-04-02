@@ -3,7 +3,7 @@ import logo from "../../Assets/Imgs/MM_Logo.png"
 import "./Navbar.scss"
 
 // search bar component
-import SearchBar from "../MapComponents/SearchBar.js"
+import SearchBar from "./SearchBar.js"
 
 class Navbar extends React.Component {
   render() {
