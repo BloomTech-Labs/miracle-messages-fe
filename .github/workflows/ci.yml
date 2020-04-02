@@ -29,6 +29,7 @@
           - uses: actions/setup-node@master
             with:
               node-version: "12"
+          - run: cd miracle-messages
           - run: yarn
           - uses: paambaati/codeclimate-action@v2.4.0
             env:
