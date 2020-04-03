@@ -3,13 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd miracle-messages
         - yarn install
     build:
       commands:
         - yarn run build
   artifacts:
-    baseDirectory: miracle-messages/build
+    baseDirectory: build
     files:
       - '**/*'
   cache:
