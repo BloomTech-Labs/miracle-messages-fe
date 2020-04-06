@@ -8808,3 +8808,19 @@ ul.list-style-none {
  .chapterTitle {
    color: red; 
  }
+
+
+ #sidebarnav {
+   display: flex;
+   flex-flow: row wrap;
+   
+ }
+
+ .sidebar-item {
+   width: 100%;
+   padding: 12px 15px;
+ }
+ .sidebar-item i {
+   padding: 10px;
+   color: #4f5467;
+ }

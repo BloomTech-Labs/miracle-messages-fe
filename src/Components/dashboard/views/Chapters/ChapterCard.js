@@ -9,8 +9,9 @@ import SelectPartner from "./SelectPartners.js";
 import { Card, CardImg, CardBody } from "reactstrap";
 
 const ChapterCard = props => {
+  const [ newChapter, setCurrentChapter ] = useState({});
   const [chapter, updateChapter] = useState({
-    chapter: null,
+    chapter: {},
     data: {
       allSponsors: [],
       allPartners: [],
@@ -30,6 +31,7 @@ const ChapterCard = props => {
   }, [])
   
   const getChapter = id => {
+    console.log(authState.isAuthenticated)
     if (authState.isAuthenticated) {
       const { accessToken } = authState;
       try {
@@ -41,6 +43,7 @@ const ChapterCard = props => {
         })
         .then(res => {
           //this.setState({ chapter: res.data })
+          setCurrentChapter(res.data)
           updateChapter({
             ...chapter,
             chapter: res.data
@@ -214,25 +217,6 @@ const ChapterCard = props => {
             <p> {chapter.established_date} </p>
             <h4>Description</h4>
             <p>{chapter.description}</p>
-            <h4>City: </h4>
-            <p> {chapter.city} </p>
-            <h4>State: </h4>
-            <p> {chapter.state} </p>
-            <h4>Email: </h4>
-            <p> {chapter.email} </p>
-            <h4>Volunteers: </h4>
-            <p> {chapter.numvolunteers} </p>
-            <h4>Delivered Messages: </h4>
-            <p> {chapter.msg_delivered} </p>
-            <h4>Messages Recorded: </h4>
-            <p> {chapter.msg_recorded} </p>
-            <h4>Reunions: </h4>
-            <p> {chapter.numreunions} </p>
-            <h4>Chapter Facebook Link: </h4>
-            <p> {chapter.facebook} </p>
-            <h4>Featured Story</h4>
-            <p>{chapter.story}</p>
-            <CardImg src={chapter.reunion_img_url} />
           </CardBody>
         </Card>
         <div style={{ display: "flex", flexDirection: "column" }}>

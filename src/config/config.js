@@ -8,8 +8,8 @@ const CALLBACK_PATH = '/implicit/callback';
 const CALLBACK_SSL = process.env.REACT_APP_CALLBACK_SSL || true
 
 // The callback should always come back to this host; will be http or https depending on the setting
-const REDIRECT_URI = `${CALLBACK_SSL == true ? "https" : "http"}://${window.location.host}${CALLBACK_PATH}`;
-// const REDIRECT_URI = `http://localhost:3000/implicit/callback`;
+// const REDIRECT_URI = `${CALLBACK_SSL == true ? "https" : "http"}://${window.location.host}${CALLBACK_PATH}`;
+const REDIRECT_URI = `http://localhost:3000/implicit/callback`;
 
 export default {
   oidc: {
