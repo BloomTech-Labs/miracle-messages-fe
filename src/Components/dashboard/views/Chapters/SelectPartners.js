@@ -1,22 +1,22 @@
 import React from "react";
 import PartnerCard from "./PartnerCard.js";
 
-class SelectPartner extends React.Component {
-  render() {
+const SelectPartner = props => {
+  
     return (
       <div>
         <div className="partnerColumn">
           <div className="partSoponCol">
             <h3>Available Partners:</h3>
-            {this.props.data.allPartners &&
-              this.props.data.allPartners.map((partner, key) => {
+            {props.partners &&
+              props.partners.map((partner, key) => {
                 return (
                   <PartnerCard
                     partner={partner}
                     key={key}
                     btnColor={"info"}
                     btnText={"Add"}
-                    onsubmit={this.props.assign}
+                    onsubmit={props.assign}
                   />
                 );
               })}
@@ -24,15 +24,15 @@ class SelectPartner extends React.Component {
           <div className="dropdown-divider" />
           <div className="partSoponCol">
             <h3>Available sponsors:</h3>
-            {this.props.data.allSponsors &&
-              this.props.data.allSponsors.map((sponsor, key) => {
+            {props.sponsors &&
+              props.sponsors.map((sponsor, key) => {
                 return (
                   <PartnerCard
                     partner={sponsor}
                     key={key}
                     btnColor={"info"}
                     btnText={"Add"}
-                    onsubmit={this.props.assign}
+                    onsubmit={props.assign}
                   />
                 );
               })}
@@ -40,7 +40,7 @@ class SelectPartner extends React.Component {
         </div>
       </div>
     );
-  }
+
 }
 
 export default SelectPartner;

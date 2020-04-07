@@ -79,7 +79,8 @@ const App = () => {
 
             {/* <PrivateRoute path="/admin" component={Fulllayout} /> */}
             {/* <SecureRoute path="/admin" component={Fulllayout} /> */}
-            <SecureRoute path="/admin" render={props => <FullLayout {...props} />} />
+            {/* <SecureRoute path="/admin" render={props => <FullLayout {...props} />} /> */}
+            <SecureRoute path="/admin" component={FullLayout} />
 
 
             <Redirect from="*" to="/" />

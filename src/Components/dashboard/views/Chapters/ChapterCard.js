@@ -9,15 +9,11 @@ import SelectPartner from "./SelectPartners.js";
 import { Card, CardImg, CardBody } from "reactstrap";
 
 const ChapterCard = props => {
-  const [chapter, updateChapter] = useState({
-    chapter: null,
-    data: {
-      allSponsors: [],
-      allPartners: [],
-      currentSponsors: [],
-      currentPartners: []
-    }
-  });
+  const [ currentChapter, setCurrentChapter ] = useState({})
+  const [ sponsors, setSponsors ] = useState([]);
+  const [ partners, setPartners ] = useState([])
+  const [ currentSponsors, setCurrentSponsors ] = useState([])
+  const [ currentPartners, setCurrentPartners ] = useState([])
 
   const { authState } = useOktaAuth();
   
@@ -40,14 +36,12 @@ const ChapterCard = props => {
           }
         })
         .then(res => {
-          //this.setState({ chapter: res.data })
-          updateChapter({
-            ...chapter,
-            chapter: res.data
-          })
+
+          setCurrentChapter(res.data)
+
         })
         .catch(error => {
-          // console.error(error)
+
         })
       }
       catch (err) {
@@ -70,7 +64,7 @@ const ChapterCard = props => {
           const data = res.data
           let sponsors = []
           let partners = []
-
+          
           data.forEach(element => {
             if (element.category === "partner") {
               partners.push(element)
@@ -78,22 +72,9 @@ const ChapterCard = props => {
               sponsors.push(element)
             }
           })
-          /*
-          this.setState({
-            data: {
-              ...this.state.data,
-              allSponsors: sponsors,
-              allPartners: partners
-            }
-          })
-          */
-          updateChapter({
-            ...chapter,
-            data: {
-              allSponsors: sponsors,
-              allPartners: partners
-            }
-          })
+          setPartners(partners)
+          setSponsors(sponsors)
+
         })
         .catch(error => console.log(error))
       }
@@ -125,6 +106,8 @@ const ChapterCard = props => {
             sponsors.push(element)
           }
         })
+        setCurrentPartners(partners)
+        setCurrentSponsors(sponsors)
         // this.setState({
         //   data: {
         //     ...this.state.data,
@@ -132,13 +115,13 @@ const ChapterCard = props => {
         //     currentPartners: partners
         //   }
         // })
-        updateChapter({
-          ...chapter,
-          data: {
-            allSponsors: sponsors,
-            allPartners: partners
-          }
-        })
+        // updateChapter({
+        //   ...chapter,
+        //   data: {
+        //     allSponsors: sponsors,
+        //     allPartners: partners
+        //   }
+        // })
       })
       .catch(err => console.log(err))
     }
@@ -185,6 +168,7 @@ const ChapterCard = props => {
         }
       })
       .then(res => {
+        console.log(res)
         getAllPartners()
         getChapterPartners(chapterid)
       })
@@ -196,7 +180,7 @@ const ChapterCard = props => {
     }
   }
 
-  if (!chapter) {
+  if (!currentChapter) {
     return <div>Loading Chapter information...</div>
   }
   return (
@@ -206,42 +190,43 @@ const ChapterCard = props => {
           className="s-chapter"
           style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "300px" }}
         >
-          <CardImg src={chapter.chapter_img_url} />
+          <CardImg src={currentChapter.chapter_img_url} />
 
           <CardBody>
-            <h1>{chapter.title}</h1>
+            <h1>{currentChapter.title}</h1>
             <h4>Established: </h4>
-            <p> {chapter.established_date} </p>
+            <p> {currentChapter.established_date} </p>
             <h4>Description</h4>
-            <p>{chapter.description}</p>
+            <p>{currentChapter.description}</p>
             <h4>City: </h4>
-            <p> {chapter.city} </p>
+            <p> {currentChapter.city} </p>
             <h4>State: </h4>
-            <p> {chapter.state} </p>
+            <p> {currentChapter.state} </p>
             <h4>Email: </h4>
-            <p> {chapter.email} </p>
+            <p> {currentChapter.email} </p>
             <h4>Volunteers: </h4>
-            <p> {chapter.numvolunteers} </p>
+            <p> {currentChapter.numvolunteers} </p>
             <h4>Delivered Messages: </h4>
-            <p> {chapter.msg_delivered} </p>
+            <p> {currentChapter.msg_delivered} </p>
             <h4>Messages Recorded: </h4>
-            <p> {chapter.msg_recorded} </p>
+            <p> {currentChapter.msg_recorded} </p>
             <h4>Reunions: </h4>
-            <p> {chapter.numreunions} </p>
-            <h4>Chapter Facebook Link: </h4>
-            <p> {chapter.facebook} </p>
+            <p> {currentChapter.numreunions} </p>
+            <h4>currentChapter Facebook Link: </h4>
+            <p> {currentChapter.facebook} </p>
             <h4>Featured Story</h4>
-            <p>{chapter.story}</p>
-            <CardImg src={chapter.reunion_img_url} />
+            <p>{currentChapter.story}</p>
+            <CardImg src={currentChapter.reunion_img_url} />
           </CardBody>
         </Card>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <SponsorList
             className="s-chapter-right"
-            data={chapter.data}
+            // data={currentChapter}
+            currentSponsors={currentSponsors} currentPartners={currentPartners} 
             unassign={unassignPartner}
           />
-          <SelectPartner data={chapter.data} assign={assignPartner} />
+          <SelectPartner sponsors={sponsors} partners={partners}  assign={assignPartner} />
         </div>
       </div>
     )
