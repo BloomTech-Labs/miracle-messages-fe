@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { Nav } from 'reactstrap';
 
-const Sidebar = () => {
+const sidebar = () => {
 
     return (
         <>
@@ -65,4 +65,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar;
+export default sidebar;
