@@ -55,9 +55,9 @@ const Navbar = props => {
           </form>
         </div>
         <div style={{ margin: "15px" }}> </div>
-        <Link to="https://miraclemessages.org/">HOME</Link>
-        <Link to="https://miraclemessages.org/who">ABOUT</Link>
-        <Link to="https://miraclemessages.org/partner">REUNION SERVICE</Link>
+        <Link to="/">HOME</Link>
+        <a target='_blank' href="https://miraclemessages.org/who">ABOUT</a>
+        <a target='_blank' href="https://miraclemessages.org/partner">REUNION SERVICE</a>
 
         <div className="dropdown">
           <Link className="dropbtn">GET INVOLVED</Link>
@@ -69,9 +69,9 @@ const Navbar = props => {
           </div>
         </div>
 
-        <Link to="https://www.classy.org/give/231839/#!/donation/checkout">
+        <a target='_blank' href="https://www.classy.org/give/231839/#!/donation/checkout">
           DONATE
-        </Link>
+        </a>
       </nav>
     </div>
   );
