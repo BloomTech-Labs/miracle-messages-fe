@@ -64,7 +64,7 @@ const Navbar = props => {
           <div className="dropdown-content">
             <Link to="/form">Volunteer Registration</Link>
             <Link to="/user/login">Volunteer Login</Link>
-            <Link to="/admin/login">Admin Login</Link>
+            <Link to="/admin">Admin Dashboard</Link>
             <Link className="not-last-child">test</Link>
           </div>
         </div>
