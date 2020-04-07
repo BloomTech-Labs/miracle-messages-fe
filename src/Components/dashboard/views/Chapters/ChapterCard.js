@@ -15,17 +15,6 @@ const ChapterCard = props => {
   const [ currentSponsors, setCurrentSponsors ] = useState([])
   const [ currentPartners, setCurrentPartners ] = useState([])
 
-  // const [chapter, updateChapter] = useState({
-  //   chapter: {
-  //   },
-  //   data: {
-  //     allSponsors: [],
-  //     allPartners: [],
-  //     currentSponsors: [],
-  //     currentPartners: []
-  //   }
-  // });
-
   const { authState } = useOktaAuth();
   
   // NEEDS WRAPPED IN OKTA AUTH CHECK
@@ -47,15 +36,12 @@ const ChapterCard = props => {
           }
         })
         .then(res => {
-          //this.setState({ chapter: res.data })
+
           setCurrentChapter(res.data)
-          // updateChapter({
-          //   ...chapter,
-          //   chapter: res.data
-          // })
+
         })
         .catch(error => {
-          // console.error(error)
+
         })
       }
       catch (err) {
@@ -88,22 +74,7 @@ const ChapterCard = props => {
           })
           setPartners(partners)
           setSponsors(sponsors)
-          /*
-          this.setState({
-            data: {
-              ...this.state.data,
-              allSponsors: sponsors,
-              allPartners: partners
-            }
-          })
-          */
-          // updateChapter({
-          //   ...chapter,
-          //   data: {
-          //     allSponsors: sponsors,
-          //     allPartners: partners
-          //   }
-          // })
+
         })
         .catch(error => console.log(error))
       }

@@ -1,23 +1,23 @@
 import React from "react";
 import PartnerCard from "./PartnerCard.js";
 
-class SponsorList extends React.Component {
-  render() {
+const SponsorList = props => {
+  
     return (
       <div style={{ height: "auto" }}>
         <div className="partnerColumn">
           <div className="partSoponCol">
             <h3>Current Partners:</h3>
 
-            {this.props.currentPartners &&
-              this.props.currentPartners.map((partner, key) => {
+            {props.currentPartners &&
+              props.currentPartners.map((partner, key) => {
                 return (
                   <PartnerCard
                     partner={partner}
                     key={key}
                     btnColor={"danger"}
                     btnText={"Delete"}
-                    onsubmit={this.props.unassign}
+                    onsubmit={props.unassign}
                   />
                 );
               })}
@@ -25,15 +25,15 @@ class SponsorList extends React.Component {
           <div className="dropdown-divider" />
           <div className="partSoponCol">
             <h3>Current Sponsors:</h3>
-            {this.props.currentSponsors &&
-              this.props.currentSponsors.map((sponsor, key) => {
+            {props.currentSponsors &&
+              props.currentSponsors.map((sponsor, key) => {
                 return (
                   <PartnerCard
                     partner={sponsor}
                     key={key}
                     btnColor={"danger"}
                     btnText={"Delete"}
-                    onsubmit={this.props.unassign}
+                    onsubmit={props.unassign}
                   />
                 );
               })}
@@ -41,7 +41,6 @@ class SponsorList extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 export default SponsorList;
