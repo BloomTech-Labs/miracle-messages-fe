@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Header from "../header/header.js";
 import Footer from "../footer/footer.js";
 import ThemeRoutes from "../routes/routing.js";
-import Sidebar from '../sidebar/Sidebar';
+import Sidebar from '../sidebar/sidebar.js';
 
 import Volunteers from "../views/Volunteers.js";
 import Chapters from "../views/Chapters/Chapters.js";
