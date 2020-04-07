@@ -9,8 +9,8 @@ class SponsorList extends React.Component {
           <div className="partSoponCol">
             <h3>Current Partners:</h3>
 
-            {this.props.data.currentPartners &&
-              this.props.data.currentPartners.map((partner, key) => {
+            {this.props.currentPartners &&
+              this.props.currentPartners.map((partner, key) => {
                 return (
                   <PartnerCard
                     partner={partner}
@@ -25,8 +25,8 @@ class SponsorList extends React.Component {
           <div className="dropdown-divider" />
           <div className="partSoponCol">
             <h3>Current Sponsors:</h3>
-            {this.props.data.currentSponsors &&
-              this.props.data.currentSponsors.map((sponsor, key) => {
+            {this.props.currentSponsors &&
+              this.props.currentSponsors.map((sponsor, key) => {
                 return (
                   <PartnerCard
                     partner={sponsor}

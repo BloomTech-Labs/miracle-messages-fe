@@ -8,8 +8,8 @@ class SelectPartner extends React.Component {
         <div className="partnerColumn">
           <div className="partSoponCol">
             <h3>Available Partners:</h3>
-            {this.props.data.allPartners &&
-              this.props.data.allPartners.map((partner, key) => {
+            {this.props.partners &&
+              this.props.partners.map((partner, key) => {
                 return (
                   <PartnerCard
                     partner={partner}
@@ -24,8 +24,8 @@ class SelectPartner extends React.Component {
           <div className="dropdown-divider" />
           <div className="partSoponCol">
             <h3>Available sponsors:</h3>
-            {this.props.data.allSponsors &&
-              this.props.data.allSponsors.map((sponsor, key) => {
+            {this.props.sponsors &&
+              this.props.sponsors.map((sponsor, key) => {
                 return (
                   <PartnerCard
                     partner={sponsor}
