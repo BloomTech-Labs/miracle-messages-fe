@@ -4,6 +4,7 @@ import "./UserLogin.js";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import "../Forms/VolunteerForm.scss";
 import FormFooter from "../Header-Footer/FormFooter";
+import FormHeader from '../Header-Footer/FormHeader';
 
 class LoginPage extends Component {
   constructor() {
@@ -55,7 +56,8 @@ class LoginPage extends Component {
       //did not import Form Header because I needed to update the h1 tag on line 94
       <div className="container">
         {this.scroll()}
-        <header>
+        <FormHeader />
+        {/* <header>
           <div className="navbar">
             <div className="logonavbar">
               <img src={logo} alt="logo" />
@@ -78,7 +80,7 @@ class LoginPage extends Component {
                 </a>
                 <a href="localhost:3000/form">
                   <div>GET INVOLVED</div>
-                  {/* this anchor tag should have a drop down to the register page, login form, forgot password page */}
+                  this anchor tag should have a drop down to the register page, login form, forgot password page
                 </a>
                 <a
                   href="https://www.classy.org/give/231839/#!/donation/checkout"
@@ -91,13 +93,13 @@ class LoginPage extends Component {
             </div>
           </div>
           <h1>Already apart of the Miracle Messages Community?</h1>
-          {/* the below  3 divs are for the header image styling */}
+          the below  3 divs are for the header image styling
           <div className="overlay">
             <div className="backImg">
               <div className="filter" />
             </div>
           </div>
-        </header>
+        </header> */}
         <section className="main">
           <strong className="main-bold">
             <h2>Login Here</h2>
