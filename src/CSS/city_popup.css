@@ -91,12 +91,13 @@
   
   }
   
-  .gmailLogo {
+  .facLogo {
     width: 60px;
     /* padding-right: 10px; */
   }
 
   .social {
+    
     display: flex;
     flex-flow: row nowrap;
     /* align-items: center;

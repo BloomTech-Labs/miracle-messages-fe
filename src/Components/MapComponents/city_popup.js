@@ -20,7 +20,7 @@ const CityPopup = props => {
     return (
         <div className='chapter-Info'>
             <div className='chapter-Title'>
-              <h1>{info.currentChapter.title}</h1> 
+              <h1>{info.title}</h1> 
             </div>
             {/* Contains the chapter statisics; members/reunions */}
             <div className="chapter-Stats">
@@ -47,7 +47,7 @@ const CityPopup = props => {
         <div className="contact">
           <span>         
             <div classname='social'>
-                <img src={facebook} alt="facebook-logo" className="facebookLogo" />
+                <img src={facebook} alt="facebook-logo" className="facLogo" />
             </div>
           </span>
         </div>
