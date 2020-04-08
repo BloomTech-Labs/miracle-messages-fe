@@ -80,6 +80,11 @@
     font-size: 13px;
     border-bottom: #d8d8d8 solid 0.25px;
   }
+
+  .email {
+    color: white;
+    letter-spacing: 1.5px;
+  }
   
   .email-Header {
     font-family: ProximaNova_Semibold;
