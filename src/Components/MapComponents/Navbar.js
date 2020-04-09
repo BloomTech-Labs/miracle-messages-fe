@@ -42,17 +42,21 @@ const Navbar = props => {
         <img src={logo} alt="logo" />
       </Link>
       <nav>
-        <div className="search-bar">
-          <form>
-            <input
-              type="text"
-              placeholder="Search Chapters"
-              value={search}
-              onChange={handleChange}
-              //style=()
-              className="input"
-            />
-          </form>
+        <div className='search-box'>
+          
+          <div className="search-bar">
+            <form>
+            <i className='fas fa-search' />&nbsp;&nbsp;
+              <input
+                type="text"
+                placeholder="Search Chapters"
+                value={search}
+                onChange={handleChange}
+                //style=()
+                className="input"
+              />
+            </form>
+          </div>
         </div>
         <div style={{ margin: "15px" }}> </div>
         <Link to="/">HOME</Link>
