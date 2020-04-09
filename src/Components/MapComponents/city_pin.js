@@ -6,6 +6,7 @@ import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
+
 const pinStyle = {
   fill: "white"
 };
