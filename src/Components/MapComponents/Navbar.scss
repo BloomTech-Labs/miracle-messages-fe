@@ -114,30 +114,37 @@
     }
 
     // Styling for Search Drop Down! :)
-    .search-bar {
+
+    .search-box {
       position: fixed;
       display: inline-block;
       bottom: 35px;
       left: 6px;
-
-      input {
-        background: #ffffff9e;
-        height: 41px;
-        width: 175px;
-        font-size: 1.1em;
-      }
-
-      .drop-search,
-      .drop-search:hover {
-        font-weight: 600;
-        font-style: normal;
-        font-size: 18px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        text-decoration: none;
-        line-height: 1em;
-        color: rgba(255, 255, 255, 0.9);
-        font-family: ProximaNova;
+      background-color: black;
+      .search-bar {
+      display: flex;
+      font-size: 2em;
+      color: white;
+      padding: 1rem;
+        input {
+          background: #ccc;
+          height: 50px;
+          width: 250px;
+          font-size: 1.1em;
+        }
+  
+        .drop-search,
+        .drop-search:hover {
+          font-weight: 600;
+          font-style: normal;
+          font-size: 18px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          text-decoration: none;
+          line-height: 1em;
+          color: rgba(255, 255, 255, 0.9);
+          font-family: ProximaNova;
+        }
       }
     }
     .dropdown-search {
