@@ -1,11 +1,19 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import stepperImage1 from '../../../Assets/Imgs/stepper-image-1.jpeg';
+import mmLogo from '../../../Assets/Imgs/MM_Logo.png';
+
+
+
+//material Ui
+import TextField from '@material-ui/core/TextField';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +23,29 @@ const useStyles = makeStyles((theme) => ({
 },
 imageSide: {
     width: '40%',
-    backgroundImage: `url(${stepperImage1})`
+    backgroundImage: `url(${stepperImage1})`,
+    backgroundSize: 'cover',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center',
+    
+  },
+  imgContainer: {
+    width: '100%',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center',
+    paddingTop: '20%',
+    alignContent: 'baseline',
+  },
+  imgStyling: {
+    width: '44%',
+  },
+  h3Styling: {
+    color: '#fff',
+    width: '100%',
+    textAlign: 'center',
+    padding: '0 10%',
   },
   stepper: {
     width: '100%',
@@ -26,9 +56,6 @@ imageSide: {
     flexFlow: 'row wrap',
     justifyContent: 'center'
   },
-  buttons: {
-    width: '100%',
-  },
   button: {
     marginRight: theme.spacing(1),
   },
@@ -36,30 +63,69 @@ imageSide: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  link: {
+      color: 'black',
+      textDecoration: 'none',
+      '&:hover': {
+        color: 'green',
+      }
+  }
+
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['', '', ''];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Select campaign settings...';
+      return (
+      <>
+          <h1>You have selected to connect with this City chapter.</h1> 
+          <h3>If that is the place you would like to vounteer click next.</h3>
+      </>
+      );
     case 1:
-      return 'What is an ad group anyways?';
+      return ( 
+      <>
+      <div > 
+      <h1 >You've taken the first step!</h1>
+      <h3 className='.potterStyle'>We just need a little more information to get started</h3>
+      <br/>
+      <TextField style={{ color: 'red'}} id="name" label="Name" variant="outlined" />
+      <br/>
+      <TextField id="outlined-basic" type='email' label="Email" variant="outlined" />
+      </ div>
+       </>
+       );
     case 2:
-      return 'This is the bit I really care about!';
+      return (
+        <>
+        <div >
+        <h1>Thank you for your commitment to your community!</h1>
+        <h3>We will be contacting you shortly</h3>
+        </div>
+         </>
+      );
     default:
-      return 'Unknown step';
+      return '' (
+          <>
+          <div >  
+          <h1>Thank you for your commitment to your community!</h1>
+          <h3> We will be contacting you shortly.</h3>
+          </div>
+          </>
+      );
   }
 }
 
-export default function NewVolunteer() {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
-  const steps = getSteps();
+const NewVolunteer = () => {
+    const classes = useStyles();
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [skipped, setSkipped] = React.useState(new Set());
+    const steps = getSteps();
+    
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -106,6 +172,10 @@ export default function NewVolunteer() {
   return (
     <div className={classes.root}>
         <div className={classes.imageSide}>
+            <div className={classes.imgContainer}>
+                <img className={classes.imgStyling} src={mmLogo} alt="Miracle Messages Logo"/>
+                <h3 className={classes.h3Styling}>Help us reconnect people with their loved ones.</h3>
+            </div>
         </div>
         <div className={classes.stepperSide} >
       <Stepper className={classes.stepper} activeStep={activeStep}>
@@ -113,7 +183,7 @@ export default function NewVolunteer() {
           const stepProps = {};
           const labelProps = {};
           if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
+            labelProps.optional = <Typography variant="caption"></Typography>;
           }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
@@ -125,9 +195,6 @@ export default function NewVolunteer() {
           );
         })}
       </Stepper>
-      <div className={classes.buttons}>
-            
-        </div>
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
@@ -141,9 +208,14 @@ export default function NewVolunteer() {
           <div>
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div>
-              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Back
-              </Button>
+              {/* <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                  BACK
+              </Button> */}
+                {activeStep === steps.length - 1 ? <a href="google.com/" className={classes.link}>
+                  FAQ
+              </a> : <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                  BACK
+              </Button>}
               {isStepOptional(activeStep) && (
                 <Button
                   variant="contained"
@@ -161,7 +233,7 @@ export default function NewVolunteer() {
                 onClick={handleNext}
                 className={classes.button}
               >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                {activeStep === steps.length - 1 ? 'Back to the Map' : 'Next'}
               </Button>
             </div>
           </div>
@@ -170,3 +242,5 @@ export default function NewVolunteer() {
     </div>
   );
 }
+
+export default NewVolunteer;
