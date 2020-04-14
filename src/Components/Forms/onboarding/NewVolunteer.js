@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { makeStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -145,21 +146,9 @@ function getStepContent(step) {
       <>
       <div > 
       <h3 >You've taken the first step!</h3>
-      <p>We just need a little more information to get started</p>
+      <p>We just need a little more information from you.</p>
       <br/>
-      <div className='textFieldContainer'>
-        <TextField className='inputField' id="firstname" label="First Name" variant="outlined" />
-        <br/>
-        <TextField className='inputField' id="outlined-basic" type='lastname' label="Last Name" variant="outlined" />
-        <br/>
-        <TextField className='inputField' id="outlined-basic" type='city' label="City" variant="outlined" />
-        <br/>
-        <TextField className='inputField' id="outlined-basic" type='state' label="State" variant="outlined" />
-        <br/>
-        <TextField className='inputField' id="outlined-basic" type='country' label="Country" variant="outlined" />
-        <br/>
-        <TextField className='inputField' id="outlined-basic" type='email' label="Email" variant="outlined" />
-        </ div>
+
       </div>
        </>
        );
@@ -186,10 +175,18 @@ function getStepContent(step) {
 
 const NewVolunteer = () => {
   const classes = useStyles();
+  const [ volunteer, setVolunteer ] = useState({});
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const history = useHistory();
+
+  const onChangeHandler = e => {
+    setVolunteer({
+      ...volunteer,
+      [e.target.name]: e.target.value
+    })
+  }
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -238,6 +235,27 @@ const NewVolunteer = () => {
     setActiveStep(0);
   };
 
+  const handleSubmit = () => {
+    const testVolunteer = {fname: "first name",
+    lname: "last name",
+    city: "city",
+    state: "state",
+    country: "country",
+    email: "email@email.com"}
+    axios
+      .post("https://miracle-messages-dev.herokuapp.com/api/volunteer", testVolunteer)
+      .then(res => {
+        console.log(res)
+        handleNext();
+      })
+      .catch(error => {
+        console.log(error)
+        console.log(error.response)
+        alert(error.response.data.errorMessage)
+      })
+
+  }
+
   return (
     <div className={classes.root}>
         <div className={classes.imageSide}>
@@ -278,25 +296,45 @@ const NewVolunteer = () => {
             );
           })}
         </Stepper>
-        {activeStep === steps.length ? (
-          <div  className={classes.buttonContainer}>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Reset
-            </Button>
+        {activeStep === steps.length - 2 ? (
+          
+          <div className={classes.formContainer} >
+          <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+          <div className='textFieldContainer'>
+        <TextField name='fname' onChange={onChangeHandler} className='inputField' id="firstname" label="First Name" variant="outlined" />
+        <br/>
+        <TextField name='lname' onChange={onChangeHandler} className='inputField' id="outlined-basic" type='lastname' label="Last Name" variant="outlined" />
+        <br/>
+        <TextField name='city' onChange={onChangeHandler} className='inputField' id="outlined-basic" type='city' label="City" variant="outlined" />
+        <br/>
+        <TextField name='state' onChange={onChangeHandler} className='inputField' id="outlined-basic" type='state' label="State" variant="outlined" />
+        <br/>
+        <TextField name='country' onChange={onChangeHandler} className='inputField' id="outlined-basic" type='country' label="Country" variant="outlined" />
+        <br/>
+        <TextField name='email' onChange={onChangeHandler} className='inputField' id="outlined-basic" type='email' label="Email" variant="outlined" />
+        </ div>
+              <div  className={classes.buttonContainer}>
+            <Button disabled={activeStep === 0} onClick={handleBack} className={classes.leftButton}>
+                  BACK
+              </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+                className={classes.button}
+              >Complete</Button>
+
+          </div>
           </div>
         ) : (
           <div className={classes.formContainer} >
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div className={classes.buttonContainer}>
                 {activeStep === steps.length - 1 ? 
-                <a href="https://miraclemessages.org/faq"><Button className={classes.button}>
+                <a target="_blank" href="https://miraclemessages.org/faq"><Button className={classes.button}>
               FAQ
-              
             </Button></a>
-             : <Button disabled={activeStep === 0} onClick={handleBack} className={classes.leftButton}>
+             : <Button  onClick={goToMap} className={classes.leftButton}>
                   BACK
               </Button>}
                 {activeStep === steps.length - 1 ? <Button
