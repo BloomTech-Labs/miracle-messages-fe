@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -73,7 +74,8 @@ imageSide: {
     justifyContent: 'center',
     width: '100%',
     '& button': {
-      width:  '100px',
+      minWidth:  '100px',
+      width:  'auto',
     },
   },
   button: {
@@ -152,6 +154,8 @@ function getStepContent(step) {
         <br/>
         <TextField className='inputField' id="outlined-basic" type='city' label="City" variant="outlined" />
         <br/>
+        <TextField className='inputField' id="outlined-basic" type='state' label="State" variant="outlined" />
+        <br/>
         <TextField className='inputField' id="outlined-basic" type='country' label="Country" variant="outlined" />
         <br/>
         <TextField className='inputField' id="outlined-basic" type='email' label="Email" variant="outlined" />
@@ -185,7 +189,7 @@ const NewVolunteer = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
-  
+  const history = useHistory();
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -205,6 +209,11 @@ const NewVolunteer = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
+
+  const goToMap = () => {
+    history.push('/')
+  }
+
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -282,22 +291,25 @@ const NewVolunteer = () => {
           <div className={classes.formContainer} >
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div className={classes.buttonContainer}>
-              {/* <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                  BACK
-              </Button> */}
-                {activeStep === steps.length - 1 ? <a href="google.com/" className={classes.link}>
-                  FAQ
-              </a> : <Button disabled={activeStep === 0} onClick={handleBack} className={classes.leftButton}>
+                {activeStep === steps.length - 1 ? 
+                <a href="https://miraclemessages.org/faq"><Button className={classes.button}>
+              FAQ
+              
+            </Button></a>
+             : <Button disabled={activeStep === 0} onClick={handleBack} className={classes.leftButton}>
                   BACK
               </Button>}
-              <Button
+                {activeStep === steps.length - 1 ? <Button
+                variant="contained"
+                color="primary"
+                onClick={goToMap}
+                className={classes.button}
+              >Back To Map</Button> : <Button
                 variant="contained"
                 color="primary"
                 onClick={handleNext}
                 className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? 'Back to the Map' : 'Next'}
-              </Button>
+              >Next</Button>}
             </div>
           </div>
         )}
