@@ -1,0 +1,19 @@
+.MuiStepIcon-active {
+    color:  green !important;
+}
+
+.MuiStepIcon-completed {
+    color:   green !important;
+}
+
+.inputField {
+    margin: 10px !important; 
+
+}
+
+.textFieldContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
