@@ -151,7 +151,6 @@ class Map extends Component {
               );
             }
           })}
-
                         {
                           this.props.openPopup && <Popup
                           latitude={this.props.latitude}
