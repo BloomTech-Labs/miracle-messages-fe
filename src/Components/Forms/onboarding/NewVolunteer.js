@@ -7,7 +7,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import stepperImage1 from '../../../Assets/Imgs/stepper-image-1.jpeg';
+import stepperImage2 from '../../../Assets/Imgs/stepper-image-2.png';
 import mmLogo from '../../../Assets/Imgs/MM_Logo.png';
 import mmLogoBlack from '../../../Assets/Imgs/MM_Logo_black.png';
 import './newVolunteer.css';
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 },
 imageSide: {
     width: '40%',
-    backgroundImage: `url(${stepperImage1})`,
+    backgroundImage: `url(${stepperImage2})`,
     backgroundSize: 'cover',
     display: 'flex',
     flexFlow: 'row wrap',
