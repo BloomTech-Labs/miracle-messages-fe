@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 },
 imageSide: {
     width: '40%',
-    backgroundImage: `url(${stepperImage1})`,
+    backgroundImage: `url("${stepperImage1}")`,
     backgroundSize: 'cover',
     display: 'flex',
     flexFlow: 'row wrap',
