@@ -1,5 +1,5 @@
 import React from "react"
-import axios from "axios"
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import PendingCards from "./PendingCards"
 
@@ -32,8 +32,8 @@ class PendingChapter extends React.Component {
   }
 
   deleteChapter = id => {
-    axios
-      .delete(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
+    axiosWithAuth()
+      .delete(`/api/chapter/${id}`)
       .then(res => {
         this.props.getData()
       })

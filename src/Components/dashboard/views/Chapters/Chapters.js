@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import Chapter from "./Chapter";
 
@@ -26,8 +26,8 @@ const Chapters = props => {
   
   
   const deleteChapter = id => {
-    axios
-      .delete(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`)
+    axiosWithAuth()
+      .delete(`/api/chapter/${id}`)
       .then(res => {
         props.getData();
       })
@@ -57,8 +57,8 @@ const Chapters = props => {
     fd.append("site_url", newChapter.site_url);
     fd.append("category", newChapter.category);
     console.log(fd.getAll("partner_icon"));
-    axios
-      .post("https://miracle-messages-dev.herokuapp.com/api/partner", fd)
+    axiosWithAuth()
+      .post("/api/partner", fd)
       .then(res => {
         console.log(res);
 

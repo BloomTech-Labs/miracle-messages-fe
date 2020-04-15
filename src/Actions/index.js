@@ -1,4 +1,5 @@
 import axios from "axios"
+import { axiosWithAuth } from "../utils/axiosWithAuth"
 export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO"
 export const FETCH_CHAPTER_SUCCESS = "FETCH_CHAPTER_SUCCESS"
 export const FETCH_CHAPTER_FAIL = "FETCH_CHAPTER_FAIL"
@@ -19,8 +20,8 @@ export const PARTNER_ERR = "PARTNER_ERR"
 //this data pull enables us to get chapter related data from backend so we can display on the map
 export const getData = url => dispatch => {
   dispatch({ type: FETCH_CHAPTER_INFO })
-  axios
-    .get("https://miracle-messages-dev.herokuapp.com/api/chapter")
+  axiosWithAuth()
+    .get("/api/chapter")
     .then(res => dispatch({ type: FETCH_CHAPTER_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_CHAPTER_FAIL }))
 }
@@ -29,21 +30,23 @@ export const getData = url => dispatch => {
 
 export const getSponsor = data => dispatch => {
   dispatch({ type: FETCHING_PARTNER })
-  axios
-    .get("https://miracle-messages-dev.herokuapp.com/api/partner")
+  axiosWithAuth()
+    .get("/api/partner")
     .then(res => dispatch({ type: FETCH_PARTNER_SUCCCESS, payload: res.data }))
-    .catch(err =>
+    .catch(err =>{
+      console.log(err)
+      console.log(err.response)
       dispatch({
         type: FETCH_PARTNER_ERR,
         payload: err
-      })
+      })}
     )
 }
 
 export const deleteSponsor = id => dispatch => {
   dispatch({ type: DELETE_PARTNER })
-  axios
-    .delete(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`)
+  axiosWithAuth()
+    .delete(`/api/partner/${id}`)
     .then(res => {
       dispatch({ type: DELETE_PARTNER_SUCCESS, payload: res.data })
       getSponsor()
@@ -59,8 +62,8 @@ export const FETCH_CHAPTER_DEFAULT_FAIL = "FETCH_CHAPTER_DEFAULT_FAIL"
 
 export const getDefault = () => dispatch => {
   dispatch({ type: FETCH_CHAPTER_DEFAULT_INFO })
-  axios
-    .get("https://miracle-messages-dev.herokuapp.com/api/chapter/1")
+  axiosWithAuth()
+    .get("/api/chapter/1")
     .then(res =>
       dispatch({ type: FETCH_CHAPTER_DEFAULT_SUCCESS, payload: res.data })
     )

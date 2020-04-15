@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import Sponsor from "./Sponsor";
 import { getSponsor } from "../../../../Actions/index";
@@ -31,8 +31,8 @@ class Sponsors extends React.Component {
     fd.append("site_url", this.state.sponsor.site_url);
     fd.append("category", this.state.sponsor.category);
     console.log(fd.getAll("partner_icon"));
-    axios
-      .post("https://miracle-messages-dev.herokuapp.com/api/partner", fd)
+    axiosWithAuth()
+      .post("/api/partner", fd)
       .then(res => {
         console.log(res);
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import axios from "axios"
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 const PendingTrue = props => {
   const [approved, setApprove] = useState({
@@ -13,8 +13,8 @@ const PendingTrue = props => {
   }
 
   const submitForm = () => {
-    axios
-      .put(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`, {
+    axiosWithAuth()
+      .put(`/api/chapter/${id}`, {
         approved
       })
       .then(res => {

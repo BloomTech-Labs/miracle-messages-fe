@@ -1,5 +1,5 @@
 import React from "react"
-import axios from "axios"
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import {
   Button,
   Input,
@@ -46,8 +46,8 @@ class UpdateForm extends React.Component {
     fd.append("facebook", this.state.chapter.facebook)
     fd.append("story", this.state.chapter.story)
 
-    axios
-      .put(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`, fd)
+    axiosWithAuth()
+      .put(`/api/chapter/${id}`, fd)
       .then(res => {
         this.props.toggleEdit()
         this.props.getData()
