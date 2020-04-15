@@ -8,6 +8,7 @@ import { getData, getSponsor } from "../../../../Actions/index";
 import { useOktaAuth } from '@okta/okta-react';
 
 import SponsorForm from "../Sponsors/SponsorForm";
+import AddChapterForm from "./AddChapterForm";
 
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
@@ -112,17 +113,18 @@ const Chapters = props => {
           // className={className}
           backdrop="static"
         >
-          <ModalHeader toggle={toggle}>Add Sponsor</ModalHeader>
+          <ModalHeader toggle={toggle}>Add Chapter</ModalHeader>
           <ModalBody>
-            <SponsorForm
-              change={handleInputChange}
-              sponsor={newChapter}
-              handleImg={handleImg}
+            <AddChapterForm
+              // change={handleInputChange}
+              // sponsor={newChapter}
+              // handleImg={handleImg}
+              toggle={toggle}
             />
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={addSponsor}>
-              Add Sponsor
+              Add Chapter
             </Button>{" "}
             <Button color="secondary" onClick={toggle}>
               Cancel
