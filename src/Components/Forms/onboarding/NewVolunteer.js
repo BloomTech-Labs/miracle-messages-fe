@@ -241,9 +241,9 @@ const NewVolunteer = () => {
     city: "city",
     state: "state",
     country: "country",
-    email: "email@email.com"}
+    email: "testTestTest@email.com"}
     axios
-      .post("https://miracle-messages-dev.herokuapp.com/api/volunteer", testVolunteer)
+      .post("https://miracle-messages-dev.herokuapp.com/api/volunteer", volunteer)
       .then(res => {
         console.log(res)
         handleNext();
