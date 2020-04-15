@@ -10,7 +10,7 @@ import {
   ModalBody,
   ModalFooter
 } from "reactstrap"
-import axios from "axios"
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import { deleteSponsor, getSponsor } from "../../../../Actions/index"
 import { connect } from "react-redux"
 import UpdateSponsor from "./UpdateSponsor"
@@ -32,9 +32,9 @@ class Sponsor extends Component {
   delete = () => {
     const id = this.props.sponsor.id
     // console.log(id);
-    axios
+    axiosWithAuth()
 
-      .delete(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`)
+      .delete(`/api/partner/${id}`)
       .then(res => {
         this.toggle()
         this.props.getSponsor()

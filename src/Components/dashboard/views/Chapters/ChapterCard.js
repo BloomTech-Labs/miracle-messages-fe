@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-//import { axiosWithAuth } from '../../../../Actions/AxiosWithAuth';
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
+
 import { useOktaAuth } from '@okta/okta-react';
 
 import SponsorList from "./SponsorList.js";
@@ -29,8 +29,8 @@ const ChapterCard = props => {
     if (authState.isAuthenticated) {
       const { accessToken } = authState;
       try {
-        axios
-        .get(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}`, {
+        axiosWithAuth()
+        .get(`/api/chapter/${id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -54,8 +54,8 @@ const ChapterCard = props => {
     if (authState.isAuthenticated) {
       const { accessToken } = authState;
       try {
-        axios
-        .get(`https://miracle-messages-dev.herokuapp.com/api/partner`, {
+        axiosWithAuth()
+        .get(`/api/partner`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -89,8 +89,8 @@ const ChapterCard = props => {
     if (authState.isAuthenticated) {
       const { accessToken } = authState;
       try {
-    axios
-      .get(`https://miracle-messages-dev.herokuapp.com/api/chapter/${id}/partners`, {
+    axiosWithAuth()
+      .get(`/api/chapter/${id}/partners`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -136,9 +136,9 @@ const ChapterCard = props => {
       const { accessToken } = authState;
       try {
     const chapterid = props.match.params.id
-    axios
+    axiosWithAuth()
       .delete(
-        `https://miracle-messages-dev.herokuapp.com/api/chapter/${chapterid}/partners/${id}`, {
+        `/api/chapter/${chapterid}/partners/${id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -161,8 +161,8 @@ const ChapterCard = props => {
       const { accessToken } = authState;
       try {
         const partnerId = { partnerId: id }
-    axios
-      .post(`https://miracle-messages-dev.herokuapp.com/api/chapter/${chapterid}/partners`, partnerId, {
+    axiosWithAuth()
+      .post(`/api/chapter/${chapterid}/partners`, partnerId, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

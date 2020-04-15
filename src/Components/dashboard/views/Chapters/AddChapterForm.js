@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import axios from "axios"
+import {axiosWithAuth} from "../../../../utils/axiosWithAuth";
 import {
   Button,
   Input,
@@ -43,8 +43,8 @@ const AddChapterForm = props => {
     fd.append("facebook", chapter.facebook)
     fd.append("story", chapter.story)
 
-    axios
-      .post(`https://miracle-messages-dev.herokuapp.com/api/chapter/`, fd)
+    axiosWithAuth()
+      .post(`/api/chapter/`, fd)
       .then(res => {
         props.toggle()
         console.log(res)

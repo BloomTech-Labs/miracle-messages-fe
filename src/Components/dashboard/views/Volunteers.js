@@ -1,5 +1,5 @@
 import React from "react"
-import axios from "axios"
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
 import Volunteer from "./Volunteer"
 
 class Volunteers extends React.Component {
@@ -8,8 +8,8 @@ class Volunteers extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://miracle-messages-dev.herokuapp.com/api/form")
+    axiosWithAuth()
+      .get("/api/volunteer")
       .then(res => {
         // console.log(res)
         this.setState({
