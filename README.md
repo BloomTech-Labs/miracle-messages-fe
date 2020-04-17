@@ -118,6 +118,6 @@ The following environment variables control the front-end:
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
+Give a ⭐️ if this project helped you.
 
 ---
