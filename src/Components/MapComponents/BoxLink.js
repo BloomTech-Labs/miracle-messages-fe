@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 import "./BoxLink.scss"
 
@@ -33,14 +34,13 @@ class BoxLink extends React.Component {
                 Messages to your community!
               </p>
             </div>
-            <a
+            <Link
               style={{ position: "relative", bottom: "15px" }}
-              href="https://miracle-message.netlify.com/user/newchapter"
-              target="_blank"
+              to="/user/register"
               rel="noopener noreferrer"
             >
               GET STARTED
-            </a>
+            </Link>
           </div>
         )}
       </>

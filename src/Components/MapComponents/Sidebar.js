@@ -17,38 +17,36 @@ export default props => {
       <a className="menu-item" href="https://miraclemessages.org/partner">
         REUNION SERVICE
       </a>
-      <a
+      <Link
         className="menu-item"
-        href="https://https://miracle-messages.shelbydiamond.now.sh/form"
+        to="/form"
       >
         GET INVOLVED
-      </a>
-      <a
+      </Link>
+      <Link
         className="menu-item"
-        href="https://https://miracle-messages.shelbydiamond.now.sh/form"
+        to="/form"
       >
         REGISTER AS A VOLUNTEER
-      </a>
-      <a
+      </Link>
+      <Link
         className="menu-item"
-        href="https://https://miracle-messages.shelbydiamond.now.sh/user/login"
+        to="/user/login"
       >
         VOLUNTEER LOGIN
-      </a>
-      <a
+      </Link>
+      <Link
         className="menu-item"
-        href="https://miracle-messages.shelbydiamond.now.sh/admin/login"
+        to="/admin/login"
       >
         ADMIN LOGIN
-      </a>
+      </Link>
       <a
         className="menu-item"
         href="https://www.classy.org/give/231839/#!/donation/checkout"
       >
         DONATE
       </a>
-
-      <Link to="/searchbar">Search</Link>
     </Menu>
   )
 }

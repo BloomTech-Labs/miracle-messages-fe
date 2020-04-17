@@ -42,36 +42,41 @@ const Navbar = props => {
         <img src={logo} alt="logo" />
       </Link>
       <nav>
-        <div className="search-bar">
-          <form>
-            <input
-              type="text"
-              placeholder="Search Chapters"
-              value={search}
-              onChange={handleChange}
-              //style=()
-              className="input"
-            />
-          </form>
+        <div className='search-box'>
+          
+          <div className="search-bar">
+            <form>
+            <i className='fas fa-search' />&nbsp;&nbsp;
+              <input
+                type="text"
+                placeholder="Search Chapters"
+                value={search}
+                onChange={handleChange}
+                //style=()
+                className="input"
+              />
+            </form>
+          </div>
         </div>
         <div style={{ margin: "15px" }}> </div>
-        <Link to="https://miraclemessages.org/">HOME</Link>
-        <Link to="https://miraclemessages.org/who">ABOUT</Link>
-        <Link to="https://miraclemessages.org/partner">REUNION SERVICE</Link>
+        <Link to="/">HOME</Link>
+        <a target='_blank' href="https://miraclemessages.org/who">ABOUT</a>
+        <a target='_blank' href="https://miraclemessages.org/partner">REUNION SERVICE</a>
 
         <div className="dropdown">
           <Link className="dropbtn">GET INVOLVED</Link>
           <div className="dropdown-content">
             <Link to="/form">Volunteer Registration</Link>
             <Link to="/user/login">Volunteer Login</Link>
-            <Link to="/admin/login">Admin Login</Link>
+            <Link to="/user/register">Volunteer Register</Link>
+            <Link to="/admin">Admin Dashboard</Link>
             <Link className="not-last-child">test</Link>
           </div>
         </div>
 
-        <Link to="https://www.classy.org/give/231839/#!/donation/checkout">
+        <a target='_blank' href="https://www.classy.org/give/231839/#!/donation/checkout">
           DONATE
-        </Link>
+        </a>
       </nav>
     </div>
   );

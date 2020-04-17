@@ -1,4 +1,5 @@
 import axios from "axios"
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const START_LOGIN = "START_LOGIN"
 export const FAILURE_LOGIN = "FAILURE_LOGIN"
@@ -42,8 +43,8 @@ export const DELETE_CHAPTER_FAIL = "DELETE_CHAPTERS_FAIL"
 
 export const fetchLogin = user => dispatch => {
   dispatch({ type: START_LOGIN })
-  return axios
-    .post("https://miracle-messages-dev.herokuapp.com/api/user/login", user)
+  return axiosWithAuth()
+    .post("/api/user/login", user)
 
     .then(res => {
       dispatch({ type: SUCCESS_LOGIN })
@@ -61,9 +62,9 @@ export const fetchLogin = user => dispatch => {
 
 export const addUser = (username, password) => dispatch => {
   dispatch({ type: ADD_USERS_START })
-  return axios
+  return axiosWithAuth()
     .post(
-      "http://https://miracle-messages-dev.herokuapp.com/api/user/register",
+      "/api/user/register",
       username,
       password
     )
@@ -77,8 +78,8 @@ export const addUser = (username, password) => dispatch => {
 
 export const getUsers = () => dispatch => {
   dispatch({ type: GET_USERS_START })
-  axios
-    .get("https://miracle-messages-dev.herokuapp.com/api/user/users")
+  axiosWithAuth()
+    .get("/api/user/users")
     .then(res => {
       dispatch({ type: GET_USERS_SUCCESS, payload: res.data })
     })
@@ -92,7 +93,7 @@ export const getUsers = () => dispatch => {
 
 export const deleteUser = user => dispatch => {
   dispatch({ type: DELETE_USERS_START })
-  return axios
+  return axiosWithAuth()
     .delete(`/delete/${user.id}`)
     .then(res => {
       dispatch({ type: DELETE_USERS_SUCCESS })
@@ -107,8 +108,8 @@ export const deleteUser = user => dispatch => {
 
 export const addVolunteer = volunteer => dispatch => {
   dispatch({ type: ADD_VOLUNTEERS_START })
-  return axios
-    .post("https://miracle-messages-dev.herokuapp.com/api/form", volunteer)
+  return axiosWithAuth()
+    .post("/api/form", volunteer)
     .thern(res => {
       dispatch({ type: ADD_VOLUNTEERS_SUCCESS, payload: res.volunteer.data })
     })
@@ -119,7 +120,7 @@ export const addVolunteer = volunteer => dispatch => {
 
 export const getVolunteers = volunteers => dispatch => {
   dispatch({ type: GET_VOLUNTEERS_START })
-  return axios
+  return axiosWithAuth()
     .get("", volunteers)
     .then(res => {
       dispatch({ type: GET_VOLUNTEERS_SUCCESS, payload: res.volunteers.data })
@@ -134,7 +135,7 @@ export const getVolunteers = volunteers => dispatch => {
 
 export const deleteVolunteer = user => dispatch => {
   dispatch({ type: DELETE_VOLUNTEERS_START })
-  return axios
+  return axiosWithAuth()
     .delete(`/delete/${user.id}`)
     .then(res => {
       dispatch({ type: DELETE_VOLUNTEERS_SUCCESS })
@@ -149,7 +150,7 @@ export const deleteVolunteer = user => dispatch => {
 
 export const addChapter = chapter => dispatch => {
   dispatch({ type: ADD_CHAPTER_START })
-  return axios
+  return axiosWithAuth()
     .post("/chapter", chapter)
     .thern(res => {
       dispatch({ type: ADD_CHAPTER_SUCCESS, payload: res.chapter.data })
@@ -161,7 +162,7 @@ export const addChapter = chapter => dispatch => {
 
 export const getChapters = chapters => dispatch => {
   dispatch({ type: GET_CHAPTERS_START })
-  return axios
+  return axiosWithAuth()
     .get("/chapter", chapters)
     .then(res => {
       dispatch({ type: GET_CHAPTERS_SUCCESS, payload: res.chapter.data })
@@ -176,7 +177,7 @@ export const getChapters = chapters => dispatch => {
 
 export const deleteChapter = chapter => dispatch => {
   dispatch({ type: DELETE_CHAPTER_START })
-  return axios
+  return axiosWithAuth()
     .delete(`/delete/${chapter.name}`)
     .then(res => {
       dispatch({ type: DELETE_CHAPTER_SUCCESS })

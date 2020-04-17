@@ -1,5 +1,6 @@
 import React from "react"
 import logo from "../../Assets/Imgs/MM_Logo.png"
+import { Link } from 'react-router-dom';
 import "../MapComponents/Navbar.scss"
 import "../Header-Footer/FormHeader.scss"
 /*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************In order for this to work, you need to render inside of the <div className="container"> div of the component you want it to render in.
@@ -14,6 +15,12 @@ const FormHeader = () => {
         </div>
         <div className="tabsnavbar">
           <nav>
+                <Link
+                    className="atag"
+                    to="/"
+                  >
+                    Home
+                  </Link>
             <a
               href="https://miraclemessages.org/who"
               target="_blank"
@@ -32,30 +39,30 @@ const FormHeader = () => {
               <div className="dropdown">
                 <a className="dropbtn">GET INVOLVED </a>
                 <div className="dropdown-content">
-                  <a
+                  <Link
                     className="atag"
-                    href="https://miracle-message.netlify.com/form"
+                    to="/form"
                   >
                     Volunteer Registration
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="atag"
-                    href="https://miracle-message.netlify.com/user/login"
+                    to="/user/login"
                   >
                     Volunteer Login
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="atag"
-                    href="https://miracle-message.netlify.com/user/newchapter"
+                    to="/user/newchapter"
                   >
                     Create a Chapter
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="atag"
-                    href="https://miracle-message.netlify.com/admin/login"
+                    to="/admin"
                   >
-                    Admin Login
-                  </a>
+                    Admin Dashboard
+                  </Link>
                   <a className="not-last-child">test</a>
                 </div>
               </div>

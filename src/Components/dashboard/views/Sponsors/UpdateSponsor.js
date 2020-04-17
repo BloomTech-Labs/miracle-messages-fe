@@ -1,5 +1,5 @@
 import React from "react"
-import axios from "axios"
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import { Button, Input, Label } from "reactstrap"
 
 import { connect } from "react-redux"
@@ -23,8 +23,8 @@ class UpdateSponsor extends React.Component {
     fd.append("site_url", this.state.sponsor.site_url)
     fd.append("category", this.state.sponsor.category)
     // console.log(fd.getAll("partner_icon"))
-    axios
-      .put(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`, fd)
+    axiosWithAuth()
+      .put(`/api/partner/${id}`, fd)
       .then(res => {
         // console.log(res)
         this.props.toggleEdit()
@@ -43,8 +43,8 @@ class UpdateSponsor extends React.Component {
     fd.append("name", this.state.sponsor.name)
     fd.append("site_url", this.state.sponsor.site_url)
     fd.append("category", this.state.sponsor.category)
-    axios
-      .put(`https://miracle-messages-dev.herokuapp.com/api/partner/${id}`, fd)
+    axiosWithAuth()
+      .put(`/api/partner/${id}`, fd)
       .then(res => {
         this.props.toggleEdit()
         this.props.getSponsor()
