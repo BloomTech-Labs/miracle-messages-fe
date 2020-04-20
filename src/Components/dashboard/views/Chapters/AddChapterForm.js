@@ -43,32 +43,34 @@ const AddChapterForm = props => {
     fd.append("facebook", chapter.facebook)
     fd.append("story", chapter.story)
 
-    axiosWithAuth()
-      .post(`/api/chapter/`, fd)
-      .then(res => {
-        props.toggle()
-        console.log(res)
-        console.log(res)
-      })
-      .catch(err => {
-          console.log(err);
-          console.log(err.response);
-      })
+    // axiosWithAuth()
+    //   .post(`/api/chapter/`, fd)
+    //   .then(res => {
+    //     props.toggle()
+    //     console.log(res)
+    //     console.log(res)
+    //   })
+    //   .catch(err => {
+    //       console.log(err);
+    //       console.log(err.response);
+    //   })
+
+    
   }
 
   const changeHandler = ev => {
     ev.persist()
     let value = ev.target.value
 
-    setChapter({
-        ...chapter,
+    props.setChapter({
+        ...props.chapter,
         [ev.target.name]: value
     })
   }
 
   const handleImg = e => {
-    setChapter({
-        ...chapter,
+    props.setChapter({
+        ...props.chapter,
         [e.target.name]: e.target.files[0]
     })
   }
@@ -80,7 +82,7 @@ const AddChapterForm = props => {
       <div>
         <Label>Title</Label>
         <Input
-          value={chapter.title}
+          value={props.chapter.title}
           onChange={changeHandler}
           name="title"
           placeholder="Title"
@@ -89,7 +91,7 @@ const AddChapterForm = props => {
         <div className="dropdown-divider" />
         <Label>Description</Label>
         <Input
-          value={chapter.description}
+          value={props.chapter.description}
           onChange={changeHandler}
           name="description"
           type="textarea"
@@ -102,7 +104,7 @@ const AddChapterForm = props => {
         <br />
         <Label>Established Date</Label>
         <Input
-          value={chapter.established_date}
+          value={props.chapter.established_date}
           onChange={changeHandler}
           name="established_date"
           type="date"
@@ -110,14 +112,14 @@ const AddChapterForm = props => {
         />
         <Label>City </Label>
         <Input
-          value={chapter.city}
+          value={props.chapter.city}
           onChange={changeHandler}
           name="city"
           placeholder="City"
         />
         <Label>State</Label>
         <Input
-          value={chapter.state}
+          value={props.chapter.state}
           onChange={changeHandler}
           name="state"
           placeholder="State"
@@ -125,7 +127,7 @@ const AddChapterForm = props => {
         <div className="dropdown-divider" />
         <Label>Contact Email</Label>
         <Input
-          value={chapter.email}
+          value={props.chapter.email}
           onChange={changeHandler}
           name="email"
           type="email"
@@ -134,7 +136,7 @@ const AddChapterForm = props => {
         <br />
         <Label>Number of Volunteers</Label>
         <Input
-          value={chapter.numvolunteers}
+          value={props.chapter.numvolunteers}
           onChange={changeHandler}
           name="numvolunteers"
           type="number"
@@ -142,7 +144,7 @@ const AddChapterForm = props => {
         <br />
         <Label>Messages Delivered</Label>
         <Input
-          value={chapter.msg_delivered}
+          value={props.chapter.msg_delivered}
           onChange={changeHandler}
           name="msg_delivered"
           type="number"
@@ -150,7 +152,7 @@ const AddChapterForm = props => {
         <br />
         <Label>Messages Recorded</Label>
         <Input
-          value={chapter.msg_recorded}
+          value={props.chapter.msg_recorded}
           onChange={changeHandler}
           name="msg_recorded"
           type="number"
@@ -158,7 +160,7 @@ const AddChapterForm = props => {
         <br />
         <Label>Number of Reunions</Label>
         <Input
-          value={chapter.numreunions}
+          value={props.chapter.numreunions}
           onChange={changeHandler}
           name="numreunions"
           type="number"
@@ -166,7 +168,7 @@ const AddChapterForm = props => {
         <br />
         <Label>Chapter Facebook Page</Label>
         <Input
-          value={chapter.facebook}
+          value={props.chapter.facebook}
           onChange={changeHandler}
           name="facebook"
           placeholder="facebook link here"
@@ -176,7 +178,7 @@ const AddChapterForm = props => {
         <Input onChange={handleImg} name="newReunionImg" type="file" />
         <Label>Featured Story</Label>
         <Input
-          value={chapter.story}
+          value={props.chapter.story}
           onChange={changeHandler}
           name="story"
           type="textarea"
@@ -184,10 +186,7 @@ const AddChapterForm = props => {
           rows="5"
         />
         <br />
-        <Button color="info" onClick={addDaChaptaaa}>
-        addDaChaptaaa
-        </Button>
-        {/* {console.log(this.props.chapter_data)} */}
+
       </div>
     )
   }
