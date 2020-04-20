@@ -17,30 +17,14 @@ export default props => {
       <a className="menu-item" href="https://miraclemessages.org/partner">
         REUNION SERVICE
       </a>
+
       <Link
         className="menu-item"
-        to="/form"
+        to="/user/register"
       >
-        GET INVOLVED
+        Get Involved
       </Link>
-      <Link
-        className="menu-item"
-        to="/form"
-      >
-        REGISTER AS A VOLUNTEER
-      </Link>
-      <Link
-        className="menu-item"
-        to="/user/login"
-      >
-        VOLUNTEER LOGIN
-      </Link>
-      <Link
-        className="menu-item"
-        to="/admin/login"
-      >
-        ADMIN LOGIN
-      </Link>
+      <Link className="menu-item" to="/admin">Admin Dashboard</Link>
       <a
         className="menu-item"
         href="https://www.classy.org/give/231839/#!/donation/checkout"
