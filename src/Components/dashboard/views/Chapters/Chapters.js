@@ -16,6 +16,7 @@ import { set } from "react-ga";
 
 
 const Chapters = props => {
+  const { authState } = useOktaAuth();
   const [ newChapter, setNewChapter ] = useState({
     name: "",
     site_url: "",
@@ -142,9 +143,12 @@ const Chapters = props => {
           )
         }
       })}
-      <Button className="addBtn" onClick={toggle}>
+      {JSON.parse(atob(authState.accessToken.split('.')[1])).groups.includes('Admin') ? <Button className="addBtn" onClick={toggle}>
           +
-        </Button>
+        </Button> : 'no button' }
+       {/* <Button className="addBtn" onClick={toggle}>
+           +
+         </Button> */}
         <Modal
           isOpen={modal}
           toggle={toggle}
