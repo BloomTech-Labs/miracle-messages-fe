@@ -144,7 +144,7 @@ const Chapters = props => {
           )
         }
       })}
-      {admin && <Button className="addBtn" onClick={toggle}>+</Button>}
+      <Button className="addBtn" onClick={toggle}>+</Button>
        {/* <Button className="addBtn" onClick={toggle}>
            +
          </Button> */}
