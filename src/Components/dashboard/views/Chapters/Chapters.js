@@ -53,7 +53,7 @@ const Chapters = props => {
   // my code starts here
 
   const toggle = () => {
-    setModal(!modal)
+    setModal(modal => !modal)
   };
 
   const addSponsor = e => {

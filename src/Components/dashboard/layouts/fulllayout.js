@@ -4,6 +4,7 @@ import Header from "../header/header.js";
 import Footer from "../footer/footer.js";
 import ThemeRoutes from "../routes/routing.js";
 import Sidebar from '../sidebar/sidebar.js';
+import { useUserGroups } from '../../../utils/customHooks/useUserGroups';
 
 import Volunteers from "../views/Volunteers.js";
 import Chapters from "../views/Chapters/Chapters.js";
@@ -14,6 +15,8 @@ import PendingChapter from "../views/Chapters/PendingChapter";
 
 const FullLayout = props => {
     const history = useHistory();
+    const { admin, chapterLeaders, volunteer } = useUserGroups();
+
 
 
 
@@ -42,7 +45,8 @@ const FullLayout = props => {
 
               <Switch>
                 <Route exact path='/admin/chapters' component={Chapters} />
-                <Route exact path='/admin/pending' component={PendingChapter} />
+                {/* only accessible by admins */}
+                {admin && <Route exact path='/admin/pending' component={PendingChapter} />}
                 <Route exact path='/admin/Sponsors' component={Sponsors} />
                 <Route exact path='/admin/volunteers' component={Volunteers} />
 

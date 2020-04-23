@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState } from "react";
 import {
   Card,
   CardBody,
@@ -9,52 +9,45 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter
-} from "reactstrap"
+} from "reactstrap";
 import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import { deleteSponsor, getSponsor } from "../../../../Actions/index"
-import { connect } from "react-redux"
-import UpdateSponsor from "./UpdateSponsor"
-class Sponsor extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      modal: false,
-      dropdownOpen: false,
-      sponsor: {
-        name: "",
-        site_url: "",
-        icon_url: null,
-        category: ""
-      }
-    }
-  }
+import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
+import { connect } from "react-redux";
+import UpdateSponsor from "./UpdateSponsor";
+const Sponsor = props => {
+  const { admin, chapterLeaders, volunteer } = useUserGroups();
+  const [modal, setModal] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [sponsor, setSponsor] = useState({
+    name: "",
+    site_url: "",
+    icon_url: null,
+    category: ""
+  });
 
-  delete = () => {
-    const id = this.props.sponsor.id
+  const remove = () => {
+    const id = props.sponsor.id
     // console.log(id);
     axiosWithAuth()
 
       .delete(`/api/partner/${id}`)
       .then(res => {
-        this.toggle()
-        this.props.getSponsor()
+        toggle()
+        props.getSponsor()
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 
-  toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }))
+  const toggle = () => {
+    setModal(modal => !modal);
   }
 
-  toggleEdit = () => {
-    this.setState(prevState => ({
-      editModal: !prevState.editModal
-    }))
+  const toggleEdit = () => {
+    setEditModal(editModal => !editModal)
   }
 
-  render() {
     return (
       <>
         <Card
@@ -64,7 +57,7 @@ class Sponsor extends Component {
           <CardBody>
             <CardTitle className="mb-0">
               <h4>
-                {this.props.sponsor.name} | {this.props.sponsor.category}
+                {props.sponsor.name} | {props.sponsor.category}
               </h4>
             </CardTitle>
           </CardBody>
@@ -74,65 +67,65 @@ class Sponsor extends Component {
           >
             <div>
               <CardImg
-                src={this.props.sponsor.icon_url}
+                src={props.sponsor.icon_url}
                 style={{ heigh: "50px", width: "50px" }}
               />
               <span style={{ marginLeft: "2rem" }}>
-                {this.props.sponsor.site_url}
+                {props.sponsor.site_url}
               </span>
             </div>
             <div>
-              <Button
+              {admin && <Button
                 style={{ width: "100px", marginLeft: ".5rem" }}
-                onClick={this.toggleEdit}
+                onClick={toggleEdit}
               >
                 Update
-              </Button>
+              </Button>}
               <Modal
-                isOpen={this.state.editModal}
-                toggle={this.toggleEdit}
-                className={this.props.className}
+                isOpen={editModal}
+                toggle={toggleEdit}
+                className={props.className}
                 backdrop="static"
               >
-                <ModalHeader toggle={this.toggleEdit}>
+                <ModalHeader toggle={toggleEdit}>
                   Update Sponsor
                 </ModalHeader>
                 <ModalBody>
                   <UpdateSponsor
-                    toggleEdit={this.toggleEdit}
-                    sponsor={this.props.sponsor}
+                    toggleEdit={toggleEdit}
+                    sponsor={props.sponsor}
                   />
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="secondary" onClick={this.toggleEdit}>
+                  <Button color="secondary" onClick={toggleEdit}>
                     Cancel
                   </Button>
                 </ModalFooter>
               </Modal>
 
-              <Button
+              {admin && <Button
                 color="danger"
                 style={{ width: "100px", marginLeft: ".5rem" }}
-                onClick={this.toggle}
+                onClick={toggle}
               >
                 Delete
-              </Button>
+              </Button>}
 
               <Modal
-                isOpen={this.state.modal}
-                toggle={this.toggle}
-                className={this.props.className}
+                isOpen={modal}
+                toggle={toggle}
+                className={props.className}
               >
-                <ModalHeader toggle={this.toggle}>Delete Sponsor</ModalHeader>
+                <ModalHeader toggle={toggle}>Delete Sponsor</ModalHeader>
                 <ModalBody>
                   Are you sure you want to permanently delete this Sponsor? Will
                   Be Deleted From All The Chapters!!!
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="danger" onClick={this.delete}>
+                  <Button color="danger" onClick={remove}>
                     Delete
                   </Button>{" "}
-                  <Button color="secondary" onClick={this.toggle}>
+                  <Button color="secondary" onClick={toggle}>
                     Cancel
                   </Button>
                 </ModalFooter>
@@ -142,7 +135,6 @@ class Sponsor extends Component {
         </Card>
       </>
     )
-  }
 }
 
 const mapStateToProps = state => {
