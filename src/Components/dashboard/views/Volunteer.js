@@ -13,9 +13,10 @@ const Volunteer = props =>  {
       .delete(`/api/volunteer/${id}`)
       .then(res => {
         console.log(res)
+        props.getVolunteers()
       })
       .catch(error => {
-        console.log(error, "There is an error")
+        console.log(error, "There is an deleting the volunteer")
       })
   }
 
