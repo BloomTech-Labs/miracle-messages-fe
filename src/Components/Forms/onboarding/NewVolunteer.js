@@ -252,7 +252,7 @@ const NewVolunteer = () => {
       .catch(error => {
         console.log(error)
         console.log(error.response)
-        alert(error.response.data.errorMessage)
+        handleNext();
       })
 
   }
