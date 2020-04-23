@@ -9,6 +9,7 @@ const CALLBACK_SSL = process.env.REACT_APP_CALLBACK_SSL || true
 
 // The callback should always come back to this host; will be http or https depending on the setting
 
+
 let REDIRECT_URI;
 if(process.env.NODE_ENV === 'development') {
    REDIRECT_URI = `http://localhost:3000/implicit/callback`;
@@ -21,7 +22,7 @@ export default {
     clientId: CLIENT_ID,
     issuer: ISSUER,
     redirectUri: REDIRECT_URI,
-    scopes: ['openid', 'profile', 'email'],
+    scopes: ['openid', 'profile','email','groups'],
     pkce: true,
 
     // If the callback is _not_ over SSL, disable the HTTPS check in the client

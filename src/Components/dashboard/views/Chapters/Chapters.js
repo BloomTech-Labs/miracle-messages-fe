@@ -5,17 +5,19 @@ import Chapter from "./Chapter";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
-import { useOktaAuth } from '@okta/okta-react';
+
 
 import SponsorForm from "../Sponsors/SponsorForm";
 import AddChapterForm from "./AddChapterForm";
+import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
+
 
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { set } from "react-ga";
 
-
 const Chapters = props => {
+  const { admin, chapterLeaders, volunteer } = useUserGroups();
   const [ newChapter, setNewChapter ] = useState({
     name: "",
     site_url: "",
@@ -51,7 +53,7 @@ const Chapters = props => {
   // my code starts here
 
   const toggle = () => {
-    setModal(!modal)
+    setModal(modal => !modal)
   };
 
   const addSponsor = e => {
@@ -142,9 +144,10 @@ const Chapters = props => {
           )
         }
       })}
-      <Button className="addBtn" onClick={toggle}>
-          +
-        </Button>
+      {admin && <Button className="addBtn" onClick={toggle}>+</Button>}
+       {/* <Button className="addBtn" onClick={toggle}>
+           +
+         </Button> */}
         <Modal
           isOpen={modal}
           toggle={toggle}

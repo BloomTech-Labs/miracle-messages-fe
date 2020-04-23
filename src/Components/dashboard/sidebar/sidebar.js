@@ -2,7 +2,12 @@ import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { Nav } from 'reactstrap';
 
-const sidebar = () => {
+import { useUserGroups } from '../../../utils/customHooks/useUserGroups';
+
+
+const Sidebar = () => {
+  const { admin, chapterLeaders, volunteer } = useUserGroups();
+
 
     return (
         <>
@@ -10,8 +15,6 @@ const sidebar = () => {
         className='left-sidebar'
         id='sidebarbg'
         data-sidebarbg='skin6'
-        // onMouseEnter={this.expandLogo}
-        // onMouseLeave={this.expandLogo}
       >
           <Nav id='sidebarnav'>
 
@@ -26,7 +29,8 @@ const sidebar = () => {
                       </NavLink>
                     </li>
 
-                    <li className='sidebar-item'>
+                    {/* only for admins */}
+                    {admin && <li className='sidebar-item'>
                       <NavLink
                         to='/admin/pending'
                         className='sidebar-link'
@@ -35,7 +39,7 @@ const sidebar = () => {
                         <i className='fas fa-wrench' />
                         <span className='hide-menu'>Pending</span>
                       </NavLink>
-                    </li>
+                      </li> }
 
                     <li className='sidebar-item'>
                       <NavLink
@@ -65,4 +69,4 @@ const sidebar = () => {
     )
 }
 
-export default sidebar;
+export default Sidebar;
