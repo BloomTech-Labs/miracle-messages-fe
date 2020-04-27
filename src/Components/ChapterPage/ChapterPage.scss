@@ -1,0 +1,33 @@
+.container { 
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.header-image {
+    background: url("../../Assets//Imgs/header.png");
+    background-size: cover;
+    background-position: center; /* Center the image */
+    width: 100%;
+    height: 200px;
+    border-radius: 0 0 30px 30px;
+}
+
+.chapter-avatars {
+    margin-top: -50px;
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    .MuiAvatar-root {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.about-section {
+    
+}
+
+.activity-section {
+    
+}

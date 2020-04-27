@@ -20,6 +20,7 @@ import ForgotPasswordForm from "./Components/Forms/ForgotPassword/ForgotPassword
 import ConfirmPassword from "./Components/Forms/ForgotPassword/ConfirmPassword"
 import SearchBar from "./Components/MapComponents/SearchBar.js"
 import NewVolunteer from './Components/Forms/onboarding/NewVolunteer';
+import ChapterPage from './Components/ChapterPage/ChapterPage';
 
 //Octa Import
 
@@ -62,6 +63,7 @@ const App = () => {
 
             <Route exact path="/form" component={VolunteerForm} />
 
+            <Route exact path="/chapter-page" component={ChapterPage} />
             
 
             <Route exact path="/user/login" component={LoginPage} />
