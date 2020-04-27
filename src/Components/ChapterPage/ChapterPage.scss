@@ -33,5 +33,23 @@
 }
 
 .activity-section {
-    
+    margin-left: 1rem;
+}
+
+.stats {
+    margin-left: 1rem;
+}
+
+.blocks {
+    display: flex;
+    justify-items: space-between;
+}
+
+.block {
+    flex-grow: 1;
+    border: 1px solid #cccccc50;
+}
+
+.spacer {
+    height: 3vh;
 }
