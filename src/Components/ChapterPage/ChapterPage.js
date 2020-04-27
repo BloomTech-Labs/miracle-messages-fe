@@ -83,40 +83,38 @@ const ChapterPage = () => {
     return (
         <>
         <div className="container">
-            <div className="header-image"></div>
-            <div className="chapter-avatars">
+          <div className="header-image"></div>
+          <div className="chapter-avatars">
                 {chapterLeaders.map(leader => (
                 <Speedy leader={leader} />
                   ))}
                   
-            </div>
+          </div>
             
-            <div className="about-section">
-            <div className='spacer'></div>
-                <h1>About</h1>
-                <h3>We believe that EVERYONE IS SOMEONE’S SOMEBODY. We want to inspire people everywhere to embrace their homeless neighbors not as problems to be solved, but as people to be loved.
-                   We envision a world where everyone is nurtured by a social support system and sense of belonging – a social home – whether or not they currently have access to stable physical housing. Join our Seattle Chapter for more information. </h3>
-            </div>
+          
             <Grid container spacing={3}>
               <Grid item xs={9}>
+              <div className="about-section">
+            <div className='spacer'></div>
+            <h1>About</h1>
+            <h3>We believe that EVERYONE IS SOMEONE’S SOMEBODY. We want to inspire people everywhere to embrace their homeless neighbors not as problems to be solved, but as people to be loved.
+            We envision a world where everyone is nurtured by a social support system and sense of belonging – a social home – whether or not they currently have access to stable physical housing. Join our Seattle Chapter for more information. </h3>
+          </div>
               <div className="activity-section">
-                <h2>Activity</h2>
-                <Paper variant="outlined" rectangle>
-                  <p>Lorem Ipsum bunch of stuff</p>
-                  </Paper>
+                <h1>Activity</h1>
               </div>
               <div className='spacer'></div>
               <div className='stats'>
                 <Paper variant='outlined' square>
                 <div className='blocks'>
                   <div className='block'>
-                    Content
+                    Chapter Leader 
                   </div>
                   <div className='block'>
-                    Content
+                    Volunteers
                   </div>
                   <div className='block'>
-                    Content
+                    Reunions
                   </div>
                 </div>
                 </Paper>
@@ -124,7 +122,7 @@ const ChapterPage = () => {
               </Grid>
               <Grid item xs={3}>
                 <div className='aside'>
-                  <h2>Active Members</h2>
+                  <h1>Active Members</h1>
                   
                     {members.map(member => (
                       <SpeedySide member={member} />

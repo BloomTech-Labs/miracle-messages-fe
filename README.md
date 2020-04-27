@@ -118,6 +118,6 @@ The following environment variables control the front-end:
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
+Give a ⭐️ if this project helped you!https://prod.liveshare.vsengsaas.visualstudio.com/join?55D2D5655A742A27459C1013E9E74E03B9C9
 
 ---
