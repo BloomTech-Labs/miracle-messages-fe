@@ -100,9 +100,10 @@ The following environment variables control the front-end:
 - [x] Front End Developer
 - [x] Back End Developer
 
-<a href="https://twitter.com/dmattox10" target="_blank">
+<a href="https://twitter.com/dmattox10 " target="_blank">
     <img alt="Twitter: dmattox10" src="https://img.shields.io/twitter/follow/dmattox10.svg?style=social" />
 </a>
+
 - Website: [danielmattox.com](https://danielmattox.com)
 - Github: [@dmattox10](https://github.com/dmattox10)
 - Email: dmattox10@gmail.com
@@ -112,9 +113,6 @@ The following environment variables control the front-end:
 - [x] Front End Developer
 - [x] Back End Developer
 
-<a href="https://twitter.com/   " target="_blank">
-    <img alt="Twitter: " src="https://img.shields.io/twitter/follow/.svg?style=social" />
-</a>
 
 - Website: [shawntompke.com](http://www.shawntompke.com)
 - Github: [@stompke](https://github.com/Stompke)
