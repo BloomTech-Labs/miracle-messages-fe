@@ -78,7 +78,7 @@ The following environment variables control the front-end:
     <img alt="Twitter: arashhaji" src="https://img.shields.io/twitter/follow/arashhaji.svg?style=social" />
 </a>
 
-- Website: [arashhaji.com](arashhaji.com)
+- Website: [arashhaji.com](http://www.arashhaji.com)
 - Github: [@arashhaji](https://github.com/arashhaji)
 - Email: arashhajihassanzadeh@lgmail.com
 
@@ -91,7 +91,7 @@ The following environment variables control the front-end:
     <img alt="Twitter: davebettswebdev" src="https://img.shields.io/twitter/follow/davebettswebdev.svg?style=social" />
 </a>
 
-- Website: [davebetts.net](davebetts.net)
+- Website: [davebetts.net](http://www.davebetts.net)
 - Github: [@davebettswebdev](https://github.com/davebettswebdev)
 - Email: dave@davebetts.net
 
@@ -103,7 +103,7 @@ The following environment variables control the front-end:
 <a href="https://twitter.com/dmattox10   " target="_blank">
     <img alt="Twitter: dmattox10" src="https://img.shields.io/twitter/follow/dmattox10.svg?style=social" />
 </a>
-- Website: [danielmattox.com](danielmattox.com)
+- Website: [danielmattox.com](https://danielmattox.com)
 - Github: [@dmattox10](https://github.com/dmattox10)
 - Email: dmattox10@gmail.com
 
@@ -116,7 +116,7 @@ The following environment variables control the front-end:
     <img alt="Twitter: " src="https://img.shields.io/twitter/follow/.svg?style=social" />
 </a>
 
-- Website: [shawntompke.com](shawntompke.com)
+- Website: [shawntompke.com](http://www.shawntompke.com)
 - Github: [@stompke](https://github.com/Stompke)
 - Email: shawntompke@gmail.com
 
@@ -129,7 +129,7 @@ The following environment variables control the front-end:
     <img alt="Twitter: RamontaLee" src="https://img.shields.io/twitter/follow/RamontaLee.svg?style=social" />
 </a>
 
-- Website: [ramontalee.codes](ramontalee.codes)
+- Website: [ramontalee.codes](http://www.ramontalee.codes)
 - Github: [Ramonta-Lee](https://github.com/Ramonta-Lee)
 - Email: viola4lfe@gmail.com
 
@@ -144,7 +144,7 @@ The following environment variables control the front-end:
 
 - [x] Front End Developer
 
-- Website: [Shelbydiamond.com](shelbydiamond.com)
+- Website: [Shelbydiamond.com](http://www.shelbydiamond.com)
 - Twitter: [@ShelbyN_Diamond](https://twitter.com/shelbyN_Diamond)
 - Github: [@shelbydiamond](https://github.com/shelbydiamond)
 - Email: shelbydiamond518@gmail.com
@@ -175,7 +175,7 @@ The following environment variables control the front-end:
 
 - [x] Back End Developer
 
-- Website: [Noahfranco.com](noahfranco.com)
+- Website: [Noahfranco.com](http://www.noahfranco.com)
 - Twitter: [@noahfranco\_](https://twitter.com/noahfranco_)
 - Github: [@noahfranco](https://github.com/noahfranco)
 - Email: noahfra@gmail.com
@@ -184,7 +184,7 @@ The following environment variables control the front-end:
 
 - [x] Back End Developer
 
-- Website: [raberin.me](raberin.me)
+- Website: [raberin.me](http://www.raberin.me)
 - Twitter: [@raberin\_](https://twitter.com/raberin_)
 - Github: [@raberin](https://github.com/raberin)
 - Email: tenchuchoy@gmail.com
