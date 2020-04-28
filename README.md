@@ -105,14 +105,13 @@ The following environment variables control the front-end:
 </a>
 
 - Website: [danielmattox.com](https://danielmattox.com)
-- Github: [@dmattox10](https://github.com/dmattox10)
+- Github: [dmattox10](https://github.com/dmattox10)
 - Email: dmattox10@gmail.com
 
 :man_astronaut: **Shawn Tompke**
 
 - [x] Front End Developer
 - [x] Back End Developer
-
 
 - Website: [shawntompke.com](http://www.shawntompke.com)
 - Github: [@stompke](https://github.com/Stompke)
