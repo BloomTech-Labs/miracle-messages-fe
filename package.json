@@ -47,7 +47,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "coverage": "CI=true yarn test --coverage || true",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:coverage:run": "cypress run || true",
+    "start:coverage": "react-scripts -r @cypress/instrument-cra start",
+    "cypress:coverage": "start-server-and-test start:coverage http://localhost:3000 cypress:coverage:run || true"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,7 +68,10 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.6.0",
+    "@cypress/instrument-cra": "^1.1.1",
     "cors": "^2.8.5",
-    "cypress": "^3.6.1"
+    "cypress": "^3.6.1",
+    "start-server-and-test": "^1.11.0"
   }
 }

@@ -10,7 +10,7 @@
        branches:
          - production
          - master
-         - codeClimate
+         - codeClimate-cypress-fix
       pull_request:
         branches:
          - production
@@ -37,3 +37,5 @@
             with:
               coverageCommand: yarn coverage
               debug: true
+
+              
