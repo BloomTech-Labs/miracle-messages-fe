@@ -1,11 +1,8 @@
 <h1 align="center">Welcome to Miracle Messages Map👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-2.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-L22.3-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT  " src="https://img.shields.io/badge/License-MIT  -yellow.svg" />
-  </a>
-  <a href="https://twitter.com/shelbyN_Diamond   " target="_blank">
-    <img alt="Twitter: shelbyN_Diamond   " src="https://img.shields.io/twitter/follow/shelbyN_Diamond   .svg?style=social" />
   </a>
 </p>
 
@@ -28,7 +25,7 @@ We are a nonprofit reunion service to help our neighbors experiencing homelessne
 
 We believe everyone is somebody's someone, and no one should be defined by what they lack. Miracle Messages Map connects volunteers, making it easy to join together to reunite more homeless people with their families.
 
-## 🏠 [View Our Work](https://miracle-message.netlify.com/)
+## 🏠 [View Our Work](https://production.d1v4uoi0wi2hmy.amplifyapp.com/)
 
 ## Environment
 The following environment variables control the front-end:
@@ -47,8 +44,9 @@ The following environment variables control the front-end:
   - [x] Google Analytics/ ReactGA for analytics
   - [x] CSS/Node-sass for some styling on top of styled components
   - [x] Material UI, Reactstrap libraries for styled components
+  - [x] Okta for authentication 
   - [x] Cypress for testing
-  - [x] react-places-autocomplete to integrate with Google Maps for the Volunteer sign up form. (though we didn't finish this part of the project)
+  - [x] react-places-autocomplete to integrate with Google Maps for the Volunteer sign up form. 
 
 - Backend:
   - [x] Node.js/Express to build the server/endpoints etc.
@@ -56,9 +54,78 @@ The following environment variables control the front-end:
   - [x] Postgres for our database
   - [x] Heroku for our server/backend deployment
   - [x] AWS for images/files upload storage
-  - [x] jest for testing
+  - [x] Jest for testing
+  - [x] SendGrid
 
 ## Authors
+
+👤 **Will VanOrder**
+
+- [x] Team Leader
+
+- Github: [@wvanorder](https://github.com/wvanorder)
+- Email: william.vanorder94@gmail.com
+
+  :ghost: **Arash Haji-Hassanzadeh**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/arashhaji   " target="_blank">
+    <img alt="Twitter: arashhaji" src="https://img.shields.io/twitter/follow/arashhaji.svg?style=social" />
+</a>
+
+- Website: [arashhaji.com](http://www.arashhaji.com)
+- Github: [@arashhaji](https://github.com/arashhaji)
+- Email: arashhajihassanzadeh@gmail.com
+
+  :space_invader: **David Betts**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/davebettswebdev   " target="_blank">
+    <img alt="Twitter: davebettswebdev" src="https://img.shields.io/twitter/follow/davebettswebdev.svg?style=social" />
+</a>
+
+- Website: [davebetts.net](http://www.davebetts.net)
+- Github: [@davebettswebdev](https://github.com/davebettswebdev)
+- Email: dave@davebetts.net
+
+:sunglasses: **Daniel Mattox**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/dmattox10 " target="_blank">
+    <img alt="Twitter: dmattox10" src="https://img.shields.io/twitter/follow/dmattox10.svg?style=social" />
+</a>
+
+- Website: [danielmattox.com](https://danielmattox.com)
+- Github: [dmattox10](https://github.com/dmattox10)
+- Email: dmattox10@gmail.com
+
+:man_astronaut: **Shawn Tompke**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+- Website: [shawntompke.com](http://www.shawntompke.com)
+- Github: [@stompke](https://github.com/Stompke)
+- Email: shawntompke@gmail.com
+
+:princess: **Ramonta Lee**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/RamontaLee   " target="_blank">
+    <img alt="Twitter: RamontaLee" src="https://img.shields.io/twitter/follow/RamontaLee.svg?style=social" />
+</a>
+
+- Website: [ramontalee.codes](http://www.ramontalee.codes)
+- Github: [Ramonta-Lee](https://github.com/Ramonta-Lee)
+- Email: viola4lfe@gmail.com
 
 👤 **Efrain Vazquez**
 
@@ -71,7 +138,7 @@ The following environment variables control the front-end:
 
 - [x] Front End Developer
 
-- Website: [Shelbydiamond.com](shelbydiamond.com)
+- Website: [Shelbydiamond.com](http://www.shelbydiamond.com)
 - Twitter: [@ShelbyN_Diamond](https://twitter.com/shelbyN_Diamond)
 - Github: [@shelbydiamond](https://github.com/shelbydiamond)
 - Email: shelbydiamond518@gmail.com
@@ -102,7 +169,7 @@ The following environment variables control the front-end:
 
 - [x] Back End Developer
 
-- Website: [Noahfranco.com](noahfranco.com)
+- Website: [Noahfranco.com](http://www.noahfranco.com)
 - Twitter: [@noahfranco\_](https://twitter.com/noahfranco_)
 - Github: [@noahfranco](https://github.com/noahfranco)
 - Email: noahfra@gmail.com
@@ -111,10 +178,12 @@ The following environment variables control the front-end:
 
 - [x] Back End Developer
 
-- Website: [raberin.me](raberin.me)
+- Website: [raberin.me](http://www.raberin.me)
 - Twitter: [@raberin\_](https://twitter.com/raberin_)
 - Github: [@raberin](https://github.com/raberin)
 - Email: tenchuchoy@gmail.com
+
+
 
 ## Show your support
 

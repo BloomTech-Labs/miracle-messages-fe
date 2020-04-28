@@ -5,23 +5,31 @@ import Chapter from "./Chapter";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
-import { useOktaAuth } from '@okta/okta-react';
+
 
 import SponsorForm from "../Sponsors/SponsorForm";
 import AddChapterForm from "./AddChapterForm";
+import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
+
 
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { set } from "react-ga";
 
-
 const Chapters = props => {
+  const { admin, chapterLeaders, volunteer } = useUserGroups();
   const [ newChapter, setNewChapter ] = useState({
     name: "",
     site_url: "",
     icon_url: null,
     category: ""
   });
+  const [ chapter, setChapter ] = useState({
+    current_chapter_imgUrl: null,
+    current_reunion_imgUrl: null,
+    newChapterImg: null,
+    newReunionImg: null
+  })
   const [ modal, setModal ] = useState(false)
   
   
@@ -45,7 +53,7 @@ const Chapters = props => {
   // my code starts here
 
   const toggle = () => {
-    setModal(!modal)
+    setModal(modal => !modal)
   };
 
   const addSponsor = e => {
@@ -67,15 +75,8 @@ const Chapters = props => {
       })
       .catch(err => console.log(err));
 
-    // this.setState({
-    //   sponsor: {
-    //     name: "",
-    //     site_url: "",
-    //     icon_url: null,
-    //     category: ""
-    //   }
-    // });
   };
+
 
   const handleInputChange = e => {
     setNewChapter({
@@ -89,6 +90,45 @@ const Chapters = props => {
       [e.target.name]: e.target.files[0]
     })
   };
+
+  const addChapter = e => {
+    e.preventDefault()
+
+    const id = chapter.id
+    const fd = new FormData()
+    if (chapter.newChapterImg != null) {
+      fd.append("chapter_img", chapter.newChapterImg)
+    }
+    if (chapter.newReunionImg != null) {
+      fd.append("reunion_img", chapter.newReunionImg)
+    }
+    fd.append("title", chapter.title)
+    fd.append("established_date", chapter.established_date)
+    fd.append("description", chapter.description)
+    fd.append("city", chapter.city)
+    fd.append("state", chapter.state)
+    fd.append("email", chapter.email)
+    fd.append("numvolunteers", chapter.numvolunteers)
+    fd.append("msg_delivered", chapter.msg_delivered)
+    fd.append("msg_recorded", chapter.msg_recorded)
+    fd.append("numreunions", chapter.numreunions)
+    fd.append("facebook", chapter.facebook)
+    fd.append("story", chapter.story)
+
+    axiosWithAuth()
+      .post(`/api/chapter/`, fd)
+      .then(res => {
+        toggle()
+        console.log(res)
+        console.log(res)
+      })
+      .catch(err => {
+          console.log(err);
+          console.log(err.response);
+      })
+
+    
+  }
 
 
   return (
@@ -104,9 +144,10 @@ const Chapters = props => {
           )
         }
       })}
-      <Button className="addBtn" onClick={toggle}>
-          +
-        </Button>
+      <Button className="addBtn" onClick={toggle}>+</Button>
+       {/* <Button className="addBtn" onClick={toggle}>
+           +
+         </Button> */}
         <Modal
           isOpen={modal}
           toggle={toggle}
@@ -116,14 +157,13 @@ const Chapters = props => {
           <ModalHeader toggle={toggle}>Add Chapter</ModalHeader>
           <ModalBody>
             <AddChapterForm
-              // change={handleInputChange}
-              // sponsor={newChapter}
-              // handleImg={handleImg}
               toggle={toggle}
+              setChapter={setChapter}
+              chapter={chapter}
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={addSponsor}>
+            <Button color="success" onClick={addChapter}>
               Add Chapter
             </Button>{" "}
             <Button color="secondary" onClick={toggle}>

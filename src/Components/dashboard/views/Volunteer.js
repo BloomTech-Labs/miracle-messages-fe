@@ -1,23 +1,36 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import { Card, CardBody, CardTitle, Button } from "reactstrap"
-import axios from "axios"
+import { axiosWithAuth } from '../../../utils/axiosWithAuth';
+import { useUserGroups } from '../../../utils/customHooks/useUserGroups';
 
-class Volunteer extends Component {
-  deleteVolunteer = id => {
-    axios
-      .delete(`https://miracle-messages-dev.herokuapp.com/api/form/${id}`)
-      .then(response => console.log("Successfully Deleted"))
-      .catch(error => console.log(error, "There is an error"))
+
+const Volunteer = props =>  {
+  const { admin, chapterLeaders, volunteer } = useUserGroups();
+
+
+  const deleteVolunteer = id => {
+    axiosWithAuth()
+      .delete(`/api/volunteer/${id}`)
+      .then(res => {
+        console.log(res)
+        props.getVolunteers()
+      })
+      .catch(error => {
+        console.log(error, "There is an deleting the volunteer")
+      })
   }
-  render() {
+
+
     return (
       <Card style={{ maxWidth: "60%", minWidth: "650px" }}>
         <CardBody>
           <CardTitle className="mb-0">
             <i className="mdi mdi-comment-processing-outline mr-2"> </i>
-            {`${this.props.vol.fname} ${this.props.vol.lname}`}
+            {`${props.vol.fname} ${props.vol.lname}`}
           </CardTitle>
-          <Button
+
+          {/* Only for admins */}
+          {admin && <Button
             color="danger"
             style={{
               width: "85px",
@@ -26,23 +39,22 @@ class Volunteer extends Component {
               borderRadius: "20px",
               position: "absolute"
             }}
-            onClick={() => this.deleteVolunteer(this.props.vol.id)}
+            onClick={() => deleteVolunteer(props.vol.id)}
           >
             Delete
-          </Button>
+          </Button>}
         </CardBody>
         <CardBody className="border-top">
-          <span style={{ marginRight: "30px" }}>{this.props.vol.email}</span>
+          <span style={{ marginRight: "30px" }}>{props.vol.email}</span>
 
-          <span style={{ marginRight: "30px" }}>{this.props.vol.phone}</span>
+          <span style={{ marginRight: "30px" }}>{props.vol.phone}</span>
 
-          <span style={{ marginRight: "30px" }}>{this.props.vol.city}</span>
+          <span style={{ marginRight: "30px" }}>{props.vol.city}</span>
 
-          <span style={{ marginRight: "30px" }}>{this.props.vol.state}</span>
-          <span style={{ marginRight: "20px" }}>{this.props.vol.country}</span>
+          <span style={{ marginRight: "30px" }}>{props.vol.state}</span>
+          <span style={{ marginRight: "20px" }}>{props.vol.country}</span>
         </CardBody>
       </Card>
     )
-  }
 }
 export default Volunteer

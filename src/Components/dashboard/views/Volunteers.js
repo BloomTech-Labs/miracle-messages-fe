@@ -1,35 +1,34 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { axiosWithAuth } from "../../../utils/axiosWithAuth";
 import Volunteer from "./Volunteer"
 
-class Volunteers extends React.Component {
-  state = {
-    data: []
+const Volunteers = () => {
+  const [ volunteers, setVolunteers ] = useState([]);
+
+  const getVolunteers = () => {
+    axiosWithAuth()
+    .get("/api/volunteer")
+    .then(res => {
+      // console.log(res)
+      setVolunteers(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
-  componentDidMount() {
-    axiosWithAuth()
-      .get("/api/volunteer")
-      .then(res => {
-        // console.log(res)
-        this.setState({
-          data: res.data
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  render() {
-    console.log(this.state.data)
+
+  useEffect(() => {
+    getVolunteers()
+  }, [])
+
     return (
       <div>
-        {this.state.data.map((vol, key) => {
-          return <Volunteer vol={vol} key={key} />
+        {volunteers.map((vol, key) => {
+          return <Volunteer getVolunteers={() => getVolunteers()} vol={vol} key={key} />
         })}
       </div>
     )
-  }
 }
 
 export default Volunteers

@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.51",
     "@material-ui/styles": "^4.6.0",
     "@okta/okta-auth-js": "^3.0.0",
     "@okta/okta-react": "^2.0.1",
@@ -19,6 +20,7 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-burger-menu": "^2.6.13",
+    "react-calendar": "^3.0.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
@@ -45,7 +47,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "coverage": "CI=true yarn test --coverage || true",
-    "eject": "react-scripts eject" 
+    "eject": "react-scripts eject",
+    "cypress:coverage:run": "cypress run || true",
+    "start:coverage": "react-scripts -r @cypress/instrument-cra start",
+    "cypress:coverage": "start-server-and-test start:coverage http://localhost:3000 cypress:coverage:run || true"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,7 +68,10 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.6.0",
+    "@cypress/instrument-cra": "^1.1.1",
     "cors": "^2.8.5",
-    "cypress": "^3.6.1"
+    "cypress": "^3.6.1",
+    "start-server-and-test": "^1.11.0"
   }
 }

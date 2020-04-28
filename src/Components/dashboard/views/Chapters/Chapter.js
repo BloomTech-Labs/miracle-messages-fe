@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -13,33 +13,30 @@ import {
   ModalBody,
   ModalFooter
 } from "reactstrap";
+import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
 import UpdateFrom from "./UpdateForm";
 
-class Chapter extends Component {
-  state = {
-    modal: false,
-    modalEdit: false
+const Chapter = props => {
+  const { admin, chapterLeaders, volunteer } = useUserGroups();
+  const [modal, setModal] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const history = useHistory();
+
+  const toggle = () => {
+    setModal(modal => !modal);
   };
 
-  toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
+  const toggleEdit = () => {
+    setModalEdit(modalEdit => !modalEdit);
   };
 
-  toggleEdit = () => {
-    this.setState(prevState => ({
-      modalEdit: !prevState.modalEdit
-    }));
+  const deleteChapt = () => {
+    props.deleteChapter(props.info.id);
+    // toggle();
+    history.push('/admin/chapters')
   };
 
-  deleteChapt = () => {
-    this.toggle();
-    this.props.deleteChapter(this.props.info.id);
-  };
-
-  render() {
     return (
       <Card
         className="cardChapter"
@@ -50,26 +47,26 @@ class Chapter extends Component {
           width="100%"
           height="auto"
           className="chapterImg"
-          src={this.props.info.chapter_img_url}
+          src={props.info.chapter_img_url}
         />
 
         <CardBody>
-          <CardTitle>{this.props.info.title}</CardTitle>
+          <CardTitle>{props.info.title}</CardTitle>
           <CardSubtitle>
-            Volunteers: {this.props.info.numvolunteers}
+            Volunteers: {props.info.numvolunteers}
           </CardSubtitle>
-          <CardText>{this.props.info.description}</CardText>
-
-          <Button
+          <CardText>{props.info.description}</CardText>
+          {/* only for admins */}
+          {admin && <Button
             style={{
               marginRight: "10px",
               position: "static",
               marginBottom: "10px"
             }}
-            onClick={this.toggleEdit}
+            onClick={toggleEdit}
           >
             Edit
-          </Button>
+          </Button>}
 
           <Button
             style={{
@@ -78,52 +75,52 @@ class Chapter extends Component {
               marginBottom: "10px"
             }}
           >
-            <Link to={`/admin/chapters/${this.props.info.id}`}>
+            <Link to={`/admin/chapters/${props.info.id}`}>
               Chapter Info
             </Link>
           </Button>
 
           <Modal
-            isOpen={this.state.modalEdit}
-            toggle={this.toggleEdit}
-            className={this.props.className}
+            isOpen={modalEdit}
+            toggle={toggleEdit}
+            className={props.className}
             backdrop="static"
           >
-            <ModalHeader toggle={this.toggleEdit}>Edit Chapter</ModalHeader>
+            <ModalHeader toggle={toggleEdit}>Edit Chapter</ModalHeader>
             <ModalBody>
               <UpdateFrom
-                toggleEdit={this.toggleEdit}
-                chapter={this.props.info}
+                toggleEdit={toggleEdit}
+                chapter={props.info}
               />
             </ModalBody>
           </Modal>
-
-          <Button
+            {/* admin only option */}
+          {admin && <Button
             style={{
               marginRight: "10px",
               position: "static",
               marginBottom: "10px"
             }}
             color="danger"
-            onClick={this.toggle}
+            onClick={toggle}
           >
             Delete
-          </Button>
+          </Button>}
 
           <Modal
-            isOpen={this.state.modal}
-            toggle={this.toggle}
-            className={this.props.className}
+            isOpen={modal}
+            toggle={toggle}
+            className={props.className}
           >
-            <ModalHeader toggle={this.toggle}>Delete Chapter</ModalHeader>
+            <ModalHeader toggle={toggle}>Delete Chapter</ModalHeader>
             <ModalBody>
               Are you sure you want to permanently delete this Chapter?
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onClick={this.deleteChapt}>
+              <Button color="danger" onClick={deleteChapt}>
                 Delete
               </Button>{" "}
-              <Button color="secondary" onClick={this.toggle}>
+              <Button color="secondary" onClick={toggle}>
                 Cancel
               </Button>
             </ModalFooter>
@@ -131,7 +128,6 @@ class Chapter extends Component {
         </CardBody>
       </Card>
     );
-  }
 }
 
 export default Chapter;

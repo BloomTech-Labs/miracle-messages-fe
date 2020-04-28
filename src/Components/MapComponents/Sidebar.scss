@@ -17,6 +17,12 @@ body {
   overflow: auto;
 }
 
+.bm-menu {
+  @media (min-width: 800px) {
+    display: none !important;
+  }
+}
+
 /* Individual item */
 .bm-item {
   display: inline-block;
