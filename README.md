@@ -80,7 +80,7 @@ The following environment variables control the front-end:
 
 - Website: [arashhaji.com](http://www.arashhaji.com)
 - Github: [@arashhaji](https://github.com/arashhaji)
-- Email: arashhajihassanzadeh@lgmail.com
+- Email: arashhajihassanzadeh@gmail.com
 
   :space_invader: **David Betts**
 
@@ -100,7 +100,7 @@ The following environment variables control the front-end:
 - [x] Front End Developer
 - [x] Back End Developer
 
-<a href="https://twitter.com/dmattox10   " target="_blank">
+<a href="https://twitter.com/dmattox10" target="_blank">
     <img alt="Twitter: dmattox10" src="https://img.shields.io/twitter/follow/dmattox10.svg?style=social" />
 </a>
 - Website: [danielmattox.com](https://danielmattox.com)
