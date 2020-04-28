@@ -8,7 +8,7 @@ import FooterLinks from "./FooterLinks"
 
 const FormFooter = () => {
   return (
-    <div>
+    <div className="footerContainer">
       {/* Strip of social media icons */}
       <div className="footer-icons">
         <div className="icon-div">

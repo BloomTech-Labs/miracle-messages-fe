@@ -14,6 +14,7 @@ import React, { useEffect } from 'react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
+import Navbar from '../Header-Footer/Navbar';
 import config from '../../config/config';
 
 const LoginForm = () => {
@@ -31,7 +32,7 @@ const LoginForm = () => {
       logo: '/react.svg',
       i18n: {
         en: {
-          'primaryauth.title': 'Sign in to Miracle Messages',
+          'primaryauth.title': 'Miracle Messages',
         },
       },
       authParams: {
@@ -57,8 +58,11 @@ const LoginForm = () => {
   }, []);
 
   return (
-    <div>
+    <div className="navBar" style={{margin: '0', padding: '0'}}>
+       <Navbar />
+      <div>
       <div id="sign-in-widget" />
+      </div>
     </div>
   );
 };

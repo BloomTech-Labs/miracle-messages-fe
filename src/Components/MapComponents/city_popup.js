@@ -1,5 +1,6 @@
 import React, { useState, useEffect, PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 import { popupToggleAction } from '../../Actions/popupToggleAction';
 import { updatePopupAction } from '../../Actions/updatePopupAction';
@@ -51,6 +52,7 @@ const CityPopup = props => {
             </div>
           </span>
         </div>
+        <Link style={{color: "#fff"}}to="/chapter-page">Chapter Page</Link>
         </div>
     )
 }

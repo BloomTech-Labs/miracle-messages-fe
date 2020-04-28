@@ -20,8 +20,8 @@
     justify-content: space-around;
 
     .MuiSpeedDialAction-fab {
-        width: 55px;
-        height: 55px;
+        width: 35px;
+        height: 35px;
         margin-top: 90px;
         margin-left: 50px;
     }
@@ -51,12 +51,12 @@
     margin-left: 5%;
     width: 90%;
     text-align: left;
+
 }
 
-.stats {
-    
+.stats, .content {
     margin-left: 5%;
-    text-align: left;
+    text-align: center;
     width: 90%;
 }
 
@@ -95,8 +95,16 @@
     }
 
     .MuiSpeedDialAction-fab {
-        width: 55px;
-        height: 55px;
+        width: 35px;
+        height: 35px;
     }
 }
 
+.Numbers h4 {
+    font-size: 2rem;
+    padding-top: 20px;
+}
+
+.cal {
+    margin-right: 10%;
+}

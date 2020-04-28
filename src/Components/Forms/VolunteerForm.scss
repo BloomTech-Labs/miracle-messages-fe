@@ -7,6 +7,7 @@
   header {
     position: relative;
     height: 407px;
+    width: 100%;
 
     h1 {
       color: white;
@@ -106,6 +107,7 @@
     background: #fff;
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     .main-bold {
       h2 {

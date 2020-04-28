@@ -1,0 +1,168 @@
+.navbar-map {
+  width: 100vw;
+  position: fixed !important;
+  z-index: 999999999999999;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  background: #212121;
+  font-family: ProximaNova;
+
+  @media (max-width: 800px) {
+    display: none !important;
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+    width: 195px;
+  }
+  nav {
+    width: 70vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    a {
+      font-weight: 600;
+      font-style: normal;
+      font-size: 18px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1em;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: ProximaNova;
+      display: block;
+      @media only screen and (max-width: 500px) {
+        width: 50vw;
+        margin: 0 8vw;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        text-align: left;
+      }
+      &:hover {
+        color: white;
+      }
+      &:last-child {
+        background-color: #fff;
+        -moz-osx-font-smoothing: auto;
+        -webkit-font-smoothing: subpixel-antialiased;
+        color: #000;
+        -webkit-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        -moz-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        -ms-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        -o-transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        transition: background-color 0.1s 0s ease-in-out,
+          color 0.1s 0s ease-in-out;
+        padding: 15px 30px;
+
+        &:hover {
+          background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
+        }
+      }
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+
+      .dropbtn,
+      .dropbtn:hover {
+        font-weight: 600;
+        font-style: normal;
+        font-size: 18px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        line-height: 1em;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: ProximaNova;
+      }
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #212121;
+      z-index: 99;
+      min-width: 260px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin-top: 0.5rem;
+
+        padding: 0.5rem 1.5rem;
+        &:hover {
+          color: #212121;
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+      }
+      .not-last-child {
+        display: none;
+      }
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    // Styling for Search Drop Down! :)
+
+    .search-box {
+      position: fixed;
+      display: inline-block;
+      top: 65px;
+      left: 6px;
+      background-color: #00000040;
+      .search-bar {
+      display: flex;
+      font-size: 2em;
+      color: white;
+      padding: 1rem;
+        input {
+          background: #cccccc40;
+          height: 50px;
+          width: 250px;
+          font-size: 1.1em;
+        }
+  
+        .drop-search,
+        .drop-search:hover {
+          font-weight: 600;
+          font-style: normal;
+          font-size: 18px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          text-decoration: none;
+          line-height: 1em;
+          color: rgba(255, 255, 255, 0.9);
+          font-family: ProximaNova;
+        }
+      }
+    }
+    .dropdown-search {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      z-index: 99;
+      min-width: 260px;
+
+      .not-last-child {
+        display: none;
+      }
+    }
+    .search-bar:hover .dropdown-search {
+      display: block;
+    }
+  }
+}
+.navBar {
+  border: .1px solid transparent;
+}
