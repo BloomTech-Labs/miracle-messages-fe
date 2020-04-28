@@ -28,7 +28,7 @@ We are a nonprofit reunion service to help our neighbors experiencing homelessne
 
 We believe everyone is somebody's someone, and no one should be defined by what they lack. Miracle Messages Map connects volunteers, making it easy to join together to reunite more homeless people with their families.
 
-## 🏠 [View Our Work](https://miracle-message.netlify.com/)
+## 🏠 [View Our Work](https://production.d1v4uoi0wi2hmy.amplifyapp.com/)
 
 ## Environment
 The following environment variables control the front-end:
@@ -47,8 +47,9 @@ The following environment variables control the front-end:
   - [x] Google Analytics/ ReactGA for analytics
   - [x] CSS/Node-sass for some styling on top of styled components
   - [x] Material UI, Reactstrap libraries for styled components
+  - [x] Okta for authentication 
   - [x] Cypress for testing
-  - [x] react-places-autocomplete to integrate with Google Maps for the Volunteer sign up form. (though we didn't finish this part of the project)
+  - [x] react-places-autocomplete to integrate with Google Maps for the Volunteer sign up form. 
 
 - Backend:
   - [x] Node.js/Express to build the server/endpoints etc.
@@ -56,9 +57,81 @@ The following environment variables control the front-end:
   - [x] Postgres for our database
   - [x] Heroku for our server/backend deployment
   - [x] AWS for images/files upload storage
-  - [x] jest for testing
+  - [x] Jest for testing
+  - [x] SendGrid
 
 ## Authors
+
+👤 **Will VanOrder**
+
+- [x] Team Leader
+
+- Github: [@wvanorder](https://github.com/wvanorder)
+- Email: william.vanorder94@gmail.com
+
+  :ghost: **Arash Haji-Hassanzadeh**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/arashhaji   " target="_blank">
+    <img alt="Twitter: arashhaji" src="https://img.shields.io/twitter/follow/arashhaji.svg?style=social" />
+</a>
+
+- Website: [arashhaji.com](arashhaji.com)
+- Github: [@arashhaji](https://github.com/arashhaji)
+- Email: arashhajihassanzadeh@lgmail.com
+
+  :space_invader: **David Betts**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/davebettswebdev   " target="_blank">
+    <img alt="Twitter: davebettswebdev" src="https://img.shields.io/twitter/follow/davebettswebdev.svg?style=social" />
+</a>
+
+- Website: [davebetts.net](davebetts.net)
+- Github: [@davebettswebdev](https://github.com/davebettswebdev)
+- Email: dave@davebetts.net
+
+:sunglasses: **Daniel Mattox**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/dmattox10   " target="_blank">
+    <img alt="Twitter: dmattox10" src="https://img.shields.io/twitter/follow/dmattox10.svg?style=social" />
+</a>
+- Website: [danielmattox.com](danielmattox.com)
+- Github: [@dmattox10](https://github.com/dmattox10)
+- Email: dmattox10@gmail.com
+
+:man_astronaut: **Shawn Tompke**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/   " target="_blank">
+    <img alt="Twitter: " src="https://img.shields.io/twitter/follow/.svg?style=social" />
+</a>
+
+- Website: [shawntompke.com](shawntompke.com)
+- Github: [@stompke](https://github.com/Stompke)
+- Email: shawntompke@gmail.com
+
+:princess: **Ramonta Lee**
+
+- [x] Front End Developer
+- [x] Back End Developer
+
+<a href="https://twitter.com/RamontaLee   " target="_blank">
+    <img alt="Twitter: RamontaLee" src="https://img.shields.io/twitter/follow/RamontaLee.svg?style=social" />
+</a>
+
+- Website: [ramontalee.codes](ramontalee.codes)
+- Github: [Ramonta-Lee](https://github.com/Ramonta-Lee)
+- Email: viola4lfe@gmail.com
 
 👤 **Efrain Vazquez**
 
@@ -116,8 +189,10 @@ The following environment variables control the front-end:
 - Github: [@raberin](https://github.com/raberin)
 - Email: tenchuchoy@gmail.com
 
+
+
 ## Show your support
 
-Give a ⭐️ if this project helped you!https://prod.liveshare.vsengsaas.visualstudio.com/join?55D2D5655A742A27459C1013E9E74E03B9C9
+Give a ⭐️ if this project helped you!
 
 ---
