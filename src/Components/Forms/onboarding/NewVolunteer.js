@@ -138,8 +138,8 @@ function getStepContent(step) {
     case 0:
       return (
       <>
-          <h3>You have selected to connect with this City chapter.</h3> 
-          <p>If that is the place you would like to vounteer click next.</p>
+          <h3>That you for your interest in starting a new chapter!</h3> 
+          <p>Please click next to get started!.</p>
       </>
       );
     case 1:
