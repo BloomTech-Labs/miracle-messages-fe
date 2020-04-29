@@ -332,7 +332,7 @@ const NewVolunteer = () => {
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div className={classes.buttonContainer}>
                 {activeStep === steps.length - 1 ? 
-                <a target="_blank" href="https://miraclemessages.org/faq"><Button className={classes.button}>
+                <a target="_blank" href="https://www.miraclemessages.org/faqs"><Button className={classes.button}>
               FAQ
             </Button></a>
              : <Button  onClick={goToMap} className={classes.leftButton}>
