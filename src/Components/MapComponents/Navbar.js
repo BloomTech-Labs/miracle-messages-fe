@@ -13,7 +13,6 @@ const Navbar = props => {
   const [search, updateSearch] = useState("");
   const [chapters, updateChapters] = useState([]);
 
-
   
     useEffect(() => {
       axios
@@ -44,6 +43,8 @@ const Navbar = props => {
       <nav>
         <div className='search-box'>
           
+
+          {/* move search bar into separate component */}
           <div className="search-bar">
             <form>
             <i className='fas fa-search' />&nbsp;&nbsp;
@@ -60,19 +61,9 @@ const Navbar = props => {
         </div>
         <div style={{ margin: "15px" }}> </div>
         <Link to="/">HOME</Link>
-        <a target='_blank' href="https://miraclemessages.org/who">ABOUT</a>
-        <a target='_blank' href="https://miraclemessages.org/partner">REUNION SERVICE</a>
 
-        <div className="dropdown">
-          <Link className="dropbtn">GET INVOLVED</Link>
-          <div className="dropdown-content">
-            <Link to="/form">Volunteer Registration</Link>
-            <Link to="/user/login">Volunteer Login</Link>
-            <Link to="/user/register">Volunteer Register</Link>
-            <Link to="/admin">Admin Dashboard</Link>
-            <Link className="not-last-child">test</Link>
-          </div>
-        </div>
+        {/* create registration/login navigation */}
+        <Link className="dropbtn">GET INVOLVED</Link>
 
         <a target='_blank' href="https://www.classy.org/give/231839/#!/donation/checkout">
           DONATE

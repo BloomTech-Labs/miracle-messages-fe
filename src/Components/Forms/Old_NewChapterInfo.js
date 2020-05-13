@@ -1,13 +1,12 @@
 import React from "react"
 import "./NewChapter.scss"
 import { Link } from "react-router-dom"
-import FormFooter from "../Header-Footer/FormFooter"
-import FormHeader from "../Header-Footer/FormHeader"
+
+
 
 const NewChapterInfo = () => {
   return (
     <div className="container">
-      <FormHeader />
       <div>
         <div className="main">
           <div className="main-bold">
@@ -76,7 +75,6 @@ const NewChapterInfo = () => {
             </Link>
           </div>
         </div>
-        <FormFooter />
       </div>
     </div>
   )

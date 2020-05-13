@@ -24,7 +24,6 @@ export default {
     redirectUri: REDIRECT_URI,
     scopes: ['openid', 'profile','email','groups'],
     pkce: true,
-
     // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: !CALLBACK_SSL,
   },
