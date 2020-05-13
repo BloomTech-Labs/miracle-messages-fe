@@ -9,7 +9,6 @@ import Paper from '@material-ui/core/Paper';
 // components
 import Calendar from 'react-calendar';
 
-import Navbar from '../Header-Footer/Navbar';
 import Speedy from './Speedy';
 import SpeedySide from './SpeedySide';
 //style
@@ -21,6 +20,7 @@ import pictureThree from '../../Assets/Imgs/david.jpeg';
 import pictureFour from '../../Assets/Imgs/Daniel.jpeg';
 import pictureFive from '../../Assets/Imgs/Ramonta.jpeg';
 import pictureSix from '../../Assets/Imgs/Will.jpeg';
+
 const members = [
   {
     name: 'Arash Haji',
@@ -86,7 +86,6 @@ const ChapterPage = () => {
     }
     return (
         <>
-        <Navbar />
         <div className="container">
           <div className="header-image"></div>
           <div className="chapter-avatars">

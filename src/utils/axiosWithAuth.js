@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
     
     let baseUrl;
     if(process.env.NODE_ENV === 'development') {
-        baseUrl = `http://localhost:5000/`;
+        baseUrl = 'https://miracle-messages-dev.herokuapp.com/';
     }  else {
         baseUrl = `https://miracle-messages-dev.herokuapp.com/`;
     }
