@@ -40,14 +40,14 @@ const App = () => {
   const history = useHistory();
   const onAuthRequired = () => {
     // Redirect to the /login page that has a CustomLoginComponent
-    history.push("/admin/login");
+    history.push("/login");
   };
 
   return (
     <div className="App">
       <Security
-        issuer="https://dev-662389.okta.com/oauth2/default"
-        clientId="0oa4sulf3qW8OTVdF4x6"
+        issuer="https://dev-750287.okta.com/oauth2/default"
+        clientId="0oac2l3f67qM9MChZ4x6"
         redirectUri={window.location.origin + "/implicit/callback"}
         onAuthRequired={onAuthRequired}
         pkce={true}
@@ -67,14 +67,14 @@ const App = () => {
           <Route
             exact
             path="/login"
-            render={() => <LoginForm baseUrl="https://dev-662389.okta.com" />}
+            render={() => <LoginForm baseUrl="https://dev-750287.okta.com" />}
           />
           <Route path="/implicit/callback" component={LoginCallback} />
 
           {/* <Route exact path="/user/newchapter" component={NewChapterInfo} /> */}
           <Route exact path="/user/newchapterform" component={ChapterForm} />
 
-          <SecureRoute path="/admin" component={FullLayout} />
+          <SecureRoute path="/user" component={FullLayout} />
 
           <Redirect from="*" to="/" />
         </Switch>
