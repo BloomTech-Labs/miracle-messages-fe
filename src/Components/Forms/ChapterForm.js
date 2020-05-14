@@ -2,8 +2,6 @@ import React from "react"
 import axios from "axios"
 import "./NewChapter.scss"
 
-import FormHeader from '../Header-Footer/FormHeader';
-
 
 class ChapterForm extends React.Component {
   constructor(props) {
@@ -105,7 +103,6 @@ class ChapterForm extends React.Component {
   render() {
     return (
       <div className="container">
-        <FormHeader />
         <div className="main">
           <strong className="main-bold">
             <h2>Create a Chapter Request</h2>

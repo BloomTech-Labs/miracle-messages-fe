@@ -14,7 +14,7 @@ import React, { useEffect } from 'react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
-import Navbar from '../Header-Footer/Navbar';
+// import Navbar from '../Header-Footer/Navbar';
 import config from '../../config/config';
 
 const LoginForm = () => {
@@ -59,7 +59,7 @@ const LoginForm = () => {
 
   return (
     <div className="navBar" style={{margin: '0', padding: '0'}}>
-       <Navbar />
+       {/* <Navbar /> */}
       <div>
       <div id="sign-in-widget" />
       </div>

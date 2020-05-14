@@ -29,7 +29,6 @@ import CityInfo from "./city_info";
 import CityPopup from './city_popup';
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
-import Sidebar from "./Sidebar";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
@@ -116,7 +115,7 @@ class Map extends Component {
 
         <BoxLink />
 
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         <MapGL
           {...viewport}
