@@ -53,6 +53,7 @@ const App = () => {
         pkce={true}
       >
         {/* Routes */}
+
         <Switch>
           <Route exact path="/" render={(props) => <Map {...props} />} />
 
