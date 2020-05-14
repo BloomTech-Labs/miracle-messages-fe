@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import {
+  Nav, NavbarBrand, Collapse, DropdownItem, UncontrolledDropdown, DropdownToggle, DropdownMenu
+} from 'reactstrap';
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import { connect } from "react-redux";
@@ -8,6 +11,9 @@ import { updateChapters } from "../../Actions/SearchBarAction";
 // search bar component
 // import SearchBar from "../MapComponents/SearchBar.js";
 import axios from "axios";
+import { useOktaAuth } from '@okta/okta-react';
+
+import profilephoto from '../../Assets/Imgs/USER-PROF.png';
 
 const Navbar = props => {
   const [search, updateSearch] = useState("");
@@ -60,14 +66,31 @@ const Navbar = props => {
           </div>
         </div>
         <div style={{ margin: "15px" }}> </div>
-        <Link to="/">HOME</Link>
+        
+        <Link to="/">Dashboard</Link>
 
         {/* create registration/login navigation */}
         <Link className="dropbtn">GET INVOLVED</Link>
 
+        <Link to='/'>Map</Link>
+
         <a target='_blank' href="https://www.classy.org/give/231839/#!/donation/checkout">
           DONATE
         </a>
+        <Link to='/' 
+                  style={{
+                    width: '9%',
+                    padding: '10px 10px',
+                    background: '#212121'
+                  }}>
+                  <img 
+                    src={profilephoto}
+                    alt='user'
+                    className='rounded-circle'
+
+                  />
+                  </Link>
+
       </nav>
     </div>
   );
