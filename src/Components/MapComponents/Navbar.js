@@ -9,31 +9,32 @@ import { updateChapters } from "../../Actions/SearchBarAction";
 // import SearchBar from "../MapComponents/SearchBar.js";
 import axios from "axios";
 
-const Navbar = props => {
+const Navbar = (props) => {
   const [search, updateSearch] = useState("");
   const [chapters, updateChapters] = useState([]);
 
-  
-    useEffect(() => {
-      axios
-        .get("https://miracle-messages-dev.herokuapp.com/api/chapter", chapters)
-        .then(res => {
-          updateChapters(res.data);
-        })
-        .catch(err => {
-          console.log("search", err);
-        });
-    }, []);
-  
-    const handleChange = e => {
-      updateSearch(e.target.value);
-    };
-  
-    useEffect(() => {
-          props.updateChapters(chapters.filter(chapter =>
-            chapter.city.toLowerCase().includes(search.toLowerCase())))
-      },[search])
+  useEffect(() => {
+    axios
+      .get("https://miracle-messages-dev.herokuapp.com/api/chapter", chapters)
+      .then((res) => {
+        updateChapters(res.data);
+      })
+      .catch((err) => {
+        console.log("search", err);
+      });
+  }, []);
 
+  const handleChange = (e) => {
+    updateSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    props.updateChapters(
+      chapters.filter((chapter) =>
+        chapter.city.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search]);
 
   return (
     <div className="navbar-map">
@@ -41,13 +42,12 @@ const Navbar = props => {
         <img src={logo} alt="logo" />
       </Link>
       <nav>
-        <div className='search-box'>
-          
-
+        <div className="search-box">
           {/* move search bar into separate component */}
           <div className="search-bar">
             <form>
-            <i className='fas fa-search' />&nbsp;&nbsp;
+              <i className="fas fa-search" />
+              &nbsp;&nbsp;
               <input
                 type="text"
                 placeholder="Search Chapters"
@@ -63,9 +63,14 @@ const Navbar = props => {
         <Link to="/">HOME</Link>
 
         {/* create registration/login navigation */}
-        <Link className="dropbtn">GET INVOLVED</Link>
+        <Link className="dropbtn" to="/login">
+          GET INVOLVED
+        </Link>
 
-        <a target='_blank' href="https://www.classy.org/give/231839/#!/donation/checkout">
+        <a
+          target="_blank"
+          href="https://www.classy.org/give/231839/#!/donation/checkout"
+        >
           DONATE
         </a>
       </nav>
@@ -73,9 +78,9 @@ const Navbar = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    chapterData: state.mapReducer.chapterData
+    chapterData: state.mapReducer.chapterData,
   };
 };
 export default connect(mapStateToProps, { updateChapters })(Navbar);
