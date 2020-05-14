@@ -4,8 +4,10 @@ import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
 import "./LoginForm.scss";
 import mmLogo from "../../Assets/Imgs/MM_black_logo.png";
 import config from "../../config/config";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
+  const history = useHistory();
   useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
@@ -34,7 +36,10 @@ const LoginForm = () => {
 
     widget.renderEl(
       { el: "#sign-in-widget" },
-      () => {},
+      (res) => {
+        console.log(res);
+        res.status === "SUCCESS" && history.push("/");
+      },
       (err) => {
         throw err;
       }
