@@ -1,12 +1,12 @@
-import React from "react"
+import React from "react";
 import { Link } from "react-router-dom";
 
-import "./BoxLink.scss"
+import "./BoxLink.scss";
 
 class BoxLink extends React.Component {
   state = {
-    open: true
-  }
+    open: true,
+  };
   render() {
     return (
       <>
@@ -15,37 +15,34 @@ class BoxLink extends React.Component {
             <div
               style={{
                 position: "relative",
-                bottom: "25px"
+                bottom: "28px",
               }}
             >
               <h4
                 className="x"
                 style={{
                   position: "relative",
-                  top: 31,
-                  left: 217
+                  top: 20,
+                  left: 217,
                 }}
                 onClick={() => this.setState({ open: false })}
               >
                 x
               </h4>
               <p>
-                Don't see your city listed? We'd love your help bringing Miracle
-                Messages to your community!
+                Miracle Messages has dedicated chapters around the nation
+                commited to our mission of reconnection. Find a chapter near
+                you, or start one today
               </p>
             </div>
-            <Link
-              style={{ position: "relative", bottom: "15px" }}
-              to="/user/register"
-              rel="noopener noreferrer"
-            >
-              GET STARTED
+            <Link to="/user/register" rel="noopener noreferrer">
+              Learn More
             </Link>
           </div>
         )}
       </>
-    )
+    );
   }
 }
 
-export default BoxLink
+export default BoxLink;
