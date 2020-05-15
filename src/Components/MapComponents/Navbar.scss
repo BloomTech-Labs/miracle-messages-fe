@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   background: #212121;
+  opacity: 85%;
   font-family: ProximaNova;
 
   @media (max-width: 800px) {
@@ -17,6 +18,13 @@
     max-width: 100%;
     width: 195px;
   }
+
+  .navProPic {
+    width: 95px;
+    padding: 10px 10px;
+    background: #212121;
+  }
+
   nav {
     width: 70vw;
     display: flex;
@@ -118,19 +126,23 @@
     .search-box {
       position: fixed;
       display: inline-block;
-      top: 65px;
-      left: 6px;
-      background-color: #00000040;
+      top: 110px;
+      left: 10px;
+      background-color: #212121;
+      opacity: 85%;
       .search-bar {
       display: flex;
-      font-size: 2em;
+      font-size: 1.5em;
       color: white;
-      padding: 1rem;
+      padding: .5rem;
         input {
-          background: #cccccc40;
-          height: 50px;
-          width: 250px;
-          font-size: 1.1em;
+          background: #212121;
+          border: 1px solid white;
+          padding-left: 5px;
+          height: 40px;
+          width: 240px;
+          font-size: 1em;
+          color: white;
         }
   
         .drop-search,
