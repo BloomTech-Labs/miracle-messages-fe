@@ -15,6 +15,7 @@ import { onViewportChanged } from "../../Actions/OnViewportAction";
 import Drawer from "@material-ui/core/Drawer";
 import { IconButton } from "@material-ui/core";
 import { Cancel } from "@material-ui/icons";
+import { ToastProvider } from "react-toast-notifications";
 
 // Scrollbar import
 import { Scrollbars } from "react-custom-scrollbars";
@@ -26,7 +27,7 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 // Custom file imports
 import CityPin from "./city_pin";
 import CityInfo from "./city_info";
-import CityPopup from './city_popup';
+import CityPopup from "./city_popup";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
 
@@ -54,12 +55,12 @@ class Map extends Component {
   closeHandler = () => {
     this.props.updatePopupAction(null);
     //this.props.slideToggleAction();
-    this.props.popupToggleAction()
+    this.props.popupToggleAction();
   };
 
   toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   };
 
@@ -85,7 +86,7 @@ class Map extends Component {
                 background: "black",
                 width: "2px",
                 height: "2px",
-                margin: "63px 10px 0px 0px"
+                margin: "63px 10px 0px 0px",
               }}
             >
               <Cancel style={{ position: "absolute", right: "0" }} />
@@ -100,7 +101,7 @@ class Map extends Component {
   }
 
   //_updateViewport updates the map view when a user zooms/pans etc.
-  _updateViewport = viewport => {
+  _updateViewport = (viewport) => {
     this.props.onViewportChanged(viewport);
   };
 
@@ -110,8 +111,9 @@ class Map extends Component {
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
-
-        <Navbar />
+        <ToastProvider>
+          <Navbar />
+        </ToastProvider>
 
         <BoxLink />
 
@@ -150,18 +152,18 @@ class Map extends Component {
               );
             }
           })}
-                        {
-                          this.props.openPopup && <Popup
-                          latitude={this.props.latitude}
-                          longitude={this.props.longitude}
-                          closeButton={true}
-                          closeOnClick={false}
-                          onClose={() => this.props.popupClose()}
-                          anchor='top' >
-                            <CityPopup info={this.props.popupInfo}></CityPopup>
-                          </Popup>
-                        }
-
+          {this.props.openPopup && (
+            <Popup
+              latitude={this.props.latitude}
+              longitude={this.props.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              onClose={() => this.props.popupClose()}
+              anchor="top"
+            >
+              <CityPopup info={this.props.popupInfo}></CityPopup>
+            </Popup>
+          )}
         </MapGL>
         {/*{this._renderSlide()}*/}
       </div>
@@ -170,7 +172,7 @@ class Map extends Component {
 }
 
 //this is how we convert the state that was modified by the reducers to props
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     chapter_data: state.mapReducer.chapter_data,
     fetching: state.mapReducer.fetching,
@@ -178,7 +180,7 @@ const mapStateToProps = state => {
     openPopup: state.mapReducer.openPopup,
     latitude: state.mapReducer.latitude,
     longitude: state.mapReducer.longitude,
-    viewport: state.mapReducer.viewport
+    viewport: state.mapReducer.viewport,
   };
 };
 
@@ -188,5 +190,5 @@ export default connect(mapStateToProps, {
   updatePopupAction,
   popupToggleAction,
   onViewportChanged,
-  popupClose
+  popupClose,
 })(Map);

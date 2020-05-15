@@ -5,10 +5,13 @@ import "./LoginForm.scss";
 import mmLogo from "../../Assets/Imgs/MM_black_logo.png";
 import config from "../../config/config";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginSuccess } from "../../Actions/AdminPageActions";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const history = useHistory();
   useEffect(() => {
+    console.log(props.user);
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
     const widget = new OktaSignIn({
@@ -37,8 +40,15 @@ const LoginForm = () => {
     widget.renderEl(
       { el: "#sign-in-widget" },
       (res) => {
-        console.log(res);
-        res.status === "SUCCESS" && history.push("/");
+        console.log("user", res.user);
+        console.log("token", res.session.token);
+
+        if (res.status === "SUCCESS") {
+          localStorage.setItem("okToken", res.session.token);
+          localStorage.setItem("userId", res.user.id);
+          props.loginSuccess(res.user);
+          history.push("/");
+        }
       },
       (err) => {
         throw err;
@@ -57,4 +67,15 @@ const LoginForm = () => {
     </div>
   );
 };
-export default LoginForm;
+
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.loginReducer.isFetching,
+    isLoggedIn: state.loginReducer.isLoggedIn,
+    user: state.loginReducer.user,
+  };
+};
+
+export default connect(mapStateToProps, {
+  loginSuccess,
+})(LoginForm);

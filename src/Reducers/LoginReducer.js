@@ -1,14 +1,21 @@
 import {
   START_LOGIN,
   FAILURE_LOGIN,
-  SUCCESS_LOGIN
+  SUCCESS_LOGIN,
 } from "../Actions/AdminPageActions";
 
 const initialState = {
   isLoggedIn: false,
   isLoggedOut: false,
   isFetching: false,
-  errors: null
+  errors: null,
+  user: {
+    id: "",
+    firstName: "",
+    lastName: "",
+    login: "",
+    timeZone: "",
+  },
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -19,7 +26,7 @@ export const loginReducer = (state = initialState, action) => {
         isFetching: true,
         isLoggedIn: false,
         isLoggedOut: false,
-        errors: null
+        errors: null,
       };
 
     case SUCCESS_LOGIN:
@@ -28,7 +35,13 @@ export const loginReducer = (state = initialState, action) => {
         isFetching: false,
         isLoggedIn: true,
         isLoggedOut: false,
-        errors: null
+        user: {
+          id: action.payload.id,
+          firstName: action.payload.profile.firstName,
+          lastName: action.payload.profile.lastName,
+          login: action.payload.profile.login,
+          timeZone: action.payload.profile.timeZone,
+        },
       };
 
     case FAILURE_LOGIN:
@@ -36,7 +49,7 @@ export const loginReducer = (state = initialState, action) => {
         isFetching: false,
         isLoggedIn: false,
         isLoggedOut: false,
-        errors: action.payload
+        errors: action.payload,
       };
 
     default:
