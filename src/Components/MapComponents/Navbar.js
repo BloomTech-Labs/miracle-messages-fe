@@ -41,7 +41,7 @@ const Navbar = () => {
           border: '1px solid white',
           padding: '10px 10px',
           backgroundColor: 'white',
-          borderRadius: '10px',
+          borderRadius: '1px',
           color: '#212121'
         }}>
           DONATE
