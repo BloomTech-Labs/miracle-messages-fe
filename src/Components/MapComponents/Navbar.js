@@ -1,66 +1,131 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
+
 import "./Navbar.scss";
-import { updateChapters } from "../../Actions/SearchBarAction";
 
 import SearchBar from "../MapComponents/SearchBar.js";
-import axios from "axios";
-import { useOktaAuth } from '@okta/okta-react';
+import profilephoto from "../../Assets/Imgs/USER-PROF.png";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import SettingsIcon from "@material-ui/icons/Settings";
+import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import profilephoto from '../../Assets/Imgs/USER-PROF.png';
+const Navbar = (props) => {
+  const history = useHistory();
+  const { addToast } = useToasts();
 
-const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("okToken");
+    localStorage.removeItem("userId");
+    history.push("/");
+    addToast("Logged Out", {
+      appearance: "success",
+      autoDismiss: true,
+      autoDismissTimeout: "2000",
+    });
+  };
+
   return (
     <div className="navbar-map">
       <Link to="/">
-        <img style={{
-          paddingTop: '20px',
-          paddingBottom: '10px',
-          paddingLeft: '20px',
-          width: '160px'
-        }}
-          src={logo} alt="logo" />
+        <img
+          style={{
+            paddingTop: "20px",
+            paddingBottom: "10px",
+            paddingLeft: "20px",
+            width: "160px",
+          }}
+          src={logo}
+          alt="logo"
+        />
       </Link>
       <nav>
         <SearchBar />
         <div style={{ margin: "15px" }}> </div>
-        
-        <Link to="/">Dashboard</Link>
 
         {/* create registration/login navigation */}
-        <Link to="/login">
-          GET INVOLVED
-        </Link>
+        {!localStorage.userId || !props.isLoggedIn ? (
+          <Link to="/login">Get Involved</Link>
+        ) : null}
 
-        <Link to='/'>Map</Link>
+        <Link to="/">Map</Link>
 
-        <a target='_blank' href="https://www.classy.org/give/231839/#!/donation/checkout" 
-        style={{
-          border: '1px solid white',
-          padding: '10px 10px',
-          backgroundColor: 'white',
-          borderRadius: '1px',
-          color: '#212121'
-        }}>
-          DONATE
+        <a
+          className="donate"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.classy.org/give/231839/#!/donation/checkout"
+        >
+          Donate
         </a>
-        <Link to='/' className='navProPic'
-                  style={{
-                    background: '#212121',
-                  }}>
-                  <img 
-                    src={profilephoto}
-                    alt='user'
-                    className='rounded-circle'
-
-                  />
-                  </Link>
-
+        {localStorage.userId && (
+          <>
+            <img
+              src={profilephoto}
+              alt="user"
+              className="navProPic"
+              onClick={handleClick}
+            />
+            <Menu
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <LibraryBooksIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Chapter" />
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <SettingsIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Settings" />
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleLogOut();
+                  handleClose();
+                }}
+              >
+                <ListItemIcon>
+                  <ExitToAppIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Sign Out" />
+              </MenuItem>
+            </Menu>
+          </>
+        )}
       </nav>
     </div>
   );
- };
+};
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.loginReducer.isFetching,
+    isLoggedIn: state.loginReducer.isLoggedIn,
+    user: state.loginReducer.user,
+  };
+};
+
+export default connect(mapStateToProps, {})(Navbar);

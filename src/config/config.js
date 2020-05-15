@@ -14,7 +14,7 @@ let REDIRECT_URI;
 if (process.env.NODE_ENV === "development") {
   REDIRECT_URI = `http://localhost:3000/implicit/callback`;
 } else {
-  REDIRECT_URI = `${CALLBACK_SSL == true ? "https" : "http"}://${
+  REDIRECT_URI = `${CALLBACK_SSL === true ? "https" : "http"}://${
     window.location.host
   }${CALLBACK_PATH}`;
 }
@@ -35,6 +35,4 @@ export default {
   features: {
     registration: true,
   },
-
-  authScheme: "SESSION",
 };
