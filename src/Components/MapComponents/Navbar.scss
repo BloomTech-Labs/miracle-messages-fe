@@ -1,7 +1,7 @@
 .navbar-map {
   width: 100vw;
   position: fixed !important;
-  z-index: 999999999999999;
+  z-index: 2;
   height: auto;
   display: flex;
   justify-content: space-between;
@@ -16,12 +16,13 @@
   img {
     height: auto;
     max-width: 100%;
-    width: 195px;
+    width: 55px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .navProPic {
-    width: 95px;
-    padding: 10px 10px;
     background: #212121;
   }
 
@@ -31,13 +32,23 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+    a.donate {
+      border: 1px solid white;
+      padding: 12px 12px;
+      background-color: white;
+      border-radius: 5px;
+      color: #212121;
+      &:hover {
+        background-color: #585858;
+        color: white;
+      }
+    }
 
     a {
       font-weight: 600;
       font-style: normal;
       font-size: 18px;
       letter-spacing: 1.2px;
-      text-transform: uppercase;
       text-decoration: none;
       line-height: 1em;
       color: rgba(255, 255, 255, 0.9);
@@ -51,9 +62,7 @@
         align-self: flex-start;
         text-align: left;
       }
-      &:hover {
-        color: white;
-      }
+
       &:last-child {
         background-color: #fff;
         -moz-osx-font-smoothing: auto;
@@ -69,11 +78,6 @@
           color 0.1s 0s ease-in-out;
         transition: background-color 0.1s 0s ease-in-out,
           color 0.1s 0s ease-in-out;
-        padding: 15px 30px;
-
-        &:hover {
-          background: darken($color: rgba(214, 214, 214, 0.6), $amount: 1%);
-        }
       }
     }
 
@@ -131,10 +135,10 @@
       background-color: #212121;
       opacity: 85%;
       .search-bar {
-      display: flex;
-      font-size: 1.5em;
-      color: white;
-      padding: .5rem;
+        display: flex;
+        font-size: 1.5em;
+        color: white;
+        padding: 0.5rem;
         input {
           background: #212121;
           border: 1px solid white;
@@ -144,7 +148,7 @@
           font-size: 1em;
           color: white;
         }
-  
+
         .drop-search,
         .drop-search:hover {
           font-weight: 600;
@@ -173,5 +177,11 @@
     .search-bar:hover .dropdown-search {
       display: block;
     }
+  }
+}
+//styling for MUI//
+.MuiPopover-root {
+  div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+    top: 10px !important;
   }
 }
