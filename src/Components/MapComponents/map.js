@@ -36,9 +36,9 @@ import BoxLink from "./BoxLink";
 require("dotenv").config();
 
 const TOKEN =
-  "pk.eyJ1IjoibWlyYWNsZW1lc3NhZ2VzIiwiYSI6ImNqeWhleGtzbTAwdXAzZ21uaGlienhmdHMifQ.FYmU9s5SYQbUonIeBAG9Lw";
+  "pk.eyJ1Ijoia2tzbGlkZXIyMTMwIiwiYSI6ImNrYTkzZDF5dzA3bnUzMG1wMTN4andnam4ifQ.zJyId-UEsVM91Luz7TwR4A";
 
-const STYLE = "mapbox://styles/miraclemessages/cjyhf6b851bii1cq6lr990cf1";
+const STYLE = "mapbox://styles/kkslider2130/cka93hqym2mju1imatqi7trcs";
 
 // Google Analytics:
 //this initializes GA
