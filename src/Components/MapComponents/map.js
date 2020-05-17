@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 // Mapbox imports
-import ReactMapGL, {
-  Marker,
-  NavigationControl,
-  Popup,
-  FlyToInterpolator,
-} from "react-map-gl";
+import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Action imports
@@ -15,7 +10,6 @@ import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
-import { flyToLocation } from "../../Actions/OnViewportAction";
 
 // Material UI imports
 import Drawer from "@material-ui/core/Drawer";
@@ -54,14 +48,26 @@ ReactGA.pageview("/map");
 
 class Map extends Component {
   //this fetches the data from the backend:
+  state = {
+    open: true,
+  };
   componentDidMount() {
     this.props.getData();
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.openPopup !== prevProps.openPopup) {
+      this.closeBox();
+    }
   }
 
   closeHandler = () => {
     this.props.updatePopupAction(null);
     //this.props.slideToggleAction();
     this.props.popupToggleAction();
+  };
+
+  closeBox = () => {
+    this.setState({ open: false });
   };
 
   toggle = () => {
@@ -83,10 +89,6 @@ class Map extends Component {
             className="open-drawer"
           >
             <IconButton
-              onClick={() => {
-                this.closeHandler();
-                this.moveToCursor(this.props.latitude, this.props.longitude);
-              }}
               style={{
                 position: "absolute",
                 right: "0",
@@ -114,9 +116,6 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
-  moveToCursor = (lat, long) => {
-    this.props.flyToLocation(lat, long);
-  };
   render() {
     const { viewport } = this.props;
 
@@ -127,7 +126,7 @@ class Map extends Component {
           <Navbar />
         </ToastProvider>
 
-        <BoxLink />
+        <BoxLink state={this.state} closeBox={this.closeBox} />
 
         {/* <Sidebar /> */}
 
@@ -155,13 +154,6 @@ class Map extends Component {
                   key={`marker-${index}`}
                   latitude={city.latitude}
                   longitude={city.longitude}
-                  onClick={() => {
-                    gaEvent("click", "chapter pin", `${city.title}`);
-                    this.moveToCursor(
-                      this.props.latitude,
-                      this.props.longitude
-                    );
-                  }}
                 >
                   <CityPin city={city} />
                 </Marker>
@@ -170,6 +162,7 @@ class Map extends Component {
           })}
           {this.props.openPopup && (
             <Popup
+              className="popup-main"
               latitude={this.props.latitude}
               longitude={this.props.longitude}
               closeButton={true}
@@ -207,5 +200,4 @@ export default connect(mapStateToProps, {
   popupToggleAction,
   onViewportChanged,
   popupClose,
-  flyToLocation,
 })(Map);

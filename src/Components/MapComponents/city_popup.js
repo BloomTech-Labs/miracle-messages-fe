@@ -1,12 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { popupToggleAction } from "../../Actions/popupToggleAction";
-import { updatePopupAction } from "../../Actions/updatePopupAction";
-
-import facebook from "../../Assets/icons/facebook.png";
-import gmail from "../../Assets/icons/gmail.png";
-
 import "./city_popup.scss";
 const CityPopup = (props) => {
   const { info } = props;

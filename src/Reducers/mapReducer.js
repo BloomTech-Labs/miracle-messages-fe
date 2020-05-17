@@ -100,7 +100,7 @@ export const mapReducer = (state = initialState, action) => {
           ...state.viewport,
           latitude: action.payload.latitude,
           longitude: action.payload.longitude,
-          transitionDuration: 1000,
+          transitionDuration: "auto",
           transitionInterpolator: new FlyToInterpolator(),
         },
       };
