@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 // Mapbox imports
-import MapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
+import ReactMapGL, {
+  Marker,
+  NavigationControl,
+  Popup,
+  FlyToInterpolator,
+} from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Action imports
@@ -10,6 +15,7 @@ import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
+import { flyToLocation } from "../../Actions/OnViewportAction";
 
 // Material UI imports
 import Drawer from "@material-ui/core/Drawer";
@@ -77,7 +83,10 @@ class Map extends Component {
             className="open-drawer"
           >
             <IconButton
-              onClick={this.closeHandler}
+              onClick={() => {
+                this.closeHandler();
+                this.moveToCursor(this.props.latitude, this.props.longitude);
+              }}
               style={{
                 position: "absolute",
                 right: "0",
@@ -105,6 +114,9 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
+  moveToCursor = (lat, long) => {
+    this.props.flyToLocation(lat, long);
+  };
   render() {
     const { viewport } = this.props;
 
@@ -119,7 +131,7 @@ class Map extends Component {
 
         {/* <Sidebar /> */}
 
-        <MapGL
+        <ReactMapGL
           {...viewport}
           width="100vw"
           height="100vh"
@@ -145,6 +157,10 @@ class Map extends Component {
                   longitude={city.longitude}
                   onClick={() => {
                     gaEvent("click", "chapter pin", `${city.title}`);
+                    this.moveToCursor(
+                      this.props.latitude,
+                      this.props.longitude
+                    );
                   }}
                 >
                   <CityPin city={city} />
@@ -164,7 +180,7 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
-        </MapGL>
+        </ReactMapGL>
         {/*{this._renderSlide()}*/}
       </div>
     );
@@ -191,4 +207,5 @@ export default connect(mapStateToProps, {
   popupToggleAction,
   onViewportChanged,
   popupClose,
+  flyToLocation,
 })(Map);

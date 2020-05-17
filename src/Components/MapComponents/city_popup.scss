@@ -1,0 +1,83 @@
+.chapter-Info {
+  width: 250px;
+  font-family: ProximaNova;
+  margin-top: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  .chapter-img {
+    img {
+      max-width: 100%;
+    }
+  }
+  .chapter-btn {
+    background-color: white;
+    margin-top: 1.2rem;
+    margin-bottom: 0.7rem;
+    width: 60%;
+    align-self: center;
+    border-radius: 3px;
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.chapter-Title {
+  display: flex;
+  flex-direction: column;
+  border-bottom: #d8d8d8 solid 0.25px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+.chapter-Stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: #d8d8d8 solid 0.25px;
+  padding: 10px 0px;
+  color: white;
+}
+
+.volunteers {
+  font-family: ProximaNova_Semibold;
+  display: flex;
+  flex-direction: column;
+  padding-right: 24px;
+  border-right: #d8d8d8 solid 0.1px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.9px;
+  color: white;
+}
+
+.reunions {
+  font-family: ProximaNova_Semibold;
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.9px;
+  margin-bottom: -1rem;
+  color: white;
+}
+
+.number {
+  font-family: ProximaNova_Bold;
+  align-self: center;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  margin-left: 1px;
+  color: white;
+}
+
+.chapter-Details {
+  padding: 20px 25px 0px 25px;
+  font-size: 13px;
+  letter-spacing: 0.73px;
+  line-height: 18px;
+  color: white;
+  font-weight: bold;
+}

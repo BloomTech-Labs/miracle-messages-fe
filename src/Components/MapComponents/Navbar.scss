@@ -39,7 +39,7 @@
       border-radius: 5px;
       color: #212121;
       &:hover {
-        background-color: #585858;
+        background-color: #686767;
         color: white;
       }
     }
@@ -54,6 +54,10 @@
       color: rgba(255, 255, 255, 0.9);
       font-family: ProximaNova;
       display: block;
+      &:hover {
+        color: #cacaca;
+      }
+
       @media only screen and (max-width: 500px) {
         width: 50vw;
         margin: 0 8vw;

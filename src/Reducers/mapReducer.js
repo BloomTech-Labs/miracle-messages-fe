@@ -9,8 +9,10 @@ import {
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
 import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
+
 import { UPDATE_CHAPTERS } from "../Actions/SearchBarAction";
 import { TOGGLE_POPUP, CLOSE_POPUP } from "../Actions/popupToggleAction";
+import { FlyToInterpolator } from "react-map-gl";
 
 const initialState = {
   viewport: {
@@ -94,6 +96,13 @@ export const mapReducer = (state = initialState, action) => {
         openPopup: action.payload.openPopup,
         latitude: action.payload.latitude,
         longitude: action.payload.longitude,
+        viewport: {
+          ...state.viewport,
+          latitude: action.payload.latitude,
+          longitude: action.payload.longitude,
+          transitionDuration: 1000,
+          transitionInterpolator: new FlyToInterpolator(),
+        },
       };
 
     case CLOSE_POPUP:
