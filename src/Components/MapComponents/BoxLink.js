@@ -7,10 +7,10 @@ class BoxLink extends React.Component {
   state = {
     open: true,
   };
-  render() {
+  render(props) {
     return (
       <>
-        {this.state.open && (
+        {this.props.state.open && (
           <div className="banner">
             <div
               style={{
@@ -25,7 +25,7 @@ class BoxLink extends React.Component {
                   top: 20,
                   left: 217,
                 }}
-                onClick={() => this.setState({ open: false })}
+                onClick={() => this.props.closeBox()}
               >
                 x
               </h4>

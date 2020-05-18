@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 // Mapbox imports
-import MapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Action imports
@@ -48,14 +48,26 @@ ReactGA.pageview("/map");
 
 class Map extends Component {
   //this fetches the data from the backend:
+  state = {
+    open: true,
+  };
   componentDidMount() {
     this.props.getData();
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.openPopup !== prevProps.openPopup) {
+      this.closeBox();
+    }
   }
 
   closeHandler = () => {
     this.props.updatePopupAction(null);
     //this.props.slideToggleAction();
     this.props.popupToggleAction();
+  };
+
+  closeBox = () => {
+    this.setState({ open: false });
   };
 
   toggle = () => {
@@ -77,7 +89,6 @@ class Map extends Component {
             className="open-drawer"
           >
             <IconButton
-              onClick={this.closeHandler}
               style={{
                 position: "absolute",
                 right: "0",
@@ -115,11 +126,11 @@ class Map extends Component {
           <Navbar />
         </ToastProvider>
 
-        <BoxLink />
+        <BoxLink state={this.state} closeBox={this.closeBox} />
 
         {/* <Sidebar /> */}
 
-        <MapGL
+        <ReactMapGL
           {...viewport}
           width="100vw"
           height="100vh"
@@ -143,9 +154,6 @@ class Map extends Component {
                   key={`marker-${index}`}
                   latitude={city.latitude}
                   longitude={city.longitude}
-                  onClick={() => {
-                    gaEvent("click", "chapter pin", `${city.title}`);
-                  }}
                 >
                   <CityPin city={city} />
                 </Marker>
@@ -154,6 +162,7 @@ class Map extends Component {
           })}
           {this.props.openPopup && (
             <Popup
+              className="popup-main"
               latitude={this.props.latitude}
               longitude={this.props.longitude}
               closeButton={true}
@@ -164,7 +173,7 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
-        </MapGL>
+        </ReactMapGL>
         {/*{this._renderSlide()}*/}
       </div>
     );

@@ -6,9 +6,8 @@ import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
-
 const pinStyle = {
-  fill: "white"
+  fill: "white",
 };
 
 class CityPin extends PureComponent {
@@ -23,12 +22,13 @@ class CityPin extends PureComponent {
 
     return (
       <svg
+        className="pin"
         height={size}
         viewBox="0 0 30 30"
         style={{
           ...pinStyle,
           transform: `translate(${-size / 2}px,${-size}px)`,
-          cursor: "pointer"
+          cursor: "pointer",
         }}
         onClick={PinClickHandler}
       >
@@ -52,15 +52,15 @@ class CityPin extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     popupInfo: state.mapReducer.popupInfo,
-    openPopup: state.mapReducer.openPopup
+    openPopup: state.mapReducer.openPopup,
   };
 };
 
 export default connect(mapStateToProps, {
   updatePopupAction,
   popupToggleAction,
-  onViewportChanged
+  onViewportChanged,
 })(CityPin);
