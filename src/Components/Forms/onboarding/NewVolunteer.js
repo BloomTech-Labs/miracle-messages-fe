@@ -11,7 +11,7 @@ import stepperImage1 from '../../../Assets/Imgs/stepper-image-1.jpeg';
 import stepperImage2 from '../../../Assets/Imgs/stepper-image-2.png';
 import mmLogo from '../../../Assets/Imgs/MM_Logo.png';
 import mmLogoBlack from '../../../Assets/Imgs/MM_Logo_black.png';
-import './newVolunteer.css';
+import './newVolunteer.scss';
 
 
 //material Ui
