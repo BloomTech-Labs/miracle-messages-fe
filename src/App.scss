@@ -1,0 +1,36 @@
+
+@font-face {
+    font-family: ProximaNova;
+    src: url("./Assets/ProximaNova.otf");
+  }
+  
+  @font-face {
+    font-family: ProximaNova_Bold;
+    src: url("./Assets/ProximaNova_Bold.otf");
+  }
+  
+  @font-face {
+    font-family: ProximaNova_Semibold;
+    src: url("./Assets/ProximaNova_Semibold.otf");
+  }
+  
+  .mapboxgl-popup {
+    text-align: center;
+    cursor: auto;
+  }
+  
+  .mapboxgl-popup-close-button {
+    color: whitesmoke !important;
+    font-size: 20px;
+    background: transparent !important;
+    width: 40px;
+    height: 40px;
+    outline: none;
+  }
+  
+  .mapboxgl-popup-close-button:hover {
+    font-size: 26px;
+    color: white !important;
+  }
+  
+  

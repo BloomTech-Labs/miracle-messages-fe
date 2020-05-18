@@ -1,6 +1,27 @@
 #okta-sign-in {
   margin: 10vh auto;
 }
-#okta-sign-in.auth-container.main-container {
+#okta-sign-in.auth-container {
+
+  background-color: black;
+
+.main-container {
   box-shadow: 5px 5px 13px -5px rgba(92, 92, 92, 1);
+}
+
+.button-primary:active, #okta-sign-in.auth-container .button-primary:focus, #okta-sign-in.auth-container .button-primary:hover {
+  background-color: black;
+  background: linear-gradient(black, rgb(71, 68, 68));
+}
+
+#okta-signin-submit.button.button-primary {
+  background-color: black;
+  background: linear-gradient(black, rgb(71, 68, 68));
+  
+  &:hover {
+  background-color: white;
+}
+
+}
+
 }
