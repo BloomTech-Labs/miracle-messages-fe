@@ -2,7 +2,7 @@
   width: 100vw;
   position: fixed !important;
   z-index: 2;
-  max-height:500px;
+  height:auto;
   display: flex;
   justify-content: space-between;
   background: #212121;
@@ -12,9 +12,7 @@
   transition:.5s;
 
   &.open {
-    max-height:500px;
     nav {
-      display: flex;
       max-height:500px;
     }
     .close-chevron {
@@ -76,7 +74,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    transition:.8s ease-out;
+    transition:.9s ease-out;
+    transition: delay 0;;
     a.donate {
       border: 1px solid white;
       padding: 12px 20px;
