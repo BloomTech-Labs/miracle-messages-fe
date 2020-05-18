@@ -59,9 +59,7 @@ const App = () => {
 
           {/* <Route exact path="/form" component={VolunteerForm} /> */}
 
-          <Route exact path="/chapter-page" component={ChapterPage} />
-
-          {/* <Route exact path="/user/login" component={LoginPage} /> */}
+          <Route path="/chapter" component={ChapterPage} />
 
           <Route exact path="/user/register" component={NewVolunteer} />
 
@@ -70,6 +68,7 @@ const App = () => {
             path="/login"
             render={() => <LoginForm baseUrl="https://dev-750287.okta.com" />}
           />
+
           <Route path="/implicit/callback" component={LoginCallback} />
 
           {/* <Route exact path="/user/newchapter" component={NewChapterInfo} /> */}

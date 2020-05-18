@@ -38,7 +38,7 @@ const CityPopup = (props) => {
 
       {/* Contains the contact info */}
 
-      <Link className="chapter-btn" to="/chapter-page">
+      <Link className="chapter-btn" to="/chapter">
         Chapter Page
       </Link>
     </div>
