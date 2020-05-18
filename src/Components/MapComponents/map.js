@@ -30,6 +30,8 @@ import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
+import SearchBar from "./Navbar";
+import "./Navbar.scss";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
@@ -124,6 +126,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
         <ToastProvider>
           <Navbar />
+          <SearchBar />
         </ToastProvider>
 
         <BoxLink state={this.state} closeBox={this.closeBox} />
