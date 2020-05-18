@@ -10,7 +10,11 @@
   font-family: ProximaNova;
 
   @media (max-width: 800px) {
-    display: none !important;
+    flex-direction:column;
+    align-items:center;
+    * {
+      border:1px solid gray;
+    }
   }
 
   img {
@@ -19,6 +23,9 @@
     width: 55px;
     &:hover {
       cursor: pointer;
+    }
+    @media (max-width: 800px) {
+      width:100%;
     }
   }
 
@@ -140,6 +147,10 @@
 
       opacity: 95%;
       border-radius: 6px;
+
+      @media (max-width: 800px) {
+        display:none;
+      }
 
       .search-bar {
         display: flex;
