@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   background: #212121;
-  opacity: 85%;
+  opacity: 95%;
   font-family: ProximaNova;
 
   @media (max-width: 800px) {
@@ -27,19 +27,19 @@
   }
 
   nav {
-    width: 70vw;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     a.donate {
       border: 1px solid white;
-      padding: 12px 12px;
+      padding: 12px 20px;
       background-color: white;
       border-radius: 5px;
       color: #212121;
       &:hover {
-        background-color: #585858;
+        background-color: #686767;
         color: white;
       }
     }
@@ -54,6 +54,10 @@
       color: rgba(255, 255, 255, 0.9);
       font-family: ProximaNova;
       display: block;
+      &:hover {
+        color: #cacaca;
+      }
+
       @media only screen and (max-width: 500px) {
         width: 50vw;
         margin: 0 8vw;
@@ -131,19 +135,21 @@
       position: fixed;
       display: inline-block;
       top: 110px;
-      left: 10px;
+      left: 18px;
       background-color: #212121;
-      opacity: 85%;
-      border-radius: 10px;
+
+      opacity: 95%;
+      border-radius: 6px;
+
       .search-bar {
-      display: flex;
-      font-size: 1.3em;
-      padding-left: 10px;
-      border-radius: 10px;
-      color: white;
+        display: flex;
+        font-size: 1.5em;
+        color: white;
+        padding: 0.5rem;
+        padding-left: 1.2rem;
         input {
           background: #212121;
-          border: none;
+          border: 1px solid rgba(255, 255, 255, 0);
           padding-left: 5px;
           height: 35px;
           width: 240px;
