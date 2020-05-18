@@ -4,7 +4,7 @@ import React from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 //Styles
-import "./CSS/App.css";
+import'./App.scss';
 import "./CSS/style.css";
 
 //Imported Components
