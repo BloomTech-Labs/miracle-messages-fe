@@ -15,6 +15,7 @@ import pictureFour from '../../Assets/Imgs/Daniel.jpeg';
 import pictureFive from '../../Assets/Imgs/Ramonta.jpeg';
 import pictureSix from '../../Assets/Imgs/Will.jpeg';
 import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 
 const members = [
   {
@@ -41,13 +42,41 @@ const members = [
   {
     name: 'Will VanOrder',
     photo: pictureSix
+  },
+  {
+    name: 'Will VanOrder',
+    photo: pictureSix
+  },
+  {
+    name: 'Will VanOrder',
+    photo: pictureSix
   }
 ]
+
+const LeaderAvatar = withStyles({
+  root: {
+    width: "25%",
+    height: "auto",
+    margin: "0 auto"
+  },
+})(Avatar)
+
+const VolunteerAvatar = withStyles({
+  root: {
+    width: "15%",
+    height: "auto",
+    margin: "0 auto"
+  },
+})(Avatar)
 
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(20),
     height: theme.spacing(20),
+  },
+  xl: {
+    width: theme.spacing(30),
+    height: theme.spacing(30),
   },
 }));
 
@@ -59,7 +88,6 @@ const ChapterPage = () => {
     chapterLeader: "Kevin Adler",
     chapterMembers: members
   })
-  const classes = useStyles()
 
   const joinChapter = (e) => {
     e.preventDefault()
@@ -89,18 +117,19 @@ const ChapterPage = () => {
           We envision a world where everyone is nurtured by a social support system and sense of belonging – a social home – whether or not they currently have access to stable physical housing. Join our Seattle Chapter for more information. 
         </p>
         <button className="join-button" onClick={joinChapter} type="button">
-          Join
+          Join Chapter
         </button>
         <div className="chapter-leader">
           <h2>Chapter Leader</h2>
-          <img src={chapterInfo.leaderImg} />
-          <p>{chapterInfo.chapterLeader}</p>
+          <LeaderAvatar src={chapterInfo.leaderImg} />
+          <h2>{chapterInfo.chapterLeader}</h2>
+          <p>We are on the frontlines of COVID-19, reconnecting our homeless neighbors with their loved ones… and us.</p>
         </div>
-        <div>
-          <h2></h2>
-          <AvatarGroup spacing="large" style={{ height: "20vh"}} max={5}>
+        <div className="chapter-volunteers">
+          <h2>Volunteers</h2>
+          <AvatarGroup spacing="large" max={6}>
             {chapterInfo.chapterMembers.map(el => {
-              return <Avatar className={classes.large} alt={el.name} src={el.photo} />
+              return <VolunteerAvatar alt={el.name} src={el.photo} />
             })}
           </AvatarGroup>
         </div>
