@@ -2,23 +2,65 @@
   width: 100vw;
   position: fixed !important;
   z-index: 2;
-  height: auto;
+  height:auto;
   display: flex;
   justify-content: space-between;
   background: #212121;
   opacity: 95%;
   font-family: ProximaNova;
+  overflow:hidden;
+  transition:.5s;
 
-  @media (max-width: 800px) {
-    display: none !important;
+  &.open {
+    nav {
+      max-height:500px;
+    }
+    .close-chevron {
+      i {
+        transition:.5s;
+        transform: rotate(0deg);
+      }
+    }
   }
 
-  img {
-    height: auto;
-    max-width: 100%;
-    width: 55px;
-    &:hover {
-      cursor: pointer;
+  .close-chevron {
+    font-size:1.5rem;
+    color:white;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    border:1px solid gray;
+    padding:10px;
+    background-color:gray;
+    i {
+      transition:.5s;
+      transform: rotate(180deg);
+    }
+  }
+
+  @media (max-width: 800px) {
+    flex-direction:column;
+    align-items:center;
+  }
+
+  a:first-child {
+    img {
+      height: auto;
+      max-width: 100%;
+      width: 55px;
+      padding:10px;
+      width: 160px;
+      &:hover {
+        cursor: pointer;
+      }
+      @media (max-width: 800px) {
+        width:20%;
+      }
+    }
+    @media (max-width: 800px) {
+      width:100%;
+      display:flex;
+      justify-content:center;
     }
   }
 
@@ -32,16 +74,36 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    transition:.9s ease-out;
+    transition: delay 0;;
     a.donate {
       border: 1px solid white;
       padding: 12px 20px;
       background-color: white;
+      border-radius: 5px;
       color: #212121;
-      opacity: 90%;
       &:hover {
         background-color: #686767;
         color: white;
-        opacity: 90%;
+      }
+    }
+    @media (max-width: 800px) {
+      width:100%;
+      flex-direction:column;
+      max-height:0;
+      a {
+        width:100%;
+        text-align:center;
+        padding:20px;
+        border-bottom:1px solid white;
+        &:first-of-type {
+          border-top:1px solid white;
+        }
+        &.donate {
+          border:1px solid gray;
+          width:95%;
+          margin: 10px 0;
+        }
       }
     }
 
@@ -57,15 +119,6 @@
       display: block;
       &:hover {
         color: #cacaca;
-      }
-
-      @media only screen and (max-width: 500px) {
-        width: 50vw;
-        margin: 0 8vw;
-        display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-        text-align: left;
       }
 
       &:last-child {
@@ -138,15 +191,19 @@
       top: 110px;
       left: 18px;
       background-color: #212121;
-      height: 32px;
+      border-radius: 6px;
       opacity: 95%;
+
+      @media (max-width: 800px) {
+        display:none;
+      }
 
       .search-bar {
         display: flex;
-        font-size: 1.3em;
+        font-size: 1.5em;
         color: white;
-        padding-top: 3px;
-        padding-left: 1rem;
+        padding: 0.5rem 0;
+        padding-left: 1.2rem;
 
         input {
           background: #212121;

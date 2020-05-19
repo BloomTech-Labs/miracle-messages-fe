@@ -1,110 +1,125 @@
-.container { 
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
+
+.header-img {
+  background: url("../../Assets/Imgs/chapter.jpg");
+  background-size: cover;
+  background-position: right 50% bottom 80%;
+  width: 100%;
+  height: 40vh;
 }
 
-.header-image {
-    background: url("../../Assets//Imgs/seattle-tents.jpg");
-    background-size: cover;
-    background-position: center; /* Center the image */
-    width: 100%;
-    height: 750px;
-    // border-radius: 0 0 30px 0;
+p, h1, h2, h3, h4, button {
+  margin: 0
 }
 
-.chapter-avatars {
-    margin-top: 40px;
-    display: flex;
-    width: 80%;
-    justify-content: space-around;
-
-    .MuiSpeedDialAction-fab {
-        width: 35px;
-        height: 35px;
-        margin-top: 90px;
-        margin-left: 50px;
-    }
-    .MuiAvatar-root {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-.MuiSpeedDial-actions {
-    margin-left: 1px,
-}
-
-.about-section {
-    margin-top: 15%;
-    margin-left: 5%;
-    text-align: left;
+.chapter-page-container {
+  padding: 2%;
+  
+  .inner-container {
+    margin: 0 auto;
     width: 90%;
-    
+
     h1 {
-        margin-bottom: 2%;
+      font-size: 2.5rem;
+      text-align: center;
+      padding: 3% 0;
+      border-bottom: 5px solid #C0C0C0;
+      font-weight: 900;
     }
-}
 
-.activity-section {
-    margin-top: 5%;
-    margin-left: 5%;
-    width: 90%;
-    text-align: left;
+    .count-container {
+      width: 40%;
+      padding: 2% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      p {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 800;    
+      }
+    }
+    
+    .hero-p {
+      padding: 2%;
+      width: 100%;
+      font-size: 2rem;
+    }
 
-}
+    .chapter-leader {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-.stats, .content {
-    margin-left: 5%;
-    text-align: center;
-    width: 90%;
-}
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 800;    
+        padding: 2% 0;
+      }
 
-.blocks {
-    display: flex;
-    justify-items: space-between;
-}
-
-.block {
-    flex-grow: 1;
-    border: 1px solid #cccccc50;
-}
-
-.spacer {
-    height: 3vh;
-}
-
-
-.aside {
-    margin-top: 50%;
-    p {
+      p {
+        padding: 2%;
+        width: 100%;
         font-size: 2rem;
-        margin-top: -2%;
-    }
-    .MuiFab-primary{
-        width: 100px;
-        height: 100px;
-        // margin-left: 5%;
-        
-    }
-    .MuiAvatar-root {
-    width: 100px;
-    height: 100px;
-    // margin-left: 4%;
- 
+      }
+
+      // img {
+      //   border-radius: 9999rem;
+      //   width: 25%;
+      //   margin: 0 auto;
+      // }
     }
 
-    .MuiSpeedDialAction-fab {
-        width: 35px;
-        height: 35px;
+    .chapter-volunteers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        padding: 2%;
+        font-size: 2.5rem;
+        font-weight: 800;
+      }
     }
+  } 
 }
 
-.Numbers h4 {
-    font-size: 2rem;
-    padding-top: 20px;
+.join-button {
+  display: block;
+  margin: 2% auto;
+  font-weight: 600;
+  width: 33.3%;
+  border-radius: 7px;
+  padding: 1.5% 0%;
+  color: #696969;
+  font-size: 2rem;
+  border: 2px solid #696969;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  &:hover {
+    font-weight: 800;
+    border: 3px solid #696969;
+    cursor: pointer;
+  }  
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+  }
 }
 
-.cal {
-    margin-right: 10%;
+.text-center {
+  text-align: center;
 }
+
+.flex-box {
+  display: flex;
+}
+
+.justify-even {
+  justify-content: space-evenly;
+}
+
+

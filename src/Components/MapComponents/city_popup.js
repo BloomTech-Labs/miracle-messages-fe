@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import "./city_popup.scss";
 const CityPopup = (props) => {
   const { info } = props;
-  // const sponsors = info.partners.filter(
-  //   (partner) => partner.category === "sponsor"
-  // );
-  // const partners = info.partners.filter(
-  //   (partner) => partner.category === "partner"
-  // );
   return (
     <div className="chapter-Info">
       <div className="chapter-Title">
@@ -38,7 +32,7 @@ const CityPopup = (props) => {
 
       {/* Contains the contact info */}
 
-      <Link className="chapter-btn" to="/chapter-page">
+      <Link className="chapter-btn" to="/chapter">
         Chapter Page
       </Link>
     </div>

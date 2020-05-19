@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Imgs/MM_Logo.png";
+import logoMobile from "../../Assets/Imgs/MM_Logo_mobile.png"
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
@@ -22,6 +23,7 @@ const Navbar = (props) => {
   const { addToast } = useToasts();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [menuOpen, setMenuStatus] = useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,22 +45,23 @@ const Navbar = (props) => {
   };
 
   return (
-    <div className="navbar-map">
+    <div className={menuOpen ? "navbar-map open" : "navbar-map"}>
       <Link to="/">
         <img
-          style={{
-            paddingTop: "20px",
-            paddingBottom: "10px",
-            paddingLeft: "20px",
-            width: "160px",
-          }}
-          src={logo}
+          // style={
+          // window.innerWidth >= "800" &&
+          // {
+          //   paddingTop: "20px",
+          //   paddingBottom: "10px",
+          //   paddingLeft: "20px",
+          //   width: "160px",
+          // }}
+          src={window.innerWidth >= "800" ? logo : logoMobile}
           alt="logo"
         />
       </Link>
       <nav>
         <SearchBar />
-        <div style={{ margin: "15px" }}> </div>
 
         {/* create registration/login navigation */}
         {!localStorage.userId || !props.isLoggedIn ? (
@@ -116,6 +119,11 @@ const Navbar = (props) => {
           </>
         )}
       </nav>
+      {window.innerWidth <= "800" &&
+      <div className="close-chevron" onClick={() => setMenuStatus(!menuOpen)}>
+        <i className="fas fa-chevron-up" />
+      </div>
+      }
     </div>
   );
 };

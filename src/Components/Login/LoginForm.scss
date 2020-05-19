@@ -1,27 +1,27 @@
 #okta-sign-in {
   margin: 10vh auto;
+  margin-bottom: 0;
 }
 #okta-sign-in.auth-container {
+  .main-container {
+    box-shadow: 5px 5px 13px -5px rgba(92, 92, 92, 1);
+  }
 
-  background-color: black;
+  .button.button-primary {
+    background: #212121;
 
-.main-container {
-  box-shadow: 5px 5px 13px -5px rgba(92, 92, 92, 1);
+    &:hover {
+      background-color: #505050;
+    }
+  }
 }
+.back-btn {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 5vh;
 
-.button-primary:active, #okta-sign-in.auth-container .button-primary:focus, #okta-sign-in.auth-container .button-primary:hover {
-  background-color: black;
-  background: linear-gradient(black, rgb(71, 68, 68));
-}
-
-#okta-signin-submit.button.button-primary {
-  background-color: black;
-  background: linear-gradient(black, rgb(71, 68, 68));
-  
+  cursor: pointer;
   &:hover {
-  background-color: white;
-}
-
-}
-
+    font-weight: bold;
+  }
 }
