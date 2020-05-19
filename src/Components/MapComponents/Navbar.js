@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Imgs/MM_Logo.png";
-import logoMobile from "../../Assets/Imgs/MM_Logo_mobile.png"
+import logoMobile from "../../Assets/Imgs/MM_Logo_mobile.png";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
@@ -46,18 +46,11 @@ const Navbar = (props) => {
   return (
     <div className={menuOpen ? "navbar-map open" : "navbar-map"}>
       <Link to="/">
-        <img
-          // style={
-          // window.innerWidth >= "800" &&
-          // {
-          //   paddingTop: "20px",
-          //   paddingBottom: "10px",
-          //   paddingLeft: "20px",
-          //   width: "160px",
-          // }}
-          src={window.innerWidth >= "800" ? logo : logoMobile}
-          alt="logo"
-        />
+        <img className="logo" src={logo} alt="logo" />
+      </Link>
+      <Link to="/">
+        {" "}
+        <img className="mLogo" src={logoMobile} alt="mobile logo" />
       </Link>
       <nav>
         {/* create registration/login navigation */}
@@ -65,7 +58,7 @@ const Navbar = (props) => {
           <Link to="/login">Get Involved</Link>
         ) : null}
 
-        <Link to="/">Map</Link>
+        <a href="https://www.miraclemessages.org/about">About</a>
 
         <a
           className="donate"
@@ -116,11 +109,9 @@ const Navbar = (props) => {
           </>
         )}
       </nav>
-      {window.innerWidth <= "800" &&
       <div className="close-chevron" onClick={() => setMenuStatus(!menuOpen)}>
         <i className="fas fa-chevron-up" />
       </div>
-      }
     </div>
   );
 };
