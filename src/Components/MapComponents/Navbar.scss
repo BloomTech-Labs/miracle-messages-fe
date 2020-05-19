@@ -95,7 +95,12 @@
 
   .navProPic {
     background: #212121;
-    width: 40px;
+    cursor: pointer;
+    width: 50px;
+    @media (max-width: 550px) {
+      width: 60px;
+      margin-bottom: 0.5rem;
+    }
   }
 
   nav {
