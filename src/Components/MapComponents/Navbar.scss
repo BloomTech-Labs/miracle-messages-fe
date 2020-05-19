@@ -36,12 +36,11 @@
       border: 1px solid white;
       padding: 12px 20px;
       background-color: white;
+      border-radius: 5px;
       color: #212121;
-      opacity: 90%;
       &:hover {
         background-color: #686767;
         color: white;
-        opacity: 90%;
       }
     }
 
@@ -138,15 +137,15 @@
       top: 110px;
       left: 18px;
       background-color: #212121;
-      height: 32px;
+      border-radius: 6px;
       opacity: 95%;
 
       .search-bar {
         display: flex;
-        font-size: 1.3em;
+        font-size: 1.5em;
         color: white;
-        padding-top: 3px;
-        padding-left: 1rem;
+        padding: 0.5rem 0;
+        padding-left: 1.2rem;
 
         input {
           background: #212121;

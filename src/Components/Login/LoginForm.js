@@ -8,6 +8,8 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginSuccess } from "../../Actions/AdminPageActions";
 
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 const LoginForm = (props) => {
   const history = useHistory();
   useEffect(() => {
@@ -63,6 +65,14 @@ const LoginForm = (props) => {
     <div className="navBar" style={{ margin: "0", padding: "0" }}>
       <div>
         <div id="sign-in-widget" />
+        <div
+          className="back-btn"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          <ArrowBackIcon /> Back to main page
+        </div>
       </div>
     </div>
   );
