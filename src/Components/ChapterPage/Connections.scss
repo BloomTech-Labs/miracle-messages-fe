@@ -3,7 +3,7 @@
   margin-top: 3%;
 
   h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
 }
@@ -11,11 +11,12 @@
 .cards-container {
   display: flex;
   justify-content: space-between;
-  margin: 3% 0;
+  padding: 1%;
+  margin: 1% 0;
 }
 
 .card {
-  width: 30%;
+  width: 25%;
   padding: 1% 2%;
   border: 2px solid #D3D3D3;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
