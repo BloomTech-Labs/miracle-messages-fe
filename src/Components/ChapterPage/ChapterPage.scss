@@ -18,7 +18,7 @@ p, h1, h2, h3, h4, button {
     margin: 0 auto;
     width: 90%;
 
-    h1 {
+    .chapter-name {
       font-size: 2.5rem;
       text-align: center;
       padding: 3% 0;
@@ -63,12 +63,6 @@ p, h1, h2, h3, h4, button {
         width: 100%;
         font-size: 2rem;
       }
-
-      // img {
-      //   border-radius: 9999rem;
-      //   width: 25%;
-      //   margin: 0 auto;
-      // }
     }
 
     .chapter-volunteers {

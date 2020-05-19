@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
+import Connections from './Connections'
 import './ChapterPage.scss'
-import chapter from '../../Assets/Imgs/chapter.jpg'
 import { Avatar } from '@material-ui/core' 
 import { AvatarGroup } from '@material-ui/lab';
 import kev from '../../Assets/Imgs/kev.jpg'
@@ -59,6 +59,9 @@ const LeaderAvatar = withStyles({
     height: "auto",
     margin: "0 auto"
   },
+  img: {
+    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+  }
 })(Avatar)
 
 const VolunteerAvatar = withStyles({
@@ -69,16 +72,6 @@ const VolunteerAvatar = withStyles({
   },
 })(Avatar)
 
-const useStyles = makeStyles((theme) => ({
-  large: {
-    width: theme.spacing(20),
-    height: theme.spacing(20),
-  },
-  xl: {
-    width: theme.spacing(30),
-    height: theme.spacing(30),
-  },
-}));
 
 const ChapterPage = () => {
   const [ chapterInfo, setChapterInfo ] = useState({
@@ -100,7 +93,7 @@ const ChapterPage = () => {
     </ToastProvider> */}
       <div className="header-img"></div>
       <div className="inner-container">
-        <h1>Seattle Chapter</h1>
+        <h1 className="chapter-name">Seattle Chapter</h1>
         <div className="flex-box justify-even">
           <div className="count-container">
             <p>{chapterInfo.members}</p>
@@ -119,6 +112,7 @@ const ChapterPage = () => {
         <button className="join-button" onClick={joinChapter} type="button">
           Join Chapter
         </button>
+        <Connections />
         <div className="chapter-leader">
           <h2>Chapter Leader</h2>
           <LeaderAvatar src={chapterInfo.leaderImg} />
