@@ -87,10 +87,12 @@
     }
 }
 
-.city-pin {
-    transform: translate(0, -50px);
-    svg:hover {
-        cursor:pointer;
-        fill:red!important;
+.markerMAP {
+    height:0;
+    .city-pin {
+        transform: translate(0, -50px)!important;
+        svg:hover {
+            cursor:pointer;
+        }
     }
 }
