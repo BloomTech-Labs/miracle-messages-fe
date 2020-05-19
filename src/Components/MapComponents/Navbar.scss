@@ -185,50 +185,6 @@
 
     // Styling for Search Drop Down! :)
 
-    .search-box {
-      position: fixed;
-      display: inline-block;
-      top: 110px;
-      left: 18px;
-      background-color: #212121;
-      border-radius: 6px;
-      opacity: 95%;
-
-      @media (max-width: 800px) {
-        display:none;
-      }
-
-      .search-bar {
-        display: flex;
-        font-size: 1.5em;
-        color: white;
-        padding: 0.5rem 0;
-        padding-left: 1.2rem;
-
-        input {
-          background: #212121;
-          border: 1px solid rgba(255, 255, 255, 0);
-          padding-left: 5px;
-          height: 20px;
-          width: 240px;
-          font-size: 1em;
-          color: white;
-        }
-
-        .drop-search,
-        .drop-search:hover {
-          font-weight: 600;
-          font-style: normal;
-          font-size: 18px;
-          letter-spacing: 1.2px;
-          text-transform: uppercase;
-          text-decoration: none;
-          line-height: 1em;
-          color: rgba(255, 255, 255, 0.9);
-          font-family: ProximaNova;
-        }
-      }
-    }
     .dropdown-search {
       display: none;
       position: absolute;

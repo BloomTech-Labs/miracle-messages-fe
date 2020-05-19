@@ -8,7 +8,6 @@ import { useToasts } from "react-toast-notifications";
 
 import "./Navbar.scss";
 
-import SearchBar from "../MapComponents/SearchBar.js";
 import profilephoto from "../../Assets/Imgs/USER-PROF.png";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -61,8 +60,6 @@ const Navbar = (props) => {
         />
       </Link>
       <nav>
-        <SearchBar />
-
         {/* create registration/login navigation */}
         {!localStorage.userId || !props.isLoggedIn ? (
           <Link to="/login">Get Involved</Link>
