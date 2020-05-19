@@ -86,3 +86,11 @@
         color:white;
     }
 }
+
+.city-pin {
+    transform: translate(0, -50px);
+    svg:hover {
+        cursor:pointer;
+        fill:red!important;
+    }
+}

@@ -6,6 +6,8 @@ import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss"
 
+import { ReactSVG } from "react-svg";
+
 // Action imports
 import { getData } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
@@ -118,6 +120,11 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
+  PinClickHandler = city => {
+    this.props.updatePopupAction(city);
+    this.props.popupToggleAction(city, this.props.openPopup);
+  };
+
   render() {
     const { viewport } = this.props;
 
@@ -154,7 +161,7 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
-                  <CityPin city={city} />
+                  <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
                 </Marker>
               );
             }
