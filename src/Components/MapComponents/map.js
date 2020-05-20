@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 // Mapbox imports
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import "./Map.scss"
-
+import "./Map.scss";
 import { ReactSVG } from "react-svg";
 
 // Action imports
@@ -160,7 +159,7 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
-                  <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
+                <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
                 </Marker>
               );
             }
@@ -179,7 +178,7 @@ class Map extends Component {
             </Popup>
           )}
         </ReactMapGL>
-        {/*{this._renderSlide()}*/}
+        {/* {this._renderSlide()} */}
       </div>
     );
   }
