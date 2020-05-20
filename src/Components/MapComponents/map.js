@@ -29,7 +29,7 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
 import BoxLink from "./BoxLink";
-import SearchBar from "../MapComponents/SearchBar.js";
+import SearchBar from "./SearchBar";
 import "./Navbar.scss";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
@@ -130,8 +130,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         <BoxLink state={this.state} closeBox={this.closeBox} />
-
-        <SearchBar />
+        <SearchBar chapters={this.props.chapter_data} PinClickHandler={this.PinClickHandler}/>
 
         {/* <Sidebar /> */}
 
