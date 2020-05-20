@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "./Navbar.scss";
 import { updateChapters } from "../../Actions/SearchBarAction";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -10,26 +12,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import axios from "axios";
 
 
-const Navbar = (props) => {
+const SearchBar = (props) => {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [filterAnchorEl, setFilterAnchor] = useState(null);
   const [search, updateSearch] = useState("");
-  const [chapters, updateChapters] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://miracle-messages-dev.herokuapp.com/api/chapter", chapters)
-      .then((res) => {
-        updateChapters(res.data);
-      })
-      .catch((err) => {
-        console.log("search", err);
-      });
-  }, []);
-
-  const handleChange = (e) => {
-    updateSearch(e.target.value);
-  };
 
   const toggleSearch = e => {
     e.preventDefault();
@@ -37,23 +23,6 @@ const Navbar = (props) => {
       setSearchOpen(!searchOpen);
     }
   }
-
-  const handleClick = e => {
-    e.stopPropagation();
-    setAnchorEl(e.currentTarget);
-  }
-
-  const handleClose = e => {
-    setAnchorEl(null);
-  };
-
-  useEffect(() => {
-    props.updateChapters(
-      chapters.filter((chapter) =>
-        chapter.city.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search]);
 
 
   return (
@@ -64,20 +33,22 @@ const Navbar = (props) => {
         <form>
           <i className="fas fa-search" />
           <div>
-            <input
-              type="text"
-              placeholder="Search Chapters"
-              value={search}
-              onChange={handleChange}
-              onClick={e => e.stopPropagation()}
-              className="input"
+            <Autocomplete 
+            id="search-menu"
+            className="search-menu"
+            options={props.chapters}
+            getOptionLabel={chapter => chapter.city}
+            onChange={(event, chapter) => {
+              if (chapter) props.PinClickHandler(chapter);
+            }}
+            renderInput={(params) => <TextField {...params} id="standard-basic" variant="outlined" placeholder="Search Chapters"/>}
             />
             <IconButton 
               aria-controls="simple-menu" 
               aria-haspopup="true"
               keepMounted
-              onClick={handleClick}
-              onClose={handleClose}>
+              onClick={e => setFilterAnchor(e.currentTarget)}
+              onClose={() => setFilterAnchor(false)}>
               <MoreVertIcon />
             </IconButton>
             <IconButton 
@@ -88,16 +59,16 @@ const Navbar = (props) => {
               <ChevronLeftIcon />
             </IconButton>
             <Menu
-            id="simple-menu"
-            className="simple-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
+            id="filter-menu"
+            className="filter-menu"
+            anchorEl={filterAnchorEl}
+            open={Boolean(filterAnchorEl)}
+            onClose={() => setFilterAnchor(false)}
             style={{ top: "60px" }}
             >
-              <MenuItem onClick={handleClose}>All</MenuItem>
-              <MenuItem onClick={handleClose}>City</MenuItem>
-              <MenuItem onClick={handleClose}>State</MenuItem>
+              <MenuItem onClick={() => setFilterAnchor(false)}>All</MenuItem>
+              <MenuItem onClick={() => setFilterAnchor(false)}>City</MenuItem>
+              <MenuItem onClick={() => setFilterAnchor(false)}>State</MenuItem>
             </Menu>
           </div>
         </form>
@@ -111,4 +82,4 @@ const mapStateToProps = (state) => {
       chapterData: state.mapReducer.chapterData,
     };
   };
-  export default connect(mapStateToProps, { updateChapters })(Navbar);
+  export default connect(mapStateToProps, {})(SearchBar);
