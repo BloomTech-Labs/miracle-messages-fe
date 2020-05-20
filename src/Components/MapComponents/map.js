@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { ToastProvider } from "react-toast-notifications";
 
 // Mapbox imports
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import "./Map.scss"
+import "./Map.scss";
 
 import { ReactSVG } from "react-svg";
 
@@ -32,7 +33,6 @@ import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
-import SearchBar from "./Navbar";
 import "./Navbar.scss";
 
 import SearchBar from "../MapComponents/SearchBar.js";
@@ -55,7 +55,7 @@ ReactGA.pageview("/map");
 class Map extends Component {
   //this fetches the data from the backend:
   state = {
-    open: true
+    open: true,
   };
   componentDidMount() {
     this.props.getData();
@@ -122,7 +122,7 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
-  PinClickHandler = city => {
+  PinClickHandler = (city) => {
     this.props.updatePopupAction(city);
     this.props.popupToggleAction(city, this.props.openPopup);
   };
@@ -168,7 +168,11 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
-                  <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
+                  <ReactSVG
+                    src="marker.svg"
+                    className="city-pin"
+                    onClick={() => this.PinClickHandler(city)}
+                  />
                 </Marker>
               );
             }
