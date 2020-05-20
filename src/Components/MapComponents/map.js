@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ToastProvider } from "react-toast-notifications";
 
 // Mapbox imports
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
-<<<<<<< HEAD
-
-=======
->>>>>>> 34b68671d16954349f72ae41f0d43c07f3abae20
 import { ReactSVG } from "react-svg";
 
 // Action imports
@@ -34,11 +29,8 @@ import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
 import BoxLink from "./BoxLink";
-<<<<<<< HEAD
 import "./Navbar.scss";
 
-=======
->>>>>>> 34b68671d16954349f72ae41f0d43c07f3abae20
 import SearchBar from "../MapComponents/SearchBar.js";
 import "./Navbar.scss";
 
@@ -170,15 +162,11 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
-<<<<<<< HEAD
                   <ReactSVG
                     src="marker.svg"
                     className="city-pin"
                     onClick={() => this.PinClickHandler(city)}
                   />
-=======
-                <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
->>>>>>> 34b68671d16954349f72ae41f0d43c07f3abae20
                 </Marker>
               );
             }

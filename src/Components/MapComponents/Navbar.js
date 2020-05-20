@@ -55,7 +55,7 @@ const Navbar = (props) => {
       <nav>
         {/* create registration/login navigation */}
         {!localStorage.userId || !props.isLoggedIn ? (
-          <Link to="/login">Get Involved</Link>
+          <Link to="/login">Sign In</Link>
         ) : null}
 
         <a href="https://www.miraclemessages.org/about">About</a>
