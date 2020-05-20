@@ -50,7 +50,7 @@ ReactGA.pageview("/map");
 class Map extends Component {
   //this fetches the data from the backend:
   state = {
-    open: true
+    open: true,
   };
   componentDidMount() {
     this.props.getData();
@@ -117,7 +117,7 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
-  PinClickHandler = city => {
+  PinClickHandler = (city) => {
     this.props.updatePopupAction(city);
     this.props.popupToggleAction(city, this.props.openPopup);
   };
@@ -159,7 +159,11 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
-                <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
+                  <ReactSVG
+                    src="marker.svg"
+                    className="city-pin"
+                    onClick={() => this.PinClickHandler(city)}
+                  />
                 </Marker>
               );
             }

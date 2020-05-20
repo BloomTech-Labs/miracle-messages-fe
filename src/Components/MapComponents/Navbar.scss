@@ -9,6 +9,7 @@
   opacity: 95%;
   font-family: ProximaNova;
   overflow: hidden;
+  top: 0;
   .mLogo {
     display: none;
     @media (max-width: 550px) {
@@ -225,7 +226,7 @@
     }
 
     // Styling for Search Drop Down! :)
-    
+
     .dropdown-search {
       display: none;
       position: absolute;
