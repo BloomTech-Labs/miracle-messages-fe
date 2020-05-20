@@ -1,11 +1,16 @@
 import React from "react";
 
+import { ToastProvider } from "react-toast-notifications";
+
 //Router
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 //Styles
 import'./App.scss';
 import "./CSS/style.css";
+
+// Header
+import Navbar from "./Components/MapComponents/Navbar"
 
 //Imported Components
 import Map from "./Components/MapComponents/map";
@@ -45,6 +50,9 @@ const App = () => {
 
   return (
     <div className="App">
+        <ToastProvider>
+          <Navbar />
+        </ToastProvider>
       <Security
         issuer="https://dev-750287.okta.com/oauth2/default"
         clientId="0oac2l3f67qM9MChZ4x6"

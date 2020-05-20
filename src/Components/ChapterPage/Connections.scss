@@ -1,0 +1,63 @@
+
+.outer-cards-container {
+  margin-top: 3%;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2%;
+  }
+
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.card {
+  width: 25%;
+  padding: 1% 2%;
+  border: 2px solid #D3D3D3;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  .img-container {
+    width: 100%;
+  
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 4% auto; 
+    }
+  }
+
+  .modal-btn {
+    display: block;
+    margin: 3% auto;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 7px;
+    padding: 1.5% 0%;
+    color: #696969;
+    font-size: 1.5rem;
+    border: 2px solid #696969;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    &:hover {
+      font-weight: 800;
+      border: 3px solid #696969;
+      cursor: pointer;
+    }  
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+    }
+  }
+}
