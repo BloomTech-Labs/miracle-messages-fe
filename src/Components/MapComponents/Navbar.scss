@@ -242,6 +242,18 @@
     }
   }
 }
+.filter-menu, #search-menu {
+  .MuiPaper-root {
+      background-color:#212121!important;
+      color:white;
+  }
+}
+.MuiAutocomplete-popper {
+  div {
+    background-color:#212121!important;
+    color:white;
+  }
+}
 //styling for MUI//
 .MuiPopover-root {
   div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {

@@ -27,15 +27,11 @@ import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 // Custom file imports
-import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
-import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
-import SearchBar from "./Navbar";
+import SearchBar from "./SearchBar";
 import "./Navbar.scss";
-
-import SearchBar from "../MapComponents/SearchBar.js";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
@@ -134,12 +130,8 @@ class Map extends Component {
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
 
-        <ToastProvider>
-          <Navbar />
-        </ToastProvider>
-
         <BoxLink state={this.state} closeBox={this.closeBox} />
-        <SearchBar />
+        <SearchBar chapters={this.props.chapter_data} PinClickHandler={this.PinClickHandler}/>
 
         {/* <Sidebar /> */}
 
