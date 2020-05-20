@@ -30,9 +30,7 @@ const StyledAvatarGroup = withStyles({
 })(AvatarGroup)
 
 
-const ChapterMembers = ({ chapterInfo }) => {
-  const { leaderImg, chapterLeader } = chapterInfo
-
+const ChapterMembers = ({ kev, volunteers }) => {
   return (
     <div>
       <h2 className="members-header">Chapter Members</h2>
@@ -40,8 +38,8 @@ const ChapterMembers = ({ chapterInfo }) => {
         <div className="chapter-leader">
           <div>
             <h2>Chapter Leader</h2>
-            <LeaderAvatar src={chapterInfo.leaderImg} />
-            <h2>{chapterInfo.chapterLeader}</h2>
+            <LeaderAvatar src={kev} />
+            <h2>Kevin</h2>
           </div>
           <div className="bio">
             <p>Kevin F. Adler is the Founder and CEO of Miracle Messages, an award-winning nonprofit organization that helps people experiencing homelessness rebuild their social support systems, through family reunification and a virtual buddy system. To-date, Miracle Messages has facilitated 325+ reunions and 48 new friendships.</p>
@@ -50,8 +48,8 @@ const ChapterMembers = ({ chapterInfo }) => {
         <div className="chapter-volunteers">
           <h2>Volunteers</h2>
           <StyledAvatarGroup spacing="large" max={10}>
-          {chapterInfo.chapterMembers.map(el => {
-            return <VolunteerAvatar alt={el.name} src={el.photo} />
+          {volunteers.map(el => {
+            return <VolunteerAvatar alt={`${el.fname}${el.lname}`} src={el.profile_img_url} />
           })}
           </StyledAvatarGroup>
         </div>

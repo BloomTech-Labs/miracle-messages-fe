@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ConnectionDetails from "./ConnectionDetails"
+import ReunionDetails from "./ReunionDetails"
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal({ connection }) {
+export default function ReunionModal({ connection }) {
   const { volunteerName, lDescription, videoLink, sDescription, picture } = connection
 
   const classes = useStyles();
@@ -46,7 +46,7 @@ export default function SimpleModal({ connection }) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <ConnectionDetails lDescription={lDescription} sDescription={sDescription} />
+      <ReunionDetails lDescription={lDescription} sDescription={sDescription} />
     </div>
   );
 

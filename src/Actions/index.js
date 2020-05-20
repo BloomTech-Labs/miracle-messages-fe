@@ -22,7 +22,10 @@ export const getData = url => dispatch => {
   dispatch({ type: FETCH_CHAPTER_INFO })
   axiosWithAuth()
     .get("/api/chapter")
-    .then(res => dispatch({ type: FETCH_CHAPTER_SUCCESS, payload: res.data }))
+    .then(res => {
+      console.log(res)
+      dispatch({ type: FETCH_CHAPTER_SUCCESS, payload: res.data })
+    })
     .catch(err => dispatch({ type: FETCH_CHAPTER_FAIL }))
 }
 

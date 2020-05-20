@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const ConnectionDetails = ({ lDescription, sDescription }) => {
+const ReunionDetails = ({ lDescription, sDescription }) => {
   return (
     <>
       <h2>{sDescription}</h2>
@@ -11,4 +11,4 @@ const ConnectionDetails = ({ lDescription, sDescription }) => {
   )
 }
 
-export default ConnectionDetails
+export default ReunionDetails
