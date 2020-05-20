@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
+import Connections from './Connections'
+import ChapterMembers from "./ChapterMembers"
 import './ChapterPage.scss'
-import chapter from '../../Assets/Imgs/chapter.jpg'
-import { Avatar } from '@material-ui/core' 
-import { AvatarGroup } from '@material-ui/lab';
+
 import kev from '../../Assets/Imgs/kev.jpg'
 import NavBar from '../MapComponents/Navbar'
 import { ToastProvider } from "react-toast-notifications";
 
-
+import headerImg from '../../Assets/Imgs/chapter.jpg'
 import pictureOne from '../../Assets/Imgs/Arash1.jpeg';
 import pictureTwo from '../../Assets/Imgs/Shawn.jpeg';
 import pictureThree from '../../Assets/Imgs/david.jpeg';
@@ -15,7 +15,7 @@ import pictureFour from '../../Assets/Imgs/Daniel.jpeg';
 import pictureFive from '../../Assets/Imgs/Ramonta.jpeg';
 import pictureSix from '../../Assets/Imgs/Will.jpeg';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/styles';
+
 
 const members = [
   {
@@ -53,32 +53,6 @@ const members = [
   }
 ]
 
-const LeaderAvatar = withStyles({
-  root: {
-    width: "25%",
-    height: "auto",
-    margin: "0 auto"
-  },
-})(Avatar)
-
-const VolunteerAvatar = withStyles({
-  root: {
-    width: "15%",
-    height: "auto",
-    margin: "0 auto"
-  },
-})(Avatar)
-
-const useStyles = makeStyles((theme) => ({
-  large: {
-    width: theme.spacing(20),
-    height: theme.spacing(20),
-  },
-  xl: {
-    width: theme.spacing(30),
-    height: theme.spacing(30),
-  },
-}));
 
 const ChapterPage = () => {
   const [ chapterInfo, setChapterInfo ] = useState({
@@ -95,12 +69,9 @@ const ChapterPage = () => {
   
   return (
     <div className="chapter-page-container">
-    {/* <ToastProvider>
-      <NavBar/>
-    </ToastProvider> */}
       <div className="header-img"></div>
       <div className="inner-container">
-        <h1>Seattle Chapter</h1>
+        <h1 className="chapter-name">Seattle Chapter</h1>
         <div className="flex-box justify-even">
           <div className="count-container">
             <p>{chapterInfo.members}</p>
@@ -119,20 +90,9 @@ const ChapterPage = () => {
         <button className="join-button" onClick={joinChapter} type="button">
           Join Chapter
         </button>
-        <div className="chapter-leader">
-          <h2>Chapter Leader</h2>
-          <LeaderAvatar src={chapterInfo.leaderImg} />
-          <h2>{chapterInfo.chapterLeader}</h2>
-          <p>We are on the frontlines of COVID-19, reconnecting our homeless neighbors with their loved ones… and us.</p>
-        </div>
-        <div className="chapter-volunteers">
-          <h2>Volunteers</h2>
-          <AvatarGroup spacing="large" max={6}>
-            {chapterInfo.chapterMembers.map(el => {
-              return <VolunteerAvatar alt={el.name} src={el.photo} />
-            })}
-          </AvatarGroup>
-        </div>
+        <Connections />
+        <ChapterMembers chapterInfo={chapterInfo} />
+        {/* Should separate out chapter leader section as sep component */}
       </div>
     </div>
   )
