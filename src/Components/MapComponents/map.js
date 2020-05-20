@@ -130,7 +130,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         <BoxLink state={this.state} closeBox={this.closeBox} />
-        
+
         <SearchBar />
 
         {/* <Sidebar /> */}
@@ -179,7 +179,7 @@ class Map extends Component {
             </Popup>
           )}
         </ReactMapGL>
-        {/*{this._renderSlide()}*/}
+        {/* {this._renderSlide()} */}
       </div>
     );
   }
