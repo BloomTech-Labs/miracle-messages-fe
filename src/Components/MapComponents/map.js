@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 // Mapbox imports
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import "./Map.scss"
+
+import { ReactSVG } from "react-svg";
 
 // Action imports
 import { getData } from "../../Actions/index";
@@ -15,7 +18,6 @@ import { onViewportChanged } from "../../Actions/OnViewportAction";
 import Drawer from "@material-ui/core/Drawer";
 import { IconButton } from "@material-ui/core";
 import { Cancel } from "@material-ui/icons";
-import { ToastProvider } from "react-toast-notifications";
 
 // Scrollbar import
 import { Scrollbars } from "react-custom-scrollbars";
@@ -30,6 +32,8 @@ import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
 import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
+
+import SearchBar from "../MapComponents/SearchBar.js";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
@@ -49,7 +53,7 @@ ReactGA.pageview("/map");
 class Map extends Component {
   //this fetches the data from the backend:
   state = {
-    open: true,
+    open: true
   };
   componentDidMount() {
     this.props.getData();
@@ -116,17 +120,19 @@ class Map extends Component {
     this.props.onViewportChanged(viewport);
   };
 
+  PinClickHandler = city => {
+    this.props.updatePopupAction(city);
+    this.props.popupToggleAction(city, this.props.openPopup);
+  };
+
   render() {
     const { viewport } = this.props;
 
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
-        <ToastProvider>
-          <Navbar />
-        </ToastProvider>
-
         <BoxLink state={this.state} closeBox={this.closeBox} />
+        <SearchBar />
 
         {/* <Sidebar /> */}
 
@@ -155,7 +161,7 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
-                  <CityPin city={city} />
+                  <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
                 </Marker>
               );
             }
