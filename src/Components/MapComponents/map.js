@@ -6,7 +6,10 @@ import { ToastProvider } from "react-toast-notifications";
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34b68671d16954349f72ae41f0d43c07f3abae20
 import { ReactSVG } from "react-svg";
 
 // Action imports
@@ -28,14 +31,16 @@ import ReactGA from "react-ga";
 import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
 
 // Custom file imports
-import CityPin from "./city_pin";
 import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
-import Navbar from "./Navbar";
 import BoxLink from "./BoxLink";
+<<<<<<< HEAD
 import "./Navbar.scss";
 
+=======
+>>>>>>> 34b68671d16954349f72ae41f0d43c07f3abae20
 import SearchBar from "../MapComponents/SearchBar.js";
+import "./Navbar.scss";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
@@ -134,11 +139,8 @@ class Map extends Component {
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
 
-        <ToastProvider>
-          <Navbar />
-        </ToastProvider>
-
         <BoxLink state={this.state} closeBox={this.closeBox} />
+
         <SearchBar />
 
         {/* <Sidebar /> */}
@@ -168,11 +170,15 @@ class Map extends Component {
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
+<<<<<<< HEAD
                   <ReactSVG
                     src="marker.svg"
                     className="city-pin"
                     onClick={() => this.PinClickHandler(city)}
                   />
+=======
+                <ReactSVG src="marker.svg" className="city-pin" onClick={() => this.PinClickHandler(city)}/>
+>>>>>>> 34b68671d16954349f72ae41f0d43c07f3abae20
                 </Marker>
               );
             }
@@ -191,7 +197,7 @@ class Map extends Component {
             </Popup>
           )}
         </ReactMapGL>
-        {/*{this._renderSlide()}*/}
+        {/* {this._renderSlide()} */}
       </div>
     );
   }
