@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./city_popup.scss";
+
 const CityPopup = (props) => {
   const { info } = props;
+  console.log(info)
+
   return (
     <div className="chapter-Info">
       <div className="chapter-Title">
@@ -32,7 +35,7 @@ const CityPopup = (props) => {
 
       {/* Contains the contact info */}
 
-      <Link className="chapter-btn" to="/chapter">
+      <Link className="chapter-btn" to={`/chapter/${info.id}`}>
         Chapter Page
       </Link>
     </div>

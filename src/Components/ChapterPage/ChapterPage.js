@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
-import Connections from './Connections'
+import React, { useState, useEffect } from 'react'
+import { fetchChapterInfo, fetchChapterReunions, fetchChapterVolunteers } from '../../Actions/ChapterInfoActions'
+import Reunions from './Reunions'
 import ChapterMembers from "./ChapterMembers"
+import { useParams } from 'react-router-dom'
+import { connect } from "react-redux"
 import './ChapterPage.scss'
 
 import kev from '../../Assets/Imgs/kev.jpg'
@@ -54,31 +57,37 @@ const members = [
 ]
 
 
-const ChapterPage = () => {
-  const [ chapterInfo, setChapterInfo ] = useState({
-    members: 12, 
-    reunions: 8,
-    leaderImg: kev,
-    chapterLeader: "Kevin Adler",
-    chapterMembers: members
-  })
+const ChapterPage = (props) => {
+  const { fetchChapterInfo, fetchChapterVolunteers, fetchChapterReunions } = props
+  const { chapterInfo, volunteers, reunions, reunionCount, volunteerCount } = props
+
+  console.log(props)
+  const { id } = useParams()
+  const leaderImg = kev
+
+  useEffect(() => {
+    fetchChapterInfo(id)
+    fetchChapterVolunteers(id)
+    fetchChapterReunions(id)
+  }, [])
 
   const joinChapter = (e) => {
     e.preventDefault()
   }
   
   return (
+    chapterInfo && 
     <div className="chapter-page-container">
       <div className="header-img"></div>
       <div className="inner-container">
-        <h1 className="chapter-name">Seattle Chapter</h1>
+        <h1 className="chapter-name">{chapterInfo.title}</h1>
         <div className="flex-box justify-even">
           <div className="count-container">
-            <p>{chapterInfo.members}</p>
+            <p>{volunteerCount}</p>
             <p>members</p>
           </div>
           <div className="count-container">
-            <p>{chapterInfo.reunions}</p>
+            <p>{reunionCount}</p>
             <p>reunions</p>
           </div>
         </div>
@@ -90,12 +99,28 @@ const ChapterPage = () => {
         <button className="join-button" onClick={joinChapter} type="button">
           Join Chapter
         </button>
-        <Connections />
-        <ChapterMembers chapterInfo={chapterInfo} />
-        {/* Should separate out chapter leader section as sep component */}
+        <Reunions reunions={reunions} />
+        <ChapterMembers volunteers={volunteers} kev={kev} />
       </div>
-    </div>
+    </div> 
+
+    // Probably need some type of loading page to render while data is fetched
+    || null
   )
 }
 
-export default ChapterPage
+const mapStateToProps = (state) => {
+  const { chapterInfo, volunteers, reunions } = state.chapterInfoReducer
+
+  return {
+    chapterInfo,
+    volunteers,
+    volunteerCount: volunteers.length,
+    reunions,
+    reunionCount: reunions.length
+  }
+}
+
+
+export default connect( mapStateToProps, { fetchChapterInfo, fetchChapterReunions, fetchChapterVolunteers } )(ChapterPage)
+

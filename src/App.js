@@ -67,7 +67,7 @@ const App = () => {
 
           {/* <Route exact path="/form" component={VolunteerForm} /> */}
 
-          <Route path="/chapter" component={ChapterPage} />
+          <Route path="/chapter/:id" component={ChapterPage} />
 
           <Route exact path="/user/register" component={NewVolunteer} />
 

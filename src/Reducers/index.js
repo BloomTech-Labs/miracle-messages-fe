@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { formReducer } from './FormReducer';
 import { loginReducer } from './LoginReducer';
 import { ChapterReducer } from './ChapterReducer';
+import { chapterInfoReducer } from './chapterInfoReducer'
 import { volunteersReducer} from './VolunteersReducer';
 import { usersReducer } from './UserReducer';
 import { partnerReducer } from './partnerReducer';
@@ -18,5 +19,6 @@ export default combineReducers({
     volunteersReducer,
     usersReducer,
     partnerReducer,
-    searchBarReducer
+    searchBarReducer,
+    chapterInfoReducer
  });
