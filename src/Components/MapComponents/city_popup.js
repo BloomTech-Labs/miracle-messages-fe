@@ -12,7 +12,7 @@ const CityPopup = (props) => {
         <h1>{info.title}</h1>
         <div className="chapter-img">
           <img
-            src="https://images.pexels.com/photos/1543767/pexels-photo-1543767.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            src={info.chapter_img_url}
             alt="chapter"
           />
         </div>
