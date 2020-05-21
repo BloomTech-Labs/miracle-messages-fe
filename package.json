@@ -28,6 +28,7 @@
     "react-icons": "^3.8.0",
     "react-load-script": "^0.0.6",
     "react-map-gl": "^5.2.5",
+    "react-multi-carousel": "^2.5.5",
     "react-perfect-scrollbar": "^1.5.3",
     "react-phone-number-input": "^2.4.1",
     "react-places-autocomplete": "^7.2.1",

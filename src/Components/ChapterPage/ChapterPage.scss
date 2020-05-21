@@ -1,28 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap");
 
 .header-img {
   background: url("../../Assets/Imgs/chapter.jpg");
   background-size: cover;
   background-position: right 50% bottom 80%;
   width: 100%;
-  height: 35vh;
+  height: 40vh;
 }
 
-p, h1, h2, h3, h4, button {
-  margin: 0
+p,
+h1,
+h2,
+h3,
+h4,
+button {
+  margin: 0;
 }
 
 .chapter-page-container {
-  padding: 2%;
-  
+  font-family: ProximaNova;
+
   .inner-container {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
+
+    .first-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-content: center;
+    }
 
     .chapter-name {
+      align-self: center;
+
+      width: 90%;
       font-size: 2.5rem;
       text-align: center;
       padding: 2% 0;
-      border-bottom: 5px solid #C0C0C0;
+      border-bottom: 5px solid #c0c0c0;
       font-weight: 900;
     }
 
@@ -32,27 +48,33 @@ p, h1, h2, h3, h4, button {
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+      margin-top: 2vh;
       p {
+        font-family: poppins;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .count {
+        font-family: poppins;
         text-align: center;
         font-size: 2rem;
-        font-weight: 800;    
+        font-weight: 700;
       }
     }
-    
+
     .hero-p {
-      padding: 2%;
+      padding: 5%;
       width: 100%;
-      font-size: 1.75rem;
+      font-size: 1.3rem;
     }
 
     .members-header {
-        font-size: 2.5rem;
-        font-weight: 800;    
-        padding: 2% 0;
-        margin-bottom: 2%;
-      }
-
+      font-size: 2rem;
+      font-weight: 800;
+      padding: 2% 0;
+      margin-bottom: 2%;
+    }
 
     .chapter-leader {
       display: flex;
@@ -62,7 +84,7 @@ p, h1, h2, h3, h4, button {
       h2 {
         text-align: center;
         font-size: 2rem;
-        font-weight: 800;    
+        font-weight: 800;
         padding: 2% 0;
       }
 
@@ -83,7 +105,8 @@ p, h1, h2, h3, h4, button {
     }
 
     .chapter-volunteers {
-      width: 30%;
+      width: 100%;
+      margin-bottom: 12vh;
 
       h2 {
         padding: 2%;
@@ -93,25 +116,27 @@ p, h1, h2, h3, h4, button {
         margin-bottom: 2%;
       }
     }
-  } 
+  }
 }
 
 .join-button {
+  align-self: center;
   display: block;
-  margin: 1% auto;
+  margin-top: 5vh;
   font-weight: 600;
-  width: 30%;
+  width: 20%;
   border-radius: 7px;
-  padding: 1.0% 0%;
+  padding: 1% 0%;
   color: #696969;
-  font-size: 2rem;
+  font-size: 1.2rem;
   border: 2px solid #696969;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   &:hover {
     font-weight: 800;
     border: 3px solid #696969;
     cursor: pointer;
-  }  
+  }
   &:focus {
     outline: none;
   }
@@ -130,7 +155,27 @@ p, h1, h2, h3, h4, button {
 }
 
 .justify-even {
+  align-self: center;
+
   justify-content: space-evenly;
+  width: 85%;
 }
 
-
+.members-box {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .leader-title {
+    margin-bottom: 0.7rem;
+    font-size: 2rem;
+  }
+  #leader-name {
+    margin-top: 0.5rem;
+    font-size: 1.7rem;
+  }
+  #leader-bio {
+    font-size: 1.3rem;
+  }
+}

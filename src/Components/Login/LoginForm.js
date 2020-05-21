@@ -42,6 +42,7 @@ const LoginForm = (props) => {
     widget.renderEl(
       { el: "#sign-in-widget" },
       (res) => {
+        console.log(res);
         console.log("user", res.user);
         console.log("token", res.session.token);
 

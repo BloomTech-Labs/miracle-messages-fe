@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import ReunionDetails from "./ReunionDetails"
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import React, { useState } from "react";
+import ReunionDetails from "./ReunionDetails";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -20,17 +20,23 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
+    position: "absolute",
     width: "40%",
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
 }));
 
 export default function ReunionModal({ connection }) {
-  const { volunteerName, lDescription, videoLink, sDescription, picture } = connection
+  const {
+    volunteerName,
+    lDescription,
+    videoLink,
+    sDescription,
+    picture,
+  } = connection;
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -54,12 +60,9 @@ export default function ReunionModal({ connection }) {
     <div className="card">
       <div className="connections-inner-container">
         <h3>{sDescription}</h3>
-        <div className="img-container">
-          <img src={picture} />
+        <div className="img-container" onClick={handleOpen}>
+          <img src={picture} alt="persons face" />
         </div>
-        <button className="modal-btn" type="button" onClick={handleOpen}>
-          See Reunion Details
-        </button>
       </div>
       <Modal
         open={open}

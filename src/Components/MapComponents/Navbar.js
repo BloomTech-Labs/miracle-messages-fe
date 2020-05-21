@@ -53,8 +53,7 @@ const Navbar = (props) => {
         <img className="mLogo" src={logoMobile} alt="mobile logo" />
       </Link>
       <nav>
-        {/* create registration/login navigation */}
-        {!localStorage.userId || !props.isLoggedIn ? (
+        {!localStorage.userId && !props.isLoggedIn ? (
           <Link to="/login">Sign In</Link>
         ) : null}
 
