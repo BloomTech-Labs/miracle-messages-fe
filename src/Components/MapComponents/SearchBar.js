@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import "./Navbar.scss";
-import { updateChapters } from "../../Actions/SearchBarAction";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,12 +7,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import axios from "axios";
 
 
 const SearchBar = (props) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [filterAnchorEl, setFilterAnchor] = useState(null);
+  const [mode, setMode] = useState("chapters");
   const [search, updateSearch] = useState("");
 
   const toggleSearch = e => {
@@ -22,6 +20,11 @@ const SearchBar = (props) => {
     if (!searchOpen) {
       setSearchOpen(!searchOpen);
     }
+  }
+
+  const changeSearchData = mode => {
+    setFilterAnchor(false);
+    setMode(mode);
   }
 
 
@@ -36,12 +39,12 @@ const SearchBar = (props) => {
             <Autocomplete 
             id="search-menu"
             className="search-menu"
-            options={props.chapters}
+            options={mode === "chapters" ? props.chapters : props.reunions}
             getOptionLabel={chapter => chapter.city}
             onChange={(event, chapter) => {
-              if (chapter) props.PinClickHandler(chapter);
+              if (chapter && mode === "chapter") props.PinClickHandler(chapter);
             }}
-            renderInput={(params) => <TextField {...params} id="standard-basic" variant="outlined" placeholder="Search Chapters"/>}
+            renderInput={(params) => <TextField {...params} id="standard-basic" variant="outlined" placeholder={mode === "chapters" ? "Search Chapters" : "Search Reunions"}/>}
             />
             <IconButton 
               aria-controls="simple-menu" 
@@ -66,9 +69,8 @@ const SearchBar = (props) => {
             onClose={() => setFilterAnchor(false)}
             style={{ top: "60px" }}
             >
-              <MenuItem onClick={() => setFilterAnchor(false)}>All</MenuItem>
-              <MenuItem onClick={() => setFilterAnchor(false)}>City</MenuItem>
-              <MenuItem onClick={() => setFilterAnchor(false)}>State</MenuItem>
+              <MenuItem onClick={() => changeSearchData("chapters")}>Chapters</MenuItem>
+              <MenuItem onClick={() => changeSearchData("reunions")}>Reunions</MenuItem>
             </Menu>
           </div>
         </form>
@@ -77,9 +79,4 @@ const SearchBar = (props) => {
   )
 };
 
-const mapStateToProps = (state) => {
-    return {
-      chapterData: state.mapReducer.chapterData,
-    };
-  };
-  export default connect(mapStateToProps, {})(SearchBar);
+export default SearchBar;
