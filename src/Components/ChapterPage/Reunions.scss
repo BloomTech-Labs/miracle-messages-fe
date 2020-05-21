@@ -1,38 +1,46 @@
-
 .outer-cards-container {
   margin-top: 3%;
 
   h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2%;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 10%;
   }
-
-}
-
-.cards-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 1%;
 }
 
 .card {
-  width: 25%;
-  padding: 1% 2%;
-  border: 2px solid #D3D3D3;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  &:hover {
+    cursor: pointer;
+    h3 {
+      opacity: 90%;
+      font-size: 1.8rem;
+    }
+    img {
+      filter: blur(1px);
+    }
+  }
 
   h3 {
     font-size: 1.75rem;
+    position: fixed;
+    top: 60%;
+    color: white;
+    background: #212121;
+    opacity: 60%;
+    z-index: 2;
+    padding: 2%;
   }
 
   .img-container {
     width: 100%;
-  
+
     img {
       display: block;
       width: 100%;
-      height: auto;
-      margin: 4% auto; 
+      height: 300px;
+      object-fit: cover;
+
+      margin: 4% auto;
     }
   }
 
@@ -46,12 +54,13 @@
     color: #696969;
     font-size: 1.5rem;
     border: 2px solid #696969;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
     &:hover {
       font-weight: 800;
       border: 3px solid #696969;
       cursor: pointer;
-    }  
+    }
     &:focus {
       outline: none;
     }
@@ -60,4 +69,8 @@
       box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
     }
   }
+}
+
+.react-multi-carousel-item.react-multi-carousel-item--active {
+  margin: 0 7px;
 }
