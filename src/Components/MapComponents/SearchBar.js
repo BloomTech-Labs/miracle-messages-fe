@@ -42,7 +42,7 @@ const SearchBar = (props) => {
             options={mode === "chapters" ? props.chapters : props.reunions}
             getOptionLabel={chapter => chapter.city}
             onChange={(event, chapter) => {
-              if (chapter && mode === "chapter") props.PinClickHandler(chapter);
+              if (chapter && mode === "chapters") props.PinClickHandler(chapter);
             }}
             renderInput={(params) => <TextField {...params} id="standard-basic" variant="outlined" placeholder={mode === "chapters" ? "Search Chapters" : "Search Reunions"}/>}
             />
