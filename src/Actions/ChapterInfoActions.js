@@ -13,7 +13,7 @@ const buildUrls = (id) => {
   return {
     chapter: `${baseURL}${basePath}/${id}`,
     volunteers: `${baseURL}${basePath}/${id}/volunteers`,
-    reunions: `${baseURL}${basePath}/${id}/reunions`
+    reunions: `${baseURL}${basePath}/${id}/reunion`
   }
 }
 
@@ -49,6 +49,7 @@ export const fetchChapterReunions = (id) => dispatch => {
   axios
     .get(reunions)
     .then(res => {
+      console.log(res);
       dispatch({
         type: FETCH_CHAPTER_REUNIONS,
         payload: res.data

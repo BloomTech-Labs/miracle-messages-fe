@@ -4,6 +4,9 @@ export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO"
 export const FETCH_CHAPTER_SUCCESS = "FETCH_CHAPTER_SUCCESS"
 export const FETCH_CHAPTER_FAIL = "FETCH_CHAPTER_FAIL"
 
+export const FETCHING_REUNION = "FETCHING_REUNION"
+export const FETCH_REUNION_SUCCESS = "FETCH_REUNION_SUCCESS"
+export const FETCH_REUNION_ERR = "FETCH_REUNION_ERR"
 
 export const FETCHING_PARTNER = "FETCHING_PARTNER"
 export const FETCH_PARTNER_SUCCCESS = "FETCH_PARTNER_SUCCESS"
@@ -18,7 +21,7 @@ export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS"
 export const PARTNER_ERR = "PARTNER_ERR"
 
 //this data pull enables us to get chapter related data from backend so we can display on the map
-export const getData = url => dispatch => {
+export const getData = () => dispatch => {
   dispatch({ type: FETCH_CHAPTER_INFO })
   axiosWithAuth()
     .get("/api/chapter")
@@ -29,18 +32,29 @@ export const getData = url => dispatch => {
     .catch(err => dispatch({ type: FETCH_CHAPTER_FAIL }))
 }
 
+export const getReunions = () => dispatch => {
+  dispatch({ type: FETCHING_REUNION })
+  axiosWithAuth()
+    .get("/api/reunion")
+    .then(res => {
+      console.log(res)
+      dispatch({ type: FETCH_REUNION_SUCCESS, payload: res.data })
+    })
+    .catch(err => dispatch({ type: FETCH_REUNION_ERR, payload: err }))
+}
+
 // //  pull partners data from the back-end
 
 export const getSponsor = data => dispatch => {
   dispatch({ type: FETCHING_PARTNER })
   axiosWithAuth()
     .get("/api/partner")
-    .then(res => dispatch({ type: FETCH_PARTNER_SUCCCESS, payload: res.data }))
+    .then(res => dispatch({ type: FETCH_REUNION_SUCCESS, payload: res.data }))
     .catch(err =>{
       console.log(err)
       console.log(err.response)
       dispatch({
-        type: FETCH_PARTNER_ERR,
+        type: FETCH_REUNION_ERR,
         payload: err
       })}
     )

@@ -8,7 +8,7 @@ import "./Map.scss";
 import { ReactSVG } from "react-svg";
 
 // Action imports
-import { getData } from "../../Actions/index";
+import { getData, getReunions } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
@@ -54,6 +54,7 @@ class Map extends Component {
   };
   componentDidMount() {
     this.props.getData();
+    this.props.getReunions();
   }
   componentDidUpdate(prevProps) {
     if (this.props.openPopup !== prevProps.openPopup) {
@@ -155,7 +156,7 @@ class Map extends Component {
               return (
                 <Marker
                   className="markerMAP"
-                  key={`marker-${index}`}
+                  key={`chapter-marker-${index}`}
                   latitude={city.latitude}
                   longitude={city.longitude}
                 >
@@ -167,6 +168,18 @@ class Map extends Component {
                 </Marker>
               );
             }
+          })}
+          {this.props.reunion_data.map((reunion, index) => {
+            return (
+              <Marker
+                className="markerMAP"
+                key={`reunion-marker-${index}`}
+                latitude={reunion.longitude}
+                longitude={reunion.latitude}
+              >
+                <ReactSVG src="reunion_marker.svg" className="city-pin"/>
+              </Marker>
+            )
           })}
           {this.props.openPopup && (
             <Popup
@@ -192,6 +205,7 @@ class Map extends Component {
 const mapStateToProps = (state) => {
   return {
     chapter_data: state.mapReducer.chapter_data,
+    reunion_data: state.mapReducer.reunion_data,
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
     openPopup: state.mapReducer.openPopup,
@@ -204,6 +218,7 @@ const mapStateToProps = (state) => {
 //this is how we connect the map.js component to the store
 export default connect(mapStateToProps, {
   getData,
+  getReunions,
   updatePopupAction,
   popupToggleAction,
   onViewportChanged,
