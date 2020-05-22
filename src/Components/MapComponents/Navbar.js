@@ -18,6 +18,8 @@ import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const Navbar = (props) => {
+  const token = JSON.parse(localStorage.getItem("okta-token-storage"));
+
   const history = useHistory();
   const { addToast } = useToasts();
 
@@ -33,8 +35,10 @@ const Navbar = (props) => {
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem("okToken");
-    localStorage.removeItem("userId");
+    localStorage.removeItem("okta-pkce-storage");
+    localStorage.removeItem("okta-cache-storage");
+    localStorage.removeItem("okta-token-storage");
+
     history.push("/");
     addToast("Logged Out", {
       appearance: "success",
@@ -53,9 +57,7 @@ const Navbar = (props) => {
         <img className="mLogo" src={logoMobile} alt="mobile logo" />
       </Link>
       <nav>
-        {!localStorage.userId && !props.isLoggedIn ? (
-          <Link to="/login">Sign In</Link>
-        ) : null}
+        {!token && !props.isLoggedIn ? <Link to="/login">Sign In</Link> : null}
 
         <a href="https://www.miraclemessages.org/about">About</a>
 
@@ -67,7 +69,7 @@ const Navbar = (props) => {
         >
           Donate
         </a>
-        {localStorage.userId && (
+        {token && (
           <>
             <img
               src={profilephoto}
