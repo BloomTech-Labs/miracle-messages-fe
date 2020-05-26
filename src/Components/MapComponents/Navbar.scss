@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   background: #212121;
-  opacity: 95%;
+  opacity: 9.5;
   font-family: ProximaNova;
   overflow: hidden;
   top: 0;
@@ -243,16 +243,17 @@
     }
   }
 }
-.filter-menu, #search-menu {
+.filter-menu,
+#search-menu {
   .MuiPaper-root {
-      background-color:#212121!important;
-      color:white;
+    background-color: #212121 !important;
+    color: white;
   }
 }
 .MuiAutocomplete-popper {
   div {
-    background-color:#212121!important;
-    color:white;
+    background-color: #212121 !important;
+    color: white;
   }
 }
 //styling for MUI//
