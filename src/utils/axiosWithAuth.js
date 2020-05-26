@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const axiosWithAuth = () => {
-  const token = JSON.parse(localStorage.getItem("okta-token-storage"))
-    .accessToken.value;
+  const token = JSON.parse(localStorage.getItem("okta-token-storage"));
 
   let baseUrl;
   if (process.env.NODE_ENV === "development") {
@@ -10,11 +9,16 @@ export const axiosWithAuth = () => {
   } else {
     baseUrl = `https://miracle-messages-dev.herokuapp.com/`;
   }
-
-  return axios.create({
-    baseURL: baseUrl,
-    headers: {
-      Bearer: token,
-    },
-  });
+  if (token) {
+    return axios.create({
+      baseURL: baseUrl,
+      headers: {
+        Bearer: token.accessToken.value,
+      },
+    });
+  } else {
+    return axios.create({
+      baseURL: baseUrl,
+    });
+  }
 };
