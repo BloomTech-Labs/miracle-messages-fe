@@ -5,6 +5,9 @@ import {
   FETCH_CHAPTER_DEFAULT_INFO,
   FETCH_CHAPTER_DEFAULT_SUCCESS,
   FETCH_CHAPTER_DEFAULT_FAIL,
+  FETCHING_REUNION,
+  FETCH_REUNION_SUCCESS,
+  FETCH_REUNION_ERR,
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
@@ -23,9 +26,12 @@ const initialState = {
     pitch: 0,
   },
   chapter_data: [], //this gets populated with componentDidMount
+  reunion_data: [],
   popupInfo: null,
-  fetching: false,
-  error: null, //learn more is a toggleinside the pop-ups
+  fetching_chapters: false,
+  fetching_reunions: false,
+  chapter_error: null, //learn more is a toggleinside the pop-ups
+  reunion_error: null,
   //openDrawer: true,
   openPopup: false,
   zoom: false,
@@ -39,43 +45,63 @@ export const mapReducer = (state = initialState, action) => {
     case FETCH_CHAPTER_INFO:
       return {
         ...state,
-        fetching: true,
-        error: null,
+        fetching_chapters: true,
+        chapter_error: null,
       };
 
     case FETCH_CHAPTER_SUCCESS:
       return {
         ...state,
         chapter_data: action.payload,
-        fetching: false,
-        error: null,
+        fetching_chapters: false,
+        chapter_error: null,
       };
 
     case FETCH_CHAPTER_FAIL:
       return {
         ...state,
-        fetching: false,
-        error: action.payload,
+        fetching_chapters: false,
+        chapter_error: action.payload,
       };
     case FETCH_CHAPTER_DEFAULT_INFO:
       return {
         ...state,
         fetching: true,
-        error: null,
+        chapter_error: null,
       };
     case FETCH_CHAPTER_DEFAULT_SUCCESS:
       return {
         ...state,
-        fetching: false,
+        fetching_chapters: false,
         popupInfo: action.payload,
-        error: null,
+        chapter_error: null,
       };
     case FETCH_CHAPTER_DEFAULT_FAIL:
       return {
         ...state,
-        fetching: false,
-        error: action.payload,
+        fetching_chapters: false,
+        chapter_error: action.payload,
       };
+    // reducer to set the state for reunions
+    case FETCHING_REUNION:
+      return {
+        ...state,
+        fetching_reunions: true,
+        reunion_error: null
+      };
+    case FETCH_REUNION_SUCCESS:
+      return {
+        ...state,
+        reunion_data: action.payload,
+        fetching_reunions: false,
+        reunion_error: null
+      };
+    case FETCH_REUNION_ERR:
+      return {
+        ...state,
+        fetching_reunions: false,
+        reunion_error: action.payload
+      }
     //reducer to set the state for the city popups
     case UPDATE_POPUP:
       return {
