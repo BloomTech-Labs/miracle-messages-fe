@@ -9,16 +9,17 @@ export const axiosWithAuth = () => {
   } else {
     baseUrl = `https://miracle-messages-dev.herokuapp.com/`;
   }
-  if (token) {
+
+  if (token.accessToken) {
     return axios.create({
       baseURL: baseUrl,
       headers: {
         Bearer: token.accessToken.value,
       },
-    });
-  } else {
-    return axios.create({
-      baseURL: baseUrl,
-    });
+    })
   }
+  
+  return axios.create({
+    baseURL: baseUrl,
+  });
 };
