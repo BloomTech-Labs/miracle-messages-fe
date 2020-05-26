@@ -1,16 +1,15 @@
 import React from "react";
-
 import { ToastProvider } from "react-toast-notifications";
 
 //Router
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { Route, Redirect, useHistory } from "react-router-dom";
 
 //Styles
-import'./App.scss';
+import "./App.scss";
 import "./CSS/style.css";
 
 // Header
-import Navbar from "./Components/MapComponents/Navbar"
+import Navbar from "./Components/MapComponents/Navbar";
 
 //Imported Components
 import Map from "./Components/MapComponents/map";
@@ -31,13 +30,6 @@ import config from "./config/config.js";
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute";
 
-// const config = {
-//   issuer: `https://donyawebgroup-us.okta.com/oauth2/default`,
-//   redirectUri: window.location.origin + `/implicit/callback`,
-//   clientId: `0oa4sd1nfAm7D5kIA4x6`,
-//   pkce: true
-// };
-
 //SHAWN OKTA
 import CustomLogin from "./Components/Login/CustomLogin";
 
@@ -50,42 +42,27 @@ const App = () => {
 
   return (
     <div className="App">
-        <ToastProvider>
-          <Navbar />
-        </ToastProvider>
-      <Security
-        issuer="https://dev-750287.okta.com/oauth2/default"
-        clientId="0oac2l3f67qM9MChZ4x6"
-        redirectUri={window.location.origin + "/implicit/callback"}
-        onAuthRequired={onAuthRequired}
-        pkce={true}
-      >
+      <ToastProvider>
+        <Navbar />
+      </ToastProvider>
+      <Security {...config.oidc} onAuthRequired={onAuthRequired}>
         {/* Routes */}
 
-        <Switch>
-          <Route exact path="/" render={(props) => <Map {...props} />} />
+        <Route exact path="/" render={(props) => <Map {...props} />} />
 
-          {/* <Route exact path="/form" component={VolunteerForm} /> */}
+        {/* <Route exact path="/form" component={VolunteerForm} /> */}
 
-          <Route path="/chapter/:id" component={ChapterPage} />
+        <Route path="/chapter/:id" component={ChapterPage} />
 
-          <Route exact path="/user/register" component={NewVolunteer} />
+        <Route exact path="/user/register" component={NewVolunteer} />
 
-          <Route
-            exact
-            path="/login"
-            render={() => <LoginForm baseUrl="https://dev-750287.okta.com" />}
-          />
+        <Route exact path="/login" component={LoginForm} />
 
-          <Route path="/implicit/callback" component={LoginCallback} />
+        <Route path="/implicit/callback" component={LoginCallback} />
 
-          {/* <Route exact path="/user/newchapter" component={NewChapterInfo} /> */}
-          <Route exact path="/user/newchapterform" component={ChapterForm} />
+        <Route exact path="/user/newchapterform" component={ChapterForm} />
 
-          <SecureRoute path="/user" component={FullLayout} />
-
-          <Redirect from="*" to="/" />
-        </Switch>
+        <SecureRoute path="/user" component={FullLayout} />
       </Security>
     </div>
   );

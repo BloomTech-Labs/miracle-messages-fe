@@ -1,18 +1,20 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const axiosWithAuth = () => {
-    
-    let baseUrl;
-    if(process.env.NODE_ENV === 'development') {
-        baseUrl = 'https://miracle-messages-dev.herokuapp.com/';
-    }  else {
-        baseUrl = `https://miracle-messages-dev.herokuapp.com/`;
-    }
+  const token = JSON.parse(localStorage.getItem("okta-token-storage"))
+    .accessToken.value;
 
-    return axios.create({
-        baseURL: baseUrl,
-        // headers: {
-        //     authorization: token
-        // }
-    });
+  let baseUrl;
+  if (process.env.NODE_ENV === "development") {
+    baseUrl = "https://miracle-messages-dev.herokuapp.com/";
+  } else {
+    baseUrl = `https://miracle-messages-dev.herokuapp.com/`;
+  }
+
+  return axios.create({
+    baseURL: baseUrl,
+    headers: {
+      Bearer: token,
+    },
+  });
 };

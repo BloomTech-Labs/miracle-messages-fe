@@ -10,10 +10,9 @@ import { loginSuccess } from "../../Actions/AdminPageActions";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const history = useHistory();
   useEffect(() => {
-    console.log(props.user);
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
     const widget = new OktaSignIn({
@@ -25,8 +24,8 @@ const LoginForm = (props) => {
         registration: true,
       },
 
-      authScheme: "SESSION",
-      i18n: {
+      /*       authScheme: "SESSION",
+       */ i18n: {
         en: {
           "primaryauth.title": "Sign In",
         },
@@ -35,23 +34,24 @@ const LoginForm = (props) => {
         pkce,
         issuer,
         display: "page",
+        responseMode: pkce ? "query" : "fragment",
         scopes,
       },
     });
 
     widget.renderEl(
       { el: "#sign-in-widget" },
-      (res) => {
-        console.log(res);
+      () => {
+        /* console.log(res);
         console.log("user", res.user);
-        console.log("token", res.session.token);
-
+                console.log("token", res.session.token);
+        
         if (res.status === "SUCCESS") {
           localStorage.setItem("okToken", res.session.token);
           localStorage.setItem("userId", res.user.id);
           props.loginSuccess(res.user);
           history.push("/");
-        }
+        } */
       },
       (err) => {
         throw err;
