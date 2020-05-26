@@ -174,8 +174,8 @@ class Map extends Component {
               <Marker
                 className="markerMAP"
                 key={`reunion-marker-${index}`}
-                latitude={reunion.longitude}
-                longitude={reunion.latitude}
+                latitude={reunion.latitude}
+                longitude={reunion.longitude}
               >
                 <ReactSVG src="reunion_marker.svg" className="city-pin"/>
               </Marker>
