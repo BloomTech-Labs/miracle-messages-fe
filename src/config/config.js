@@ -18,12 +18,15 @@ if (process.env.NODE_ENV === "development") {
     window.location.host
   }${CALLBACK_PATH}`;
 } */
-
+const prod =
+  "https://production.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
+const dev = "http://localhost:3000/implicit/callback";
+const uriConfig = process.env.NODE_ENV === "development" ? dev : prod;
 export default {
   oidc: {
     clientId: CLIENT_ID,
     issuer: ISSUER,
-    redirectUri: "http://localhost:3000/implicit/callback",
+    redirectUri: uriConfig,
     scopes: ["openid", "profile", "email"],
     pkce: true,
     // If the callback is _not_ over SSL, disable the HTTPS check in the client
