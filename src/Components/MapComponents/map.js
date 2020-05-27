@@ -131,11 +131,11 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         <BoxLink state={this.state} closeBox={this.closeBox} />
-        <SearchBar
+        {!this.props.sideBarOpen && <SearchBar
           chapters={this.props.chapter_data}
           reunions={this.props.reunion_data}
           PinClickHandler={this.PinClickHandler}
-        />
+        />}
 
         {/* <Sidebar /> */}
 

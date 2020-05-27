@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ToastProvider } from "react-toast-notifications";
 
 //Router
@@ -14,6 +14,11 @@ import Navbar from "./Components/MapComponents/Navbar";
 //Imported Components
 import Map from "./Components/MapComponents/map";
 import FullLayout from "./Components/dashboard/layouts/fulllayout";
+import Volunteers from "./Components/dashboard/views/Volunteers.js";
+import Chapters from "./Components/dashboard/views/Chapters/Chapters.js";
+import Sponsors from "./Components/dashboard/views/Sponsors/Sponsors.js";
+import ChapterCard from "./Components/dashboard/views/Chapters/ChapterCard";
+import PendingChapter from "./Components/dashboard/views/Chapters/PendingChapter";
 // import VolunteerForm from "./Components/Forms/VolunteerForm";
 
 import LoginForm from "./Components/Login/LoginForm.js";
@@ -32,6 +37,7 @@ import { PrivateRoute } from "./Components/PrivateRoute";
 
 //SHAWN OKTA
 import CustomLogin from "./Components/Login/CustomLogin";
+import Sidebar from "./Components/dashboard/sidebar/sidebar";
 
 const App = () => {
   const history = useHistory();
@@ -39,16 +45,18 @@ const App = () => {
     // Redirect to the /login page that has a CustomLoginComponent
     history.push("/login");
   };
+  const [sideBarOpen, setSideBarOpen] = useState(false);
 
   return (
     <div className="App">
       <ToastProvider>
-        <Navbar />
+        <Navbar setSideBarOpen={setSideBarOpen} sideBarOpen={sideBarOpen}/>
       </ToastProvider>
+      <Sidebar setSideBarOpen={setSideBarOpen} sideBarOpen={sideBarOpen}/>
       <Security {...config.oidc} onAuthRequired={onAuthRequired}>
         {/* Routes */}
 
-        <Route exact path="/" render={(props) => <Map {...props} />} />
+        <Route exact path="/" render={(props) => <Map {...props} sideBarOpen={sideBarOpen}/>} />
 
         {/* <Route exact path="/form" component={VolunteerForm} /> */}
 
@@ -62,7 +70,13 @@ const App = () => {
 
         <Route exact path="/user/newchapterform" component={ChapterForm} />
 
-        <SecureRoute path="/user" component={FullLayout} />
+        {/* Dashboard */}
+        {/* <SecureRoute path="/admin" component={FullLayout} /> */}
+        <SecureRoute path='/admin/chapters' component={Chapters} />
+        <SecureRoute exact path='/admin/pending' component={PendingChapter} />
+        <SecureRoute exact path='/admin/Sponsors' component={Sponsors} />
+        <SecureRoute exact path='/admin/volunteers' component={Volunteers} />
+        <SecureRoute path='/admin/chapters/:id' render={props => <ChapterCard {...props} />} />
       </Security>
     </div>
   );
