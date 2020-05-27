@@ -83,11 +83,14 @@ const Navbar = (props) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={() => {
+                handleClose();
+                props.setSideBarOpen(!props.sideBarOpen);
+              }}>
                 <ListItemIcon>
                   <LibraryBooksIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Chapter" />
+                <ListItemText primary="Dashboard" />
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <ListItemIcon>
