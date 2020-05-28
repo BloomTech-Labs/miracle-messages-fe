@@ -198,7 +198,7 @@ class UpdateForm extends React.Component {
           rows="5"
         />
         <br />
-        <Button color="secondary" onClick={this.updateChapter}>
+        <Button style={{backgroundColor: "#212121"}} onClick={this.updateChapter}>
           Update
         </Button>
         {/* {console.log(this.props.chapter_data)} */}

@@ -154,7 +154,7 @@ const Chapters = props => {
           )
         }
       })}
-      <Button className="addBtn" onClick={toggle}>+</Button>
+      <Button style={{backgroundColor: "#212121"}} className="addBtn" onClick={toggle}>+</Button>
        {/* <Button className="addBtn" onClick={toggle}>
            +
          </Button> */}
@@ -173,10 +173,10 @@ const Chapters = props => {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={addChapter}>
+            <Button style={{backgroundColor: "#212121"}} onClick={addChapter}>
               Add Chapter
             </Button>{" "}
-            <Button color="secondary" onClick={toggle}>
+            <Button style={{backgroundColor: "#212121"}} onClick={toggle}>
               Cancel
             </Button>
           </ModalFooter>

@@ -44,7 +44,7 @@ const Chapter = props => {
           <td>{props.info.name}</td>
         </tr>
         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
-      <DropdownToggle style= {{marginLeft: "10px",}} caret>
+      <DropdownToggle style= {{marginLeft: "10px", backgroundColor: "white", color: "black", fontSize: "20px", border: "none", }} caret>
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem>      
@@ -52,7 +52,9 @@ const Chapter = props => {
             style={{
               marginRight: "10px",
               position: "static",
-              width: "95%"
+              width: "95%",
+              backgroundColor: "#212121",
+              opacity: "0.95"
             }}
             onClick={toggleEdit}
           >
@@ -64,7 +66,9 @@ const Chapter = props => {
             style={{
               marginRight: "10px",
               position: "static",
-              width: "95%"
+              width: "95%",
+              backgroundColor: "#212121",
+              opacity: "0.95"
             }}
           >
             <Link style={{ color: "white",}} to={`/admin/chapters/${props.info.id}`}>
@@ -93,9 +97,10 @@ const Chapter = props => {
             style={{
               marginRight: "10px",
               position: "static",
-              width: "95%"
+              width: "95%",
+              backgroundColor: "#212121",
+              opacity: "0.95"
             }}
-            color="danger"
             onClick={toggle}
           >
             Delete
@@ -113,7 +118,9 @@ const Chapter = props => {
               <Button color="danger" onClick={deleteChapt}>
                 Delete
               </Button>{" "}
-              <Button color="secondary" onClick={toggle}>
+              <Button style={{backgroundColor: "#212121"
+              }} 
+              onClick={toggle}>
                 Cancel
               </Button>
           </Modal>
