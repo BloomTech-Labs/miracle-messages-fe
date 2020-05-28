@@ -39,6 +39,7 @@ const AddChapterForm = props => {
     fd.append("msg_recorded", chapter.msg_recorded)
     fd.append("facebook", chapter.facebook)
     fd.append("story", chapter.story)
+    fd.append("name", chapter.name)
 
     // axiosWithAuth()
     //   .post(`/api/chapter/`, fd)
@@ -94,6 +95,16 @@ const AddChapterForm = props => {
           type="textarea"
           placeholder="Description"
           rows="5"
+        />
+        <br />
+        <div className="dropdown-divider" />
+        <Label>Chapter Leader</Label>
+        <Input
+          value={props.chapter.name}
+          onChange={changeHandler}
+          name="Chapter Leader"
+          type="textarea"
+          placeholder="Name"
         />
         <br />
         <Label>Chapter Image</Label>

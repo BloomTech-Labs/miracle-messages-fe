@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import Chapter from "./Chapter";
+import "./Chapters.scss";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
 
-
 import SponsorForm from "../Sponsors/SponsorForm";
+import SearchBar from "../../../MapComponents/SearchBar";
 import AddChapterForm from "./AddChapterForm";
 import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
-
-
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from "reactstrap";
 import { set } from "react-ga";
 
 const Chapters = props => {
@@ -124,12 +123,28 @@ const Chapters = props => {
           console.log(err.response);
       })
 
-    
   }
-
 
   return (
     <div className="chapter-felx">
+            <SearchBar />
+    <Table hover style={{fontSize: "15px", fontWeight: "bold",}}>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Chapter</th>
+          <th></th>
+          <th></th>
+          <th>State</th>
+          <th></th>
+          <th>Members</th>
+          <th></th>
+          <th>Leader</th>
+        </tr>
+      </thead>
+      </Table>
+
       {props.chapter_data.map(chapter => {
         if (chapter.approved === true) {
           return (
@@ -141,7 +156,7 @@ const Chapters = props => {
           )
         }
       })}
-      <Button className="addBtn" onClick={toggle}>+</Button>
+      <Button style={{backgroundColor: "#212121"}} className="addBtn" onClick={toggle}>+</Button>
        {/* <Button className="addBtn" onClick={toggle}>
            +
          </Button> */}
@@ -160,10 +175,10 @@ const Chapters = props => {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={addChapter}>
+            <Button style={{backgroundColor: "#212121"}} onClick={addChapter}>
               Add Chapter
             </Button>{" "}
-            <Button color="secondary" onClick={toggle}>
+            <Button style={{backgroundColor: "#212121"}} onClick={toggle}>
               Cancel
             </Button>
           </ModalFooter>
