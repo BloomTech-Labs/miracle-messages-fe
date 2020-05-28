@@ -1,6 +1,6 @@
 .chapterInfo {
   width: 376px;
-  font-family: ProximaNova;
+  font-family: poppins;
   margin-top: 57px;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .title {
-  font-family: ProximaNova_Semibold;
+  font-family: poppins;
   color: #303030;
   margin-left: 25px;
   margin-right: 25px;
@@ -25,7 +25,7 @@
 
 .date {
   color: #303030;
-  font-family: ProximaNova;
+  font-family: poppins;
   font-size: 13.5px;
   margin-left: 25px;
   letter-spacing: 1.34px;
@@ -40,7 +40,7 @@
 }
 
 .volunteers {
-  font-family: ProximaNova_Semibold;
+  font-family: poppins;
   display: flex;
   flex-direction: column;
   padding-right: 24px;
@@ -51,7 +51,7 @@
 }
 
 .reunions {
-  font-family: ProximaNova_Semibold;
+  font-family: poppins;
   display: flex;
   flex-direction: column;
   padding-left: 24px;
@@ -62,7 +62,7 @@
 }
 
 .number {
-  font-family: ProximaNova_Bold;
+  font-family: poppins;
   align-self: center;
   font-size: 22px;
   font-weight: bold;
@@ -78,7 +78,7 @@
 }
 
 .contact {
-  font-family: ProximaNova_Bold;
+  font-family: poppins;
   padding: 20px 25px;
   display: flex;
   align-items: center;
@@ -91,7 +91,7 @@
 }
 
 .emailHeader {
-  font-family: ProximaNova_Semibold;
+  font-family: poppins;
   margin: 20px 0 0 25px;
   font-size: 16px;
   font-weight: 600;
@@ -148,7 +148,7 @@
 }
 
 .featuredReunion {
-  font-family: ProximaNova;
+  font-family: poppins;
   padding: 0px 25px 10px;
   font-size: 13px;
   letter-spacing: 0.73px;

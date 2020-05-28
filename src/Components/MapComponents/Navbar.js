@@ -57,9 +57,10 @@ const Navbar = (props) => {
         <img className="mLogo" src={logoMobile} alt="mobile logo" />
       </Link>
       <nav>
-        {!token && !props.isLoggedIn ? <Link to="/login">Sign In</Link> : null}
+        <a href="https://www.miraclemessages.org/why">why social supports?</a>
+        <a href="https://www.miraclemessages.org/our-work">our work</a>
 
-        <a href="https://www.miraclemessages.org/about">About</a>
+        <a href="https://www.miraclemessages.org/about">about us</a>
 
         <a
           className="donate"
@@ -67,8 +68,13 @@ const Navbar = (props) => {
           rel="noopener noreferrer"
           href="https://www.classy.org/give/231839/#!/donation/checkout"
         >
-          Donate
+          donate
         </a>
+        {!token && !props.isLoggedIn ? (
+          <Link className="sign-in" to="/login">
+            Sign In
+          </Link>
+        ) : null}
         {token && (
           <>
             <img
@@ -83,10 +89,12 @@ const Navbar = (props) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={() => {
-                handleClose();
-                props.setSideBarOpen(!props.sideBarOpen);
-              }}>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  props.setSideBarOpen(!props.sideBarOpen);
+                }}
+              >
                 <ListItemIcon>
                   <LibraryBooksIcon fontSize="small" />
                 </ListItemIcon>

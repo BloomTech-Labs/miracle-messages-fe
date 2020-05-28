@@ -67,7 +67,7 @@
       text-decoration: none;
       line-height: 1em;
       color: rgba(255, 255, 255, 0.9);
-      font-family: ProximaNova;
+      font-family: poppins;
     }
   }
 }
@@ -89,6 +89,7 @@
   }
 }
 
+// This transform moves the pins up and to the left slightly so the bottom is pointing to the area
 .markerMAP {
   height: 0;
   .city-pin {

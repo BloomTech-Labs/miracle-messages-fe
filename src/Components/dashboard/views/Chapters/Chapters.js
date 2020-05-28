@@ -42,7 +42,6 @@ const Chapters = props => {
   }
   
   useEffect(() => {
-    console.log("Chapters.js loaded");
     props.getData();
   }, [])
 
