@@ -16,6 +16,7 @@ import {
 import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
 import UpdateFrom from "./UpdateForm";
+import { PlayCircleFilledWhite } from "@material-ui/icons";
 
 const Chapter = props => {
   const { admin, chapterLeaders, volunteer } = useUserGroups();
@@ -56,6 +57,7 @@ const Chapter = props => {
             Volunteers: {props.info.numvolunteers}
           </CardSubtitle>
           <CardText>{props.info.description}</CardText>
+          
           {/* only for admins */}
           {admin && <Button
             style={{
@@ -72,10 +74,10 @@ const Chapter = props => {
             style={{
               marginRight: "10px",
               position: "static",
-              marginBottom: "10px"
+              marginBottom: "10px",
             }}
           >
-            <Link to={`/admin/chapters/${props.info.id}`}>
+            <Link style={{ color: "white",}} to={`/admin/chapters/${props.info.id}`}>
               Chapter Info
             </Link>
           </Button>
