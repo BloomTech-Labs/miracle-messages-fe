@@ -6,8 +6,8 @@
   display: flex;
   justify-content: space-between;
   background: #212121;
-  opacity: 0.95;
-  font-family: ProximaNova;
+  opacity: 0.85;
+  font-family: poppins;
   overflow: hidden;
   top: 0;
   .mLogo {
@@ -77,9 +77,9 @@
     img {
       height: auto;
       max-width: 100%;
-      width: 55px;
       padding: 10px;
-      width: 160px;
+      width: 200px;
+      margin-left: 25%;
       &:hover {
         cursor: pointer;
       }
@@ -105,7 +105,7 @@
   }
 
   nav {
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -114,11 +114,12 @@
     @media (max-width: 720px) {
       width: 65%;
     }
-    a.donate {
+    a.sign-in {
       border: 1px solid white;
-      padding: 12px 20px;
+      font-weight: 500;
+      font-size: 17px;
+      padding: 12px 25px;
       background-color: white;
-      border-radius: 5px;
       color: #212121;
 
       &:hover {
@@ -146,38 +147,21 @@
     }
 
     a {
-      font-weight: 600;
+      font-weight: 400;
       font-style: normal;
-      font-size: 18px;
+      font-size: 16px;
 
       letter-spacing: 1.2px;
       text-decoration: none;
       line-height: 1em;
       color: rgba(255, 255, 255, 0.9);
-      font-family: ProximaNova;
+      font-family: poppins;
       display: block;
       &:hover {
         color: #cacaca;
       }
       @media (max-width: 550px) {
         font-size: 0;
-      }
-
-      &:last-child {
-        background-color: #fff;
-        -moz-osx-font-smoothing: auto;
-        -webkit-font-smoothing: subpixel-antialiased;
-        color: #000;
-        -webkit-transition: background-color 0.1s 0s ease-in-out,
-          color 0.1s 0s ease-in-out;
-        -moz-transition: background-color 0.1s 0s ease-in-out,
-          color 0.1s 0s ease-in-out;
-        -ms-transition: background-color 0.1s 0s ease-in-out,
-          color 0.1s 0s ease-in-out;
-        -o-transition: background-color 0.1s 0s ease-in-out,
-          color 0.1s 0s ease-in-out;
-        transition: background-color 0.1s 0s ease-in-out,
-          color 0.1s 0s ease-in-out;
       }
     }
 
@@ -195,7 +179,7 @@
         text-decoration: none;
         line-height: 1em;
         color: rgba(255, 255, 255, 0.9);
-        font-family: ProximaNova;
+        font-family: poppins;
       }
     }
     .dropdown-content {
