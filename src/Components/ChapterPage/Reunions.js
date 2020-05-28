@@ -5,6 +5,7 @@ import "./Reunions.scss";
 import { dummyConnections } from "./dummies";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -25,7 +26,8 @@ const responsive = {
   },
 };
 
-const Connections = () => {
+const Connections = ({ reunions }) => {
+  console.log(reunions)
   const [connections, setConnections] = useState(dummyConnections);
   const maxConnections = 10;
 

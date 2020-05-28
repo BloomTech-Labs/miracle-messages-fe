@@ -2,7 +2,7 @@ import {
   FETCH_CHAPTER_INFO,
   FETCH_CHAPTER_VOLUNTEERS,
   FETCH_CHAPTER_REUNIONS
-} from "../Actions/ChapterInfoActions";
+} from "../Actions/ChapterPageActions";
 
 
 const initialState = {

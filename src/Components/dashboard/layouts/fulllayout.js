@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
-import Sidebar from '../sidebar/Sidebar.js';
+// import Sidebar from '../sidebar/Sidebar.js';
 import { useUserGroups } from '../../../utils/customHooks/useUserGroups';
 
 
@@ -24,7 +24,7 @@ const FullLayout = props => {
         data-header-position="fixed"
         data-boxed-layout="full"
       >
-            <Sidebar />
+            {/* <Sidebar /> */}
       </div>
     );
 }

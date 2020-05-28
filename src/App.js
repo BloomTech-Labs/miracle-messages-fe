@@ -37,7 +37,7 @@ import { PrivateRoute } from "./Components/PrivateRoute";
 
 //SHAWN OKTA
 import CustomLogin from "./Components/Login/CustomLogin";
-import Sidebar from "./Components/dashboard/sidebar/Sidebar";
+import Sidebar from "./Components/dashboard/sidebar/sidebar";
 
 const App = () => {
   const history = useHistory();

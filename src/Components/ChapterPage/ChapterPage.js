@@ -3,7 +3,8 @@ import {
   fetchChapterInfo,
   fetchChapterReunions,
   fetchChapterVolunteers,
-} from "../../Actions/ChapterInfoActions";
+} from "../../Actions/ChapterPageActions";
+import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import Reunions from "./Reunions";
 import ChapterMembers from "./ChapterMembers";
 import { useParams } from "react-router-dom";
@@ -84,7 +85,13 @@ const ChapterPage = (props) => {
   }, []);
 
   const joinChapter = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+
+    axiosWithAuth()
+      .get(`/api/chapter/testtesttest1/volunteer`)
+      .then(res => {
+        console.log(res)
+      })  
   };
 
   return (
@@ -113,7 +120,7 @@ const ChapterPage = (props) => {
               have access to stable physical housing. Join our Seattle Chapter
               for more information.
             </p>
-            <button className="join-button" onClick={joinChapter} type="button">
+            <button className="join-button" onClick={(e) => joinChapter(e, id)} type="button">
               Join Chapter
             </button>
           </div>
