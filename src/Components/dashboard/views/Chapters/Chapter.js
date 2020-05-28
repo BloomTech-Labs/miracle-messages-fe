@@ -38,8 +38,7 @@ const Chapter = props => {
       <Table hover>
       <tbody>
         <tr>
-          <th scope="row"> 
-          <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
+          <th><ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
       <DropdownToggle style= {{marginLeft: "10px", marginRight: "10px", background: "none", color: "black", fontSize: "20px", border: "none", }} caret>
       </DropdownToggle>         
       <DropdownMenu style={{width: "100vw",}}>
@@ -130,10 +129,17 @@ const Chapter = props => {
           </Modal>
         </DropdownItem>
       </DropdownMenu>
-    </ButtonDropdown> {props.info.title}</th>
+    </ButtonDropdown></th>
+          <th scope="row">{props.info.title}</th>
           <td>{props.info.state}</td>
+          <td></td>
+          <td></td>
           <td>{props.info.numvolunteers} 130</td>
+          <td></td>
+          <td></td>
           <td>{props.info.name} Sam A</td>
+
+
         </tr>
         </tbody>
 
