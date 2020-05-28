@@ -40,9 +40,10 @@ const Chapter = props => {
         <tr>
           <th scope="row">{props.info.title}</th>
           <td>{props.info.state}</td>
-          <td>{props.info.numvolunteers}</td>
-          <td>{props.info.name}</td>
+          <td>{props.info.numvolunteers} 130</td>
+          <td>{props.info.name} Sam A</td>
         </tr>
+        </tbody>
         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
       <DropdownToggle style= {{marginLeft: "10px", backgroundColor: "white", color: "black", fontSize: "20px", border: "none", }} caret>
       </DropdownToggle>
@@ -135,7 +136,7 @@ const Chapter = props => {
         </DropdownItem>
       </DropdownMenu>
     </ButtonDropdown>
-      </tbody>
+
     </Table>
     
 
