@@ -7,7 +7,7 @@ import {
 } from "reactstrap";
 import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
-import "./Chapters.scss";
+import "./Chapter.scss";
 import UpdateFrom from "./UpdateForm";
 import { PlayCircleFilledWhite } from "@material-ui/icons";
 
@@ -38,21 +38,16 @@ const Chapter = props => {
       <Table hover>
       <tbody>
         <tr>
-          <th scope="row">{props.info.title}</th>
-          <td>{props.info.state}</td>
-          <td>{props.info.numvolunteers} 130</td>
-          <td>{props.info.name} Sam A</td>
-        </tr>
-        </tbody>
-        <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
-      <DropdownToggle style= {{marginLeft: "10px", backgroundColor: "white", color: "black", fontSize: "20px", border: "none", }} caret>
-      </DropdownToggle>
-      <DropdownMenu>
+          <th scope="row"> 
+          <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
+      <DropdownToggle style= {{marginLeft: "10px", marginRight: "10px", background: "none", color: "black", fontSize: "20px", border: "none", }} caret>
+      </DropdownToggle>         
+      <DropdownMenu style={{width: "100vw",}}>
         <DropdownItem>     
 
         <Card
         className="cardChapter"
-        style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
+        style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "350px" }}
       >
         <CardImg
           top
@@ -135,7 +130,12 @@ const Chapter = props => {
           </Modal>
         </DropdownItem>
       </DropdownMenu>
-    </ButtonDropdown>
+    </ButtonDropdown> {props.info.title}</th>
+          <td>{props.info.state}</td>
+          <td>{props.info.numvolunteers} 130</td>
+          <td>{props.info.name} Sam A</td>
+        </tr>
+        </tbody>
 
     </Table>
     

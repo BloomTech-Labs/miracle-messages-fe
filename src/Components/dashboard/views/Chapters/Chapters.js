@@ -129,7 +129,7 @@ const Chapters = props => {
   return (
     <div className="chapter-felx">
             <SearchBar />
-    <Table hover>
+    <Table hover style={{fontSize: "22px", padding: "10px", }}>
       <thead>
         <tr>
           <th>Chapter</th>
