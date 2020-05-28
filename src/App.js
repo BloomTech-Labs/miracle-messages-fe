@@ -13,12 +13,12 @@ import Navbar from "./Components/MapComponents/Navbar";
 
 //Imported Components
 import Map from "./Components/MapComponents/map";
-import FullLayout from "./Components/dashboard/layouts/fulllayout";
 import Volunteers from "./Components/dashboard/views/Volunteers.js";
 import Chapters from "./Components/dashboard/views/Chapters/Chapters.js";
 import Sponsors from "./Components/dashboard/views/Sponsors/Sponsors.js";
 import ChapterCard from "./Components/dashboard/views/Chapters/ChapterCard";
 import PendingChapter from "./Components/dashboard/views/Chapters/PendingChapter";
+import Sidebar from "./Components/dashboard/sidebar/Sidebar";
 // import VolunteerForm from "./Components/Forms/VolunteerForm";
 
 import LoginForm from "./Components/Login/LoginForm.js";
@@ -34,10 +34,9 @@ import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
 import config from "./config/config.js";
 //Custom Imports
 import { PrivateRoute } from "./Components/PrivateRoute";
-
+ 
 //SHAWN OKTA
 import CustomLogin from "./Components/Login/CustomLogin";
-import Sidebar from "./Components/dashboard/sidebar/Sidebar";
 
 const App = () => {
   const history = useHistory();
