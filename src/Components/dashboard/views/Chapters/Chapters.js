@@ -12,8 +12,6 @@ import SearchBar from "../../../MapComponents/SearchBar";
 import AddChapterForm from "./AddChapterForm";
 import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
-
-
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from "reactstrap";
 import { set } from "react-ga";
 
@@ -127,7 +125,7 @@ const Chapters = props => {
       })
 
   }
-  
+
   return (
     <div className="chapter-felx">
             <SearchBar />

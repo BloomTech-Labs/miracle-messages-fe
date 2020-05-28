@@ -47,12 +47,25 @@ const Chapter = props => {
       <DropdownToggle style= {{marginLeft: "10px", backgroundColor: "white", color: "black", fontSize: "20px", border: "none", }} caret>
       </DropdownToggle>
       <DropdownMenu>
-        <DropdownItem>      
+        <DropdownItem>     
+
+        <Card
+        className="cardChapter"
+        style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
+      >
+        <CardImg
+          top
+          width="100%"
+          height="auto"
+          className="chapterImg"
+          src={props.info.chapter_img_url}
+        /></Card>
+        </DropdownItem> 
+        <DropdownItem> 
           {admin && <Button
             style={{
               marginRight: "10px",
               position: "static",
-              width: "95%",
               backgroundColor: "#212121",
               opacity: "0.95"
             }}
@@ -60,13 +73,11 @@ const Chapter = props => {
           >
             Edit
           </Button>}
-          </DropdownItem>
-        <DropdownItem>
+
           <Button
             style={{
               marginRight: "10px",
               position: "static",
-              width: "95%",
               backgroundColor: "#212121",
               opacity: "0.95"
             }}
@@ -75,8 +86,7 @@ const Chapter = props => {
               Chapter Info
             </Link>
           </Button>
-          </DropdownItem>
-        <DropdownItem>  
+
           <Modal
             isOpen={modalEdit}
             toggle={toggleEdit}
@@ -91,13 +101,11 @@ const Chapter = props => {
               />
             </ModalBody>
           </Modal>
-          </DropdownItem>
-        <DropdownItem>        
+     
           {admin && <Button
             style={{
               marginRight: "10px",
               position: "static",
-              width: "95%",
               backgroundColor: "#212121",
               opacity: "0.95"
             }}
@@ -131,17 +139,17 @@ const Chapter = props => {
     </Table>
     
 
-//       <Card
-//         className="cardChapter"
-//         style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
-//       >
-//         <CardImg
-//           top
-//           width="100%"
-//           height="auto"
-//           className="chapterImg"
-//           src={props.info.chapter_img_url}
-//         />
+      // <Card
+      //   className="cardChapter"
+      //   style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "250px" }}
+      // >
+      //   <CardImg
+      //     top
+      //     width="100%"
+      //     height="auto"
+      //     className="chapterImg"
+      //     src={props.info.chapter_img_url}
+      //   />
 
         // <CardBody>
         //   <CardTitle>{props.info.title}</CardTitle>
