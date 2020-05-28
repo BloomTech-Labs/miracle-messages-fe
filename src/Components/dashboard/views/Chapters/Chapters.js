@@ -7,8 +7,8 @@ import "./Chapters.scss";
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
 
-
 import SponsorForm from "../Sponsors/SponsorForm";
+import SearchBar from "../../../MapComponents/SearchBar";
 import AddChapterForm from "./AddChapterForm";
 import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
@@ -126,12 +126,11 @@ const Chapters = props => {
           console.log(err.response);
       })
 
-    
   }
-
-
+  
   return (
     <div className="chapter-felx">
+            <SearchBar />
     <Table hover>
       <thead>
         <tr>
