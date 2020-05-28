@@ -96,6 +96,16 @@ const AddChapterForm = props => {
           rows="5"
         />
         <br />
+        <div className="dropdown-divider" />
+        <Label>Chapter Leader</Label>
+        <Input
+          value={props.chapter.name}
+          onChange={changeHandler}
+          name="Chapter Leader"
+          type="textarea"
+          placeholder="Name"
+        />
+        <br />
         <Label>Chapter Image</Label>
         <Input onChange={handleImg} name="newChapterImg" type="file" />
         <br />

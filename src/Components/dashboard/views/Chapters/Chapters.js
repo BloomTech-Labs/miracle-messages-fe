@@ -13,7 +13,7 @@ import { useUserGroups } from '../../../../utils/customHooks/useUserGroups';
 
 
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from "reactstrap";
 import { set } from "react-ga";
 
 const Chapters = props => {
@@ -130,7 +130,18 @@ const Chapters = props => {
 
 
   return (
-    <div className="chapter-felx">
+    <div style={{paddingTop: "100px;",}}className="chapter-felx">
+    <Table hover>
+      <thead>
+        <tr>
+          <th>Chapter</th>
+          <th>State</th>
+          <th>Members</th>
+          <th>Leader</th>
+        </tr>
+      </thead>
+      </Table>
+
       {props.chapter_data.map(chapter => {
         if (chapter.approved === true) {
           return (
