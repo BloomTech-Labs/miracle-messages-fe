@@ -1,13 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import './sidebar.scss'
+import './Sidebar.scss'
 
 import { useUserGroups } from '../../../utils/customHooks/useUserGroups';
 
 
 const Sidebar = ({ setSideBarOpen, sideBarOpen }) => {
   const { admin, chapterLeaders, volunteer } = useUserGroups();
-  const { push } = useHistory();
+  const { push, location } = useHistory();
 
     return (
         <div className={sideBarOpen ? "sidebar" : "sidebar hidden"}>
