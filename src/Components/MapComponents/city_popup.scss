@@ -11,7 +11,7 @@
 
 .chapter-Info {
   width: 250px;
-  font-family: ProximaNova;
+  font-family: poppins;
   margin-top: 10px;
   color: white;
   background-color: #212121 !important;
@@ -31,7 +31,7 @@
     align-self: center;
     border-radius: 3px;
     color: black;
-    font-weight: bold;
+    font-weight: 500;
     &:hover {
       background-color: rgb(173, 173, 173);
     }
@@ -44,7 +44,9 @@
   padding-bottom: 20px;
   color: white;
   h1 {
-    padding-bottom: 0.2rem;
+    padding: 0.3rem 0;
+    padding-bottom: 0.9rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -58,7 +60,7 @@
 }
 
 .volunteers {
-  font-family: ProximaNova_Semibold;
+  font-family: poppins;
   display: flex;
   flex-direction: column;
   padding-right: 24px;
@@ -70,7 +72,7 @@
 }
 
 .reunions {
-  font-family: ProximaNova_Semibold;
+  font-family: poppins;
   display: flex;
   flex-direction: column;
   padding-left: 24px;
@@ -82,7 +84,7 @@
 }
 
 .number {
-  font-family: ProximaNova_Bold;
+  font-family: poppins;
   align-self: center;
   font-size: 22px;
   font-weight: bold;
@@ -97,5 +99,4 @@
   letter-spacing: 0.73px;
   line-height: 18px;
   color: white;
-  font-weight: bold;
 }
