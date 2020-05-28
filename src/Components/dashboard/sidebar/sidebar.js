@@ -10,8 +10,6 @@ const Sidebar = ({ setSideBarOpen, sideBarOpen }) => {
   const { push } = useHistory();
   const { pathname } = useLocation();
 
-  useEffect(() => console.log("poo"), [sideBarOpen])
-
     return (
         <div className={sideBarOpen ? "sidebar" : "sidebar hidden"}>
           <div className={pathname.includes("admin/chapters") ? "active-tab" : ""} onClick={() => push("/admin/chapters")}><i className="fas fa-building"></i><div>Chapters</div></div>
