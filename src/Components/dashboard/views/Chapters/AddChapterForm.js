@@ -39,6 +39,7 @@ const AddChapterForm = props => {
     fd.append("msg_recorded", chapter.msg_recorded)
     fd.append("facebook", chapter.facebook)
     fd.append("story", chapter.story)
+    fd.append("name", chapter.name)
 
     // axiosWithAuth()
     //   .post(`/api/chapter/`, fd)

@@ -45,6 +45,7 @@ class UpdateForm extends React.Component {
     fd.append("numreunions", this.state.chapter.numreunions)
     fd.append("facebook", this.state.chapter.facebook)
     fd.append("story", this.state.chapter.story)
+    fd.append("name", this.state.chapter.name)
 
     axiosWithAuth()
       .put(`/api/chapter/${id}`, fd)
@@ -94,6 +95,16 @@ class UpdateForm extends React.Component {
           type="textarea"
           placeholder="Description"
           rows="5"
+        />
+        <br />
+        <div className="dropdown-divider" />
+        <Label>Chapter Leader</Label>
+        <Input
+          value={this.state.chapter.name}
+          onChange={this.changeHandler}
+          name="Chapter Leader"
+          type="textarea"
+          placeholder="Name"
         />
         <br />
         <Card>

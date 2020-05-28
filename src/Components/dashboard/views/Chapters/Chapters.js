@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import Chapter from "./Chapter";
+import "./Chapters.scss";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
@@ -130,7 +131,7 @@ const Chapters = props => {
 
 
   return (
-    <div style={{paddingTop: "100px;",}}className="chapter-felx">
+    <div className="chapter-felx">
     <Table hover>
       <thead>
         <tr>
