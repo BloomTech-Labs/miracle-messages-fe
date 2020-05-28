@@ -122,14 +122,6 @@ const AddChapterForm = props => {
           placeholder="State"
         />
         <div className="dropdown-divider" />
-        <Label>Contact Email</Label>
-        <Input
-          value={props.chapter.email}
-          onChange={changeHandler}
-          name="email"
-          type="email"
-          placeholder="Email"
-        />
         <br />
         <Label>Messages Delivered</Label>
         <Input

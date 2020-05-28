@@ -107,7 +107,6 @@ class UpdateForm extends React.Component {
                   "-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white"
               }}
             >
-              <strong>Current Chapter Image</strong>
             </CardTitle>
           </CardImgOverlay>
         </Card>
@@ -137,22 +136,6 @@ class UpdateForm extends React.Component {
           placeholder="State"
         />
         <div className="dropdown-divider" />
-        <Label>Contact Email</Label>
-        <Input
-          value={this.state.chapter.email}
-          onChange={this.changeHandler}
-          name="email"
-          type="email"
-          placeholder="Email"
-        />
-        <br />
-        <Label>Number of Volunteers</Label>
-        <Input
-          value={this.state.chapter.numvolunteers}
-          onChange={this.changeHandler}
-          name="numvolunteers"
-          type="number"
-        />
         <br />
         <Label>Messages Delivered</Label>
         <Input
@@ -167,14 +150,6 @@ class UpdateForm extends React.Component {
           value={this.state.chapter.msg_recorded}
           onChange={this.changeHandler}
           name="msg_recorded"
-          type="number"
-        />
-        <br />
-        <Label>Number of Reunions</Label>
-        <Input
-          value={this.state.chapter.numreunions}
-          onChange={this.changeHandler}
-          name="numreunions"
           type="number"
         />
         <br />
@@ -197,7 +172,6 @@ class UpdateForm extends React.Component {
                   "-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white"
               }}
             >
-              <strong>Current Story Image</strong>
             </CardTitle>
           </CardImgOverlay>
         </Card>
@@ -213,7 +187,7 @@ class UpdateForm extends React.Component {
           rows="5"
         />
         <br />
-        <Button color="info" onClick={this.updateChapter}>
+        <Button color="secondary" onClick={this.updateChapter}>
           Update
         </Button>
         {/* {console.log(this.props.chapter_data)} */}
