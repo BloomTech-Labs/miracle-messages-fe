@@ -35,11 +35,8 @@ const AddChapterForm = props => {
     fd.append("description", chapter.description)
     fd.append("city", chapter.city)
     fd.append("state", chapter.state)
-    fd.append("email", chapter.email)
-    fd.append("numvolunteers", chapter.numvolunteers)
     fd.append("msg_delivered", chapter.msg_delivered)
     fd.append("msg_recorded", chapter.msg_recorded)
-    fd.append("numreunions", chapter.numreunions)
     fd.append("facebook", chapter.facebook)
     fd.append("story", chapter.story)
 
@@ -125,22 +122,6 @@ const AddChapterForm = props => {
           placeholder="State"
         />
         <div className="dropdown-divider" />
-        <Label>Contact Email</Label>
-        <Input
-          value={props.chapter.email}
-          onChange={changeHandler}
-          name="email"
-          type="email"
-          placeholder="Email"
-        />
-        <br />
-        <Label>Number of Volunteers</Label>
-        <Input
-          value={props.chapter.numvolunteers}
-          onChange={changeHandler}
-          name="numvolunteers"
-          type="number"
-        />
         <br />
         <Label>Messages Delivered</Label>
         <Input
@@ -158,14 +139,6 @@ const AddChapterForm = props => {
           type="number"
         />
         <br />
-        <Label>Number of Reunions</Label>
-        <Input
-          value={props.chapter.numreunions}
-          onChange={changeHandler}
-          name="numreunions"
-          type="number"
-        />
-        <br />
         <Label>Chapter Facebook Page</Label>
         <Input
           value={props.chapter.facebook}
@@ -174,7 +147,6 @@ const AddChapterForm = props => {
           placeholder="facebook link here"
         />
         <br />
-        <Label>Featured Story Image</Label>
         <Input onChange={handleImg} name="newReunionImg" type="file" />
         <Label>Featured Story</Label>
         <Input

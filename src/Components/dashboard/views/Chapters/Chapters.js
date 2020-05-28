@@ -50,9 +50,6 @@ const Chapters = props => {
 
 
 
-
-  // my code starts here
-
   const toggle = () => {
     setModal(modal => !modal)
   };
@@ -164,7 +161,7 @@ const Chapters = props => {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={addChapter}>
+            <Button color="secondary" onClick={addChapter}>
               Add Chapter
             </Button>{" "}
             <Button color="secondary" onClick={toggle}>
