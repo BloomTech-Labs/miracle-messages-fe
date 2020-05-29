@@ -43,7 +43,6 @@ const Chapter = props => {
       </DropdownToggle>         
       <DropdownMenu style={{width: "100vw",}}>
         <DropdownItem>     
-
         <Card
         className="cardChapter"
         style={{ maxWidth: "50%", maxHeight: "50%", minWidth: "350px" }}
@@ -53,8 +52,8 @@ const Chapter = props => {
           width="100%"
           height="auto"
           className="chapterImg"
-          src={props.info.chapter_img_url}
-        /></Card>
+          src={props.info.chapter_img_url}/>
+        </Card>
         </DropdownItem> 
         <DropdownItem> 
           {admin && <Button
@@ -163,7 +162,7 @@ const Chapter = props => {
         //   <CardSubtitle>
         //     Volunteers: {props.info.numvolunteers}
         //   </CardSubtitle>
-        //   <CardText>{props.info.description}</CardText>
+          // <CardText>{props.info.description}</CardText>
           
         //   {/* only for admins */}
         //   {admin && <Button
