@@ -2,6 +2,7 @@
   padding-top: 2vh;
   padding-left: 10%;
   padding-right: 10%;
+  margin-bottom: 10vh;
   .table {
     margin-bottom: 0;
   }
@@ -18,4 +19,15 @@
 .MuiPaper-root.MuiPaper-elevation1 {
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.82);
+}
+
+.analytics {
+  display: flex;
+  .activity-analytics {
+    width: 50%;
+  }
+  .region-analytics {
+    margin-top: 1rem;
+    width: 50%;
+  }
 }
