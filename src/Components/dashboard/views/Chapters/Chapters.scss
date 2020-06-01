@@ -23,11 +23,12 @@
 
 .analytics {
   display: flex;
+  justify-content: space-between;
   .activity-analytics {
-    width: 50%;
+    width: 45%;
   }
   .region-analytics {
     margin-top: 1rem;
-    width: 50%;
+    width: 45%;
   }
 }

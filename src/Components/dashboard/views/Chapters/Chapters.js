@@ -141,13 +141,13 @@ const Chapters = (props) => {
         </div>
         <div className="region-analytics">
           <iframe
-            width="512.8447335347747"
+            width="445.5"
             title="region-chart"
-            height="320"
+            height="334.125"
             seamless
             frameborder="0"
             scrolling="no"
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSWZ1coSLo_pmg64fqyvlXjp2miqrV2Ej-A9_GqOFW2973S-4dxPF8whQ3YN1CL9Yy0btW1Vnzsr4wV/pubchart?oid=536373797&amp;format=interactive"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSWZ1coSLo_pmg64fqyvlXjp2miqrV2Ej-A9_GqOFW2973S-4dxPF8whQ3YN1CL9Yy0btW1Vnzsr4wV/pubchart?oid=943953138&amp;format=interactive"
           ></iframe>
         </div>
       </div>
