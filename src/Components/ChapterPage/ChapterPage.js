@@ -6,6 +6,7 @@ import {
 } from "../../Actions/ChapterPageActions";
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import Reunions from "./Reunions";
+import { ReunionForm } from "./ReunionForm";
 import ChapterMembers from "./ChapterMembers";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
@@ -88,7 +89,7 @@ const ChapterPage = (props) => {
     e.preventDefault()
 
     axiosWithAuth()
-      .get(`/api/chapter/testtesttest1/volunteer`)
+      .post(`/api/chapter/1/volunteer`)
       .then(res => {
         console.log(res)
       })  
@@ -125,6 +126,7 @@ const ChapterPage = (props) => {
             </button>
           </div>
           <Reunions reunions={reunions} />
+          <ReunionForm />
           <ChapterMembers volunteers={volunteers} kev={kev} />
         </div>
       </div>
