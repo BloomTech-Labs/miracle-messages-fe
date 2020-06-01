@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Imgs/MM_Logo.png";
 import logoMobile from "../../Assets/Imgs/MM_Logo_mobile.png";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
-
 import "./Navbar.scss";
 
 import profilephoto from "../../Assets/Imgs/USER-PROF.png";
