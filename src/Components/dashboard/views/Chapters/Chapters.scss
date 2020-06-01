@@ -24,11 +24,22 @@
 .analytics {
   display: flex;
   justify-content: space-between;
+  @media(max-width: 1250px) {
+    flex-direction: column;
+  }
   .activity-analytics {
     width: 45%;
+    @media(max-width: 1250px) {
+      width: 100%;
+      height: 60vh;
+    }
   }
   .region-analytics {
     margin-top: 1rem;
     width: 45%;
+    @media(max-width: 1250px) {
+      width: 100%;
+      height: 60vh;
+     }
   }
 }

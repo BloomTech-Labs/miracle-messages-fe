@@ -1,8 +1,11 @@
 .analytics {
   margin: 0 10%;
   margin-top: 15vh;
-  height: 50vh;
+  height: 60vh;
   border: 1px solid darkgrey;
+  @media(max-width: 1250px) {
+    height: 120vh;
+  }
 }
 
 #chapter-tbl {
