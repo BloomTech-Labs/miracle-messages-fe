@@ -131,7 +131,7 @@ const Chapters = (props) => {
         <div className="activity-analytics">
           <iframe
             width="100%"
-            height="100%"
+            height="400px"
             seamless
             frameborder="0"
             scrolling="no"
