@@ -4,6 +4,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete"
 import { makeStyles } from "@material-ui/core/styles"
 import { states, cities } from "./constants"
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
+import { useParams } from "react-router-dom";
 
 
 
@@ -48,7 +49,7 @@ export const ReunionForm = () => {
   const [ formValues, setFormValues ] = useState(requiredInputs)
   const [ reunionImg, setReunionImg ] = useState()
   const [ cityOptions, setCityOptions ] = useState()
-  
+  const { id } = useParams()
   const classes = useStyles()
   
   useEffect(() => {
@@ -65,7 +66,7 @@ export const ReunionForm = () => {
     })
 
     axiosWithAuth()
-      .post(`/api/chapter/1/reunions`, form)
+      .post(`/api/chapter/${id}/reunions`, form)
       .then(res => {
         console.log(res)
       })

@@ -89,7 +89,7 @@ const ChapterPage = (props) => {
     e.preventDefault()
 
     axiosWithAuth()
-      .post(`/api/chapter/1/volunteer`)
+      .post(`/api/chapter/${id}/volunteer`)
       .then(res => {
         console.log(res)
       })  
@@ -133,9 +133,9 @@ const ChapterPage = (props) => {
             aria-describedby="simple-modal-description"
             >
               <div>
-                <ReunionForm />
               </div>
-          </Modal> */}
+            </Modal> */}
+            <ReunionForm />
           <button className="join-button">Submit a Reunion</button>
           <ReunionForm />
           <ChapterMembers volunteers={volunteers} kev={kev} />
