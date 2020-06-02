@@ -127,11 +127,16 @@ const Chapters = (props) => {
 
   return (
     <>
+      <div className="analytics-title">
+        {" "}
+        <h2>This Week's Analytics</h2>
+      </div>
+
       <div className="analytics">
         <div className="activity-analytics">
           <iframe
             width="100%"
-            height="100%"
+            height="400px"
             seamless
             frameborder="0"
             scrolling="no"
@@ -168,7 +173,7 @@ const Chapters = (props) => {
             </tr>
           </thead>
         </Table>
-
+        {console.log(props.chapter_data)}
         {props.chapter_data.map((chapter) => {
           if (chapter.approved === true) {
             return (
@@ -219,8 +224,15 @@ const Chapters = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  const { chapterInfo, volunteers, reunions } = state.chapterInfoReducer;
+
   return {
     chapter_data: state.mapReducer.chapter_data,
+    chapterInfo,
+    volunteers,
+    volunteerCount: volunteers.length,
+    reunions,
+    reunionCount: reunions.length,
   };
 };
 

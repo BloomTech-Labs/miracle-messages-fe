@@ -18,12 +18,19 @@ import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
 import "./Chapter.scss";
 import UpdateFrom from "./UpdateForm";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import EditIcon from "@material-ui/icons/Edit";
 const Chapter = (props) => {
-  const { admin, chapterLeaders, volunteer } = useUserGroups();
-  const [dropdownOpen, setOpen] = useState(false);
+  /*   const { admin, chapterLeaders, volunteer } = useUserGroups();
+   */ const [dropdownOpen, setOpen] = useState(false);
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const history = useHistory();
+  const [chevOpen, setChevOpen] = useState(false);
+
+  const toggleChev = () => {
+    setChevOpen(!chevOpen);
+  };
 
   const toggle = () => {
     setModal((modal) => !modal);
@@ -42,18 +49,31 @@ const Chapter = (props) => {
   };
 
   return (
-    <Table id="chapter-tbl" hover>
-      <tbody>
-        <tr>
-          <th scope="row">{props.info.title}</th>
-          <td>{props.info.state}</td>
+    <>
+      <Table id="chapter-tbl" hover>
+        <tbody>
+          <tr
+            onClick={() => {
+              document
+                .querySelector(`.toggle-${props.info.id}`)
+                .classList.toggle("open-box");
+              toggleChev();
+            }}
+          >
+            <th scope="row">{props.info.city}</th>
+            <td>{props.info.state}</td>
 
-          <td>{props.info.numvolunteers} 130</td>
+            <td>{props.info.memberCount}</td>
 
-          <td>{props.info.name} Sam A</td>
-          <th>
-            <ArrowDropDownIcon />
-            {/* <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
+            <td>
+              {props.info.leaders.length > 0
+                ? props.info.leaders[0].name
+                : "Open"}
+            </td>
+            <th>
+              {!chevOpen ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
+
+              {/* <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDrop}>
               <DropdownToggle
                 style={{
                   marginLeft: "10px",
@@ -166,10 +186,48 @@ const Chapter = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </ButtonDropdown> */}
-          </th>
-        </tr>
-      </tbody>
-    </Table>
+            </th>
+          </tr>
+        </tbody>
+      </Table>
+      <div className={`toggle-box toggle-${props.info.id}`}>
+        <div className="chapt-pic-con">
+          <div className="title-edit">
+            <h4>{props.info.title}</h4>
+            <EditIcon />
+          </div>
+          <img src={props.info.chapter_img_url} alt="chapter view" />
+        </div>
+        <div className="chapt-info-con">
+          <p>
+            <span>Description: </span>
+            {props.info.description}
+          </p>
+          <p>
+            <span>Contact: </span>
+            {props.info.email}
+          </p>
+        </div>
+        <hr></hr>
+        <h4>Volunteers</h4>
+
+        <div className="members">
+          {props.info.volunteers.length > 0 ? (
+            props.info.volunteers.map((v) => (
+              <div className="member-details">
+                <img src={v.profile_img_url} alt="volunteer" />
+                <div className="volunteer-info">
+                  <p className="volunteer-name">{v.name}</p>
+                  <p className="volunteer-email">{v.email}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="not-available">No Members Yet</p>
+          )}
+        </div>
+      </div>
+    </>
 
     // <Card
     //   className="cardChapter"
