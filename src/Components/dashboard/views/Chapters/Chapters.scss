@@ -20,13 +20,17 @@
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.82);
 }
+.analytics-title {
+  margin: 0 10%;
 
+  margin-top: 15vh;
+  margin-bottom: 1rem;
+}
 .analytics {
   display: flex;
   justify-content: space-between;
 
   margin: 0 10%;
-  margin-top: 15vh;
   border: 1px solid darkgrey;
   @media (max-width: 1300px) {
     flex-direction: column;
