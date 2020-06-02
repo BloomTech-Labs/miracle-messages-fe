@@ -126,6 +126,17 @@ const ChapterPage = (props) => {
             </button>
           </div>
           <Reunions reunions={reunions} />
+          {/* <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+              <div>
+                <ReunionForm />
+              </div>
+          </Modal> */}
+          <button className="join-button">Submit a Reunion</button>
           <ReunionForm />
           <ChapterMembers volunteers={volunteers} kev={kev} />
         </div>
