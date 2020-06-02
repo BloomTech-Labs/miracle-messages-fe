@@ -17,7 +17,7 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import EditIcon from "@material-ui/icons/Edit";
 const Chapter = (props) => {
   /*   const { admin, chapterLeaders, volunteer } = useUserGroups();
-   */ const [dropdownOpen, setOpen] = useState(false);
+   */
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const history = useHistory();
@@ -34,8 +34,6 @@ const Chapter = (props) => {
   const toggleEdit = () => {
     setModalEdit((modalEdit) => !modalEdit);
   };
-
-  const toggleDrop = () => setOpen(!dropdownOpen);
 
   const deleteChapt = () => {
     props.deleteChapter(props.info.id);
