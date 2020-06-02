@@ -105,12 +105,13 @@ const Chapters = (props) => {
     fd.append("city", chapter.city);
     fd.append("state", chapter.state);
     fd.append("email", chapter.email);
-    fd.append("numvolunteers", chapter.numvolunteers);
+    fd.append("memberCount", chapter.memberCount);
     fd.append("msg_delivered", chapter.msg_delivered);
     fd.append("msg_recorded", chapter.msg_recorded);
     fd.append("numreunions", chapter.numreunions);
     fd.append("facebook", chapter.facebook);
     fd.append("story", chapter.story);
+    fd.append("leaders", chapter.leaders);
 
     axiosWithAuth()
       .post(`/api/chapter/`, fd)

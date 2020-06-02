@@ -76,7 +76,8 @@ const Chapter = (props) => {
           <div className="title-edit">
             <h4>{props.info.title}</h4>
             <Button
-        onClick={toggleEdit}>
+            style={{backgroundColor: "#212121"}}
+            onClick={toggleEdit}>
         <EditIcon />
       </Button>
       <Modal
@@ -95,7 +96,7 @@ const Chapter = (props) => {
       </Modal>
 
       <Button
-      style={{marginLeft: "5px", }}
+      style={{marginLeft: "5px", paddingLeft: "17px", paddingRight: "17px", paddingTop: "5.75px", paddingBottom: "5.75px", fontWeight: "bold",}}
         color="danger"
         onClick={toggle}
       >
