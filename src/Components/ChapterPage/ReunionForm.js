@@ -3,6 +3,7 @@ import { TextField, Button} from "@material-ui/core"
 import Autocomplete from "@material-ui/lab/Autocomplete"
 import { makeStyles } from "@material-ui/core/styles"
 import { states, cities } from "./constants"
+import { axiosWithAuth } from "../../utils/axiosWithAuth"
 
 
 
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     marginTop: "2%"
   },
   locationContainer: {
-    margin: "2%",
+    margin: "2% 0",
     width: "100%",
     display: "flex",
   },
@@ -36,37 +37,53 @@ const useStyles = makeStyles({
 })
 
 
-const initialState = {
-  volunteersid: '',
-  city: 'California',
+const requiredInputs = {
   state: '',
-  story: '',
-  reunion_img: ''
+  city: '',
+  title: '',
+  story: ''
 }
 
 export const ReunionForm = () => {
-  const [ formValues, setFormValues ] = useState(initialState)
-  const [ cityOptions, setCityOptions ] = useState([])
+  const [ formValues, setFormValues ] = useState(requiredInputs)
+  const [ reunionImg, setReunionImg ] = useState()
+  const [ cityOptions, setCityOptions ] = useState()
   
   const classes = useStyles()
   
   useEffect(() => {
     setCityOptions(cities[formValues.state])
-    console.log(cityOptions)
   }, [formValues.state])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+
+    const form = new FormData()
+    form.append("reunion_img", reunionImg, reunionImg.name)
+    Object.keys(formValues).forEach(el => {
+      form.append(el, formValues[el])
+    })
+
+    axiosWithAuth()
+      .post(`/api/chapter/1/reunions`, form)
+      .then(res => {
+        console.log(res)
+      })
+    // for (var entry of form.entries()){
+    //   console.log(`${entry[0]}, ${entry[1]}`)
+    // }
   }
 
   const handleChange = (e) => {
-    setFormValues({
-      ...formValues, 
-      [ e.target.name ] : e.target.value
-    })
-
-    console.log(formValues)
+    if (e.target.name === "reunion_img"){
+      const file = e.target.files[0]
+      setReunionImg(file)
+    } else {
+      setFormValues({
+        ...formValues, 
+        [ e.target.name ] : e.target.value
+      })
+    }
   }
 
   return (
@@ -88,12 +105,13 @@ export const ReunionForm = () => {
           renderInput={(params) => 
             <TextField 
               {...params}
+              required
               label="Select a State" 
               variant="outlined" 
               />}
         />
 
-      {formValues.state &&
+      {cityOptions ?
         <Autocomplete
           className={classes.locationInputs}
           id="city"
@@ -106,8 +124,14 @@ export const ReunionForm = () => {
             })
           }}
           getOptionLabel={(option) => option}
-          renderInput={(params) => <TextField {...params} label="Select a City" variant="outlined" />}
-        />}
+          renderInput={(params) => 
+            <TextField 
+              {...params} 
+              required
+              label="Select a City" 
+              variant="outlined" 
+              />}
+        /> : null}
       </div>
 
       <h2 className={classes.h2}>Reunion Information and Media</h2>
@@ -116,6 +140,10 @@ export const ReunionForm = () => {
         className={classes.textField}
         onChange={handleChange}
         label="Title of Submission"
+        inputProps={{
+          name: "title",
+          onChange: handleChange
+        }}
         value={formValues.title}
         variant="outlined"
        />
@@ -124,8 +152,11 @@ export const ReunionForm = () => {
         required
         multiline
         rows={5}
+        inputProps={{
+          name: "story",
+          onChange: handleChange
+        }}
         className={classes.textField}
-        onChange={handleChange}
         label="Reunion Details"
         value={formValues.story}
         variant="outlined"
@@ -134,9 +165,11 @@ export const ReunionForm = () => {
       <TextField
         required
         className={classes.textField}
-        onChange={handleChange}
+        inputProps={{
+          name: "reunion_img",
+          onChange: handleChange
+        }}
         label="Reunion Image"
-        value={formValues.reunion_img}
         variant="outlined"
         type="file"
         InputLabelProps={{ shrink: true}}
