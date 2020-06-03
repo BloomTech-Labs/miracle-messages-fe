@@ -38,6 +38,8 @@ const Chapters = (props) => {
   });
   const [modal, setModal] = useState(false);
   const [searchArray, setSearchArray] = useState([]);
+  const [searchTerm, setSearchTerm] = useState();
+
   console.log(searchArray);
   const deleteChapter = (id) => {
     axiosWithAuth()
@@ -161,6 +163,9 @@ const Chapters = (props) => {
       <AdminSearchBar
         chapterData={props.chapter_data}
         setSearchArray={setSearchArray}
+        searchArray={searchArray}
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
       />
       <div className="chapter-felx">
         <Table
