@@ -15,6 +15,7 @@ import UpdateFrom from "./UpdateForm";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
 const Chapter = (props) => {
   /*   const { admin, chapterLeaders, volunteer } = useUserGroups();
    */
@@ -27,7 +28,7 @@ const Chapter = (props) => {
     setChevOpen(!chevOpen);
   };
 
-  const toggle = () => {
+  const toggleDeleteModal = () => {
     setModal((modal) => !modal);
   };
 
@@ -63,9 +64,7 @@ const Chapter = (props) => {
                 ? props.info.leaders[0].name
                 : "Open"}
             </td>
-            <th>
-              {!chevOpen ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
-            </th>
+            <th>{!chevOpen ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}</th>
           </tr>
         </tbody>
       </Table>
@@ -73,53 +72,48 @@ const Chapter = (props) => {
         <div className="chapt-pic-con">
           <div className="title-edit">
             <h4>{props.info.title}</h4>
-            <Button
-            style={{backgroundColor: "#212121"}}
-            onClick={toggleEdit}>
-        <EditIcon />
-      </Button>
-      <Modal
-        isOpen={modalEdit}
-        toggle={toggleEdit}
-        className={props.className}
-        backdrop="static"
-      >
-        <ModalHeader toggle={toggleEdit}>Edit Chapter</ModalHeader>
-        <ModalBody>
-          <UpdateFrom
-            toggleEdit={toggleEdit}
-            chapter={props.info}
-          />
-        </ModalBody>
-      </Modal>
+            <div className="icons">
+              <div className="icon-inner" onClick={toggleEdit}>
+                <EditIcon />
+                <p className="edit-label">Edit</p>
+              </div>
+              <div className="icon-inner" onClick={toggleDeleteModal}>
+                <DeleteIcon />
+                <p className="delete-label">Delete</p>
+              </div>
+            </div>
 
-      <Button
-      style={{marginLeft: "5px", paddingLeft: "17px", paddingRight: "17px", paddingTop: "5.75px", paddingBottom: "5.75px", fontWeight: "bold",}}
-        color="danger"
-        onClick={toggle}
-      >
-        X
-      </Button>
-
-      <Modal
-        isOpen={modal}
-        toggle={toggle}
-        className={props.className}
-      >
-        <ModalHeader toggle={toggle}>Delete Chapter</ModalHeader>
-        <ModalBody>
-          Are you sure you want to permanently delete this Chapter?
-        </ModalBody>
-        <ModalFooter>
-          <Button color="danger" onClick={deleteChapt}>
-            Delete
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
-            Cancel
-          </Button>
-        </ModalFooter>
-      </Modal>
-            
+            <Modal
+              isOpen={modalEdit}
+              toggle={toggleEdit}
+              className={props.className}
+              backdrop="static"
+            >
+              <ModalHeader toggle={toggleEdit}>Edit Chapter</ModalHeader>
+              <ModalBody>
+                <UpdateFrom toggleEdit={toggleEdit} chapter={props.info} />
+              </ModalBody>
+            </Modal>
+            <Modal
+              isOpen={modal}
+              toggle={toggleDeleteModal}
+              className={props.className}
+            >
+              <ModalHeader toggle={toggleDeleteModal}>
+                Delete Chapter
+              </ModalHeader>
+              <ModalBody>
+                Are you sure you want to permanently delete this Chapter?
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" onClick={deleteChapt}>
+                  Delete
+                </Button>{" "}
+                <Button color="secondary" onClick={toggleDeleteModal}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
           </div>
           <img src={props.info.chapter_img_url} alt="chapter view" />
         </div>
@@ -158,9 +152,9 @@ const Chapter = (props) => {
 
 export default Chapter;
 
-    //   <Button
-    //   >
-    //     <Link style={{ color: "white",}} to={`/admin/chapters/${props.info.id}`}>
-    //       Chapter Info
-    //     </Link>
-    //   </Button>
+//   <Button
+//   >
+//     <Link style={{ color: "white",}} to={`/admin/chapters/${props.info.id}`}>
+//       Chapter Info
+//     </Link>
+//   </Button>

@@ -8,7 +8,10 @@
   }
 }
 .toggle-box {
-  display: none;
+  display: flex;
+  height: 0;
+  width: 0;
+  opacity: 0;
   img {
     width: 56%;
     margin-bottom: 2%;
@@ -16,19 +19,43 @@
 }
 
 .open-box {
-  display: flex;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s;
+
   flex-direction: column;
   padding-left: 5%;
   .title-edit {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    .icons {
+      display: flex;
+      margin-top: 1rem;
+      p {
+        opacity: 0;
+        font-weight: bold;
+      }
+      .icon-inner {
+        &:hover p {
+          opacity: 1;
+          cursor: pointer;
+        }
+        &:hover svg {
+          width: 1.65rem;
+          height: 1.65rem;
+        }
+      }
+    }
     h4 {
       margin-right: 0.8rem;
     }
     svg {
-      width: 1.1rem;
-      height: 1.1rem;
+      width: 1.5rem;
+      height: 1.5rem;
       cursor: pointer;
+      margin-right: 0.8rem;
     }
   }
   .chapt-pic-con {
