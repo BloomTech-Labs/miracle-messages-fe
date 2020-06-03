@@ -8,7 +8,7 @@ import "./Map.scss";
 import { ReactSVG } from "react-svg";
 
 // Action imports
-import { getData, getReunions } from "../../Actions/index";
+import { getData, getReunions, registerUser } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
@@ -53,8 +53,10 @@ class Map extends Component {
     open: true,
   };
   componentDidMount() {
+    console.log("hello")
     this.props.getData();
     this.props.getReunions();
+    this.props.registerUser();
   }
   componentDidUpdate(prevProps) {
     if (this.props.openPopup !== prevProps.openPopup) {
@@ -223,6 +225,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getData,
   getReunions,
+  registerUser,
   updatePopupAction,
   popupToggleAction,
   onViewportChanged,
