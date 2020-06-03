@@ -37,7 +37,8 @@ const Chapters = (props) => {
     newReunionImg: null,
   });
   const [modal, setModal] = useState(false);
-
+  const [searchArray, setSearchArray] = useState([]);
+  console.log(searchArray);
   const deleteChapter = (id) => {
     axiosWithAuth()
       .delete(`/api/chapter/${id}`)
@@ -157,7 +158,10 @@ const Chapters = (props) => {
           ></iframe>
         </div>
       </div>
-      <AdminSearchBar />
+      <AdminSearchBar
+        chapterData={props.chapter_data}
+        setSearchArray={setSearchArray}
+      />
       <div className="chapter-felx">
         <Table
           id="chapter-table-header"
@@ -175,17 +179,29 @@ const Chapters = (props) => {
           </thead>
         </Table>
         {console.log(props.chapter_data)}
-        {props.chapter_data.map((chapter) => {
-          if (chapter.approved === true) {
-            return (
-              <Chapter
-                info={chapter}
-                key={chapter.id}
-                deleteChapter={deleteChapter}
-              />
-            );
-          }
-        })}
+        {searchArray.length === 0
+          ? props.chapter_data.map((chapter) => {
+              if (chapter.approved === true) {
+                return (
+                  <Chapter
+                    info={chapter}
+                    key={chapter.id}
+                    deleteChapter={deleteChapter}
+                  />
+                );
+              }
+            })
+          : searchArray.map((chapter) => {
+              if (chapter.approved === true) {
+                return (
+                  <Chapter
+                    info={chapter}
+                    key={chapter.id}
+                    deleteChapter={deleteChapter}
+                  />
+                );
+              }
+            })}
         <Button
           style={{ backgroundColor: "#212121" }}
           className="addBtn"
