@@ -31,21 +31,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AdminSearchBar(props) {
   const classes = useStyles();
-  const [searchTerm, setSearchTerm] = useState();
 
   useEffect(() => {
     props.setSearchArray(
-      props.chapterData.filter(
-        (chapter) =>
-          chapter.city.toUpperCase().includes(searchTerm.toUpperCase()) ||
-          chapter.state.toUpperCase().includes(searchTerm.toUpperCase())
+      props.chapterData.filter((chapter) =>
+        props.searchTerm
+          ? chapter.city
+              .toUpperCase()
+              .includes(props.searchTerm.toUpperCase()) ||
+            chapter.state.toUpperCase().includes(props.searchTerm.toUpperCase())
+          : null
       )
     );
-  }, [searchTerm]);
+  }, [props.searchTerm]);
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    console.log(searchTerm);
+    props.setSearchTerm(e.target.value);
+    console.log(props.searchTerm);
   };
 
   return (
