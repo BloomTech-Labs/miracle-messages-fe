@@ -3,6 +3,7 @@ import axios from "axios"
 export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO"
 export const FETCH_CHAPTER_VOLUNTEERS = "FETCH_CHAPTER_VOLUNTEERS"
 export const FETCH_CHAPTER_REUNIONS = "FETCH_CHAPTER_REUNIONS"
+export const TOGGLE_FETCHING_STATUS = "TOGGLE_FETCHING_STATUS"
 
 
 
@@ -23,8 +24,6 @@ export const fetchChapterInfo = (id) => dispatch => {
   axios
     .get(chapter)
     .then(res => {
-      console.log(res)
-      
       dispatch({
         type: FETCH_CHAPTER_INFO,
         payload: res.data
@@ -58,17 +57,4 @@ export const fetchChapterReunions = (id) => dispatch => {
     })
 }
 
-// export const joinChapterReqquest = (id) => dispatch => {
-//   const { joinChapterUrl } = buildUrls(id)
-
-//   axios
-//     .post(joinChapterUrl)
-//     .then(res => {
-//       console.log(res);
-//       dispatch({
-//         type: FETCH_CHAPTER_REUNIONS,
-//         payload: res.data
-//       })
-//     })
-// }
 

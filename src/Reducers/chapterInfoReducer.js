@@ -6,9 +6,18 @@ import {
 
 
 const initialState = {
-  chapterInfo: [],
-  volunteers: [],
-  reunions: []
+  chapterInfo: {
+      isFetching: true,
+      chapterInfo: {}
+    },
+  volunteers: {
+      isFetching: true,
+      volunteers: []
+    },
+  reunions: {
+    isFetching: true,
+    reunions: []
+  }
 }
 
 
@@ -17,17 +26,26 @@ export const chapterInfoReducer = (state = initialState, action) => {
       case FETCH_CHAPTER_INFO:
         return {
           ...state,
-          chapterInfo: action.payload
+          chapterInfo: {
+            isFetching: false,
+            chapterInfo: action.payload
+          }
         } 
       case FETCH_CHAPTER_VOLUNTEERS:
         return {
           ...state,
-          volunteers: action.payload
+          volunteers: {
+            isFetching: false,
+            volunteers: action.payload
+          }
         } 
       case FETCH_CHAPTER_REUNIONS:
         return {
           ...state,
-          reunions: action.payload
+          reunions: {
+            isFetching: false,
+            reunions: action.payload
+          }
         }
       default:
         return state
