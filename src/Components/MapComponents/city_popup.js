@@ -4,28 +4,25 @@ import "./city_popup.scss";
 
 const CityPopup = (props) => {
   const { info } = props;
-  console.log(info)
+  console.log(info);
 
   return (
     <div className="chapter-Info">
       <div className="chapter-Title">
         <h1>{info.title}</h1>
         <div className="chapter-img">
-          <img
-            src={info.chapter_img_url}
-            alt="chapter"
-          />
+          <img src={info.chapter_img_url} alt="chapter" />
         </div>
       </div>
       {/* Contains the chapter statisics; members/reunions */}
 
       <div className="chapter-Stats">
         <div className="volunteers">
-          <span className="number">{info.numvolunteers}</span>
+          <span className="number">{info.memberCount}</span>
           Members
         </div>
         <p className="reunions">
-          <span className="number">{info.numreunions}</span>
+          <span className="number">{info.reunionCount}</span>
           Reunions
         </p>
       </div>

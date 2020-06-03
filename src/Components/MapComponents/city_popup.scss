@@ -10,7 +10,7 @@
 }
 
 .chapter-Info {
-  width: 250px;
+  width: 260px;
   font-family: poppins;
   margin-top: 10px;
   color: white;
@@ -21,6 +21,7 @@
   .chapter-img {
     img {
       max-width: 100%;
+      padding: 0 5px;
     }
   }
   .chapter-btn {
@@ -31,7 +32,7 @@
     align-self: center;
     border-radius: 3px;
     color: black;
-    font-weight: 500;
+    font-weight: 600;
     &:hover {
       background-color: rgb(173, 173, 173);
     }
