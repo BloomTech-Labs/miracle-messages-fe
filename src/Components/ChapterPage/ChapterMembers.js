@@ -30,16 +30,16 @@ const LeaderAvatar = withStyles({
     width: "30%",
     height: "auto",
     margin: "0 auto",
-  },
-  img: {
-    boxShadow:
+    '& img': {
+      boxShadow:
       "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    },
   },
 })(Avatar);
 
 const VolunteerAvatar = withStyles({
   root: {
-    width: "35%",
+    width: "20%",
     height: "100%",
     margin: "0 auto",
   },
@@ -76,7 +76,6 @@ const ChapterMembers = ({ kev, volunteers }) => {
         <div className="chapter-volunteers">
           <h2>Volunteers</h2>
           <StyledAvatarGroup spacing="large" max={10}>
-            <Carousel responsive={responsive}>
               {volunteers.map((el) => {
                 return (
                   <VolunteerAvatar
@@ -85,7 +84,6 @@ const ChapterMembers = ({ kev, volunteers }) => {
                   />
                 );
               })}
-            </Carousel>
           </StyledAvatarGroup>
         </div>
       </div>
