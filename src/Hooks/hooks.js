@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react"
 export const useLoggedInUser = () => {
   const [ user, setUser] = useState({})
   const token = JSON.parse(localStorage.getItem("okta-token-storage"))
-  const { idToken: { idToken }, accessToken: { accessToken } } = JSON.parse(localStorage.getItem("okta-token-storage"))
-
+  
   useEffect(() => {
-    if (idToken){
+    if (!token) return 
+
+    if (token.idToken && token.accessToken){
+      const { idToken: { idToken }, accessToken: { accessToken } } = token
       const idPayload = idToken.split('.')[1]
       const accessPayload = accessToken.split('.')[1]
 

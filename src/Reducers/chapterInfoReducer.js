@@ -1,7 +1,10 @@
 import {
   FETCH_CHAPTER_INFO,
   FETCH_CHAPTER_VOLUNTEERS,
-  FETCH_CHAPTER_REUNIONS
+  FETCH_CHAPTER_REUNIONS,
+  RECEIVE_CHAPTER_INFO,
+  RECEIVE_CHAPTER_VOLUNTEERS,
+  RECEIVE_CHAPTER_REUNIONS
 } from "../Actions/ChapterPageActions";
 
 
@@ -27,24 +30,48 @@ export const chapterInfoReducer = (state = initialState, action) => {
         return {
           ...state,
           chapterInfo: {
-            isFetching: false,
-            chapterInfo: action.payload
+            ...state.chapterInfo,
+            isFetching: true
+          }
+        } 
+      case RECEIVE_CHAPTER_INFO:
+        return {
+          ...state,
+          chapterInfo: {
+            chapterInfo: action.payload,
+            isFetching: false
           }
         } 
       case FETCH_CHAPTER_VOLUNTEERS:
         return {
           ...state,
           volunteers: {
-            isFetching: false,
-            volunteers: action.payload
+            ...state.volunteers,
+            isFetching: true
+          }
+        } 
+      case RECEIVE_CHAPTER_VOLUNTEERS:
+        return {
+          ...state,
+          volunteers: {
+            volunteers: action.payload,
+            isFetching: false
           }
         } 
       case FETCH_CHAPTER_REUNIONS:
         return {
           ...state,
           reunions: {
-            isFetching: false,
-            reunions: action.payload
+            ...state.reunions,
+            isFetching: true
+          }
+        }
+      case RECEIVE_CHAPTER_REUNIONS:
+        return {
+          ...state,
+          reunions: {
+            reunions: action.payload,
+            isFetching: false
           }
         }
       default:

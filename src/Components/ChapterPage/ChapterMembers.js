@@ -54,6 +54,7 @@ const StyledAvatarGroup = withStyles({
 
 const ChapterMembers = ({ kev, volunteers }) => {
   return (
+    volunteers ? 
     <div>
       <div className="members-box">
         <div className="chapter-leader">
@@ -87,7 +88,8 @@ const ChapterMembers = ({ kev, volunteers }) => {
           </StyledAvatarGroup>
         </div>
       </div>
-    </div>
+    </div> :
+    null
   );
 };
 
