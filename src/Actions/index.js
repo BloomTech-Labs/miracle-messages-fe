@@ -87,21 +87,26 @@ export const getDefault = () => dispatch => {
     .catch(err => dispatch({ type: FETCH_CHAPTER_DEFAULT_FAIL }))
 }
 
-// export const updateSponsor = (id, info) => dispatch => {
-//    const updated = {
-//        id: info.id,
-//        name: info.name,
-//        site_url: info.site_url,
-//        icon_url: info.icon_url,
-//        category: info.category
-//    }
-//    dispatch({type: PARTNER_UPDATE});
-//    axios
-//      .put(`https://miracle-messages-production.herokuapp.com/api/partner/${id}`, updated)
-//      .then(e => {
-//         dispatch({type:PARTNER_UPDATE_SUCCESS, payload: e.data})
-//      })
-//      .catch(err => {
-//         dispatch({type: PARTNER_ERR})
-//      });
-// }
+export const registerUser = () => dispatch => {
+  const { idToken: { idToken } } = JSON.parse(localStorage.getItem("okta-token-storage"))
+  if (idToken){
+    const payload = idToken.split('.')[1]
+    const decodedPayload = JSON.parse(Buffer.from(payload, "base64").toString("ascii"))
+    const { email } = decodedPayload
+    const { name } = decodedPayload
+    const firstName = name.split(' ')[0]
+    const lastName = name.split(' ')[1]
+
+    const user = {
+      email,
+      firstName,
+      lastName
+    }
+
+    axiosWithAuth()
+      .post("/api/user/login", user)
+      .then(res => {
+        console.log(res)
+      })
+  }
+}

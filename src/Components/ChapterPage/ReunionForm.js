@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   form: {
     display: 'flex',
     flexDirection: 'column',
-    width: '60%',
+    width: '100%',
     padding: "2%"
   },
   textField: {
