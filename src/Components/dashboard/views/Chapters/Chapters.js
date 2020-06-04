@@ -102,6 +102,8 @@ const Chapters = (props) => {
     if (chapter.newReunionImg != null) {
       fd.append("reunion_img", chapter.newReunionImg);
     }
+    fd.append("longitude", chapter.longitude)
+    fd.append("latitude", chapter.latitude)
     fd.append("title", chapter.title);
     fd.append("established_date", chapter.established_date);
     fd.append("description", chapter.description);
@@ -111,10 +113,13 @@ const Chapters = (props) => {
     fd.append("memberCount", chapter.memberCount);
     fd.append("msg_delivered", chapter.msg_delivered);
     fd.append("msg_recorded", chapter.msg_recorded);
-    fd.append("numreunions", chapter.numreunions);
+    fd.append("reunionCount", chapter.reunionCount);
     fd.append("facebook", chapter.facebook);
     fd.append("story", chapter.story);
     fd.append("leaders", chapter.leaders);
+    fd.append("Volunteers", chapter.Volunteers)
+    fd.append("approved", chapter.approved)
+    fd.append("requestedBy", chapter.requestedBy)
 
     axiosWithAuth()
       .post(`/api/chapter/`, fd)

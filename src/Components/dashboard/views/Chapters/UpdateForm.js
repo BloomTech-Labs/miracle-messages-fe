@@ -34,6 +34,8 @@ class UpdateForm extends React.Component {
       fd.append("reunion_img", this.state.newReunionImg)
     }
     fd.append("title", this.state.chapter.title)
+    fd.append("longitude", this.state.chapter.longitude)
+    fd.append("latitude", this.state.chapter.latitude)
     fd.append("established_date", this.state.chapter.established_date)
     fd.append("description", this.state.chapter.description)
     fd.append("city", this.state.chapter.city)
@@ -42,10 +44,15 @@ class UpdateForm extends React.Component {
     fd.append("memberCount", this.state.chapter.memberCount)
     fd.append("msg_delivered", this.state.chapter.msg_delivered)
     fd.append("msg_recorded", this.state.chapter.msg_recorded)
-    fd.append("numreunions", this.state.chapter.numreunions)
+    fd.append("reunionCount", this.state.chapter.reunionCount)
     fd.append("facebook", this.state.chapter.facebook)
     fd.append("story", this.state.chapter.story)
     fd.append("leaders", this.state.chapter.leaders)
+    fd.append("requestedBy", this.state.chapter.requestedBy)
+    fd.append("approved", this.state.chapter.approved)
+    fd.append("Volunteers", this.state.chapter.Volunteers)
+
+
 
     axiosWithAuth()
       .put(`/api/chapter/${id}`, fd)
@@ -100,7 +107,7 @@ class UpdateForm extends React.Component {
         <div className="dropdown-divider" />
         <Label>Chapter Leader</Label>
         <Input
-          value={this.state.chapter.name}
+          value={this.state.chapter.leaders}
           onChange={this.changeHandler}
           name="Chapter Leader"
           type="textarea"

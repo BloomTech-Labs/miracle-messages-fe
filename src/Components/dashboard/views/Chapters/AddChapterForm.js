@@ -30,16 +30,25 @@ const AddChapterForm = props => {
     if (chapter.newReunionImg != null) {
       fd.append("reunion_img", chapter.newReunionImg)
     }
+    fd.append("longitude", chapter.longitude)
+    fd.append("latitude", chapter.latitude)
     fd.append("title", chapter.title)
     fd.append("established_date", chapter.established_date)
     fd.append("description", chapter.description)
     fd.append("city", chapter.city)
     fd.append("state", chapter.state)
     fd.append("msg_delivered", chapter.msg_delivered)
+    fd.append("email", chapter.email)
     fd.append("msg_recorded", chapter.msg_recorded)
+    fd.append("reunionCount", chapter.reunionCount)
+    fd.append("memberCount", chapter.memberCount)
     fd.append("facebook", chapter.facebook)
     fd.append("story", chapter.story)
-    fd.append("name", chapter.name)
+    fd.append("leaders", chapter.leaders)
+    fd.append("Volunteers", chapter.Volunteers)
+    fd.append("approved", chapter.approved)
+    fd.append("requestedBy", chapter.requestedBy)
+
 
     // axiosWithAuth()
     //   .post(`/api/chapter/`, fd)
@@ -100,7 +109,7 @@ const AddChapterForm = props => {
         <div className="dropdown-divider" />
         <Label>Chapter Leader</Label>
         <Input
-          value={props.chapter.name}
+          value={props.chapter.leaders}
           onChange={changeHandler}
           name="Chapter Leader"
           type="textarea"
