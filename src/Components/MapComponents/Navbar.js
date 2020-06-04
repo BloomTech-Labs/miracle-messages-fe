@@ -5,6 +5,8 @@ import logoMobile from "../../Assets/Imgs/MM_Logo_mobile.png";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+import { registerUser } from "../../Actions/index";
+
 import "./Navbar.scss";
 
 import profilephoto from "../../Assets/Imgs/USER-PROF.png";
@@ -24,6 +26,11 @@ const Navbar = (props) => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuOpen, setMenuStatus] = useState(false);
+
+  useEffect(() => {
+    token && props.registerUser();
+    console.log("register user called");
+  }, [props.isLoggedIn]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -135,4 +142,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(Navbar);
+export default connect(mapStateToProps, { registerUser })(Navbar);

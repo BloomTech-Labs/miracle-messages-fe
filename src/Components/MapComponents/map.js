@@ -8,7 +8,7 @@ import "./Map.scss";
 import { ReactSVG } from "react-svg";
 
 // Action imports
-import { getData, getReunions, registerUser } from "../../Actions/index";
+import { getData, getReunions } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
@@ -53,10 +53,9 @@ class Map extends Component {
     open: true,
   };
   componentDidMount() {
-    console.log("hello")
+    console.log("hello");
     this.props.getData();
     this.props.getReunions();
-    this.props.registerUser();
   }
   componentDidUpdate(prevProps) {
     if (this.props.openPopup !== prevProps.openPopup) {
@@ -133,11 +132,13 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         <BoxLink state={this.state} closeBox={this.closeBox} />
-        {!this.props.sideBarOpen && <SearchBar
-          chapters={this.props.chapter_data}
-          reunions={this.props.reunion_data}
-          PinClickHandler={this.PinClickHandler}
-        />}
+        {!this.props.sideBarOpen && (
+          <SearchBar
+            chapters={this.props.chapter_data}
+            reunions={this.props.reunion_data}
+            PinClickHandler={this.PinClickHandler}
+          />
+        )}
 
         {/* <Sidebar /> */}
 
@@ -225,7 +226,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getData,
   getReunions,
-  registerUser,
   updatePopupAction,
   popupToggleAction,
   onViewportChanged,
