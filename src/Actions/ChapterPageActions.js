@@ -3,7 +3,11 @@ import axios from "axios"
 export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO"
 export const FETCH_CHAPTER_VOLUNTEERS = "FETCH_CHAPTER_VOLUNTEERS"
 export const FETCH_CHAPTER_REUNIONS = "FETCH_CHAPTER_REUNIONS"
-export const TOGGLE_FETCHING_STATUS = "TOGGLE_FETCHING_STATUS"
+
+export const RECEIVE_CHAPTER_INFO = "RECEIVE_CHAPTER_INFO"
+export const RECEIVE_CHAPTER_VOLUNTEERS = "RECEIVE_CHAPTER_VOLUNTEERS"
+export const RECEIVE_CHAPTER_REUNIONS = "RECEIVE_CHAPTER_REUNIONS"
+
 
 
 
@@ -21,11 +25,14 @@ const buildUrls = (id) => {
 export const fetchChapterInfo = (id) => dispatch => {
   const { chapter } = buildUrls(id)
 
+  dispatch({ type: FETCH_CHAPTER_INFO})
+
   axios
     .get(chapter)
     .then(res => {
+      console.log(res)
       dispatch({
-        type: FETCH_CHAPTER_INFO,
+        type: RECEIVE_CHAPTER_INFO,
         payload: res.data
       })
     })
@@ -34,11 +41,13 @@ export const fetchChapterInfo = (id) => dispatch => {
 export const fetchChapterVolunteers = (id) => dispatch => {
   const { volunteers } = buildUrls(id)
 
+  dispatch({ type: FETCH_CHAPTER_VOLUNTEERS})
+
   axios
     .get(volunteers)
     .then(res => {
       dispatch({
-        type: FETCH_CHAPTER_VOLUNTEERS,
+        type: RECEIVE_CHAPTER_VOLUNTEERS,
         payload: res.data
       })
     })
@@ -47,11 +56,13 @@ export const fetchChapterVolunteers = (id) => dispatch => {
 export const fetchChapterReunions = (id) => dispatch => {
   const { reunions } = buildUrls(id)
 
+  dispatch({ type: FETCH_CHAPTER_VOLUNTEERS})
+
   axios
     .get(reunions)
     .then(res => {
       dispatch({
-        type: FETCH_CHAPTER_REUNIONS,
+        type: RECEIVE_CHAPTER_REUNIONS,
         payload: res.data
       })
     })

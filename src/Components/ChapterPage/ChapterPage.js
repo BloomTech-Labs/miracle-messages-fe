@@ -99,6 +99,7 @@ const ChapterPage = (props) => {
     volunteerCount,
     isFetching
   } = props;
+  console.log(props)
   const user = useLoggedInUser()
 
   const classes = useStyles()
@@ -123,8 +124,6 @@ const ChapterPage = (props) => {
       })  
   };
 
- 
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -134,7 +133,8 @@ const ChapterPage = (props) => {
   };
 
   return (
-    (!isFetching && (
+    isFetching ? 
+      null :
       <div className="chapter-page-container">
         <div className="header-img"></div>
         <div className="inner-container">
@@ -180,9 +180,6 @@ const ChapterPage = (props) => {
           <ChapterMembers volunteers={volunteers} kev={kev} />
         </div>
       </div>
-    )) ||
-    // Probably need some type of loading page to render while data is fetched
-    null
   );
 };
 
@@ -190,7 +187,7 @@ const mapStateToProps = (state) => {
   let { chapterInfo, volunteers, reunions } = state.chapterInfoReducer;
 
   const isFetching = chapterInfo.isFetching || volunteers.isFetching || reunions.isFetching
-  console.log(isFetching)
+  
   chapterInfo = chapterInfo.chapterInfo
   volunteers = volunteers.volunteers
   reunions = reunions.reunions
