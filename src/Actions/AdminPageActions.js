@@ -4,6 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 export const START_LOGIN = "START_LOGIN";
 export const FAILURE_LOGIN = "FAILURE_LOGIN";
 export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 
 export const GET_USERS_START = "GET_USERS_START";
 export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
@@ -43,6 +44,10 @@ export const DELETE_CHAPTER_FAIL = "DELETE_CHAPTERS_FAIL";
 
 export const loginSuccess = (user) => (dispatch) => {
   dispatch({ type: SUCCESS_LOGIN, payload: user });
+};
+
+export const logoutSuccess = (user) => (dispatch) => {
+  dispatch({ type: LOGOUT_SUCCESS });
 };
 
 export const addUser = (username, password) => (dispatch) => {

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { registerUser } from "../../Actions/index";
+import { logoutSuccess } from "../../Actions/AdminPageActions";
 
 import "./Navbar.scss";
 
@@ -47,6 +48,7 @@ const Navbar = (props) => {
     localStorage.removeItem("okta-pkce-storage");
     localStorage.removeItem("okta-cache-storage");
     localStorage.removeItem("okta-token-storage");
+    props.logoutSuccess();
 
     history.push("/");
     addToast("Logged Out", {
@@ -156,4 +158,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { registerUser })(Navbar);
+export default connect(mapStateToProps, { registerUser, logoutSuccess })(
+  Navbar
+);
