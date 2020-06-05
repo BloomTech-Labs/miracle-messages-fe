@@ -113,6 +113,16 @@ class UpdateForm extends React.Component {
           type="textarea"
           placeholder="Name"
         />
+                <br />
+        <div className="dropdown-divider" />
+        <Label>Email</Label>
+        <Input
+          value={this.state.chapter.email}
+          onChange={this.changeHandler}
+          name="Email"
+          type="textarea"
+          placeholder="Email"
+        />
         <br />
         <Card>
           <CardImg src={this.state.current_chapter_imgUrl} />

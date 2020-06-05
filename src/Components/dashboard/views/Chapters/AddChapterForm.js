@@ -1,13 +1,7 @@
 import React, { useState } from "react"
-import {axiosWithAuth} from "../../../../utils/axiosWithAuth";
 import {
-  Button,
   Input,
   Label,
-  CardImg,
-  CardImgOverlay,
-  CardTitle,
-  Card
 } from "reactstrap"
 
 
@@ -49,20 +43,6 @@ const AddChapterForm = props => {
     fd.append("approved", chapter.approved)
     fd.append("requestedBy", chapter.requestedBy)
 
-
-    // axiosWithAuth()
-    //   .post(`/api/chapter/`, fd)
-    //   .then(res => {
-    //     props.toggle()
-    //     console.log(res)
-    //     console.log(res)
-    //   })
-    //   .catch(err => {
-    //       console.log(err);
-    //       console.log(err.response);
-    //   })
-
-    
   }
 
   const changeHandler = ev => {
