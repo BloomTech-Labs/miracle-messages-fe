@@ -84,7 +84,12 @@ const Navbar = (props) => {
         {token && (
           <>
             {props.userImg.length > 0 ? (
-              <img className="avatarPic" src={props.userImg} alt="user" />
+              <img
+                className="avatarPic"
+                src={props.userImg}
+                alt="user"
+                onClick={handleClick}
+              />
             ) : (
               <img
                 src={profilephoto}

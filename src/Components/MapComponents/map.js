@@ -186,23 +186,27 @@ class Map extends Component {
               );
             }
           })}
-          {this.state.toggleReunions &&
-            this.props.reunion_data.map((reunion, index) => {
-              return (
-                <Marker
-                  className="markerReunion"
-                  key={`reunion-marker-${index}`}
-                  latitude={reunion.latitude}
-                  longitude={reunion.longitude}
-                >
-                  <ReactSVG
-                    src="reunion_marker.svg"
-                    id="reunion-pin"
-                    className="city-pin"
-                  />
-                </Marker>
-              );
-            })}
+          {this.props.reunion_data.map((reunion, index) => {
+            return (
+              <Marker
+                className="markerReunion"
+                key={`reunion-marker-${index}`}
+                latitude={reunion.latitude}
+                longitude={reunion.longitude}
+              >
+                <ReactSVG
+                  src="reunion_marker.svg"
+                  id="reunion-pin"
+                  className="city-pin"
+                  style={
+                    this.state.toggleReunions
+                      ? { opacity: "1", transition: ".3s", cursor: "pointer" }
+                      : { opacity: "0", transition: ".3s", cursor: "grab" }
+                  }
+                />
+              </Marker>
+            );
+          })}
           {this.props.openPopup && (
             <Popup
               className="popup-main"

@@ -109,10 +109,9 @@
   .city-pin {
     svg {
       width: 80%;
+      opacity: 1;
+      transition: 1s;
     }
     transform: translate(-15px, -50px) !important;
-    svg:hover {
-      cursor: pointer;
-    }
   }
 }
