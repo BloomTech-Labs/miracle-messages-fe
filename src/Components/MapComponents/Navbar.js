@@ -17,8 +17,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import SettingsIcon from "@material-ui/icons/Settings";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { useLoggedInUser } from "../../Hooks/hooks";
 
 const Navbar = (props) => {
+  const user = useLoggedInUser();
   const token = JSON.parse(localStorage.getItem("okta-token-storage"));
 
   const history = useHistory();
@@ -28,7 +30,8 @@ const Navbar = (props) => {
   const [menuOpen, setMenuStatus] = useState(false);
 
   useEffect(() => {
-    token && props.registerUser();
+    token && props.registerUser(user);
+    console.log("register user called");
     console.log(props.userImg);
   }, [props.isLoggedIn]);
 

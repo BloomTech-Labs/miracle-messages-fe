@@ -89,34 +89,14 @@ export const getDefault = () => (dispatch) => {
     .catch((err) => dispatch({ type: FETCH_CHAPTER_DEFAULT_FAIL }));
 };
 
-export const registerUser = () => (dispatch) => {
-  const {
-    idToken: { idToken },
-  } = JSON.parse(localStorage.getItem("okta-token-storage"));
-  if (idToken) {
-    const payload = idToken.split(".")[1];
-    const decodedPayload = JSON.parse(
-      Buffer.from(payload, "base64").toString("ascii")
-    );
-    const { email } = decodedPayload;
-    const { name } = decodedPayload;
-    const firstName = name.split(" ")[0];
-    const lastName = name.split(" ")[1];
-
-    const user = {
-      email,
-      firstName,
-      lastName,
-    };
-
-    axiosWithAuth()
-      .post("/api/user/login", user)
-      .then((res) => {
-        console.log(res);
-        dispatch({
-          type: POST_USER_SUCCESS,
-          payload: res.data.profile_img_url,
-        });
+export const registerUser = (user) => (dispatch) => {
+  axiosWithAuth()
+    .post("/api/user/login", user)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: POST_USER_SUCCESS,
+        payload: res.data.profile_img_url,
       });
-  }
+    });
 };

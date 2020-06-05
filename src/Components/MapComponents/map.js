@@ -55,7 +55,7 @@ class Map extends Component {
     toggleReunions: true,
   };
   componentDidMount() {
-    console.log("hello");
+    console.log(this.props)
     this.props.getData();
     this.props.getReunions();
   }
