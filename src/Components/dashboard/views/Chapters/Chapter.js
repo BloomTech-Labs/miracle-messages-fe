@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -8,7 +8,6 @@ import {
   ModalBody,
   Table,
 } from "reactstrap";
-import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
 
 import "./Chapter.scss";
 import UpdateFrom from "./UpdateForm";

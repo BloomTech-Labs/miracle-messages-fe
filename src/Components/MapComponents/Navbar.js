@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { registerUser } from "../../Actions/index";
+import { logoutSuccess } from "../../Actions/AdminPageActions";
 
 import "./Navbar.scss";
 
@@ -15,6 +16,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SettingsIcon from "@material-ui/icons/Settings";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useLoggedInUser } from "../../Hooks/hooks";
@@ -47,6 +49,7 @@ const Navbar = (props) => {
     localStorage.removeItem("okta-pkce-storage");
     localStorage.removeItem("okta-cache-storage");
     localStorage.removeItem("okta-token-storage");
+    props.logoutSuccess();
 
     history.push("/");
     addToast("Logged Out", {
@@ -111,13 +114,21 @@ const Navbar = (props) => {
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  props.setSideBarOpen(!props.sideBarOpen);
+                  //props.setSideBarOpen(!props.sideBarOpen);
+                  history.push("/admin/chapters");
                 }}
               >
                 <ListItemIcon>
                   <LibraryBooksIcon fontSize="small" />
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
+              </MenuItem>
+
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <NotificationsIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Requests" />
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <ListItemIcon>
@@ -156,4 +167,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { registerUser })(Navbar);
+export default connect(mapStateToProps, { registerUser, logoutSuccess })(
+  Navbar
+);
