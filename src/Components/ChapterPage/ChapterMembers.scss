@@ -1,0 +1,21 @@
+.no-leader {
+  margin-top: 7vh;
+  margin-bottom: 5vh;
+  .apply-btn {
+    text-align: center;
+    margin-top: 5vh;
+    background: rgb(39, 54, 68);
+    color: white;
+    padding: 1rem 0;
+    cursor: pointer;
+    &:hover {
+      background: rgb(66, 87, 105);
+    }
+  }
+}
+
+p.no-members {
+  text-align: center;
+  width: 100%;
+  border: none;
+}

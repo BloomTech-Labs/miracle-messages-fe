@@ -16,6 +16,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SettingsIcon from "@material-ui/icons/Settings";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useLoggedInUser } from "../../Hooks/hooks";
@@ -113,13 +114,21 @@ const Navbar = (props) => {
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  props.setSideBarOpen(!props.sideBarOpen);
+                  //props.setSideBarOpen(!props.sideBarOpen);
+                  history.push("/admin/chapters");
                 }}
               >
                 <ListItemIcon>
                   <LibraryBooksIcon fontSize="small" />
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
+              </MenuItem>
+
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <NotificationsIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Requests" />
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <ListItemIcon>
