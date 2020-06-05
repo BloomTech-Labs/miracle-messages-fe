@@ -29,7 +29,7 @@ const Navbar = (props) => {
 
   useEffect(() => {
     token && props.registerUser();
-    console.log("register user called");
+    console.log(props.userImg);
   }, [props.isLoggedIn]);
 
   const handleClick = (event) => {
@@ -83,12 +83,17 @@ const Navbar = (props) => {
         ) : null}
         {token && (
           <>
-            <img
-              src={profilephoto}
-              alt="user"
-              className="navProPic"
-              onClick={handleClick}
-            />
+            {props.userImg.length > 0 ? (
+              <img className="avatarPic" src={props.userImg} alt="user" />
+            ) : (
+              <img
+                src={profilephoto}
+                alt="user"
+                className="navProPic"
+                onClick={handleClick}
+              />
+            )}
+
             <Menu
               anchorEl={anchorEl}
               keepMounted
@@ -139,6 +144,7 @@ const mapStateToProps = (state) => {
     isFetching: state.loginReducer.isFetching,
     isLoggedIn: state.loginReducer.isLoggedIn,
     user: state.loginReducer.user,
+    userImg: state.loginReducer.userImg,
   };
 };
 
