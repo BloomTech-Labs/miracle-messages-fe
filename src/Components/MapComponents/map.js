@@ -30,6 +30,7 @@ import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
 import BoxLink from "./BoxLink";
 import SearchBar from "./SearchBar";
+import Legend from "./Legend";
 import "./Navbar.scss";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
@@ -51,6 +52,7 @@ class Map extends Component {
   //this fetches the data from the backend:
   state = {
     open: true,
+    toggleReunions: true,
   };
   componentDidMount() {
     console.log(this.props)
@@ -76,6 +78,12 @@ class Map extends Component {
   toggle = () => {
     this.setState((prevState) => ({
       modal: !prevState.modal,
+    }));
+  };
+
+  toggleReunions = () => {
+    this.setState((prevState) => ({
+      toggleReunions: !prevState.toggleReunions,
     }));
   };
 
@@ -132,6 +140,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         <BoxLink state={this.state} closeBox={this.closeBox} />
+        <Legend toggleReunions={this.toggleReunions} />
         {!this.props.sideBarOpen && (
           <SearchBar
             chapters={this.props.chapter_data}
@@ -159,6 +168,7 @@ class Map extends Component {
             <NavigationControl />
           </div>
           {this.props.chapter_data.map((city, index) => {
+            console.log("mapped cities", city);
             if (city.approved === true) {
               return (
                 <Marker
@@ -179,12 +189,21 @@ class Map extends Component {
           {this.props.reunion_data.map((reunion, index) => {
             return (
               <Marker
-                className="markerMAP"
+                className="markerReunion"
                 key={`reunion-marker-${index}`}
                 latitude={reunion.latitude}
                 longitude={reunion.longitude}
               >
-                <ReactSVG src="reunion_marker.svg" className="city-pin" />
+                <ReactSVG
+                  src="reunion_marker.svg"
+                  id="reunion-pin"
+                  className="city-pin"
+                  style={
+                    this.state.toggleReunions
+                      ? { opacity: "1", transition: ".3s", cursor: "pointer" }
+                      : { opacity: "0", transition: ".3s", cursor: "grab" }
+                  }
+                />
               </Marker>
             );
           })}

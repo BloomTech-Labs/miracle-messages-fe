@@ -17,10 +17,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import SettingsIcon from "@material-ui/icons/Settings";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { useLoggedInUser } from "../../Hooks/hooks"
+import { useLoggedInUser } from "../../Hooks/hooks";
 
 const Navbar = (props) => {
-  const user = useLoggedInUser()
+  const user = useLoggedInUser();
   const token = JSON.parse(localStorage.getItem("okta-token-storage"));
 
   const history = useHistory();
@@ -32,6 +32,7 @@ const Navbar = (props) => {
   useEffect(() => {
     token && props.registerUser(user);
     console.log("register user called");
+    console.log(props.userImg);
   }, [props.isLoggedIn]);
 
   const handleClick = (event) => {
@@ -85,12 +86,22 @@ const Navbar = (props) => {
         ) : null}
         {token && (
           <>
-            <img
-              src={profilephoto}
-              alt="user"
-              className="navProPic"
-              onClick={handleClick}
-            />
+            {props.userImg.length > 0 ? (
+              <img
+                className="avatarPic"
+                src={props.userImg}
+                alt="user"
+                onClick={handleClick}
+              />
+            ) : (
+              <img
+                src={profilephoto}
+                alt="user"
+                className="navProPic"
+                onClick={handleClick}
+              />
+            )}
+
             <Menu
               anchorEl={anchorEl}
               keepMounted
@@ -141,6 +152,7 @@ const mapStateToProps = (state) => {
     isFetching: state.loginReducer.isFetching,
     isLoggedIn: state.loginReducer.isLoggedIn,
     user: state.loginReducer.user,
+    userImg: state.loginReducer.userImg,
   };
 };
 

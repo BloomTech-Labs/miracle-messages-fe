@@ -57,7 +57,7 @@ const Chapter = (props) => {
             <th scope="row">{props.info.city}</th>
             <td>{props.info.state}</td>
 
-            <td>{props.info.memberCount}</td>
+            <td>{props.info.volunteers.length}</td>
 
             <td>
               {props.info.leaders.length > 0
