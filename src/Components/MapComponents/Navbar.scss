@@ -1,7 +1,7 @@
 .navbar-map {
   width: 100vw;
   position: fixed !important;
-  z-index: 2;
+  z-index: 3;
   height: auto;
   display: flex;
   justify-content: space-between;
@@ -102,6 +102,11 @@
       width: 60px;
       margin-bottom: 0.5rem;
     }
+  }
+  .avatarPic {
+    width: 50px;
+    cursor: pointer;
+    border-radius: 50%;
   }
 
   nav {

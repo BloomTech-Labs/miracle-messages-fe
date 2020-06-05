@@ -4,6 +4,8 @@ import {
   SUCCESS_LOGIN,
 } from "../Actions/AdminPageActions";
 
+import { POST_USER_SUCCESS } from "../Actions/index";
+
 const initialState = {
   isLoggedIn: false,
   isLoggedOut: false,
@@ -16,6 +18,7 @@ const initialState = {
     login: "",
     timeZone: "",
   },
+  userImg: "",
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -42,6 +45,14 @@ export const loginReducer = (state = initialState, action) => {
           login: action.payload.profile.login,
           timeZone: action.payload.profile.timeZone,
         },
+      };
+    case POST_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: true,
+        isLoggedOut: false,
+        userImg: action.payload,
       };
 
     case FAILURE_LOGIN:

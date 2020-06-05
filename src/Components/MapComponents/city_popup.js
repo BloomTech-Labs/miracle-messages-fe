@@ -18,7 +18,7 @@ const CityPopup = (props) => {
 
       <div className="chapter-Stats">
         <div className="volunteers">
-          <span className="number">{info.memberCount}</span>
+          <span className="number">{info.volunteers.length}</span>
           Members
         </div>
         <p className="reunions">

@@ -1,0 +1,46 @@
+.legend-con {
+  position: absolute;
+  left: 2%;
+  top: 65%;
+  z-index: 10;
+  padding: 1rem;
+  svg {
+    width: 90%;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 1rem;
+  }
+  .MuiSvgIcon-root {
+    width: auto;
+    color: rgb(17, 17, 17);
+  }
+  .MuiSvgIcon-fontSizeLarge {
+    font-size: 3rem;
+    cursor: pointer;
+    transition: 1s;
+  }
+  //switch
+  .switch-con {
+    display: flex;
+    flex-direction: column;
+
+    &:hover p {
+      display: block;
+    }
+    .MuiSwitch-root {
+      .MuiSwitch-track {
+        background-color: #ff6102;
+        opacity: 1;
+      }
+      .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+        opacity: 0.6;
+      }
+    }
+    .label {
+      font-weight: bold;
+      display: none;
+    }
+  }
+}
