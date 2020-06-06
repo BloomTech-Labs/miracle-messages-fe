@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
 import { useToasts } from "react-toast-notifications";
 
-import SponsorForm from "../Sponsors/SponsorForm";
+//import SponsorForm from "../Sponsors/SponsorForm";
 import AdminSearchBar from "./AdminSearchBar";
 import AddChapterForm from "./AddChapterForm";
 import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
@@ -176,8 +176,7 @@ const Chapters = (props) => {
             </tr>
           </thead>
         </Table>
-        {/*         {console.log(props.chapter_data)}
-         */}{" "}
+
         {searchArray.length === 0
           ? props.chapter_data.map((chapter) => {
               if (chapter.approved === true) {
