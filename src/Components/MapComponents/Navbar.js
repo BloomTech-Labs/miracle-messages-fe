@@ -32,18 +32,20 @@ const Navbar = (props) => {
   const [menuOpen, setMenuStatus] = useState(false);
   const [opacity, setOpacity] = useState("#212121de");
 
+  const changeOpacityOnScroll = () => {
+    window.scrollY > 250 ? setOpacity("#212121de") : setOpacity("#21212100");
+  };
+
   useEffect(() => {
     return history.listen((location) => {
       console.log(`You changed the page to: ${location.pathname}`);
-      location.pathname.includes("chapter")
-        ? setOpacity("#21212100")
-        : setOpacity("#212121de");
-    });
-  }, [history]);
-
-  useEffect(() => {
-    document.addEventListener("scroll", () => {
-      window.scrollY > 250 ? setOpacity("#212121de") : setOpacity("#21212100");
+      if (location.pathname.includes("chapter")) {
+        setOpacity("#21212100");
+        document.addEventListener("scroll", changeOpacityOnScroll);
+      } else if (!location.pathname.includes("chapter")) {
+        setOpacity("#212121de");
+        document.removeEventListener("scroll", changeOpacityOnScroll);
+      }
     });
   }, [history]);
 
@@ -135,7 +137,7 @@ const Navbar = (props) => {
                 onClick={() => {
                   handleClose();
                   //props.setSideBarOpen(!props.sideBarOpen);
-                  history.push("/admin/chapters");
+                  history.push("/admin/dashboard");
                 }}
               >
                 <ListItemIcon>
@@ -144,7 +146,12 @@ const Navbar = (props) => {
                 <ListItemText primary="Dashboard" />
               </MenuItem>
 
-              <MenuItem onClick={handleClose}>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  history.push("/admin/pending");
+                }}
+              >
                 <ListItemIcon>
                   <NotificationsIcon fontSize="small" />
                 </ListItemIcon>

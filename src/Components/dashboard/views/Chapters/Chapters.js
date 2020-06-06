@@ -6,6 +6,7 @@ import "./Chapters.scss";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
+import { useToasts } from "react-toast-notifications";
 
 import SponsorForm from "../Sponsors/SponsorForm";
 import AdminSearchBar from "./AdminSearchBar";
@@ -20,27 +21,37 @@ import {
   ModalFooter,
   Table,
 } from "reactstrap";
-import { set } from "react-ga";
 
 const Chapters = (props) => {
+  const { addToast } = useToasts();
+
   const { admin, chapterLeaders, volunteer } = useUserGroups();
   const [newChapter, setNewChapter] = useState({
-    name: "",
-    site_url: "",
-    icon_url: null,
-    category: "",
+    title: "",
+    description: "",
+    requestedBy: "",
+    latitude: "",
+    longitude: "",
+    city: "",
+    state: "",
+    msg_recorded: "",
+    msg_delivered: "",
+    established_date: "",
+    email: "",
+    facebook: "",
   });
-  const [chapter, setChapter] = useState({
+  const [newChapterImg, setNewChapterImg] = useState();
+  /*  const [chapter, setChapter] = useState({
     current_chapter_imgUrl: null,
     current_reunion_imgUrl: null,
     newChapterImg: null,
     newReunionImg: null,
-  });
+  }); */
   const [modal, setModal] = useState(false);
   const [searchArray, setSearchArray] = useState([]);
   const [searchTerm, setSearchTerm] = useState();
 
-  console.log(searchArray);
+  console.log(newChapter);
   const deleteChapter = (id) => {
     axiosWithAuth()
       .delete(`/api/chapter/${id}`)
@@ -58,7 +69,7 @@ const Chapters = (props) => {
     setModal((modal) => !modal);
   };
 
-  const addSponsor = (e) => {
+  /*  const addSponsor = (e) => {
     e.preventDefault();
     console.log(newChapter.icon_url);
     const fd = new FormData();
@@ -76,56 +87,38 @@ const Chapters = (props) => {
         getSponsor();
       })
       .catch((err) => console.log(err));
-  };
-
-  const handleInputChange = (e) => {
-    setNewChapter({
-      ...newChapter,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleImg = (e) => {
-    setNewChapter({
-      ...newChapter,
-      [e.target.name]: e.target.files[0],
-    });
-  };
+  }; */
 
   const addChapter = (e) => {
     e.preventDefault();
 
-    const id = chapter.id;
-    const fd = new FormData();
-    if (chapter.newChapterImg != null) {
-      fd.append("chapter_img", chapter.newChapterImg);
+    const addChapterFd = new FormData();
+    if (newChapterImg) {
+      addChapterFd.append("chapter_img", newChapterImg);
     }
-    if (chapter.newReunionImg != null) {
-      fd.append("reunion_img", chapter.newReunionImg);
-    }
-    fd.append("title", chapter.title);
-    fd.append("established_date", chapter.established_date);
-    fd.append("description", chapter.description);
-    fd.append("city", chapter.city);
-    fd.append("state", chapter.state);
-    fd.append("email", chapter.email);
-    fd.append("memberCount", chapter.memberCount);
-    fd.append("msg_delivered", chapter.msg_delivered);
-    fd.append("msg_recorded", chapter.msg_recorded);
-    fd.append("numreunions", chapter.numreunions);
-    fd.append("facebook", chapter.facebook);
-    fd.append("story", chapter.story);
-    fd.append("leaders", chapter.leaders);
+    Object.keys(newChapter).forEach((a) => {
+      if (newChapter[a] !== "") addChapterFd.append(a, newChapter[a]);
+    });
 
     axiosWithAuth()
-      .post(`/api/chapter/`, fd)
+      .post(`/api/chapter/`, addChapterFd)
       .then((res) => {
         toggle();
         console.log(res);
-        console.log(res);
+        addToast("Chapter Successfully Added", {
+          appearance: "success",
+          autoDismiss: true,
+          autoDismissTimeout: "1500",
+        });
       })
       .catch((err) => {
         console.log(err);
         console.log(err.response);
+        addToast("Error Adding Chapter", {
+          appearance: "error",
+          autoDismiss: true,
+          autoDismissTimeout: "1500",
+        });
       });
   };
 
@@ -183,7 +176,8 @@ const Chapters = (props) => {
             </tr>
           </thead>
         </Table>
-        {console.log(props.chapter_data)}
+        {/*         {console.log(props.chapter_data)}
+         */}{" "}
         {searchArray.length === 0
           ? props.chapter_data.map((chapter) => {
               if (chapter.approved === true) {
@@ -207,13 +201,22 @@ const Chapters = (props) => {
                 );
               }
             })}
-        <Button
-          style={{ backgroundColor: "#212121" }}
-          className="addBtn"
-          onClick={toggle}
-        >
-          +
-        </Button>
+        <div className="add-btn-div">
+          <Button
+            style={{ backgroundColor: "#212121" }}
+            className="addBtn"
+            onClick={toggle}
+            onMouseEnter={() => {
+              document.querySelector(".add-label").classList.add("show");
+            }}
+            onMouseLeave={() => {
+              document.querySelector(".add-label").classList.remove("show");
+            }}
+          >
+            +
+          </Button>
+          <p className="add-label">Add Chapter</p>
+        </div>
         {/* <Button className="addBtn" onClick={toggle}>
            +
          </Button> */}
@@ -227,8 +230,9 @@ const Chapters = (props) => {
           <ModalBody>
             <AddChapterForm
               toggle={toggle}
-              setChapter={setChapter}
-              chapter={chapter}
+              setNewChapter={setNewChapter}
+              setNewChapterImg={setNewChapterImg}
+              chapter={newChapter}
             />
           </ModalBody>
           <ModalFooter>
