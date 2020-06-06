@@ -8,7 +8,6 @@ import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 4,
   },
@@ -27,7 +26,7 @@ const responsive = {
 };
 
 const Connections = ({ reunions }) => {
-  console.log(reunions)
+  console.log(reunions);
   const [connections, setConnections] = useState(dummyConnections);
   const maxConnections = 10;
 

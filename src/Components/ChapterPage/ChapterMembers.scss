@@ -13,6 +13,27 @@
     }
   }
 }
+.chapter-volunteers {
+  h2 {
+    margin: 5vh 0;
+  }
+  .volunteer-inner {
+    display: flex;
+    justify-content: space-around;
+    .volunteer-info {
+      text-align: center;
+      p {
+        margin-top: 1rem;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+    }
+    img {
+      border-radius: 50%;
+      width: 20%;
+    }
+  }
+}
 
 p.no-members {
   text-align: center;

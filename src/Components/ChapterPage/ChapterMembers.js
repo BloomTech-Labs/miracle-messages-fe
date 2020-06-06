@@ -6,7 +6,7 @@ import "./ChapterMembers.scss";
 
 const LeaderAvatar = withStyles({
   root: {
-    width: "30%",
+    width: "25%",
     height: "auto",
     margin: "0 auto",
     "& img": {
@@ -20,7 +20,6 @@ const VolunteerAvatar = withStyles({
   root: {
     width: "20%",
     height: "100%",
-    margin: "0 auto",
   },
 })(Avatar);
 
@@ -28,6 +27,7 @@ const StyledAvatarGroup = withStyles({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "space-around",
   },
 })(AvatarGroup);
 
@@ -55,20 +55,20 @@ const ChapterMembers = ({ leader, volunteers }) => {
 
         <div className="chapter-volunteers">
           <h2>Volunteers</h2>
-          <StyledAvatarGroup spacing="large" max={10}>
-            {volunteers.length > 0 ? (
-              volunteers.map((el) => {
+          {volunteers.length > 0 ? (
+            <div className="volunteer-inner">
+              {volunteers.map((el) => {
                 return (
-                  <VolunteerAvatar
-                    alt={`${el.fname}${el.lname}`}
-                    src={el.profile_img_url}
-                  />
+                  <div className="volunteer-info">
+                    <img alt={`${el.name}`} src={el.profile_img_url} />
+                    <p>{el.name}</p>
+                  </div>
                 );
-              })
-            ) : (
-              <p className="no-members">There are currently no members</p>
-            )}
-          </StyledAvatarGroup>
+              })}
+            </div>
+          ) : (
+            <p className="no-members">There are currently no members</p>
+          )}
         </div>
       </div>
     </div>

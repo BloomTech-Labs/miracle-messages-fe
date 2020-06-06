@@ -30,6 +30,22 @@ const Navbar = (props) => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuOpen, setMenuStatus] = useState(false);
+  const [opacity, setOpacity] = useState("#212121de");
+
+  useEffect(() => {
+    return history.listen((location) => {
+      console.log(`You changed the page to: ${location.pathname}`);
+      location.pathname.includes("chapter")
+        ? setOpacity("#21212100")
+        : setOpacity("#212121de");
+    });
+  }, [history]);
+
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      window.scrollY > 250 ? setOpacity("#212121de") : setOpacity("#21212100");
+    });
+  }, [history]);
 
   useEffect(() => {
     token && props.registerUser(user);
@@ -60,7 +76,11 @@ const Navbar = (props) => {
   };
 
   return (
-    <div className={menuOpen ? "navbar-map open" : "navbar-map"}>
+    <div
+      className={menuOpen ? "navbar-map open" : "navbar-map"}
+      style={{ background: opacity }}
+      position={{}}
+    >
       <Link to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>
