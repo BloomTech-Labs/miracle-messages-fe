@@ -12,6 +12,7 @@ import { useToasts } from "react-toast-notifications";
 import AdminSearchBar from "./AdminSearchBar";
 import AddChapterForm from "./AddChapterForm";
 import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
+import { useOktaAuth } from "@okta/okta-react";
 
 import {
   Button,
@@ -24,6 +25,12 @@ import {
 
 const Chapters = (props) => {
   const { addToast } = useToasts();
+
+  const { authState } = useOktaAuth();
+
+  const oktaInfo = JSON.parse(atob(authState.accessToken.split(".")[1]));
+
+  const groups = oktaInfo.groups;
 
   const { admin, chapterLeaders, volunteer } = useUserGroups();
   const [newChapter, setNewChapter] = useState({
@@ -63,6 +70,9 @@ const Chapters = (props) => {
 
   useEffect(() => {
     props.getData();
+    axiosWithAuth()
+      .get(`api/user/`)
+      .then((res) => console.log("current user", res));
   }, []);
 
   const toggle = () => {
@@ -153,97 +163,106 @@ const Chapters = (props) => {
           ></iframe>
         </div>
       </div>
-      <AdminSearchBar
-        chapterData={props.chapter_data}
-        setSearchArray={setSearchArray}
-        searchArray={searchArray}
-        setSearchTerm={setSearchTerm}
-        searchTerm={searchTerm}
-      />
-      <div className="chapter-felx">
-        <Table
-          id="chapter-table-header"
-          hover
-          style={{ fontSize: "15px", fontWeight: "bold", border: "none" }}
-        >
-          <thead>
-            <tr className="no-border">
-              <th>Chapter</th>
-              <th>State</th>
-              <th>Members</th>
-              <th>Leader</th>
-              <th></th>
-            </tr>
-          </thead>
-        </Table>
+      {groups.includes("CEO") ? (
+        <>
+          <AdminSearchBar
+            chapterData={props.chapter_data}
+            setSearchArray={setSearchArray}
+            searchArray={searchArray}
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+          />
+          <div className="chapter-felx">
+            <Table
+              id="chapter-table-header"
+              hover
+              style={{ fontSize: "15px", fontWeight: "bold", border: "none" }}
+            >
+              <thead>
+                <tr className="no-border">
+                  <th>Chapter</th>
+                  <th>State</th>
+                  <th>Members</th>
+                  <th>Leader</th>
+                  <th></th>
+                </tr>
+              </thead>
+            </Table>
 
-        {searchArray.length === 0
-          ? props.chapter_data.map((chapter) => {
-              if (chapter.approved === true) {
-                return (
-                  <Chapter
-                    info={chapter}
-                    key={chapter.id}
-                    deleteChapter={deleteChapter}
-                  />
-                );
-              }
-            })
-          : searchArray.map((chapter) => {
-              if (chapter.approved === true) {
-                return (
-                  <Chapter
-                    info={chapter}
-                    key={chapter.id}
-                    deleteChapter={deleteChapter}
-                  />
-                );
-              }
-            })}
-        <div className="add-btn-div">
-          <Button
-            style={{ backgroundColor: "#212121" }}
-            className="addBtn"
-            onClick={toggle}
-            onMouseEnter={() => {
-              document.querySelector(".add-label").classList.add("show");
-            }}
-            onMouseLeave={() => {
-              document.querySelector(".add-label").classList.remove("show");
-            }}
-          >
-            +
-          </Button>
-          <p className="add-label">Add Chapter</p>
-        </div>
-        {/* <Button className="addBtn" onClick={toggle}>
+            {searchArray.length === 0
+              ? props.chapter_data.map((chapter) => {
+                  if (chapter.approved === true) {
+                    return (
+                      <Chapter
+                        info={chapter}
+                        key={chapter.id}
+                        deleteChapter={deleteChapter}
+                      />
+                    );
+                  }
+                })
+              : searchArray.map((chapter) => {
+                  if (chapter.approved === true) {
+                    return (
+                      <Chapter
+                        info={chapter}
+                        key={chapter.id}
+                        deleteChapter={deleteChapter}
+                      />
+                    );
+                  }
+                })}
+            <div className="add-btn-div">
+              <Button
+                style={{ backgroundColor: "#212121" }}
+                className="addBtn"
+                onClick={toggle}
+                onMouseEnter={() => {
+                  document.querySelector(".add-label").classList.add("show");
+                }}
+                onMouseLeave={() => {
+                  document.querySelector(".add-label").classList.remove("show");
+                }}
+              >
+                +
+              </Button>
+              <p className="add-label">Add Chapter</p>
+            </div>
+            {/* <Button className="addBtn" onClick={toggle}>
            +
          </Button> */}
-        <Modal
-          isOpen={modal}
-          toggle={toggle}
-          // className={className}
-          backdrop="static"
-        >
-          <ModalHeader toggle={toggle}>Add Chapter</ModalHeader>
-          <ModalBody>
-            <AddChapterForm
+            <Modal
+              isOpen={modal}
               toggle={toggle}
-              setNewChapter={setNewChapter}
-              setNewChapterImg={setNewChapterImg}
-              chapter={newChapter}
-            />
-          </ModalBody>
-          <ModalFooter>
-            <Button style={{ backgroundColor: "#212121" }} onClick={addChapter}>
-              Add Chapter
-            </Button>{" "}
-            <Button style={{ backgroundColor: "#212121" }} onClick={toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </div>
+              // className={className}
+              backdrop="static"
+            >
+              <ModalHeader toggle={toggle}>Add Chapter</ModalHeader>
+              <ModalBody>
+                <AddChapterForm
+                  toggle={toggle}
+                  setNewChapter={setNewChapter}
+                  setNewChapterImg={setNewChapterImg}
+                  chapter={newChapter}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  style={{ backgroundColor: "#212121" }}
+                  onClick={addChapter}
+                >
+                  Add Chapter
+                </Button>{" "}
+                <Button style={{ backgroundColor: "#212121" }} onClick={toggle}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

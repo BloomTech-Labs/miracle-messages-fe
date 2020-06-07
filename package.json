@@ -37,6 +37,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-simple-sidenav": "^2.0.0",
+    "react-spinners": "^0.8.3",
     "react-svg": "^11.0.22",
     "react-toast-notifications": "^2.4.0",
     "reactstrap": "^8.4.1",

@@ -1,4 +1,4 @@
-.pending-div {
+.pending-chapter-div {
   margin-top: 15vh;
   padding: 0 10%;
   h2 {
@@ -34,6 +34,23 @@
       }
     }
   }
+  .leader-pic-div {
+    text-align: center;
+    .leader-avatar {
+      width: 30%;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+}
+//modals
+.modal-backdrop.show {
+  opacity: 0.1;
+}
+.modal-footer {
+  .affirm-btn {
+    background-color: green;
+  }
 }
 
 #pending-chapter-tbl {
@@ -41,4 +58,9 @@
   td {
     width: 20%;
   }
+}
+
+.pending-admin-div {
+  margin-top: 5vh;
+  margin-bottom: 10vh;
 }
