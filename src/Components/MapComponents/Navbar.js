@@ -111,7 +111,7 @@ const Navbar = (props) => {
         ) : null}
         {token && (
           <>
-            {props.userImg.length > 0 ? (
+            {props.userImg && props.userImg.length > 0 ? (
               <img
                 className="avatarPic"
                 src={props.userImg}

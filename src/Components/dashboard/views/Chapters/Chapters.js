@@ -55,6 +55,8 @@ const Chapters = (props) => {
     newReunionImg: null,
   }); */
   const [modal, setModal] = useState(false);
+  const [user, setUser] = useState();
+  const [leaderChapter, setLeaderChapter] = useState();
   const [searchArray, setSearchArray] = useState([]);
   const [searchTerm, setSearchTerm] = useState();
 
@@ -72,7 +74,18 @@ const Chapters = (props) => {
     props.getData();
     axiosWithAuth()
       .get(`api/user/`)
-      .then((res) => console.log("current user", res));
+      .then((res) => {
+        console.log("current user", res);
+        setUser(res.data);
+        if (!groups.includes("CEO") && groups.includes("Admins")) {
+          axiosWithAuth()
+            .get(`api/chapter/${res.data.leaderOf[0].chaptersid}`)
+            .then((res) => {
+              console.log(res);
+              setLeaderChapter(res.data);
+            });
+        }
+      });
   }, []);
 
   const toggle = () => {
@@ -261,7 +274,55 @@ const Chapters = (props) => {
           </div>
         </>
       ) : (
-        <></>
+        <>
+          {leaderChapter && (
+            <div className="chapter-con">
+              <h1>Chapter Overview</h1>
+              <div className="inner-con">
+                <h3>{leaderChapter.title}</h3>
+                <p className="photo-title">Main Photo:</p>
+                <img
+                  className="chapt-photo"
+                  src={leaderChapter.chapter_img_url}
+                  alt="chapter"
+                />
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">Description:</span>{" "}
+                  {leaderChapter.description}
+                </p>
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">State:</span> {leaderChapter.state}
+                </p>
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">City:</span> {leaderChapter.city}
+                </p>
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">Email:</span> {leaderChapter.email}
+                </p>
+              </div>
+              <div className="volunteers-con">
+                <h3>Volunteers</h3>
+                {leaderChapter.volunteers.map((v) => (
+                  <div className="volunteer-con-inner">
+                    <img src={v.profile_img_url} alt="volunteer" />
+                    <div className="volunteer-info">
+                      <p>{v.name}</p>
+                      <p>{v.email}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );
