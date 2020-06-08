@@ -69,6 +69,22 @@
 
 //leader view//
 .chapter-con {
+  .head-div {
+    display: flex;
+    justify-content: space-between;
+    .icons {
+      display: flex;
+      .icon-inner {
+        margin-left: 2rem;
+        svg {
+          &:hover {
+            cursor: pointer;
+            color: gray;
+          }
+        }
+      }
+    }
+  }
   margin: 8vh 10%;
   h1 {
     margin-bottom: 5vh;

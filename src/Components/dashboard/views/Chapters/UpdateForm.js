@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import {
   Button,
@@ -7,11 +7,12 @@ import {
   CardImg,
   CardImgOverlay,
   CardTitle,
-  Card
-} from "reactstrap"
+  Card,
+} from "reactstrap";
 
-import { connect } from "react-redux"
-import { getData } from "../../../../Actions/index"
+import { connect } from "react-redux";
+import { getData } from "../../../../Actions/index";
+import { useToasts } from "react-toast-notifications";
 
 class UpdateForm extends React.Component {
   state = {
@@ -19,61 +20,67 @@ class UpdateForm extends React.Component {
     current_chapter_imgUrl: this.props.chapter.chapter_img_url,
     current_reunion_imgUrl: this.props.chapter.reunion_img_url,
     newChapterImg: null,
-    newReunionImg: null
-  }
+    newReunionImg: null,
+  };
 
-  updateChapter = e => {
-    e.preventDefault()
+  updateChapter = (e) => {
+    e.preventDefault();
 
-    const id = this.props.chapter.id
-    const fd = new FormData()
+    const id = this.props.chapter.id;
+    const fd = new FormData();
     if (this.state.newChapterImg != null) {
-      fd.append("chapter_img", this.state.newChapterImg)
+      fd.append("chapter_img", this.state.newChapterImg);
     }
     if (this.state.newReunionImg != null) {
-      fd.append("reunion_img", this.state.newReunionImg)
+      fd.append("reunion_img", this.state.newReunionImg);
     }
-    fd.append("title", this.state.chapter.title)
-    fd.append("established_date", this.state.chapter.established_date)
-    fd.append("description", this.state.chapter.description)
-    fd.append("city", this.state.chapter.city)
-    fd.append("state", this.state.chapter.state)
-    fd.append("email", this.state.chapter.email)
-    fd.append("memberCount", this.state.chapter.memberCount)
-    fd.append("msg_delivered", this.state.chapter.msg_delivered)
-    fd.append("msg_recorded", this.state.chapter.msg_recorded)
-    fd.append("numreunions", this.state.chapter.numreunions)
-    fd.append("facebook", this.state.chapter.facebook)
-    fd.append("story", this.state.chapter.story)
-    fd.append("leaders", this.state.chapter.leaders)
+    fd.append("title", this.state.chapter.title);
+    fd.append("established_date", this.state.chapter.established_date);
+    fd.append("description", this.state.chapter.description);
+    fd.append("city", this.state.chapter.city);
+    fd.append("state", this.state.chapter.state);
+    fd.append("email", this.state.chapter.email);
+    fd.append("memberCount", this.state.chapter.memberCount);
+    fd.append("msg_delivered", this.state.chapter.msg_delivered);
+    fd.append("msg_recorded", this.state.chapter.msg_recorded);
+    fd.append("numreunions", this.state.chapter.numreunions);
+    fd.append("facebook", this.state.chapter.facebook);
+    fd.append("story", this.state.chapter.story);
+    fd.append("leaders", this.state.chapter.leaders);
 
     axiosWithAuth()
       .put(`/api/chapter/${id}`, fd)
-      .then(res => {
-        this.props.toggleEdit()
-        this.props.getData()
+      .then((res) => {
+        this.props.toggleEdit();
+        this.props.getData();
+        axiosWithAuth()
+          .get(`api/chapter/${id}`)
+          .then((res) => {
+            this.props.setLeaderChapter(res.data);
+            this.props.showEditToast();
+          });
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
-  changeHandler = ev => {
-    ev.persist()
-    let value = ev.target.value
+  changeHandler = (ev) => {
+    ev.persist();
+    let value = ev.target.value;
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       chapter: {
         ...prevState.chapter,
-        [ev.target.name]: value
-      }
-    }))
-  }
+        [ev.target.name]: value,
+      },
+    }));
+  };
 
-  handleImg = e => {
+  handleImg = (e) => {
     this.setState({
       ...this.state,
-      [e.target.name]: e.target.files[0]
-    })
-  }
+      [e.target.name]: e.target.files[0],
+    });
+  };
 
   render() {
     return (
@@ -115,10 +122,9 @@ class UpdateForm extends React.Component {
                 fontSize: "2.2rem",
                 textAlign: "center",
                 textShadow:
-                  "-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white"
+                  "-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white",
               }}
-            >
-            </CardTitle>
+            ></CardTitle>
           </CardImgOverlay>
         </Card>
         <Label>Chapter Image</Label>
@@ -180,10 +186,9 @@ class UpdateForm extends React.Component {
                 fontSize: "2.2rem",
                 textAlign: "center",
                 textShadow:
-                  "-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white"
+                  "-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white",
               }}
-            >
-            </CardTitle>
+            ></CardTitle>
           </CardImgOverlay>
         </Card>
         <Label>Featured Story Image</Label>
@@ -198,19 +203,22 @@ class UpdateForm extends React.Component {
           rows="5"
         />
         <br />
-        <Button style={{backgroundColor: "#212121"}} onClick={this.updateChapter}>
+        <Button
+          style={{ backgroundColor: "#212121" }}
+          onClick={this.updateChapter}
+        >
           Update
         </Button>
         {/* {console.log(this.props.chapter_data)} */}
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    chapter_data: state.mapReducer.chapter_data
-  }
-}
+    chapter_data: state.mapReducer.chapter_data,
+  };
+};
 
-export default connect(mapStateToProps, { getData })(UpdateForm)
+export default connect(mapStateToProps, { getData })(UpdateForm);
