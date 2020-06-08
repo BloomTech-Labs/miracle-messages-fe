@@ -2,13 +2,14 @@ import {
   START_LOGIN,
   FAILURE_LOGIN,
   SUCCESS_LOGIN,
+  LOGOUT_SUCCESS,
 } from "../Actions/AdminPageActions";
 
 import { POST_USER_SUCCESS } from "../Actions/index";
 
 const initialState = {
   isLoggedIn: false,
-  isLoggedOut: false,
+  isLoggedOut: true,
   isFetching: false,
   errors: null,
   user: {
@@ -63,6 +64,13 @@ export const loginReducer = (state = initialState, action) => {
         errors: action.payload,
       };
 
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        isLoggedIn: false,
+        isLoggedOut: true,
+      };
     default:
       return state;
   }

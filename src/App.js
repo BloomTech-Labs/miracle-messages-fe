@@ -17,7 +17,7 @@ import Volunteers from "./Components/dashboard/views/Volunteers.js";
 import Chapters from "./Components/dashboard/views/Chapters/Chapters.js";
 import Sponsors from "./Components/dashboard/views/Sponsors/Sponsors.js";
 import ChapterCard from "./Components/dashboard/views/Chapters/ChapterCard";
-import PendingChapter from "./Components/dashboard/views/Chapters/PendingChapter";
+import Pending from "./Components/dashboard/views/Chapters/Pending";
 import Sidebar from "./Components/dashboard/sidebar/sidebar";
 // import VolunteerForm from "./Components/Forms/VolunteerForm";
 
@@ -75,8 +75,13 @@ const App = () => {
 
         {/* Dashboard */}
         {/* <SecureRoute path="/admin" component={FullLayout} /> */}
-        <SecureRoute path="/admin/chapters" component={Chapters} />
-        <SecureRoute exact path="/admin/pending" component={PendingChapter} />
+        <ToastProvider>
+          <SecureRoute path="/admin/dashboard" component={Chapters} />
+        </ToastProvider>
+        <ToastProvider>
+          <SecureRoute exact path="/admin/pending" component={Pending} />
+        </ToastProvider>
+
         <SecureRoute exact path="/admin/Sponsors" component={Sponsors} />
         <SecureRoute exact path="/admin/volunteers" component={Volunteers} />
         <SecureRoute

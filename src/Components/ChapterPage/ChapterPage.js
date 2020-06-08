@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import {
   fetchChapterInfo,
   fetchChapterReunions,
-  fetchChapterVolunteers
+  fetchChapterVolunteers,
 } from "../../Actions/ChapterPageActions";
 import Modal from "@material-ui/core/Modal";
-import { useLoggedInUser } from "../../Hooks/hooks"
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
+import { useLoggedInUser } from "../../Hooks/hooks";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import Reunions from "./Reunions";
 import { ReunionForm } from "./ReunionForm";
 import ChapterMembers from "./ChapterMembers";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import "./ChapterPage.scss";
-
-import kev from "../../Assets/Imgs/kev.jpg";
 
 import headerImg from "../../Assets/Imgs/chapter.jpg";
 import pictureOne from "../../Assets/Imgs/Arash1.jpeg";
@@ -61,8 +59,6 @@ const members = [
   },
 ];
 
-const leaderImg = kev;
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
@@ -89,7 +85,7 @@ const ChapterPage = (props) => {
   const {
     fetchChapterInfo,
     fetchChapterVolunteers,
-    fetchChapterReunions
+    fetchChapterReunions,
   } = props;
   const {
     chapterInfo,
@@ -97,14 +93,14 @@ const ChapterPage = (props) => {
     reunions,
     reunionCount,
     volunteerCount,
-    isFetching
+    isFetching,
   } = props;
-  console.log(props)
-  const user = useLoggedInUser()
+  console.log(props);
+  const user = useLoggedInUser();
 
-  const classes = useStyles()
-  const [ modalStyle ] = useState(getModalStyle);
- 
+  const classes = useStyles();
+  const [modalStyle] = useState(getModalStyle);
+
   const [open, setOpen] = useState(false);
   const { id } = useParams();
 
@@ -115,13 +111,13 @@ const ChapterPage = (props) => {
   }, []);
 
   const joinChapter = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     axiosWithAuth()
-      .post(`/api/chapter/${id}/volunteer`)
-      .then(res => {
-        console.log(res)
-      })  
+      .post(`/api/volunteer/${id}`)
+      .then((res) => {
+        console.log(res);
+      });
   };
 
   const handleOpen = () => {
@@ -132,78 +128,82 @@ const ChapterPage = (props) => {
     setOpen(false);
   };
 
-  return (
-    isFetching ? 
-      null :
-      <div className="chapter-page-container">
-        <div className="header-img"></div>
-        <div className="inner-container">
-          <div className="first-section">
-            <h1 className="chapter-name">{chapterInfo.title}</h1>
-            <div className="flex-box justify-even">
-              <div className="count-container">
-                <p className="count">{volunteerCount}</p>
-                <p>members</p>
-              </div>
-              <div className="count-container">
-                <p className="count">{reunionCount}</p>
-                <p>reunions</p>
-              </div>
-            </div>
-            <p className="hero-p">
-              We believe that "Everyone is someone's somebody". We want to
-              inspire people everywhere to embrace their homeless neighbors not
-              as problems to be solved, but as people to be loved. We envision a
-              world where everyone is nurtured by a social support system and
-              sense of belonging – a social home – whether or not they currently
-              have access to stable physical housing. Join our Seattle Chapter
-              for more information.
-            </p>
-            {!volunteers.find(el => el.name === user.name) &&
-              <button className="join-button" onClick={(e) => joinChapter(e, id)} type="button">
-                Join Chapter
-              </button>}
-          </div>
-          <Reunions reunions={reunions} />
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            >
-            <div style={modalStyle} className={classes.paper} >
-              <ReunionForm />
-            </div>
-          </Modal>
-          {volunteers.find(el => el.name === user.name) &&
-            <button onClick={handleOpen} className="join-button">Submit a Reunion</button>}
-          <ChapterMembers volunteers={volunteers} kev={kev} />
-        </div>
+  return isFetching ? null : (
+    <div className="chapter-page-container">
+      <div className="header-img">
+        <img src={chapterInfo.chapter_img_url} alt="chapter" />
       </div>
+      <div className="inner-container">
+        <div className="first-section">
+          <h1 className="chapter-name">{chapterInfo.title}</h1>
+          <div className="flex-box justify-even">
+            <div className="count-container">
+              <p className="count">{volunteerCount}</p>
+              <p>members</p>
+            </div>
+            <div className="count-container">
+              <p className="count">{reunionCount}</p>
+              <p>reunions</p>
+            </div>
+          </div>
+          <p className="hero-p">{chapterInfo.description}</p>
+          {!volunteers.find((el) => el.name === user.name) && (
+            <button
+              className="join-button"
+              onClick={(e) => joinChapter(e, id)}
+              type="button"
+            >
+              Join Chapter
+            </button>
+          )}
+        </div>
+        <Reunions reunions={reunions} />
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <div style={modalStyle} className={classes.paper}>
+            <ReunionForm />
+          </div>
+        </Modal>
+        {volunteers.find((el) => el.name === user.name) && (
+          <div className="button-div">
+            <button onClick={handleOpen} className="reunion-btn">
+              Submit Reunion
+            </button>
+          </div>
+        )}
+        <ChapterMembers volunteers={volunteers} leader={props.leader} />
+      </div>
+    </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  let { chapterInfo, volunteers, reunions } = state.chapterInfoReducer;
+  let { chapterInfo, volunteers, reunions, leader } = state.chapterInfoReducer;
 
-  const isFetching = chapterInfo.isFetching || volunteers.isFetching || reunions.isFetching
-  
-  chapterInfo = chapterInfo.chapterInfo
-  volunteers = volunteers.volunteers
-  reunions = reunions.reunions
+  const isFetching =
+    chapterInfo.isFetching || volunteers.isFetching || reunions.isFetching;
+
+  chapterInfo = chapterInfo.chapterInfo;
+  volunteers = volunteers.volunteers;
+  reunions = reunions.reunions;
 
   return {
     chapterInfo,
     volunteers,
     volunteerCount: volunteers.length,
+    leader,
     reunions,
     reunionCount: reunions.length,
-    isFetching 
+    isFetching,
   };
 };
 
 export default connect(mapStateToProps, {
   fetchChapterInfo,
   fetchChapterReunions,
-  fetchChapterVolunteers
+  fetchChapterVolunteers,
 })(ChapterPage);

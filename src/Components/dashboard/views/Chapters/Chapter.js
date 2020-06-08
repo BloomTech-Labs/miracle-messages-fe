@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -8,7 +8,6 @@ import {
   ModalBody,
   Table,
 } from "reactstrap";
-import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
 
 import "./Chapter.scss";
 import UpdateFrom from "./UpdateForm";
@@ -39,7 +38,7 @@ const Chapter = (props) => {
   const deleteChapt = () => {
     props.deleteChapter(props.info.id);
     // toggle();
-    history.push("/admin/chapters");
+    history.push("/admin/dashboard");
   };
 
   return (
