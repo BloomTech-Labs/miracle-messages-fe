@@ -146,15 +146,7 @@ const ChapterPage = (props) => {
               <p>reunions</p>
             </div>
           </div>
-          <p className="hero-p">
-            We believe that "Everyone is someone's somebody". We want to inspire
-            people everywhere to embrace their homeless neighbors not as
-            problems to be solved, but as people to be loved. We envision a
-            world where everyone is nurtured by a social support system and
-            sense of belonging – a social home – whether or not they currently
-            have access to stable physical housing. Join our Seattle Chapter for
-            more information.
-          </p>
+          <p className="hero-p">{chapterInfo.description}</p>
           {!volunteers.find((el) => el.name === user.name) && (
             <button
               className="join-button"

@@ -75,8 +75,13 @@ const App = () => {
 
         {/* Dashboard */}
         {/* <SecureRoute path="/admin" component={FullLayout} /> */}
-        <SecureRoute path="/admin/chapters" component={Chapters} />
-        <SecureRoute exact path="/admin/pending" component={Pending} />
+        <ToastProvider>
+          <SecureRoute path="/admin/dashboard" component={Chapters} />
+        </ToastProvider>
+        <ToastProvider>
+          <SecureRoute exact path="/admin/pending" component={Pending} />
+        </ToastProvider>
+
         <SecureRoute exact path="/admin/Sponsors" component={Sponsors} />
         <SecureRoute exact path="/admin/volunteers" component={Volunteers} />
         <SecureRoute

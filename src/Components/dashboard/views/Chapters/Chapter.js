@@ -38,7 +38,7 @@ const Chapter = (props) => {
   const deleteChapt = () => {
     props.deleteChapter(props.info.id);
     // toggle();
-    history.push("/admin/chapters");
+    history.push("/admin/dashboard");
   };
 
   return (

@@ -30,6 +30,24 @@ const Navbar = (props) => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuOpen, setMenuStatus] = useState(false);
+  const [opacity, setOpacity] = useState("#212121de");
+
+  const changeOpacityOnScroll = () => {
+    window.scrollY > 250 ? setOpacity("#212121de") : setOpacity("#21212100");
+  };
+
+  useEffect(() => {
+    return history.listen((location) => {
+      console.log(`You changed the page to: ${location.pathname}`);
+      if (location.pathname.includes("chapter")) {
+        setOpacity("#21212100");
+        document.addEventListener("scroll", changeOpacityOnScroll);
+      } else if (!location.pathname.includes("chapter")) {
+        setOpacity("#212121de");
+        document.removeEventListener("scroll", changeOpacityOnScroll);
+      }
+    });
+  }, [history]);
 
   useEffect(() => {
     token && props.registerUser(user);
@@ -60,7 +78,11 @@ const Navbar = (props) => {
   };
 
   return (
-    <div className={menuOpen ? "navbar-map open" : "navbar-map"}>
+    <div
+      className={menuOpen ? "navbar-map open" : "navbar-map"}
+      style={{ background: opacity }}
+      position={{}}
+    >
       <Link to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>
@@ -115,7 +137,7 @@ const Navbar = (props) => {
                 onClick={() => {
                   handleClose();
                   //props.setSideBarOpen(!props.sideBarOpen);
-                  history.push("/admin/chapters");
+                  history.push("/admin/dashboard");
                 }}
               >
                 <ListItemIcon>
@@ -124,7 +146,12 @@ const Navbar = (props) => {
                 <ListItemText primary="Dashboard" />
               </MenuItem>
 
-              <MenuItem onClick={handleClose}>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  history.push("/admin/pending");
+                }}
+              >
                 <ListItemIcon>
                   <NotificationsIcon fontSize="small" />
                 </ListItemIcon>

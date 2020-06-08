@@ -53,3 +53,16 @@
     }
   }
 }
+.add-btn-div {
+  p {
+    display: none;
+  }
+
+  p.show {
+    display: block;
+    position: fixed;
+    bottom: 100px;
+    right: 10px;
+    font-weight: bold;
+  }
+}

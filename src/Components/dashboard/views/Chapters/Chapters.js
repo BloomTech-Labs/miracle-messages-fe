@@ -6,11 +6,13 @@ import "./Chapters.scss";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
+import { useToasts } from "react-toast-notifications";
 
-import SponsorForm from "../Sponsors/SponsorForm";
+//import SponsorForm from "../Sponsors/SponsorForm";
 import AdminSearchBar from "./AdminSearchBar";
 import AddChapterForm from "./AddChapterForm";
 import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
+import { useOktaAuth } from "@okta/okta-react";
 
 import {
   Button,
@@ -20,27 +22,43 @@ import {
   ModalFooter,
   Table,
 } from "reactstrap";
-import { set } from "react-ga";
 
 const Chapters = (props) => {
+  const { addToast } = useToasts();
+
+  const { authState } = useOktaAuth();
+
+  const oktaInfo = JSON.parse(atob(authState.accessToken.split(".")[1]));
+
+  const groups = oktaInfo.groups;
+
   const { admin, chapterLeaders, volunteer } = useUserGroups();
   const [newChapter, setNewChapter] = useState({
-    name: "",
-    site_url: "",
-    icon_url: null,
-    category: "",
+    title: "",
+    description: "",
+    requestedBy: "",
+    latitude: "",
+    longitude: "",
+    city: "",
+    state: "",
+    msg_recorded: "",
+    msg_delivered: "",
+    established_date: "",
+    email: "",
+    facebook: "",
   });
-  const [chapter, setChapter] = useState({
+  const [newChapterImg, setNewChapterImg] = useState();
+  /*  const [chapter, setChapter] = useState({
     current_chapter_imgUrl: null,
     current_reunion_imgUrl: null,
     newChapterImg: null,
     newReunionImg: null,
-  });
+  }); */
   const [modal, setModal] = useState(false);
   const [searchArray, setSearchArray] = useState([]);
   const [searchTerm, setSearchTerm] = useState();
 
-  console.log(searchArray);
+  console.log(newChapter);
   const deleteChapter = (id) => {
     axiosWithAuth()
       .delete(`/api/chapter/${id}`)
@@ -52,13 +70,16 @@ const Chapters = (props) => {
 
   useEffect(() => {
     props.getData();
+    axiosWithAuth()
+      .get(`api/user/`)
+      .then((res) => console.log("current user", res));
   }, []);
 
   const toggle = () => {
     setModal((modal) => !modal);
   };
 
-  const addSponsor = (e) => {
+  /*  const addSponsor = (e) => {
     e.preventDefault();
     console.log(newChapter.icon_url);
     const fd = new FormData();
@@ -76,56 +97,38 @@ const Chapters = (props) => {
         getSponsor();
       })
       .catch((err) => console.log(err));
-  };
-
-  const handleInputChange = (e) => {
-    setNewChapter({
-      ...newChapter,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleImg = (e) => {
-    setNewChapter({
-      ...newChapter,
-      [e.target.name]: e.target.files[0],
-    });
-  };
+  }; */
 
   const addChapter = (e) => {
     e.preventDefault();
 
-    const id = chapter.id;
-    const fd = new FormData();
-    if (chapter.newChapterImg != null) {
-      fd.append("chapter_img", chapter.newChapterImg);
+    const addChapterFd = new FormData();
+    if (newChapterImg) {
+      addChapterFd.append("chapter_img", newChapterImg);
     }
-    if (chapter.newReunionImg != null) {
-      fd.append("reunion_img", chapter.newReunionImg);
-    }
-    fd.append("title", chapter.title);
-    fd.append("established_date", chapter.established_date);
-    fd.append("description", chapter.description);
-    fd.append("city", chapter.city);
-    fd.append("state", chapter.state);
-    fd.append("email", chapter.email);
-    fd.append("memberCount", chapter.memberCount);
-    fd.append("msg_delivered", chapter.msg_delivered);
-    fd.append("msg_recorded", chapter.msg_recorded);
-    fd.append("numreunions", chapter.numreunions);
-    fd.append("facebook", chapter.facebook);
-    fd.append("story", chapter.story);
-    fd.append("leaders", chapter.leaders);
+    Object.keys(newChapter).forEach((a) => {
+      if (newChapter[a] !== "") addChapterFd.append(a, newChapter[a]);
+    });
 
     axiosWithAuth()
-      .post(`/api/chapter/`, fd)
+      .post(`/api/chapter/`, addChapterFd)
       .then((res) => {
         toggle();
         console.log(res);
-        console.log(res);
+        addToast("Chapter Successfully Added", {
+          appearance: "success",
+          autoDismiss: true,
+          autoDismissTimeout: "1500",
+        });
       })
       .catch((err) => {
         console.log(err);
         console.log(err.response);
+        addToast("Error Adding Chapter", {
+          appearance: "error",
+          autoDismiss: true,
+          autoDismissTimeout: "1500",
+        });
       });
   };
 
@@ -160,87 +163,106 @@ const Chapters = (props) => {
           ></iframe>
         </div>
       </div>
-      <AdminSearchBar
-        chapterData={props.chapter_data}
-        setSearchArray={setSearchArray}
-        searchArray={searchArray}
-        setSearchTerm={setSearchTerm}
-        searchTerm={searchTerm}
-      />
-      <div className="chapter-felx">
-        <Table
-          id="chapter-table-header"
-          hover
-          style={{ fontSize: "15px", fontWeight: "bold", border: "none" }}
-        >
-          <thead>
-            <tr className="no-border">
-              <th>Chapter</th>
-              <th>State</th>
-              <th>Members</th>
-              <th>Leader</th>
-              <th></th>
-            </tr>
-          </thead>
-        </Table>
-        {console.log(props.chapter_data)}
-        {searchArray.length === 0
-          ? props.chapter_data.map((chapter) => {
-              if (chapter.approved === true) {
-                return (
-                  <Chapter
-                    info={chapter}
-                    key={chapter.id}
-                    deleteChapter={deleteChapter}
-                  />
-                );
-              }
-            })
-          : searchArray.map((chapter) => {
-              if (chapter.approved === true) {
-                return (
-                  <Chapter
-                    info={chapter}
-                    key={chapter.id}
-                    deleteChapter={deleteChapter}
-                  />
-                );
-              }
-            })}
-        <Button
-          style={{ backgroundColor: "#212121" }}
-          className="addBtn"
-          onClick={toggle}
-        >
-          +
-        </Button>
-        {/* <Button className="addBtn" onClick={toggle}>
+      {groups.includes("CEO") ? (
+        <>
+          <AdminSearchBar
+            chapterData={props.chapter_data}
+            setSearchArray={setSearchArray}
+            searchArray={searchArray}
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+          />
+          <div className="chapter-felx">
+            <Table
+              id="chapter-table-header"
+              hover
+              style={{ fontSize: "15px", fontWeight: "bold", border: "none" }}
+            >
+              <thead>
+                <tr className="no-border">
+                  <th>Chapter</th>
+                  <th>State</th>
+                  <th>Members</th>
+                  <th>Leader</th>
+                  <th></th>
+                </tr>
+              </thead>
+            </Table>
+
+            {searchArray.length === 0
+              ? props.chapter_data.map((chapter) => {
+                  if (chapter.approved === true) {
+                    return (
+                      <Chapter
+                        info={chapter}
+                        key={chapter.id}
+                        deleteChapter={deleteChapter}
+                      />
+                    );
+                  }
+                })
+              : searchArray.map((chapter) => {
+                  if (chapter.approved === true) {
+                    return (
+                      <Chapter
+                        info={chapter}
+                        key={chapter.id}
+                        deleteChapter={deleteChapter}
+                      />
+                    );
+                  }
+                })}
+            <div className="add-btn-div">
+              <Button
+                style={{ backgroundColor: "#212121" }}
+                className="addBtn"
+                onClick={toggle}
+                onMouseEnter={() => {
+                  document.querySelector(".add-label").classList.add("show");
+                }}
+                onMouseLeave={() => {
+                  document.querySelector(".add-label").classList.remove("show");
+                }}
+              >
+                +
+              </Button>
+              <p className="add-label">Add Chapter</p>
+            </div>
+            {/* <Button className="addBtn" onClick={toggle}>
            +
          </Button> */}
-        <Modal
-          isOpen={modal}
-          toggle={toggle}
-          // className={className}
-          backdrop="static"
-        >
-          <ModalHeader toggle={toggle}>Add Chapter</ModalHeader>
-          <ModalBody>
-            <AddChapterForm
+            <Modal
+              isOpen={modal}
               toggle={toggle}
-              setChapter={setChapter}
-              chapter={chapter}
-            />
-          </ModalBody>
-          <ModalFooter>
-            <Button style={{ backgroundColor: "#212121" }} onClick={addChapter}>
-              Add Chapter
-            </Button>{" "}
-            <Button style={{ backgroundColor: "#212121" }} onClick={toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </div>
+              // className={className}
+              backdrop="static"
+            >
+              <ModalHeader toggle={toggle}>Add Chapter</ModalHeader>
+              <ModalBody>
+                <AddChapterForm
+                  toggle={toggle}
+                  setNewChapter={setNewChapter}
+                  setNewChapterImg={setNewChapterImg}
+                  chapter={newChapter}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  style={{ backgroundColor: "#212121" }}
+                  onClick={addChapter}
+                >
+                  Add Chapter
+                </Button>{" "}
+                <Button style={{ backgroundColor: "#212121" }} onClick={toggle}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

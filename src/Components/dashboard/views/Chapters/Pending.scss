@@ -1,0 +1,66 @@
+.pending-chapter-div {
+  margin-top: 15vh;
+  padding: 0 10%;
+  h2 {
+    margin-bottom: 2%;
+  }
+  .table {
+    margin-bottom: 0;
+  }
+  #pending-table-header {
+    th {
+      width: 20%;
+      border: none !important;
+    }
+    .no-border {
+      border-top: none;
+    }
+  }
+  .action-btns {
+    text-align: center;
+    .approve-btn {
+      color: green;
+      cursor: pointer;
+      &:hover {
+        color: rgb(135, 216, 135);
+      }
+    }
+    .reject-btn {
+      margin-left: 0.5rem;
+      color: rgb(196, 71, 71);
+      cursor: pointer;
+      &:hover {
+        color: rgb(238, 103, 103);
+      }
+    }
+  }
+  .leader-pic-div {
+    text-align: center;
+    .leader-avatar {
+      width: 30%;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+}
+//modals
+.modal-backdrop.show {
+  opacity: 0.1;
+}
+.modal-footer {
+  .affirm-btn {
+    background-color: green;
+  }
+}
+
+#pending-chapter-tbl {
+  th,
+  td {
+    width: 20%;
+  }
+}
+
+.pending-admin-div {
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+}
