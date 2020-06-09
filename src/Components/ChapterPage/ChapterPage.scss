@@ -179,6 +179,16 @@ button {
     border: 3px solid #696969;
     cursor: pointer;
   }
+
+  &:disabled{
+    background: rgb(39, 54, 68);
+    cursor: default;
+    width: 40%;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
   &:focus {
     outline: none;
   }
@@ -186,6 +196,7 @@ button {
     outline: none;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
   }
+
 }
 
 .text-center {

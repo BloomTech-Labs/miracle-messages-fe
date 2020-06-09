@@ -19,7 +19,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { useLoggedInUser } from "../../Hooks/hooks";
+import { useLoggedInUser } from "../../Hooks/useLoggedInUser";
 
 const Navbar = (props) => {
   const user = useLoggedInUser();
