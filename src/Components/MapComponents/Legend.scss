@@ -1,17 +1,31 @@
 .legend-con {
   position: absolute;
   left: 2%;
-  top: 65%;
+  top: 70%;
   z-index: 10;
   padding: 1rem;
+
+  @media(max-width: 500px) {
+    left: 1.5%;
+    top: 88%;
+  }
+
   svg {
-    width: 90%;
+    width: 25%;
   }
   .row {
     display: flex;
     align-items: center;
-    padding: 0.3rem 1rem;
+    padding-top: 0.2rem;
+    
+    @media(max-width: 950px) {
+      display: none;
+    }
+    h4 {
+      margin-left: -230px;
+    }
   }
+  
   .MuiSvgIcon-root {
     width: auto;
     color: rgb(17, 17, 17);
