@@ -90,7 +90,12 @@ const Chapter = (props) => {
             >
               <ModalHeader toggle={toggleEdit}>Edit Chapter</ModalHeader>
               <ModalBody>
-                <UpdateFrom toggleEdit={toggleEdit} chapter={props.info} />
+                <UpdateFrom
+                  toggleEdit={toggleEdit}
+                  chapter={props.info}
+                  setLeaderChapter={props.setLeaderChapter}
+                  showEditToast={props.showEditToast}
+                />
               </ModalBody>
             </Modal>
             <Modal

@@ -66,3 +66,64 @@
     font-weight: bold;
   }
 }
+
+//leader view//
+.chapter-con {
+  .head-div {
+    display: flex;
+    justify-content: space-between;
+    .icons {
+      display: flex;
+      .icon-inner {
+        margin-left: 2rem;
+        svg {
+          &:hover {
+            cursor: pointer;
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+  margin: 8vh 10%;
+  h1 {
+    margin-bottom: 5vh;
+  }
+  .inner-con {
+    margin-top: 2vh;
+    h2 {
+      margin-bottom: 2vh;
+    }
+    .photo-title {
+      margin: 1vh 0;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .chapt-photo {
+      width: 50%;
+    }
+    .p-start {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  }
+  .volunteers-con {
+    h3 {
+      margin-top: 2vh;
+    }
+
+    .volunteer-con-inner {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+    }
+    img {
+      border-radius: 50%;
+      width: 10%;
+    }
+    p {
+      font-weight: bold;
+      margin-left: 1rem;
+    }
+  }
+}

@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import Chapter from "./Chapter";
+import UpdateFrom from "./UpdateForm";
+
 import "./Chapters.scss";
 
 import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
 import { useToasts } from "react-toast-notifications";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 //import SponsorForm from "../Sponsors/SponsorForm";
 import AdminSearchBar from "./AdminSearchBar";
@@ -48,13 +52,13 @@ const Chapters = (props) => {
     facebook: "",
   });
   const [newChapterImg, setNewChapterImg] = useState();
-  /*  const [chapter, setChapter] = useState({
-    current_chapter_imgUrl: null,
-    current_reunion_imgUrl: null,
-    newChapterImg: null,
-    newReunionImg: null,
-  }); */
+  //add chapter modal in superAdmin view//
   const [modal, setModal] = useState(false);
+  //edit chapter modal in Admin view//
+  const [modalEdit, setModalEdit] = useState(false);
+
+  const [user, setUser] = useState();
+  const [leaderChapter, setLeaderChapter] = useState();
   const [searchArray, setSearchArray] = useState([]);
   const [searchTerm, setSearchTerm] = useState();
 
@@ -72,12 +76,30 @@ const Chapters = (props) => {
     props.getData();
     axiosWithAuth()
       .get(`api/user/`)
-      .then((res) => console.log("current user", res));
+      .then((res) => {
+        console.log("current user", res);
+        setUser(res.data);
+        if (!groups.includes("CEO") && groups.includes("Admins")) {
+          axiosWithAuth()
+            .get(`api/chapter/${res.data.leaderOf[0].chaptersid}`)
+            .then((res) => {
+              console.log(res);
+              setLeaderChapter(res.data);
+            });
+        }
+      });
   }, []);
 
+  //toggles add chapter modal for superAdmin view
   const toggle = () => {
     setModal((modal) => !modal);
   };
+  //toggles edit chapter for regular Admin view
+  const toggleEdit = () => {
+    setModalEdit((modalEdit) => !modalEdit);
+  };
+
+  //code for incorperating sponsors//
 
   /*  const addSponsor = (e) => {
     e.preventDefault();
@@ -98,6 +120,14 @@ const Chapters = (props) => {
       })
       .catch((err) => console.log(err));
   }; */
+
+  const showEditToast = () => {
+    addToast("Chapter Successfully Updated", {
+      appearance: "success",
+      autoDismiss: true,
+      autoDismissTimeout: "1500",
+    });
+  };
 
   const addChapter = (e) => {
     e.preventDefault();
@@ -197,6 +227,8 @@ const Chapters = (props) => {
                         info={chapter}
                         key={chapter.id}
                         deleteChapter={deleteChapter}
+                        setLeaderChapter={setLeaderChapter}
+                        showEditToast={showEditToast}
                       />
                     );
                   }
@@ -208,6 +240,8 @@ const Chapters = (props) => {
                         info={chapter}
                         key={chapter.id}
                         deleteChapter={deleteChapter}
+                        setLeaderChapter={setLeaderChapter}
+                        showEditToast={showEditToast}
                       />
                     );
                   }
@@ -261,7 +295,80 @@ const Chapters = (props) => {
           </div>
         </>
       ) : (
-        <></>
+        <>
+          {leaderChapter && (
+            <div className="chapter-con">
+              <h1>Chapter Overview</h1>
+              <div className="inner-con">
+                <div className="head-div">
+                  <h3>{leaderChapter.title}</h3>
+                  <div className="icons">
+                    <div className="icon-inner">
+                      <EditIcon onClick={toggleEdit} />
+                      <p className="edit-label">Edit</p>
+                    </div>
+                  </div>
+                  <Modal
+                    isOpen={modalEdit}
+                    toggle={toggleEdit}
+                    className={props.className}
+                    backdrop="static"
+                  >
+                    <ModalHeader toggle={toggleEdit}>Edit Chapter</ModalHeader>
+                    <ModalBody>
+                      <UpdateFrom
+                        toggleEdit={toggleEdit}
+                        chapter={leaderChapter}
+                        setLeaderChapter={setLeaderChapter}
+                        showEditToast={showEditToast}
+                      />
+                    </ModalBody>
+                  </Modal>
+                </div>
+                <p className="photo-title">Main Photo:</p>
+
+                <img
+                  className="chapt-photo"
+                  src={leaderChapter.chapter_img_url}
+                  alt="chapter"
+                />
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">Description:</span>{" "}
+                  {leaderChapter.description}
+                </p>
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">State:</span> {leaderChapter.state}
+                </p>
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">City:</span> {leaderChapter.city}
+                </p>
+              </div>
+              <div className="inner-con">
+                <p>
+                  <span className="p-start">Email:</span> {leaderChapter.email}
+                </p>
+              </div>
+              <div className="volunteers-con">
+                <h3>Volunteers</h3>
+                {leaderChapter.volunteers.map((v) => (
+                  <div className="volunteer-con-inner">
+                    <img src={v.profile_img_url} alt="volunteer" />
+                    <div className="volunteer-info">
+                      <p>{v.name}</p>
+                      <p>{v.email}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );
