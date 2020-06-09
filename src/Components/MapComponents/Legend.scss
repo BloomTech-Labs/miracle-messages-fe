@@ -1,9 +1,14 @@
 .legend-con {
   position: absolute;
   left: 2%;
-  top: 70%;
+  top: 71%;
   z-index: 10;
   padding: 1rem;
+
+  @media(max-width: 950px) {
+    left: 1.5%;
+    top: 88%;
+  }
 
   @media(max-width: 500px) {
     left: 1.5%;
