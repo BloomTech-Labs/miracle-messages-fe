@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import MapboxAutocomplete from "react-mapbox-autocomplete";
 
 import {
-  Button,
   Input,
   Label,
-  CardImg,
-  CardImgOverlay,
-  CardTitle,
-  Card,
 } from "reactstrap";
 
 const AddChapterForm = (props) => {

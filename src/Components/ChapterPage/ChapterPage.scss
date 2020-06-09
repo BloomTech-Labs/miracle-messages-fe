@@ -152,16 +152,28 @@ button {
 
 .join-button {
   align-self: center;
+  border: none;
   margin-top: 5vh;
   font-weight: 600;
-  width: 20%;
-  border-radius: 7px;
-  padding: 1% 0%;
-  color: #696969;
+  width: 40%;
   font-size: 1.2rem;
-  border: 2px solid #696969;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: rgb(39, 54, 68);
+  color: white;
+  padding: .7rem 0;
+  cursor: pointer;
+
+  &:hover {
+      background: rgb(66, 87, 105);
+    }
+
+    @media(max-width: 700px) {
+      width: 70%;
+    }
+
+    @media(max-width: 450px) {
+      width: 92%;
+    }
+
   &:hover {
     font-weight: 800;
     border: 3px solid #696969;
