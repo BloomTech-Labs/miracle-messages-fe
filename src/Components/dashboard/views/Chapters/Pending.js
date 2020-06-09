@@ -156,7 +156,7 @@ const Pending = (props) => {
             <tr className="no-border">
               <th>Title</th>
               <th>State</th>
-              <th>City</th>
+              <th className="pending-city-th">City</th>
               <th>Requested By</th>
               <th></th>
             </tr>
@@ -170,7 +170,7 @@ const Pending = (props) => {
                   <tr>
                     <th>{chapter.title}</th>
                     <td>{chapter.state}</td>
-                    <td>{chapter.city}</td>
+                    <td className="pending-city-td">{chapter.city}</td>
                     <td>{chapter.requestedBy.name}</td>
                     <th>
                       {
@@ -256,10 +256,10 @@ const Pending = (props) => {
         >
           <thead>
             <tr className="no-border">
-              <th></th>
+              <th className="blank-th"></th>
               <th>Name</th>
               <th>Chapter</th>
-              <th>Contact</th>
+              <th className="admin-contact-th">Contact</th>
               <th></th>
             </tr>
           </thead>
@@ -279,7 +279,7 @@ const Pending = (props) => {
                     </th>
                     <td>{volunteer.name}</td>
                     <td>{volunteer.ChapterTitle}</td>
-                    <td>{volunteer.email}</td>
+                    <td className="volunteer-contact-td">{volunteer.email}</td>
                     <th>
                       {
                         <div className="action-btns">

@@ -174,12 +174,6 @@ button {
       width: 92%;
     }
 
-  &:hover {
-    font-weight: 800;
-    border: 3px solid #696969;
-    cursor: pointer;
-  }
-
   &:disabled{
     background: rgb(39, 54, 68);
     cursor: default;

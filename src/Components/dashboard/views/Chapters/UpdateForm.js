@@ -113,7 +113,7 @@ class UpdateForm extends React.Component {
           type="textarea"
           placeholder="Name"
         />
-                <br />
+        <br />
         <div className="dropdown-divider" />
         <Label>Email</Label>
         <Input
