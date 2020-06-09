@@ -107,9 +107,11 @@
 .markerReunion {
   height: 0;
   .city-pin {
-    svg {
+    svg.injected-svg {
       opacity: 1;
       transition: 1s;
+      width: 23px;
+      margin-left: 3.3px;
     }
     transform: translate(-15px, -50px) !important;
   }
