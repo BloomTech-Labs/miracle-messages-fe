@@ -46,6 +46,7 @@ const App = () => {
   };
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
+  console.log("owo")
   return (
     <div className="App">
       <ToastProvider>
