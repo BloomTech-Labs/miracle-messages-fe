@@ -18,8 +18,10 @@ if (process.env.NODE_ENV === "development") {
     window.location.host
   }${CALLBACK_PATH}`;
 } */
+
 const prod =
   "https://release-two.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
+
 const dev = "http://localhost:3000/implicit/callback";
 const uriConfig = process.env.NODE_ENV === "development" ? dev : prod;
 export default {
@@ -29,13 +31,6 @@ export default {
     redirectUri: uriConfig,
     scopes: ["openid", "profile", "email", "groups"],
     pkce: true,
-    // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
-  },
-  resourceServer: {
-    messagesUrl: "http://localhost:8000/api/messages",
-  } /* ,
-  features: {
-    registration: true,
-  }, */,
+  }
 };
