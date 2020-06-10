@@ -34,7 +34,6 @@ const LoginForm = () => {
         pkce: true,
         issuer,
         display: "page",
-        responseMode: "query",
         scopes,
       },
     });
