@@ -23,7 +23,9 @@ export const useLoggedInUser = () => {
       const lastName = name.split(' ')[1]
 
       //pull oktaId off decoded access token
+      console.log(decodedAccessPayload)
       const { uid } = decodedAccessPayload
+
 
       setUser({
         uid,

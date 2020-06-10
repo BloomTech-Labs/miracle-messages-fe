@@ -19,18 +19,20 @@ if (process.env.NODE_ENV === "development") {
   }${CALLBACK_PATH}`;
 } */
 
-const prod =
-  "https://release-two.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
+const prod = "https://production.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
 
 const dev = "http://localhost:3000/implicit/callback";
+
 const uriConfig = process.env.NODE_ENV === "development" ? dev : prod;
+
 export default {
   oidc: {
     clientId: CLIENT_ID,
     issuer: ISSUER,
     redirectUri: uriConfig,
     scopes: ["openid", "profile", "email", "groups"],
-    pkce: true,
+    pkce: false,
+    // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   }
 };
