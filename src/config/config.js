@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === "development") {
     window.location.host
   }${CALLBACK_PATH}`;
 } */
+
 const prod = "https://production.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
 
 const dev = "http://localhost:3000/implicit/callback";
@@ -33,11 +34,5 @@ export default {
     pkce: false,
     // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
-  },
-  resourceServer: {
-    messagesUrl: "http://localhost:8000/api/messages",
-  } /* ,
-  features: {
-    registration: true,
-  }, */,
+  }
 };
