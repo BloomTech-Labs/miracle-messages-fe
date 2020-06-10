@@ -13,13 +13,14 @@ const OKTA_TESTING_DISABLEHTTPSCHECK =
 /* let REDIRECT_URI;
 if (process.env.NODE_ENV === "development") {
   REDIRECT_URI = `http://localhost:3000/implicit/callback`;
-} else {
+} else if{
   REDIRECT_URI = `${CALLBACK_SSL === true ? "https" : "http"}://${
     window.location.host
   }${CALLBACK_PATH}`;
 } */
 
-const prod = "https://production.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
+const prod =
+  "https://production.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
 
 const dev = "http://localhost:3000/implicit/callback";
 
@@ -34,5 +35,5 @@ export default {
     pkce: false,
     // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
-  }
+  },
 };
