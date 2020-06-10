@@ -30,10 +30,7 @@ export default {
     issuer: ISSUER,
     redirectUri: uriConfig,
     scopes: ["openid", "profile", "email", "groups"],
-    authParams: {
-      pkce: true,
-      responseMode: 'query'
-    },
+    pkce: true,
     // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   },
