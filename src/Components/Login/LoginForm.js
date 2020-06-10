@@ -31,10 +31,10 @@ const LoginForm = () => {
         },
       },
       authParams: {
-        pkce,
+        pkce: true,
         issuer,
         display: "page",
-        responseMode: pkce ? "query" : "fragment",
+        responseMode: "query",
         scopes,
       },
     });
