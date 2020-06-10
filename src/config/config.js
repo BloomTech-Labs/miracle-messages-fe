@@ -32,7 +32,7 @@ export default {
     issuer: ISSUER,
     redirectUri: uriConfig,
     scopes: ["openid", "profile", "email", "groups"],
-    pkce: false,
+    pkce: true,
     // If the callback is _not_ over SSL, disable the HTTPS check in the client
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   }
