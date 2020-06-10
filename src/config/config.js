@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "development") {
   }${CALLBACK_PATH}`;
 } */
 const prod =
-  "https://production.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
+  "https://release-two.d3iery6e42ccvf.amplifyapp.com/implicit/callback";
 const dev = "http://localhost:3000/implicit/callback";
 const uriConfig = process.env.NODE_ENV === "development" ? dev : prod;
 export default {
