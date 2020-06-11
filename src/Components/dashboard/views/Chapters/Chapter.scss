@@ -6,6 +6,11 @@
   td {
     width: 20%;
   }
+  .members-count-td {
+    @media(max-width: 500px) {
+      display: none;
+    }
+  }
 }
 .toggle-box {
   display: flex;

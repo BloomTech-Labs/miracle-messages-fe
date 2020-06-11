@@ -14,6 +14,11 @@
     .no-border {
       border-top: none;
     }
+    .members-count-th {
+      @media(max-width: 500px) {
+        display: none;
+      }
+    }
   }
 }
 .MuiPaper-root.MuiPaper-elevation1 {
@@ -26,15 +31,18 @@
   margin-top: 15vh;
   margin-bottom: 1rem;
 }
+
 .analytics {
   display: flex;
   justify-content: space-between;
-
   margin: 0 10%;
   border: 1px solid darkgrey;
   @media (max-width: 1300px) {
     flex-direction: column;
     align-items: center;
+  }
+  @media (max-width: 500px) {
+    margin: 0 5%;
   }
 
   .activity-analytics {
@@ -43,6 +51,11 @@
       transform: scale(0.8, 0.8);
       width: 90%;
     }
+    @media (max-width: 500px) {
+      transform: scale(0.54, 0.54);
+      width: 180%;
+    }
+    
   }
   .region-analytics {
     margin-top: 1rem;
@@ -51,9 +64,31 @@
       transform: scale(0.8, 0.8);
       width: 90%;
     }
+    @media (max-width: 500px) {
+      transform: scale(0.7, 0.7);
+      width: 135%;
+    }
+    @media (max-width: 350px) {
+      transform: scale(0.61, 0.61);
+      width: 160%;
+    }
   }
 }
 .add-btn-div {
+  .addBtn {
+    @media (max-width: 500px) {
+      margin-right: 180px;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 400px) {
+      margin-right: 640px;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 350px) {
+      margin-right: 515px;
+      margin-bottom: 25px;
+    }
+  }
   p {
     display: none;
   }
@@ -64,6 +99,11 @@
     bottom: 100px;
     right: 10px;
     font-weight: bold;
+    
+    @media (max-width: 500px) {
+      margin-right: 180px;
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -126,4 +166,4 @@
       margin-left: 1rem;
     }
   }
-}
+ }

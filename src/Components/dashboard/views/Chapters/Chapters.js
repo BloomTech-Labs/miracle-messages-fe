@@ -212,7 +212,7 @@ const Chapters = (props) => {
                 <tr className="no-border">
                   <th>Chapter</th>
                   <th>State</th>
-                  <th>Members</th>
+                  <th className="members-count-th">Members</th>
                   <th>Leader</th>
                   <th></th>
                 </tr>
