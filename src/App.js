@@ -46,7 +46,7 @@ const App = () => {
   };
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
-  console.log("owo")
+  console.log("owo");
   return (
     <div className="App">
       <ToastProvider>
@@ -70,7 +70,7 @@ const App = () => {
 
         <Route exact path="/login" component={LoginForm} />
 
-        <Route path="/implicit/callback" component={LoginCallback} />
+        <Route exact path="/implicit/callback" component={LoginCallback} />
 
         <Route exact path="/user/newchapterform" component={ChapterForm} />
 

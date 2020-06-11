@@ -31,9 +31,12 @@ const LoginForm = () => {
         },
       },
       authParams: {
-        pkce: true,
+        pkce,
         issuer,
         display: "page",
+        responseType: "token",
+        responseMode: pkce ? "query" : "fragment",
+
         scopes,
       },
     });
