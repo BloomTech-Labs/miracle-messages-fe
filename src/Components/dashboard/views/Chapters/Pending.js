@@ -39,6 +39,7 @@ const Pending = (props) => {
 
   //state for pending volunteer members for Admin view
   const [pendingMembers, setPendingMembers] = useState([]);
+  const [noVolunteersMsg, setNoVolunteerMsg] = useState(null);
 
   const { addToast } = useToasts();
 
@@ -69,8 +70,12 @@ const Pending = (props) => {
             )
             .then((res) => {
               console.log("pending vol", res.data);
+              setPendingMembers(res.data);
             })
-            .catch((err) => console.log(err.message));
+            .catch((err) => {
+              console.log(err);
+              setNoVolunteerMsg("There Are No Pending Volunteers At this Time");
+            });
         });
     }
   }, []);
@@ -416,8 +421,8 @@ const Pending = (props) => {
                 </tr>
               </thead>
             </Table>
-            {pendingVolunteers.length > 0 ? (
-              pendingVolunteers.map((volunteer) => (
+            {pendingMembers.length > 0 ? (
+              pendingMembers.map((volunteer) => (
                 <>
                   <Table id="pending-chapter-tbl" hover>
                     <tbody>
