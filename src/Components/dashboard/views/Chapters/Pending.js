@@ -5,6 +5,7 @@ import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 import { css } from "@emotion/core";
 import { useToasts } from "react-toast-notifications";
 import { useOktaAuth } from "@okta/okta-react";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import {
   Table,
@@ -154,9 +155,9 @@ const Pending = (props) => {
       });
   };
 
-  const approveLeader = (id) => {
+  const approveLeader = (id, obj) => {
     axiosWithAuth()
-      .put(`api/pending/${id}/approveLeader`)
+      .put(`api/pending/${id}/approveLeader`, obj)
       .then((res) => {
         console.log(res);
         axiosWithAuth()
@@ -172,6 +173,43 @@ const Pending = (props) => {
           });
       });
   };
+
+  const approveVolunteer = (ChapterId) => {
+    axiosWithAuth()
+      .put(
+        `api/pending/${ChapterId}/approveVolunteer
+      `
+      )
+      .then((res) => {
+        addToast("Chapter Request Deleted", {
+          appearance: "success",
+          autoDismiss: true,
+          autoDismissTimeout: "1500",
+        });
+
+        axiosWithAuth()
+          .get(`api/user/`)
+          .then((res) => {
+            setUser(res.data);
+            axiosWithAuth()
+              .get(
+                `/api/pending/${res.data.leaderOf[0].chaptersid}/Volunteers
+        `
+              )
+              .then((res) => {
+                console.log("pending vol", res.data);
+                setPendingMembers(res.data);
+              })
+              .catch((err) => {
+                setNoVolunteerMsg(
+                  "There Are No Pending Volunteers At this Time"
+                );
+              });
+          });
+      });
+  };
+
+  const rejectVolunteer = () => {};
 
   const loaderCss = css`
     display: block;
@@ -313,11 +351,15 @@ const Pending = (props) => {
                     <tbody>
                       <tr>
                         <th className="leader-pic-div">
-                          <img
-                            className="leader-avatar"
-                            src={volunteer.profile_img_url}
-                            alt="leader"
-                          />
+                          {volunteer.profile_img_url === null ? (
+                            <AccountCircleIcon className="default-pic" />
+                          ) : (
+                            <img
+                              className="leader-avatar"
+                              src={volunteer.profile_img_url}
+                              alt="leader"
+                            />
+                          )}
                         </th>
                         <td>{volunteer.name}</td>
                         <td>{volunteer.ChapterTitle}</td>
@@ -404,7 +446,7 @@ const Pending = (props) => {
         </>
       ) : (
         <>
-          <div className="pending-chapter-div pending-admin-div">
+          <div className="pending-chapter-div pending-admin-div second">
             <h2>Volunteer Requests</h2>
             <Table
               id="pending-table-header"
@@ -415,7 +457,7 @@ const Pending = (props) => {
                 <tr className="no-border">
                   <th></th>
                   <th>Name</th>
-                  <th>City</th>
+                  <th></th>
                   <th>Contact</th>
                   <th></th>
                 </tr>
@@ -428,11 +470,15 @@ const Pending = (props) => {
                     <tbody>
                       <tr>
                         <th className="leader-pic-div">
-                          <img
-                            className="leader-avatar"
-                            src={volunteer.profile_img_url}
-                            alt="leader"
-                          />
+                          {volunteer.profile_img_url === null ? (
+                            <AccountCircleIcon className="default-pic" />
+                          ) : (
+                            <img
+                              className="leader-avatar"
+                              src={volunteer.profile_img_url}
+                              alt="leader"
+                            />
+                          )}
                         </th>
                         <td>{volunteer.name}</td>
                         <td>{volunteer.ChapterTitle}</td>
@@ -467,9 +513,7 @@ const Pending = (props) => {
                     <ModalHeader toggle={closeModal}>
                       Reject Request
                     </ModalHeader>
-                    <ModalBody>
-                      Are you sure you want to reject this request?
-                    </ModalBody>
+                    <ModalBody>reject this volunteer request?</ModalBody>
                     <ModalFooter>
                       <Button
                         color="danger"
@@ -494,13 +538,15 @@ const Pending = (props) => {
                       Approve this Request
                     </ModalHeader>
                     <ModalBody>
-                      Would you like to approve this request?
+                      Would you like to approve this volunteer?
                     </ModalBody>
                     <ModalFooter>
                       <Button
                         className="affirm-btn"
                         onClick={() => {
-                          approveLeader(volunteer.chaptersid);
+                          approveVolunteer(user.leaderOf[0].chaptersid, {
+                            oktaId: volunteer.volunteersid,
+                          });
                         }}
                       >
                         Approve
