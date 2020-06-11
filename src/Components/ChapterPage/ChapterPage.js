@@ -131,7 +131,7 @@ const ChapterPage = (props) => {
     if (pendingVols.some(el => el.volunteersid === user.oktaid)){
       setIsPending(true)
     }
-  }, [volunteers, pendingVols, user])
+  }, [volunteers, pendingVols, user.name, user.oktaid])
 
   const joinChapter = (e) => {
     e.preventDefault();
