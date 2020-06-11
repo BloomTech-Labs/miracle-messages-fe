@@ -63,6 +63,7 @@ const Pending = (props) => {
         .get(`api/user/`)
         .then((res) => {
           console.log("current user", res);
+          console.log(oktaInfo);
           setUser(res.data);
           axiosWithAuth()
             .get(
@@ -155,9 +156,9 @@ const Pending = (props) => {
       });
   };
 
-  const approveLeader = (id, obj) => {
+  const approveLeader = (id) => {
     axiosWithAuth()
-      .put(`api/pending/${id}/approveLeader`, obj)
+      .put(`api/pending/${id}/approveLeader`)
       .then((res) => {
         console.log(res);
         axiosWithAuth()
@@ -174,14 +175,11 @@ const Pending = (props) => {
       });
   };
 
-  const approveVolunteer = (ChapterId) => {
+  const approveVolunteer = (ChapterId, obj) => {
     axiosWithAuth()
-      .put(
-        `api/pending/${ChapterId}/approveVolunteer
-      `
-      )
+      .put(`api/pending/${ChapterId}/approveVolunteer`, obj)
       .then((res) => {
-        addToast("Chapter Request Deleted", {
+        addToast("Volunteer Request Approved", {
           appearance: "success",
           autoDismiss: true,
           autoDismissTimeout: "1500",
@@ -209,7 +207,37 @@ const Pending = (props) => {
       });
   };
 
-  const rejectVolunteer = () => {};
+  const rejectVolunteer = (ChapterId, obj) => {
+    axiosWithAuth()
+      .put(`api/pending/${ChapterId}/declineVolunteer`, obj)
+      .then((res) => {
+        addToast("Volunteer Request Deleted", {
+          appearance: "success",
+          autoDismiss: true,
+          autoDismissTimeout: "1500",
+        });
+
+        axiosWithAuth()
+          .get(`api/user/`)
+          .then((res) => {
+            setUser(res.data);
+            axiosWithAuth()
+              .get(
+                `/api/pending/${res.data.leaderOf[0].chaptersid}/Volunteers
+        `
+              )
+              .then((res) => {
+                console.log("pending vol", res.data);
+                setPendingMembers(res.data);
+              })
+              .catch((err) => {
+                setNoVolunteerMsg(
+                  "There Are No Pending Volunteers At this Time"
+                );
+              });
+          });
+      });
+  };
 
   const loaderCss = css`
     display: block;
@@ -518,7 +546,9 @@ const Pending = (props) => {
                       <Button
                         color="danger"
                         onClick={() => {
-                          rejectLeader(volunteer.chaptersid);
+                          rejectVolunteer(user.leaderOf[0].chaptersid, {
+                            oktaId: volunteer.volunteersid,
+                          });
                         }}
                       >
                         Delete
