@@ -37,7 +37,7 @@ const Connections = ({ reunions }) => {
     const calcRand = (length) => Math.floor(Math.random() * length);
 
     const indices = [];
-    for (let i = 0; i < max && i < connections.length; i++) {
+    for (let i = 0; i < max && i < arrLength; i++) {
       let rand = calcRand(arrLength);
       while (indices.includes(rand)) {
         rand = calcRand(arrLength);
@@ -47,14 +47,14 @@ const Connections = ({ reunions }) => {
     return indices;
   };
 
-  const displayIndices = randIndices(maxConnections, connections.length);
+  const displayIndices = randIndices(maxConnections, reunions.length);
 
   return (
     <div className="outer-cards-container">
       <h2>Reconnections</h2>
       <div className="cards-container">
         <Carousel responsive={responsive}>
-          {connections
+          {reunions
             .filter((el, i) => displayIndices.includes(i))
             .map((el, index) => (
               <ReunionModal connection={el} key={index} />

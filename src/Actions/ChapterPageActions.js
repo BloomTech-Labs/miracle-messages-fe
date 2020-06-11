@@ -67,7 +67,7 @@ export const fetchChapterVolunteers = (id) => (dispatch) => {
 export const fetchChapterReunions = (id) => (dispatch) => {
   const { reunions } = buildUrls(id);
 
-  dispatch({ type: FETCH_CHAPTER_VOLUNTEERS });
+  dispatch({ type: FETCH_CHAPTER_REUNIONS });
 
   axios
     .get(reunions)
