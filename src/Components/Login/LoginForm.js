@@ -34,6 +34,8 @@ const LoginForm = () => {
         pkce: true,
         issuer,
         display: "page",
+        responseMode: pkce ? "query" : "fragment",
+
         scopes,
       },
     });
