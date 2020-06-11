@@ -176,54 +176,56 @@ const Pending = (props) => {
 
   return (
     <>
-      <div className="pending-chapter-div">
-        <h2>Chapter Requests</h2>
-        <Table
-          id="pending-table-header"
-          hover
-          style={{ fontSize: "15px", fontWeight: "bold", border: "none" }}
-        >
-          <thead>
-            <tr className="no-border">
-              <th>Title</th>
-              <th>State</th>
-              <th className="pending-city-th">City</th>
-              <th>Requested By</th>
-              <th></th>
-            </tr>
-          </thead>
-        </Table>
-        {pendingChapters.length > 0 ? (
-          pendingChapters.map((chapter) => (
-            <>
-              <Table id="pending-chapter-tbl" hover>
-                <tbody>
-                  <tr>
-                    <th>{chapter.title}</th>
-                    <td>{chapter.state}</td>
-                    <td className="pending-city-td">{chapter.city}</td>
-                    <td>{chapter.requestedBy.name}</td>
-                    <th>
-                      {
-                        <div className="action-btns">
-                          <CheckCircleIcon
-                            className="approve-btn"
-                            onClick={() => {
-                              openAffirmModal(chapter.id);
-                            }}
-                          />
-                          <CancelIcon
-                            className="reject-btn"
-                            onClick={() => {
-                              openModal(chapter.id);
-                            }}
-                          />
-                        </div>
-                      }
-                    </th>
-                  </tr>
-                </tbody>
-              </Table>
+      {groups.includes("CEO") ? (
+        <>
+          <div className="pending-chapter-div">
+            <h2>Chapter Requests</h2>
+            <Table
+              id="pending-table-header"
+              hover
+              style={{ fontSize: "15px", fontWeight: "bold", border: "none" }}
+            >
+              <thead>
+                <tr className="no-border">
+                  <th>Title</th>
+                  <th>State</th>
+                  <th className="pending-city-th">City</th>
+                  <th>Requested By</th>
+                  <th></th>
+                </tr>
+              </thead>
+            </Table>
+            {pendingChapters.length > 0 ? (
+              pendingChapters.map((chapter) => (
+                <>
+                  <Table id="pending-chapter-tbl" hover>
+                    <tbody>
+                      <tr>
+                        <th>{chapter.title}</th>
+                        <td>{chapter.state}</td>
+                        <td className="pending-city-td">{chapter.city}</td>
+                        <td>{chapter.requestedBy.name}</td>
+                        <th>
+                          {
+                            <div className="action-btns">
+                              <CheckCircleIcon
+                                className="approve-btn"
+                                onClick={() => {
+                                  openAffirmModal(chapter.id);
+                                }}
+                              />
+                              <CancelIcon
+                                className="reject-btn"
+                                onClick={() => {
+                                  openModal(chapter.id);
+                                }}
+                              />
+                            </div>
+                          }
+                        </th>
+                      </tr>
+                    </tbody>
+                  </Table>
 
                   <Modal
                     isOpen={modalIsOpen[chapter.id]}
@@ -291,7 +293,7 @@ const Pending = (props) => {
             >
               <thead>
                 <tr className="no-border">
-                <th className="blank-th"></th>
+                  <th className="blank-th"></th>
                   <th>Name</th>
                   <th>Chapter</th>
                   <th className="admin-contact-th">Contact</th>
