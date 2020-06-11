@@ -98,15 +98,15 @@ const ChapterPage = (props) => {
     isFetching,
     pendingVols
   } = props;
-  console.log(props);
-  const user = useLoggedInUser();
-  console.log(user)
+  
+  console.log(props)
+  const [ user, setUser ] = useState({})
   const [ isApproved, setIsApproved ] = useState(false)
   const [ isPending, setIsPending ] = useState(false)
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
 
-  const [open, setOpen] = useState(false);
+  const [ open, setOpen ] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -114,16 +114,24 @@ const ChapterPage = (props) => {
     fetchChapterVolunteers(id);
     fetchChapterReunions(id);
     fetchPendingVols(id);
+
+    axiosWithAuth()
+      .get(`/api/user`)
+      .then(res => {
+        console.log(res)
+        setUser(res.data)
+      })
+
   }, []);
 
   useEffect(() => {
     if (volunteers.some(el => el.name === user.name)){
       setIsApproved(true)
     }
-    if (pendingVols.some(el => el.volunteersid === user.uid && el.chaptersid === parseInt(id))){
+    if (pendingVols.some(el => el.volunteersid === user.oktaid)){
       setIsPending(true)
     }
-  }, [volunteers, pendingVols, user.uid])
+  }, [volunteers, pendingVols, user.name, user.oktaid])
 
   const joinChapter = (e) => {
     e.preventDefault();
@@ -193,13 +201,12 @@ const ChapterPage = (props) => {
             <ReunionForm />
           </div>
         </Modal>
-        {isApproved && (
+        {isApproved &&
           <div className="button-div">
             <button onClick={handleOpen} className="reunion-btn">
               Submit Reunion
             </button>
-          </div>
-        )}
+          </div>}
         <ChapterMembers volunteers={volunteers} leader={props.leader} />
       </div>
     </div>
