@@ -21,7 +21,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: "40%",
+    width: "50%",
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -31,11 +31,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ReunionModal({ connection }) {
   const {
-    volunteerName,
-    lDescription,
-    videoLink,
-    sDescription,
-    picture,
+    story,
+    link_to_media,
+    title,
+    reunion_img,
   } = connection;
 
   const classes = useStyles();
@@ -52,16 +51,16 @@ export default function ReunionModal({ connection }) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <ReunionDetails lDescription={lDescription} sDescription={sDescription} />
+      <ReunionDetails lDescription={story} sDescription={title} videoLink={link_to_media} />
     </div>
   );
 
   return (
     <div className="card">
       <div className="connections-inner-container">
-        <h3>{sDescription}</h3>
+        <h3>{title}</h3>
         <div className="img-container" onClick={handleOpen}>
-          <img src={picture} alt="persons face" />
+          <img src={reunion_img} alt="persons face" />
         </div>
       </div>
       <Modal
