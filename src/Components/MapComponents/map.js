@@ -23,7 +23,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
 import ReactGA from "react-ga";
-import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
+// import { gaEvent } from "../Analytics/GAFunctions";
 
 // Custom file imports
 import CityInfo from "./city_info";
@@ -55,7 +55,7 @@ class Map extends Component {
     toggleReunions: true,
   };
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props);
     this.props.getData();
     this.props.getReunions();
   }
@@ -167,6 +167,7 @@ class Map extends Component {
           >
             <NavigationControl />
           </div>
+          {/* eslint-disable-next-line array-callback-return*/}
           {this.props.chapter_data.map((city, index) => {
             console.log("mapped cities", city);
             if (city.approved === true) {

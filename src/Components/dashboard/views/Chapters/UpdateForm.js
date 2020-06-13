@@ -12,7 +12,6 @@ import {
 
 import { connect } from "react-redux";
 import { getData } from "../../../../Actions/index";
-import { useToasts } from "react-toast-notifications";
 
 class UpdateForm extends React.Component {
   state = {
@@ -113,7 +112,7 @@ class UpdateForm extends React.Component {
           type="textarea"
           placeholder="Name"
         />
-                <br />
+        <br />
         <div className="dropdown-divider" />
         <Label>Email</Label>
         <Input
