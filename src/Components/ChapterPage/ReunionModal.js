@@ -3,9 +3,9 @@ import ReunionDetails from "./ReunionDetails";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+// function rand() {
+//   return Math.round(Math.random() * 20) - 10;
+// }
 
 function getModalStyle() {
   const top = 50;
@@ -30,12 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ReunionModal({ connection }) {
-  const {
-    story,
-    link_to_media,
-    title,
-    reunion_img,
-  } = connection;
+  const { story, link_to_media, title, reunion_img } = connection;
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -51,7 +46,11 @@ export default function ReunionModal({ connection }) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <ReunionDetails lDescription={story} sDescription={title} videoLink={link_to_media} />
+      <ReunionDetails
+        lDescription={story}
+        sDescription={title}
+        videoLink={link_to_media}
+      />
     </div>
   );
 

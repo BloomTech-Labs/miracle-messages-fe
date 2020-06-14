@@ -53,6 +53,7 @@ const Navbar = (props) => {
     token && props.registerUser(user);
     console.log("register user called");
     console.log(props.userImg);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isLoggedIn]);
 
   const handleClick = (event) => {
