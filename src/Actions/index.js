@@ -1,4 +1,3 @@
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO";
 export const FETCH_CHAPTER_SUCCESS = "FETCH_CHAPTER_SUCCESS";

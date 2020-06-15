@@ -80,6 +80,7 @@ const Pending = (props) => {
             });
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //reject modal
   const openModal = (item) => {
@@ -372,7 +373,9 @@ const Pending = (props) => {
                 </tr>
               </thead>
             </Table>
-            {pendingVolunteers.length > 0 ? (
+            {!noVolunteersMsg === null ? (
+              <h3>{noVolunteersMsg}</h3>
+            ) : pendingVolunteers.length > 0 ? (
               pendingVolunteers.map((volunteer) => (
                 <>
                   <Table id="pending-chapter-tbl" hover>

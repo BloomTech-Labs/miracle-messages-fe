@@ -10,12 +10,10 @@ import { connect } from "react-redux";
 import { getData, getSponsor } from "../../../../Actions/index";
 import { useToasts } from "react-toast-notifications";
 import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 //import SponsorForm from "../Sponsors/SponsorForm";
 import AdminSearchBar from "./AdminSearchBar";
 import AddChapterForm from "./AddChapterForm";
-import { useUserGroups } from "../../../../utils/customHooks/useUserGroups";
 import { useOktaAuth } from "@okta/okta-react";
 
 import {
@@ -36,7 +34,6 @@ const Chapters = (props) => {
 
   const groups = oktaInfo.groups;
 
-  const { admin, chapterLeaders, volunteer } = useUserGroups();
   const [newChapter, setNewChapter] = useState({
     title: "",
     description: "",
@@ -56,8 +53,6 @@ const Chapters = (props) => {
   const [modal, setModal] = useState(false);
   //edit chapter modal in Admin view//
   const [modalEdit, setModalEdit] = useState(false);
-
-  const [user, setUser] = useState();
   const [leaderChapter, setLeaderChapter] = useState();
   const [searchArray, setSearchArray] = useState([]);
   const [searchTerm, setSearchTerm] = useState();
@@ -66,7 +61,7 @@ const Chapters = (props) => {
   const deleteChapter = (id) => {
     axiosWithAuth()
       .delete(`/api/chapter/${id}`)
-      .then((res) => {
+      .then(() => {
         props.getData();
       })
       .catch((err) => console.log(err));
@@ -78,7 +73,6 @@ const Chapters = (props) => {
       .get(`api/user/`)
       .then((res) => {
         console.log("current user", res);
-        setUser(res.data);
         if (!groups.includes("CEO") && groups.includes("Admins")) {
           axiosWithAuth()
             .get(`api/chapter/${res.data.leaderOf[0].chaptersid}`)
@@ -88,6 +82,7 @@ const Chapters = (props) => {
             });
         }
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //toggles add chapter modal for superAdmin view
@@ -220,7 +215,8 @@ const Chapters = (props) => {
             </Table>
 
             {searchArray.length === 0
-              ? props.chapter_data.map((chapter) => {
+              ? // eslint-disable-next-line array-callback-return
+                props.chapter_data.map((chapter) => {
                   if (chapter.approved === true) {
                     return (
                       <Chapter
@@ -233,7 +229,8 @@ const Chapters = (props) => {
                     );
                   }
                 })
-              : searchArray.map((chapter) => {
+              : // eslint-disable-next-line array-callback-return
+                searchArray.map((chapter) => {
                   if (chapter.approved === true) {
                     return (
                       <Chapter

@@ -12,7 +12,6 @@ import {
 
 import { connect } from "react-redux";
 import { getData } from "../../../../Actions/index";
-import { useToasts } from "react-toast-notifications";
 
 class UpdateForm extends React.Component {
   state = {

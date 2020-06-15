@@ -6,6 +6,7 @@ import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
 import { ReactSVG } from "react-svg";
+import DeckGL, { ArcLayer } from "deck.gl";
 
 // Action imports
 import { getData, getReunions } from "../../Actions/index";
@@ -23,7 +24,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
 import ReactGA from "react-ga";
-import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
+// import { gaEvent } from "../Analytics/GAFunctions";
 
 // Custom file imports
 import CityInfo from "./city_info";
@@ -55,7 +56,7 @@ class Map extends Component {
     toggleReunions: true,
   };
   componentDidMount() {
-    console.log(this.props)
+    console.log("cmd", this.props);
     this.props.getData();
     this.props.getReunions();
   }
@@ -135,6 +136,43 @@ class Map extends Component {
   render() {
     const { viewport } = this.props;
 
+    const newData = [
+      {
+        approved: true,
+        chapterid: 2,
+        city: "Fort Lauderdale",
+        id: 1,
+        latitude: 26.1224386,
+        link_to_media: "https://www.youtube.com/watch?v=1SQE73lF5TA",
+        longitude: -80.1373174,
+        origin: { longitude: -118.243683, latitude: 34.052235 },
+        reunion_img:
+          "https://dl.airtable.com/.attachments/c76c9f73c8a28be9d6130c4db62afe88/978c5002/reginaldbrown.png",
+        state: "FL",
+        story:
+          "Reginald was searching for his siblings when he found Miracle Messages. After extensive searching, a dedicated messenger was able to find Raynard, Reginald’s older brother. Miracle Messages relocated Reginald at a food service event and placed him on the phone with Raynard. The brothers have been reunited after 10 years of separation.",
+        title: "Reginald Brown",
+        volunteersid: "00ud5cf5v0zK8zYCG4x6",
+      },
+      {
+        approved: true,
+        chapterid: 1,
+        city: "Manchester",
+        id: 2,
+        latitude: 53.4807593,
+        link_to_media: "https://youtu.be/yYNgIR1RBQs",
+        longitude: -2.2426305,
+        origin: { longitude: -122.431297, latitude: 37.773972 },
+        reunion_img:
+          "https://dl.airtable.com/.attachments/81f28bc16f887afceb740737ee89e926/1e049945/WesSearles.JPG",
+        state: "England",
+        story:
+          "Wes was reunited with his brother Chester Searles after almost two decades of separation. A messenger was able to find the contact information for Charles and proceeded to reunited the brothers over the phone. Wes and Chester are hoping to reunite in person soon after 15-20 years of separation.",
+        title: "Wes Searles",
+        volunteersid: "00uc4zemuUeyaDfEd4x6",
+      },
+    ];
+
     return (
       <div className="Map">
         {/* MapGL is the actual map that gets displayed  */}
@@ -167,8 +205,11 @@ class Map extends Component {
           >
             <NavigationControl />
           </div>
+          {/* eslint-disable-next-line array-callback-return*/}
+          {console.log("reU", this.props.reunion_data)}
+
+          {/* eslint-disable-next-line array-callback-return*/}
           {this.props.chapter_data.map((city, index) => {
-            console.log("mapped cities", city);
             if (city.approved === true) {
               return (
                 <Marker
@@ -220,6 +261,25 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
+          <DeckGL
+            {...viewport}
+            initialViewState={viewport}
+            layers={[
+              new ArcLayer({
+                id: "reunion-arcs",
+                data: this.props.reunion_data,
+                getSourcePosition: (d) => {
+                  return [d.origin.longitude, d.origin.latitude];
+                },
+                getTargetPosition: (d) => {
+                  return [d.longitude, d.latitude];
+                },
+                getSourceColor: () => [255, 0, 0, 120],
+                getTargetColor: () => [0, 255, 0, 120],
+                getStrokeWidth: () => 2,
+              }),
+            ]}
+          />
         </ReactMapGL>
         {/* {this._renderSlide()} */}
       </div>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import ReunionModal from "./ReunionModal";
 import "./Reunions.scss";
 
-import { dummyConnections } from "./dummies";
+// import { dummyConnections } from "./dummies";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -27,7 +27,7 @@ const responsive = {
 
 const Connections = ({ reunions }) => {
   console.log(reunions);
-  const [connections, setConnections] = useState(dummyConnections);
+  // const [connections, setConnections] = useState(dummyConnections);
   const maxConnections = 10;
 
   //This function calculates random indices to display under "Reunions" - can probably remove
