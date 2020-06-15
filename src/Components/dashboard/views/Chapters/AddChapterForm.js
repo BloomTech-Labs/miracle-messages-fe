@@ -1,56 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import MapboxAutocomplete from "react-mapbox-autocomplete";
 
-import {
-  Input,
-  Label,
-} from "reactstrap";
+import { Input, Label } from "reactstrap";
 
 const AddChapterForm = (props) => {
-  const [chapter, setChapter] = useState({
-    current_chapter_imgUrl: null,
-    current_reunion_imgUrl: null,
-    newChapterImg: null,
-    newReunionImg: null,
-  });
-
-  const addDaChaptaaa = (e) => {
-    e.preventDefault();
-
-    const id = chapter.id;
-    const fd = new FormData();
-    if (chapter.newChapterImg != null) {
-      fd.append("chapter_img", chapter.newChapterImg);
-    }
-    if (chapter.newReunionImg != null) {
-      fd.append("reunion_img", chapter.newReunionImg);
-    }
-    fd.append("title", chapter.title);
-    fd.append("established_date", chapter.established_date);
-    fd.append("description", chapter.description);
-    fd.append("city", chapter.city);
-    fd.append("state", chapter.state);
-    fd.append("latitude", chapter.latitude);
-    fd.append("longitude", chapter.longitude);
-    fd.append("email", chapter.email);
-    fd.append("msg_delivered", chapter.msg_delivered);
-    fd.append("msg_recorded", chapter.msg_recorded);
-    fd.append("facebook", chapter.facebook);
-    fd.append("requestedBy", chapter.requestedBy);
-
-    // axiosWithAuth()
-    //   .post(`/api/chapter/`, fd)
-    //   .then(res => {
-    //     props.toggle()
-    //     console.log(res)
-    //     console.log(res)
-    //   })
-    //   .catch(err => {
-    //       console.log(err);
-    //       console.log(err.response);
-    //   })
-  };
-
   const changeHandler = (ev) => {
     ev.persist();
     let value = ev.target.value;

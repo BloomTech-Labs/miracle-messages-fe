@@ -13,7 +13,7 @@
     "@turf/bbox": "^6.0.1",
     "axios": "^0.19.2",
     "axois": "^0.0.1-security",
-    "deck.gl": "^8.1.7",
+    "deck.gl": "^8.1.9",
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
     "material-ui-search-bar": "^0.4.2",

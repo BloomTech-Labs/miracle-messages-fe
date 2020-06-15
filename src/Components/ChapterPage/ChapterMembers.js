@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { Avatar } from "@material-ui/core";
-import { AvatarGroup } from "@material-ui/lab";
 import "./ChapterMembers.scss";
 
 const LeaderAvatar = withStyles({
@@ -15,21 +14,6 @@ const LeaderAvatar = withStyles({
     },
   },
 })(Avatar);
-
-const VolunteerAvatar = withStyles({
-  root: {
-    width: "20%",
-    height: "100%",
-  },
-})(Avatar);
-
-const StyledAvatarGroup = withStyles({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-  },
-})(AvatarGroup);
 
 const ChapterMembers = ({ leader, volunteers }) => {
   return volunteers ? (
