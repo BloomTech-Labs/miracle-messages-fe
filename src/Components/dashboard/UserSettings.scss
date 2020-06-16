@@ -22,6 +22,7 @@
                 display:flex;
                 justify-content:space-between;
                 margin: 15px 0;
+                height:25px;
                 div:first-child {
                     font-weight:bold;
                 }
@@ -32,6 +33,9 @@
                     &:first-child {
                         font-weight:bold;
                     }
+                    &.MuiTextField-root {
+                        margin: 0;
+                    }
                 }
                 .MuiTextField-root {
                     width:100%;
@@ -41,7 +45,13 @@
                 width:30%;
                 display:flex;
                 justify-content:space-between;
+                &.hidden {
+                    display:none;
+                }
             }
+        }
+        .hidden {
+            display:none;
         }
     }
     h1 {

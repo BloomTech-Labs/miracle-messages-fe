@@ -10,6 +10,7 @@ const UserSettings = () => {
     const [user, updateUser] = useState(null);
     const [changes, updateChanges] = useState(null);
     const [edit, setEdit] = useState(false);
+    const [submitting, submitStatus] = useState(false);
 
     const cancel = () => {
         updateChanges(user);
@@ -23,13 +24,17 @@ const UserSettings = () => {
         })
     }
 
-    const handleSave = () => {
-        axiosWithAuth().put("/api/user/update", changes)
-        .then(res => {
-            console.log(res);
+    const handleSave = async () => {
+        submitStatus(true)
+        await axiosWithAuth().put("/api/user/update", changes)
+        .then(() => {
+            updateUser(changes);
+            setEdit(false);
+            submitStatus(false);
         })
         .catch(error => {
             console.log(error);
+            submitStatus(false);
         })
     }
 
@@ -98,10 +103,10 @@ const UserSettings = () => {
                         <div>Bio</div>
                         {edit ?
                         <TextField 
-                            id="outlined-multiline-static"
+                            id="bio"
                             multiline
                             name="bio"
-                            rows={5}
+                            rows={6}
                             variant="outlined"
                             onChange={handleChanges}
                             value={changes.bio}
@@ -109,7 +114,10 @@ const UserSettings = () => {
                         :
                         <div>{user.bio}</div>}
                     </div>
-                    {edit && <div className="edit-buttons">
+                    {submitting ?
+                    <CircularProgress className={edit ? "" : "hidden"}/>
+                    :
+                    <div className={edit ? "edit-buttons" : "edit-buttons hidden"}>
                         <Button 
                             variant="contained" 
                             color="primary"
