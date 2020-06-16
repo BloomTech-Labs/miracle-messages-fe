@@ -13,6 +13,7 @@ import "./Map.scss";
 import { ReactSVG } from "react-svg";
 import { ArcLayer } from "@deck.gl/layers";
 import { MapboxLayer } from "@deck.gl/mapbox";
+import Cluster from "@urbica/react-map-gl-cluster";
 
 // Action imports
 import { getData, getReunions, getChapterReunions } from "../../Actions/index";
@@ -54,6 +55,21 @@ const STYLE = "mapbox://styles/kkslider2130/cka93hqym2mju1imatqi7trcs";
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
 //This tracks the page views on this component/path
 ReactGA.pageview("/map");
+
+const clusterStyle = {
+  width: "20px",
+  height: "20px",
+  color: "#fff",
+  background: "black",
+  borderRadius: "20px",
+  textAlign: "center",
+};
+
+const ClusterMarker = ({ longitude, latitude, pointCount }) => (
+  <Marker longitude={longitude} latitude={latitude}>
+    <div className="clusters">{pointCount}</div>
+  </Marker>
+);
 
 class Map extends Component {
   //this fetches the data from the backend:
@@ -199,35 +215,6 @@ class Map extends Component {
           <NavigationControl showCompass showZoom position="bottom-right" />
 
           {/* eslint-disable-next-line array-callback-return*/}
-          {console.log("reU", this.props.reunion_data)}
-
-          {/* eslint-disable-next-line array-callback-return*/}
-          {this.props.chapter_data.map((city, index) => {
-            if (city.approved === true) {
-              return (
-                <Marker
-                  className="markerCity"
-                  key={`chapter-marker-${index}`}
-                  latitude={city.latitude}
-                  longitude={city.longitude}
-                >
-                  <ReactSVG
-                    src="marker.svg"
-                    className="city-pin"
-                    style={{ cursor: "pointer" }}
-                    beforeInjection={(svg) => {
-                      svg.classList.add("city-pin");
-                    }}
-                    onClick={() => {
-                      this.PinClickHandler(city);
-                      this.getCurrentReunions(city.id);
-                      this.setState({ isInteracted: true });
-                    }}
-                  />
-                </Marker>
-              );
-            }
-          })}
           {!this.state.isInteracted
             ? this.props.reunion_data.map((reunion, index) => {
                 return (
@@ -290,6 +277,41 @@ class Map extends Component {
                   </Marker>
                 );
               })}
+          {/*eslint-disable-next-line array-callback-return*/}
+          <Cluster
+            radius={40}
+            extent={512}
+            nodeSize={64}
+            component={ClusterMarker}
+          >
+            {this.props.chapter_data.map((city, index) => {
+              if (city.approved === true) {
+                return (
+                  <Marker
+                    className="markerCity"
+                    key={`chapter-marker-${index}`}
+                    latitude={city.latitude}
+                    longitude={city.longitude}
+                  >
+                    <ReactSVG
+                      src="marker.svg"
+                      className="city-pin"
+                      style={{ cursor: "pointer" }}
+                      beforeInjection={(svg) => {
+                        svg.classList.add("city-pin");
+                      }}
+                      onClick={() => {
+                        this.PinClickHandler(city);
+                        this.getCurrentReunions(city.id);
+                        this.setState({ isInteracted: true });
+                      }}
+                    />
+                  </Marker>
+                );
+              }
+            })}
+          </Cluster>
+
           {this.props.openPopup && (
             <Popup
               className="popup-main"
@@ -303,25 +325,7 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
-          {/*     <DeckGL
-            {...viewport}
-            initialViewState={viewport}
-            layers={[
-              new ArcLayer({
-                id: "reunion-arcs",
-                data: this.state.currentChapterReunions,
-                getSourcePosition: (d) => {
-                  return [d.origin.longitude, d.origin.latitude];
-                },
-                getTargetPosition: (d) => {
-                  return [d.longitude, d.latitude];
-                },
-                getSourceColor: () => [255, 97, 2, 120],
-                getTargetColor: () => [255, 97, 2, 120],
-                getWidth: 2,
-              }),
-            ]}
-          /> */}
+
           <CustomLayer layer={this.deckLayer} />
         </MapGL>
         {/* {this._renderSlide()} */}

@@ -14,8 +14,10 @@
     "@okta/okta-signin-widget": "^4.1.2",
     "@turf/bbox": "^6.0.1",
     "@urbica/react-map-gl": "^1.13.1",
+    "@urbica/react-map-gl-cluster": "^0.2.0",
     "axios": "^0.19.2",
     "axois": "^0.0.1-security",
+    "babel-loader": "^8.1.0",
     "deck.gl": "^8.1.9",
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
@@ -48,6 +50,7 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "supercluster": "^7.1.0",
     "viewport-mercator-project": "^7.0.1",
     "yup": "^0.29.0"
   },
