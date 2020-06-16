@@ -158,7 +158,10 @@ const Navbar = (props) => {
                 </ListItemIcon>
                 <ListItemText primary="Requests" />
               </MenuItem>
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={() => {
+                handleClose();
+                history.push("/admin/settings")
+              }}>
                 <ListItemIcon>
                   <SettingsIcon fontSize="small" />
                 </ListItemIcon>
