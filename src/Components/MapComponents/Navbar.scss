@@ -7,18 +7,17 @@
   justify-content: space-between;
   font-family: poppins;
   overflow: hidden;
-
   top: 0;
   .mLogo {
     display: none;
-    @media (max-width: 550px) {
+    @media (max-width: 720px) {
       display: block;
       width: 40px;
       margin: 0.5rem 0;
     }
   }
   .logo {
-    @media (max-width: 550px) {
+    @media (max-width: 720px) {
       display: none;
     }
   }
@@ -31,7 +30,7 @@
       a {
         padding: 20px;
         font-size: 1.2rem;
-        @media (max-width: 550px) {
+        @media (max-width: 720px) {
           &:hover {
             background: #4b4b4b;
             color: white;
@@ -62,12 +61,12 @@
       transition: 0.5s;
       transform: rotate(180deg);
     }
-    @media (max-width: 550px) {
+    @media (max-width: 720px) {
       display: flex;
     }
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 720px) {
     flex-direction: column;
     align-items: center;
   }
@@ -82,11 +81,11 @@
       &:hover {
         cursor: pointer;
       }
-      @media (max-width: 550px) {
+      @media (max-width: 720px) {
         width: 20%;
       }
     }
-    @media (max-width: 550px) {
+    @media (max-width: 720px) {
       width: 100%;
       display: flex;
       justify-content: center;
@@ -96,7 +95,7 @@
   .navProPic {
     cursor: pointer;
     width: 50px;
-    @media (max-width: 550px) {
+    @media (max-width: 720px) {
       width: 60px;
       margin-bottom: 0.5rem;
     }
@@ -131,7 +130,7 @@
       }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 720px) {
       width: 100%;
       flex-direction: column;
       opacity: 0;
@@ -163,7 +162,7 @@
       &:hover {
         color: #cacaca;
       }
-      @media (max-width: 550px) {
+      @media (max-width: 720px) {
         font-size: 0;
       }
     }

@@ -14,6 +14,21 @@
     }
     .no-border {
       border-top: none;
+      .blank-th {
+        @media(max-width: 800px) {
+          display: none;
+        }
+      }
+      .pending-city-th {
+        @media(max-width: 800px) {
+          display: none;
+        }
+      }
+      .admin-contact-th {
+        @media(max-width: 800px) {
+          display: none;
+        }
+      }
     }
   }
   .action-btns {
@@ -36,6 +51,9 @@
   }
   .leader-pic-div {
     text-align: center;
+    @media(max-width: 800px) {
+      display: none;
+    }
     .leader-avatar {
       width: 30%;
       border-radius: 50%;
@@ -58,9 +76,27 @@
 }
 
 #pending-chapter-tbl {
-  th,
+  .pending-city-td {
+    @media(max-width: 800px) {
+      display: none;
+    }
+  }
+  .volunteer-contact-td {
+    @media(max-width: 800px) {
+      display: none;
+    }
+  }
+  th {
+    width: 20%;
+    @media(max-width: 800px) {
+      width: 2%;
+    }
+  }
   td {
     width: 20%;
+    @media(max-width: 800px) {
+      width: 2%;
+    }
   }
 }
 
