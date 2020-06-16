@@ -32,8 +32,8 @@ class BoxLink extends React.Component {
                 </h4>
                 <p>
                   Miracle Messages has dedicated chapters around the nation
-                  commited to our mission of reconnection. Find a chapter near
-                  you, or start one today.
+                  commited to our mission of reconnecting the homeless. Click on
+                  a chapter to see reunions made possible by our many volunteers
                 </p>
               </div>
               <div
@@ -60,7 +60,8 @@ class BoxLink extends React.Component {
               <p>
                 Miracle Messages offers chapters you can join to link up with
                 volunteers and leaders to coordinate events, reunions, and much
-                more. Join and you can help us reconnect the world.
+                more. Find a chapter near you or request one today and help us
+                reconnect the world.
               </p>
               <Link className="toggle-btn" to="/login">
                 Get Started

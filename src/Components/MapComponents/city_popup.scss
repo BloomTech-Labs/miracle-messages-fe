@@ -1,13 +1,14 @@
 .popup-main {
   z-index: 3;
   position: fixed;
-  left: -410px;
-  top: 50px;
+  left: -280px;
+  top: -200px;
   i {
     background-color: #212121 !important;
     color: #212121 !important;
   }
   .mapboxgl-popup-content {
+    width: 300px;
     background-color: #212121 !important;
     opacity: 0.95;
   }
@@ -17,7 +18,6 @@
 }
 
 .chapter-Info {
-  width: 260px;
   font-family: poppins;
   margin-top: 10px;
   color: white;
@@ -51,7 +51,7 @@
   flex-direction: column;
   color: white;
   h1 {
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
     padding-bottom: 0.9rem;
     font-size: 1.5rem;
   }

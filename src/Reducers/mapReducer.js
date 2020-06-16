@@ -6,6 +6,7 @@ import {
   FETCH_CHAPTER_DEFAULT_SUCCESS,
   FETCH_CHAPTER_DEFAULT_FAIL,
   FETCHING_REUNION,
+  GET_CHAPTER_REUNIONS,
   FETCH_REUNION_SUCCESS,
   FETCH_REUNION_ERR,
 } from "../Actions/index";
@@ -27,6 +28,7 @@ const initialState = {
   },
   chapter_data: [], //this gets populated with componentDidMount
   reunion_data: [],
+  clicked_chapters_reunion: [],
   popupInfo: null,
   fetching_chapters: false,
   fetching_reunions: false,
@@ -87,21 +89,26 @@ export const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         fetching_reunions: true,
-        reunion_error: null
+        reunion_error: null,
       };
     case FETCH_REUNION_SUCCESS:
       return {
         ...state,
         reunion_data: action.payload,
         fetching_reunions: false,
-        reunion_error: null
+        reunion_error: null,
       };
     case FETCH_REUNION_ERR:
       return {
         ...state,
         fetching_reunions: false,
-        reunion_error: action.payload
-      }
+        reunion_error: action.payload,
+      };
+    case GET_CHAPTER_REUNIONS:
+      return {
+        ...state,
+        clicked_chapters_reunion: action.payload,
+      };
     //reducer to set the state for the city popups
     case UPDATE_POPUP:
       return {

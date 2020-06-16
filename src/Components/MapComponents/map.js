@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 // Mapbox imports
-import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
+import MapGL, {
+  Marker,
+  NavigationControl,
+  Popup,
+  CustomLayer,
+} from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
 import { ReactSVG } from "react-svg";
-import DeckGL, { ArcLayer } from "deck.gl";
+import { ArcLayer } from "@deck.gl/layers";
+import { MapboxLayer } from "@deck.gl/mapbox";
 
 // Action imports
-import { getData, getReunions } from "../../Actions/index";
+import { getData, getReunions, getChapterReunions } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
@@ -56,6 +61,7 @@ class Map extends Component {
     open: true,
     toggleReunions: true,
     currentChapterReunions: [],
+    isInteracted: false,
   };
   componentDidMount() {
     this.props.getData();
@@ -65,6 +71,7 @@ class Map extends Component {
     if (this.props.openPopup !== prevProps.openPopup) {
       this.closeBox();
     }
+    this.setNewLayer();
   }
 
   closeHandler = () => {
@@ -90,12 +97,28 @@ class Map extends Component {
   };
 
   getCurrentReunions = (id) => {
-    axiosWithAuth()
-      .get(`/api/reunion/${id}`)
-      .then((res) => {
-        console.log(res);
-        this.setState({ currentChapterReunions: res.data });
-      });
+    this.props.getChapterReunions(id);
+  };
+
+  deckLayer = new MapboxLayer({
+    id: "reunion-arcs",
+    type: ArcLayer,
+    data: this.props.reunion_data,
+    getSourcePosition: (d) => {
+      return [d.origin.longitude, d.origin.latitude];
+    },
+    getTargetPosition: (d) => {
+      return [d.longitude, d.latitude];
+    },
+    getSourceColor: () => [255, 97, 2, 120],
+    getTargetColor: () => [255, 97, 2, 120],
+    getWidth: 2,
+  });
+
+  setNewLayer = () => {
+    this.deckLayer.setProps({
+      data: this.props.clicked_chapters_reunion,
+    });
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -162,23 +185,19 @@ class Map extends Component {
 
         {/* <Sidebar /> */}
 
-        <ReactMapGL
-          {...viewport}
-          width="100vw"
-          height="100vh"
+        <MapGL
+          latitude={viewport.latitude}
+          longitude={viewport.longitude}
+          style={{ width: "100%", height: "100vh" }}
           onViewportChange={this._updateViewport}
+          viewportChangeMethod={"flyTo"}
           mapStyle={STYLE}
-          mapboxApiAccessToken={TOKEN}
-          minZoom={3}
-          dragRotate={false}
+          accessToken={TOKEN}
+          zoom={3.5}
           pitch="60"
-          doubleClickZoom={false}
         >
-          <div
-            style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
-          >
-            <NavigationControl />
-          </div>
+          <NavigationControl showCompass showZoom position="bottom-right" />
+
           {/* eslint-disable-next-line array-callback-return*/}
           {console.log("reU", this.props.reunion_data)}
 
@@ -187,7 +206,7 @@ class Map extends Component {
             if (city.approved === true) {
               return (
                 <Marker
-                  className="markerMAP"
+                  className="markerCity"
                   key={`chapter-marker-${index}`}
                   latitude={city.latitude}
                   longitude={city.longitude}
@@ -195,36 +214,82 @@ class Map extends Component {
                   <ReactSVG
                     src="marker.svg"
                     className="city-pin"
+                    style={{ cursor: "pointer" }}
+                    beforeInjection={(svg) => {
+                      svg.classList.add("city-pin");
+                    }}
                     onClick={() => {
                       this.PinClickHandler(city);
                       this.getCurrentReunions(city.id);
+                      this.setState({ isInteracted: true });
                     }}
                   />
                 </Marker>
               );
             }
           })}
-          {this.state.currentChapterReunions.map((reunion, index) => {
-            return (
-              <Marker
-                className="markerReunion"
-                key={`reunion-marker-${index}`}
-                latitude={reunion.latitude}
-                longitude={reunion.longitude}
-              >
-                <ReactSVG
-                  src="reunion_marker.svg"
-                  id="reunion-pin"
-                  className="city-pin"
-                  style={
-                    this.state.toggleReunions
-                      ? { opacity: "1", transition: ".3s", cursor: "pointer" }
-                      : { opacity: "0", transition: ".3s", cursor: "grab" }
-                  }
-                />
-              </Marker>
-            );
-          })}
+          {!this.state.isInteracted
+            ? this.props.reunion_data.map((reunion, index) => {
+                return (
+                  <Marker
+                    className="markerReunion"
+                    key={`reunion-marker-${index}`}
+                    latitude={reunion.latitude}
+                    longitude={reunion.longitude}
+                  >
+                    <ReactSVG
+                      src="reunion_marker.svg"
+                      id="reunion-pin"
+                      beforeInjection={(svg) => {
+                        svg.classList.add("reunion-pin");
+                        svg.setAttribute("style", "width: 20px");
+                      }}
+                      style={
+                        this.state.toggleReunions
+                          ? {
+                              opacity: "1",
+                              transition: ".3s",
+                              cursor: "pointer",
+                            }
+                          : {
+                              opacity: "0",
+                              transition: ".3s",
+                              cursor: "grab",
+                            }
+                      }
+                    />
+                  </Marker>
+                );
+              })
+            : this.props.clicked_chapters_reunion.map((reunion, index) => {
+                return (
+                  <Marker
+                    className="markerReunion"
+                    key={`reunion-marker-${index}`}
+                    latitude={reunion.latitude}
+                    longitude={reunion.longitude}
+                  >
+                    <ReactSVG
+                      src="reunion_marker.svg"
+                      id="reunion-pin"
+                      className="city-pin"
+                      beforeInjection={(svg) => {
+                        svg.classList.add("reunion-pin");
+                        svg.setAttribute("style", "width: 20px");
+                      }}
+                      style={
+                        this.state.toggleReunions
+                          ? {
+                              opacity: "1",
+                              transition: ".3s",
+                              cursor: "pointer",
+                            }
+                          : { opacity: "0", transition: ".3s", cursor: "grab" }
+                      }
+                    />
+                  </Marker>
+                );
+              })}
           {this.props.openPopup && (
             <Popup
               className="popup-main"
@@ -238,7 +303,7 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
-          <DeckGL
+          {/*     <DeckGL
             {...viewport}
             initialViewState={viewport}
             layers={[
@@ -251,13 +316,14 @@ class Map extends Component {
                 getTargetPosition: (d) => {
                   return [d.longitude, d.latitude];
                 },
-                getSourceColor: () => [0, 0, 0, 120],
-                getTargetColor: () => [0, 0, 0, 120],
-                getStrokeWidth: 3,
+                getSourceColor: () => [255, 97, 2, 120],
+                getTargetColor: () => [255, 97, 2, 120],
+                getWidth: 2,
               }),
             ]}
-          />
-        </ReactMapGL>
+          /> */}
+          <CustomLayer layer={this.deckLayer} />
+        </MapGL>
         {/* {this._renderSlide()} */}
       </div>
     );
@@ -275,6 +341,7 @@ const mapStateToProps = (state) => {
     latitude: state.mapReducer.latitude,
     longitude: state.mapReducer.longitude,
     viewport: state.mapReducer.viewport,
+    clicked_chapters_reunion: state.mapReducer.clicked_chapters_reunion,
   };
 };
 
@@ -282,6 +349,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getData,
   getReunions,
+  getChapterReunions,
   updatePopupAction,
   popupToggleAction,
   onViewportChanged,
