@@ -1,0 +1,78 @@
+.user-settings {
+    display:flex;
+    justify-content:center;
+    margin:100px 15%;
+    font-size:1.2rem;
+    .settings-container {
+        width:100%;
+        display:flex;
+        .settings-image-container {
+            margin-right:3rem;
+            width:20%;
+            img {
+                max-width:100%;
+                border-radius:100px;
+            }
+        }
+        .settings-info-container {
+            margin-top:4rem;
+            width:80%;
+            .settings-info {
+                width:50%;
+                display:flex;
+                justify-content:space-between;
+                margin: 15px 0;
+                height:25px;
+                div:first-child {
+                    font-weight:bold;
+                }
+            }
+            .settings-bio {
+                div {
+                    margin: 15px 0;
+                    &:first-child {
+                        font-weight:bold;
+                    }
+                    &.MuiTextField-root {
+                        margin: 0;
+                    }
+                }
+                .MuiTextField-root {
+                    width:100%;
+                }
+            }
+            .edit-buttons {
+                width:30%;
+                display:flex;
+                justify-content:space-between;
+                &.hidden {
+                    display:none;
+                }
+            }
+        }
+        .hidden {
+            display:none;
+        }
+    }
+    h1 {
+        font-size:3rem;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        div {
+            height:3rem;
+            width:3rem;
+            display:flex;
+            align-items:center;
+            border-radius:100px;
+            transition:.3s;
+            &:hover {
+                background-color:#eeeeee;
+                cursor:pointer;
+            }
+        }
+    }
+    // * {
+    //     border:1px solid gray;
+    // }
+}
