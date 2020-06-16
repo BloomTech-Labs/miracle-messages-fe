@@ -19,7 +19,6 @@ import Sponsors from "./Components/dashboard/views/Sponsors/Sponsors.js";
 import ChapterCard from "./Components/dashboard/views/Chapters/ChapterCard";
 import Pending from "./Components/dashboard/views/Chapters/Pending";
 import Sidebar from "./Components/dashboard/sidebar/sidebar";
-import UserSettings from "./Components/dashboard/UserSettings";
 // import VolunteerForm from "./Components/Forms/VolunteerForm";
 
 import LoginForm from "./Components/Login/LoginForm.js";
@@ -86,7 +85,6 @@ const App = () => {
           path="/admin/chapters/:id"
           render={(props) => <ChapterCard {...props} />}
         />
-        <SecureRoute exact path="/admin/settings" component={UserSettings} />
       </Security>
     </div>
   );
