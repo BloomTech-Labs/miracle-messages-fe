@@ -90,29 +90,22 @@
 }
 
 // This transform moves the pins up and to the left slightly so the bottom is pointing to the area
-.markerMAP {
-  height: 0;
+
+.city-pin,
+.reunion-pin {
+  margin-bottom: 1.5rem;
+}
+.city-pin {
   z-index: 2;
-  .city-pin {
-    svg {
-      z-index: 2;
-    }
-    transform: translate(-15px, -50px) !important;
-    svg:hover {
-      cursor: pointer;
-    }
-  }
+}
+.reunion-pin {
+  z-index: 1;
+}
+
+.markerCity {
+  z-index: 3;
 }
 
 .markerReunion {
-  height: 0;
-  .city-pin {
-    svg.injected-svg {
-      opacity: 1;
-      transition: 1s;
-      width: 23px;
-      margin-left: 3.3px;
-    }
-    transform: translate(-15px, -50px) !important;
-  }
+  z-index: 1;
 }

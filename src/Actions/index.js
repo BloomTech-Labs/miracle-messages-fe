@@ -20,6 +20,7 @@ export const PARTNER_UPDATE_SUCCESS = "PARTNER_UPDATE_SUCCESS";
 export const PARTNER_ERR = "PARTNER_ERR";
 
 export const POST_USER_SUCCESS = "POST_USER_SUCCESS";
+export const GET_CHAPTER_REUNIONS = "GET_CHAPTER_REUNIONS";
 
 //this data pull enables us to get chapter related data from backend so we can display on the map
 export const getData = () => (dispatch) => {
@@ -42,6 +43,15 @@ export const getReunions = () => (dispatch) => {
       dispatch({ type: FETCH_REUNION_SUCCESS, payload: res.data });
     })
     .catch((err) => dispatch({ type: FETCH_REUNION_ERR, payload: err }));
+};
+
+export const getChapterReunions = (id) => (dispatch) => {
+  axiosWithAuth()
+    .get(`/api/reunion/${id}`)
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: GET_CHAPTER_REUNIONS, payload: res.data });
+    });
 };
 
 // //  pull partners data from the back-end
