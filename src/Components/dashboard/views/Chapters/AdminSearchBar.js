@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -43,6 +42,7 @@ export default function AdminSearchBar(props) {
           : null
       )
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.searchTerm]);
 
   const handleChange = (e) => {

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 // Mapbox imports
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
 import { ReactSVG } from "react-svg";
+import DeckGL, { ArcLayer } from "deck.gl";
 
 // Action imports
 import { getData, getReunions } from "../../Actions/index";
@@ -23,7 +25,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 // Google anilytics imports
 import ReactGA from "react-ga";
-import { gaEvent } from "../Analytics/GAFunctions"; //enable event tracking
+// import { gaEvent } from "../Analytics/GAFunctions";
 
 // Custom file imports
 import CityInfo from "./city_info";
@@ -53,9 +55,9 @@ class Map extends Component {
   state = {
     open: true,
     toggleReunions: true,
+    currentChapterReunions: [],
   };
   componentDidMount() {
-    console.log(this.props)
     this.props.getData();
     this.props.getReunions();
   }
@@ -85,6 +87,15 @@ class Map extends Component {
     this.setState((prevState) => ({
       toggleReunions: !prevState.toggleReunions,
     }));
+  };
+
+  getCurrentReunions = (id) => {
+    axiosWithAuth()
+      .get(`/api/reunion/${id}`)
+      .then((res) => {
+        console.log(res);
+        this.setState({ currentChapterReunions: res.data });
+      });
   };
 
   //_renderSlide replaces _renderPopup, is opened when citypin is clicked
@@ -159,16 +170,20 @@ class Map extends Component {
           mapStyle={STYLE}
           mapboxApiAccessToken={TOKEN}
           minZoom={3}
-          maxPitch={0}
           dragRotate={false}
+          pitch="60"
+          doubleClickZoom={false}
         >
           <div
             style={{ position: "absolute", right: 0, bottom: 30, zIndex: 1 }}
           >
             <NavigationControl />
           </div>
+          {/* eslint-disable-next-line array-callback-return*/}
+          {console.log("reU", this.props.reunion_data)}
+
+          {/* eslint-disable-next-line array-callback-return*/}
           {this.props.chapter_data.map((city, index) => {
-            console.log("mapped cities", city);
             if (city.approved === true) {
               return (
                 <Marker
@@ -180,13 +195,16 @@ class Map extends Component {
                   <ReactSVG
                     src="marker.svg"
                     className="city-pin"
-                    onClick={() => this.PinClickHandler(city)}
+                    onClick={() => {
+                      this.PinClickHandler(city);
+                      this.getCurrentReunions(city.id);
+                    }}
                   />
                 </Marker>
               );
             }
           })}
-          {this.props.reunion_data.map((reunion, index) => {
+          {this.state.currentChapterReunions.map((reunion, index) => {
             return (
               <Marker
                 className="markerReunion"
@@ -220,6 +238,25 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
+          <DeckGL
+            {...viewport}
+            initialViewState={viewport}
+            layers={[
+              new ArcLayer({
+                id: "reunion-arcs",
+                data: this.state.currentChapterReunions,
+                getSourcePosition: (d) => {
+                  return [d.origin.longitude, d.origin.latitude];
+                },
+                getTargetPosition: (d) => {
+                  return [d.longitude, d.latitude];
+                },
+                getSourceColor: () => [0, 0, 0, 120],
+                getTargetColor: () => [0, 0, 0, 120],
+                getStrokeWidth: 3,
+              }),
+            ]}
+          />
         </ReactMapGL>
         {/* {this._renderSlide()} */}
       </div>

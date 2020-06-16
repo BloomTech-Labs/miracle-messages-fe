@@ -1,5 +1,8 @@
 .popup-main {
   z-index: 3;
+  position: fixed;
+  left: -410px;
+  top: 50px;
   i {
     background-color: #212121 !important;
     color: #212121 !important;
@@ -7,6 +10,9 @@
   .mapboxgl-popup-content {
     background-color: #212121 !important;
     opacity: 0.95;
+  }
+  .mapboxgl-popup-tip {
+    display: none;
   }
 }
 
@@ -43,12 +49,11 @@
 .chapter-Title {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
   color: white;
   h1 {
     padding: 0.3rem 0;
     padding-bottom: 0.9rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -68,7 +73,7 @@
   padding-right: 24px;
   border-right: #d8d8d8 solid 0.25px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0.9px;
   color: white;
 }
@@ -79,7 +84,7 @@
   flex-direction: column;
   padding-left: 24px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0.9px;
   margin-bottom: -1rem;
   color: white;

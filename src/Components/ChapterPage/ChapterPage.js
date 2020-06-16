@@ -6,7 +6,6 @@ import {
   fetchPendingVols,
 } from "../../Actions/ChapterPageActions";
 import Modal from "@material-ui/core/Modal";
-import { useLoggedInUser } from "../../Hooks/useLoggedInUser";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import Reunions from "./Reunions";
 import { ReunionForm } from "./ReunionForm";
@@ -15,50 +14,7 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import "./ChapterPage.scss";
 
-import headerImg from "../../Assets/Imgs/chapter.jpg";
-import pictureOne from "../../Assets/Imgs/Arash1.jpeg";
-import pictureTwo from "../../Assets/Imgs/Shawn.jpeg";
-import pictureThree from "../../Assets/Imgs/david.jpeg";
-import pictureFour from "../../Assets/Imgs/Daniel.jpeg";
-import pictureFive from "../../Assets/Imgs/Ramonta.jpeg";
-import pictureSix from "../../Assets/Imgs/Will.jpeg";
 import { makeStyles } from "@material-ui/core/styles";
-
-const members = [
-  {
-    name: "Arash Haji",
-    photo: pictureOne,
-  },
-
-  {
-    name: "Shawn Tompke",
-    photo: pictureTwo,
-  },
-  {
-    name: "David Betts",
-    photo: pictureThree,
-  },
-  {
-    name: "Daniel Mattox",
-    photo: pictureFour,
-  },
-  {
-    name: "Ramonta Lee",
-    photo: pictureFive,
-  },
-  {
-    name: "Will VanOrder",
-    photo: pictureSix,
-  },
-  {
-    name: "Will VanOrder",
-    photo: pictureSix,
-  },
-  {
-    name: "Will VanOrder",
-    photo: pictureSix,
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -96,13 +52,13 @@ const ChapterPage = (props) => {
     reunionCount,
     volunteerCount,
     isFetching,
-    pendingVols
+    pendingVols,
   } = props;
+
   console.log(props);
-  const user = useLoggedInUser();
-  console.log(user)
-  const [ isApproved, setIsApproved ] = useState(false)
-  const [ isPending, setIsPending ] = useState(false)
+  const [user, setUser] = useState({});
+  const [isApproved, setIsApproved] = useState(false);
+  const [isPending, setIsPending] = useState(false);
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
 
@@ -114,16 +70,24 @@ const ChapterPage = (props) => {
     fetchChapterVolunteers(id);
     fetchChapterReunions(id);
     fetchPendingVols(id);
+
+    axiosWithAuth()
+      .get(`/api/user`)
+      .then((res) => {
+        console.log(res);
+        setUser(res.data);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (volunteers.some(el => el.name === user.name)){
-      setIsApproved(true)
+    if (volunteers.some((el) => el.name === user.name)) {
+      setIsApproved(true);
     }
-    if (pendingVols.some(el => el.volunteersid === user.uid && el.chaptersid === parseInt(id))){
-      setIsPending(true)
+    if (pendingVols.some((el) => el.volunteersid === user.oktaid)) {
+      setIsPending(true);
     }
-  }, [volunteers, pendingVols, user.uid])
+  }, [volunteers, pendingVols, user.name, user.oktaid]);
 
   const joinChapter = (e) => {
     e.preventDefault();
@@ -132,7 +96,7 @@ const ChapterPage = (props) => {
       .post(`/api/chapter/${id}/register`)
       .then((res) => {
         console.log(res);
-        setIsPending(true)
+        setIsPending(true);
       });
   };
 
@@ -163,7 +127,7 @@ const ChapterPage = (props) => {
             </div>
           </div>
           <p className="hero-p">{chapterInfo.description}</p>
-          {(!isApproved && !isPending) && (
+          {!isApproved && !isPending && (
             <button
               className="join-button"
               onClick={(e) => joinChapter(e, id)}
@@ -173,11 +137,7 @@ const ChapterPage = (props) => {
             </button>
           )}
           {isPending && (
-            <button
-              className="join-button"
-              type="button"
-              disabled={true}
-            >
+            <button className="join-button" type="button" disabled={true}>
               Volunteer Request Pending Approval
             </button>
           )}
@@ -207,10 +167,19 @@ const ChapterPage = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  let { chapterInfo, volunteers, reunions, leader, pendingVols } = state.chapterInfoReducer;
+  let {
+    chapterInfo,
+    volunteers,
+    reunions,
+    leader,
+    pendingVols,
+  } = state.chapterInfoReducer;
 
   const isFetching =
-    chapterInfo.isFetching || volunteers.isFetching || reunions.isFetching || pendingVols.isFetching
+    chapterInfo.isFetching ||
+    volunteers.isFetching ||
+    reunions.isFetching ||
+    pendingVols.isFetching;
 
   chapterInfo = chapterInfo.chapterInfo;
   volunteers = volunteers.volunteers;
@@ -225,7 +194,7 @@ const mapStateToProps = (state) => {
     reunions,
     reunionCount: reunions.length,
     isFetching,
-    pendingVols
+    pendingVols,
   };
 };
 
@@ -233,5 +202,5 @@ export default connect(mapStateToProps, {
   fetchChapterInfo,
   fetchChapterReunions,
   fetchChapterVolunteers,
-  fetchPendingVols
+  fetchPendingVols,
 })(ChapterPage);

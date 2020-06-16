@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ToastProvider } from "react-toast-notifications";
 
 //Router
-import { Route, Redirect, useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 //Styles
 import "./App.scss";
@@ -33,10 +33,7 @@ import ChapterPage from "./Components/ChapterPage/ChapterPage";
 import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
 import config from "./config/config.js";
 //Custom Imports
-import { PrivateRoute } from "./Components/PrivateRoute";
-
-//SHAWN OKTA
-import CustomLogin from "./Components/Login/CustomLogin";
+// import { PrivateRoute } from "./Components/PrivateRoute";
 
 const App = () => {
   const history = useHistory();
@@ -46,7 +43,6 @@ const App = () => {
   };
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
-  console.log("owo");
   return (
     <div className="App">
       <ToastProvider>
