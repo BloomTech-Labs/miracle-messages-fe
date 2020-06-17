@@ -6,13 +6,41 @@
   .settings-container {
     width: 100%;
     display: flex;
+    @media (max-width: 1100px) {
+      flex-direction: column;
+    }
+
     .settings-image-container {
       margin-right: 4rem;
       margin-top: 5rem;
       width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       img {
-        max-width: 100%;
-        border-radius: 100px;
+        width: 200px;
+        border-radius: 50%;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .custom-upload {
+        margin-top: 2rem;
+        border: 1px solid rgb(148, 148, 148);
+        border-radius: 3px;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(228, 228, 228);
+        }
+      }
+      .submitting {
+        cursor: not-allowed;
+      }
+
+      @media (max-width: 1100px) {
+        width: 100%;
       }
     }
     .settings-info-container {
@@ -27,13 +55,15 @@
         div:first-child {
           font-weight: bold;
         }
-        div:last-child {
+        .settings-read-only {
           font-size: 0.9rem;
+          width: 30%;
         }
         .MuiFormControl-root.MuiTextField-root {
-          width: 50%;
+          width: 55%;
           input {
             margin-left: 0.3rem;
+            color: rgb(99, 97, 97);
           }
         }
         .MuiInput-underline:after {

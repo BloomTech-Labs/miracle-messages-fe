@@ -39,6 +39,32 @@ const UserSettings = () => {
       });
   };
 
+  const handleUpload = (e) => {
+    const fd = new FormData();
+    fd.append("profile_img", e.target.files[0]);
+    submitStatus(true);
+    axiosWithAuth()
+      .put("/api/user/update", fd)
+      .then(() => {
+        axiosWithAuth()
+          .get("api/user")
+          .then((res) => {
+            updateUser(res.data);
+            updateChanges(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        setEdit(false);
+        submitStatus(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        submitStatus(false);
+      });
+  };
+
   useEffect(() => {
     axiosWithAuth()
       .get("api/user")
@@ -57,6 +83,22 @@ const UserSettings = () => {
         <div className="settings-container">
           <div className="settings-image-container">
             <img src={user.profile_img_url} alt={user.name} />
+            <div className="upload-btn">
+              <label
+                htmlFor="file-upload"
+                className={
+                  submitting ? "custom-upload submitting" : "custom-upload"
+                }
+              >
+                {submitting ? "Uploading" : "Upload Image"}
+              </label>
+              <input
+                id="file-upload"
+                onChange={handleUpload}
+                name="newChapterImg"
+                type="file"
+              />
+            </div>
           </div>
           <div className="settings-info-container">
             <h1>
@@ -79,7 +121,7 @@ const UserSettings = () => {
                   value={changes.city}
                 />
               ) : (
-                <div>{user.city}</div>
+                <div className="settings-read-only">{user.city}</div>
               )}
             </div>
             <div className="settings-info">
@@ -92,20 +134,20 @@ const UserSettings = () => {
                   value={changes.state}
                 />
               ) : (
-                <div>{user.state}</div>
+                <div className="settings-read-only">{user.state}</div>
               )}
             </div>
             <div className="settings-info">
-              <div>Country</div>
+              <div>Contact</div>
               {edit ? (
                 <TextField
-                  id="country"
-                  name="country"
+                  id="email"
+                  name="email"
                   onChange={handleChanges}
-                  value={changes.country}
+                  value={changes.email}
                 />
               ) : (
-                <div>{user.country}</div>
+                <div className="settings-read-only">{user.email}</div>
               )}
             </div>
             <div className="settings-bio">
