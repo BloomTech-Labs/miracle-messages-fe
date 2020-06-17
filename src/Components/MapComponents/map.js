@@ -40,7 +40,6 @@ import BoxLink from "./BoxLink";
 import SearchBar from "./SearchBar";
 import Legend from "./Legend";
 import "./Navbar.scss";
-import { ReunionModal } from "../ChapterPage/ReunionModal";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
@@ -68,7 +67,6 @@ const ReunionCluster = ({ longitude, latitude, pointCount }) => (
   </Marker>
 );
 
-
 class Map extends Component {
   //this fetches the data from the backend:
   state = {
@@ -76,10 +74,7 @@ class Map extends Component {
     toggleReunions: true,
     currentChapterReunions: [],
     isInteracted: false,
-    reunionModalOpen: false,
-    activeReunion: {}
     clickedChapter: [],
-
   };
   componentDidMount() {
     this.props.getData();
@@ -117,18 +112,6 @@ class Map extends Component {
   getCurrentReunions = (id) => {
     this.props.getChapterReunions(id);
   };
-
-  setActiveReunion = (reunion) => {
-    this.setState({ activeReunion: reunion })
-  }
-
-  openReunionModal = () => {
-    this.setState({ reunionModalOpen: true })
-  }
-  
-  closeReunionModal = () => {
-    this.setState({ reunionModalOpen: false })
-  }
 
   deckLayer = new MapboxLayer({
     id: "reunion-arcs",
@@ -299,46 +282,10 @@ class Map extends Component {
                               cursor: "grab",
                             }
                       }
-                      onClick={() => {
-                        this.setActiveReunion(reunion)
-                        this.openReunionModal()
-                      }}
                     />
                   </Marker>
                 );
-              })
-            : this.props.clicked_chapters_reunion.map((reunion, index) => {
-                return (
-                  <Marker
-                    className="markerReunion"
-                    key={`reunion-marker-${index}`}
-                    latitude={reunion.latitude}
-                    longitude={reunion.longitude}
-                  >
-                    <ReactSVG
-                      src="reunion_marker.svg"
-                      id="reunion-pin"
-                      className="city-pin"
-                      beforeInjection={(svg) => {
-                        svg.classList.add("reunion-pin");
-                        svg.setAttribute("style", "width: 20px");
-                      }}
-                      style={
-                        this.state.toggleReunions
-                          ? {
-                              opacity: "1",
-                              transition: ".3s",
-                              cursor: "pointer",
-                            }
-                          : { opacity: "0", transition: ".3s", cursor: "grab" }
-                      }
-                      onClick={() => {
-                        this.setActiveReunion(reunion)
-                        this.openReunionModal()
-                      }}
-                    />
-                  </Marker>
-                );
+
               })}
             </Cluster>
           )}
@@ -422,12 +369,6 @@ class Map extends Component {
               <CityPopup info={this.props.popupInfo}></CityPopup>
             </Popup>
           )}
-
-          <ReunionModal
-            open={this.state.reunionModalOpen}
-            onClose={this.closeReunionModal}
-            connection={this.state.activeReunion}
-          />
 
           <CustomLayer layer={this.deckLayer} />
         </MapGL>
