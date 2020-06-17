@@ -23,13 +23,32 @@
                 justify-content:space-between;
                 margin: 15px 0;
                 height:25px;
+
+                @media (max-width: 800px) {
+                    width: 60%;
+                }
+                @media (max-width: 700px) {
+                    width: 70%;
+                }
+                @media (max-width: 600px) {
+                    width: 80%;
+                }
+                @media (max-width: 550px) {
+                    width: 90%;
+                }
+                @media (max-width: 500px) {
+                    width: 100%;
+                }
+                
+
                 div:first-child {
                     font-weight:bold;
+                    margin-right: 10px
                 }
             }
             .settings-bio {
                 div {
-                    margin: 15px 0;
+                    
                     &:first-child {
                         font-weight:bold;
                     }
