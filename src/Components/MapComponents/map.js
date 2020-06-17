@@ -56,18 +56,14 @@ ReactGA.initialize(process.env.REACT_APP_GA_ID);
 //This tracks the page views on this component/path
 ReactGA.pageview("/map");
 
-const clusterStyle = {
-  width: "20px",
-  height: "20px",
-  color: "#fff",
-  background: "black",
-  borderRadius: "20px",
-  textAlign: "center",
-};
-
 const ClusterMarker = ({ longitude, latitude, pointCount }) => (
   <Marker longitude={longitude} latitude={latitude}>
     <div className="clusters">{pointCount}</div>
+  </Marker>
+);
+const ReunionCluster = ({ longitude, latitude, pointCount }) => (
+  <Marker longitude={longitude} latitude={latitude}>
+    <div className="reunion-clusters">{pointCount}</div>
   </Marker>
 );
 
@@ -78,6 +74,7 @@ class Map extends Component {
     toggleReunions: true,
     currentChapterReunions: [],
     isInteracted: false,
+    clickedChapter: [],
   };
   componentDidMount() {
     this.props.getData();
@@ -215,8 +212,48 @@ class Map extends Component {
           <NavigationControl showCompass showZoom position="bottom-right" />
 
           {/* eslint-disable-next-line array-callback-return*/}
-          {!this.state.isInteracted
-            ? this.props.reunion_data.map((reunion, index) => {
+
+          {!this.state.isInteracted ? (
+            this.props.reunion_data.map((reunion, index) => {
+              return (
+                <Marker
+                  className="markerReunion"
+                  key={`reunion-marker-${index}`}
+                  latitude={reunion.latitude}
+                  longitude={reunion.longitude}
+                >
+                  <ReactSVG
+                    src="reunion_marker.svg"
+                    id="reunion-pin"
+                    beforeInjection={(svg) => {
+                      svg.classList.add("reunion-pin");
+                      svg.setAttribute("style", "width: 20px");
+                    }}
+                    style={
+                      this.state.toggleReunions
+                        ? {
+                            opacity: "1",
+                            transition: ".3s",
+                            cursor: "pointer",
+                          }
+                        : {
+                            opacity: "0",
+                            transition: ".3s",
+                            cursor: "grab",
+                          }
+                    }
+                  />
+                </Marker>
+              );
+            })
+          ) : (
+            <Cluster
+              radius={20}
+              extent={512}
+              nodeSize={64}
+              component={ReunionCluster}
+            >
+              {this.props.clicked_chapters_reunion.map((reunion, index) => {
                 return (
                   <Marker
                     className="markerReunion"
@@ -227,6 +264,7 @@ class Map extends Component {
                     <ReactSVG
                       src="reunion_marker.svg"
                       id="reunion-pin"
+                      className="city-pin"
                       beforeInjection={(svg) => {
                         svg.classList.add("reunion-pin");
                         svg.setAttribute("style", "width: 26px");
@@ -247,69 +285,72 @@ class Map extends Component {
                     />
                   </Marker>
                 );
-              })
-            : this.props.clicked_chapters_reunion.map((reunion, index) => {
-                return (
-                  <Marker
-                    className="markerReunion"
-                    key={`reunion-marker-${index}`}
-                    latitude={reunion.latitude}
-                    longitude={reunion.longitude}
-                  >
-                    <ReactSVG
-                      src="reunion_marker.svg"
-                      id="reunion-pin"
-                      className="city-pin"
-                      beforeInjection={(svg) => {
-                        svg.classList.add("reunion-pin");
-                        svg.setAttribute("style", "width: 26px");
-                      }}
-                      style={
-                        this.state.toggleReunions
-                          ? {
-                              opacity: "1",
-                              transition: ".3s",
-                              cursor: "pointer",
-                            }
-                          : { opacity: "0", transition: ".3s", cursor: "grab" }
-                      }
-                    />
-                  </Marker>
-                );
+
               })}
-          {/*eslint-disable-next-line array-callback-return*/}
+            </Cluster>
+          )}
           <Cluster
-            radius={40}
+            radius={10}
             extent={512}
             nodeSize={64}
             component={ClusterMarker}
           >
-            {this.props.chapter_data.map((city, index) => {
-              if (city.approved === true) {
-                return (
-                  <Marker
-                    className="markerCity"
-                    key={`chapter-marker-${index}`}
-                    latitude={city.latitude}
-                    longitude={city.longitude}
-                  >
-                    <ReactSVG
-                      src="marker.svg"
-                      className="city-pin"
-                      style={{ cursor: "pointer" }}
-                      beforeInjection={(svg) => {
-                        svg.classList.add("city-pin");
-                      }}
-                      onClick={() => {
-                        this.PinClickHandler(city);
-                        this.getCurrentReunions(city.id);
-                        this.setState({ isInteracted: true });
-                      }}
-                    />
-                  </Marker>
-                );
-              }
-            })}
+            {/*eslint-disable-next-line array-callback-return*/}
+            {!this.state.isInteracted
+              ? this.props.chapter_data.map((city, index) => {
+                  if (city.approved === true) {
+                    return (
+                      <Marker
+                        className="markerCity"
+                        key={`chapter-marker-${index}`}
+                        latitude={city.latitude}
+                        longitude={city.longitude}
+                      >
+                        <ReactSVG
+                          src="marker.svg"
+                          className="city-pin"
+                          style={{ cursor: "pointer" }}
+                          beforeInjection={(svg) => {
+                            svg.classList.add("city-pin");
+                          }}
+                          onClick={() => {
+                            this.PinClickHandler(city);
+                            this.getCurrentReunions(city.id);
+                            this.setState({ isInteracted: true });
+                            this.setState({ clickedChapter: [city] });
+                          }}
+                        />
+                      </Marker>
+                    );
+                  }
+                })
+              : this.state.clickedChapter.map((city, index) => {
+                  if (city.approved === true) {
+                    return (
+                      <Marker
+                        className="markerCity"
+                        key={`chapter-marker-${index}`}
+                        latitude={city.latitude}
+                        longitude={city.longitude}
+                      >
+                        <ReactSVG
+                          src="marker.svg"
+                          className="city-pin"
+                          style={{ cursor: "pointer" }}
+                          beforeInjection={(svg) => {
+                            svg.classList.add("city-pin");
+                          }}
+                          onClick={() => {
+                            this.PinClickHandler(city);
+                            this.getCurrentReunions(city.id);
+                            this.setState({ isInteracted: true });
+                            this.setState({ clickedChapter: [city] });
+                          }}
+                        />
+                      </Marker>
+                    );
+                  }
+                })}
           </Cluster>
 
           {this.props.openPopup && (
@@ -319,7 +360,10 @@ class Map extends Component {
               longitude={this.props.longitude}
               closeButton={true}
               closeOnClick={false}
-              onClose={() => this.props.popupClose()}
+              onClose={() => {
+                this.props.popupClose();
+                this.setState({ isInteracted: false });
+              }}
               anchor="top"
             >
               <CityPopup info={this.props.popupInfo}></CityPopup>
