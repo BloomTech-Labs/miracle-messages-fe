@@ -37,7 +37,7 @@
                     width: 90%;
                 }
                 @media (max-width: 500px) {
-                    width: 100%;
+                    width: 120%;
                 }
                 
 
@@ -61,11 +61,29 @@
                 }
             }
             .edit-buttons {
-                width:30%;
+                width:20%;
                 display:flex;
                 justify-content:space-between;
+                margin-top: 5px;
                 &.hidden {
                     display:none;
+                }
+                .save-button-set {
+                    margin-right: 5px;
+                    background-color: #212121;
+                    color: white;
+                    &:hover {
+                        opacity: 90%;
+                        font-weight: bold;
+                    }
+                }
+                .cancel-button-set {
+                    background-color: red;
+                    color: white;
+                    &:hover {
+                        opacity: 90%;
+                        font-weight: bold;
+                    }
                 }
             }
         }
