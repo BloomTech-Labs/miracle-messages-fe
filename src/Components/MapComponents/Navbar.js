@@ -52,9 +52,8 @@ const Navbar = (props) => {
   useEffect(() => {
     token && props.registerUser(user);
     console.log("register user called");
-    console.log(props.userImg);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.isLoggedIn]);
+  }, [props.isLoggedIn, props.userImg]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -158,10 +157,12 @@ const Navbar = (props) => {
                 </ListItemIcon>
                 <ListItemText primary="Requests" />
               </MenuItem>
-              <MenuItem onClick={() => {
-                handleClose();
-                history.push("/admin/settings")
-              }}>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  history.push("/admin/settings");
+                }}
+              >
                 <ListItemIcon>
                   <SettingsIcon fontSize="small" />
                 </ListItemIcon>

@@ -4,13 +4,18 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import CreateIcon from "@material-ui/icons/Create";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+import { registerUser } from "../../Actions/index";
+import { useLoggedInUser } from "../../Hooks/useLoggedInUser";
+
 import "./UserSettings.scss";
 
-const UserSettings = () => {
+const UserSettings = (props) => {
   const [user, updateUser] = useState(null);
   const [changes, updateChanges] = useState(null);
   const [edit, setEdit] = useState(false);
   const [submitting, submitStatus] = useState(false);
+  const oktaUser = useLoggedInUser();
 
   const cancel = () => {
     updateChanges(user);
@@ -51,6 +56,7 @@ const UserSettings = () => {
           .then((res) => {
             updateUser(res.data);
             updateChanges(res.data);
+            props.registerUser(oktaUser);
           })
           .catch((error) => {
             console.log(error);
@@ -197,4 +203,10 @@ const UserSettings = () => {
   );
 };
 
-export default UserSettings;
+const mapStateToProps = (state) => {
+  return {
+    userImg: state.loginReducer.userImg,
+  };
+};
+
+export default connect(mapStateToProps, { registerUser })(UserSettings);
