@@ -1,5 +1,5 @@
 import React from "react";
-import ReunionModal from "./ReunionModal";
+import { ReunionCard } from "./ReunionModal";
 import "./Reunions.scss";
 
 // import { dummyConnections } from "./dummies";
@@ -57,7 +57,7 @@ const Connections = ({ reunions }) => {
           {reunions
             .filter((el, i) => displayIndices.includes(i))
             .map((el, index) => (
-              <ReunionModal connection={el} key={index} />
+              <ReunionCard connection={el} key={index} />
             ))}
         </Carousel>
       </div>
