@@ -112,7 +112,7 @@
     svg.injected-svg {
       opacity: 1;
       transition: 1s;
-      width: 26.5px;
+      width: 29.5px;
       margin-left: 1.5px;
     }
     transform: translate(-15px, -50px) !important;
@@ -126,5 +126,15 @@
   background: black;
   border-radius: 50%;
   padding: 0.2rem;
+  text-align: center;
+}
+
+.reunion-clusters {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  background: #ff6204;
+  border-radius: 50%;
+  padding: 0.1rem;
   text-align: center;
 }

@@ -23,13 +23,32 @@
                 justify-content:space-between;
                 margin: 15px 0;
                 height:25px;
+
+                @media (max-width: 800px) {
+                    width: 60%;
+                }
+                @media (max-width: 700px) {
+                    width: 70%;
+                }
+                @media (max-width: 600px) {
+                    width: 80%;
+                }
+                @media (max-width: 550px) {
+                    width: 90%;
+                }
+                @media (max-width: 500px) {
+                    width: 120%;
+                }
+                
+
                 div:first-child {
                     font-weight:bold;
+                    margin-right: 10px
                 }
             }
             .settings-bio {
                 div {
-                    margin: 15px 0;
+                    
                     &:first-child {
                         font-weight:bold;
                     }
@@ -42,11 +61,29 @@
                 }
             }
             .edit-buttons {
-                width:30%;
+                width:20%;
                 display:flex;
                 justify-content:space-between;
+                margin-top: 5px;
                 &.hidden {
                     display:none;
+                }
+                .save-button-set {
+                    margin-right: 5px;
+                    background-color: #212121;
+                    color: white;
+                    &:hover {
+                        opacity: 90%;
+                        font-weight: bold;
+                    }
+                }
+                .cancel-button-set {
+                    background-color: red;
+                    color: white;
+                    &:hover {
+                        opacity: 90%;
+                        font-weight: bold;
+                    }
                 }
             }
         }
