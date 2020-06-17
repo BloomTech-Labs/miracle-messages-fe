@@ -60,7 +60,7 @@ const UserSettings = () => {
                     <h1>
                         {user.name}
                         {!edit && <div onClick={() => setEdit(!edit)}>
-                            <CreateIcon style={{fontSize: "inherit"}}/>
+                            <CreateIcon style={{fontSize: "35px", marginLeft: "5px"}}/>
                         </div>}
                     </h1>
                     <div className="settings-info">
@@ -119,13 +119,13 @@ const UserSettings = () => {
                     :
                     <div className={edit ? "edit-buttons" : "edit-buttons hidden"}>
                         <Button 
+                            className="save-button-set"
                             variant="contained" 
-                            color="primary"
                             onClick={handleSave}
                         >Save</Button>
                         <Button 
+                            className="cancel-button-set"
                             variant="contained" 
-                            color="secondary"
                             onClick={cancel}
                         >Cancel</Button>
                     </div>}
