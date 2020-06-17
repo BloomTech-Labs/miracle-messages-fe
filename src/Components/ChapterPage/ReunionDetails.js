@@ -4,10 +4,14 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles({
   container: {
     padding: "2%",
-    minHeight: "15vh",
+    height: "70vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    overflow: "auto",
+    '@media (max-width:1000px)': {
+      height: '90vh',
+    }
   },
   heading: {
     fontSize: "2rem",
