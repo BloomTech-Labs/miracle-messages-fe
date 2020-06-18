@@ -16,6 +16,22 @@
     display: none;
   }
 }
+.popup-reunion {
+  z-index: 3;
+  .mapboxgl-popup-content {
+    background-color: #212121 !important;
+    opacity: 1;
+    padding: 20px 20px;
+  }
+  .mapboxgl-popup-tip {
+    border-right-color: #212121;
+  }
+  .story-container {
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    text-align: left;
+  }
+}
 
 .chapter-Info {
   font-family: poppins;

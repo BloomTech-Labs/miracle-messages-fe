@@ -11,11 +11,17 @@ import {
   FETCH_REUNION_ERR,
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
+import { UPDATE_REUNION_POPUP } from "../Actions/updatePopupAction";
 import { TOGGLE_SLIDE } from "../Actions/SlideToggleAction";
 import { ON_VIEWPORT_CHANGED } from "../Actions/OnViewportAction";
 
 import { UPDATE_CHAPTERS } from "../Actions/SearchBarAction";
-import { TOGGLE_POPUP, CLOSE_POPUP } from "../Actions/popupToggleAction";
+import {
+  TOGGLE_POPUP,
+  CLOSE_POPUP,
+  CLOSE_REUNION_POPUP,
+  TOGGLE_REUNION_POPUP,
+} from "../Actions/popupToggleAction";
 import { FlyToInterpolator } from "react-map-gl";
 
 const initialState = {
@@ -36,6 +42,7 @@ const initialState = {
   reunion_error: null,
   //openDrawer: true,
   openPopup: false,
+  openReunionPopup: false,
   zoom: false,
   latitude: 37.785164,
   longitude: -110,
@@ -116,6 +123,12 @@ export const mapReducer = (state = initialState, action) => {
         popupInfo: action.payload,
       };
 
+    case UPDATE_REUNION_POPUP:
+      return {
+        ...state,
+        popupInfo: action.payload,
+      };
+
     //reducer to toggle the city slide out
     case TOGGLE_SLIDE:
       return {
@@ -138,10 +151,31 @@ export const mapReducer = (state = initialState, action) => {
         },
       };
 
+    case TOGGLE_REUNION_POPUP:
+      return {
+        ...state,
+        openReunionPopup: action.payload.openPopup,
+        latitude: action.payload.latitude,
+        longitude: action.payload.longitude,
+        viewport: {
+          ...state.viewport,
+          latitude: action.payload.latitude,
+          longitude: action.payload.longitude,
+          transitionDuration: "auto",
+          transitionInterpolator: new FlyToInterpolator(),
+        },
+      };
+
     case CLOSE_POPUP:
       return {
         ...state,
         openPopup: action.payload.openPopup,
+      };
+
+    case CLOSE_REUNION_POPUP:
+      return {
+        ...state,
+        openReunionPopup: action.payload.openPopup,
       };
 
     //reducer for viewport

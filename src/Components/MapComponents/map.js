@@ -18,7 +18,13 @@ import Cluster from "@urbica/react-map-gl-cluster";
 // Action imports
 import { getData, getReunions, getChapterReunions } from "../../Actions/index";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
-import { popupToggleAction, popupClose } from "../../Actions/popupToggleAction";
+import { updateReunuinAction } from "../../Actions/updatePopupAction";
+import {
+  popupToggleAction,
+  reunionPopupToggle,
+  popupClose,
+  reunionPopupClose,
+} from "../../Actions/popupToggleAction";
 import { onViewportChanged } from "../../Actions/OnViewportAction";
 
 // Material UI imports
@@ -36,6 +42,7 @@ import ReactGA from "react-ga";
 // Custom file imports
 import CityInfo from "./city_info";
 import CityPopup from "./city_popup";
+import ReunionPopup from "./ReunionPopup";
 import BoxLink from "./BoxLink";
 import SearchBar from "./SearchBar";
 import Legend from "./Legend";
@@ -179,6 +186,11 @@ class Map extends Component {
     this.props.popupToggleAction(city, this.props.openPopup);
   };
 
+  reunionClickHandler = (reunion) => {
+    this.props.updateReunuinAction(reunion);
+    this.props.reunionPopupToggle(reunion, this.props.openReunionPopup);
+  };
+
   render() {
     const { viewport } = this.props;
 
@@ -242,6 +254,10 @@ class Map extends Component {
                             cursor: "grab",
                           }
                     }
+                    onClick={() => {
+                      console.log("clicked", this.props.popupInfo);
+                      this.reunionClickHandler(reunion);
+                    }}
                   />
                 </Marker>
               );
@@ -282,6 +298,10 @@ class Map extends Component {
                               cursor: "grab",
                             }
                       }
+                      onClick={() => {
+                        console.log("clicked", this.props.popupInfo);
+                        this.reunionClickHandler(reunion);
+                      }}
                     />
                   </Marker>
                 );
@@ -318,6 +338,7 @@ class Map extends Component {
                             this.getCurrentReunions(city.id);
                             this.setState({ isInteracted: true });
                             this.setState({ clickedChapter: [city] });
+                            this.props.reunionPopupClose();
                           }}
                         />
                       </Marker>
@@ -345,6 +366,7 @@ class Map extends Component {
                             this.getCurrentReunions(city.id);
                             this.setState({ isInteracted: true });
                             this.setState({ clickedChapter: [city] });
+                            this.props.reunionPopupClose();
                           }}
                         />
                       </Marker>
@@ -353,7 +375,7 @@ class Map extends Component {
                 })}
           </Cluster>
 
-          {this.props.openPopup && (
+          {this.props.openPopup && !this.props.openReunionPopup && (
             <Popup
               className="popup-main"
               latitude={this.props.latitude}
@@ -367,6 +389,24 @@ class Map extends Component {
               anchor="top"
             >
               <CityPopup info={this.props.popupInfo}></CityPopup>
+            </Popup>
+          )}
+
+          {/* Reunion popup */}
+          {this.props.openReunionPopup && (
+            <Popup
+              className="popup-reunion"
+              latitude={this.props.latitude}
+              longitude={this.props.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              anchor="left"
+              maxWidth="440px"
+              onClose={() => {
+                this.props.reunionPopupClose();
+              }}
+            >
+              <ReunionPopup info={this.props.popupInfo}></ReunionPopup>
             </Popup>
           )}
 
@@ -386,6 +426,7 @@ const mapStateToProps = (state) => {
     fetching: state.mapReducer.fetching,
     popupInfo: state.mapReducer.popupInfo,
     openPopup: state.mapReducer.openPopup,
+    openReunionPopup: state.mapReducer.openReunionPopup,
     latitude: state.mapReducer.latitude,
     longitude: state.mapReducer.longitude,
     viewport: state.mapReducer.viewport,
@@ -399,7 +440,10 @@ export default connect(mapStateToProps, {
   getReunions,
   getChapterReunions,
   updatePopupAction,
+  updateReunuinAction,
   popupToggleAction,
+  reunionPopupClose,
+  reunionPopupToggle,
   onViewportChanged,
   popupClose,
 })(Map);
