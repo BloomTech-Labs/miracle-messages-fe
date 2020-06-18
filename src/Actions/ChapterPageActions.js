@@ -37,7 +37,6 @@ export const fetchChapterInfo = (id) => (dispatch) => {
   axios
     .get(chapter)
     .then((res) => {
-      console.log(res);
       dispatch({
         type: RECEIVE_CHAPTER_INFO,
         payload: res.data,
@@ -54,8 +53,6 @@ export const fetchChapterVolunteers = (id) => (dispatch) => {
   axios
     .get(volunteers)
     .then((res) => {
-      console.log("fetch vol", res.data);
-
       dispatch({
         type: RECEIVE_CHAPTER_VOLUNTEERS,
         payload: res.data,
