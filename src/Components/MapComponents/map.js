@@ -227,7 +227,7 @@ class Map extends Component {
                     id="reunion-pin"
                     beforeInjection={(svg) => {
                       svg.classList.add("reunion-pin");
-                      svg.setAttribute("style", "width: 20px");
+                      svg.setAttribute("style", "width: 24px");
                     }}
                     style={
                       this.state.toggleReunions
