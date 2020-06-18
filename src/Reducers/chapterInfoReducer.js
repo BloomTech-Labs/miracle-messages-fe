@@ -116,7 +116,7 @@ export const chapterInfoReducer = (state = initialState, action) => {
       return {
         ...state,
         pendingVols: {
-          ...state.pendingVols,
+          pendingVols: [],
           isFetching: true
         }
       }

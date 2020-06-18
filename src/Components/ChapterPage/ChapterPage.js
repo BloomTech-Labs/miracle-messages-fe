@@ -19,7 +19,13 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: "40%",
+    width: "50%",
+    [theme.breakpoints.down("md")] : {
+      width: "60%"
+    },
+    [theme.breakpoints.down("sm")] : {
+      width: "80%"
+    },
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -55,7 +61,6 @@ const ChapterPage = (props) => {
     pendingVols,
   } = props;
 
-  console.log(props);
   const [user, setUser] = useState({});
   const [isApproved, setIsApproved] = useState(false);
   const [isPending, setIsPending] = useState(false);
@@ -74,7 +79,6 @@ const ChapterPage = (props) => {
     axiosWithAuth()
       .get(`/api/user`)
       .then((res) => {
-        console.log(res);
         setUser(res.data);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,7 +88,8 @@ const ChapterPage = (props) => {
     if (volunteers.some((el) => el.name === user.name)) {
       setIsApproved(true);
     }
-    if (pendingVols.some((el) => el.volunteersid === user.oktaid)) {
+    if (pendingVols.some((el) => el.volunteersid === user.oktaid
+    )) {
       setIsPending(true);
     }
   }, [volunteers, pendingVols, user.name, user.oktaid]);
@@ -95,7 +100,6 @@ const ChapterPage = (props) => {
     axiosWithAuth()
       .post(`/api/chapter/${id}/register`)
       .then((res) => {
-        console.log(res);
         setIsPending(true);
       });
   };
@@ -156,7 +160,7 @@ const ChapterPage = (props) => {
         {isApproved && (
           <div className="button-div">
             <button onClick={handleOpen} className="reunion-btn">
-              Submit Reunion
+              Submit a Successful Reunion
             </button>
           </div>
         )}

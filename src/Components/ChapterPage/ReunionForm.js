@@ -70,9 +70,6 @@ export const ReunionForm = () => {
       .then(res => {
         console.log(res)
       })
-    // for (var entry of form.entries()){
-    //   console.log(`${entry[0]}, ${entry[1]}`)
-    // }
   }
 
   const handleChange = (e) => {
@@ -140,7 +137,7 @@ export const ReunionForm = () => {
         required
         className={classes.textField}
         onChange={handleChange}
-        label="Title of Submission"
+        label="Case Person's Name"
         inputProps={{
           name: "title",
           onChange: handleChange
