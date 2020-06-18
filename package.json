@@ -2,6 +2,7 @@
   "name": "miracle-messages",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://miraclemap.net",
   "dependencies": {
     "@deck.gl/layers": "^8.1.9",
     "@deck.gl/mapbox": "^8.1.9",
