@@ -138,3 +138,9 @@
   padding: 0.1rem;
   text-align: center;
 }
+
+.popup-reunion {
+  @media(max-width: 500px) {
+    width: 95vw;
+  }
+}

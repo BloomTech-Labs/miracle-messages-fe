@@ -18,7 +18,7 @@ const ReunionPopup = (props) => {
       <div className="chapter-Title">
         <h1>{info.title}</h1>
         <div className="video-embed">
-          <iframe width="420" height="315" title="youtube" src={embeddedUrl}>
+          <iframe width="310" height="310" title="youtube" src={embeddedUrl}>
             {console.log("url", embeddedUrl)}
           </iframe>
         </div>
