@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Pending.scss";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
+import axios from "axios";
 import { css } from "@emotion/core";
 import { useToasts } from "react-toast-notifications";
 import { useOktaAuth } from "@okta/okta-react";
@@ -157,7 +158,7 @@ const Pending = (props) => {
       });
   };
 
-  const approveLeader = (id) => {
+  const approveLeader = (id, oktaId) => {
     axiosWithAuth()
       .put(`api/pending/${id}/approveLeader`)
       .then((res) => {
@@ -173,6 +174,21 @@ const Pending = (props) => {
             });
             setPendingVolunteers(res.data);
           });
+        //sends a separate request through the okta api to change groups ref: https://developer.okta.com/docs/reference/api/groups/
+        axios
+          .put(
+            `https://dev-750287.okta.com/api/v1/groups/00gc2kv2kQsqjnZ6T4x6/users/${oktaId}`,
+            {
+              headers: {
+                Authorization:
+                  "SSWS 00H4o-q-kSAnBdVCR2qF2Ni1QbnLq0wxKsjRhWqG40",
+              },
+            }
+          )
+          .then((res) => {
+            console.log("okta-group-change", res);
+          })
+          .catch((err) => console.log(err));
       });
   };
 
@@ -352,8 +368,12 @@ const Pending = (props) => {
                   </Modal>
                 </>
               ))
-            ) : (
+            ) : !pendingChapters.Message ? (
               <PulseLoader css={loaderCss} size={18} color={"#69726F"} />
+            ) : (
+              <p className="no-chapter-msg">
+                There are no Pending Chapters at this time
+              </p>
             )}
           </div>
           <div className="pending-chapter-div pending-admin-div">
@@ -379,6 +399,7 @@ const Pending = (props) => {
               pendingVolunteers.map((volunteer) => (
                 <>
                   <Table id="pending-chapter-tbl" hover>
+                    {console.log("vol", volunteer)}
                     <tbody>
                       <tr>
                         <th className="leader-pic-div">
@@ -394,7 +415,9 @@ const Pending = (props) => {
                         </th>
                         <td>{volunteer.name}</td>
                         <td>{volunteer.ChapterTitle}</td>
-                        <td className="volunteer-contact-td">{volunteer.email}</td>
+                        <td className="volunteer-contact-td">
+                          {volunteer.email}
+                        </td>
                         <th>
                           {
                             <div className="action-btns">

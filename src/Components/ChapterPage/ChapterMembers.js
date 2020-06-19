@@ -15,7 +15,12 @@ const LeaderAvatar = withStyles({
   },
 })(Avatar);
 
-const ChapterMembers = ({ leader, volunteers }) => {
+const ChapterMembers = ({
+  leader,
+  volunteers,
+  chapterInfo,
+  applyForLeader,
+}) => {
   return volunteers ? (
     <div>
       <div className="members-box">
@@ -33,7 +38,14 @@ const ChapterMembers = ({ leader, volunteers }) => {
         ) : (
           <div className="no-leader">
             <h4>This Chapter does not yet have a leader</h4>
-            <div className="apply-btn">Apply to be a Leader</div>
+            <div
+              className="apply-btn"
+              onClick={() => {
+                applyForLeader(chapterInfo.id);
+              }}
+            >
+              Apply to be a Leader
+            </div>
           </div>
         )}
 
