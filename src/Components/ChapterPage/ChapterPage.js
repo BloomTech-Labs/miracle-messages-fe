@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
     width: "50%",
-    [theme.breakpoints.down("md")] : {
-      width: "60%"
+    [theme.breakpoints.down("md")]: {
+      width: "60%",
     },
-    [theme.breakpoints.down("sm")] : {
-      width: "80%"
+    [theme.breakpoints.down("sm")]: {
+      width: "80%",
     },
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
@@ -88,8 +88,7 @@ const ChapterPage = (props) => {
     if (volunteers.some((el) => el.name === user.name)) {
       setIsApproved(true);
     }
-    if (pendingVols.some((el) => el.volunteersid === user.oktaid
-    )) {
+    if (pendingVols.some((el) => el.volunteersid === user.oktaid)) {
       setIsPending(true);
     }
   }, [volunteers, pendingVols, user.name, user.oktaid]);
@@ -101,6 +100,14 @@ const ChapterPage = (props) => {
       .post(`/api/chapter/${id}/register`)
       .then((res) => {
         setIsPending(true);
+      });
+  };
+
+  const applyForLeader = (chapterId) => {
+    axiosWithAuth()
+      .put(`api/chapter/${chapterId}/requestLeader`)
+      .then((res) => {
+        console.log(res);
       });
   };
 
@@ -164,7 +171,12 @@ const ChapterPage = (props) => {
             </button>
           </div>
         )}
-        <ChapterMembers volunteers={volunteers} leader={props.leader} />
+        <ChapterMembers
+          chapterInfo={chapterInfo}
+          volunteers={volunteers}
+          leader={props.leader}
+          applyForLeader={applyForLeader}
+        />
       </div>
     </div>
   );
