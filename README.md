@@ -94,7 +94,7 @@ The following environment variables control the front-end:
 
 - [x] Frontend Developer
 
-- Github: [@cdifranco1](https://github.com/cdifranco1)
+- Github: [@ardissam0](https://github.com/ardissam0)
 - Email: ardis.productions@gmail.com
 
 👤 **Charlie DiFranco**
