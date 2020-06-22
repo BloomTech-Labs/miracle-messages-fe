@@ -59,6 +59,51 @@ The following environment variables control the front-end:
 
 ## Authors
 
+👤 **Colin de Vries**
+
+- [x] Team Leader
+
+- Github: 
+- Email: 
+
+👤 **Shun Chiang**
+
+- [x] Frontend Developer
+
+- Github: [@kkslider2130](https://github.com/kkslider2130)
+- Email: yuushamenma@gmail.com
+
+
+👤 **Alexander Karren**
+
+- [x] Frontend Developer
+
+- Github: [@AlexanderKarren](https://github.com/AlexanderKarren)
+- Email: alex@karren.com
+
+
+👤 **Ronald McIntyre**
+
+- [x] Backend Developer
+
+- Github: [@mcintyre-r](https://github.com/mcintyre-r)
+- Email: r.campbell.mcintyre@gmail.com
+
+
+👤 **Samuel Ardis**
+
+- [x] Frontend Developer
+
+- Github: [@cdifranco1](https://github.com/cdifranco1)
+- Email: ardis.productions@gmail.com
+
+👤 **Charlie DiFranco**
+
+- [x] Frontend Developer
+
+- Github: [@cdifranco1](https://github.com/cdifranco1)
+- Email: charlie.difranco2@gmail.com
+
 👤 **Will VanOrder**
 
 - [x] Team Leader
