@@ -55,7 +55,10 @@ require("dotenv").config();
 const TOKEN =
   "pk.eyJ1Ijoia2tzbGlkZXIyMTMwIiwiYSI6ImNrYTkzZDF5dzA3bnUzMG1wMTN4andnam4ifQ.zJyId-UEsVM91Luz7TwR4A";
 
-const STYLE = "mapbox://styles/kkslider2130/cka93hqym2mju1imatqi7trcs";
+const STYLE =
+  new Date().getHours() < 19
+    ? "mapbox://styles/kkslider2130/cka93hqym2mju1imatqi7trcs"
+    : "mapbox://styles/kkslider2130/ckbr099d50tsc1imn47auz797";
 
 // Google Analytics:
 //this initializes GA
@@ -305,7 +308,6 @@ class Map extends Component {
                     />
                   </Marker>
                 );
-
               })}
             </Cluster>
           )}
@@ -327,7 +329,11 @@ class Map extends Component {
                         longitude={city.longitude}
                       >
                         <ReactSVG
-                          src="marker.svg"
+                          src={
+                            new Date().getHours() < 19
+                              ? "marker.svg"
+                              : "whitePin.svg"
+                          }
                           className="city-pin"
                           style={{ cursor: "pointer" }}
                           beforeInjection={(svg) => {
@@ -355,7 +361,11 @@ class Map extends Component {
                         longitude={city.longitude}
                       >
                         <ReactSVG
-                          src="marker.svg"
+                          src={
+                            new Date().getHours() < 19
+                              ? "marker.svg"
+                              : "whitePin.svg"
+                          }
                           className="city-pin"
                           style={{ cursor: "pointer" }}
                           beforeInjection={(svg) => {
