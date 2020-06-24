@@ -4,12 +4,13 @@ import { ReactSVG } from "react-svg";
 import Switch from "@material-ui/core/Switch";
 
 export default function Legend(props) {
+  const TIME = new Date().getHours()
   return (
     <div className="legend-con">
       <div className="legend-inner">
         <div className="row">
           <ReactSVG
-            src={new Date().getHours() < 19 ? "marker.svg" : "whitePin.svg"}
+            src={ TIME > 19 || TIME < 6 ? "whitePin.svg" : "marker.svg" }
           />
           <h4>Chapters</h4>
         </div>
