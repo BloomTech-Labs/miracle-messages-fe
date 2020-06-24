@@ -23,10 +23,12 @@ button {
 
 .chapter-page-container {
   font-family: poppins;
+  
 
   .inner-container {
     margin: 0 auto;
     width: 100%;
+    max-width:1200px;
 
     .first-section {
       display: flex;
@@ -34,17 +36,26 @@ button {
       justify-content: space-evenly;
       align-content: center;
     }
-
-    .chapter-name {
-      align-self: center;
-
-      width: 90%;
-      font-size: 2.5rem;
-      text-align: center;
-      padding: 2% 0;
+    .header-wrapper{
+      display:flex;
       border-bottom: 5px solid #c0c0c0;
-      font-weight: 900;
+
+      @media (max-width: 700px) {
+       flex-direction: column;
+       border-bottom: 0px;
+      }
+
+      .chapter-name {
+        align-self: center;
+        width: 70%;
+        font-size: 2.5rem;
+        text-align: center;
+        padding: 2% 0;
+        
+        font-weight: 900;
+      }
     }
+    
 
     .count-container {
       width: 40%;
@@ -137,7 +148,7 @@ button {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     &:hover {
-      font-weight: 700;
+      // font-weight: 700;
       border: 3px solid #696969;
       cursor: pointer;
     }
@@ -154,9 +165,9 @@ button {
 .join-button {
   align-self: center;
   border: none;
-  margin-top: 5vh;
+  // margin-top: 5vh;
   font-weight: 600;
-  width: 40%;
+  width: 30%;
   font-size: 1.2rem;
   background: rgb(39, 54, 68);
   color: white;
@@ -176,7 +187,7 @@ button {
   }
 
   &:hover {
-    font-weight: 800;
+    // font-weight: 800;
     cursor: pointer;
   }
 

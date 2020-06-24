@@ -126,18 +126,8 @@ const ChapterPage = (props) => {
       </div>
       <div className="inner-container">
         <div className="first-section">
+        <div className='header-wrapper'>
           <h1 className="chapter-name">{chapterInfo.title}</h1>
-          <div className="flex-box justify-even">
-            <div className="count-container">
-              <p className="count">{volunteerCount}</p>
-              <p>members</p>
-            </div>
-            <div className="count-container">
-              <p className="count">{reunionCount}</p>
-              <p>reunions</p>
-            </div>
-          </div>
-          <p className="hero-p">{chapterInfo.description}</p>
           {!isApproved && !isPending && (
             <button
               className="join-button"
@@ -152,6 +142,18 @@ const ChapterPage = (props) => {
               Volunteer Request Pending Approval
             </button>
           )}
+        </div>
+          <div className="flex-box justify-even">
+            <div className="count-container">
+              <p className="count">{volunteerCount}</p>
+              <p>members</p>
+            </div>
+            <div className="count-container">
+              <p className="count">{reunionCount}</p>
+              <p>reunions</p>
+            </div>
+          </div>
+          <p className="hero-p">{chapterInfo.description}</p>
         </div>
         <Reunions reunions={reunions} />
         <Modal
