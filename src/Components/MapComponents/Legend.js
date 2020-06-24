@@ -9,7 +9,7 @@ export default function Legend(props) {
       <div className="legend-inner">
         <div className="row">
           <ReactSVG
-            src={new Date().getHours() < 19 ? "marker.svg" : "whitePin.svg"}
+            src={new Date().getHours() > 19 ? "marker.svg" : "whitePin.svg"}
           />
           <h4>Chapters</h4>
         </div>

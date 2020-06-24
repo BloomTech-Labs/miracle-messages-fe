@@ -68,7 +68,7 @@ const Pending = (props) => {
           setUser(res.data);
           axiosWithAuth()
             .get(
-              `/api/pending/${res.data.leaderOf[0].chaptersid}/Volunteers
+              `/api/pending/${res.data.leaderOf[0].chaptersid}/volunteers
         `
             )
             .then((res) => {
@@ -208,7 +208,7 @@ const Pending = (props) => {
             setUser(res.data);
             axiosWithAuth()
               .get(
-                `/api/pending/${res.data.leaderOf[0].chaptersid}/Volunteers
+                `/api/pending/${res.data.leaderOf[0].chaptersid}/volunteers
         `
               )
               .then((res) => {
@@ -226,7 +226,7 @@ const Pending = (props) => {
 
   const rejectVolunteer = (ChapterId, obj) => {
     axiosWithAuth()
-      .put(`api/pending/${ChapterId}/declineVolunteer`, obj)
+      .delete(`api/volunteer/${ChapterId}`, { data: obj })
       .then((res) => {
         addToast("Volunteer Request Deleted", {
           appearance: "success",
@@ -239,10 +239,7 @@ const Pending = (props) => {
           .then((res) => {
             setUser(res.data);
             axiosWithAuth()
-              .get(
-                `/api/pending/${res.data.leaderOf[0].chaptersid}/Volunteers
-        `
-              )
+              .get(`/api/pending/${res.data.leaderOf[0].chaptersid}/volunteers`)
               .then((res) => {
                 console.log("pending vol", res.data);
                 setPendingMembers(res.data);
@@ -251,6 +248,7 @@ const Pending = (props) => {
                 setNoVolunteerMsg(
                   "There Are No Pending Volunteers At this Time"
                 );
+                setPendingMembers([]);
               });
           });
       });
@@ -393,7 +391,7 @@ const Pending = (props) => {
                 </tr>
               </thead>
             </Table>
-            {!noVolunteersMsg === null ? (
+            {noVolunteersMsg !== null ? (
               <h3>{noVolunteersMsg}</h3>
             ) : pendingVolunteers.length > 0 ? (
               pendingVolunteers.map((volunteer) => (
@@ -517,7 +515,11 @@ const Pending = (props) => {
                 </tr>
               </thead>
             </Table>
-            {pendingMembers.length > 0 ? (
+            {noVolunteersMsg !== null ? (
+              <h3 className="no-volunteers-msg">
+                There are no Pending Volunteers
+              </h3>
+            ) : pendingMembers.length > 0 ? (
               pendingMembers.map((volunteer) => (
                 <>
                   <Table id="pending-chapter-tbl" hover>
@@ -573,8 +575,9 @@ const Pending = (props) => {
                         color="danger"
                         onClick={() => {
                           rejectVolunteer(user.leaderOf[0].chaptersid, {
-                            oktaId: volunteer.volunteersid,
+                            oktaid: volunteer.volunteersid,
                           });
+                          closeModal();
                         }}
                       >
                         Delete
