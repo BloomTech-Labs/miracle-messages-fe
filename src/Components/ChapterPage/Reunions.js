@@ -53,13 +53,19 @@ const Connections = ({ reunions }) => {
     <div className="outer-cards-container">
       <h2>Reconnections</h2>
       <div className="cards-container">
-        <Carousel responsive={responsive}>
-          {reunions
-            .filter((el, i) => displayIndices.includes(i))
-            .map((el, index) => (
-              <ReunionModal connection={el} key={index} />
-            ))}
-        </Carousel>
+        {reunions.length ? (
+          <Carousel responsive={responsive}>
+            {reunions
+              .filter((el, i) => displayIndices.includes(i))
+              .map((el, index) => (
+                <ReunionModal connection={el} key={index} />
+              ))}
+          </Carousel>
+        ) : (
+          <p className="no-reunions">
+            There are currently no registered reconnections with this Chapter
+          </p>
+        )}
       </div>
     </div>
   );

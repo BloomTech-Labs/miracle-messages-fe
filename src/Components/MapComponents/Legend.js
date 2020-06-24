@@ -10,6 +10,7 @@ export default function Legend(props) {
       <div className="legend-inner">
         <div className="row">
           <ReactSVG
+
             src={ TIME > 19 || TIME < 6 ? "whitePin.svg" : "marker.svg" }
           />
           <h4>Chapters</h4>

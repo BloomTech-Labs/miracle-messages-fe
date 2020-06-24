@@ -126,23 +126,23 @@ const ChapterPage = (props) => {
       </div>
       <div className="inner-container">
         <div className="first-section">
-        <div className='header-wrapper'>
-          <h1 className="chapter-name">{chapterInfo.title}</h1>
-          {!isApproved && !isPending && (
-            <button
-              className="join-button"
-              onClick={(e) => joinChapter(e, id)}
-              type="button"
-            >
-              Join Chapter
-            </button>
-          )}
-          {isPending && (
-            <button className="join-button" type="button" disabled={true}>
-              Volunteer Request Pending Approval
-            </button>
-          )}
-        </div>
+          <div className="header-wrapper">
+            <h1 className="chapter-name">{chapterInfo.title}</h1>
+            {!isApproved && !isPending && (
+              <button
+                className="join-button"
+                onClick={(e) => joinChapter(e, id)}
+                type="button"
+              >
+                Join Chapter
+              </button>
+            )}
+            {isPending && (
+              <button className="join-button" type="button" disabled={true}>
+                Request Pending
+              </button>
+            )}
+          </div>
           <div className="flex-box justify-even">
             <div className="count-container">
               <p className="count">{volunteerCount}</p>
