@@ -54,22 +54,15 @@ require("dotenv").config();
 
 const TOKEN =
   "pk.eyJ1Ijoia2tzbGlkZXIyMTMwIiwiYSI6ImNrYTkzZDF5dzA3bnUzMG1wMTN4andnam4ifQ.zJyId-UEsVM91Luz7TwR4A";
-const TIME = new Date().getHours() 
+const TIME = new Date().getHours();
 const STYLE =
-   TIME > 19 || TIME < 6
-    ?  "mapbox://styles/kkslider2130/ckbr099d50tsc1imn47auz797"
+  TIME > 19 || TIME < 6
+    ? "mapbox://styles/kkslider2130/ckbr099d50tsc1imn47auz797"
     : "mapbox://styles/kkslider2130/cka93hqym2mju1imatqi7trcs";
 
-const gradientStyle = TIME > 19 || TIME < 6
-? "linGradNight"
-: "linGrad";
+const gradientStyle = TIME > 19 || TIME < 6 ? "linGradNight" : "linGrad";
 
-
-const clusterStyle = TIME > 19 || TIME < 6
-? "clustersNight"
-: "clusters";
-
-
+const clusterStyle = TIME > 19 || TIME < 6 ? "clustersNight" : "clusters";
 
 // Google Analytics:
 //this initializes GA
