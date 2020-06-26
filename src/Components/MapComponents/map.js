@@ -54,23 +54,15 @@ require("dotenv").config();
 
 const TOKEN =
   "pk.eyJ1Ijoia2tzbGlkZXIyMTMwIiwiYSI6ImNrYTkzZDF5dzA3bnUzMG1wMTN4andnam4ifQ.zJyId-UEsVM91Luz7TwR4A";
-const TIME = 7
-// new Date().getHours() 
+const TIME = new Date().getHours();
 const STYLE =
-   TIME > 19 || TIME < 6
-    ?  "mapbox://styles/kkslider2130/ckbr099d50tsc1imn47auz797"
+  TIME > 19 || TIME < 6
+    ? "mapbox://styles/kkslider2130/ckbr099d50tsc1imn47auz797"
     : "mapbox://styles/kkslider2130/cka93hqym2mju1imatqi7trcs";
 
-const gradientStyle = TIME > 19 || TIME < 6
-? "linGradNight"
-: "linGrad";
+const gradientStyle = TIME > 19 || TIME < 6 ? "linGradNight" : "linGrad";
 
-
-const clusterStyle = TIME > 19 || TIME < 6
-? "clustersNight"
-: "clusters";
-
-
+const clusterStyle = TIME > 19 || TIME < 6 ? "clustersNight" : "clusters";
 
 // Google Analytics:
 //this initializes GA
@@ -85,7 +77,13 @@ const ClusterMarker = ({ longitude, latitude, pointCount }) => (
 );
 const ReunionCluster = ({ longitude, latitude, pointCount }) => (
   <Marker longitude={longitude} latitude={latitude}>
-    <div className={TIME > 19 || TIME < 6 ? 'reunion-clustersNight' : 'reunion-clusters'}>{pointCount}</div>
+    <div
+      className={
+        TIME > 19 || TIME < 6 ? "reunion-clustersNight" : "reunion-clusters"
+      }
+    >
+      {pointCount}
+    </div>
   </Marker>
 );
 
@@ -145,8 +143,10 @@ class Map extends Component {
     getTargetPosition: (d) => {
       return [d.longitude, d.latitude];
     },
-    getSourceColor: () => TIME > 19 || TIME < 6 ? [0, 128, 128, 120]: [15,20,115, 120],
-    getTargetColor: () => TIME > 19 || TIME < 6 ? [0, 128, 128, 120]: [15,20,115, 120],
+    getSourceColor: () =>
+      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
+    getTargetColor: () =>
+      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
     getWidth: 2,
   });
 
@@ -249,7 +249,7 @@ class Map extends Component {
                   latitude={reunion.latitude}
                   longitude={reunion.longitude}
                 >
-                  {/* <ReactSVG
+                  <ReactSVG
                     src="reunion_marker.svg"
                     id="reunion-pin"
                     beforeInjection={(svg) => {
@@ -273,14 +273,19 @@ class Map extends Component {
                       console.log("clicked", this.props.popupInfo);
                       this.reunionClickHandler(reunion);
                     }}
-                  /> */}
+                  />
 
-                  <div 
-                  className={TIME > 19 || TIME < 6 ? 'reunion-clustersNight' : 'reunion-clusters'} 
-                  onClick={() => {
+                  {/*   <div
+                    className={
+                      TIME > 19 || TIME < 6
+                        ? "reunion-clustersNight"
+                        : "reunion-clusters"
+                    }
+                    onClick={() => {
                       console.log("clicked", this.props.popupInfo);
-                      this.reunionClickHandler(reunion);}}>
-                  </div>
+                      this.reunionClickHandler(reunion);
+                    }}
+                  ></div> */}
                 </Marker>
               );
             })
@@ -325,12 +330,17 @@ class Map extends Component {
                         this.reunionClickHandler(reunion);
                       }}
                     /> */}
-                    <div 
-                  className={TIME > 19 || TIME < 6 ? 'reunion-clustersNight' : 'reunion-clusters'} 
-                  onClick={() => {
-                      console.log("clicked", this.props.popupInfo);
-                      this.reunionClickHandler(reunion);}}>
-                  </div>
+                    <div
+                      className={
+                        TIME > 19 || TIME < 6
+                          ? "reunion-clustersNight"
+                          : "reunion-clusters"
+                      }
+                      onClick={() => {
+                        console.log("clicked", this.props.popupInfo);
+                        this.reunionClickHandler(reunion);
+                      }}
+                    ></div>
                   </Marker>
                 );
               })}
