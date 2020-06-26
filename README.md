@@ -63,8 +63,8 @@ The following environment variables control the front-end:
 
 - [x] Team Leader
 
-- Github: 
-- Email: 
+- Github: [@dvcolin](https://github.com/dvcolin)
+- Email: colindevries325@gmail.com
 
 👤 **Shun Chiang**
 
