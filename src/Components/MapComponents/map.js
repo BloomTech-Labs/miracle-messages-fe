@@ -144,9 +144,9 @@ class Map extends Component {
       return [d.longitude, d.latitude];
     },
     getSourceColor: () =>
-      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [15, 20, 115, 120],
+      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
     getTargetColor: () =>
-      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [15, 20, 115, 120],
+      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
     getWidth: 2,
   });
 
@@ -249,7 +249,7 @@ class Map extends Component {
                   latitude={reunion.latitude}
                   longitude={reunion.longitude}
                 >
-                  {/* <ReactSVG
+                  <ReactSVG
                     src="reunion_marker.svg"
                     id="reunion-pin"
                     beforeInjection={(svg) => {
@@ -273,9 +273,9 @@ class Map extends Component {
                       console.log("clicked", this.props.popupInfo);
                       this.reunionClickHandler(reunion);
                     }}
-                  /> */}
+                  />
 
-                  <div
+                  {/*   <div
                     className={
                       TIME > 19 || TIME < 6
                         ? "reunion-clustersNight"
@@ -285,7 +285,7 @@ class Map extends Component {
                       console.log("clicked", this.props.popupInfo);
                       this.reunionClickHandler(reunion);
                     }}
-                  ></div>
+                  ></div> */}
                 </Marker>
               );
             })
