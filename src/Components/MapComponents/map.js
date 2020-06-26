@@ -304,7 +304,7 @@ class Map extends Component {
                     latitude={reunion.latitude}
                     longitude={reunion.longitude}
                   >
-                    {/* <ReactSVG
+                    <ReactSVG
                       src="reunion_marker.svg"
                       id="reunion-pin"
                       className="city-pin"
@@ -329,8 +329,8 @@ class Map extends Component {
                         console.log("clicked", this.props.popupInfo);
                         this.reunionClickHandler(reunion);
                       }}
-                    /> */}
-                    <div
+                    />
+                    {/*   <div
                       className={
                         TIME > 19 || TIME < 6
                           ? "reunion-clustersNight"
@@ -340,7 +340,7 @@ class Map extends Component {
                         console.log("clicked", this.props.popupInfo);
                         this.reunionClickHandler(reunion);
                       }}
-                    ></div>
+                    ></div> */}
                   </Marker>
                 );
               })}
