@@ -144,9 +144,9 @@ class Map extends Component {
       return [d.longitude, d.latitude];
     },
     getSourceColor: () =>
-      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
+      TIME > 19 || TIME < 6 ? [255, 98, 4, 120] : [255, 98, 4, 120],
     getTargetColor: () =>
-      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
+      TIME > 19 || TIME < 6 ? [255, 98, 4, 120] : [255, 98, 4, 120],
     getWidth: 2,
   });
 
