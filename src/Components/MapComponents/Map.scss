@@ -142,7 +142,7 @@
   width: 18px;
   height: 18px;
   color: #fff;
-  background: #0f1473;
+  background: rgb(255, 98, 4);
   border-radius: 50%;
   padding: 0rem;
   text-align: center;
@@ -159,15 +159,15 @@
 }
 
 .popup-reunion {
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     width: 95vw;
   }
 }
 
 .linGradNight {
-  background: linear-gradient(#091217 50%,#1a2537 50%)
+  background: linear-gradient(#091217 50%, #1a2537 50%);
 }
 
-.linGrad{
-  background: linear-gradient(#75cff1 50%, #f4f1ea 50%)
+.linGrad {
+  background: linear-gradient(#75cff1 50%, #f4f1ea 50%);
 }
