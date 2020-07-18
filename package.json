@@ -19,7 +19,7 @@
     "axios": "^0.19.2",
     "axois": "^0.0.1-security",
     "babel-loader": "^8.1.0",
-    "deck.gl": "^8.1.9",
+    "deck.gl": "^6.4.0",
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
     "mapbox-gl": "^1.11.0",

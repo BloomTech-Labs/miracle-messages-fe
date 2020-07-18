@@ -11,9 +11,10 @@ import MapGL, {
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
 import { ReactSVG } from "react-svg";
-import { ArcLayer } from "@deck.gl/layers";
+import { ArcLayer } from "deck.gl";
 import { MapboxLayer } from "@deck.gl/mapbox";
 import Cluster from "@urbica/react-map-gl-cluster";
+import ArcBrushingLayer from "./ArcBrushingLayer";
 
 // Action imports
 import { getData, getReunions, getChapterReunions } from "../../Actions/index";
@@ -54,7 +55,7 @@ require("dotenv").config();
 
 const TOKEN =
   "pk.eyJ1Ijoia2tzbGlkZXIyMTMwIiwiYSI6ImNrYTkzZDF5dzA3bnUzMG1wMTN4andnam4ifQ.zJyId-UEsVM91Luz7TwR4A";
-const TIME = new Date().getHours();
+const TIME = 7;
 const STYLE =
   TIME > 19 || TIME < 6
     ? "mapbox://styles/kkslider2130/ckbr099d50tsc1imn47auz797"
@@ -133,10 +134,23 @@ class Map extends Component {
     this.props.getChapterReunions(id);
   };
 
+  animateArcs = (layer) => {
+    let coef = 0.001;
+    const animationInterval = setInterval(() => {
+      coef += 0.005;
+      if (coef >= 1.0) {
+        clearInterval(animationInterval);
+      }
+      layer.setProps({ coef });
+    }, 5);
+  };
+
   deckLayer = new MapboxLayer({
     id: "reunion-arcs",
-    type: ArcLayer,
+    type: ArcBrushingLayer,
     data: this.props.reunion_data,
+    coef: 0.001,
+    opacity: 1,
     getSourcePosition: (d) => {
       return [d.origin.longitude, d.origin.latitude];
     },
@@ -147,7 +161,7 @@ class Map extends Component {
       TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
     getTargetColor: () =>
       TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
-    getWidth: 2,
+    getStrokeWidth: 3,
   });
 
   setNewLayer = () => {
@@ -380,6 +394,7 @@ class Map extends Component {
                             this.setState({ isInteracted: true });
                             this.setState({ clickedChapter: [city] });
                             this.props.reunionPopupClose();
+                            this.animateArcs(this.deckLayer);
                           }}
                         />
                       </Marker>
@@ -412,6 +427,7 @@ class Map extends Component {
                             this.setState({ isInteracted: true });
                             this.setState({ clickedChapter: [city] });
                             this.props.reunionPopupClose();
+                            this.animateArcs(this.deckLayer);
                           }}
                         />
                       </Marker>
