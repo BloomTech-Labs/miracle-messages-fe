@@ -9,6 +9,7 @@ import {
   GET_CHAPTER_REUNIONS,
   FETCH_REUNION_SUCCESS,
   FETCH_REUNION_ERR,
+  FETCH_CLUSTER_REUNIONS_SUCCESS,
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { UPDATE_REUNION_POPUP } from "../Actions/updatePopupAction";
@@ -33,7 +34,6 @@ const initialState = {
     pitch: 0,
   },
   chapter_data: [], //this gets populated with componentDidMount
-  reunion_data: [],
   clicked_chapters_reunion: [],
   popupInfo: null,
   fetching_chapters: false,
@@ -71,6 +71,15 @@ export const mapReducer = (state = initialState, action) => {
         ...state,
         fetching_chapters: false,
         chapter_error: action.payload,
+      };
+    case FETCH_CLUSTER_REUNIONS_SUCCESS:
+      return {
+        ...state,
+        clicked_chapters_reunion: state.chapter_data.filter(
+          (a) =>
+            Math.round(action.payload[0]) === Math.round(a.originLatitude) &&
+            Math.round(action.payload[1]) === Math.round(a.originLongitude)
+        ),
       };
     case FETCH_CHAPTER_DEFAULT_INFO:
       return {

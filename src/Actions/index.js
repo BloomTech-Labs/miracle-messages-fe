@@ -1,7 +1,10 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from "axios";
 export const FETCH_CHAPTER_INFO = "FETCH_CHAPTER_INFO";
 export const FETCH_CHAPTER_SUCCESS = "FETCH_CHAPTER_SUCCESS";
 export const FETCH_CHAPTER_FAIL = "FETCH_CHAPTER_FAIL";
+
+export const FETCH_CLUSTER_REUNIONS_SUCCESS = "FETCH_CLUSTER_REUNION_SUCCESS";
 
 export const FETCHING_REUNION = "FETCHING_REUNION";
 export const FETCH_REUNION_SUCCESS = "FETCH_REUNION_SUCCESS";
@@ -25,13 +28,16 @@ export const GET_CHAPTER_REUNIONS = "GET_CHAPTER_REUNIONS";
 //this data pull enables us to get chapter related data from backend so we can display on the map
 export const getData = () => (dispatch) => {
   dispatch({ type: FETCH_CHAPTER_INFO });
-  axiosWithAuth()
-    .get("/api/chapter")
+  axios
+    .get("https://miracle-map-dev.herokuapp.com/api/airtable/get")
     .then((res) => {
-      console.log(res);
       dispatch({ type: FETCH_CHAPTER_SUCCESS, payload: res.data });
     })
     .catch((err) => dispatch({ type: FETCH_CHAPTER_FAIL }));
+};
+
+export const getClusterReunions = (lat, lon) => (dispatch) => {
+  dispatch({ type: FETCH_CLUSTER_REUNIONS_SUCCESS, payload: [lat, lon] });
 };
 
 export const getReunions = () => (dispatch) => {
