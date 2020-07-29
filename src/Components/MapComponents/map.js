@@ -92,6 +92,7 @@ class Map extends Component {
     currentChapterReunions: [],
     isInteracted: false,
     clickedChapter: [],
+    show: false,
   };
   componentDidMount() {
     this.props.getData();
@@ -106,6 +107,7 @@ class Map extends Component {
     ) {
       this.animateArcs(this.deckLayer);
       this.setState({ isInteracted: true });
+      this.setState({ show: true });
     }
     this.setNewLayer();
   }
@@ -160,9 +162,9 @@ class Map extends Component {
       return [d.destLongitude, d.destLatitude];
     },
     getSourceColor: () =>
-      TIME > 19 || TIME < 6 ? [255, 98, 4, 120] : [255, 98, 4, 120],
+      TIME > 19 || TIME < 6 ? [44, 102, 171] : [44, 102, 171],
     getTargetColor: () =>
-      TIME > 19 || TIME < 6 ? [0, 128, 128, 120] : [255, 98, 4, 120],
+      TIME > 19 || TIME < 6 ? [44, 102, 171] : [44, 102, 171],
     getStrokeWidth: 3,
   });
 
@@ -271,22 +273,15 @@ class Map extends Component {
                   latitude={reunion.destLatitude}
                   longitude={reunion.destLongitude}
                 >
-                  <ReactSVG
-                    src="reunion_marker.svg"
-                    id="reunion-pin"
-                    beforeInjection={(svg) => {
-                      svg.classList.add("reunion-pin");
-                      svg.setAttribute("style", "width: 24px");
-                    }}
+                  <div
+                    className="reunion-node-2"
                     style={
                       this.state.toggleReunions
                         ? {
-                            opacity: "1",
                             transition: ".3s",
                             cursor: "pointer",
                           }
                         : {
-                            opacity: "0",
                             transition: ".3s",
                             cursor: "grab",
                           }
@@ -295,7 +290,7 @@ class Map extends Component {
                       console.log("clicked", this.props.popupInfo);
                       this.reunionClickHandler(reunion);
                     }}
-                  />
+                  ></div>
 
                   {/*   <div
                     className={
@@ -326,23 +321,15 @@ class Map extends Component {
                     latitude={reunion.destLatitude}
                     longitude={reunion.destLongitude}
                   >
-                    <ReactSVG
-                      src="reunion_marker.svg"
-                      id="reunion-pin"
-                      className="city-pin"
-                      beforeInjection={(svg) => {
-                        svg.classList.add("reunion-pin");
-                        svg.setAttribute("style", "width: 26px");
-                      }}
+                    <div
+                      className="reunion-node"
                       style={
                         this.state.toggleReunions
                           ? {
-                              opacity: "1",
                               transition: ".3s",
                               cursor: "pointer",
                             }
                           : {
-                              opacity: "0",
                               transition: ".3s",
                               cursor: "grab",
                             }
@@ -351,7 +338,7 @@ class Map extends Component {
                         console.log("clicked", this.props.popupInfo);
                         this.reunionClickHandler(reunion);
                       }}
-                    />
+                    ></div>
                     {/*   <div
                       className={
                         TIME > 19 || TIME < 6
@@ -369,7 +356,7 @@ class Map extends Component {
             </Cluster>
           )}
           <Cluster
-            radius={10}
+            radius={40}
             extent={512}
             nodeSize={64}
             component={ClusterMarker}
@@ -393,6 +380,7 @@ class Map extends Component {
                         style={{ cursor: "pointer" }}
                         beforeInjection={(svg) => {
                           svg.classList.add("city-pin");
+                          svg.setAttribute("style", "width: 24px");
                         }}
                         onClick={() => {
                           // this.PinClickHandler(city);
@@ -426,6 +414,7 @@ class Map extends Component {
                         style={{ cursor: "pointer" }}
                         beforeInjection={(svg) => {
                           svg.classList.add("city-pin");
+                          svg.setAttribute("style", "width: 24px");
                         }}
                         onClick={() => {
                           // this.PinClickHandler(city);

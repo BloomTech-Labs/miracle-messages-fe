@@ -19,10 +19,24 @@
   .legend-inner {
     width: 100%;
 
+    .chapter-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: black;
+    }
+    .reunion-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: rgb(44, 102, 171);
+    }
+
     .row {
       display: flex;
       align-items: center;
-      padding-top: 0.2rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       svg {
         margin-left: 1rem;
         margin-bottom: 0.5rem;
@@ -56,7 +70,7 @@
     }
     .MuiSwitch-root {
       .MuiSwitch-track {
-        background-color: #ff6102;
+        background-color: rgb(44, 102, 171);
         opacity: 1;
       }
       .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {

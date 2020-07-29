@@ -104,6 +104,9 @@
 
 .markerCity {
   z-index: 3;
+  svg.injected-svg {
+    width: 10px;
+  }
 }
 
 .markerReunion {
@@ -112,11 +115,30 @@
     svg.injected-svg {
       opacity: 1;
       transition: 1s;
-      width: 29.5px;
+      width: 20.5px;
       margin-left: 1.5px;
     }
     transform: translate(-15px, -50px) !important;
   }
+}
+
+.reunion-node {
+  background-color: RGB(44, 102, 171);
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  border-radius: 50%;
+  animation-name: fadeIn;
+  animation-delay: 1.2s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+.reunion-node-2 {
+  background-color: RGB(44, 102, 171);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  opacity: 1;
 }
 
 .clusters {
@@ -144,17 +166,22 @@
   width: 18px;
   height: 18px;
   color: #fff;
-  background: rgb(255, 98, 4);
+  background: rgb(44, 102, 171);
   border-radius: 50%;
   padding: 0rem;
+  opacity: 0;
   text-align: center;
+  animation-name: fadeIn;
+  animation-delay: 1.2s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
 
 .reunion-clustersNight {
   width: 18px;
   height: 18px;
   color: #fff;
-  background: rgb(255, 98, 4);
+  background: rgb(44, 102, 171);
   border-radius: 50%;
   padding: 0rem;
   text-align: center;
@@ -172,4 +199,13 @@
 
 .linGrad {
   background: linear-gradient(#75cff1 50%, #f4f1ea 50%);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

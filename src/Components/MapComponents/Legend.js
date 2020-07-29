@@ -9,13 +9,12 @@ export default function Legend(props) {
     <div className="legend-con">
       <div className="legend-inner">
         <div className="row">
-          <ReactSVG
-            src={TIME > 19 || TIME < 6 ? "whitePin.svg" : "marker.svg"}
-          />
+          <div className="chapter-dot"></div>
           <h4>Chapters</h4>
         </div>
         <div className="row">
-          <ReactSVG src="reunion_marker.svg" />
+          {/* <ReactSVG src="reunion_marker.svg" /> */}
+          <div className="reunion-dot"></div>
           <h4>Reunions</h4>
         </div>
         <div className="switch-con">
