@@ -11,10 +11,12 @@ import MapGL, {
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
 import { ReactSVG } from "react-svg";
+import { css } from "@emotion/core";
 import { MapboxLayer } from "@deck.gl/mapbox";
 import Cluster from "@urbica/react-map-gl-cluster";
 import ArcBrushingLayer from "./ArcBrushingLayer";
 import ClusterMarker from "./ClusterMarker";
+import loadingLogo from "../../Assets/Imgs/loading-logo.png";
 // Action imports
 import {
   getData,
@@ -22,6 +24,7 @@ import {
   getChapterReunions,
   getClusterReunions,
 } from "../../Actions/index";
+import BarLoader from "react-spinners/BarLoader";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
 import { updateReunuinAction } from "../../Actions/updatePopupAction";
 import {
@@ -47,14 +50,23 @@ import ReactGA from "react-ga";
 // Custom file imports
 import CityInfo from "./city_info";
 import ReunionPopup from "./ReunionPopup";
-import BoxLink from "./BoxLink";
-import SearchBar from "./SearchBar";
+// import BoxLink from "./BoxLink";
+// import SearchBar from "./SearchBar";
 import Legend from "./Legend";
 import "./Navbar.scss";
 
 ////////////////////////////////////IMPORTS/////////////////////////////////////////////
 
 require("dotenv").config();
+
+const loaderCss = css`
+  display: block;
+  position: fixed;
+  top: 55%;
+  left: 38%;
+  text-align: center;
+  width: 20%;
+`;
 
 const TOKEN =
   "pk.eyJ1Ijoia2tzbGlkZXIyMTMwIiwiYSI6ImNrYTkzZDF5dzA3bnUzMG1wMTN4andnam4ifQ.zJyId-UEsVM91Luz7TwR4A";
@@ -229,18 +241,25 @@ class Map extends Component {
 
     return (
       <div className={`Map ${gradientStyle}`}>
+        {!this.props.chapter_data.length && (
+          <div className="load-overlay">
+            <img src={loadingLogo} alt="logo" />
+            <BarLoader css={loaderCss} size={30} color={"#000000"} />
+          </div>
+        )}
+
         {console.log("*****", this.props.chapter_data)}
         {/* MapGL is the actual map that gets displayed  */}
 
-        <BoxLink state={this.state} closeBox={this.closeBox} />
+        {/* <BoxLink state={this.state} closeBox={this.closeBox} /> */}
         <Legend toggleReunions={this.toggleReunions} />
-        {!this.props.sideBarOpen && (
+        {/* {!this.props.sideBarOpen && (
           <SearchBar
             chapters={this.props.chapter_data}
             reunions={this.props.reunion_data}
             PinClickHandler={this.PinClickHandler}
           />
-        )}
+        )} */}
 
         {/* <Sidebar /> */}
 

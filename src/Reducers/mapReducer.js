@@ -27,8 +27,8 @@ import { FlyToInterpolator } from "react-map-gl";
 
 const initialState = {
   viewport: {
-    latitude: 40.785164,
-    longitude: -90,
+    latitude: 43.785164,
+    longitude: -101,
     zoom: 3.5,
     bearing: 0,
     pitch: 0,

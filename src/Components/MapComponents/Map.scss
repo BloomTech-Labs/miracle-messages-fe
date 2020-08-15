@@ -209,3 +209,18 @@
     opacity: 1;
   }
 }
+
+.load-overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: white;
+  opacity: 0.6;
+  z-index: 4;
+  img {
+    width: 15%;
+    position: fixed;
+    left: 40%;
+    top: 20%;
+  }
+}
