@@ -1,10 +1,9 @@
 import React from "react";
 import "./Legend.scss";
-import { ReactSVG } from "react-svg";
-import Switch from "@material-ui/core/Switch";
+// import { ReactSVG } from "react-svg";
+// import Switch from "@material-ui/core/Switch";
 
 export default function Legend(props) {
-  const TIME = 7;
   return (
     <div className="legend-con">
       <div className="legend-inner">
@@ -17,10 +16,10 @@ export default function Legend(props) {
           <div className="reunion-dot"></div>
           <h4>Reunions</h4>
         </div>
-        <div className="switch-con">
+        {/* <div className="switch-con">
           <Switch color="default" onClick={props.toggleReunions} />
           <p className="label">toggle reunions</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
