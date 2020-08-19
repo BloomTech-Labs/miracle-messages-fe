@@ -9,7 +9,7 @@ export default function Legend(props) {
       <div className="legend-inner">
         <div className="row">
           <div className="chapter-dot"></div>
-          <h4>Chapters</h4>
+          <h4>Volunteers</h4>
         </div>
         <div className="row">
           {/* <ReactSVG src="reunion_marker.svg" /> */}

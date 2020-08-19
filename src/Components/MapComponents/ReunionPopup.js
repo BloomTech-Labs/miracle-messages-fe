@@ -31,7 +31,7 @@ const ReunionPopup = (props) => {
       </div>
       <div className="story-container">
         {info.story.length > 655
-          ? `${info.story.substring(0, 656)}...`
+          ? `${info.story.substring(0, 656)} ...`
           : info.story}
       </div>
     </div>
