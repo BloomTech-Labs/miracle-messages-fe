@@ -77,8 +77,11 @@ export const mapReducer = (state = initialState, action) => {
         ...state,
         clicked_chapters_reunion: state.chapter_data.filter(
           (a) =>
-            Math.round(action.payload[0]) === Math.round(a.originLatitude) &&
-            Math.round(action.payload[1]) === Math.round(a.originLongitude)
+            Math.round(action.payload[0]) >= Math.round(a.originLatitude) - 1 &&
+            Math.round(action.payload[0]) <= Math.round(a.originLatitude) + 1 &&
+            Math.round(action.payload[1]) >=
+              Math.round(a.originLongitude) - 0.8 &&
+            Math.round(action.payload[1]) <= Math.round(a.originLongitude) + 0.8
         ),
       };
     case FETCH_CHAPTER_DEFAULT_INFO:

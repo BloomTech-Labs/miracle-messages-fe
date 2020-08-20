@@ -292,6 +292,8 @@ class Map extends Component {
                   latitude={reunion.destLatitude}
                   longitude={reunion.destLongitude}
                 >
+                  <div className="bg"></div>
+                  <div />
                   <div
                     className="reunion-node-2"
                     style={
@@ -340,6 +342,7 @@ class Map extends Component {
                     latitude={reunion.destLatitude}
                     longitude={reunion.destLongitude}
                   >
+                    <div className="bg"></div>
                     <div
                       className="reunion-node"
                       style={
@@ -391,11 +394,8 @@ class Map extends Component {
                       latitude={city.originLatitude}
                       longitude={city.originLongitude}
                     >
-                      <ReactSVG
-                        src={
-                          TIME > 19 || TIME < 6 ? "whitePin.svg" : "marker.svg"
-                        }
-                        className="city-pin"
+                      <div
+                        className="clusters"
                         style={{ cursor: "pointer" }}
                         beforeInjection={(svg) => {
                           svg.classList.add("city-pin");
@@ -413,7 +413,9 @@ class Map extends Component {
                             city.originLongitude
                           );
                         }}
-                      />
+                      >
+                        1
+                      </div>
                     </Marker>
                   );
                 })
@@ -425,11 +427,8 @@ class Map extends Component {
                       latitude={city.originLatitude}
                       longitude={city.originLongitude}
                     >
-                      <ReactSVG
-                        src={
-                          TIME > 19 || TIME < 6 ? "whitePin.svg" : "marker.svg"
-                        }
-                        className="city-pin"
+                      <div
+                        className="clusters"
                         style={{ cursor: "pointer" }}
                         beforeInjection={(svg) => {
                           svg.classList.add("city-pin");
@@ -447,7 +446,9 @@ class Map extends Component {
                             city.originLongitude
                           );
                         }}
-                      />
+                      >
+                        1
+                      </div>
                     </Marker>
                   );
                 })}

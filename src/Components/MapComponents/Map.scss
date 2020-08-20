@@ -122,7 +122,8 @@
   }
 }
 
-.reunion-node {
+.reunion-node,
+.bg {
   background-color: RGB(44, 102, 171);
   width: 14px;
   height: 14px;
@@ -132,6 +133,18 @@
   animation-delay: 1.2s;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
+
+  &:hover {
+    background: rgb(106, 163, 233);
+  }
+}
+
+.bg {
+  animation: pulse 2s ease infinite;
+  animation-delay: 1.2s;
+  position: absolute;
+  background-color: rgba(52, 172, 224, 1);
+  box-shadow: 0 0 0 0 rgba(52, 172, 224, 1);
 }
 .reunion-node-2 {
   background-color: RGB(44, 102, 171);
@@ -142,14 +155,30 @@
 }
 
 .clusters {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   color: #fff;
-  background: black;
+  background: #000000;
   border-radius: 50%;
-  padding: 0.2rem;
+  font-size: 12px;
+  font-weight: bold;
   text-align: center;
   cursor: pointer;
+  position: absolute;
+  bottom: 8px;
+  right: -10px;
+}
+
+.clusters::after {
+  position: absolute;
+  content: "";
+  z-index: 1;
+  width: 0px;
+  height: 0px;
+  border: 8px solid transparent;
+  border-top: 10px solid #000000;
+  bottom: -15px;
+  right: 3px;
 }
 
 .clustersNight {
@@ -175,6 +204,9 @@
   animation-delay: 1.2s;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
+  &:hover {
+    background: rgb(106, 163, 233);
+  }
 }
 
 .reunion-clustersNight {
@@ -222,5 +254,19 @@
     position: fixed;
     left: 40%;
     top: 20%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  60% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
   }
 }
