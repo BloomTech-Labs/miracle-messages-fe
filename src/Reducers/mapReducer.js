@@ -10,6 +10,8 @@ import {
   FETCH_REUNION_SUCCESS,
   FETCH_REUNION_ERR,
   FETCH_CLUSTER_REUNIONS_SUCCESS,
+  FETCH_ALL,
+  CLEAR_CHAPTERS,
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { UPDATE_REUNION_POPUP } from "../Actions/updatePopupAction";
@@ -28,7 +30,7 @@ import { FlyToInterpolator } from "react-map-gl";
 const initialState = {
   viewport: {
     latitude: 43.785164,
-    longitude: -101,
+    longitude: -105,
     zoom: 3.5,
     bearing: 0,
     pitch: 0,
@@ -83,6 +85,17 @@ export const mapReducer = (state = initialState, action) => {
               Math.round(a.originLongitude) - 0.8 &&
             Math.round(action.payload[1]) <= Math.round(a.originLongitude) + 0.8
         ),
+      };
+    case FETCH_ALL:
+      return {
+        ...state,
+        clicked_chapters_reunion: state.chapter_data,
+      };
+
+    case CLEAR_CHAPTERS:
+      return {
+        ...state,
+        clicked_chapters_reunion: [],
       };
     case FETCH_CHAPTER_DEFAULT_INFO:
       return {

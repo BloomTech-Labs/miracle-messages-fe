@@ -10,7 +10,6 @@ import MapGL, {
 } from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.scss";
-import { ReactSVG } from "react-svg";
 import { css } from "@emotion/core";
 import { MapboxLayer } from "@deck.gl/mapbox";
 import Cluster from "@urbica/react-map-gl-cluster";
@@ -23,6 +22,7 @@ import {
   getReunions,
   getChapterReunions,
   getClusterReunions,
+  fetchAll,
 } from "../../Actions/index";
 import BarLoader from "react-spinners/BarLoader";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
@@ -152,6 +152,7 @@ class Map extends Component {
 
   animateArcs = (layer) => {
     let coef = 0.001;
+    layer.setProps({ getStrokeWidth: 3 });
     const animationInterval = setInterval(() => {
       coef += 0.005;
       if (coef >= 1.0) {
@@ -159,6 +160,10 @@ class Map extends Component {
       }
       layer.setProps({ coef });
     }, 5);
+  };
+
+  animateCancel = (layer) => {
+    layer.setProps({ getStrokeWidth: 0 });
   };
 
   deckLayer = new MapboxLayer({
@@ -236,6 +241,12 @@ class Map extends Component {
     this.props.reunionPopupToggle(reunion, this.props.openReunionPopup);
   };
 
+  animateAll = () => {
+    this.props.fetchAll();
+    this.setState({ isInteracted: true });
+    this.animateArcs(this.deckLayer);
+  };
+
   render() {
     const { viewport } = this.props;
 
@@ -252,7 +263,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         {/* <BoxLink state={this.state} closeBox={this.closeBox} /> */}
-        <Legend toggleReunions={this.toggleReunions} />
+        <Legend animateAll={this.animateAll} />
         {/* {!this.props.sideBarOpen && (
           <SearchBar
             chapters={this.props.chapter_data}
@@ -284,49 +295,7 @@ class Map extends Component {
           {/* eslint-disable-next-line array-callback-return*/}
 
           {!this.state.isInteracted ? (
-            this.props.clicked_chapters_reunion.map((reunion, index) => {
-              return (
-                <Marker
-                  className="markerReunion"
-                  key={`reunion-marker-${index}`}
-                  latitude={reunion.destLatitude}
-                  longitude={reunion.destLongitude}
-                >
-                  <div className="bg"></div>
-                  <div />
-                  <div
-                    className="reunion-node-2"
-                    style={
-                      this.state.toggleReunions
-                        ? {
-                            transition: ".3s",
-                            cursor: "pointer",
-                          }
-                        : {
-                            transition: ".3s",
-                            cursor: "grab",
-                          }
-                    }
-                    onClick={() => {
-                      console.log("clicked", this.props.popupInfo);
-                      this.reunionClickHandler(reunion);
-                    }}
-                  ></div>
-
-                  {/*   <div
-                    className={
-                      TIME > 19 || TIME < 6
-                        ? "reunion-clustersNight"
-                        : "reunion-clusters"
-                    }
-                    onClick={() => {
-                      console.log("clicked", this.props.popupInfo);
-                      this.reunionClickHandler(reunion);
-                    }}
-                  ></div> */}
-                </Marker>
-              );
-            })
+            this.animateCancel(this.deckLayer)
           ) : (
             <Cluster
               radius={20}
@@ -342,9 +311,12 @@ class Map extends Component {
                     latitude={reunion.destLatitude}
                     longitude={reunion.destLongitude}
                   >
-                    <div className="bg"></div>
                     <div
-                      className="reunion-node"
+                      className="bg"
+                      onClick={() => {
+                        console.log("clicked", this.props.popupInfo);
+                        this.reunionClickHandler(reunion);
+                      }}
                       style={
                         this.state.toggleReunions
                           ? {
@@ -356,11 +328,8 @@ class Map extends Component {
                               cursor: "grab",
                             }
                       }
-                      onClick={() => {
-                        console.log("clicked", this.props.popupInfo);
-                        this.reunionClickHandler(reunion);
-                      }}
                     ></div>
+                    <div className="reunion-node"></div>
                     {/*   <div
                       className={
                         TIME > 19 || TIME < 6
@@ -405,7 +374,6 @@ class Map extends Component {
                           // this.PinClickHandler(city);
                           // this.getCurrentReunions(city.id);
                           this.setState({ isInteracted: true });
-                          this.setState({ clickedChapter: [city] });
                           // this.props.reunionPopupClose();
                           this.animateArcs(this.deckLayer);
                           this.props.getClusterReunions(
@@ -525,4 +493,5 @@ export default connect(mapStateToProps, {
   onViewportChanged,
   popupClose,
   getClusterReunions,
+  fetchAll,
 })(Map);

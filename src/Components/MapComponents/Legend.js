@@ -9,17 +9,24 @@ export default function Legend(props) {
       <div className="legend-inner">
         <div className="row">
           <div className="chapter-dot"></div>
-          <h4>Volunteers</h4>
+          <h4>Number of Reunions</h4>
+          <p>Click pins to see connections made</p>
+        </div>
+        <div className="row">
+          <div className="line"></div>
+          <h4>Outreach</h4>
         </div>
         <div className="row">
           {/* <ReactSVG src="reunion_marker.svg" /> */}
           <div className="reunion-dot"></div>
-          <h4>Reunions</h4>
+          <h4>Location of Loved Ones</h4>
+          <p>Click on dot to view story</p>
         </div>
-        {/* <div className="switch-con">
-          <Switch color="default" onClick={props.toggleReunions} />
-          <p className="label">toggle reunions</p>
-        </div> */}
+        <div className="row">
+          <div className="animate-btn" onClick={props.animateAll}>
+            Show All Reunions
+          </div>
+        </div>
       </div>
     </div>
   );
