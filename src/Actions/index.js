@@ -7,6 +7,7 @@ export const FETCH_CHAPTER_FAIL = "FETCH_CHAPTER_FAIL";
 export const FETCH_CLUSTER_REUNIONS_SUCCESS = "FETCH_CLUSTER_REUNION_SUCCESS";
 export const FETCH_ALL = "FETCH_ALL";
 export const CLEAR_CHAPTERS = "CLEAR";
+export const UPDATE_ZOOM = "UPDATE_ZOOM";
 
 export const FETCHING_REUNION = "FETCHING_REUNION";
 export const FETCH_REUNION_SUCCESS = "FETCH_REUNION_SUCCESS";
@@ -45,7 +46,9 @@ export const getClusterReunions = (lat, lon) => (dispatch) => {
 export const fetchAll = () => (dispatch) => {
   dispatch({ type: FETCH_ALL });
 };
-
+export const zoomIn = (lat, lon) => (dispatch) => {
+  dispatch({ type: UPDATE_ZOOM, payload: [lat, lon] });
+};
 export const clearReunionData = () => (dispatch) => {
   dispatch({ type: CLEAR_CHAPTERS });
 };

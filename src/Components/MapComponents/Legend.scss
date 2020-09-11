@@ -27,31 +27,19 @@
       cursor: pointer;
       margin-left: 2.5rem;
       margin-top: 1rem;
+      margin-bottom: 1rem;
       &:hover {
         background-color: rgb(58, 58, 58);
       }
     }
 
-    .chapter-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background-color: black;
-    }
-
-    .chapter-dot::after {
-      position: absolute;
-      content: "";
-      z-index: 1;
-      width: 0px;
-      height: 0px;
-      border: 10px solid transparent;
-      border-top: 12px solid #000000;
-      top: 36px;
-      left: -11px;
+    .reunionPin {
+      width: 15%;
     }
     .reunion-dot {
       margin-top: 1rem;
+      margin-left: 0.5rem;
+
       width: 27px;
       height: 27px;
       border-radius: 50%;
@@ -61,8 +49,10 @@
     .row {
       display: flex;
       align-items: center;
+      justify-content: center;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
+      background: rgba(255, 255, 255, 0.37);
       svg {
         margin-left: 1rem;
         margin-bottom: 0.5rem;
@@ -76,7 +66,7 @@
         color: rgb(29, 29, 29);
       }
 
-      @media (max-width: 950px) {
+      @media (max-width: 1080px) {
         display: none;
       }
     }
@@ -116,6 +106,8 @@
   .line {
     margin-top: 1rem;
     margin-right: 1rem;
+    margin-left: 0.5rem;
+
     height: 3px;
     width: 70px;
     background-color: rgb(44, 102, 171);

@@ -15,6 +15,7 @@ import { MapboxLayer } from "@deck.gl/mapbox";
 import Cluster from "@urbica/react-map-gl-cluster";
 import ArcBrushingLayer from "./ArcBrushingLayer";
 import ClusterMarker from "./ClusterMarker";
+import ReunionCluster from "./ReunionCluster";
 import loadingLogo from "../../Assets/Imgs/loading-logo.png";
 // Action imports
 import {
@@ -23,6 +24,7 @@ import {
   getChapterReunions,
   getClusterReunions,
   fetchAll,
+  zoomIn,
 } from "../../Actions/index";
 import BarLoader from "react-spinners/BarLoader";
 import { updatePopupAction } from "../../Actions/updatePopupAction";
@@ -84,17 +86,21 @@ ReactGA.initialize(process.env.REACT_APP_GA_ID);
 //This tracks the page views on this component/path
 ReactGA.pageview("/map");
 
-const ReunionCluster = ({ longitude, latitude, pointCount }) => (
-  <Marker longitude={longitude} latitude={latitude}>
-    <div
-      className={
-        TIME > 19 || TIME < 6 ? "reunion-clustersNight" : "reunion-clusters"
-      }
-    >
-      {pointCount}
-    </div>
-  </Marker>
-);
+// const ReunionCluster = ({ longitude, latitude, pointCount }) => (
+//   <Marker longitude={longitude} latitude={latitude}>
+//     <div
+//       className={
+//         TIME > 19 || TIME < 6 ? "reunion-clustersNight" : "reunion-clusters"
+//       }
+//       onClick={() => {
+//         ;
+//         console.log(this.state.zoom);
+//       }}
+//     >
+//       {pointCount}
+//     </div>
+//   </Marker>
+// );
 
 class Map extends Component {
   //this fetches the data from the backend:
@@ -247,6 +253,10 @@ class Map extends Component {
     this.animateArcs(this.deckLayer);
   };
 
+  defaultView = () => {
+    this.setState({ isInteracted: false });
+  };
+
   render() {
     const { viewport } = this.props;
 
@@ -263,7 +273,7 @@ class Map extends Component {
         {/* MapGL is the actual map that gets displayed  */}
 
         {/* <BoxLink state={this.state} closeBox={this.closeBox} /> */}
-        <Legend animateAll={this.animateAll} />
+        <Legend animateAll={this.animateAll} defaultView={this.defaultView} />
         {/* {!this.props.sideBarOpen && (
           <SearchBar
             chapters={this.props.chapter_data}
@@ -282,7 +292,7 @@ class Map extends Component {
           viewportChangeMethod={"flyTo"}
           mapStyle={STYLE}
           accessToken={TOKEN}
-          zoom={3.5}
+          zoom={viewport.zoom}
           pitch="60"
           onClick={(e) => {
             if (e.originalEvent.path.length === 10 && this.state.isInteracted) {
@@ -494,4 +504,5 @@ export default connect(mapStateToProps, {
   popupClose,
   getClusterReunions,
   fetchAll,
+  zoomIn,
 })(Map);

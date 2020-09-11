@@ -12,6 +12,7 @@ import {
   FETCH_CLUSTER_REUNIONS_SUCCESS,
   FETCH_ALL,
   CLEAR_CHAPTERS,
+  UPDATE_ZOOM,
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { UPDATE_REUNION_POPUP } from "../Actions/updatePopupAction";
@@ -53,6 +54,17 @@ const initialState = {
 export const mapReducer = (state = initialState, action) => {
   //reducer to set the state for chapter_data
   switch (action.type) {
+    case UPDATE_ZOOM:
+      return {
+        ...state,
+        viewport: {
+          ...state.viewport,
+          latitude: action.payload[0],
+          longitude: action.payload[1],
+          transitionInterpolator: new FlyToInterpolator(),
+          zoom: 10,
+        },
+      };
     case FETCH_CHAPTER_INFO:
       return {
         ...state,
