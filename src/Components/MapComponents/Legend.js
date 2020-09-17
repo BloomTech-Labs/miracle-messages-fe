@@ -8,10 +8,10 @@ export default function Legend(props) {
   return (
     <div className="legend-con">
       <div className="legend-inner">
-        <div className="row">
+        <div className="row first-row">
           <img className="reunionPin" src={chapterPin} alt="" />
           <h4>Number of Reunions</h4>
-          <p>Click pins to see connections made</p>
+          <p>Click pins to see connections</p>
         </div>
         <div className="row">
           <div className="line"></div>
@@ -23,7 +23,7 @@ export default function Legend(props) {
           <h4>Location of Loved Ones</h4>
           <p>Click on dot to view story</p>
         </div>
-        <div className="row">
+        <div className="row btn-row">
           {!clicked ? (
             <div
               className="animate-btn"

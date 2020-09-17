@@ -17,7 +17,7 @@
   }
 
   .legend-inner {
-    width: 100%;
+    width: 80%;
 
     .animate-btn {
       background-color: rgb(34, 34, 34);
@@ -25,7 +25,7 @@
       padding: 0.5rem;
       font-weight: bold;
       cursor: pointer;
-      margin-left: 2.5rem;
+
       margin-top: 1rem;
       margin-bottom: 1rem;
       &:hover {
@@ -34,33 +34,33 @@
     }
 
     .reunionPin {
-      width: 15%;
+      width: 13%;
     }
     .reunion-dot {
       margin-top: 1rem;
-      margin-left: 0.5rem;
 
-      width: 27px;
-      height: 27px;
+      width: 23px;
+      height: 23px;
       border-radius: 50%;
       background-color: rgb(44, 102, 171);
     }
-
+    .btn-row {
+      justify-content: center;
+    }
     .row {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding: 0.6rem;
       background: rgba(255, 255, 255, 0.37);
       svg {
-        margin-left: 1rem;
         margin-bottom: 0.5rem;
       }
       h4 {
         margin-left: 0.6rem;
-        margin-top: 1rem;
+        margin-top: 0.9rem;
         color: rgb(14, 14, 14);
+        font-size: 1rem;
       }
       p {
         color: rgb(29, 29, 29);
@@ -69,6 +69,9 @@
       @media (max-width: 1080px) {
         display: none;
       }
+    }
+    div.first-row {
+      padding-top: 1.5rem;
     }
   }
 
