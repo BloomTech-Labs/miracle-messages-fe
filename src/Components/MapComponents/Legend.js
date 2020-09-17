@@ -21,7 +21,7 @@ export default function Legend(props) {
           {/* <ReactSVG src="reunion_marker.svg" /> */}
           <div className="reunion-dot"></div>
           <h4>Location of Loved Ones</h4>
-          <p>Click on dot to view story</p>
+          <p>Click dots to view reunion story</p>
         </div>
         <div className="row btn-row">
           {!clicked ? (
