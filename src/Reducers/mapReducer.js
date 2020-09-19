@@ -9,6 +9,10 @@ import {
   GET_CHAPTER_REUNIONS,
   FETCH_REUNION_SUCCESS,
   FETCH_REUNION_ERR,
+  FETCH_CLUSTER_REUNIONS_SUCCESS,
+  FETCH_ALL,
+  CLEAR_CHAPTERS,
+  UPDATE_ZOOM,
 } from "../Actions/index";
 import { UPDATE_POPUP } from "../Actions/updatePopupAction";
 import { UPDATE_REUNION_POPUP } from "../Actions/updatePopupAction";
@@ -26,14 +30,13 @@ import { FlyToInterpolator } from "react-map-gl";
 
 const initialState = {
   viewport: {
-    latitude: 40.785164,
-    longitude: -90,
+    latitude: 43.785164,
+    longitude: -105,
     zoom: 3.5,
     bearing: 0,
     pitch: 0,
   },
   chapter_data: [], //this gets populated with componentDidMount
-  reunion_data: [],
   clicked_chapters_reunion: [],
   popupInfo: null,
   fetching_chapters: false,
@@ -51,6 +54,17 @@ const initialState = {
 export const mapReducer = (state = initialState, action) => {
   //reducer to set the state for chapter_data
   switch (action.type) {
+    case UPDATE_ZOOM:
+      return {
+        ...state,
+        viewport: {
+          ...state.viewport,
+          latitude: action.payload[0],
+          longitude: action.payload[1],
+          transitionInterpolator: new FlyToInterpolator(),
+          zoom: 10,
+        },
+      };
     case FETCH_CHAPTER_INFO:
       return {
         ...state,
@@ -71,6 +85,29 @@ export const mapReducer = (state = initialState, action) => {
         ...state,
         fetching_chapters: false,
         chapter_error: action.payload,
+      };
+    case FETCH_CLUSTER_REUNIONS_SUCCESS:
+      return {
+        ...state,
+        clicked_chapters_reunion: state.chapter_data.filter(
+          (a) =>
+            Math.round(action.payload[0]) >= Math.round(a.originLatitude) - 1 &&
+            Math.round(action.payload[0]) <= Math.round(a.originLatitude) + 1 &&
+            Math.round(action.payload[1]) >=
+              Math.round(a.originLongitude) - 0.8 &&
+            Math.round(action.payload[1]) <= Math.round(a.originLongitude) + 0.8
+        ),
+      };
+    case FETCH_ALL:
+      return {
+        ...state,
+        clicked_chapters_reunion: state.chapter_data,
+      };
+
+    case CLEAR_CHAPTERS:
+      return {
+        ...state,
+        clicked_chapters_reunion: [],
       };
     case FETCH_CHAPTER_DEFAULT_INFO:
       return {

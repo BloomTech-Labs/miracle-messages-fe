@@ -22,8 +22,8 @@ export const reunionPopupToggle = (reunion_info, openPopup) => (dispatch) => {
     type: TOGGLE_REUNION_POPUP,
     payload: {
       openPopup: true,
-      latitude: reunion_info.latitude,
-      longitude: reunion_info.longitude,
+      latitude: reunion_info.destLatitude,
+      longitude: reunion_info.destLongitude,
     },
   });
 };

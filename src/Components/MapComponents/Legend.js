@@ -1,27 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Legend.scss";
-import { ReactSVG } from "react-svg";
-import Switch from "@material-ui/core/Switch";
-
+// import { ReactSVG } from "react-svg";
+// import Switch from "@material-ui/core/Switch";
+import chapterPin from "../../Assets/Imgs/reunionPin.png";
 export default function Legend(props) {
-  const TIME = new Date().getHours()
+  const [clicked, setClicked] = useState(false);
   return (
     <div className="legend-con">
       <div className="legend-inner">
-        <div className="row">
-          <ReactSVG
-
-            src={ TIME > 19 || TIME < 6 ? "whitePin.svg" : "marker.svg" }
-          />
-          <h4>Chapters</h4>
+        <div className="row first-row">
+          <img className="reunionPin" src={chapterPin} alt="" />
+          <h4>Number of Reunions</h4>
+          <p>Click pins to see connections</p>
         </div>
         <div className="row">
-          <ReactSVG src="reunion_marker.svg" />
-          <h4>Reunions</h4>
+          <div className="line"></div>
+          <h4>Connections</h4>
         </div>
-        <div className="switch-con">
-          <Switch color="default" onClick={props.toggleReunions} />
-          <p className="label">toggle reunions</p>
+        <div className="row">
+          {/* <ReactSVG src="reunion_marker.svg" /> */}
+          <div className="reunion-dot"></div>
+          <h4>Location of Loved Ones</h4>
+          <p>Click dots to view reunion story</p>
+        </div>
+        <div className="row btn-row">
+          {!clicked ? (
+            <div
+              className="animate-btn"
+              onClick={() => {
+                setClicked(true);
+                props.animateAll();
+              }}
+            >
+              Show All Reunions
+            </div>
+          ) : (
+            <div
+              className="animate-btn"
+              onClick={() => {
+                props.defaultView();
+                setClicked(false);
+              }}
+            >
+              Hide All Reunions
+            </div>
+          )}
         </div>
       </div>
     </div>

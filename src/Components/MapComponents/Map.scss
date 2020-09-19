@@ -104,6 +104,9 @@
 
 .markerCity {
   z-index: 3;
+  svg.injected-svg {
+    width: 10px;
+  }
 }
 
 .markerReunion {
@@ -112,21 +115,71 @@
     svg.injected-svg {
       opacity: 1;
       transition: 1s;
-      width: 29.5px;
+      width: 20.5px;
       margin-left: 1.5px;
     }
     transform: translate(-15px, -50px) !important;
   }
 }
 
-.clusters {
-  width: 28px;
-  height: 28px;
-  color: #fff;
-  background: black;
+.reunion-node,
+.bg {
+  background-color: RGB(44, 102, 171);
+  width: 14px;
+  height: 14px;
+  opacity: 0;
   border-radius: 50%;
-  padding: 0.2rem;
+  animation-name: fadeIn;
+  animation-delay: 1.2s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.bg {
+  animation: pulse 2s ease infinite;
+  animation-delay: 1.2s;
+  position: absolute;
+  background-color: rgba(52, 172, 224, 1);
+  box-shadow: 0 0 0 0 rgba(52, 172, 224, 1);
+  z-index: 3;
+  &:hover {
+    background: rgb(106, 163, 233);
+  }
+  cursor: pointer;
+}
+.reunion-node-2 {
+  background-color: RGB(44, 102, 171);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.clusters {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  background: #000000;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
   text-align: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 8px;
+  right: -10px;
+}
+
+.clusters::after {
+  position: absolute;
+  content: "";
+  z-index: 1;
+  width: 0px;
+  height: 0px;
+  border: 8px solid transparent;
+  border-top: 10px solid #000000;
+  bottom: -15px;
+  right: 4px;
 }
 
 .clustersNight {
@@ -137,22 +190,31 @@
   border-radius: 50%;
   padding: 0.2rem;
   text-align: center;
+  cursor: pointer;
 }
 .reunion-clusters {
   width: 18px;
   height: 18px;
   color: #fff;
-  background: rgb(255, 98, 4);
+  background: rgb(44, 102, 171);
   border-radius: 50%;
   padding: 0rem;
+  opacity: 0;
   text-align: center;
+  animation-name: fadeIn;
+  animation-delay: 1.2s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  &:hover {
+    background: rgb(106, 163, 233);
+  }
 }
 
 .reunion-clustersNight {
   width: 18px;
   height: 18px;
   color: #fff;
-  background: rgb(255, 98, 4);
+  background: rgb(44, 102, 171);
   border-radius: 50%;
   padding: 0rem;
   text-align: center;
@@ -170,4 +232,42 @@
 
 .linGrad {
   background: linear-gradient(#75cff1 50%, #f4f1ea 50%);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.load-overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: white;
+  opacity: 0.6;
+  z-index: 4;
+  img {
+    width: 15%;
+    position: fixed;
+    left: 40%;
+    top: 20%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  60% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
 }
